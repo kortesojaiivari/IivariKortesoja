@@ -59,6 +59,54 @@
         #retro-camera{display:flex;align-items:center;gap:40px;max-width:1200px;margin:100px auto;flex-wrap:wrap;padding:0 20px}
         #retro-camera .retro-text{flex:1;min-width:300px;font-size:clamp(1rem,3.5vw,1.3rem);color:#e0e0e0}
         #retro-camera .retro-video{flex:0.8;max-width:500px;position:relative;height:0;padding-bottom:56.25%;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.6)}
+         #contact{
+            max-width:1200px;
+            margin:80px auto 0;
+            padding:60px 20px;
+            display:flex;
+            align-items:flex-start;
+            justify-content:center;
+            gap:80px;
+            flex-wrap:wrap;
+        }
+        .contact-content{
+            display:flex;
+            align-items:flex-start;
+            gap:80px;
+            width:100%;
+            max-width:1000px;
+        }
+        .contact-left{
+            flex:1;
+            text-align:left;
+        }
+        .contact-left h2{
+            font-size:clamp(2rem,6vw,2.8rem);
+            margin-bottom:25px;
+        }
+        .contact-left p{
+            font-size:clamp(1rem,3.5vw,1.2rem);
+            margin:15px 0;
+        }
+        .contact-left a{
+            color:#4ade80;
+            text-decoration:none;
+            transition:.3s;
+        }
+        .contact-left a:hover{opacity:0.8}
+
+        .contact-right{
+            flex:1;
+            display:flex;
+            justify-content:flex-end;
+            align-items:flex-start;
+        }
+
+        @media(max-width:992px){
+            .contact-content{flex-direction:column;align-items:center;gap:40px;text-align:center}
+            .contact-left{text-align:center}
+            .contact-right{justify-content:center}
+        }
 
         /* YHTEYSTIEDOT – TÄYDELLINEN VASEMMALLE/OIKEALLE JAKO */
         #contact{
@@ -183,23 +231,24 @@
                 </video>
             </div>
         </div>
-    </section>
+        
+   <section id="contact">
+        <div class="contact-content">
+            <div class="contact-left">
+                <h2>Yhteystiedot</h2>
+                <p>Ota yhteyttä ja keskustellaan tulevista projekteista!</p>
+                <p>Email: <a href="mailto:esimerkki@email.com">esimerkki@email.com</a></p>
+                <p>Puhelin: +358 123 456 789</p>
+            </div>
 
-    <!-- YHTEYSTIEDOT – TÄYDELLINEN VASEMMALLE/OIKEALLE JAKO -->
-    <section id="contact">
-        <div class="contact-left">
-            <h2>Yhteystiedot</h2>
-            <p>Ota yhteyttä ja keskustellaan tulevista projekteista!</p>
-            <p>Email: <a href="mailto:esimerkki@email.com">esimerkki@email.com</a></p>
-            <p>Puhelin: +358 123 456 789</p>
-        </div>
-
-        <div class="contact-right">
-            <div class="badge-base LI-profile-badge" data-locale="fi_FI" data-size="large" data-theme="dark" data-type="HORIZONTAL" data-vanity="iivarikortesoja" data-version="v1">
-                <a class="badge-base__link LI-simple-link" href="https://fi.linkedin.com/in/iivarikortesoja?trk=profile-badge">Iivari Kortesoja</a>
+            <div class="contact-right">
+                <div class="badge-base LI-profile-badge" data-locale="fi_FI" data-size="large" data-theme="dark" data-type="HORIZONTAL" data-vanity="iivarikortesoja" data-version="v1">
+                    <a class="badge-base__link LI-simple-link" href="https://fi.linkedin.com/in/iivarikortesoja?trk=profile-badge">Iivari Kortesoja</a>
+                </div>
             </div>
         </div>
     </section>
+
 
     <footer>
         <p>© Iivari Kortesoja 2025 | Y-Tunnus A38904</p>
