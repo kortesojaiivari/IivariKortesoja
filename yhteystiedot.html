@@ -1,0 +1,131 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iivari Kortesoja - Yhteystiedot</title>
+
+    <!-- GOOGLE ANALYTICS 4 – KORVAA G-XXXXXXX OMALLASI -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MEASUREMENT_ID', { 'anonymize_ip': true });
+    </script>
+
+    <!-- MICROSOFT CLARITY – KORVAA xxxxxxxx OMALLASI -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "xxxxxxxx");
+    </script>
+
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:'Arial',sans-serif}
+        body{background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
+        header{background:#000;padding:20px;text-align:center;position:fixed;width:100%;top:0;z-index:1000}
+        nav{margin-top:20px}
+        nav a{color:#fff;text-decoration:none;margin:0 20px;font-size:1.2em;transition:.3s;position:relative}
+        nav a:hover{color:#4ade80}
+        nav a::after{content:'';position:absolute;bottom:-2px;left:50%;transform:translateX(-50%);width:0;height:2px;background:#4ade80;transition:width .3s ease}
+        nav a:hover::after{width:100%}
+
+        section{padding:100px 20px;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+        #contact{text-align:center;max-width:1200px;margin:0 auto}
+        #contact h2{font-size:3.5em;margin-bottom:20px;text-shadow:0 0 30px rgba(0,0,0,.8)}
+        #contact p{font-size:1.3em;margin:15px 0}
+        #contact a{color:#4ade80;transition:.3s}
+        #contact a:hover{opacity:0.8}
+
+        /* Dynaaminen otsikko */
+        #contact-title .animate-title{animation:slideInFromBottom .5s ease forwards;opacity:0}
+        @keyframes slideInFromBottom{0%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
+
+        footer{background:#000;text-align:center;padding:25px}
+
+        @media(max-width:768px){
+            nav a{font-size:1em;margin:0 10px}
+            #contact h2{font-size:2.5em}
+            #contact p{font-size:1.1em}
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="etusivu.html">Koti</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="yhteystiedot.html">Yhteystiedot</a>
+            <a href="puolustusvoimat.html">Puolustusvoimat</a>
+        </nav>
+    </header>
+
+    <section id="contact">
+        <h2 id="contact-title">Ota yhteyttä</h2>
+        <p>Sähköposti: <a href="mailto:example@email.com">example@email.com</a></p>
+        <p>Puhelin: <a href="tel:+358405247918">040 5247918</a></p>
+    </section>
+
+    <footer>
+        <p>© Iivari Kortesoja 2025 Y-Tunnus A38904</p>
+    </footer>
+
+    <script>
+        // Dynaaminen otsikko
+        const titles = ['Ota yhteyttä','Työskennellään yhdessä','Keskustellaan projekteista'];
+        let i = 0;
+        const titleEl = document.getElementById('contact-title');
+        setTimeout(() => titleEl.style.opacity = 1, 100);
+        setInterval(() => {
+            titleEl.style.opacity = 0;
+            setTimeout(() => {
+                titleEl.textContent = titles[i];
+                titleEl.style.opacity = 1;
+                i = (i + 1) % titles.length;
+            }, 300);
+        }, 3000);
+    </script>
+</body>
+</html>
