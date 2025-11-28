@@ -40,7 +40,7 @@
         .btn:hover{background:#4ade80}
 
         #portfolio .about-text{max-width:900px;margin:40px auto;font-size:clamp(1rem,3.5vw,1.3rem);color:#e0e0e0;text-align:center}
-
+        
         /* TIETOKONE: 3x2 RUUDUKKO */
         .portfolio-grid{
             display:grid;
@@ -50,71 +50,46 @@
             margin:60px auto;
         }
 
-        /* MOBIILI: YKSI ISO ELEMENTTI + DIAESITYS */
         /* MOBIILI: DIAESITYS */
         .portfolio-mobile{
             display:none;
             position:relative;
-@@ -67,56 +67,50 @@
+            width:100%;
+            max-width:600px;
+            height:340px;
+            border-radius:16px;
+            overflow:hidden;
+            box-shadow:0 10px 30px rgba(0,0,0,.6);
+            margin:40px auto;
+        }
+
+        .portfolio-mobile .slide{
             position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease;
         }
         .portfolio-mobile .slide.active{opacity:1}
         .portfolio-mobile video,.portfolio-mobile img{width:100%;height:100%;object-fit:cover}
 
-        .portfolio-mobile video,
-        .portfolio-mobile img{
-            width:100%;height:100%;object-fit:cover
-        }
-
-        /* NAVIGOINTI MOBIILISSA */
         .mobile-nav{
-            display:none;
-            justify-content:center;
-            align-items:center;
-            gap:20px;
-            margin-top:20px;
             display:none;justify-content:center;align-items:center;gap:20px;margin-top:20px;
         }
         .mobile-nav button{
-            background:rgba(255,255,255,.2);
-            color:#fff;
-            border:none;
-            width:50px;height:50px;
-            border-radius:50%;
-            font-size:1.5em;
-            cursor:pointer;
-            transition:.3s;
             background:rgba(255,255,255,.2);color:#fff;border:none;width:50px;height:50px;
             border-radius:50%;font-size:1.5em;cursor:pointer;transition:.3s;
         }
         .mobile-nav button:hover{background:rgba(255,255,255,.4)}
 
         .mobile-indicators{
-            display:none;
-            flex-direction:row;
-            gap:8px;
-            margin-top:15px;
-        }
-        .indicator{
-            width:10px;height:10px;background:#555;border-radius:50%;transition:.3s
             display:none;flex-direction:row;gap:8px;margin-top:15px;
         }
         .indicator{width:10px;height:10px;background:#555;border-radius:50%;transition:.3s}
         .indicator.active{background:#4ade80}
 
         .portfolio-item{
-            position:relative;
-            height:220px;
-            border-radius:12px;
-            overflow:hidden;
-            box-shadow:0 8px 20px rgba(0,0,0,.5);
-            transition:transform .3s;
             position:relative;height:220px;border-radius:12px;overflow:hidden;
             box-shadow:0 8px 20px rgba(0,0,0,.5);transition:transform .3s;
         }
         .portfolio-item:hover{transform:scale(1.05)}
         .portfolio-item video,.portfolio-item img{width:100%;height:100%;object-fit:cover}
-        /* EI PLAY-IKONIA HOVERISSA */
         .play-icon{display:none!important}
 
         #services,#equipment{max-width:1200px;margin:0 auto;text-align:center;padding:0 20px}
@@ -139,49 +114,63 @@
         @media(max-width:992px){
             .portfolio-grid{display:none}
             .portfolio-mobile,.mobile-nav,.mobile-indicators{display:flex}
-@@ -196,21 +190,18 @@
-                    <video autoplay muted loop playsinline>
-                        <source src="nikon_zr_demo.mp4" type="video/mp4">
-                    </video>
-                    <div class="play-icon"></div>
-                </div>
-                <div class="media-item">
-                    <video autoplay muted loop playsinline>
-                        <source src="gopro_action.mp4" type="video/mp4">
-                    </video>
-                    <div class="play-icon"></div>
-                </div>
-                <div class="media-item">
-                    <img src="nikon_zr_camera.jpg" alt="Nikon ZR">
-                </div>
-            </div>
-        </div>
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="etusivu.html">Koti</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="yhteystiedot.html">Yhteystiedot</a>
+            <a href="puolustusvoimat.html">Puolustusvoimat</a>
+        </nav>
+    </header>
 
-        <!-- 2000-LUVUN KAMERA – PIENEMPI VIDEO, TEKSTI VASEMMALLA -->
-        <div id="retro-camera">
-            <div class="retro-text">
-                Käytössäni on myös aitoja 2000-luvun alun videokameroita, joilla tallennetaan nostalgista ja aitonaista materiaalia. Näissä laitteissa on elektroninen ja digitaalinen zoom sekä infrapunakuvaus (Night Vision), jolla voi kuvata pimeässäkin.
-@@ -221,7 +212,6 @@
-                    <source src="2000luvunkamera.webm" type="video/webm">
-                    <source src="2000luvunkamera.mov" type="video/quicktime">
-                </video>
-                <div class="play-icon"></div>
-            </div>
-        </div>
+    <section id="home">
+        <video id="background-video" autoplay muted loop playsinline>
+            <source src="tst_testi_footgae.mp4" type="video/mp4">
+        </video>
+        <h1>Iivari Kortesoja</h1>
+        <a href="#portfolio" class="btn">Katso töitäni</a>
     </section>
-@@ -238,81 +228,48 @@
-        <p>© Iivari Kortesoja 2025 | Y-Tunnus A38904</p>
-    </footer>
 
-    <!-- EVÄSTE-POPUP (toimii heti) -->
-    <!-- EVÄSTE-POPUP -->
-    <div id="cookie-popup">…</div>
-    <div id="cookie-settings">…</div>
+    <section id="portfolio">
+        <p class="about-text">Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelance-yrittäjänä. Toteutan videotuotantoja ja valokuvauskeikkoja.</p>
 
-    <script>
-        // Kaikki skriptit (video, otsikko, evästeet) kuten edellisessä versiossa
-    </script>
-</body>
+        <!-- TIETOKONE: 3x2 RUUDUKKO -->
+        <div class="portfolio-grid">
+            <div class="portfolio-item"><video autoplay muted loop playsinline><source src="ruutu1.mp4" type="video/mp4"></video></div>
+            <div class="portfolio-item"><video autoplay muted loop playsinline><source src="ruutu2.mp4" type="video/mp4"></video></div>
+            <div class="portfolio-item"><img src="ruutu3.jpg" alt="Projekti 3"></div>
+            <div class="portfolio-item"><img src="ruutu4.jpg" alt="Projekti 4"></div>
+            <div class="portfolio-item"><video autoplay muted loop playsinline><source src="ruutu5.mp4" type="video/mp4"></video></div>
+            <div class="portfolio-item"><img src="ruutu6.jpg" alt="Projekti 6"></div>
+        </div>
+
+        <!-- MOBIILI: DIAESITYS -->
+        <div class="portfolio-mobile">
+            <div class="slide active"><video autoplay muted loop playsinline><source src="ruutu1.mp4" type="video/mp4"></video></div>
+            <div class="slide"><video autoplay muted loop playsinline><source src="ruutu2.mp4" type="video/mp4"></video></div>
+            <div class="slide"><img src="ruutu3.jpg" alt="Projekti 3"></div>
+            <div class="slide"><img src="ruutu4.jpg" alt="Projekti 4"></div>
+            <div class="slide"><video autoplay muted loop playsinline><source src="ruutu5.mp4" type="video/mp4"></video></div>
+            <div class="slide"><img src="ruutu6.jpg" alt="Projekti 6"></div>
+        </div>
+
+        <div class="mobile-nav">
+            <button onclick="prevSlide()">←</button>
+            <button onclick="nextSlide()">→</button>
+        </div>
+
+        <div class="mobile-indicators">
+            <span class="indicator active"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+        </div>
 
         <div id="services">
             <h2 id="dynamic-title">Yritys</h2>
@@ -201,13 +190,11 @@
                     <video autoplay muted loop playsinline>
                         <source src="nikon_zr_demo.mp4" type="video/mp4">
                     </video>
-                    <div class="play-icon"></div>
                 </div>
                 <div class="media-item">
                     <video autoplay muted loop playsinline>
                         <source src="gopro_action.mp4" type="video/mp4">
                     </video>
-                    <div class="play-icon"></div>
                 </div>
                 <div class="media-item">
                     <img src="nikon_zr_camera.jpg" alt="Nikon ZR">
@@ -215,7 +202,6 @@
             </div>
         </div>
 
-        <!-- 2000-LUVUN KAMERA – PIENEMPI VIDEO, TEKSTI VASEMMALLA -->
         <div id="retro-camera">
             <div class="retro-text">
                 Käytössäni on myös aitoja 2000-luvun alun videokameroita, joilla tallennetaan nostalgista ja aitonaista materiaalia. Näissä laitteissa on elektroninen ja digitaalinen zoom sekä infrapunakuvaus (Night Vision), jolla voi kuvata pimeässäkin.
@@ -226,7 +212,6 @@
                     <source src="2000luvunkamera.webm" type="video/webm">
                     <source src="2000luvunkamera.mov" type="video/quicktime">
                 </video>
-                <div class="play-icon"></div>
             </div>
         </div>
     </section>
@@ -242,6 +227,12 @@
     <footer>
         <p>© Iivari Kortesoja 2025 | Y-Tunnus A38904</p>
     </footer>
+
+    <!-- EVÄSTE-POPUP -->
+    <div id="cookie-popup">…</div>
+    <div id="cookie-settings">…</div>
+
+    <script>
         // Taustavideo
         const bgVideo = document.getElementById('background-video');
         const homeSection = document.getElementById('home');
@@ -274,14 +265,9 @@
             indicators[n].classList.add('active');
         }
 
-    <!-- EVÄSTE-POPUP (toimii heti) -->
-    <div id="cookie-popup">…</div>
-    <div id="cookie-settings">…</div>
         function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; showSlide(currentSlide); }
         function prevSlide() { currentSlide = (currentSlide - 1 + slides.length) % slides.length; showSlide(currentSlide); }
 
-    <script>
-        // Kaikki skriptit (video, otsikko, evästeet) kuten edellisessä versiossa
         setInterval(nextSlide, 5000);
         showSlide(0);
     </script>
