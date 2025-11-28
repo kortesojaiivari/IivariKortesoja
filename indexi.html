@@ -3,10 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <!-- TÄRKEÄ SEO-META (näkyy Googlen hakutuloksissa!) -->
     <title>Videotuotannot & Valokuvaus -Iivari Kortesoja</title>
     <meta name="description" content="Videotuotannot, AV-alan tuotannot, freelancer-valokuvaaja ja videokuvaaja. Yritysvideot, häävideot, some-sisällöt ja tapahtumakuvaukset – laadukkaasti ja edullisesti ympäri Suomea.">
+
+    <!-- KOPIOI TÄMÄ KAIKKIIN SIVUIHIN – AKTIVOI AKTIIVINEN LINKKI -->
+    <script>
+        // AKTIIVINEN NAVIGAATIOLINKKI – TOIMII KAIKILLA SIVUILLA
+        document.addEventListener("DOMContentLoaded", function() {
+            const currentPage = window.location.pathname.split("/").pop() || "etusivu.html";
+            
+            document.querySelectorAll('nav a').forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPage || href === "#" + currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+    <style>
+        nav a.active {
+            color: #4ade80 !important;
+        }
+        nav a.active::after {
+            width: 100% !important;
+        }
+    </style>
+    
+    
     
     <!-- GOOGLE ANALYTICS 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
@@ -43,7 +68,7 @@
         .btn:hover{background:#4ade80}
 
         #portfolio .about-text{max-width:900px;margin:40px auto;font-size:clamp(1rem,3.5vw,1.3rem);color:#e0e0e0;text-align:center}
-        
+
         /* TIETOKONE: 3x2 RUUDUKKO */
         .portfolio-grid{
             display:grid;
@@ -123,7 +148,7 @@
 <body>
     <header>
         <nav>
-            <a href="etusivu.html" class="active">Koti</a>
+            <a href="indexi.html">Koti</a>
             <a href="portfolio.html">Portfolio</a>
             <a href="yhteystiedot.html">Yhteystiedot</a>
             <a href="puolustusvoimat.html">Puolustusvoimat</a>
@@ -235,14 +260,7 @@
     <div id="cookie-popup">…</div>
     <div id="cookie-settings">…</div>
 
-     <script>
-        // AKTIIVINEN LINKKI KOROSTUS
-        document.querySelectorAll('nav a').forEach(link => {
-            if (link.href === window.location.href) {
-                link.classList.add('active');
-            }
-        });
-
+    <script>
         // Taustavideo
         const bgVideo = document.getElementById('background-video');
         const homeSection = document.getElementById('home');
