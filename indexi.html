@@ -123,7 +123,7 @@
 <body>
     <header>
         <nav>
-            <a href="indexi.html">Koti</a>
+            <a href="etusivu.html" class="active">Koti</a>
             <a href="portfolio.html">Portfolio</a>
             <a href="yhteystiedot.html">Yhteystiedot</a>
             <a href="puolustusvoimat.html">Puolustusvoimat</a>
@@ -235,7 +235,14 @@
     <div id="cookie-popup">…</div>
     <div id="cookie-settings">…</div>
 
-    <script>
+     <script>
+        // AKTIIVINEN LINKKI KOROSTUS
+        document.querySelectorAll('nav a').forEach(link => {
+            if (link.href === window.location.href) {
+                link.classList.add('active');
+            }
+        });
+
         // Taustavideo
         const bgVideo = document.getElementById('background-video');
         const homeSection = document.getElementById('home');
