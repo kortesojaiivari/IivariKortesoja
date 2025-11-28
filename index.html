@@ -94,7 +94,7 @@
         <video id="background-video" autoplay muted loop playsinline>
             <source src="tst_testi_footgae.mp4" type="video/mp4">
         </video>
-        <h1>Iivari Kortesoja</h1>
+        <h1>Iivari Kortesoja V1 </h1>
         <a href="#portfolio" class="btn">Katso töitäni</a>
     </section>
 
@@ -147,8 +147,14 @@
                 Käytössäni on myös aitoja 2000-luvun alun videokameroita, joilla tallennetaan nostalgista ja aitonaista materiaalia. Näissä laitteissa on elektroninen ja digitaalinen zoom sekä infrapunakuvaus (Night Vision), jolla voi kuvata pimeässäkin.
             </div>
             <div class="retro-video">
-                <video autoplay muted loop playsinline>
+                <video autoplay muted loop playsinline poster="2000luvun-kamera-thumbnail.jpg">
+                    <!-- MP4 ensin – toimii kaikilla moderneilla selaimilla -->
+                    <source src="2000luvunkamera.mp4" type="video/mp4">
+                    <!-- WebM fallback (jos sinulla on se) -->
+                    <source src="2000luvunkamera.webm" type="video/webm">
+                    <!-- Vanha .mov vain kaikkein vanhimmille selaimille -->
                     <source src="2000luvunkamera.mov" type="video/quicktime">
+                    Selaimesi ei tue videota.
                 </video>
                 <div class="play-icon"></div>
             </div>
