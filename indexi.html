@@ -14,7 +14,18 @@
     <!-- GOOGLE ANALYTICS 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
     <script>
-@@ -28,42 +23,107 @@
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
+    </script>
+
+    <!-- MICROSOFT CLARITY -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "ud6y4jpngh");
     </script>
 
@@ -136,7 +147,9 @@
         #retro-camera .retro-text{flex:1;min-width:300px;font-size:clamp(1rem,3.5vw,1.3rem);color:#e0e0e0}
         #retro-camera .retro-video{flex:0.8;max-width:500px;position:relative;height:0;padding-bottom:56.25%;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.6)}
 
-@@ -73,14 +133,12 @@
+        #contact{max-width:800px;margin:0 auto;text-align:center;padding:60px 15px}
+        #contact h2{font-size:clamp(2rem,6vw,2.8rem);margin-bottom:20px}
+        #contact p{font-size:clamp(1rem,3.5vw,1.2rem);margin:12px 0}
 
         footer{background:#000;text-align:center;padding:25px;font-size:0.9em}
 
@@ -157,7 +170,8 @@
             #retro-camera{flex-direction:column;text-align:center}
             #retro-camera .retro-video{flex:none;max-width:100%}
         }
-@@ -89,10 +147,10 @@
+    </style>
+</head>
 <body>
     <header>
         <nav>
@@ -170,7 +184,49 @@
             <a href="puolustusvoimat.html">Puolustusvoimat</a>
         </nav>
     </header>
-@@ -142,13 +200,15 @@
+
+    <section id="home">
+        <video id="background-video" autoplay muted loop playsinline>
+            <source src="tst_testi_footgae.mp4" type="video/mp4">
+        </video>
+        <h1>Iivari Kortesoja</h1>
+        <a href="#portfolio" class="btn">Katso töitäni</a>
+    </section>
+
+    <section id="portfolio">
+        <p class="about-text">Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelance-yrittäjänä. Toteutan videotuotantoja ja valokuvauskeikkoja.</p>
+
+        <!-- TIETOKONE: 3x2 RUUDUKKO -->
+        <div class="portfolio-grid">
+            <div class="portfolio-item"><video autoplay muted loop playsinline><source src="ruutu1.mp4" type="video/mp4"></video></div>
+            <div class="portfolio-item"><video autoplay muted loop playsinline><source src="ruutu2.mp4" type="video/mp4"></video></div>
+            <div class="portfolio-item"><img src="ruutu3.jpg" alt="Projekti 3"></div>
+            <div class="portfolio-item"><img src="ruutu4.jpg" alt="Projekti 4"></div>
+            <div class="portfolio-item"><video autoplay muted loop playsinline><source src="ruutu5.mp4" type="video/mp4"></video></div>
+            <div class="portfolio-item"><img src="ruutu6.jpg" alt="Projekti 6"></div>
+        </div>
+
+        <!-- MOBIILI: DIAESITYS -->
+        <div class="portfolio-mobile">
+            <div class="slide active"><video autoplay muted loop playsinline><source src="ruutu1.mp4" type="video/mp4"></video></div>
+            <div class="slide"><video autoplay muted loop playsinline><source src="ruutu2.mp4" type="video/mp4"></video></div>
+            <div class="slide"><img src="ruutu3.jpg" alt="Projekti 3"></div>
+            <div class="slide"><img src="ruutu4.jpg" alt="Projekti 4"></div>
+            <div class="slide"><video autoplay muted loop playsinline><source src="ruutu5.mp4" type="video/mp4"></video></div>
+            <div class="slide"><img src="ruutu6.jpg" alt="Projekti 6"></div>
+        </div>
+
+        <div class="mobile-nav">
+            <button onclick="prevSlide()">←</button>
+            <button onclick="nextSlide()">→</button>
+        </div>
+
+        <div class="mobile-indicators">
+            <span class="indicator active"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
             <span class="indicator"></span>
         </div>
 
@@ -186,7 +242,23 @@
         <div id="equipment">
             <h2>Kalusto</h2>
             <p>
-@@ -172,6 +232,7 @@
+                Tuotantokalustoni on modernia ja mahdollistaa teknisesti korkealaatuisen materiaalin tuottamisen. Pääkameroina ovat Nikon ZR -järjestelmäkamerat, jotka pohjautuvat RED-elokuvakameran teknologiaan. Näillä kameroilla onnistuu 6K- ja 4K-kuvaus. Lisäkameroina GoPro-actionkamerat villeihin kulmiin.
+            </p>
+
+            <div class="equipment-grid">
+                <div class="media-item">
+                    <video autoplay muted loop playsinline>
+                        <source src="nikon_zr_demo.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="media-item">
+                    <video autoplay muted loop playsinline>
+                        <source src="gopro_action.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="media-item">
+                    <img src="nikon_zr_camera.jpg" alt="Nikon ZR">
+                </div>
             </div>
         </div>
 
@@ -194,7 +266,26 @@
         <div id="retro-camera">
             <div class="retro-text">
                 Käytössäni on myös aitoja 2000-luvun alun videokameroita, joilla tallennetaan nostalgista ja aitonaista materiaalia. Näissä laitteissa on elektroninen ja digitaalinen zoom sekä infrapunakuvaus (Night Vision), jolla voi kuvata pimeässäkin.
-@@ -198,10 +259,6 @@
+            </div>
+            <div class="retro-video">
+                <video autoplay muted loop playsinline>
+                    <source src="2000luvunkamera.mp4" type="video/mp4">
+                    <source src="2000luvunkamera.webm" type="video/webm">
+                    <source src="2000luvunkamera.mov" type="video/quicktime">
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Yhteystiedot</h2>
+        <p>Ota yhteyttä ja keskustellaan tulevista projekteista!</p>
+        <p>Email: <a href="mailto:esimerkki@email.com">esimerkki@email.com</a></p>
+        <p>Puhelin: +358 123 456 789</p>
+        <p><a href="https://www.linkedin.com/in/iivarikortesoja">LinkedIn</a></p>
+    </section>
+
+    <footer>
         <p>© Iivari Kortesoja 2025 | Y-Tunnus A38904</p>
     </footer>
 
@@ -205,7 +296,33 @@
     <script>
         // Taustavideo
         const bgVideo = document.getElementById('background-video');
-@@ -235,11 +292,18 @@
+        const homeSection = document.getElementById('home');
+        const observer = new IntersectionObserver(e => e.forEach(en => en.isIntersecting ? bgVideo.play() : bgVideo.pause()), {threshold:0.1});
+        observer.observe(homeSection);
+
+        // Dynaaminen otsikko
+        const titles = ['Yritys','Bändi','Järjestö','Yrittäjä','Tapahtuma','Valokuvaus'];
+        let i = 0;
+        const titleEl = document.getElementById('dynamic-title');
+        setTimeout(() => titleEl.style.opacity = 1, 100);
+        setInterval(() => {
+            titleEl.style.opacity = 0;
+            setTimeout(() => {
+                titleEl.textContent = titles[i];
+                titleEl.style.opacity = 1;
+                i = (i + 1) % titles.length;
+            }, 300);
+        }, 3000);
+
+        // Mobiili-diaesitys
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.portfolio-mobile .slide');
+        const indicators = document.querySelectorAll('.mobile-indicators .indicator');
+
+        function showSlide(n) {
+            slides.forEach(s => s.classList.remove('active'));
+            indicators.forEach(i => i.classList.remove('active'));
+            slides[n].classList.add('active');
             indicators[n].classList.add('active');
         }
 
