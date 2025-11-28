@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iivari Kortesoja – Videotuotannot & Valokuvaus</title>
+    <meta name="description" content="Freelance-videokuvaaja ja valokuvaaja Iivari Kortesoja. Yritysvideot, hääkuvaus, some-sisällöt ja tapahtumakuvaukset – laadukkaasti ja edullisesti ympäri Suomea.">
 
     <!-- GOOGLE ANALYTICS 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
@@ -23,6 +24,9 @@
         })(window, document, "clarity", "script", "ud6y4jpngh");
     </script>
 
+    <!-- LINKEDIN BADGE SCRIPT -->
+    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+
     <style>
         *{margin:0;padding:0;box-sizing:border-box;font-family:'Arial',sans-serif}
         body{background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
@@ -40,107 +44,65 @@
         .btn:hover{background:#4ade80}
 
         #portfolio .about-text{max-width:900px;margin:40px auto;font-size:clamp(1rem,3.5vw,1.3rem);color:#e0e0e0;text-align:center}
+        .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;max-width:1200px;margin:60px auto}
+        .gallery-item{background:#222;height:220px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3em;color:#aaa;transition:.3s}
+        .gallery-item:hover{transform:scale(1.05)}
 
-        /* PORTFOLIO GALLERY – 3x2 TIETOKONEELLA */
-        .portfolio-grid{
-            display:grid;
-            grid-template-columns:repeat(3,1fr);
-            gap:25px;
-            max-width:1200px;
-            margin:60px auto;
-        }
-        .portfolio-item{
-            position:relative;
-            height:220px;
-            border-radius:12px;
-            overflow:hidden;
-            box-shadow:0 8px 20px rgba(0,0,0,.5);
-            transition:transform .3s;
-        }
-        .portfolio-item:hover{transform:scale(1.05)}
-        .portfolio-item video,.portfolio-item img{width:100%;height:100%;object-fit:cover}
+        #services,#equipment{max-width:1200px;margin:0 auto;text-align:center;padding:0 20px}
+        #services h2,#equipment h2{font-size:clamp(2rem,6vw,2.8rem);margin-bottom:30px}
+        .service-text,#equipment p{font-size:clamp(1rem,3.5vw,1.3rem);color:#ddd;margin-bottom:50px;line-height:1.7}
 
-        /* MOBIILI DIAESITYS */
-        .portfolio-mobile{
-            display:none;
-            position:relative;
-            width:100%;
-            max-width:600px;
-            height:340px;
-            border-radius:16px;
-            overflow:hidden;
-            box-shadow:0 10px 30px rgba(0,0,0,.6);
-            margin:40px auto;
-        }
-        .portfolio-mobile .slide{
-            position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1s ease;
-        }
-        .portfolio-mobile .slide.active{opacity:1}
-        .portfolio-mobile video,.portfolio-mobile img{width:100%;height:100%;object-fit:cover}
-
-        .mobile-nav{
-            display:none;justify-content:center;gap:30px;margin-top:20px;
-        }
-        .mobile-nav button{
-            background:rgba(255,255,255,.2);color:#fff;border:none;width:50px;height:50px;
-            border-radius:50%;font-size:1.5em;cursor:pointer;transition:.3s;
-        }
-        .mobile-nav button:hover{background:rgba(255,255,255,.4)}
-
-        .mobile-indicators{
-            display:none;flex-direction:row;gap:8px;margin-top:15px;
-        }
-        .indicator{width:10px;height:10px;background:#555;border-radius:50%;transition:.3s}
-        .indicator.active{background:#4ade80}
-
-        /* PALVELUTEKSTI – KALUSTON YLÄPUOLELLA */
-        #services{
-            max-width:1200px;margin:0 auto;text-align:center;padding:120px 20px 60px;
-        }
-        #services h2{font-size:clamp(2rem,6vw,2.8rem);margin-bottom:30px}
-        .service-text{font-size:clamp(1rem,3.5vw,1.3rem);color:#ddd;line-height:1.7;margin-bottom:80px}
-
-        /* KALUSTO – REILUSTI ALEMMAS */
-        #equipment{
-            max-width:1200px;margin:0 auto;text-align:center;padding:60px 20px;
-        }
-        #equipment h2{font-size:clamp(2rem,6vw,2.8rem);margin-bottom:30px}
-        #equipment p{font-size:clamp(1rem,3.5vw,1.3rem);color:#ddd;margin-bottom:60px;line-height:1.7}
-
-        .equipment-grid{
-            display:grid;
-            grid-template-columns:repeat(3,1fr);
-            gap:25px;
-            max-width:1200px;
-            margin:50px auto;
-        }
-        .media-item{
-            position:relative;height:0;padding-bottom:56.25%;border-radius:12px;overflow:hidden;
-            box-shadow:0 8px 20px rgba(0,0,0,.5);transition:transform .3s;
-        }
+        .equipment-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;max-width:1200px;margin:50px auto}
+        .media-item{position:relative;height:0;padding-bottom:56.25%;border-radius:12px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.5);transition:transform .3s}
         .media-item:hover{transform:scale(1.03)}
         .media-item video,.media-item img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
 
-        #retro-camera{
-            display:flex;align-items:center;gap:40px;max-width:1200px;margin:100px auto;flex-wrap:wrap;padding:0 20px;
-        }
+        #retro-camera{display:flex;align-items:center;gap:40px;max-width:1200px;margin:100px auto;flex-wrap:wrap;padding:0 20px}
         #retro-camera .retro-text{flex:1;min-width:300px;font-size:clamp(1rem,3.5vw,1.3rem);color:#e0e0e0}
         #retro-camera .retro-video{flex:0.8;max-width:500px;position:relative;height:0;padding-bottom:56.25%;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.6)}
 
-        #contact{max-width:800px;margin:0 auto;text-align:center;padding:60px 15px}
-        #contact h2{font-size:clamp(2rem,6vw,2.8rem);margin-bottom:20px}
-        #contact p{font-size:clamp(1rem,3.5vw,1.2rem);margin:12px 0}
+        /* YHTEYSTIEDOT – LINKEDIN BADGE OIKEALLA, OTSIKKO VASEMMALLA */
+        #contact{
+            max-width:1200px;
+            margin:80px auto 0;
+            padding:60px 20px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            flex-wrap:wrap;
+            gap:40px;
+        }
+        .contact-left{
+            flex:1;
+            min-width:300px;
+        }
+        .contact-left h2{
+            font-size:clamp(2rem,6vw,2.8rem);
+            margin-bottom:20px;
+        }
+        .contact-left p{
+            font-size:clamp(1rem,3.5vw,1.2rem);
+            margin:12px 0;
+        }
+        .contact-left a{
+            color:#4ade80;
+            text-decoration:none;
+            transition:.3s;
+        }
+        .contact-left a:hover{opacity:0.8}
+
+        .contact-right{
+            flex:1;
+            min-width:300px;
+            display:flex;
+            justify-content:flex-end;
+        }
 
         footer{background:#000;text-align:center;padding:25px;font-size:0.9em}
 
         @media(max-width:992px){
-            .portfolio-grid{display:none}
-            .portfolio-mobile,.mobile-nav,.mobile-indicators{display:flex}
-            #services{padding:80px 20px 60px}
-            .service-text{margin-bottom:60px}
-            #equipment{padding:60px 20px}
-            #retro-camera{flex-direction:column;text-align:center}
-            #retro-camera .retro-video{flex:none;max-width:100%}
+            #contact{flex-direction:column;text-align:center}
+            .contact-right{justify-content:center;margin-top:30px}
         }
     </style>
 </head>
@@ -166,41 +128,15 @@
     <section id="portfolio">
         <p class="about-text">Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelance-yrittäjänä. Toteutan videotuotantoja ja valokuvauskeikkoja.</p>
 
-        <!-- TIETOKONE: 3x2 RUUDUKKO -->
-        <div class="portfolio-grid">
-            <div class="portfolio-item"><video autoplay muted loop playsinline><source src="ruutu1.mp4" type="video/mp4"></video></div>
-            <div class="portfolio-item"><video autoplay muted loop playsinline><source src="ruutu2.mp4" type="video/mp4"></video></div>
-            <div class="portfolio-item"><img src="ruutu3.jpg" alt="Projekti 3"></div>
-            <div class="portfolio-item"><img src="ruutu4.jpg" alt="Projekti 4"></div>
-            <div class="portfolio-item"><video autoplay muted loop playsinline><source src="ruutu5.mp4" type="video/mp4"></video></div>
-            <div class="portfolio-item"><img src="ruutu6.jpg" alt="Projekti 6"></div>
+        <div class="gallery">
+            <div class="gallery-item">Video 1</div>
+            <div class="gallery-item">Kuva 1</div>
+            <div class="gallery-item">Video 2</div>
+            <div class="gallery-item">Kuva 2</div>
+            <div class="gallery-item">Video 3</div>
+            <div class="gallery-item">Kuva 3</div>
         </div>
 
-        <!-- MOBIILI: DIAESITYS -->
-        <div class="portfolio-mobile">
-            <div class="slide active"><video autoplay muted loop playsinline><source src="ruutu1.mp4" type="video/mp4"></video></div>
-            <div class="slide"><video autoplay muted loop playsinline><source src="ruutu2.mp4" type="video/mp4"></video></div>
-            <div class="slide"><img src="ruutu3.jpg" alt="Projekti 3"></div>
-            <div class="slide"><img src="ruutu4.jpg" alt="Projekti 4"></div>
-            <div class="slide"><video autoplay muted loop playsinline><source src="ruutu5.mp4" type="video/mp4"></video></div>
-            <div class="slide"><img src="ruutu6.jpg" alt="Projekti 6"></div>
-        </div>
-
-        <div class="mobile-nav">
-            <button onclick="prevSlide()">←</button>
-            <button onclick="nextSlide()">→</button>
-        </div>
-
-        <div class="mobile-indicators">
-            <span class="indicator active"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-        </div>
-
-        <!-- PALVELUTEKSTI – KALUSTON YLÄPUOLELLA -->
         <div id="services">
             <h2 id="dynamic-title">Yritys</h2>
             <p class="service-text">
@@ -208,7 +144,6 @@
             </p>
         </div>
 
-        <!-- KALUSTO – REILUSTI ALEMMAS -->
         <div id="equipment">
             <h2>Kalusto</h2>
             <p>
@@ -232,7 +167,6 @@
             </div>
         </div>
 
-        <!-- 2000-LUVUN KAMERA -->
         <div id="retro-camera">
             <div class="retro-text">
                 Käytössäni on myös aitoja 2000-luvun alun videokameroita, joilla tallennetaan nostalgista ja aitonaista materiaalia. Näissä laitteissa on elektroninen ja digitaalinen zoom sekä infrapunakuvaus (Night Vision), jolla voi kuvata pimeässäkin.
@@ -246,30 +180,28 @@
             </div>
         </div>
     </section>
-        <div class="contact-info">
+
+    <!-- YHTEYSTIEDOT – LINKEDIN BADGE OIKEALLA, OTSIKKO VASEMMALLA -->
     <section id="contact">
-        <h2>Yhteystiedot</h2>
-        <p>Ota yhteyttä ja keskustellaan tulevista projekteista!</p>
-        <p>Email: <a href="mailto:esimerkki@email.com">esimerkki@email.com</a></p>
-        <p>Puhelin: +358 123 456 789</p>
+        <div class="contact-left">
+            <h2>Yhteystiedot</h2>
+            <p>Ota yhteyttä ja keskustellaan tulevista projekteista!</p>
+            <p>Email: <a href="mailto:esimerkki@email.com">esimerkki@email.com</a></p>
+            <p>Puhelin: +358 123 456 789</p>
         </div>
-    
-    <!-- LINKEDIN BADGE SCRIPT (toimii kaikilla sivuilla) -->
-    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
-        
-<!-- LINKEDIN-PROFIILI OIKEASSA REUNASSA -->
-        <div class="linkedin-badge">
+
+        <div class="contact-right">
             <div class="badge-base LI-profile-badge" data-locale="fi_FI" data-size="large" data-theme="dark" data-type="HORIZONTAL" data-vanity="iivarikortesoja" data-version="v1">
                 <a class="badge-base__link LI-simple-link" href="https://fi.linkedin.com/in/iivarikortesoja?trk=profile-badge">Iivari Kortesoja</a>
             </div>
         </div>
-        
     </section>
 
     <footer>
         <p>© Iivari Kortesoja 2025 | Y-Tunnus A38904</p>
     </footer>
 
+    <!-- SKRIPTIT -->
     <script>
         // Taustavideo
         const bgVideo = document.getElementById('background-video');
