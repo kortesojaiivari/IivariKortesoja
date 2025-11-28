@@ -60,34 +60,28 @@
         #retro-camera .retro-text{flex:1;min-width:300px;font-size:clamp(1rem,3.5vw,1.3rem);color:#e0e0e0}
         #retro-camera .retro-video{flex:0.8;max-width:500px;position:relative;height:0;padding-bottom:56.25%;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.6)}
 
-        /* YHTEYSTIEDOT – OTSIKKO JA LINKEDIN BADGE TÄSMÄLLEEN SAMALLA RIVILLÄ */
+        /* YHTEYSTIEDOT – TÄYDELLINEN VASEMMALLE/OIKEALLE JAKO */
         #contact{
             max-width:1200px;
             margin:80px auto 0;
             padding:60px 20px;
             display:flex;
-            align-items:center;
+            align-items:flex-start;
             justify-content:space-between;
             flex-wrap:wrap;
-            gap:30px;
-        }
-        .contact-container{
-            display:flex;
-            align-items:center;
-            width:100%;
             gap:40px;
         }
         .contact-left{
             flex:1;
-            min-width:300px;
+            min-width:350px;
         }
         .contact-left h2{
             font-size:clamp(2rem,6vw,2.8rem);
-            margin-bottom:20px;
+            margin-bottom:25px;
         }
         .contact-left p{
             font-size:clamp(1rem,3.5vw,1.2rem);
-            margin:12px 0;
+            margin:15px 0;
         }
         .contact-left a{
             color:#4ade80;
@@ -98,20 +92,20 @@
 
         .contact-right{
             display:flex;
-            align-items:center;
+            align-items:flex-start;
             justify-content:flex-end;
             flex:1;
-            min-width:300px;
+            min-width:350px;
         }
 
         footer{background:#000;text-align:center;padding:25px;font-size:0.9em}
 
         @media(max-width:992px){
-            .contact-container{flex-direction:column;align-items:flex-start}
-            .contact-right{justify-content:flex-start;margin-top:30px}
+            #contact{flex-direction:column;align-items:flex-start}
+            .contact-right{justify-content:flex-start;margin-top:40px}
         }
         @media(max-width:600px){
-            .contact-container{align-items:center;text-align:center}
+            .contact-left,.contact-right{min-width:100%;text-align:center}
             .contact-right{justify-content:center}
         }
     </style>
@@ -191,20 +185,18 @@
         </div>
     </section>
 
-    <!-- YHTEYSTIEDOT – OTSIKKO JA LINKEDIN TÄSMÄLLEEN SAMALLA RIVILLÄ -->
+    <!-- YHTEYSTIEDOT – TÄYDELLINEN VASEMMALLE/OIKEALLE JAKO -->
     <section id="contact">
-        <div class="contact-container">
-            <div class="contact-left">
-                <h2>Yhteystiedot</h2>
-                <p>Ota yhteyttä ja keskustellaan tulevista projekteista!</p>
-                <p>Email: <a href="mailto:esimerkki@email.com">esimerkki@email.com</a></p>
-                <p>Puhelin: +358 123 456 789</p>
-            </div>
+        <div class="contact-left">
+            <h2>Yhteystiedot</h2>
+            <p>Ota yhteyttä ja keskustellaan tulevista projekteista!</p>
+            <p>Email: <a href="mailto:esimerkki@email.com">esimerkki@email.com</a></p>
+            <p>Puhelin: +358 123 456 789</p>
+        </div>
 
-            <div class="contact-right">
-                <div class="badge-base LI-profile-badge" data-locale="fi_FI" data-size="large" data-theme="dark" data-type="HORIZONTAL" data-vanity="iivarikortesoja" data-version="v1">
-                    <a class="badge-base__link LI-simple-link" href="https://fi.linkedin.com/in/iivarikortesoja?trk=profile-badge">Iivari Kortesoja</a>
-                </div>
+        <div class="contact-right">
+            <div class="badge-base LI-profile-badge" data-locale="fi_FI" data-size="large" data-theme="dark" data-type="HORIZONTAL" data-vanity="iivarikortesoja" data-version="v1">
+                <a class="badge-base__link LI-simple-link" href="https://fi.linkedin.com/in/iivarikortesoja?trk=profile-badge">Iivari Kortesoja</a>
             </div>
         </div>
     </section>
@@ -212,27 +204,5 @@
     <footer>
         <p>© Iivari Kortesoja 2025 | Y-Tunnus A38904</p>
     </footer>
-
-    <script>
-        // Taustavideo
-        const bgVideo = document.getElementById('background-video');
-        const homeSection = document.getElementById('home');
-        const observer = new IntersectionObserver(e => e.forEach(en => en.isIntersecting ? bgVideo.play() : bgVideo.pause()), {threshold:0.1});
-        observer.observe(homeSection);
-
-        // Dynaaminen otsikko
-        const titles = ['Yritys','Bändi','Järjestö','Yrittäjä','Tapahtuma','Valokuvaus'];
-        let i = 0;
-        const titleEl = document.getElementById('dynamic-title');
-        setTimeout(() => titleEl.style.opacity = 1, 100);
-        setInterval(() => {
-            titleEl.style.opacity = 0;
-            setTimeout(() => {
-                titleEl.textContent = titles[i];
-                titleEl.style.opacity = 1;
-                i = (i + 1) % titles.length;
-            }, 300);
-        }, 3000);
-    </script>
 </body>
 </html>
