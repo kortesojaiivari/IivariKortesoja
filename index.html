@@ -40,15 +40,15 @@
         .btn:hover{background:#4ade80}
 
         #portfolio .about-text{max-width:900px;margin:40px auto;font-size:clamp(1rem,3.5vw,1.3rem);color:#e0e0e0;text-align:center}
-        .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:20px;max-width:1200px;margin:60px auto}
-        .gallery-item{background:#222;height:clamp(160px,40vw,220px);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:clamp(1rem,3vw,1.4rem);color:#aaa;transition:.3s}
+        .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1200px;margin:60px auto}
+        .gallery-item{background:#222;height:220px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3em;color:#aaa;transition:.3s}
         .gallery-item:hover{transform:scale(1.05)}
 
         #services,#equipment{max-width:1200px;margin:0 auto;text-align:center;padding:0 20px}
         #services h2,#equipment h2{font-size:clamp(2rem,6vw,2.8rem);margin-bottom:30px}
         .service-text,#equipment p{font-size:clamp(1rem,3.5vw,1.3rem);color:#ddd;margin-bottom:50px;line-height:1.7}
 
-        /* KALUSTO – TARKKA 3 PER RIVI + SAMA KOKO KAIKILLE */
+        /* KALUSTO – TARKKA 3x2 RUUDUKKO */
         .equipment-grid{
             display:grid;
             grid-template-columns:repeat(3,1fr);
@@ -59,7 +59,7 @@
         .media-item{
             position:relative;
             height:0;
-            padding-bottom:56.25%; /* 16:9 */
+            padding-bottom:56.25%;
             border-radius:12px;
             overflow:hidden;
             box-shadow:0 8px 20px rgba(0,0,0,.5);
@@ -77,14 +77,34 @@
         .play-icon::after{content:'';border-left:22px solid #fff;border-top:14px solid transparent;border-bottom:14px solid transparent;margin-left:6px}
         .media-item:hover .play-icon{opacity:1}
 
-        /* 2000-LUVUN KAMERA – SAMA KOKO KUIN MUUT */
+        /* 2000-LUVUN KAMERA – TEKSTI VASEMMALLA, VIDEO OIKEALLA */
+        #retro-camera{
+            display:flex;
+            align-items:center;
+            gap:50px;
+            max-width:1200px;
+            margin:100px auto;
+            flex-wrap:wrap;
+            padding:0 20px;
+        }
+        #retro-camera .retro-text{
+            flex:1;
+            min-width:300px;
+            font-size:clamp(1rem,3.5vw,1.3rem);
+            color:#e0e0e0;
+        }
         #retro-camera .retro-video{
+            flex:1;
+            min-width:300px;
             position:relative;
             height:0;
             padding-bottom:56.25%;
-            border-radius:12px;
+            border-radius:16px;
             overflow:hidden;
-            box-shadow:0 8px 20px rgba(0,0,0,.5);
+            box-shadow:0 10px 30px rgba(0,0,0,.6);
+        }
+        #retro-camera .retro-video video{
+            position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover
         }
 
         #contact{max-width:800px;margin:0 auto;text-align:center;padding:60px 15px}
@@ -98,6 +118,7 @@
         }
         @media(max-width:600px){
             .equipment-grid{grid-template-columns:1fr}
+            #retro-camera{flex-direction:column;text-align:center}
         }
     </style>
 </head>
@@ -115,13 +136,14 @@
         <video id="background-video" autoplay muted loop playsinline>
             <source src="tst_testi_footgae.mp4" type="video/mp4">
         </video>
-        <h1>Iivari Kortesoja v3</h1>
+        <h1>Iivari Kortesoja</h1>
         <a href="#portfolio" class="btn">Katso töitäni</a>
     </section>
 
     <section id="portfolio">
         <p class="about-text">Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelance-yrittäjänä. Toteutan videotuotantoja ja valokuvauskeikkoja.</p>
 
+        <!-- PORTFOLIO – 3x2 RUUDUKKO -->
         <div class="gallery">
             <div class="gallery-item">Video 1</div>
             <div class="gallery-item">Kuva 1</div>
@@ -144,7 +166,7 @@
                 Tuotantokalustoni on modernia ja mahdollistaa teknisesti korkealaatuisen materiaalin tuottamisen. Pääkameroina ovat Nikon ZR -järjestelmäkamerat, jotka pohjautuvat RED-elokuvakameran teknologiaan. Näillä kameroilla onnistuu 6K- ja 4K-kuvaus. Lisäkameroina GoPro-actionkamerat villeihin kulmiin.
             </p>
 
-            <!-- TARKKA 3-PER-RIVI GRID -->
+            <!-- KALUSTO – 3x2 RUUDUKKO -->
             <div class="equipment-grid">
                 <div class="media-item">
                     <video autoplay muted loop playsinline>
@@ -164,20 +186,18 @@
             </div>
         </div>
 
-        <!-- 2000-LUVUN KAMERA – SAMA KOKO, SAMA GRID -->
+        <!-- 2000-LUVUN KAMERA – TEKSTI VASEMMALLA, VIDEO OIKEALLA -->
         <div id="retro-camera">
             <div class="retro-text">
                 Käytössäni on myös aitoja 2000-luvun alun videokameroita, joilla tallennetaan nostalgista ja aitonaista materiaalia. Näissä laitteissa on elektroninen ja digitaalinen zoom sekä infrapunakuvaus (Night Vision), jolla voi kuvata pimeässäkin.
             </div>
-            <div class="equipment-grid">
-                <div class="media-item">
-                    <video autoplay muted loop playsinline>
-                        <source src="2000luvunkamera.mp4" type="video/mp4">
-                        <source src="2000luvunkamera.webm" type="video/webm">
-                        <source src="2000luvunkamera.mov" type="video/quicktime">
-                    </video>
-                    <div class="play-icon"></div>
-                </div>
+            <div class="retro-video">
+                <video autoplay muted loop playsinline>
+                    <source src="2000luvunkamera.mp4" type="video/mp4">
+                    <source src="2000luvunkamera.webm" type="video/webm">
+                    <source src="2000luvunkamera.mov" type="video/quicktime">
+                </video>
+                <div class="play-icon"></div>
             </div>
         </div>
     </section>
