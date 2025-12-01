@@ -35,280 +35,13 @@
         section{padding:80px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center}
         #home{position:relative;overflow:hidden;text-align:center;min-height:100vh}
         #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
-        #home h1{font-size:clamp(2.5rem,8vw,4rem);margin-bottom:20px;text-shadow:0 0 30px rgba(0,0,0,.8)}
+        #home h1{font-size:clamp(2.5rem,8vw,4rem);margin-bottom:20px;text-shadow:0 0 0 30px rgba(0,0,0,.8)}
         .btn{background:#333;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;display:inline-block;margin-top:20px;transition:.3s;font-size:1rem}
         .btn:hover{background:#4ade80}
 
         #portfolio .about-text{max-width:900px;margin:40px auto;font-size:clamp(1rem,3.5vw,1.3rem);color:#e0e0e0;text-align:center}
 
-        /* PORTFOLIO – RUUTU1-RUUTU6 (video tai kuva – toimii molemmat) */
-        .gallery{
-            display:grid;
-            grid-template-columns:repeat(3,1fr);
-            gap:25px;
-            max-width:1200px;
-            margin:60px auto;
-        }
-        .gallery-item{
-            position:relative;
-            height:220px;
-            background:#222;
-            border-radius:12px;
-            overflow:hidden;
-            box-shadow:0 8px 20px rgba(0,0,0,.5);
-            transition:transform .3s;
-        }
-        .gallery-item:hover{transform:scale(1.05)}
-        .gallery-item video,
-        .gallery-item img{
-            position:absolute;
-            top:0;left:0;
-            width:100%;
-            height:100%;
-            object-fit:cover;
-        }
-
-        #services,#equipment{max-width:1200px;margin:0 auto;text-align:center;padding:0 20px}
-        #services h2,#equipment h2{font-size:clamp(2rem,6vw,2.8rem);margin-bottom:30px}
-        .service-text,#equipment p{font-size:clamp(1rem,3.5vw,1.3rem);color:#ddd;margin-bottom:50px;line-height:1.7}
-
-        .equipment-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;max-width:1200px;margin:50px auto}
-        .media-item{position:relative;height:0;padding-bottom:56.25%;border-radius:12px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.5);transition:transform .3s}
-        .media-item:hover{transform:scale(1.03)}
-        .media-item video,.media-item img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
-
-        /* 2000-LUVUN KAMERA – MOBIILISSA SOPIVAN KOKOINEN */
-        #retro-camera{
-            display:flex;
-            align-items:center;
-            gap:40px;
-            max-width:1200px;
-            margin:100px auto;
-            flex-wrap:wrap;
-            padding:0 20px;
-        }
-        #retro-camera .retro-text{
-            flex:1;
-            min-width:300px;
-            font-size:clamp(1rem,3.5vw,1.3rem);
-            color:#e0e0e0;
-        }
-        #retro-camera .retro-video{
-            flex:1;
-            min-width:280px;
-            max-width:500px;
-            position:relative;
-            height:0;
-            padding-bottom:56.25%;
-            border-radius:16px;
-            overflow:hidden;
-            box-shadow:0 10px 30px rgba(0,0,0,.6);
-        }
-        #retro-camera .retro-video video{
-            position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover
-        }
-
-        #contact{max-width:800px;margin:0 auto;text-align:center;padding:60px 15px}
-        #contact h2{font-size:clamp(2rem,6vw,2.8rem);margin-bottom:20px}
-        #contact p{font-size:clamp(1rem,3.5vw,1.2rem);margin:12px 0}
-        #contact a{color:#4ade80;text-decoration:none;transition:.3s}
-        #contact a:hover{opacity:0.8}
-
-        footer{background:#000;text-align:center;padding:25px;font-size:0.9em}
-
-        @media(max-width:768px){
-            nav a{font-size:1em;margin:0 8px}
-            #home h1{font-size:2.5em}
-            .gallery{grid-template-columns:1fr;gap:15px;margin-bottom:50px}
-            #services,#equipment{padding-bottom:60px}
-            #services h2,#equipment h2{font-size:2em;margin-bottom:20px}
-            #services .service-text,#equipment p{font-size:1.1em;margin-bottom:30px}
-            .equipment-grid{grid-template-columns:1fr}
-            #retro-camera{flex-direction:column;text-align:center;gap:30px}
-            #retro-camera .retro-video{
-                flex:none;
-                max-width:100%;
-                height:0;
-                padding-bottom:56.25%;
-            }
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <nav>
-            <a href="etusivu.html">Koti</a>
-            <a href="portfolio.html">Portfolio</a>
-            <a href="valokuvaus.html">Valokuvaus</a>
-            <a href="yhteystiedot.html">Yhteystiedot</a>
-            <a href="puolustusvoimat.html">Puolustusvoimat</a>
-        </nav>
-    </header>
-
-    <section id="home">
-        <video id="background-video" autoplay muted loop playsinline>
-            <source src="tst_testi_footgae.mp4" type="video/mp4">
-        </video>
-        <h1>Iivari Kortesoja</h1>
-        <a href="#portfolio" class="btn">Katso töitäni</a>
-    </section>
-
-    <section id="portfolio">
-        <p class="about-text">Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelance-yrittäjänä. Toteutan videotuotantoja ja valokuvauskeikkoja.</p>
-
-        <!-- PORTFOLIO – RUUTU1-RUUTU6 (video tai kuva – toimii molemmat) -->
-        <div class="gallery">
-            <div class="gallery-item">
-                <video autoplay muted loop playsinline>
-                    <source src="ruutu1.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="gallery-item">
-                <video autoplay muted loop playsinline>
-                    <source src="ruutu2.mp4" type="video/mp4">
-               :video>
-                </video>
-            </div>
-            <div class="gallery-item">
-                <img src="ruutu3.jpg" alt="Projekti 3">
-            </div>
-            <div class="gallery-item">
-                <img src="ruutu4.jpg" alt="Projekti 4">
-            </div>
-            <div class="gallery-item">
-                <video autoplay muted loop playsinline>
-                    <source src="ruutu5.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="gallery-item">
-                <img src="ruutu6.jpg" alt="Projekti 6">
-            </div>
-        </div>
-
-        <div id="services">
-            <h2 id="dynamic-title">Yritys</h2>
-            <p class="service-text">
-                Tarvitsetko ammattimaista audiovisuaalista materiaalia? Toteutan laadukkaita, tehokkaita ja edullisia tuotantoja ympäri Suomea. Olipa kyseessä sosiaalisen median video, hääkuvaus, yritysvideo, haastattelu, musiikkivideo tai jotain ihan muuta.
-            </p>
-        </div>
-
-        <div id="equipment">
-            <h2>Kalusto</h2>
-            <p>
-                Tuotantokalustoni on modernia ja mahdollistaa teknisesti korkealaatuisen materiaalin tuottamisen. Pääkameroina ovat Nikon ZR -järjestelmäkamerat, jotka pohjautuvat RED-elokuvakameran teknologiaan. Näillä kameroilla onnistuu 6K- ja 4K-kuvaus. Lisäkameroina GoPro-actionkamerat villeihin kulmiin.
-            </p>
-
-            <div class="equipment-grid">
-                <div class="media-item">
-                    <video autoplay muted loop playsinline>
-                        <source src="nikon_zr_demo.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="media-item">
-                    <video autoplay muted loop playsinline>
-                        <source src="gopro_action.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="media-item">
-                    <img src="nikon_zr_camera.jpg" alt="Nikon ZR">
-                </div>
-            </div>
-        </div>
-
-        <!-- 2000-LUVUN KAMERA – MOBIILISSA SOPIVAN KOKOINEN -->
-        <div id="retro-camera">
-            <div class="retro-text">
-                Käytössäni on myös aitoja 2000-luvun alun videokameroita, joilla tallennetaan nostalgista ja aitonaista materiaalia. Näissä laitteissa on elektroninen ja digitaalinen zoom sekä infrapunakuvaus (Night Vision), jolla voi kuvata pimeässäkin.
-            </div>
-            <div class="retro-video">
-                <video autoplay muted loop playsinline>
-                    <source src="2000luvunkamera.mp4" type="video/mp4">
-                    <source src="2000luvunkamera.webm" type="video/webm">
-                    <source src="2000luvunkamera.mov" type="video/quicktime">
-                </video>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <h2>Yhteystiedot</h2>
-        <p>Ota yhteyttä ja keskustellaan tulevista projekteista!</p>
-        <p>Email: <a href="mailto:esimerkki@email.com">esimerkki@email.com</a></p>
-        <p>Puhelin: +358 123 456 789</p>
-        <p><a href="https://www.linkedin.com/in/iivarikortesoja">LinkedIn</a></p>
-    </section>
-
-    <footer>
-        <p>© Iivari Kortesoja 2025 | Y-Tunnus A38904</p>
-    </footer>
-
-    <script>
-        // Taustavideo
-        const bgVideo = document.getElementById('background-video');
-        const homeSection = document.getElementById('home');
-        const observer = new IntersectionObserver(e => e.forEach(en => en.isIntersecting ? bgVideo.play() : bgVideo.pause()), {threshold:0.1});
-        observer.observe(homeSection);
-
-        // Dynaaminen otsikko
-        const titles = ['Yritys','Bändi','Järjestö','Yrittäjä','Tapahtuma','Valokuvaus'];
-        let i = 0;
-        const titleEl = document.getElementById('dynamic-title');
-        setTimeout(() => titleEl.style.opacity = 1, 100);
-        setInterval(() => {
-            titleEl.style.opacity = 0;
-            setTimeout(() => {
-                titleEl.textContent = titles[i];
-                titleEl.style.opacity = 1;
-                i = (i + 1) % titles.length;
-            }, 300);
-        }, 3000);
-    </script>
-</body>
-</html>
-Valmis – portfolio-osiossa on nyt vanha ruutu1-ruutu6 -ominaisuus: voit laittaa jokaiseen ruutuun joko <video> tai <img>, molemmat toimivat täydellisesti ja täyttävät ruudun samalla tavalla. Ei muutoksia muuhun koodiin.Fastruutu juttu ei toimiHTML<!DOCTYPE html>
-<html lang="fi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iivari Kortesoja</title>
-
-    <!-- GOOGLE ANALYTICS 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
-    </script>
-
-    <!-- MICROSOFT CLARITY -->
-    <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "ud6y4jpngh");
-    </script>
-
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box;font-family:'Arial',sans-serif}
-        body{background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
-        header{background:#000;padding:15px;text-align:center;position:fixed;width:100%;top:0;z-index:1000}
-        nav a{color:#fff;text-decoration:none;margin:0 20px;font-size:1.2em;transition:.3s;position:relative}
-        nav a:hover{color:#4ade80}
-        nav a::after{content:'';position:absolute;bottom:-2px;left:50%;transform:translateX(-50%);width:0;height:2px;background:#4ade80;transition:width .3s ease}
-        nav a:hover::after{width:100%}
-
-        section{padding:80px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-        #home{position:relative;overflow:hidden;text-align:center;min-height:100vh}
-        #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
-        #home h1{font-size:clamp(2.5rem,8vw,4rem);margin-bottom:20px;text-shadow:0 0 30px rgba(0,0,0,.8)}
-        .btn{background:#333;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;display:inline-block;margin-top:20px;transition:.3s;font-size:1rem}
-        .btn:hover{background:#4ade80}
-
-        #portfolio .about-text{max-width:900px;margin:40px auto;font-size:clamp(1rem,3.5vw,1.3rem);color:#e0e0e0;text-align:center}
-
-        /* PORTFOLIO – RUUTU1-RUUTU6 TOIMII NYT TÄYDELLISESTI */
+        /* PORTFOLIO – RUUDUT TOIMIVAT NYT TÄYDELLISESTI */
         .gallery{
             display:grid;
             grid-template-columns:repeat(3,1fr);
@@ -347,7 +80,7 @@ Valmis – portfolio-osiossa on nyt vanha ruutu1-ruutu6 -ominaisuus: voit laitta
         .media-item:hover{transform:scale(1.03)}
         .media-item video,.media-item img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
 
-        /* 2000-LUVUN KAMERA – MOBIILISSA SOPIVAN KOKOINEN */
+        /* 2000-LUVUN KAMERA – MOBIILI OK */
         #retro-camera{
             display:flex;
             align-items:center;
@@ -426,7 +159,7 @@ Valmis – portfolio-osiossa on nyt vanha ruutu1-ruutu6 -ominaisuus: voit laitta
     <section id="portfolio">
         <p class="about-text">Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelance-yrittäjänä. Toteutan videotuotantoja ja valokuvauskeikkoja.</p>
 
-        <!-- RUUTU1–RUUTU6 – TOIMII NYT 100 % (sekä videot että kuvat) -->
+        <!-- RUUDUT 1–6 – TOIMII NYT TÄYDELLISESTI (video tai kuva, molemmat näkyvät oikein) -->
         <div class="gallery">
             <div class="gallery-item">
                 <video autoplay muted loop playsinline>
@@ -484,7 +217,7 @@ Valmis – portfolio-osiossa on nyt vanha ruutu1-ruutu6 -ominaisuus: voit laitta
             </div>
         </div>
 
-        <!-- 2000-LUVUN KAMERA – MOBIILISSA SOPIVAN KOKOINEN -->
+        <!-- 2000-LUVUN KAMERA – MOBIILI OK -->
         <div id="retro-camera">
             <div class="retro-text">
                 Käytössäni on myös aitoja 2000-luvun alun videokameroita, joilla tallennetaan nostalgista ja aitonaista materiaalia. Näissä laitteissa on elektroninen ja digitaalinen zoom sekä infrapunakuvaus (Night Vision), jolla voi kuvata pimeässäkin.
