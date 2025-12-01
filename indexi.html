@@ -24,7 +24,7 @@
     <style>
         *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
         body{background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
-        header{background:#000;padding:padding:15px;text-align:center;position:fixed;width:100%;top:0;z-index:1000}
+        header{background:#000;padding:15px;text-align:center;position:fixed;width:100%;top:0;z-index:1000}
         nav a{color:#fff;text-decoration:none;margin:0 20px;font-size:1.2em;transition:.3s;position:relative}
         nav a:hover{color:#4ade80}
         nav a::after{content:'';position:absolute;bottom:-4px;left:50%;width:0;height:2px;background:#4ade80;transition:.4s;transform:translateX(-50%)}
@@ -39,60 +39,56 @@
         section{padding:120px 20px}
         #portfolio .about-text{max-width:900px;margin:0 auto 80px;text-align:center;font-size:1.35rem;color:#e0e0e0}
 
-        /* ====== TÄYDELLINEN SULAVA VAIHTUVA OTSIKKO (CSS only) ====== */
-        #dynamic-title{
-            position:relative;
-            height:1.2em;
-            overflow:hidden;
-            font-size:900 clamp(2rem,7vw,3.2rem) Arial,sans-serif;
-            margin-bottom:40px;
-            text-align:center;
+        /* ======== TÄYDELLINEN KASINO-RULLA OTSIKKO (3s per sana) ======== */
+        #dynamic-title {
+            position: relative;
+            height: 1.2em;
+            overflow: hidden;
+            text-align: center;
+            margin-bottom: 40px;
         }
-        .title-list{
-            display:flex;
-            flex-direction:column;
-            animation: slideUp 18s infinite;
+        #dynamic-title h2 {
+            font-size: clamp(2.2rem, 7vw, 3.5rem);
+            font-weight: 900;
+            margin: 0;
+            line-height: 1.2;
         }
-        .title-item{
-            flex-shrink:0;
-            padding:0.1em 0;
+        .roller-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            animation: roll 18s infinite linear; /* 6 sanaa × 3s = 18s */
         }
-        @keyframes slideUp{
-            0%, 14.28%   { transform:translateY(0%); }
-            16.66%, 31%  { transform:translateY(-100%); }
-            33.33%, 47.61% { transform:translateY(-200%); }
-            50%, 64.28%  { transform:translateY(-300%); }
-            66.66%, 80.94% { transform:translateY(-400%); }
-            83.33%, 97.61% { transform:translateY(-500%); }
-            100%         { transform:translateY(-600%); }
+        .roller-item {
+            height: 1.2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @keyframes roll {
+            0%    { transform: translateY(0); }
+            16.66% { transform: translateY(0); }
+            19.44% { transform: translateY(-100%); }
+            36.11% { transform: translateY(-100%); }
+            38.88% { transform: translateY(-200%); }
+            55.55% { transform: translateY(-200%); }
+            58.33% { transform: translateY(-300%); }
+            75%    { transform: translateY(-300%); }
+            77.77% { transform: translateY(-400%); }
+            94.44% { transform: translateY(-400%); }
+            97.22% { transform: translateY(-500%); }
+            100%   { transform: translateY(-500%); }
         }
 
-        /* ====== PORTFOLIO-RUUDUT ====== */
-        .gallery{
-            display:grid;
-            grid-template-columns:repeat(3,1fr);
-            gap:30px;
-            max-width:1300px;
-            margin:0 auto;
-        }
-        .gallery-item{
-            position:relative;
-            height:280px;
-            background:#000;
-            border-radius:16px;
-            overflow:hidden;
-            box-shadow:0 12px 40px rgba(0,0,0,.8);
-            transition:transform .4s ease;
-        }
+        /* ======== PORTFOLIO-RUUDUT ======== */
+        .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;max-width:1300px;margin:0 auto}
+        .gallery-item{position:relative;height:280px;background:#000;border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.8);transition:transform .4s}
         .gallery-item:hover{transform:scale(1.06)}
-        .gallery-item video,
-        .gallery-item img{
-            width:100%;height:100%;object-fit:cover;
-        }
+        .gallery-item video,.gallery-item img{width:100%;height:100%;object-fit:cover}
 
         #services,#equipment,#retro-camera{max-width:1200px;margin:0 auto 120px;text-align:center}
-        #services h2,#equipment h2{font-size:2.8rem;margin-bottom:30px}
-        .service-text,#equipment p{font-size:1.35rem;color:#ddd;line-height:1.8}
+        .service-text,#equipment p{font-size:1.35rem;color:#ddd;line-height:1.8;margin-bottom:60px}
 
         .equipment-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
         .media-item{position:relative;padding-bottom:56.25%;background:#000;border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.8)}
@@ -111,8 +107,7 @@
         footer{background:#000;padding:40px;text-align:center;font-size:1rem}
 
         @media(max-width:768px){
-            .gallery{grid-template-columns:1fr}
-            .equipment-grid{grid-template-columns:1fr}
+            .gallery,.equipment-grid{grid-template-columns:1fr}
             #retro-camera{flex-direction:column;text-align:center}
             nav a{margin:0 8px;font-size:1em}
             section{padding:80px 15px}
@@ -142,7 +137,6 @@
     <section id="portfolio">
         <p class="about-text">Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelance-yrittäjänä. Toteutan videotuotantoja ja valokuvauskeikkoja.</p>
 
-        <!-- 6 RUUTUA – TOIMII TÄYDELLISESTI -->
         <div class="gallery">
             <div class="gallery-item"><video autoplay muted loop playsinline><source src="ruutu1.mp4" type="video/mp4"></video></div>
             <div class="gallery-item"><video autoplay muted loop playsinline><source src="ruutu2.mp4" type="video/mp4"></video></div>
@@ -152,30 +146,28 @@
             <div class="gallery-item"><img src="ruutu6.jpg" alt="Projekti"></div>
         </div>
 
-<div class="gallery"></div>
-<div class="spacer-120"></div>   <!-- ← 120 px tyhjää väliä -->
-<div id="services">
-
-        
         <div id="services">
-            <!-- UUSI SUPER-SULAVA OTSIKKO -->
-            <h2 id="dynamic-title">
-                <div class="title-list">
-                    <div class="title-item">Yritys</div>
-                    <div class="title-item">Bändi</div>
-                    <div class="title-item">Järjestö</div>
-                    <div class="title-item">Yrittäjä</div>
-                    <div class="title-item">Tapahtuma</div>
-                    <div class="title-item">Valokuvaus</div>
-                    <div class="title-item">Yritys</div> <!-- toistetaan alkuun saumattomasti -->
-                </div>
-            </h2>
+            <!-- TÄYDELLINEN KASINO-RULLA OTSIKKO -->
+            <div id="dynamic-title">
+                <h2>
+                    <div class="roller-container">
+                        <div class="roller-item">Yritys</div>
+                        <div class="roller-item">Bändi</div>
+                        <div class="roller-item">Järjestö</div>
+                        <div class="roller-item">Yrittäjä</div>
+                        <div class="roller-item">Tapahtuma</div>
+                        <div class="roller-item">Valokuvaus</div>
+                        <div class="roller-item">Yritys</div> <!-- loopin takia toistetaan -->
+                    </div>
+                </h2>
+            </div>
 
             <p class="service-text">
                 Tarvitsetko ammattimaista audiovisuaalista materiaalia? Toteutan laadukkaita, tehokkaita ja edullisia tuotantoja ympäri Suomea. Olipa kyseessä sosiaalisen median video, hääkuvaus, yritysvideo, haastattelu, musiikkivideo tai jotain ihan muuta.
             </p>
         </div>
 
+        <!-- LOPUT SIVUSTA SAMAA KUIN ENNEN (kalusto, retro-kamera, yhteystiedot) -->
         <div id="equipment">
             <h2>Kalusto</h2>
             <p>Tuotantokalustoni on modernia ja mahdollistaa teknisesti korkealaatuisen materiaalin tuottamisen. Pääkameroina ovat Nikon ZR -järjestelmäkamerat, jotka pohjautuvat RED-elokuvakameran teknologiaan. Näillä kameroilla onnistuu 6K- ja 4K-kuvaus. Lisäkameroina GoPro-actionkamerat villeihin kulmiin.</p>
@@ -210,7 +202,6 @@
         <p>© Iivari Kortesoja 2025 | Y-Tunnus A38904</p>
     </footer>
 
-    <!-- Taustavideo toisto vain näkyvissä -->
     <script>
         const bgVideo = document.querySelector('#home video');
         new IntersectionObserver(e => e.forEach(en => en.isIntersecting ? bgVideo.play() : bgVideo.pause())).observe(document.getElementById('home'));
