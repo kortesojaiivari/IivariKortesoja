@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iivari Kortesoja</title>
 
-    <!-- GOOGLE ANALYTICS & CLARITY -->
+    <!-- GOOGLE ANALYTICS 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -13,109 +13,91 @@
       gtag('js', new Date());
       gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
     </script>
+
+    <!-- MICROSOFT CLARITY -->
     <script type="text/javascript">
-      (function(c,l,a,r,i,t,y){
-          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "ud6y4jpngh");
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "ud6y4jpngh");
     </script>
 
     <style>
-        *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+        *{margin:0;padding:0;box-sizing:border-box;font-family:'Arial',sans-serif}
         body{background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
         header{background:#000;padding:15px;text-align:center;position:fixed;width:100%;top:0;z-index:1000}
         nav a{color:#fff;text-decoration:none;margin:0 20px;font-size:1.2em;transition:.3s;position:relative}
         nav a:hover{color:#4ade80}
-        nav a::after{content:'';position:absolute;bottom:-4px;left:50%;width:0;height:2px;background:#4ade80;transition:.4s;transform:translateX(-50%)}
+        nav a::after{content:'';position:absolute;bottom:-2px;left:50%;transform:translateX(-50%);width:0;height:2px;background:#4ade80;transition:width .3s ease}
         nav a:hover::after{width:100%}
 
-        #home{position:relative;overflow:hidden;text-align:center;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center}
+        section{padding:80px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+        #home{position:relative;overflow:hidden;text-align:center;min-height:100vh}
         #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
-        #home h1{font-size:clamp(2.8rem,9vw,5.5rem);margin-bottom:20px;text-shadow:0 0 40px rgba(0,0,0,.9);font-weight:900}
-        .btn{background:#333;color:#fff;padding:16px 36px;border-radius:12px;text-decoration:none;margin-top:30px;display:inline-block;transition:.4s;font-size:1.1rem}
-        .btn:hover{background:#4ade80;transform:scale(1.05)}
+        #home h1{font-size:clamp(2.5rem,8vw,4rem);margin-bottom:20px;text-shadow:0 0 30px rgba(0,0,0,.8)}
+        .btn{background:#333;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;display:inline-block;margin-top:20px;transition:.3s;font-size:1rem}
+        .btn:hover{background:#4ade80}
 
-        section{padding:120px 20px}
-        #portfolio .about-text{max-width:900px;margin:0 auto 80px;text-align:center;font-size:1.35rem;color:#e0e0e0}
+        #portfolio .about-text{max-width:900px;margin:40px auto;font-size:clamp(1rem,3.5vw,1.3rem);color:#e0e0e0;text-align:center}
+        .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;max-width:1200px;margin:60px auto}
+        .gallery-item{background:#222;height:220px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3em;color:#aaa;transition:.3s}
+        .gallery-item:hover{transform:scale(1.05)}
 
-        /* ======== TÄYDELLINEN KASINO-RULLA OTSIKKO (3s per sana) ======== */
-        #dynamic-title {
-            position: relative;
-            height: 1.2em;
-            overflow: hidden;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        #dynamic-title h2 {
-            font-size: clamp(2.2rem, 7vw, 3.5rem);
-            font-weight: 900;
-            margin: 0;
-            line-height: 1.2;
-        }
-        .roller-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            animation: roll 18s infinite linear; /* 6 sanaa × 3s = 18s */
-        }
-        .roller-item {
-            height: 1.2em;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        @keyframes roll {
-            0%    { transform: translateY(0); }
-            16.66% { transform: translateY(0); }
-            19.44% { transform: translateY(-100%); }
-            36.11% { transform: translateY(-100%); }
-            38.88% { transform: translateY(-200%); }
-            55.55% { transform: translateY(-200%); }
-            58.33% { transform: translateY(-300%); }
-            75%    { transform: translateY(-300%); }
-            77.77% { transform: translateY(-400%); }
-            94.44% { transform: translateY(-400%); }
-            97.22% { transform: translateY(-500%); }
-            100%   { transform: translateY(-500%); }
-        }
+        #services,#equipment{max-width:1200px;margin:0 auto;text-align:center;padding:0 20px}
+        #services h2,#equipment h2{font-size:clamp(2rem,6vw,2.8rem);margin-bottom:30px}
+        .service-text,#equipment p{font-size:clamp(1rem,3.5vw,1.3rem);color:#ddd;margin-bottom:50px;line-height:1.7}
 
-        /* ======== PORTFOLIO-RUUDUT ======== */
-        .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;max-width:1300px;margin:0 auto}
-        .gallery-item{position:relative;height:280px;background:#000;border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.8);transition:transform .4s}
-        .gallery-item:hover{transform:scale(1.06)}
-        .gallery-item video,.gallery-item img{width:100%;height:100%;object-fit:cover}
-
-        #services,#equipment,#retro-camera{max-width:1200px;margin:0 auto 120px;text-align:center}
-        .service-text,#equipment p{font-size:1.35rem;color:#ddd;line-height:1.8;margin-bottom:60px}
-
-        .equipment-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
-        .media-item{position:relative;padding-bottom:56.25%;background:#000;border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.8)}
+        .equipment-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;max-width:1200px;margin:50px auto}
+        .media-item{position:relative;height:0;padding-bottom:56.25%;border-radius:12px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.5);transition:transform .3s}
+        .media-item:hover{transform:scale(1.03)}
         .media-item video,.media-item img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
 
-        #retro-camera{display:flex;gap:60px;align-items:center;flex-wrap:wrap}
-        #retro-camera .retro-text{flex:1;min-width:320px;font-size:1.35rem;color:#e0e0e0}
-        #retro-camera .retro-video{flex:1;min-width:320px;position:relative;padding-bottom:56.25%;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.9)}
-        #retro-camera video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
+        #retro-camera{display:flex;align-items:center;gap:40px;max-width:1200px;margin:100px auto;flex-wrap:wrap;padding:0 20px}
+        #retro-camera .retro-text{flex:1;min-width:300px;font-size:clamp(1rem,3.5vw,1.3rem);color:#e0e0e0}
+        #retro-camera .retro-video{flex:0.8;max-width:500px;position:relative;height:0;padding-bottom:56.25%;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.6)}
 
-        #contact{max-width:800px;margin:0 auto;text-align:center}
-        #contact h2{font-size:3rem;margin-bottom:40px}
-        #contact p{font-size:1.4rem;margin:20px 0}
-        #contact a{color:#4ade80;text-decoration:none;font-weight:bold}
+        #contact{max-width:800px;margin:0 auto;text-align:center;padding:60px 15px}
+        #contact h2{font-size:clamp(2rem,6vw,2.8rem);margin-bottom:20px}
+        #contact p{font-size:clamp(1rem,3.5vw,1.2rem);margin:12px 0}
+        #contact a{color:#4ade80;text-decoration:none;transition:.3s}
+        #contact a:hover{opacity:0.8}
 
-        footer{background:#000;padding:40px;text-align:center;font-size:1rem}
+        footer{background:#000;text-align:center;padding:25px;font-size:0.9em}
+
+        /* VAIHTUVA OTSIKKO – SIMPPELI JA SULAVA (3s per otsikko, kuten yhteystiedot-sivulla) */
+        #dynamic-title{
+            position:relative;
+            height:1.2em;
+            overflow:hidden;
+            margin-bottom:30px;
+        }
+        .title-slide{
+            position:absolute;
+            width:100%;
+            opacity:0;
+            transform:translateY(20px);
+            transition:opacity .5s ease, transform .5s ease;
+        }
+        .title-slide.active{
+            opacity:1;
+            transform:translateY(0);
+        }
 
         @media(max-width:768px){
-            .gallery,.equipment-grid{grid-template-columns:1fr}
-            #retro-camera{flex-direction:column;text-align:center}
-            nav a{margin:0 8px;font-size:1em}
-            section{padding:80px 15px}
+            nav a{font-size:1em;margin:0 8px}
+            #home h1{font-size:2.5em}
+            .gallery{grid-template-columns:1fr;gap:15px;margin-bottom:50px}
+            #services,#equipment{padding-bottom:60px}
+            #services h2,#equipment h2{font-size:2em;margin-bottom:20px}
+            #services .service-text,#equipment p{font-size:1.1em;margin-bottom:30px}
+            .equipment-grid{grid-template-columns:1fr}
+            #retro-camera{flex-direction:column;text-align:center;gap:30px}
+            #retro-camera .retro-video{flex:none;max-width:100%;height:0;padding-bottom:56.25%}
         }
     </style>
 </head>
 <body>
-
     <header>
         <nav>
             <a href="etusivu.html">Koti</a>
@@ -127,7 +109,7 @@
     </header>
 
     <section id="home">
-        <video autoplay muted loop playsinline>
+        <video id="background-video" autoplay muted loop playsinline>
             <source src="tst_testi_footgae.mp4" type="video/mp4">
         </video>
         <h1>Iivari Kortesoja</h1>
@@ -140,41 +122,52 @@
         <div class="gallery">
             <div class="gallery-item"><video autoplay muted loop playsinline><source src="ruutu1.mp4" type="video/mp4"></video></div>
             <div class="gallery-item"><video autoplay muted loop playsinline><source src="ruutu2.mp4" type="video/mp4"></video></div>
-            <div class="gallery-item"><img src="ruutu3.jpg" alt="Projekti"></div>
-            <div class="gallery-item"><img src="ruutu4.jpg" alt="Projekti"></div>
+            <div class="gallery-item"><img src="ruutu3.jpg" alt="Projekti 3"></div>
+            <div class="gallery-item"><img src="ruutu4.jpg" alt="Projekti 4"></div>
             <div class="gallery-item"><video autoplay muted loop playsinline><source src="ruutu5.mp4" type="video/mp4"></video></div>
-            <div class="gallery-item"><img src="ruutu6.jpg" alt="Projekti"></div>
+            <div class="gallery-item"><img src="ruutu6.jpg" alt="Projekti 6"></div>
         </div>
+<div class="gallery"></div>
+<div class="spacer-220"></div>   <!-- ← 120 px tyhjää väliä -->
+<div id="services">
 
+        
         <div id="services">
-            <!-- TÄYDELLINEN KASINO-RULLA OTSIKKO -->
-            <div id="dynamic-title">
-                <h2>
-                    <div class="roller-container">
-                        <div class="roller-item">Yritys</div>
-                        <div class="roller-item">Bändi</div>
-                        <div class="roller-item">Järjestö</div>
-                        <div class="roller-item">Yrittäjä</div>
-                        <div class="roller-item">Tapahtuma</div>
-                        <div class="roller-item">Valokuvaus</div>
-                        <div class="roller-item">Yritys</div> <!-- loopin takia toistetaan -->
-                    </div>
-                </h2>
-            </div>
+            <!-- VAIHTUVA OTSIKKO – SIMPPELI JA SULAVA (3s per otsikko) -->
+            <h2 id="dynamic-title">
+                <span class="title-slide active">Yritys</span>
+                <span class="title-slide">Bändi</span>
+                <span class="title-slide">Järjestö</span>
+                <span class="title-slide">Yrittäjä</span>
+                <span class="title-slide">Tapahtuma</span>
+                <span class="title-slide">Valokuvaus</span>
+            </h2>
 
             <p class="service-text">
                 Tarvitsetko ammattimaista audiovisuaalista materiaalia? Toteutan laadukkaita, tehokkaita ja edullisia tuotantoja ympäri Suomea. Olipa kyseessä sosiaalisen median video, hääkuvaus, yritysvideo, haastattelu, musiikkivideo tai jotain ihan muuta.
             </p>
         </div>
 
-        <!-- LOPUT SIVUSTA SAMAA KUIN ENNEN (kalusto, retro-kamera, yhteystiedot) -->
         <div id="equipment">
             <h2>Kalusto</h2>
-            <p>Tuotantokalustoni on modernia ja mahdollistaa teknisesti korkealaatuisen materiaalin tuottamisen. Pääkameroina ovat Nikon ZR -järjestelmäkamerat, jotka pohjautuvat RED-elokuvakameran teknologiaan. Näillä kameroilla onnistuu 6K- ja 4K-kuvaus. Lisäkameroina GoPro-actionkamerat villeihin kulmiin.</p>
+            <p>
+                Tuotantokalustoni on modernia ja mahdollistaa teknisesti korkealaatuisen materiaalin tuottamisen. Pääkameroina ovat Nikon ZR -järjestelmäkamerat, jotka pohjautuvat RED-elokuvakameran teknologiaan. Näillä kameroilla onnistuu 6K- ja 4K-kuvaus. Lisäkameroina GoPro-actionkamerat villeihin kulmiin.
+            </p>
+
             <div class="equipment-grid">
-                <div class="media-item"><video autoplay muted loop playsinline><source src="nikon_zr_demo.mp4" type="video/mp4"></video></div>
-                <div class="media-item"><video autoplay muted loop playsinline><source src="gopro_action.mp4" type="video/mp4"></video></div>
-                <div class="media-item"><img src="nikon_zr_camera.jpg" alt="Nikon ZR"></div>
+                <div class="media-item">
+                    <video autoplay muted loop playsinline>
+                        <source src="nikon_zr_demo.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="media-item">
+                    <video autoplay muted loop playsinline>
+                        <source src="gopro_action.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="media-item">
+                    <img src="nikon_zr_camera.jpg" alt="Nikon ZR">
+                </div>
             </div>
         </div>
 
@@ -185,6 +178,8 @@
             <div class="retro-video">
                 <video autoplay muted loop playsinline>
                     <source src="2000luvunkamera.mp4" type="video/mp4">
+                    <source src="2000luvunkamera.webm" type="video/webm">
+                    <source src="2000luvunkamera.mov" type="video/quicktime">
                 </video>
             </div>
         </div>
@@ -203,8 +198,27 @@
     </footer>
 
     <script>
-        const bgVideo = document.querySelector('#home video');
-        new IntersectionObserver(e => e.forEach(en => en.isIntersecting ? bgVideo.play() : bgVideo.pause())).observe(document.getElementById('home'));
+        // Taustavideo
+        const bgVideo = document.getElementById('background-video');
+        const homeSection = document.getElementById('home');
+        const observer = new IntersectionObserver(e => e.forEach(en => en.isIntersecting ? bgVideo.play() : bgVideo.pause()), {threshold:0.1});
+        observer.observe(homeSection);
+
+        // SIMPPELI VAIHTUVA OTSIKKO – 3 SEKUNTIA PER OTSIKKO
+        const titleSlides = document.querySelectorAll('#dynamic-title .title-slide');
+        let currentIndex = 0;
+
+        function nextTitle() {
+            titleSlides[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % titleSlides.length;
+            titleSlides[currentIndex].classList.add('active');
+        }
+
+        // Näytä ensimmäinen heti
+        titleSlides[0].classList.add('active');
+
+        // Vaihda 3 sekunnin välein
+        setInterval(nextTitle, 3000);
     </script>
 </body>
 </html>
