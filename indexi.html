@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iivari Kortesoja</title>
 
-    <!-- GOOGLE ANALYTICS 4 -->
+    <!-- GOOGLE ANALYTICS & CLARITY -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -13,35 +13,61 @@
       gtag('js', new Date());
       gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
     </script>
-
-    <!-- MICROSOFT CLARITY -->
     <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "ud6y4jpngh");
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "ud6y4jpngh");
     </script>
 
     <style>
         *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
         body{background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
-        header{background:#000;padding:15px;text-align:center;position:fixed;width:100%;top:0;z-index:1000}
+        header{background:#000;padding:padding:15px;text-align:center;position:fixed;width:100%;top:0;z-index:1000}
         nav a{color:#fff;text-decoration:none;margin:0 20px;font-size:1.2em;transition:.3s;position:relative}
         nav a:hover{color:#4ade80}
-        nav a::after{content:'';position:absolute;bottom:-4px;left:50%;width:0;height:2px;background:#4ade80;transition:.3s;transform:translateX(-50%)}
+        nav a::after{content:'';position:absolute;bottom:-4px;left:50%;width:0;height:2px;background:#4ade80;transition:.4s;transform:translateX(-50%)}
         nav a:hover::after{width:100%}
 
         #home{position:relative;overflow:hidden;text-align:center;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center}
         #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
-        #home h1{font-size:clamp(2.5rem,8vw,5rem);margin-bottom:20px;text-shadow:0 0 30px rgba(0,0,0,.9)}
-        .btn{background:#333;color:#fff;padding:14px 32px;border-radius:8px;text-decoration:none;margin-top:20px;display:inline-block;transition:.3s}
-        .btn:hover{background:#4ade80}
+        #home h1{font-size:clamp(2.8rem,9vw,5.5rem);margin-bottom:20px;text-shadow:0 0 40px rgba(0,0,0,.9);font-weight:900}
+        .btn{background:#333;color:#fff;padding:16px 36px;border-radius:12px;text-decoration:none;margin-top:30px;display:inline-block;transition:.4s;font-size:1.1rem}
+        .btn:hover{background:#4ade80;transform:scale(1.05)}
 
-        section{padding:100px 20px}
-        #portfolio .about-text{max-width:900px;margin:0 auto 60px;text-align:center;font-size:1.3rem;color:#e0e0e0}
+        section{padding:120px 20px}
+        #portfolio .about-text{max-width:900px;margin:0 auto 80px;text-align:center;font-size:1.35rem;color:#e0e0e0}
 
-        /* ====== PORTFOLIO-RUUDUT – TOIMII NYT 100% ====== */
+        /* ====== TÄYDELLINEN SULAVA VAIHTUVA OTSIKKO (CSS only) ====== */
+        #dynamic-title{
+            position:relative;
+            height:1.2em;
+            overflow:hidden;
+            font-size:900 clamp(2rem,7vw,3.2rem) Arial,sans-serif;
+            margin-bottom:40px;
+            text-align:center;
+        }
+        .title-list{
+            display:flex;
+            flex-direction:column;
+            animation: slideUp 18s infinite;
+        }
+        .title-item{
+            flex-shrink:0;
+            padding:0.1em 0;
+        }
+        @keyframes slideUp{
+            0%, 14.28%   { transform:translateY(0%); }
+            16.66%, 31%  { transform:translateY(-100%); }
+            33.33%, 47.61% { transform:translateY(-200%); }
+            50%, 64.28%  { transform:translateY(-300%); }
+            66.66%, 80.94% { transform:translateY(-400%); }
+            83.33%, 97.61% { transform:translateY(-500%); }
+            100%         { transform:translateY(-600%); }
+        }
+
+        /* ====== PORTFOLIO-RUUDUT ====== */
         .gallery{
             display:grid;
             grid-template-columns:repeat(3,1fr);
@@ -51,62 +77,45 @@
         }
         .gallery-item{
             position:relative;
-            width:100%;
-            height:280px;               /* kiinteä korkeus */
+            height:280px;
             background:#000;
             border-radius:16px;
             overflow:hidden;
-            box-shadow:0 10px 30px rgba(0,0,0,.7);
+            box-shadow:0 12px 40px rgba(0,0,0,.8);
             transition:transform .4s ease;
         }
-        .gallery-item:hover{transform:scale(1.05)}
+        .gallery-item:hover{transform:scale(1.06)}
         .gallery-item video,
         .gallery-item img{
-            position:absolute;
-            top:0; left:0;
-            width:100%;
-            height:100%;
-            object-fit:cover;
+            width:100%;height:100%;object-fit:cover;
         }
 
-        #services, #equipment, #retro-camera{max-width:1200px;margin:0 auto 100px;text-align:center}
-        #services h2, #equipment h2{font-size:2.8rem;margin-bottom:30px}
-        .service-text, #equipment p{font-size:1.3rem;color:#ddd;line-height:1.7;margin-bottom:60px}
+        #services,#equipment,#retro-camera{max-width:1200px;margin:0 auto 120px;text-align:center}
+        #services h2,#equipment h2{font-size:2.8rem;margin-bottom:30px}
+        .service-text,#equipment p{font-size:1.35rem;color:#ddd;line-height:1.8}
 
-        .equipment-grid{
-            display:grid;
-            grid-template-columns:repeat(3,1fr);
-            gap:30px;
-        }
-        .media-item{
-            position:relative;
-            padding-bottom:56.25%;
-            background:#000;
-            border-radius:16px;
-            overflow:hidden;
-            box-shadow:0 10px 30px rgba(0,0,0,.7);
-        }
-        .media-item video, .media-item img{
-            position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover
-        }
+        .equipment-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+        .media-item{position:relative;padding-bottom:56.25%;background:#000;border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.8)}
+        .media-item video,.media-item img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
 
-        #retro-camera{display:flex;gap:50px;align-items:center;flex-wrap:wrap}
-        #retro-camera .retro-text{flex:1;min-width:300px;font-size:1.3rem;color:#e0e0e0}
-        #retro-camera .retro-video{flex:1;min-width:300px;position:relative;padding-bottom:56.25%;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.7)}
+        #retro-camera{display:flex;gap:60px;align-items:center;flex-wrap:wrap}
+        #retro-camera .retro-text{flex:1;min-width:320px;font-size:1.35rem;color:#e0e0e0}
+        #retro-camera .retro-video{flex:1;min-width:320px;position:relative;padding-bottom:56.25%;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.9)}
         #retro-camera video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
 
         #contact{max-width:800px;margin:0 auto;text-align:center}
-        #contact h2{font-size:2.8rem;margin-bottom:30px}
-        #contact p{font-size:1.3rem;margin:15px 0}
-        #contact a{color:#4ade80;text-decoration:none}
+        #contact h2{font-size:3rem;margin-bottom:40px}
+        #contact p{font-size:1.4rem;margin:20px 0}
+        #contact a{color:#4ade80;text-decoration:none;font-weight:bold}
 
-        footer{background:#000;padding:30px;text-align:center;font-size:0.9rem}
+        footer{background:#000;padding:40px;text-align:center;font-size:1rem}
 
         @media(max-width:768px){
-            .gallery{grid-template-columns:1fr;gap:20px}
+            .gallery{grid-template-columns:1fr}
             .equipment-grid{grid-template-columns:1fr}
             #retro-camera{flex-direction:column;text-align:center}
-            nav a{margin:0 10px;font-size:1em}
+            nav a{margin:0 8px;font-size:1em}
+            section{padding:80px 15px}
         }
     </style>
 </head>
@@ -133,36 +142,30 @@
     <section id="portfolio">
         <p class="about-text">Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelance-yrittäjänä. Toteutan videotuotantoja ja valokuvauskeikkoja.</p>
 
-        <!-- 6 RUUTUA – NÄKYVÄT NYT VARMASTI -->
+        <!-- 6 RUUTUA – TOIMII TÄYDELLISESTI -->
         <div class="gallery">
-            <div class="gallery-item">
-                <video autoplay muted loop playsinline>
-                    <source src="ruutu1.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="gallery-item">
-                <video autoplay muted loop playsinline>
-                    <source src="ruutu2.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="gallery-item">
-                <img src="ruutu3.jpg" alt="Projekti">
-            </div>
-            <div class="gallery-item">
-                <img src="ruutu4.jpg" alt="Projekti">
-            </div>
-            <div class="gallery-item">
-                <video autoplay muted loop playsinline>
-                    <source src="ruutu5.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="gallery-item">
-                <img src="ruutu6.jpg" alt="Projekti">
-            </div>
+            <div class="gallery-item"><video autoplay muted loop playsinline><source src="ruutu1.mp4" type="video/mp4"></video></div>
+            <div class="gallery-item"><video autoplay muted loop playsinline><source src="ruutu2.mp4" type="video/mp4"></video></div>
+            <div class="gallery-item"><img src="ruutu3.jpg" alt="Projekti"></div>
+            <div class="gallery-item"><img src="ruutu4.jpg" alt="Projekti"></div>
+            <div class="gallery-item"><video autoplay muted loop playsinline><source src="ruutu5.mp4" type="video/mp4"></video></div>
+            <div class="gallery-item"><img src="ruutu6.jpg" alt="Projekti"></div>
         </div>
 
         <div id="services">
-            <h2 id="dynamic-title">Yritys</h2>
+            <!-- UUSI SUPER-SULAVA OTSIKKO -->
+            <h2 id="dynamic-title">
+                <div class="title-list">
+                    <div class="title-item">Yritys</div>
+                    <div class="title-item">Bändi</div>
+                    <div class="title-item">Järjestö</div>
+                    <div class="title-item">Yrittäjä</div>
+                    <div class="title-item">Tapahtuma</div>
+                    <div class="title-item">Valokuvaus</div>
+                    <div class="title-item">Yritys</div> <!-- toistetaan alkuun saumattomasti -->
+                </div>
+            </h2>
+
             <p class="service-text">
                 Tarvitsetko ammattimaista audiovisuaalista materiaalia? Toteutan laadukkaita, tehokkaita ja edullisia tuotantoja ympäri Suomea. Olipa kyseessä sosiaalisen median video, hääkuvaus, yritysvideo, haastattelu, musiikkivideo tai jotain ihan muuta.
             </p>
@@ -170,20 +173,11 @@
 
         <div id="equipment">
             <h2>Kalusto</h2>
-            <p>
-                Tuotantokalustoni on modernia ja mahdollistaa teknisesti korkealaatuisen materiaalin tuottamisen. Pääkameroina ovat Nikon ZR -järjestelmäkamerat, jotka pohjautuvat RED-elokuvakameran teknologiaan. Näillä kameroilla onnistuu 6K- ja 4K-kuvaus. Lisäkameroina GoPro-actionkamerat villeihin kulmiin.
-            </p>
-
+            <p>Tuotantokalustoni on modernia ja mahdollistaa teknisesti korkealaatuisen materiaalin tuottamisen. Pääkameroina ovat Nikon ZR -järjestelmäkamerat, jotka pohjautuvat RED-elokuvakameran teknologiaan. Näillä kameroilla onnistuu 6K- ja 4K-kuvaus. Lisäkameroina GoPro-actionkamerat villeihin kulmiin.</p>
             <div class="equipment-grid">
-                <div class="media-item">
-                    <video autoplay muted loop playsinline><source src="nikon_zr_demo.mp4" type="video/mp4"></video>
-                </div>
-                <div class="media-item">
-                    <video autoplay muted loop playsinline><source src="gopro_action.mp4" type="video/mp4"></video>
-                </div>
-                <div class="media-item">
-                    <img src="nikon_zr_camera.jpg" alt="Nikon ZR">
-                </div>
+                <div class="media-item"><video autoplay muted loop playsinline><source src="nikon_zr_demo.mp4" type="video/mp4"></video></div>
+                <div class="media-item"><video autoplay muted loop playsinline><source src="gopro_action.mp4" type="video/mp4"></video></div>
+                <div class="media-item"><img src="nikon_zr_camera.jpg" alt="Nikon ZR"></div>
             </div>
         </div>
 
@@ -211,29 +205,10 @@
         <p>© Iivari Kortesoja 2025 | Y-Tunnus A38904</p>
     </footer>
 
+    <!-- Taustavideo toisto vain näkyvissä -->
     <script>
-        // Taustavideo toisto kun näkyvissä
-        const bgVideo = document.getElementById('background-video') || document.querySelector('#home video');
-        const home = document.getElementById('home');
-        new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) bgVideo.play();
-                else bgVideo.pause();
-            });
-        }).observe(home);
-
-        // Vaihtuva otsikko
-        const titles = ['Yritys','Bändi','Järjestö','Yrittäjä','Tapahtuma','Valokuvaus'];
-        let idx = 0;
-        const h = document.getElementById('dynamic-title');
-        setInterval(() => {
-            h.style.opacity = 0;
-            setTimeout(() => {
-                h.textContent = titles[idx];
-                h.style.opacity = 1;
-                idx = (idx + 1) % titles.length;
-            }, 400);
-        }, 3000);
+        const bgVideo = document.querySelector('#home video');
+        new IntersectionObserver(e => e.forEach(en => en.isIntersecting ? bgVideo.play() : bgVideo.pause())).observe(document.getElementById('home'));
     </script>
 </body>
 </html>
