@@ -111,7 +111,7 @@
             position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover
         }
 
-        /* UUSI ESITTELYOSIO – TULEE ENNEN PORTFOLIO-RUUTUJA */
+        /* UUSI ESITTELYOSIO – TEKSTI VASEMMALLA, VAIHTUVA KUVA OIKEALLA */
         #about-me{
             max-width:1200px;
             margin:100px auto;
@@ -127,6 +127,7 @@
             font-size:1.35rem;
             color:#e0e0e0;
             line-height:1.8;
+            order:1;
         }
         #about-me .about-image-container{
             flex:1;
@@ -137,6 +138,7 @@
             border-radius:20px;
             overflow:hidden;
             box-shadow:0 15px 50px rgba(0,0,0,.9);
+            order:2;
         }
         .about-slide{
             position:absolute;
@@ -163,13 +165,10 @@
         footer{background:#000;padding:40px;text-align:center;font-size:1rem}
 
         @media(max-width:992px){
-            #retro-camera,#about-me{flex-direction:column;text-align:center}
-            #about-me .about-image-container{max-width:100%}
-        }
-        @media(max-width:768px){
-            .gallery{grid-template-columns:1fr}
-            .equipment-grid{grid-template-columns:1fr}
-            nav a{margin:0 10px;font-size:1em}
+            #about-me{flex-direction:column;text-align:center}
+            #about-me .about-text{order:1}
+            #about-me .about-image-container{order:2;max-width:100%}
+            #retro-camera{flex-direction:column;text-align:center}
         }
     </style>
 </head>
@@ -193,7 +192,7 @@
         <a href="#portfolio" class="btn">Katso töitäni</a>
     </section>
 
-    <!-- UUSI ESITTELYOSIO – TULEE ENNEN PORTFOLIO-RUUTUJA -->
+    <!-- UUSI ESITTELYOSIO – TEKSTI VASEMMALLA, KUVA OIKEALLA -->
     <section id="about-me">
         <div class="about-text">
             Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelance-yrittäjänä. 
@@ -216,7 +215,6 @@
     </section>
 
     <section id="portfolio">
-        <!-- VANHA LYHYT ESITTELYTEKSTI -->
         <p class="about-text">Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelance-yrittäjänä. Toteutan videotuotantoja ja valokuvauskeikkoja.</p>
 
         <div class="gallery">
