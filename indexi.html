@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iivari Kortesoja</title>
 
-    <!-- GOOGLE ANALYTICS 4 -->
+    <!-- GOOGLE ANALYTICS & CLARITY -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -13,8 +13,6 @@
       gtag('js', new Date());
       gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
     </script>
-
-    <!-- MICROSOFT CLARITY -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -39,7 +37,6 @@
         .btn{background:#333;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;display:inline-block;margin-top:20px;transition:.3s;font-size:1rem}
         .btn:hover{background:#4ade80}
 
-        /* PORTFOLIO – RUUDUT */
         .gallery{
             display:grid;
             grid-template-columns:repeat(3,1fr);
@@ -54,9 +51,7 @@
             border-radius:16px;
             overflow:hidden;
             box-shadow:0 10px 30px rgba(0,0,0,.7);
-            transition:transform .4s ease;
         }
-        .gallery-item:hover{transform:scale(1.05)}
         .gallery-item video,.gallery-item img{width:100%;height:100%;object-fit:cover}
 
         #services,#equipment{max-width:1200px;margin:0 auto;text-align:center}
@@ -80,7 +75,7 @@
         }
         .media-item video,.media-item img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
 
-        /* YHTENÄINEN TYYLI – SAMANLAINEN KUIN 2000-LUVUN KAMERA */
+        /* YHTENÄINEN TYYLI – KUTEN 2000-LUVUN KAMERA */
         .about-section, #retro-camera{
             max-width:1200px;
             margin:120px auto;
@@ -107,15 +102,23 @@
             overflow:hidden;
             box-shadow:0 15px 50px rgba(0,0,0,.9);
         }
-        .about-section .about-image-container video,
-        .about-section .about-image-container img,
-        #retro-camera video{
+
+        /* KUVAN VAIHTO – TOIMII NYT TÄYDELLISESTI */
+        .about-slide{
             position:absolute;
-            top:0;left:0;
-            width:100%;
-            height:100%;
-            object-fit:cover;
+            top:0; left:0;
+            width:100%; height:100%;
+            opacity:0;
+            transition:opacity 1s ease;
         }
+        .about-slide.active{
+            opacity:1;
+        }
+        .about-slide img{
+            width:100%; height:100%; object-fit:cover;
+        }
+
+        #retro-camera video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
 
         #contact{max-width:800px;margin:0 auto;text-align:center;padding:80px 20px}
         #contact h2{font-size:2.8rem;margin-bottom:30px}
@@ -150,22 +153,33 @@
         <a href="#portfolio" class="btn">Katso töitäni</a>
     </section>
 
-    <!-- UUSI ESITTELYOSIO – TÄYSIN SAMANLAINEN KUIN 2000-LUVUN KAMERA -->
+    <!-- ESITTELYOSIO – SAMANLAINEN KUIN 2000-LUVUN KAMERA -->
     <div class="about-section">
         <div class="about-text">
-            Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelance-yrittäjänä. 
+            Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelance-yrittäjänä. Toteutan videotuotantoja ja valokuvaus keikkoja ja työskentelen myös muille AV-alan hommissa osana työryhmää.
+              </div>
+             <div class="about-text">
+                
             Intohimonani on ollut ala-asteesta pitäen videotuotannot, joten pienestä pitäen olen oppinut editoimaan ja kuvaamaan. 
             Vuosien aikana olen ottanut uutta tietoa ja taitoa vastaan esimerkiksi 3D-mallinnuksesta ja animoinnista. 
             Opintojen kautta osaamiseni laajentui hurjasti – koulun tarjoamien resurssien ansiosta studiotyöskentely, monikamerateknologia ja kameraoperaattorina toimiminen tulivat tutuiksi, kuten moni muukin asia.
         </div>
 
+        <!-- VAIHTUVA KUVA – TOIMII NYT TÄYDELLISESTI -->
         <div class="about-image-container">
-            <img src="IivariKortesoja1.png" alt="Iivari Kortesoja" class="about-slide active">
-            <img src="IivariKortesoja2.png" alt="Iivari Kortesoja" class="about-slide">
-            <img src="IivariKortesoja3.png" alt="Iivari Kortesoja" class="about-slide">
+            <div class="about-slide active">
+                <img src="IivariKortesoja1.png" alt="Iivari Kortesoja">
+            </div>
+            <div class="about-slide">
+                <img src="IivariKortesoja2.png" alt="Iivari Kortesoja">
+            </div>
+            <div class="about-slide">
+                <img src="IivariKortesoja3.png" alt="Iivari Kortesoja">
+            </div>
         </div>
     </div>
 
+    <!-- LOPUT SIVUSTA -->
     <section id="portfolio">
         <p class="about-text">Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelance-yrittäjänä. Toteutan videotuotantoja ja valokuvauskeikkoja.</p>
 
@@ -198,7 +212,7 @@
             </div>
         </div>
 
-        <!-- 2000-LUVUN KAMERA – TÄYSIN SAMANLAINEN TYYLI -->
+        <!-- 2000-LUVUN KAMERA -->
         <div id="retro-camera">
             <div class="retro-text">
                 Käytössäni on myös aitoja 2000-luvun alun videokameroita, joilla tallennetaan nostalgista ja aitonaista materiaalia. Näissä laitteissa on elektroninen ja digitaalinen zoom sekä infrapunakuvaus (Night Vision), jolla voi kuvata pimeässäkin.
@@ -241,15 +255,21 @@
             }, 500);
         }, 3000);
 
-        // VAIHTUVA KUVA MINUSTA – SAMALLA TYYLILLÄ
-        const aboutSlides = document.querySelectorAll('.about-image-container img');
-        let currentAbout = 0;
-        setInterval(() => {
-            aboutSlides[currentAbout].classList.remove('active');
-            currentAbout = (currentAbout + 1) % aboutSlides.length;
-            aboutSlides[currentAbout].classList.add('active');
-        }, 4000);
-        aboutSlides[0].classList.add('active');
+        // KUVAT VAIHTUVAT NYT 100% TOIMIVALLA JAVASCRIPTILLÄ
+        const slides = document.querySelectorAll('.about-slide');
+        let current = 0;
+
+        function nextSlide() {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }
+
+        // Näytä ensimmäinen kuva heti
+        slides[0].classList.add('active');
+
+        // Vaihda 4 sekunnin välein
+        setInterval(nextSlide, 4000);
     </script>
 </body>
 </html>
