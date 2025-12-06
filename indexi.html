@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iivari Kortesoja – Videotuotannot & Valokuvaus</title>
+    <title>Iivari Kortesoja</title>
 
     <!-- GOOGLE ANALYTICS 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
@@ -38,51 +38,6 @@
         #home h1{font-size:clamp(2.5rem,8vw,4rem);margin-bottom:20px;text-shadow:0 0 30px rgba(0,0,0,.8)}
         .btn{background:#333;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;display:inline-block;margin-top:20px;transition:.3s;font-size:1rem}
         .btn:hover{background:#4ade80}
-
-        /* ESIINTYMINEN – LAAJA TEKSTI VASEMMALLA + VAIHTUVAT KUVAT OIKEALLA */
-        #about{
-            max-width:1300px;
-            margin:100px auto;
-            display:flex;
-            align-items:center;
-            gap:60px;
-            flex-wrap:wrap;
-            padding:0 20px;
-        }
-        #about .about-text{
-            flex:1;
-            min-width:300px;
-            font-size:1.35rem;
-            color:#e0e0e0;
-            line-height:1.8;
-        }
-        #about .about-media-container{
-            flex:1;
-            min-width:300px;
-            max-width:600px;
-            position:relative;
-            padding-bottom:56.25%;
-            background:#000;
-            border-radius:20px;
-            overflow:hidden;
-            box-shadow:0 15px 50px rgba(0,0,0,.9);
-        }
-        .about-slide{
-            position:absolute;
-            top:0;left:0;
-            width:100%;
-            height:100%;
-            opacity:0;
-            transition:opacity 1s ease;
-        }
-        .about-slide.active{
-            opacity:1;
-        }
-        .about-slide img{
-            width:100%;
-            height:100%;
-            object-fit:cover;
-        }
 
         #portfolio .about-text{max-width:900px;margin:40px auto;font-size:clamp(1rem,3.5vw,1.3rem);color:#e0e0e0;text-align:center}
 
@@ -126,23 +81,79 @@
         }
         .media-item video,.media-item img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
 
+        /* 2000-LUVUN KAMERA – VAIN 1 VIDEO */
         #retro-camera{
             max-width:1200px;
             margin:120px auto;
-            text-align:center;
+            display:flex;
+            align-items:center;
+            gap:60px;
+            flex-wrap:wrap;
+            padding:0 20px;
         }
         #retro-camera .retro-text{
+            flex:1;
+            min-width:300px;
             font-size:1.35rem;
             color:#e0e0e0;
             line-height:1.7;
-            margin-bottom:60px;
         }
-        .retro-grid{
-            display:grid;
-            grid-template-columns:repeat(3,1fr);
-            gap:30px;
+        #retro-camera .retro-video{
+            flex:1;
+            min-width:300px;
+            max-width:600px;
+            position:relative;
+            padding-bottom:56.25%;
+            border-radius:20px;
+            overflow:hidden;
+            box-shadow:0 15px 50px rgba(0,0,0,.9);
+        }
+        #retro-camera video{
+            position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover
+        }
+
+        /* UUSI ESITTELYOSIO – TEKSTI VASEMMALLA, VAIHTUVA KUVA OIKEALLA */
+        #about-me{
             max-width:1200px;
-            margin:0 auto;
+            margin:120px auto;
+            display:flex;
+            align-items:center;
+            gap:60px;
+            flex-wrap:wrap;
+            padding:0 20px;
+        }
+        #about-me .about-text{
+            flex:1;
+            min-width:300px;
+            font-size:1.35rem;
+            color:#e0e0e0;
+            line-height:1.8;
+        }
+        #about-me .about-image-container{
+            flex:1;
+            min-width:300px;
+            max-width:500px;
+            position:relative;
+            padding-bottom:66.67%; /* 3:2 aspect ratio */
+            border-radius:20px;
+            overflow:hidden;
+            box-shadow:0 15px 50px rgba(0,0,0,.9);
+        }
+        .about-slide{
+            position:absolute;
+            top:0;left:0;
+            width:100%;
+            height:100%;
+            opacity:0;
+            transition:opacity 1s ease;
+        }
+        .about-slide.active{
+            opacity:1;
+        }
+        .about-slide img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
         }
 
         #contact{max-width:800px;margin:0 auto;text-align:center;padding:80px 20px}
@@ -153,8 +164,8 @@
         footer{background:#000;padding:40px;text-align:center;font-size:1rem}
 
         @media(max-width:992px){
-            #about{flex-direction:column;text-align:center}
-            #about .about-media-container{max-width:100%}
+            #retro-camera,#about-me{flex-direction:column;text-align:center}
+            #about-me .about-image-container{max-width:100%}
         }
     </style>
 </head>
@@ -175,31 +186,11 @@
             <source src="tst_testi_footgae.mp4" type="video/mp4">
         </video>
         <h1>Iivari Kortesoja</h1>
-        <a href="#about" class="btn">Lue lisää</a>
+        <a href="#portfolio" class="btn">Katso töitäni</a>
     </section>
 
-    <!-- LAAJA ESIINTYMINEN – TEKSTI VASEMMALLA, VAIHTUVAT KUVAT OIKEALLA -->
-    <section id="about">
-        <div class="about-text">
-            Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelance-yrittäjänä. Intohimonani on ollut ala-asteesta pitäen videotuotannot, joten pienestä pitäen olen oppinut editoimaan ja kuvaamaan. Vuosien aikana olen ottanut uutta tietoa ja taitoa vastaan esimerkiksi 3D-mallinnus ja animointi. Opintojen kautta osaamiseni laajentui hurjasti, koulun tarjoaman resurssien takia. Tällöin studiotyöskentely, monikamerateknikka ja kameraoperaattorina toimiminen tuli tutuksi – ja monet muut asiat.
-        </div>
-
-        <div class="about-media-container">
-            <div class="about-slide active">
-                <img src="IivariKortesoja1.png" alt="Iivari Kortesoja">
-            </div>
-            <div class="about-slide">
-                <img src="IivariKortesoja2.png" alt="Iivari Kortesoja">
-            </div>
-            <div class="about-slide">
-                <img src="IivariKortesoja3.png" alt="Iivari Kortesoja">
-            </div>
-        </div>
-    </section>
-
-    <!-- LOPUT SIVUSTA (portfolio, services, equipment, retro-camera, contact) -->
     <section id="portfolio">
-        <p class="about-text">Toteutan videotuotantoja ja valokuvauskeikkoja.</p>
+        <p class="about-text">Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelance-yrittäjänä. Toteutan videotuotantoja ja valokuvauskeikkoja.</p>
 
         <div class="gallery">
             <div class="gallery-item"><video autoplay muted loop playsinline><source src="ruutu1.mp4" type="video/mp4"></video></div>
@@ -220,7 +211,7 @@
         <div id="equipment">
             <h2>Kalusto</h2>
             <p>
-                Tuotantokalustoni on modernia ja mahdollistaa teknisesti korkealaatuisen materiaalin tuottamisen. Pääkameroina ovat Nikon ZR -järjestelmäkamerat, jotka pohjautuvat RED-elokuvakameran teknologiaan. Näillä kameroilla onnistuu 6K- ja 4K-kuvaus. Lisäkameroina GoPro-actionkamerat villeihin kulmiin.
+                Tuotantakalustoni on modernia ja mahdollistaa teknisesti korkealaatuisen materiaalin tuottamisen. Pääkameroina ovat Nikon ZR -järjestelmäkamerat, jotka pohjautuvat RED-elokuvakameran teknologiaan. Näillä kameroilla onnistuu 6K- ja 4K-kuvaus. Lisäkameroina GoPro-actionkamerat villeihin kulmiin.
             </p>
 
             <div class="equipment-grid">
@@ -230,15 +221,37 @@
             </div>
         </div>
 
+        <!-- 2000-LUVUN KAMERA – VAIN 1 VIDEO -->
         <div id="retro-camera">
             <div class="retro-text">
                 Käytössäni on myös aitoja 2000-luvun alun videokameroita, joilla tallennetaan nostalgista ja aitonaista materiaalia. Näissä laitteissa on elektroninen ja digitaalinen zoom sekä infrapunakuvaus (Night Vision), jolla voi kuvata pimeässäkin.
             </div>
+            <div class="retro-video">
+                <video autoplay muted loop playsinline>
+                    <source src="2000luvunkamera.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
 
-            <div class="retro-grid">
-                <div class="media-item"><video autoplay muted loop playsinline><source src="2000luvunkamera.mp4" type="video/mp4"></video></div>
-                <div class="media-item"><img src="2000_1.jpg" alt="2000-luvun kamera 1"></div>
-                <div class="media-item"><img src="2000_2.jpg" alt="2000-luvun kamera 2"></div>
+        <!-- UUSI ESITTELYOSIO – TEKSTI VASEMMALLA, VAIHTUVA KUVA OIKEALLA -->
+        <div id="about-me">
+            <div class="about-text">
+                Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelance-yrittäjänä. 
+                Intohimonani on ollut ala-asteesta pitäen videotuotannot, joten pienestä pitäen olen oppinut editoimaan ja kuvaamaan. 
+                Vuosien aikana olen ottanut uutta tietoa ja taitoa vastaan esimerkiksi 3D-mallinnuksesta ja animoinnista. 
+                Opintojen kautta osaamiseni laajentui hurjasti – koulun tarjoamien resurssien ansiosta studiotyöskentely, monikamerateknologia ja kameraoperaattorina toimiminen tulivat tutuiksi, kuten moni muukin asia.
+            </div>
+
+            <div class="about-image-container">
+                <div class="about-slide active">
+                    <img src="IivariKortesoja1.png" alt="Iivari Kortesoja">
+                </div>
+                <div class="about-slide">
+                    <img src="IivariKortesoja2.png" alt="Iivari Kortesoja">
+                </div>
+                <div class="about-slide">
+                    <img src="IivariKortesoja3.png" alt="Iivari Kortesoja">
+                </div>
             </div>
         </div>
     </section>
@@ -273,7 +286,7 @@
             }, 500);
         }, 3000);
 
-        // ESIINTYMINEN – VAIHTUVAT KUVAT
+        // VAIHTUVA KUVA MINUSTA
         const aboutSlides = document.querySelectorAll('.about-slide');
         let currentAbout = 0;
         setInterval(() => {
