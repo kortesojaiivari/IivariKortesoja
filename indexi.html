@@ -41,7 +41,6 @@
 
         #portfolio .about-text{max-width:900px;margin:40px auto;font-size:clamp(1rem,3.5vw,1.3rem);color:#e0e0e0;text-align:center}
 
-        /* PORTFOLIO – RUUDUT NÄKYVÄT NYT 100% */
         .gallery{
             display:grid;
             grid-template-columns:repeat(3,1fr);
@@ -51,7 +50,6 @@
         }
         .gallery-item{
             position:relative;
-            width:100%;
             height:280px;
             background:#000;
             border-radius:16px;
@@ -60,12 +58,7 @@
             transition:transform .4s ease;
         }
         .gallery-item:hover{transform:scale(1.05)}
-        .gallery-item video,
-        .gallery-item img{
-            width:100%;
-            height:100%;
-            object-fit:cover;
-        }
+        .gallery-item video,.gallery-item img{width:100%;height:100%;object-fit:cover}
 
         #services,#equipment{max-width:1200px;margin:0 auto;text-align:center}
         #services h2,#equipment h2{font-size:clamp(2.2rem,7vw,3.2rem);margin-bottom:30px;color:#fff}
@@ -86,37 +79,45 @@
             overflow:hidden;
             box-shadow:0 10px 30px rgba(0,0,0,.7);
         }
-        .media-item video,.media-item img{
-            position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover
-        }
+        .media-item video,.media-item img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
 
+        /* 2000-LUVUN KAMERA – VIDEO + 2 KUVAA VIEREKKÄIN */
         #retro-camera{
-            display:flex;
-            align-items:center;
-            gap:50px;
-            max-width:1200px;
+            max-width:1300px;
             margin:120px auto;
-            flex-wrap:wrap;
             padding:0 20px;
         }
-        #retro-camera .retro-text{
-            flex:1;
-            min-width:300px;
-            font-size:1.3rem;
-            color:#e0e0e0;
+        .retro-container{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:40px;
+            align-items:start;
         }
-        #retro-camera .retro-video{
-            flex:1;
-            min-width:300px;
-            max-width:600px;
+        .retro-text{
+            font-size:1.35rem;
+            color:#e0e0e0;
+            line-height:1.7;
+        }
+        .retro-media{
+            display:grid;
+            grid-template-columns:repeat(2,1fr);
+            gap:20px;
+        }
+        .retro-media-item{
             position:relative;
             padding-bottom:56.25%;
-            border-radius:20px;
+            background:#000;
+            border-radius:16px;
             overflow:hidden;
-            box-shadow:0 15px 50px rgba(0,0,0,0,.8);
+            box-shadow:0 10px 30px rgba(0,0,0,.8);
         }
-        #retro-camera video{
-            position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover
+        .retro-media-item video,
+        .retro-media-item img{
+            position:absolute;
+            top:0;left:0;
+            width:100%;
+            height:100%;
+            object-fit:cover;
         }
 
         #contact{max-width:800px;margin:0 auto;text-align:center;padding:80px 20px}
@@ -126,10 +127,13 @@
 
         footer{background:#000;padding:40px;text-align:center;font-size:1rem}
 
+        @media(max-width:992px){
+            .retro-container{grid-template-columns:1fr}
+            .retro-media{grid-template-columns:1fr}
+        }
         @media(max-width:768px){
             .gallery{grid-template-columns:1fr}
             .equipment-grid{grid-template-columns:1fr}
-            #retro-camera{flex-direction:column;text-align:center}
             nav a{margin:0 10px;font-size:1em}
         }
     </style>
@@ -157,39 +161,17 @@
     <section id="portfolio">
         <p class="about-text">Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelance-yrittäjänä. Toteutan videotuotantoja ja valokuvauskeikkoja.</p>
 
-        <!-- 6 RUUTUA – NÄKYVÄT NYT VARMASTI -->
         <div class="gallery">
-            <div class="gallery-item">
-                <video autoplay muted loop playsinline>
-                    <source src="ruutu1.mp4" type="video/mp4">
-                    Your browser does not support video.
-                </video>
-            </div>
-            <div class="gallery-item">
-                <video autoplay muted loop playsinline>
-                    <source src="ruutu2.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="gallery-item">
-                <img src="ruutu3.jpg" alt="Projekti">
-            </div>
-            <div class="gallery-item">
-                <img src="ruutu4.jpg" alt="Projekti">
-            </div>
-            <div class="gallery-item">
-                <video autoplay muted loop playsinline>
-                    <source src="ruutu5.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="gallery-item">
-                <img src="ruutu6.jpg" alt="Projekti">
-            </div>
+            <div class="gallery-item"><video autoplay muted loop playsinline><source src="ruutu1.mp4" type="video/mp4"></video></div>
+            <div class="gallery-item"><video autoplay muted loop playsinline><source src="ruutu2.mp4" type="video/mp4"></video></div>
+            <div class="gallery-item"><img src="ruutu3.jpg" alt="Projekti"></div>
+            <div class="gallery-item"><img src="ruutu4.jpg" alt="Projekti"></div>
+            <div class="gallery-item"><video autoplay muted loop playsinline><source src="ruutu5.mp4" type="video/mp4"></video></div>
+            <div class="gallery-item"><img src="ruutu6.jpg" alt="Projekti"></div>
         </div>
 
         <div id="services">
-            <!-- VAIHTUVA OTSIKKO – TOIMII NYT 100% -->
             <h2 id="dynamic-title">Yritys</h2>
-
             <p class="service-text">
                 Tarvitsetko ammattimaista audiovisuaalista materiaalia? Toteutan laadukkaita, tehokkaita ja edullisia tuotantoja ympäri Suomea. Olipa kyseessä sosiaalisen median video, hääkuvaus, yritysvideo, haastattelu, musiikkivideo tai jotain ihan muuta.
             </p>
@@ -198,34 +180,38 @@
         <div id="equipment">
             <h2>Kalusto</h2>
             <p>
-                Tuotantokalustoni on modernia ja mahdollistaa teknisesti korkealaatuisen materiaalin tuottamisen. Pääkameroina ovat Nikon ZR -järjestelmäkamerat, jotka pohjautuvat RED-elokuvakameran teknologiaan. Näillä kameroilla onnistuu 6K- ja 4K-kuvaus. Lisäkameroina GoPro-actionkamerat villeihin kulmiin.
+                Tuotantakalustoni on modernia ja mahdollistaa teknisesti korkealaatuisen materiaalin tuottamisen. Pääkameroina ovat Nikon ZR -järjestelmäkamerat, jotka pohjautuvat RED-elokuvakameran teknologiaan. Näillä kameroilla onnistuu 6K- ja 4K-kuvaus. Lisäkameroina GoPro-actionkamerat villeihin kulmiin.
             </p>
 
             <div class="equipment-grid">
-                <div class="media-item">
-                    <video autoplay muted loop playsinline>
-                        <source src="nikon_zr_demo.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="media-item">
-                    <video autoplay muted loop playsinline>
-                        <source src="gopro_action.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="media-item">
-                    <img src="nikon_zr_camera.jpg" alt="Nikon ZR">
-                </div>
+                <div class="media-item"><video autoplay muted loop playsinline><source src="nikon_zr_demo.mp4" type="video/mp4"></video></div>
+                <div class="media-item"><video autoplay muted loop playsinline><source src="gopro_action.mp4" type="video/mp4"></video></div>
+                <div class="media-item"><img src="nikon_zr_camera.jpg" alt="Nikon ZR"></div>
             </div>
         </div>
 
+        <!-- 2000-LUVUN KAMERA – VIDEO + 2 KUVAA VIEREKKÄIN -->
         <div id="retro-camera">
-            <div class="retro-text">
-                Käytössäni on myös aitoja 2000-luvun alun videokameroita, joilla tallennetaan nostalgista ja aitonaista materiaalia. Näissä laitteissa on elektroninen ja digitaalinen zoom sekä infrapunakuvaus (Night Vision), jolla voi kuvata pimeässäkin.
-            </div>
-            <div class="retro-video">
-                <video autoplay muted loop playsinline>
-                    <source src="2000luvunkamera.mp4" type="video/mp4">
-                </video>
+            <div class="retro-container">
+                <div class="retro-text">
+                    Käytössäni on myös aitoja 2000-luvun alun videokameroita, joilla tallennetaan nostalgista ja aitonaista materiaalia. Näissä laitteissa on elektroninen ja digitaalinen zoom sekä infrapunakuvaus (Night Vision), jolla voi kuvata pimeässäkin.
+                </div>
+                <div class="retro-media">
+                    <!-- VIDEO -->
+                    <div class="retro-media-item">
+                        <video autoplay muted loop playsinline>
+                            <source src="2000luvunkamera.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <!-- KUVA 1 -->
+                    <div class="retro-media-item">
+                        <img src="2000_1.jpg" alt="2000-luvun kamera 1">
+                    </div>
+                    <!-- KUVA 2 -->
+                    <div class="retro-media-item">
+                        <img src="2000_2.jpg" alt="2000-luvun kamera 2">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -247,11 +233,10 @@
         const bgVideo = document.querySelector('#home video');
         new IntersectionObserver(e => e.forEach(en => en.isIntersecting ? bgVideo.play() : bgVideo.pause())).observe(document.getElementById('home'));
 
-        // VAIHTUVA OTSIKKO – TOIMII NYT TÄYDELLISESTI
+        // Vaihtuva otsikko
         const titles = ['Yritys','Bändi','Järjestö','Yrittäjä','Tapahtuma','Valokuvaus'];
         let i = 0;
         const titleEl = document.getElementById('dynamic-title');
-
         setInterval(() => {
             titleEl.style.opacity = 0;
             setTimeout(() => {
