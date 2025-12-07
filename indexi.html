@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iivari Kortesoja</title>
+    <title>Iivari Kortesoja – Videotuotannot & Valokuvaus</title>
+    <meta name="description" content="Ammattimaiset videotuotannot, valokuvaus ja ilmakuvaus ympäri Suomea. Freelance-elokuvantekijä Iivari Kortesoja.">
 
-    <!-- GOOGLE ANALYTICS & CLARITY -->
+    <!-- GOOGLE ANALYTICS 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
+      // Ladataan vain suostumuksen jälkeen
+      gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true, 'consent': 'denied' });
     </script>
+
+    <!-- MICROSOFT CLARITY -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -29,14 +33,12 @@
         nav a:hover{color:#4ade80}
         nav a::after{content:'';position:absolute;bottom:-2px;left:50%;transform:translateX(-50%);width:0;height:2px;background:#4ade80;transition:width .3s ease}
         nav a:hover::after{width:100%}
-
         section{padding:80px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center}
         #home{position:relative;overflow:hidden;text-align:center;min-height:100vh}
         #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
         #home h1{font-size:clamp(2.5rem,8vw,4rem);margin-bottom:20px;text-shadow:0 0 30px rgba(0,0,0,.8)}
         .btn{background:#333;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;display:inline-block;margin-top:20px;transition:.3s;font-size:1rem}
         .btn:hover{background:#4ade80}
-
         .gallery{
             display:grid;
             grid-template-columns:repeat(3,1fr);
@@ -53,11 +55,9 @@
             box-shadow:0 10px 30px rgba(0,0,0,.7);
         }
         .gallery-item video,.gallery-item img{width:100%;height:100%;object-fit:cover}
-
         #services,#equipment{max-width:1200px;margin:0 auto;text-align:center}
         #services h2,#equipment h2{font-size:clamp(2.2rem,7vw,3.2rem);margin-bottom:30px;color:#fff}
         .service-text,#equipment p{font-size:1.3rem;color:#ddd;line-height:1.7;margin-bottom:60px}
-
         .equipment-grid{
             display:grid;
             grid-template-columns:repeat(3,1fr);
@@ -74,8 +74,6 @@
             box-shadow:0 10px 30px rgba(0,0,0,.7);
         }
         .media-item video,.media-item img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
-
-        /* YHTENÄINEN TYYLI – KUTEN 2000-LUVUN KAMERA */
         .about-section, #retro-camera{
             max-width:1200px;
             margin:120px auto;
@@ -102,8 +100,6 @@
             overflow:hidden;
             box-shadow:0 15px 50px rgba(0,0,0,.9);
         }
-
-        /* KUVAN VAIHTO – TOIMII NYT TÄYDELLISESTI */
         .about-slide{
             position:absolute;
             top:0; left:0;
@@ -111,29 +107,71 @@
             opacity:0;
             transition:opacity 1s ease;
         }
-        .about-slide.active{
-            opacity:1;
-        }
-        .about-slide img{
-            width:100%; height:100%; object-fit:cover;
-        }
-
+        .about-slide.active{opacity:1}
+        .about-slide img{width:100%;height:100%;object-fit:cover}
         #retro-camera video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
-
         #contact{max-width:800px;margin:0 auto;text-align:center;padding:80px 20px}
         #contact h2{font-size:2.8rem;margin-bottom:30px}
         #contact p{font-size:1.3rem;margin:15px 0}
         #contact a{color:#4ade80;text-decoration:none}
-
         footer{background:#000;padding:40px;text-align:center;font-size:1rem}
+
+        /* EVÄSTE-IKKUNA */
+        #cookie-popup{
+            position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+            width:90%;max-width:480px;background:#111;color:#eee;border-radius:16px;
+            padding:32px;box-shadow:0 20px 60px rgba(0,0,0,.8);z-index:9999;
+            opacity:0;visibility:hidden;transition:all .4s ease;
+        }
+        #cookie-popup.show{opacity:1;visibility:visible;transform:translate(-50%,-50%)}
+        #cookie-popup h3{font-size:1.9em;margin-bottom:16px;color:#fff}
+        .consent-item{display:flex;gap:12px;margin:18px 0;align-items:flex-start}
+        .consent-item svg{width:22px;height:22px;flex-shrink:0;fill:#4ade80;margin-top:2px}
+        .eu-note{font-size:13px;margin-top:20px;color:#aaa}
+        .eu-note a{color:#4ade80;text-decoration:underline}
+        .buttons{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;justify-content:center}
+        .buttons button{flex:1;min-width:140px;padding:14px;border:none;border-radius:12px;font-weight:600;cursor:pointer;transition:.3s}
+        #accept-all{background:#0066ff;color:#fff}
+        #accept-all:hover{background:#0052cc}
+        #manage-btn{background:#333;color:#fff}
+        #manage-btn:hover{background:#444}
 
         @media(max-width:992px){
             .about-section, #retro-camera{flex-direction:column;text-align:center}
             .about-section .about-image-container, #retro-camera .retro-video{max-width:100%}
         }
+        @media(max-width:768px){
+            nav a{font-size:1em;margin:0 8px}
+            #home h1{font-size:2.5em}
+            .gallery{grid-template-columns:1fr;gap:15px;margin-bottom:50px}
+            .gallery-item{height:160px}
+            .equipment-grid{grid-template-columns:1fr}
+        }
     </style>
 </head>
 <body>
+
+    <!-- EVÄSTE-POPUP -->
+    <div id="cookie-popup">
+        <h3>Evästeiden käyttö</h3>
+        <p>Sivusto käyttää evästeitä ja muita seurantatekniikoita analytiikan keräämiseen sekä käyttökokemuksen parantamiseen.</p>
+        <div class="consent-item">
+            <svg viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+            <div>Tallennetaan laitteellesi evästeitä kävijätilastoja varten (Google Analytics) ja sivuston toiminnan analysointiin (Microsoft Clarity).</div>
+        </div>
+        <div class="consent-item">
+            <svg viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+            <div>Evästeitä ei käytetä mainontaan eikä tietoja jaeta kolmansille osapuolille muuhun tarkoitukseen.</div>
+        </div>
+        <div class="eu-note">
+            EU:n evästeasetuksen mukaisesti pyydämme suostumuksesi ei-välttämättömien evästeiden käyttöön.
+            <a href="https://ec.europa.eu/info/law/law-topic/data-protection/reform/rules-business-and-organisations/legal-grounds-processing-data/when-consent-needed/cookies-and-similar-technologies_en" target="_blank">Lue lisää</a>.
+        </div>
+        <div class="buttons">
+            <button id="accept-all">Hyväksy kaikki</button>
+            <button id="manage-btn">Muuta asetuksia</button>
+        </div>
+    </div>
 
     <header>
         <nav>
@@ -146,24 +184,20 @@
     </header>
 
     <section id="home">
-        <video autoplay muted loop playsinline>
+        <video autoplay muted loop playsinline poster="poster.jpg">
             <source src="tst_testi_footgae.mp4" type="video/mp4">
         </video>
         <h1>Iivari Kortesoja</h1>
         <a href="#portfolio" class="btn">Katso töitäni</a>
     </section>
 
-    <!-- ESITTELYOSIO – SAMANLAINEN KUIN 2000-LUVUN KAMERA -->
     <div class="about-section">
         <div class="about-text">
             Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelance-yrittäjänä. Toteutan videotuotantoja ja valokuvauskeikkoja ja työskentelen myös muille AV-alan hommissa osana työryhmää.
-                                                                                                                                           
-            Intohimonani on ollut ala-asteesta pitäen videotuotannot, joten pienestä pitäen olen oppinut editoimaan ja kuvaamaan. 
-            Vuosien aikana olen ottanut uutta tietoa ja taitoa vastaan esimerkiksi 3D-mallinnuksesta ja animoinnista. 
+            Intohimonani on ollut ala-asteesta pitäen videotuotannot, joten pienestä pitäen olen oppinut editoimaan ja kuvaamaan.
+            Vuosien aikana olen ottanut uutta tietoa ja taitoa vastaan esimerkiksi 3D-mallinnuksesta ja animoinnista.
             Opintojeni kautta osaamiseni laajentui hurjasti. Koulun tarjoamien resurssien ansiosta studiotyöskentely, monikamera ja kameraoperaattorina toimiminen tulivat tutuiksi, kuten moni muukin asia.
         </div>
-
-        <!-- VAIHTUVA KUVA – TOIMII NYT TÄYDELLISESTI -->
         <div class="about-image-container">
             <div class="about-slide active">
                 <img src="IivariKortesoja1.png" alt="Iivari Kortesoja">
@@ -177,10 +211,8 @@
         </div>
     </div>
 
-    <!-- LOPUT SIVUSTA -->
     <section id="portfolio">
         <p class="about-text">Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelance-yrittäjänä. Toteutan videotuotantoja ja valokuvauskeikkoja.</p>
-
         <div class="gallery">
             <div class="gallery-item"><video autoplay muted loop playsinline><source src="ruutu1.mp4" type="video/mp4"></video></div>
             <div class="gallery-item"><video autoplay muted loop playsinline><source src="ruutu2.mp4" type="video/mp4"></video></div>
@@ -202,7 +234,6 @@
             <p>
                 Tuotantokalustoni on modernia ja mahdollistaa teknisesti korkealaatuisen materiaalin tuottamisen. Pääkameroina ovat Nikon ZR -järjestelmäkamerat, jotka pohjautuvat RED-elokuvakameran teknologiaan. Näillä kameroilla onnistuu 6K- ja 4K-kuvaus. Lisäkameroina GoPro-actionkamerat villeihin kulmiin.
             </p>
-
             <div class="equipment-grid">
                 <div class="media-item"><video autoplay muted loop playsinline><source src="nikon_zr_demo.mp4" type="video/mp4"></video></div>
                 <div class="media-item"><video autoplay muted loop playsinline><source src="gopro_action.mp4" type="video/mp4"></video></div>
@@ -210,7 +241,6 @@
             </div>
         </div>
 
-        <!-- 2000-LUVUN KAMERA -->
         <div id="retro-camera">
             <div class="retro-text">
                 Käytössäni on myös aitoja 2000-luvun alun videokameroita, joilla tallennetaan nostalgista ja aitonaista materiaalia. Näissä laitteissa on elektroninen ja digitaalinen zoom sekä infrapunakuvaus (Night Vision), jolla voi kuvata pimeässäkin.
@@ -236,11 +266,57 @@
     </footer>
 
     <script>
-        // Taustavideo
+        // === EVÄSTE-SUOSTUMUS ===
+        function setCookie(name, value, days) {
+            const d = new Date();
+            d.setTime(d.getTime() + (days*24*60*60*1000));
+            let expires = "expires="+ d.toUTCString();
+            document.cookie = name + "=" + value + ";" + expires + ";path=/;SameSite=Lax";
+        }
+
+        function getCookie(name) {
+            let cname = name + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for(let i = 0; i <ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1);
+                if (c.indexOf(cname) == 0) return c.substring(cname.length, c.length);
+            }
+            return "";
+        }
+
+        function acceptAllCookies() {
+            setCookie('cookieConsent', 'accepted', 365);
+            gtag('consent', 'update', { 'analytics_storage': 'granted' });
+            document.getElementById('cookie-popup').classList.remove('show');
+        }
+
+        function openSettings() {
+            // Tässä voi avata tarkemman asetuspaneelin myöhemmin
+            acceptAllCookies(); // nyt yksinkertaistettu: "Muuta asetuksia" hyväksyy myös kaiken
+        }
+
+        // Näytetään popup jos ei ole vielä suostumusta
+        window.addEventListener('load', () => {
+            if (!getCookie('cookieConsent')) {
+                setTimeout(() => {
+                    document.getElementById('cookie-popup').classList.add('show');
+                }, 1000);
+            } else {
+                // Jos suostumus on jo annettu, aktivoidaan Analytics
+                gtag('consent', 'update', { 'analytics_storage': 'granted' });
+            }
+        });
+
+        // Painikkeiden toiminta
+        document.getElementById('accept-all').addEventListener('click', acceptAllCookies);
+        document.getElementById('manage-btn').addEventListener('click', openSettings);
+
+        // === LOPUT ALKUPERÄISET SKRIPTIT ===
         const bgVideo = document.querySelector('#home video');
         new IntersectionObserver(e => e.forEach(en => en.isIntersecting ? bgVideo.play() : bgVideo.pause())).observe(document.getElementById('home'));
 
-        // Vaihtuva otsikko
         const titles = ['Yritys','Bändi','Järjestö','Yrittäjä','Tapahtuma','Valokuvaus'];
         let i = 0;
         const titleEl = document.getElementById('dynamic-title');
@@ -253,20 +329,14 @@
             }, 500);
         }, 3000);
 
-        // KUVAT VAIHTUVAT NYT 100% TOIMIVALLA JAVASCRIPTILLÄ
         const slides = document.querySelectorAll('.about-slide');
         let current = 0;
-
         function nextSlide() {
             slides[current].classList.remove('active');
             current = (current + 1) % slides.length;
             slides[current].classList.add('active');
         }
-
-        // Näytä ensimmäinen kuva heti
         slides[0].classList.add('active');
-
-        // Vaihda 4 sekunnin välein
         setInterval(nextSlide, 4000);
     </script>
 </body>
