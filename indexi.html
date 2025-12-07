@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iivari Kortesoja</title>
 
-    <!-- GOOGLE ANALYTICS & CLARITY -->
+    <!-- GOOGLE ANALYTICS 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -13,6 +13,8 @@
       gtag('js', new Date());
       gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
     </script>
+
+    <!-- MICROSOFT CLARITY -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -37,27 +39,19 @@
         .btn{background:#333;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;display:inline-block;margin-top:20px;transition:.3s;font-size:1rem}
         .btn:hover{background:#4ade80}
 
-        /* ESITTELYOSIO – TEKSTI VASEMMALLA, KUVA OIKEALLA SAMALLA RIVILLÄ */
+        /* ESITTELYOSIO – KUVA VASEMMALLA, TEKSTI OIKEALLA */
         #about-me{
             max-width:1300px;
             margin:120px auto;
             display:flex;
-            align-items:flex-start;
+            align-items:center;
             gap:80px;
             flex-wrap:wrap;
             padding:0 20px;
         }
-        #about-me .about-text{
-            flex:1;
-            min-width:350px;
-            font-size:1.35rem;
-            color:#e0e0e0;
-            line-height:2.2;
-            text-align:left;
-        }
         #about-me .about-image-container{
             flex:1;
-            min-width:350px;
+            min-width:300px;
             max-width:550px;
             position:relative;
             padding-bottom:66.67%;
@@ -74,6 +68,14 @@
         }
         .about-slide.active{opacity:1}
         .about-slide img{width:100%;height:100%;object-fit:cover}
+
+        #about-me .about-text{
+            flex:1;
+            min-width:350px;
+            font-size:1.35rem;
+            color:#e0e0e0;
+            line-height:2.2;
+        }
 
         /* MUUT OSIOT */
         .gallery{
@@ -177,8 +179,16 @@
         <a href="#portfolio" class="btn">Katso töitäni</a>
     </section>
 
-    <!-- ESITTELYOSIO – TEKSTI VASEMMALLA, KUVA OIKEALLA SAMALLA RIVILLÄ -->
+    <!-- ESITTELYOSIO – KUVA VASEMMALLA, TEKSTI OIKEALLA -->
     <section id="about-me">
+        <!-- KUVA VASEMMALLA -->
+        <div class="about-image-container">
+            <div class="about-slide active"><img src="IivariKortesoja1.png" alt="Iivari Kortesoja"></div>
+            <div class="about-slide"><img src="IivariKortesoja2.png" alt="Iivari Kortesoja"></div>
+            <div class="about-slide"><img src="IivariKortesoja3.png" alt="Iivari Kortesoja"></div>
+        </div>
+
+        <!-- TEKSTI OIKEALLA -->
         <div class="about-text">
             Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelance-yrittäjänä.
 
@@ -189,12 +199,6 @@
             Vuosien aikana olen ottanut uutta tietoa ja taitoa vastaan esimerkiksi 3D-mallinnuksesta ja animoinnista.
 
             Opintojen kautta osaamiseni laajentui hurjasti, koulun tarjoamien resurssien ansiosta studiotyöskentely, monikamera ja kameraoperaattorina toimiminen tulivat tutuiksi, kuten moni muukin asia.
-        </div>
-
-        <div class="about-image-container">
-            <div class="about-slide active"><img src="IivariKortesoja1.png" alt="Iivari Kortesoja"></div>
-            <div class="about-slide"><img src="IivariKortesoja2.png" alt="Iivari Kortesoja"></div>
-            <div class="about-slide"><img src="IivariKortesoja3.png" alt="Iivari Kortesoja"></div>
         </div>
     </section>
 
@@ -273,7 +277,7 @@
             }, 500);
         }, 3000);
 
-        // VAIHTUVA KUVA – TOIMII NYT 100%
+        // VAIHTUVA KUVA – TOIMII NYT TÄYDELLISESTI
         const aboutSlides = document.querySelectorAll('.about-slide');
         let current = 0;
         aboutSlides[0].classList.add('active');
