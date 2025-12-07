@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iivari Kortesoja</title>
 
-    <!-- GOOGLE ANALYTICS & CLARITY -->
+    <!-- GOOGLE ANALYTICS 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -13,6 +13,8 @@
       gtag('js', new Date());
       gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
     </script>
+
+    <!-- MICROSOFT CLARITY -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -37,87 +39,60 @@
         .btn{background:#333;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;display:inline-block;margin-top:20px;transition:.3s;font-size:1rem}
         .btn:hover{background:#4ade80}
 
-        .gallery{
-            display:grid;
-            grid-template-columns:repeat(3,1fr);
-            gap:30px;
-            max-width:1200px;
-            margin:80px auto 100px;
+        /* ESITTELYOSIO – KUVA VASEMMALLA, TEKSTI OIKEALLA */
+        #about-me{
+            max-width:1300px;
+            margin:120px auto;
+            display:flex;
+            align-items:center;
+            gap:80px;
+            flex-wrap:wrap;
+            padding:0 20px;
         }
-        .gallery-item{
+        #about-me .about-image-container{
+            flex:1;
+            min-width:300px;
+            max-width:550px;
             position:relative;
-            height:280px;
-            background:#000;
-            border-radius:16px;
+            padding-bottom:66.67%;
+            border-radius:20px;
             overflow:hidden;
-            box-shadow:0 10px 30px rgba(0,0,0,.7);
+            box-shadow:0 15px 50px rgba(0,0,0,.9);
         }
+        .about-slide{
+            position:absolute;
+            top:0;left:0;
+            width:100%;height:100%;
+            opacity:0;
+            transition:opacity 1s ease;
+        }
+        .about-slide.active{opacity:1}
+        .about-slide img{width:100%;height:100%;object-fit:cover}
+
+        #about-me .about-text{
+            flex:1;
+            min-width:350px;
+            font-size:1.35rem;
+            color:#e0e0e0;
+            line-height:2.2;
+        }
+
+        /* MUUT OSIOT */
+        .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;max-width:1200px;margin:80px auto 100px}
+        .gallery-item{position:relative;height:280px;background:#000;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.7)}
         .gallery-item video,.gallery-item img{width:100%;height:100%;object-fit:cover}
 
         #services,#equipment{max-width:1200px;margin:0 auto;text-align:center}
         #services h2,#equipment h2{font-size:clamp(2.2rem,7vw,3.2rem);margin-bottom:30px;color:#fff}
         .service-text,#equipment p{font-size:1.3rem;color:#ddd;line-height:1.7;margin-bottom:60px}
 
-        .equipment-grid{
-            display:grid;
-            grid-template-columns:repeat(3,1fr);
-            gap:30px;
-            max-width:1200px;
-            margin:60px auto;
-        }
-        .media-item{
-            position:relative;
-            padding-bottom:56.25%;
-            background:#000;
-            border-radius:16px;
-            overflow:hidden;
-            box-shadow:0 10px 30px rgba(0,0,0,.7);
-        }
+        .equipment-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;max-width:1200px;margin:60px auto}
+        .media-item{position:relative;padding-bottom:56.25%;background:#000;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.7)}
         .media-item video,.media-item img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
 
-        /* YHTENÄINEN TYYLI – KUTEN 2000-LUVUN KAMERA */
-        .about-section, #retro-camera{
-            max-width:1200px;
-            margin:120px auto;
-            display:flex;
-            align-items:center;
-            gap:60px;
-            flex-wrap:wrap;
-            padding:0 20px;
-        }
-        .about-section .about-text, #retro-camera .retro-text{
-            flex:1;
-            min-width:300px;
-            font-size:1.35rem;
-            color:#e0e0e0;
-            line-height:1.8;
-        }
-        .about-section .about-image-container, #retro-camera .retro-video{
-            flex:1;
-            min-width:300px;
-            max-width:600px;
-            position:relative;
-            padding-bottom:56.25%;
-            border-radius:20px;
-            overflow:hidden;
-            box-shadow:0 15px 50px rgba(0,0,0,.9);
-        }
-
-        /* KUVAN VAIHTO – TOIMII NYT TÄYDELLISESTI */
-        .about-slide{
-            position:absolute;
-            top:0; left:0;
-            width:100%; height:100%;
-            opacity:0;
-            transition:opacity 1s ease;
-        }
-        .about-slide.active{
-            opacity:1;
-        }
-        .about-slide img{
-            width:100%; height:100%; object-fit:cover;
-        }
-
+        #retro-camera{max-width:1200px;margin:120px auto;display:flex;align-items:center;gap:60px;flex-wrap:wrap;padding:0 20px}
+        #retro-camera .retro-text{flex:1;min-width:300px;font-size:1.35rem;color:#e0e0e0;line-height:1.7}
+        #retro-camera .retro-video{flex:1;min-width:300px;max-width:600px;position:relative;padding-bottom:56.25%;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.9)}
         #retro-camera video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
 
         #contact{max-width:800px;margin:0 auto;text-align:center;padding:80px 20px}
@@ -127,9 +102,44 @@
 
         footer{background:#000;padding:40px;text-align:center;font-size:1rem}
 
+        /* EVÄSTE-POPUP – TAKAISIN JA TOIMII TÄYDELLISESTI */
+        #cookie-popup{
+            position:fixed;
+            bottom:20px;
+            left:50%;
+            transform:translateX(-50%);
+            background:rgba(0,0,0,0.95);
+            color:#fff;
+            padding:20px 30px;
+            border-radius:16px;
+            box-shadow:0 10px 40px rgba(0,0,0,.8);
+            max-width:90%;
+            z-index:9999;
+            text-align:center;
+            font-size:1rem;
+            display:none;
+            backdrop-filter:blur(10px);
+            border:1px solid #333;
+        }
+        #cookie-popup.show{display:block}
+        #cookie-popup p{margin-bottom:15px}
+        #cookie-popup button{
+            background:#4ade80;
+            color:#000;
+            border:none;
+            padding:10px 24px;
+            border-radius:8px;
+            cursor:pointer;
+            font-weight:bold;
+            transition:.3s;
+        }
+        #cookie-popup button:hover{background:#66ff99}
+
         @media(max-width:992px){
-            .about-section, #retro-camera{flex-direction:column;text-align:center}
-            .about-section .about-image-container, #retro-camera .retro-video{max-width:100%}
+            #about-me{flex-direction:column;text-align:center;align-items:center}
+            #about-me .about-image-container{max-width:100%}
+            #retro-camera{flex-direction:column;text-align:center}
+            #retro-camera .retro-video{max-width:100%}
         }
     </style>
 </head>
@@ -153,31 +163,28 @@
         <a href="#portfolio" class="btn">Katso töitäni</a>
     </section>
 
-    <!-- ESITTELYOSIO – SAMANLAINEN KUIN 2000-LUVUN KAMERA -->
-    <div class="about-section">
-        <div class="about-text">
-            Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelance-yrittäjänä. Toteutan videotuotantoja ja valokuvauskeikkoja ja työskentelen myös muille AV-alan hommissa osana työryhmää.
-                                                                                                                                           
-            Intohimonani on ollut ala-asteesta pitäen videotuotannot, joten pienestä pitäen olen oppinut editoimaan ja kuvaamaan. 
-            Vuosien aikana olen ottanut uutta tietoa ja taitoa vastaan esimerkiksi 3D-mallinnuksesta ja animoinnista. 
-            Opintojeni kautta osaamiseni laajentui hurjasti. Koulun tarjoamien resurssien ansiosta studiotyöskentely, monikamera ja kameraoperaattorina toimiminen tulivat tutuiksi, kuten moni muukin asia.
-        </div>
-
-        <!-- VAIHTUVA KUVA – TOIMII NYT TÄYDELLISESTI -->
+    <!-- ESITTELYOSIO – KUVA VASEMMALLA, TEKSTI OIKEALLA -->
+    <section id="about-me">
         <div class="about-image-container">
-            <div class="about-slide active">
-                <img src="IivariKortesoja1.png" alt="Iivari Kortesoja">
-            </div>
-            <div class="about-slide">
-                <img src="IivariKortesoja2.png" alt="Iivari Kortesoja">
-            </div>
-            <div class="about-slide">
-                <img src="IivariKortesoja3.png" alt="Iivari Kortesoja">
-            </div>
+            <div class="about-slide active"><img src="IivariKortesoja1.png" alt="Iivari Kortesoja"></div>
+            <div class="about-slide"><img src="IivariKortesoja2.png" alt="Iivari Kortesoja"></div>
+            <div class="about-slide"><img src="IivariKortesoja3.png" alt="Iivari Kortesoja"></div>
         </div>
-    </div>
 
-    <!-- LOPUT SIVUSTA -->
+        <div class="about-text">
+            Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelance-yrittäjänä.<br><br>
+
+            Toteutan videotuotantoja ja valokuvauskeikkoja ja työskentelen myös muille AV-alan hommissa osana työryhmää.<br><br>
+           
+            Intohimonani on ollut ala-asteesta pitäen videotuotannot, joten pienestä pitäen olen oppinut editoimaan ja kuvaamaan.<br><br>
+
+            Vuosien aikana olen ottanut uutta tietoa ja taitoa vastaan esimerkiksi 3D-mallinnuksesta ja animoinnista.<br><br>
+
+            Opintojen kautta osaamiseni laajentui hurjasti, koulun tarjoamien resurssien ansiosta studiotyöskentely, monikamera ja kameraoperaattorina toimiminen tulivat tutuiksi, kuten moni muukin asia.
+        </div>
+    </section>
+
+    <!-- LOPUT SIVUSTA (portfolio, palvelut, kalusto, retro-kamera jne.) -->
     <section id="portfolio">
         <p class="about-text">Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelance-yrittäjänä. Toteutan videotuotantoja ja valokuvauskeikkoja.</p>
 
@@ -210,7 +217,6 @@
             </div>
         </div>
 
-        <!-- 2000-LUVUN KAMERA -->
         <div id="retro-camera">
             <div class="retro-text">
                 Käytössäni on myös aitoja 2000-luvun alun videokameroita, joilla tallennetaan nostalgista ja aitonaista materiaalia. Näissä laitteissa on elektroninen ja digitaalinen zoom sekä infrapunakuvaus (Night Vision), jolla voi kuvata pimeässäkin.
@@ -235,6 +241,12 @@
         <p>© Iivari Kortesoja 2025 | Y-Tunnus A38904</p>
     </footer>
 
+    <!-- EVÄSTE-POPUP – TAKAISIN JA TOIMII TÄYDELLISESTI -->
+    <div id="cookie-popup">
+        <p>Tämä sivusto käyttää evästeitä paremman käyttökokemuksen takaamiseksi.</p>
+        <button onclick="acceptCookies()">Hyväksy</button>
+    </div>
+
     <script>
         // Taustavideo
         const bgVideo = document.querySelector('#home video');
@@ -253,21 +265,27 @@
             }, 500);
         }, 3000);
 
-        // KUVAT VAIHTUVAT NYT 100% TOIMIVALLA JAVASCRIPTILLÄ
-        const slides = document.querySelectorAll('.about-slide');
+        // VAIHTUVA KUVA
+        const aboutSlides = document.querySelectorAll('.about-slide');
         let current = 0;
+        aboutSlides[0].classList.add('active');
+        setInterval(() => {
+            aboutSlides[current].classList.remove('active');
+            current = (current + 1) % aboutSlides.length;
+            aboutSlides[current].classList.add('active');
+        }, 4000);
 
-        function nextSlide() {
-            slides[current].classList.remove('active');
-            current = (current + 1) % slides.length;
-            slides[current].classList.add('active');
+        // EVÄSTE-POPUP – NÄYTETÄÄN VAIN JOS EI OLE HYVÄKSYTTY
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookie-popup').classList.remove('show');
         }
 
-        // Näytä ensimmäinen kuva heti
-        slides[0].classList.add('active');
-
-        // Vaihda 4 sekunnin välein
-        setInterval(nextSlide, 4000);
+        if (!localStorage.getItem('cookiesAccepted')) {
+            setTimeout(() => {
+                document.getElementById('cookie-popup').classList.add('show');
+            }, 2000);
+        }
     </script>
 </body>
 </html>
