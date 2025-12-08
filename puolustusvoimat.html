@@ -45,37 +45,15 @@
         .gallery-item:hover{transform:scale(1.05)}
 
         .about-section{max-width:1200px;margin:120px auto;display:flex;align-items:center;gap:60px;flex-wrap:wrap;padding:0 20px}
-        .about-image{flex:1;min-width:300px;max-width:500px;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.9);position:relative}
-        .about-image img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;opacity:0;transition:opacity 1s ease}
+        .about-image{position:relative;flex:1;min-width:300px;max-width:500px;height:600px;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.9)}
+        .about-image img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
         .about-image img.active{opacity:1}
         .about-text{flex:1.5;min-width:300px;font-size:1.35rem;color:#e0e0e0;line-height:1.8}
         .btw-text{margin-top:40px;font-size:1.2rem;color:#bbb}
 
-        /* UUDET VAIHTUVAT KUVABOKSIT ALHAALLA */
-        .extra-gallery{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-            gap:30px;
-            max-width:1400px;
-            margin:100px auto 140px;
-            padding:0 20px;
-        }
-        .extra-item{
-            position:relative;
-            height:400px;
-            border-radius:20px;
-            overflow:hidden;
-            box-shadow:0 15px 50px rgba(0,0,0,.8);
-        }
-        .extra-item img{
-            width:100%;
-            height:100%;
-            object-fit:cover;
-            position:absolute;
-            top:0;left:0;
-            opacity:0;
-            transition:opacity 1.2s ease;
-        }
+        .extra-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:30px;max-width:1400px;margin:140px auto;padding:0 20px}
+        .extra-item{position:relative;height:400px;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.8)}
+        .extra-item img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease}
         .extra-item img.active{opacity:1}
 
         .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:2000;align-items:center;justify-content:center;padding:20px}
@@ -84,7 +62,7 @@
         .close{position:absolute;top:30px;right:40px;font-size:3rem;color:#fff;cursor:pointer;opacity:0.8}
         .close:hover{opacity:1}
 
-        footer{background:#000;padding:40px 20px;text-align:center;border-top:1px solid #333}
+        footer{background:#000;padding:40px 20px;text-align:center;border-top:1px solid #333;font-size:1rem}
 
         @media(max-width:992px){.about-section{flex-direction:column;text-align:center}}
         @media(max-width:600px){.gallery,.extra-gallery{grid-template-columns:1fr}}
@@ -95,10 +73,10 @@
     <header>
         <nav>
             <a href="indexi.html">Koti</a>
-            <a href="portfolio.htmlPortfolio</a>
-            <a href="valokuvaus.htmlValokuvaus</a>
-            <a href="yhteystiedot.htmlYhteystiedot</a>
-            <a href="puolustusvoimat.htmlPuolustusvoimat</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="valokuvaus.html">Valokuvaus</a>
+            <a href="yhteystiedot.html">Yhteystiedot</a>
+            <a href="puolustusvoimat.html">Puolustusvoimat</a>
         </nav>
     </header>
 
@@ -109,17 +87,17 @@
         <h2>Puolustusvoimat & Combat Camera</h2>
     </section>
 
-    <!-- Thumbnail-galleria (animaatio edelleen päällä) -->
+    <!-- Thumbnail-galleria (nopea animaatio) -->
     <section class="gallery">
         <div class="gallery-item" data-video-id="91wex5Lgolc"><img src="thumbnail1.jpg" alt="1"></div>
         <div class="gallery-item" data-video-id="GLP9QxcEbXk"><img src="thumbnail2.jpg" alt="2"></div>
         <div class="gallery-item" data-video-id="3AwEUP7o0qc"><img src="thumbnail3.jpg" alt="3"></div>
         <div class="gallery-item" data-video-id="F-2a-c5J2ms"><img src="thumbnail4.jpg" alt="4"></div>
         <div class="gallery-item" data-video-id="82S6evKfyPY"><img src="thumbnail5.jpg" alt="5"></div>
-        <div class="gallery-item" data-video-id="dQw4w9WgXcQ"><img src="thumbnail6.jpg" alt="Rick Roll 😈"></div>
+        <div class="gallery-item" data-video-id="dQw4w9WgXcQ"><img src="thumbnail6.jpg" alt="Rick Astley 😈"></div>
     </section>
 
-    <!-- Esittelyosio – KUVA VAIHTUU AUTOMAATTISESTI -->
+    <!-- Esittelyosio – IIVARI-KUVA VAIHTUU NYT AUTOMAATTISESTI -->
     <div class="about-section">
         <div class="about-image">
             <img src="IivariKortesoja1.png" alt="Iivari 1" class="active">
@@ -129,30 +107,30 @@
         <div class="about-text">
             <p>Palvelukseni Puolustusvoimissa oli unelma, jota en olisi uskonut kokevani. Pääsin valtakunnallisessa erityistehtävähaussa <strong>Combat Cameraan</strong>.</p>
             <p>Työskentely vaativissa olosuhteissa testasi fyysistä ja psyykkistä kestävyyttäni äärimmilleen. Viikot metsissä ympäri Suomea, kuvaten ja taistellen suomalaisten sekä ulkomaalaisten joukkojen kanssa harjoituksissa – olivat äärimmäisen palkitsevia ja opettavaisia.</p>
-            <p class="btw">Olen myös työskennellyt Puolustusvoimilla videotuotannoissa jo ennen varusmiespalvelustani. Tehtäviin on kuulunut kuvaamista, editointia ja monikameratuotantoja.</p>
+            <p class="btw-text">Olen myös työskennellyt Puolustusvoimilla videotuotannoissa jo ennen varusmiespalvelustani. Tehtäviin on kuulunut kuvaamista, editointia ja monikameratuotantoja.</p>
         </div>
     </div>
 
-    <!-- UUDET 3 VAIHTUVAA KUVABOKSIA SIVUN ALHAALLA -->
+    <!-- 3 ISOA VAIHTUVAA KUVABOKSIA SIVUN ALIMMAISEKSI -->
     <div class="extra-gallery">
         <div class="extra-item">
-            <img src="https://picsum.photos/800/600?random=10" alt="1" class="active">
-            <img src="https://picsum.photos/800/600?random=11" alt="2">
-            <img src="https://picsum.photos/800/600?random=12" alt="3">
+            <img src="https://picsum.photos/800/600?random=100" class="active">
+            <img src="https://picsum.photos/800/600?random=101">
+            <img src="https://picsum.photos/800/600?random=102">
         </div>
         <div class="extra-item">
-            <img src="https://picsum.photos/800/600?random=20" alt="1" class="active">
-            <img src="https://picsum.photos/800/600?random=21" alt="2">
-            <img src="https://picsum.photos/800/600?random=22" alt="3">
+            <img src="https://picsum.photos/800/600?random=200" class="active">
+            <img src="https://picsum.photos/800/600?random=201">
+            <img src="https://picsum.photos/800/600?random=202">
         </div>
         <div class="extra-item">
-            <img src="https://picsum.photos/800/600?random=30" alt="1" class="active">
-            <img src="https://picsum.photos/800/600?random=31" alt="2">
-            <img src="https://picsum.photos/800/600?random=32" alt="3">
+            <img src="https://picsum.photos/800/600?random=300" class="active">
+            <img src="https://picsum.photos/800/600?random=301">
+            <img src="https://picsum.photos/800/600?random=302">
         </div>
     </div>
 
-    <!-- Modaali -->
+    <!-- YouTube-modaali -->
     <div class="modal" id="videoModal">
         <span class="close">×</span>
         <div class="modal-content">
@@ -182,16 +160,16 @@
         }, {threshold: 0.2});
         thumbnails.forEach(t => thumbObserver.observe(t));
 
-        // Esittelykuvien vaihto (4s välein)
-        const aboutImages = document.querySelectorAll('.about-image img');
-        let aboutIndex = 0;
+        // IIVARI-KUVAN VAIHTO (4 sekunnin välein)
+        const aboutImgs = document.querySelectorAll('.about-image img');
+        let aboutIdx = 0;
         setInterval(() => {
-            aboutImages[aboutIndex].classList.remove('active');
-            aboutIndex = (aboutIndex + 1) % aboutImages.length;
-            aboutImages[aboutIndex].classList.add('active');
+            aboutImgs[aboutIdx].classList.remove('active');
+            aboutIdx = (aboutIdx + 1) % aboutImgs.length;
+            aboutImgs[aboutIdx].classList.add('active');
         }, 4000);
 
-        // Alhaalla olevat 3 kuvaboksia – vaihto 5s välein
+        // ALHAALLA OLEVAT 3 KUVABOKSIA VAIHTO (5 sekunnin välein)
         document.querySelectorAll('.extra-item').forEach(box => {
             const imgs = box.querySelectorAll('img');
             let idx = 0;
@@ -209,8 +187,7 @@
 
         document.querySelectorAll('.gallery-item').forEach(item => {
             item.onclick = () => {
-                const videoId = item.dataset.videoId;
-                iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+                iframe.src = `https://www.youtube.com/embed/${item.dataset.videoId}?autoplay=1&rel=0`;
                 modal.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
             };
