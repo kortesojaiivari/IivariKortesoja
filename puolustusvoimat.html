@@ -17,7 +17,7 @@
     <!-- MICROSOFT CLARITY -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            c[a]=c[a]||function(){( c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "ud6y4jpngh");
@@ -64,7 +64,6 @@
         }
         nav a:hover::after{width:100%}
 
-        /* Hero-osio */
         #home{
             position:relative;
             min-height:100vh;
@@ -86,27 +85,9 @@
         #home h2{
             font-size:clamp(2.5rem,8vw,4.5rem);
             text-shadow:0 0 40px rgba(0,0,0,.9);
-            margin-bottom:20px;
         }
 
-        /* Scroll-animaatio - piilotetut elementit */
-        .animate-on-scroll{
-            opacity:0;
-            transform:translateX(-100px);
-            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .animate-on-scroll.animate-in{
-            opacity:1;
-            transform:translateX(0);
-        }
-        .animate-on-scroll.delay-1{transition-delay:0.1s}
-        .animate-on-scroll.delay-2{transition-delay:0.2s}
-        .animate-on-scroll.delay-3{transition-delay:0.3s}
-        .animate-on-scroll.delay-4{transition-delay:0.4s}
-        .animate-on-scroll.delay-5{transition-delay:0.5s}
-        .animate-on-scroll.delay-6{transition-delay:0.6s}
-
-        /* Galleria – thumbnailit eivät enää mene päällekkäin */
+        /* VAIN THUMBNAILIT ANIMOIDUT */
         .gallery{
             display:grid;
             grid-template-columns:repeat(auto-fit, minmax(340px, 1fr));
@@ -122,10 +103,13 @@
             overflow:hidden;
             box-shadow:0 10px 30px rgba(0,0,0,.7);
             cursor:pointer;
-            transition:transform .4s ease;
+            opacity:0;
+            transform:translateX(-80px);
+            transition:all 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
         }
-        .gallery-item:hover{
-            transform:scale(1.05);
+        .gallery-item.visible{
+            opacity:1;
+            transform:translateX(0);
         }
         .gallery-item img{
             width:100%;
@@ -144,11 +128,9 @@
             transition:opacity .3s;
             pointer-events:none;
         }
-        .gallery-item:hover::after{
-            opacity:0.8;
-        }
+        .gallery-item:hover::after{opacity:0.8}
+        .gallery-item:hover{transform:scale(1.05)}
 
-        /* Esittelyosio */
         .about-section{
             max-width:1200px;
             margin:120px auto;
@@ -166,11 +148,7 @@
             overflow:hidden;
             box-shadow:0 15px 50px rgba(0,0,0,.9);
         }
-        .about-image img{
-            width:100%;
-            height:auto;
-            display:block;
-        }
+        .about-image img{width:100%;display:block}
         .about-text{
             flex:1.5;
             min-width:300px;
@@ -178,64 +156,18 @@
             color:#e0e0e0;
             line-height:1.8;
         }
-        .btw-text{
-            margin-top:40px;
-            font-size:1.2rem;
-            color:#bbb;
-        }
+        .btw-text{margin-top:40px;font-size:1.2rem;color:#bbb}
 
-        /* Modaali */
-        .modal{
-            display:none;
-            position:fixed;
-            top:0;left:0;
-            width:100%;height:100%;
-            background:rgba(0,0,0,.95);
-            z-index:2000;
-            align-items:center;
-            justify-content:center;
-            padding:20px;
-        }
-        .modal-content{
-            width:100%;
-            max-width:1000px;
-            aspect-ratio:16/9;
-            border-radius:16px;
-            overflow:hidden;
-            box-shadow:0 20px 60px rgba(0,0,0,.8);
-        }
-        .modal-content iframe{
-            width:100%;
-            height:100%;
-            border:none;
-        }
-        .close{
-            position:absolute;
-            top:30px;
-            right:40px;
-            font-size:3rem;
-            color:#fff;
-            cursor:pointer;
-            opacity:0.8;
-        }
+        .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:2000;align-items:center;justify-content:center;padding:20px}
+        .modal-content{width:100%;max-width:1000px;aspect-ratio:16/9;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.8)}
+        .modal-content iframe{width:100%;height:100%;border:none}
+        .close{position:absolute;top:30px;right:40px;font-size:3rem;color:#fff;cursor:pointer;opacity:0.8}
         .close:hover{opacity:1}
 
-        footer{
-            background:#000;
-            padding:40px 20px;
-            text-align:center;
-            font-size:1rem;
-            border-top:1px solid #333;
-        }
+        footer{background:#000;padding:40px 20px;text-align:center;border-top:1px solid #333}
 
-        @media(max-width:992px){
-            .about-section{flex-direction:column;text-align:center}
-            nav a{margin:0 10px;font-size:1.1em}
-        }
-        @media(max-width:600px){
-            .gallery{grid-template-columns:1fr}
-            nav a{margin:0 8px;font-size:1em}
-        }
+        @media(max-width:992px){.about-section{flex-direction:column;text-align:center}}
+        @media(max-width:600px){.gallery{grid-template-columns:1fr}}
     </style>
 </head>
 <body>
@@ -257,43 +189,31 @@
         <h2>Puolustusvoimat & Combat Camera</h2>
     </section>
 
-    <!-- Thumbnail-galleria – ANIMAATIO LISAETTY -->
+    <!-- Thumbnail-galleria – NOPEA PERÄKKÄINEN ANIMAATIO -->
     <section class="gallery">
-        <div class="gallery-item animate-on-scroll delay-1" data-video-id="91wex5Lgolc">
-            <img src="thumbnail1.jpg" alt="Combat Camera 1">
-        </div>
-        <div class="gallery-item animate-on-scroll delay-2" data-video-id="GLP9QxcEbXk">
-            <img src="thumbnail2.jpg" alt="Combat Camera 2">
-        </div>
-        <div class="gallery-item animate-on-scroll delay-3" data-video-id="3AwEUP7o0qc">
-            <img src="thumbnail3.jpg" alt="Combat Camera 3">
-        </div>
-        <div class="gallery-item animate-on-scroll delay-4" data-video-id="F-2a-c5J2ms">
-            <img src="thumbnail4.jpg" alt="Combat Camera 4">
-        </div>
-        <div class="gallery-item animate-on-scroll delay-5" data-video-id="82S6evKfyPY">
-            <img src="thumbnail5.jpg" alt="Combat Camera 5">
-        </div>
-        <div class="gallery-item animate-on-scroll delay-6" data-video-id="dQw4w9WgXcQ">
-            <img src="thumbnail6.jpg" alt="Combat Camera 6">
-        </div>
+        <div class="gallery-item" data-video-id="91wex5Lgolc"><img src="thumbnail1.jpg" alt="Combat Camera 1"></div>
+        <div class="gallery-item" data-video-id="GLP9QxcEbXk"><img src="thumbnail2.jpg" alt="Combat Camera 2"></div>
+        <div class="gallery-item" data-video-id="3AwEUP7o0qc"><img src="thumbnail3.jpg" alt="Combat Camera 3"></div>
+        <div class="gallery-item" data-video-id="F-2a-c5J2ms"><img src="thumbnail4.jpg" alt="Combat Camera 4"></div>
+        <div class="gallery-item" data-video-id="82S6evKfyPY"><img src="thumbnail5.jpg" alt="Combat Camera 5"></div>
+        <div class="gallery-item" data-video-id="dQw4w9WgXcQ"><img src="thumbnail6.jpg" alt="Combat Camera 6"></div>
     </section>
 
-    <!-- Esittelyosio – ANIMAATIO LISAETTY -->
     <div class="about-section">
-        <div class="about-image animate-on-scroll delay-1">
-            <img src="IivariKortesoja1.png" alt="Iivari Kortesoja Puolustusvoimissa">
+        <div class="about-image">
+            <img src="IivariKortesoja1.png" alt="Iivari Kortesoja">
         </div>
-        <div class="about-text animate-on-scroll delay-2">
+        <div class="about-text">
             <p>Palvelukseni Puolustusvoimissa oli unelma, jota en olisi uskonut kokevani. Pääsin valtakunnallisessa erityistehtävähaussa <strong>Combat Cameraan</strong>.</p>
-            <p>Työskentely vaativissa olosuhteissa testasi fyysistä ja psyykkistä kestävyyttäni äärimmilleen. Viikot metsissä ympäri Suomea, kuvaten ja taistellen suomalaisten sekä ulkomaalaisten joukkojen kanssa harjoituksissa. Olivat äärimmäisen palkitsevia ja opettavaisia.</p>
+            <p>Työskentely vaativissa olosuhteissa testasi fyysistä ja psyykkistä kestävyyttäni äärimmilleen. Viikot metsissä ympäri Suomea, kuvaten ja taistellen suomalaisten sekä ulkomaalaisten joukkojen kanssa harjoituksissa – olivat äärimmäisen palkitsevia ja opettavaisia.</p>
             <p class="btw-text">
-                Olen myös työskennellyt Puolustusvoimilla videotuotannoissa jo ennen varusmiespalvelustani. Tehtäviin on kuulunut kuvaamista, editointia ja videotuotantoja.
+                Olen myös työskennellyt Puolustusvoimilla videotuotannoissa jo ennen varusmiespalvelustani. Tehtäviin on kuulunut kuvaamista, editointia ja monikameratuotantoja.
             </p>
         </div>
     </div>
 
-    <!-- YouTube-modaali -->
+    </div>
+
     <div class="modal" id="videoModal">
         <span class="close">×</span>
         <div class="modal-content">
@@ -308,28 +228,25 @@
     <script>
         // Taustavideo
         const bgVideo = document.querySelector('#home video');
-        new IntersectionObserver(entries => {
-            entries.forEach(entry => entry.isIntersecting ? bgVideo.play() : bgVideo.pause());
-        }, {threshold: 0.5}).observe(document.getElementById('home'));
+        new IntersectionObserver(e => e.forEach(en => en.isIntersecting ? bgVideo.play() : bgVideo.pause()), {threshold: 0.5})
+            .observe(document.getElementById('home'));
 
-        // SCROLL ANIMAATIO – Elementit ilmestyvät vasemmalta oikealle
-        const animateElements = document.querySelectorAll('.animate-on-scroll');
-        const animateObserver = new IntersectionObserver((entries) => {
+        // THUMBNAILIT – NOPEA PERÄKKÄINEN ANIMAATIO
+        const thumbnails = document.querySelectorAll('.gallery-item');
+        const thumbObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
                     setTimeout(() => {
-                        entry.target.classList.add('animate-in');
-                    }, index * 100); // Pieni viive per elementti
+                        entry.target.classList.add('visible');
+                    }, index * 120); // 120ms viive per thumbnail → erittäin sulava ja nopea
+                    thumbObserver.unobserve(entry.target); // animoi vain kerran
                 }
             });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
+        }, { threshold: 0.2 });
 
-        animateElements.forEach(el => animateObserver.observe(el));
+        thumbnails.forEach(thumb => thumbObserver.observe(thumb));
 
-        // Modaali toiminnallisuus
+        // Modaali
         const modal = document.getElementById('videoModal');
         const iframe = document.getElementById('youtubePlayer');
         const closeBtn = document.querySelector('.close');
@@ -343,21 +260,14 @@
             });
         });
 
-        // Sulje modaali
-        closeBtn.onclick = () => {
+        closeBtn.onclick = modal.onclick = () => {
             modal.style.display = 'none';
             iframe.src = '';
             document.body.style.overflow = '';
         };
-        modal.onclick = (e) => {
-            if (e.target === modal) {
-                closeBtn.click();
-            }
-        };
 
-        // Esc-näppäin sulkee
         document.addEventListener('keydown', e => {
-            if (e.key === 'Escape' && modal.style.display === 'flex') closeBtn.click();
+            if (e.key === 'Escape') closeBtn.click();
         });
     </script>
 </body>
