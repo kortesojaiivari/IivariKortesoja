@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iivari Kortesoja</title>
@@ -44,24 +43,25 @@
         .about-slide.active{opacity:1}
         .about-slide img{width:100%;height:100%;object-fit:cover}
 
-        /* UUSI OSIO: 3 TYÖKOKEMUSKUVAA VIDEON JA TEKSTIN ALLE */
+        /* TYÖKOKEMUSKUVAT ALLEKKAIN */
         .skills-images{
-            display:grid;
-            grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
-            gap:30px;
-            max-width:1200px;
-            margin:60px auto 120px;
+            max-width:800px;
+            margin:80px auto 140px;
             padding:0 20px;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            gap:40px;
         }
         .skills-images img{
             width:100%;
-            height:auto;
-            border-radius:16px;
-            box-shadow:0 10px 30px rgba(0,0,0,.7);
-            transition:transform .4s ease;
+            max-width:700px;
+            border-radius:20px;
+            box-shadow:0 15px 50px rgba(0,0,0,.8);
+            transition:transform .5s ease;
         }
         .skills-images img:hover{
-            transform:scale(1.04);
+            transform:scale(1.03);
         }
 
         .gallery{display:grid;grid-template-columns:repeat(auto-fit,1fr);gap:30px;max-width:1400px;margin:80px auto;padding:0 20px}
@@ -129,14 +129,14 @@
         </div>
     </div>
 
-    <!-- UUSI UUSI OSIO: 3 TYÖKOKEMUSKUVAA VIEKKÄIN -->
+    <!-- TYÖKOKEMUSKUVAT ALLEKKAIN -->
     <div class="skills-images">
-        <img src="lin1.png" alt="Työkokemus 1">
-        <img src="lin2.png" alt="Työkokemus 2">
-        <img src="lin3.png" alt="Työkokemus 3">
+        <img src="lin1.png" alt="Työkokemus / projekti 1">
+        <img src="lin2.png" alt="Työkokemus / projekti 2">
+        <img src="lin3.png" alt="Työkokemus / projekti 3">
     </div>
 
-    <!-- Portfolio galleria -->
+    <!-- Loput sivusta -->
     <section id="portfolio">
         <div class="gallery">
             <div class="gallery-item"><video autoplay muted loop playsinline><source src="ruutu1.mp4" type="video/mp4"></video></div>
@@ -191,12 +191,10 @@
     </footer>
 
     <script>
-        // Taustavideo toisto vain näkyvissä
+        // Taustavideo
         const bgVideo = document.querySelector('#home video');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => entry.isIntersecting ? bgVideo.play() : bgVideo.pause());
-        }, { threshold: 0.5 });
-        observer.observe(document.getElementById('home'));
+        new IntersectionObserver(e => e.forEach(en => en.isIntersecting ? bgVideo.play() : bgVideo.pause()), {threshold: 0.5})
+            .observe(document.getElementById('home'));
 
         // Vaihtuva otsikko
         const titles = ['Yritys','Bändi','Järjestö','Yrittäjä','Tapahtuma','Hääpari','Valokuvaus'];
@@ -211,15 +209,14 @@
             }, 600);
         }, 3000);
 
-        // About-osio kuvakaruselli
+        // About-kuvakaruselli
         const slides = document.querySelectorAll('.about-slide');
         let current = 0;
-        function showNextSlide() {
+        setInterval(() => {
             slides[current].classList.remove('active');
             current = (current + 1) % slides.length;
             slides[current].classList.add('active');
-        }
-        setInterval(showNextSlide, 4000);
+        }, 4000);
     </script>
 </body>
 </html>
