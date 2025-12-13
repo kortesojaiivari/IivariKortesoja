@@ -40,7 +40,6 @@
         .gallery-item{position:relative;height:220px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.7);cursor:pointer;opacity:0;transform:translateX(-80px);transition:all 0.7s cubic-bezier(0.25,0.46,0.45,0.94)}
         .gallery-item.visible{opacity:1;transform:translateX(0)}
         .gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .4s}
-        /* PLAY-NAPPULA TAKAISIN HOVERISSA */
         .gallery-item::after{
             content:'▶';
             position:absolute;
@@ -57,11 +56,16 @@
             opacity:0.9;
             transform:translate(-50%,-50%) scale(1.2);
         }
-        .gallery-item:hover img{
-            opacity:0.7;
-        }
-        .gallery-item:hover{
-            transform:scale(1.05);
+        .gallery-item:hover img{opacity:0.7}
+        .gallery-item:hover{transform:scale(1.05)}
+
+        /* Boldattu suositus viimeisen thumbnailin alla */
+        .recommendation{
+            text-align:center;
+            margin-top:20px;
+            font-size:1.4rem;
+            font-weight:bold;
+            color:#fff;
         }
 
         .about-section{max-width:1200px;margin:120px auto;display:flex;align-items:center;gap:60px;flex-wrap:wrap;padding:0 20px}
@@ -107,61 +111,70 @@
         <h2>Puolustusvoimat & Combat Camera</h2>
     </section>
 
-    <!-- Thumbnail-galleria – PLAY-NAPPULA TAKAISIN + PARANNELTU HOVER -->
+    <!-- Thumbnail-galleria -->
     <section class="gallery">
         <div class="gallery-item" data-video-id="91wex5Lgolc"><img src="thumbnail1.jpg" alt="1"></div>
         <div class="gallery-item" data-video-id="GLP9QxcEbXk"><img src="thumbnail2.jpg" alt="2"></div>
         <div class="gallery-item" data-video-id="3AwEUP7o0qc"><img src="thumbnail3.jpg" alt="3"></div>
         <div class="gallery-item" data-video-id="F-2a-c5J2ms"><img src="thumbnail4.jpg" alt="4"></div>
         <div class="gallery-item" data-video-id="82S6evKfyPY"><img src="thumbnail5.jpg" alt="5"></div>
-        <div class="gallery-item" data-video-id="dQw4w9WgXcQ"><img src="thumbnail6.jpg" alt="Rick 😈"></div>
+        <!-- Viimeinen thumbnail: Combat Camera Showreel 2025 -->
+        <div class="gallery-item" data-video-id="AcLYbg2Jk9c"><img src="thumbnail6.jpg" alt="Combat Camera Showreel 2025"></div>
     </section>
+    <p class="recommendation">Suosittelen katsomaan <strong>Combat Camera Showreel 2025</strong></p>
 
-    <!-- Esittelyosio -->
+    <!-- Esittelyosio – PÄIVITETYT KUVAT -->
     <div class="about-section">
         <div class="about-image">
             <img src="IivariKortesoja1.png" alt="Iivari 1" class="active">
-            <img src="IivariKortesoja2.png" alt="Iivari 2">
-            <img src="IivariKortesoja3.png" alt="Iivari 3">
+            <img src="pviivari1.jpeg" alt="Iivari 2">
+            <img src="pviivari2.jpeg" alt="Iivari 3">
         </div>
         <div class="about-text">
             <p>Palvelukseni Puolustusvoimissa oli unelma, jota en olisi uskonut kokevani. Pääsin valtakunnallisessa erityistehtävähaussa <strong>Combat Cameraan</strong>.</p>
             <p>Työskentely vaativissa olosuhteissa testasi fyysistä ja psyykkistä kestävyyttäni äärimmilleen. Viikot metsissä ympäri Suomea, kuvaten ja taistellen suomalaisten sekä ulkomaalaisten joukkojen kanssa harjoituksissa – olivat äärimmäisen palkitsevia ja opettavaisia.</p>
-            <p class="btw-text">Olen myös työskennellyt Puolustusvoimilla videotuotannoissa jo ennen varusmiespalvelustani. Tehtäviin on kuulunut kuvaamista, editointia ja monikameratuotantoja.</p>
+            <p class="btw-text">Olen myös työskennellyt Puolustusvoimilla videotuotannoissa jo ennen varusmiespalvelustani. Tehtäviin on kuulunut kuvaamista, editointia ja videotuotantoja.</p>
         </div>
     </div>
 
-    <!-- 6 isoa vaihtuvaa kuvaboksia -->
+    <!-- 6 isoa kuvaboksia – NYT OIKEAT COMCAM-KUVAT (comcam1.jpg → comcam19.jpeg) -->
     <div class="extra-gallery">
+        <!-- 1 -->
         <div class="extra-item">
-            <img src="https://picsum.photos/800/600?random=101" class="active">
-            <img src="https://picsum.photos/800/600?random=102">
-            <img src="https://picsum.photos/800/600?random=103">
+            <img src="comcam1.jpg" class="active">
+            <img src="comcam2.jpg">
+            <img src="comcam3.jpg">
         </div>
+        <!-- 2 -->
         <div class="extra-item">
-            <img src="https://picsum.photos/800/600?random=201" class="active">
-            <img src="https://picsum.photos/800/600?random=202">
-            <img src="https://picsum.photos/800/600?random=203">
+            <img src="comcam4.jpg" class="active">
+            <img src="comcam5.jpg">
+            <img src="comcam6.jpg">
         </div>
+        <!-- 3 -->
         <div class="extra-item">
-            <img src="https://picsum.photos/800/600?random=301" class="active">
-            <img src="https://picsum.photos/800/600?random=302">
-            <img src="https://picsum.photos/800/600?random=303">
+            <img src="comcam7.jpg" class="active">
+            <img src="comcam8.jpg">
+            <img src="comcam9.jpg">
         </div>
+        <!-- 4 -->
         <div class="extra-item">
-            <img src="https://picsum.photos/800/600?random=401" class="active">
-            <img src="https://picsum.photos/800/600?random=402">
-            <img src="https://picsum.photos/800/600?random=403">
+            <img src="comcam10.jpg" class="active">
+            <img src="comcam11.jpg">
+            <img src="comcam12.jpg">
         </div>
+        <!-- 5 -->
         <div class="extra-item">
-            <img src="https://picsum.photos/800/600?random=501" class="active">
-            <img src="https://picsum.photos/800/600?random=502">
-            <img src="https://picsum.photos/800/600?random=503">
+            <img src="comcam13.jpg" class="active">
+            <img src="comcam14.jpg">
+            <img src="comcam15.jpg">
         </div>
+        <!-- 6 -->
         <div class="extra-item">
-            <img src="https://picsum.photos/800/600?random=601" class="active">
-            <img src="https://picsum.photos/800/600?random=602">
-            <img src="https://picsum.photos/800/600?random=603">
+            <img src="comcam16.jpg" class="active">
+            <img src="comcam17.jpg">
+            <img src="comcam18.jpg">
+            <img src="comcam19.jpeg">
         </div>
     </div>
 
@@ -195,7 +208,7 @@
         }, {threshold: 0.2});
         thumbnails.forEach(t => thumbObserver.observe(t));
 
-        // Iivari-kuvan vaihto
+        // Iivari-kuvan vaihto (päivitetyt kuvat)
         const aboutImgs = document.querySelectorAll('.about-image img');
         let aboutIdx = 0;
         setInterval(() => {
