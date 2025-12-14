@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>HardcoreKristityt Kotisivut</title>
+    <style>
+        body {
+            background-color: black;
+            color: lime;
+            font-family: Comic Sans MS, cursive;
+            text-align: center;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 50px;
+            color: red;
+            text-shadow: 2px 2px yellow;
+        }
+        #bouncing-image {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            animation: bounce 10s infinite linear;
+        }
+        @keyframes bounce {
+            0% { top: 0; left: 0; }
+            25% { top: 0; left: calc(100% - 100px); }
+            50% { top: calc(100% - 100px); left: calc(100% - 100px); }
+            75% { top: calc(100% - 100px); left: 0; }
+            100% { top: 0; left: 0; }
+        }
+        #content {
+            position: relative;
+            z-index: 1;
+            margin-top: 100px;
+        }
+        #news {
+            background-color: purple;
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            border: 5px dashed yellow;
+        }
+        #tv {
+            margin: 20px auto;
+            width: 80%;
+        }
+        ul {
+            list-style-type: square;
+            font-size: 20px;
+            color: cyan;
+        }
+    </style>
+</head>
+<body>
+    <img id="bouncing-image" src="jurri.png" alt="Jurri bouncing">
+    <div id="content">
+        <h1>HardcoreKristityt Kotisivut</h1>
+        <div id="news">
+            <h2>Uutisia</h2>
+            <ul>
+                <li>Viime sunnuntaina kirkossa oli tosi hardcore saarna! Kaikki huusivat amen!</li>
+                <li>Uusi rukousryhmä aloittaa tiistaisin. Tule mukaan jos uskallat!</li>
+                <li>Raamattupiiri meni överiksi eilen, keskusteltiin myöhään yöhön asti.</li>
+                <li>Seurakunnan grilli-ilta perjantaina – tuo oma pihvi ja hardcore asenne!</li>
+                <li>Varoitus: Paholainen yrittää sabotoida nettisivujamme, mutta Jeesus voittaa!</li>
+            </ul>
+        </div>
+        <div id="tv">
+            <h2>TELEVISIO</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/89F0u54M8yY?autoplay=1&mute=0&loop=1&playlist=89F0u54M8yY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+    <script>
+        // Simple bounce logic for the image
+        const img = document.getElementById('bouncing-image');
+        let x = 0, y = 0;
+        let dx = 2, dy = 2;
+        function bounce() {
+            x += dx;
+            y += dy;
+            if (x + img.width > window.innerWidth || x < 0) dx = -dx;
+            if (y + img.height > window.innerHeight || y < 0) dy = -dy;
+            img.style.left = x + 'px';
+            img.style.top = y + 'px';
+            requestAnimationFrame(bounce);
+        }
+        bounce();
+    </script>
+</body>
+</html>
