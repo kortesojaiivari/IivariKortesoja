@@ -12,6 +12,7 @@
             overflow: hidden;
             letter-spacing: 1px;
             margin: 0;
+            min-height: 100vh;
         }
         h1 {
             font-size: 60px;
@@ -31,6 +32,7 @@
             width: 120px;
             height: 120px;
             pointer-events: none;
+            z-index: 10;
         }
         #content {
             position: relative;
@@ -42,11 +44,12 @@
             padding: 20px;
             margin: 40px auto;
             width: 80%;
+            max-width: 1000px;
             border: 5px dashed yellow;
         }
         #tv-section {
             margin: 50px auto;
-            width: 90%;
+            width: 100%;
         }
         #tv-title {
             font-size: 60px;
@@ -55,7 +58,7 @@
             margin-bottom: 20px;
         }
         #tv-controls {
-            margin: 20px 0;
+            margin: 30px 0;
         }
         .tv-button {
             font-family: Impact, sans-serif;
@@ -85,13 +88,26 @@
         }
         #tv-player {
             display: none;
-            margin: 30px auto;
+            margin: 0 auto;
+            max-width: 860px;
         }
         #tv-player video,
         #tv-player iframe {
             width: 860px;
             height: 515px;
             display: block;
+            margin: 0 auto;
+            border: 8px ridge #aaa; /* vanhan television kehys */
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+        }
+        #characters {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 50px auto;
+            width: 90%;
+            max-width: 1200px;
+            gap: 20px;
         }
         .character {
             background-color: #111;
@@ -115,14 +131,6 @@
             color: white;
             font-size: 18px;
         }
-        #characters {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin: 50px auto;
-            width: 90%;
-            gap: 20px;
-        }
         ul {
             list-style-type: square;
             font-size: 22px;
@@ -143,7 +151,7 @@
             <ul>
                 <li>Viime sunnuntaina kirkossa oli tosi hardcore saarna! Kaikki huusivat amen!</li>
                 <li>Uusi rukousryhmä aloittaa tiistaisin. Tule mukaan jos uskallat!</li>
-                <li>Raamattupiiri meni överiksi eilen, keskusteltiin myöhään yöhön asti.</li>
+                <li>Raamattipiiri meni överiksi eilen, keskusteltiin myöhään yöhön asti.</li>
                 <li>Seurakunnan grilli-ilta perjantaina – tuo oma pihvi ja hardcore asenne!</li>
                 <li>Varoitus: Paholainen yrittää sabotoida nettisivujamme, mutta Jeesus voittaa!</li>
             </ul>
@@ -204,13 +212,13 @@
         const changeBtn = document.getElementById('change-channel');
         const closeBtn = document.getElementById('close-tv');
 
-        let currentChannel = 1; // 1 = pääkanava, 2 = toinen kanava
+        let currentChannel = 1;
 
         function createVideo(src) {
             const video = document.createElement('video');
             video.src = src;
             video.autoplay = true;
-            video.muted = false; // äänet päälle, jos mov-tiedostoissa on ääni
+            video.muted = false;
             video.playsInline = true;
             return video;
         }
@@ -231,17 +239,14 @@
             player.style.display = 'block';
             player.innerHTML = '';
 
-            // Ensin TVALKU.mov
             const startupVideo = createVideo('TVALKU.mov');
             player.appendChild(startupVideo);
 
-            // Odota että video loppuu tai käytä kiinteää aikaa (esim. jos tiedät pituuden)
-            // Tässä käytetään kiinteää 2000ms, korvaa oikealla pituudella jos tiedät
             setTimeout(() => {
                 player.innerHTML = '';
                 const mainSrc = 'https://www.youtube.com/embed/89F0u54M8yY?autoplay=1&loop=1&playlist=89F0u54M8yY';
                 player.appendChild(createIframe(mainSrc));
-            }, 2000); // muuta tämä TVALKU.mov pituuden mukaan (ms)
+            }, 2000); // säädä TVALKU.mov pituuden mukaan
 
             openBtn.style.display = 'none';
             changeBtn.style.display = 'inline-block';
@@ -253,7 +258,6 @@
         changeBtn.onclick = function() {
             player.innerHTML = '';
 
-            // Ensin TVVAIHTO.mov
             const switchVideo = createVideo('TVVAIHTO.mov');
             player.appendChild(switchVideo);
 
@@ -273,13 +277,12 @@
 
                 const finalSrc = `https://www.youtube.com/embed/${targetSrc}?autoplay=1&loop=1&playlist=${targetPlaylist}`;
                 player.appendChild(createIframe(finalSrc));
-            }, 1500); // muuta tämä TVVAIHTO.mov pituuden mukaan
+            }, 1500); // säädä TVVAIHTO.mov pituuden mukaan
         };
 
         closeBtn.onclick = function() {
             player.innerHTML = '';
 
-            // Ensin TVSAMMUU.mov
             const shutdownVideo = createVideo('TVSAMMUU.mov');
             player.appendChild(shutdownVideo);
 
@@ -290,7 +293,7 @@
                 openBtn.style.display = 'inline-block';
                 changeBtn.style.display = 'none';
                 closeBtn.style.display = 'none';
-            }, 3000); // muuta tämä TVSAMMUU.mov pituuden mukaan + vähän ekstraa
+            }, 3000); // säädä TVSAMMUU.mov pituuden mukaan + ekstraa
         };
     </script>
 </body>
