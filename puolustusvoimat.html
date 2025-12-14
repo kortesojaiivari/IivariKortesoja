@@ -36,7 +36,7 @@
         #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
         #home h2{font-size:clamp(2.5rem,8vw,4.5rem);text-shadow:0 0 40px rgba(0,0,0,.9)}
 
-        .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:30px;max-width:1400px;margin:100px auto;padding:0 20px}
+        .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:30px;max-width:1400px;margin:100px auto;padding:0 20px;position:relative}
         .gallery-item{position:relative;height:220px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.7);cursor:pointer;opacity:0;transform:translateX(-80px);transition:all 0.7s cubic-bezier(0.25,0.46,0.45,0.94)}
         .gallery-item.visible{opacity:1;transform:translateX(0)}
         .gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .4s}
@@ -59,11 +59,11 @@
         .gallery-item:hover img{opacity:0.7}
         .gallery-item:hover{transform:scale(1.05)}
 
-        /* Boldattu suositus viimeisen thumbnailin alla */
         .recommendation{
+            grid-column: 1 / -1;
             text-align:center;
-            margin-top:20px;
-            font-size:1.4rem;
+            margin-top:30px;
+            font-size:1.3rem;
             font-weight:bold;
             color:#fff;
         }
@@ -74,6 +74,22 @@
         .about-image img.active{opacity:1}
         .about-text{flex:1.5;min-width:300px;font-size:1.35rem;color:#e0e0e0;line-height:1.8}
         .btw-text{margin-top:40px;font-size:1.2rem;color:#bbb}
+
+        /* MOBIILI: Teksti vasemmalle tasattu, pienempi fontti, ei täytä ruutua */
+        @media(max-width:768px){
+            .about-text{
+                font-size:1.1rem;
+                text-align:left;
+                padding:0 20px;
+            }
+            .btw-text{
+                font-size:1rem;
+            }
+            .recommendation{
+                font-size:1.1rem;
+                padding:0 20px;
+            }
+        }
 
         .extra-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:30px;max-width:1400px;margin:140px auto 100px;padding:0 20px}
         .extra-item{position:relative;height:420px;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.8)}
@@ -105,30 +121,28 @@
     </header>
 
     <section id="home">
-        <video autoplay muted loop playsinline poster="pv-poster.jpg">
+        <video autoplay muted loop playsinline poster="pv-poster.webp">
             <source src="tst_testi_footgae.mp4" type="video/mp4">
         </video>
         <h2>Puolustusvoimat & Combat Camera</h2>
     </section>
 
-    <!-- Thumbnail-galleria -->
+    <!-- Thumbnail-galleria + SUOSITTELUTEKSTI -->
     <section class="gallery">
-        <div class="gallery-item" data-video-id="91wex5Lgolc"><img src="thumbnail1.jpg" alt="1"></div>
-        <div class="gallery-item" data-video-id="GLP9QxcEbXk"><img src="thumbnail2.jpg" alt="2"></div>
-        <div class="gallery-item" data-video-id="3AwEUP7o0qc"><img src="thumbnail3.jpg" alt="3"></div>
-        <div class="gallery-item" data-video-id="F-2a-c5J2ms"><img src="thumbnail4.jpg" alt="4"></div>
-        <div class="gallery-item" data-video-id="82S6evKfyPY"><img src="thumbnail5.jpg" alt="5"></div>
-        <!-- Viimeinen thumbnail: Combat Camera Showreel 2025 -->
-        <div class="gallery-item" data-video-id="AcLYbg2Jk9c"><img src="thumbnail6.jpg" alt="Combat Camera Showreel 2025"></div>
+        <div class="gallery-item" data-video-id="91wex5Lgolc"><img src="thumbnail1.webp" alt="1"></div>
+        <div class="gallery-item" data-video-id="GLP9QxcEbXk"><img src="thumbnail2.webp" alt="2"></div>
+        <div class="gallery-item" data-video-id="3AwEUP7o0qc"><img src="thumbnail3.webp" alt="3"></div>
+        <div class="gallery-item" data-video-id="F-2a-c5J2ms"><img src="thumbnail4.webp" alt="4"></div>
+        <div class="gallery-item" data-video-id="82S6evKfyPY"><img src="thumbnail5.webp" alt="5"></div>
+        <div class="gallery-item" data-video-id="AcLYbg2Jk9c"><img src="thumbnail6.webp" alt="Combat Camera Showreel 2025"></div>
     </section>
-    <p class="recommendation">Suosittelen katsomaan <strong>Combat Camera Showreel 2025</strong></p>
+    <p class="recommendation">Suosittelen katsomaan Combat Camera Showreel 2025</p>
 
-    <!-- Esittelyosio – PÄIVITETYT KUVAT -->
+    <!-- Esittelyosio – PVIIVARI KUVAT NYT .webp -->
     <div class="about-section">
         <div class="about-image">
-            <img src="IivariKortesoja1.png" alt="Iivari 1" class="active">
-            <img src="pviivari1.jpeg" alt="Iivari 2">
-            <img src="pviivari2.jpeg" alt="Iivari 3">
+            <img src="IivariKortesoja1.webp" alt="Iivari 1" class="active">
+            <img src="pviivari2.webp" alt="Iivari 2">
         </div>
         <div class="about-text">
             <p>Palvelukseni Puolustusvoimissa oli unelma, jota en olisi uskonut kokevani. Pääsin valtakunnallisessa erityistehtävähaussa <strong>Combat Cameraan</strong>.</p>
@@ -137,44 +151,38 @@
         </div>
     </div>
 
-    <!-- 6 isoa kuvaboksia – NYT OIKEAT COMCAM-KUVAT (comcam1.jpg → comcam19.jpeg) -->
+    <!-- 6 isoa kuvaboksia -->
     <div class="extra-gallery">
-        <!-- 1 -->
         <div class="extra-item">
-            <img src="comcam1.jpg" class="active">
-            <img src="comcam2.jpg">
-            <img src="comcam3.jpg">
+            <img src="comcam1.webp" class="active">
+            <img src="comcam2.webp">
+            <img src="comcam3.webp">
         </div>
-        <!-- 2 -->
         <div class="extra-item">
-            <img src="comcam4.jpg" class="active">
-            <img src="comcam5.jpg">
-            <img src="comcam6.jpg">
+            <img src="comcam4.webp" class="active">
+            <img src="comcam5.webp">
+            <img src="comcam6.webp">
         </div>
-        <!-- 3 -->
         <div class="extra-item">
-            <img src="comcam7.jpg" class="active">
-            <img src="comcam8.jpg">
-            <img src="comcam9.jpg">
+            <img src="comcam7.webp" class="active">
+            <img src="comcam8.webp">
+            <img src="comcam9.webp">
         </div>
-        <!-- 4 -->
         <div class="extra-item">
-            <img src="comcam10.jpg" class="active">
-            <img src="comcam11.jpg">
-            <img src="comcam12.jpg">
+            <img src="comcam10.webp" class="active">
+            <img src="comcam11.webp">
+            <img src="comcam12.webp">
         </div>
-        <!-- 5 -->
         <div class="extra-item">
-            <img src="comcam13.jpg" class="active">
-            <img src="comcam14.jpg">
-            <img src="comcam15.jpg">
+            <img src="comcam13.webp" class="active">
+            <img src="comcam14.webp">
+            <img src="comcam15.webp">
         </div>
-        <!-- 6 -->
         <div class="extra-item">
-            <img src="comcam16.jpg" class="active">
-            <img src="comcam17.jpg">
-            <img src="comcam18.jpg">
-            <img src="comcam19.jpeg">
+            <img src="comcam16.webp" class="active">
+            <img src="comcam17.webp">
+            <img src="comcam18.webp">
+            <img src="comcam19.webp">
         </div>
     </div>
 
@@ -208,16 +216,16 @@
         }, {threshold: 0.2});
         thumbnails.forEach(t => thumbObserver.observe(t));
 
-        // Iivari-kuvan vaihto (päivitetyt kuvat)
+        // Iivari-kuvan vaihto – 10 SEKUNTIA
         const aboutImgs = document.querySelectorAll('.about-image img');
         let aboutIdx = 0;
         setInterval(() => {
             aboutImgs[aboutIdx].classList.remove('active');
             aboutIdx = (aboutIdx + 1) % aboutImgs.length;
             aboutImgs[aboutIdx].classList.add('active');
-        }, 4000);
+        }, 10000);
 
-        // Isojen kuvaboksien vaihto
+        // Isojen kuvaboksien vaihto – KESTO ENNALLAAN (5s)
         document.querySelectorAll('.extra-item').forEach(box => {
             const imgs = box.querySelectorAll('img');
             let idx = 0;
