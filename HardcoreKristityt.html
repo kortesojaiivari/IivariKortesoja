@@ -68,13 +68,13 @@
         #open-tv {
             background-color: red;
             color: white;
-            border-radius: 50px; /* pyöreä */
+            border-radius: 50px;
             box-shadow: 0 0 20px red;
         }
         #change-channel {
             background-color: orange;
             color: black;
-            border-radius: 10px; /* suorakaide, mutta vähän pyöristetty */
+            border-radius: 10px;
             box-shadow: 0 0 15px yellow;
         }
         #close-tv {
@@ -84,8 +84,10 @@
             box-shadow: 0 0 10px white;
         }
         #tv-player {
-            display: none; /* aluksi piilossa */
+            display: none;
             margin: 30px auto;
+        }
+        #tv-player iframe {
             width: 860px;
             height: 515px;
         }
@@ -150,17 +152,11 @@
 
             <div id="tv-controls">
                 <button id="open-tv" class="tv-button">AVAA TELEVISIO</button>
-                <button id="change-channel" class="tv-button">VAIHDA KANAVA</button>
-                <button id="close-tv" class="tv-button">SAMMUTA TELEVISIO</button>
+                <button id="change-channel" class="tv-button" style="display:none;">VAIHDA KANAVA</button>
+                <button id="close-tv" class="tv-button" style="display:none;">SAMMUTA TELEVISIO</button>
             </div>
 
-            <div id="tv-player">
-                <iframe id="youtube-frame" width="860" height="515" 
-                        src="https://www.youtube.com/embed/89F0u54M8yY?autoplay=1&loop=1&playlist=89F0u54M8yY" 
-                        title="Hardcore TV" frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen></iframe>
-            </div>
+            <div id="tv-player"></div>
         </div>
 
         <div id="characters">
@@ -200,33 +196,91 @@
         }
         bounce();
 
-        // Televisio-nappulat
+        // Televisio-logiikka
         const player = document.getElementById('tv-player');
-        const frame = document.getElementById('youtube-frame');
         const openBtn = document.getElementById('open-tv');
         const changeBtn = document.getElementById('change-channel');
         const closeBtn = document.getElementById('close-tv');
 
-        let currentVideo = '89F0u54M8yY'; // ensimmäinen video
+        let currentChannel = 1; // 1 = pääkanava, 2 = toinen kanava
+
+        function createIframe(src) {
+            const iframe = document.createElement('iframe');
+            iframe.width = '860';
+            iframe.height = '515';
+            iframe.src = src;
+            iframe.title = 'Hardcore TV';
+            iframe.frameBorder = '0';
+            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+            iframe.allowFullscreen = true;
+            return iframe;
+        }
 
         openBtn.onclick = function() {
             player.style.display = 'block';
-            openBtn.style.display = 'none'; // piilota avaa-nappi kun televisiota katsotaan
+            player.innerHTML = ''; // tyhjennä
+
+            // Ensin käynnistysanimaatio 1,5 sekuntia
+            const startupSrc = 'https://www.youtube.com/embed/XH5g2G5qNhM?autoplay=1';
+            player.appendChild(createIframe(startupSrc));
+
+            setTimeout(() => {
+                player.innerHTML = '';
+                const mainSrc = 'https://www.youtube.com/embed/89F0u54M8yY?autoplay=1&loop=1&playlist=89F0u54M8yY';
+                player.appendChild(createIframe(mainSrc));
+            }, 1500);
+
+            // Piilota avaa-nappi, näytä muut
+            openBtn.style.display = 'none';
+            changeBtn.style.display = 'inline-block';
+            closeBtn.style.display = 'inline-block';
+
+            currentChannel = 1;
         };
 
         changeBtn.onclick = function() {
-            if (currentVideo === '89F0u54M8yY') {
-                currentVideo = 'nytIYJL0Vr0';
-                frame.src = 'https://www.youtube.com/embed/nytIYJL0Vr0?autoplay=1&loop=1&playlist=nytIYJL0Vr0';
+            player.innerHTML = '';
+
+            let glitchSrc, targetSrc, targetPlaylist;
+
+            if (currentChannel === 1) {
+                glitchSrc = 'https://www.youtube.com/embed/0JYFkMeKupQ?autoplay=1';
+                targetSrc = 'nytIYJL0Vr0';
+                targetPlaylist = 'nytIYJL0Vr0';
+                currentChannel = 2;
             } else {
-                currentVideo = '89F0u54M8yY';
-                frame.src = 'https://www.youtube.com/embed/89F0u54M8yY?autoplay=1&loop=1&playlist=89F0u54M8yY';
+                glitchSrc = 'https://www.youtube.com/embed/0JYFkMeKupQ?autoplay=1';
+                targetSrc = '89F0u54M8yY';
+                targetPlaylist = '89F0u54M8yY';
+                currentChannel = 1;
             }
+
+            // Ensin glitch 1 sekunti
+            player.appendChild(createIframe(glitchSrc));
+
+            setTimeout(() => {
+                player.innerHTML = '';
+                const finalSrc = `https://www.youtube.com/embed/${targetSrc}?autoplay=1&loop=1&playlist=${targetPlaylist}`;
+                player.appendChild(createIframe(finalSrc));
+            }, 1000);
         };
 
         closeBtn.onclick = function() {
-            player.style.display = 'none';
-            openBtn.style.display = 'inline-block'; // näytä avaa-nappi uudestaan
+            player.innerHTML = '';
+
+            // Sammutusvideo
+            const shutdownSrc = 'https://www.youtube.com/embed/ip9tOFOnHRs?autoplay=1';
+            player.appendChild(createIframe(shutdownSrc));
+
+            setTimeout(() => {
+                player.style.display = 'none';
+                player.innerHTML = '';
+
+                // Palauta napit alkutilaan
+                openBtn.style.display = 'inline-block';
+                changeBtn.style.display = 'none';
+                closeBtn.style.display = 'none';
+            }, 3000); // anna sammutusvideon pyöriä hetki ennen piilotusta
         };
     </script>
 </body>
