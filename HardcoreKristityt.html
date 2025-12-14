@@ -87,9 +87,11 @@
             display: none;
             margin: 30px auto;
         }
+        #tv-player video,
         #tv-player iframe {
             width: 860px;
             height: 515px;
+            display: block;
         }
         .character {
             background-color: #111;
@@ -204,6 +206,15 @@
 
         let currentChannel = 1; // 1 = pääkanava, 2 = toinen kanava
 
+        function createVideo(src) {
+            const video = document.createElement('video');
+            video.src = src;
+            video.autoplay = true;
+            video.muted = false; // äänet päälle, jos mov-tiedostoissa on ääni
+            video.playsInline = true;
+            return video;
+        }
+
         function createIframe(src) {
             const iframe = document.createElement('iframe');
             iframe.width = '860';
@@ -218,19 +229,20 @@
 
         openBtn.onclick = function() {
             player.style.display = 'block';
-            player.innerHTML = ''; // tyhjennä
+            player.innerHTML = '';
 
-            // Ensin käynnistysanimaatio 1,5 sekuntia
-            const startupSrc = 'https://www.youtube.com/embed/XH5g2G5qNhM?autoplay=1';
-            player.appendChild(createIframe(startupSrc));
+            // Ensin TVALKU.mov
+            const startupVideo = createVideo('TVALKU.mov');
+            player.appendChild(startupVideo);
 
+            // Odota että video loppuu tai käytä kiinteää aikaa (esim. jos tiedät pituuden)
+            // Tässä käytetään kiinteää 2000ms, korvaa oikealla pituudella jos tiedät
             setTimeout(() => {
                 player.innerHTML = '';
                 const mainSrc = 'https://www.youtube.com/embed/89F0u54M8yY?autoplay=1&loop=1&playlist=89F0u54M8yY';
                 player.appendChild(createIframe(mainSrc));
-            }, 1500);
+            }, 2000); // muuta tämä TVALKU.mov pituuden mukaan (ms)
 
-            // Piilota avaa-nappi, näytä muut
             openBtn.style.display = 'none';
             changeBtn.style.display = 'inline-block';
             closeBtn.style.display = 'inline-block';
@@ -241,46 +253,44 @@
         changeBtn.onclick = function() {
             player.innerHTML = '';
 
-            let glitchSrc, targetSrc, targetPlaylist;
-
-            if (currentChannel === 1) {
-                glitchSrc = 'https://www.youtube.com/embed/0JYFkMeKupQ?autoplay=1';
-                targetSrc = 'nytIYJL0Vr0';
-                targetPlaylist = 'nytIYJL0Vr0';
-                currentChannel = 2;
-            } else {
-                glitchSrc = 'https://www.youtube.com/embed/0JYFkMeKupQ?autoplay=1';
-                targetSrc = '89F0u54M8yY';
-                targetPlaylist = '89F0u54M8yY';
-                currentChannel = 1;
-            }
-
-            // Ensin glitch 1 sekunti
-            player.appendChild(createIframe(glitchSrc));
+            // Ensin TVVAIHTO.mov
+            const switchVideo = createVideo('TVVAIHTO.mov');
+            player.appendChild(switchVideo);
 
             setTimeout(() => {
                 player.innerHTML = '';
+
+                let targetSrc, targetPlaylist;
+                if (currentChannel === 1) {
+                    targetSrc = 'nytIYJL0Vr0';
+                    targetPlaylist = 'nytIYJL0Vr0';
+                    currentChannel = 2;
+                } else {
+                    targetSrc = '89F0u54M8yY';
+                    targetPlaylist = '89F0u54M8yY';
+                    currentChannel = 1;
+                }
+
                 const finalSrc = `https://www.youtube.com/embed/${targetSrc}?autoplay=1&loop=1&playlist=${targetPlaylist}`;
                 player.appendChild(createIframe(finalSrc));
-            }, 1000);
+            }, 1500); // muuta tämä TVVAIHTO.mov pituuden mukaan
         };
 
         closeBtn.onclick = function() {
             player.innerHTML = '';
 
-            // Sammutusvideo
-            const shutdownSrc = 'https://www.youtube.com/embed/ip9tOFOnHRs?autoplay=1';
-            player.appendChild(createIframe(shutdownSrc));
+            // Ensin TVSAMMUU.mov
+            const shutdownVideo = createVideo('TVSAMMUU.mov');
+            player.appendChild(shutdownVideo);
 
             setTimeout(() => {
                 player.style.display = 'none';
                 player.innerHTML = '';
 
-                // Palauta napit alkutilaan
                 openBtn.style.display = 'inline-block';
                 changeBtn.style.display = 'none';
                 closeBtn.style.display = 'none';
-            }, 3000); // anna sammutusvideon pyöriä hetki ennen piilotusta
+            }, 3000); // muuta tämä TVSAMMUU.mov pituuden mukaan + vähän ekstraa
         };
     </script>
 </body>
