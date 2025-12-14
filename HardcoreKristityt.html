@@ -7,12 +7,11 @@
         body {
             background-color: black;
             color: lime;
-            font-family: Impact, sans-serif; /* koko sivu Impact */
+            font-family: Impact, sans-serif;
             text-align: center;
             overflow: hidden;
             letter-spacing: 1px;
             margin: 0;
-            min-height: 100vh;
         }
         h1 {
             font-size: 60px;
@@ -20,19 +19,18 @@
             animation: flash 1.5s infinite;
         }
         @keyframes flash {
-            0% { color: red; }
-            20% { color: yellow; }
-            40% { color: cyan; }
-            60% { color: magenta; }
-            80% { color: lime; }
-            100% { color: red; }
+            0% { color: red; text-shadow: 0 0 20px yellow; }
+            20% { color: yellow; text-shadow: 0 0 20px cyan; }
+            40% { color: cyan; text-shadow: 0 0 20px magenta; }
+            60% { color: magenta; text-shadow: 0 0 20px lime; }
+            80% { color: lime; text-shadow: 0 0 20px red; }
+            100% { color: red; text-shadow: 0 0 20px yellow; }
         }
         #bouncing-image {
             position: absolute;
             width: 120px;
             height: 120px;
             pointer-events: none;
-            z-index: 10;
         }
         #content {
             position: relative;
@@ -44,102 +42,63 @@
             padding: 20px;
             margin: 40px auto;
             width: 80%;
-            max-width: 1000px;
             border: 5px dashed yellow;
         }
         #tv-section {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
             margin: 50px auto;
-            width: 100%;
-            max-width: 1400px;
-            gap: 60px;
-            flex-wrap: wrap;
-        }
-        #tv-container {
-            flex: 1;
-            min-width: 860px;
+            width: 90%;
         }
         #tv-title {
             font-size: 60px;
             color: yellow;
+            text-shadow: 0 0 15px red;
             margin-bottom: 20px;
+        }
+        #tv-controls {
+            margin: 20px 0;
+        }
+        .tv-button {
+            font-family: Impact, sans-serif;
+            font-size: 28px;
+            padding: 15px 30px;
+            margin: 0 15px;
+            cursor: pointer;
+            border: none;
+        }
+        #open-tv {
+            background-color: red;
+            color: white;
+            border-radius: 50px;
+            box-shadow: 0 0 20px red;
+        }
+        #change-channel {
+            background-color: orange;
+            color: black;
+            border-radius: 10px;
+            box-shadow: 0 0 15px yellow;
+        }
+        #close-tv {
+            background-color: #333;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px white;
         }
         #tv-player {
             display: none;
-            margin: 0 auto;
+            margin: 30px auto;
         }
         #tv-player video,
         #tv-player iframe {
             width: 860px;
             height: 515px;
             display: block;
-            margin: 0 auto;
-            border: 20px solid #333;
-            border-top-width: 40px;
-            border-bottom-width: 50px;
-            border-radius: 10px;
-            background-color: #000;
-            box-sizing: border-box;
-        }
-        /* Kaukosäädin – vain täällä Arial */
-        #remote-control {
-            font-family: Arial, sans-serif; /* vain kaukosäätimessä Arial */
-            background: linear-gradient(#444, #222);
-            border: 8px solid #555;
-            border-radius: 25px;
-            padding: 25px 20px;
-            width: 260px;
-            box-sizing: border-box;
-        }
-        #remote-title {
-            color: red;
-            font-size: 32px;
-            margin-bottom: 25px;
-            font-weight: bold;
-        }
-        .remote-button {
-            font-family: Arial, sans-serif;
-            font-size: 18px;
-            font-weight: bold;
-            padding: 12px;
-            margin: 8px 0;
-            width: 100%;
-            cursor: pointer;
-            border: 3px solid #666;
-            border-radius: 8px;
-            background: #333;
-            color: #fff;
-            transition: all 0.2s;
-        }
-        .remote-button:active {
-            transform: translateY(2px);
-            background: #222;
-        }
-        /* Toimivat napit */
-        #remote-power { background: red; color: white; }
-        #remote-channel { background: orange; color: black; }
-        #remote-off { background: #111; color: #ccc; }
-        /* Fake-napit */
-        .fake-button {
-            background: #444;
-            color: #aaa;
-        }
-        #characters {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin: 80px auto 50px;
-            width: 90%;
-            max-width: 1200px;
-            gap: 20px;
         }
         .character {
             background-color: #111;
             border: 4px solid yellow;
             padding: 20px;
             width: 300px;
+            box-shadow: 0 0 15px red;
         }
         .character img {
             width: 200px;
@@ -155,6 +114,14 @@
         .character p {
             color: white;
             font-size: 18px;
+        }
+        #characters {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 50px auto;
+            width: 90%;
+            gap: 20px;
         }
         ul {
             list-style-type: square;
@@ -176,43 +143,22 @@
             <ul>
                 <li>Viime sunnuntaina kirkossa oli tosi hardcore saarna! Kaikki huusivat amen!</li>
                 <li>Uusi rukousryhmä aloittaa tiistaisin. Tule mukaan jos uskallat!</li>
-                <li>Raamattipiiri meni överiksi eilen, keskusteltiin myöhään yöhön asti.</li>
+                <li>Raamattupiiri meni överiksi eilen, keskusteltiin myöhään yöhön asti.</li>
                 <li>Seurakunnan grilli-ilta perjantaina – tuo oma pihvi ja hardcore asenne!</li>
                 <li>Varoitus: Paholainen yrittää sabotoida nettisivujamme, mutta Jeesus voittaa!</li>
             </ul>
         </div>
 
         <div id="tv-section">
-            <div id="tv-container">
-                <h2 id="tv-title">TELEVISIO</h2>
-                <div id="tv-player"></div>
+            <h2 id="tv-title">TELEVISIO</h2>
+
+            <div id="tv-controls">
+                <button id="open-tv" class="tv-button">AVAA TELEVISIO</button>
+                <button id="change-channel" class="tv-button" style="display:none;">VAIHDA KANAVA</button>
+                <button id="close-tv" class="tv-button" style="display:none;">SAMMUTA TELEVISIO</button>
             </div>
 
-            <!-- Kaukosäädin -->
-            <div id="remote-control">
-                <div id="remote-title">KAUKOSÄÄDIN</div>
-                
-                <button id="remote-power" class="remote-button">POWER ON</button>
-                
-                <button class="remote-button fake-button">1</button>
-                <button class="remote-button fake-button">2</button>
-                <button class="remote-button fake-button">3</button>
-                <button class="remote-button fake-button">4</button>
-                <button class="remote-button fake-button">5</button>
-                <button class="remote-button fake-button">6</button>
-                <button class="remote-button fake-button">7</button>
-                <button class="remote-button fake-button">8</button>
-                <button class="remote-button fake-button">9</button>
-                <button class="remote-button fake-button">0</button>
-                
-                <button id="remote-channel" class="remote-button" style="display:none;">VAIHDA KANAVA</button>
-                
-                <button class="remote-button fake-button">VOL +</button>
-                <button class="remote-button fake-button">VOL -</button>
-                <button class="remote-button fake-button">MUTE</button>
-                
-                <button id="remote-off" class="remote-button" style="display:none;">POWER OFF</button>
-            </div>
+            <div id="tv-player"></div>
         </div>
 
         <div id="characters">
@@ -254,17 +200,17 @@
 
         // Televisio-logiikka
         const player = document.getElementById('tv-player');
-        const powerOnBtn = document.getElementById('remote-power');
-        const channelBtn = document.getElementById('remote-channel');
-        const powerOffBtn = document.getElementById('remote-off');
+        const openBtn = document.getElementById('open-tv');
+        const changeBtn = document.getElementById('change-channel');
+        const closeBtn = document.getElementById('close-tv');
 
-        let currentChannel = 1;
+        let currentChannel = 1; // 1 = pääkanava, 2 = toinen kanava
 
         function createVideo(src) {
             const video = document.createElement('video');
             video.src = src;
             video.autoplay = true;
-            video.muted = false;
+            video.muted = false; // äänet päälle, jos mov-tiedostoissa on ääni
             video.playsInline = true;
             return video;
         }
@@ -281,29 +227,33 @@
             return iframe;
         }
 
-        powerOnBtn.onclick = function() {
+        openBtn.onclick = function() {
             player.style.display = 'block';
             player.innerHTML = '';
 
+            // Ensin TVALKU.mov
             const startupVideo = createVideo('TVALKU.mov');
             player.appendChild(startupVideo);
 
+            // Odota että video loppuu tai käytä kiinteää aikaa (esim. jos tiedät pituuden)
+            // Tässä käytetään kiinteää 2000ms, korvaa oikealla pituudella jos tiedät
             setTimeout(() => {
                 player.innerHTML = '';
                 const mainSrc = 'https://www.youtube.com/embed/89F0u54M8yY?autoplay=1&loop=1&playlist=89F0u54M8yY';
                 player.appendChild(createIframe(mainSrc));
-            }, 2000);
+            }, 2000); // muuta tämä TVALKU.mov pituuden mukaan (ms)
 
-            powerOnBtn.style.display = 'none';
-            channelBtn.style.display = 'block';
-            powerOffBtn.style.display = 'block';
+            openBtn.style.display = 'none';
+            changeBtn.style.display = 'inline-block';
+            closeBtn.style.display = 'inline-block';
 
             currentChannel = 1;
         };
 
-        channelBtn.onclick = function() {
+        changeBtn.onclick = function() {
             player.innerHTML = '';
 
+            // Ensin TVVAIHTO.mov
             const switchVideo = createVideo('TVVAIHTO.mov');
             player.appendChild(switchVideo);
 
@@ -323,12 +273,13 @@
 
                 const finalSrc = `https://www.youtube.com/embed/${targetSrc}?autoplay=1&loop=1&playlist=${targetPlaylist}`;
                 player.appendChild(createIframe(finalSrc));
-            }, 1500);
+            }, 1500); // muuta tämä TVVAIHTO.mov pituuden mukaan
         };
 
-        powerOffBtn.onclick = function() {
+        closeBtn.onclick = function() {
             player.innerHTML = '';
 
+            // Ensin TVSAMMUU.mov
             const shutdownVideo = createVideo('TVSAMMUU.mov');
             player.appendChild(shutdownVideo);
 
@@ -336,10 +287,10 @@
                 player.style.display = 'none';
                 player.innerHTML = '';
 
-                powerOnBtn.style.display = 'block';
-                channelBtn.style.display = 'none';
-                powerOffBtn.style.display = 'none';
-            }, 3000);
+                openBtn.style.display = 'inline-block';
+                changeBtn.style.display = 'none';
+                closeBtn.style.display = 'none';
+            }, 3000); // muuta tämä TVSAMMUU.mov pituuden mukaan + vähän ekstraa
         };
     </script>
 </body>
