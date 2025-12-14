@@ -11,6 +11,7 @@
             text-align: center;
             overflow: hidden;
             letter-spacing: 1px;
+            margin: 0;
         }
         h1 {
             font-size: 60px;
@@ -29,19 +30,12 @@
             position: absolute;
             width: 120px;
             height: 120px;
-            animation: bounce 10s infinite linear;
             pointer-events: none;
-        }
-        @keyframes bounce {
-            0% { top: 0; left: 0; }
-            25% { top: 0; left: calc(100% - 120px); }
-            50% { top: calc(100% - 120px); left: calc(100% - 120px); }
-            75% { top: calc(100% - 120px); left: 0; }
-            100% { top: 0; left: 0; }
         }
         #content {
             position: relative;
             z-index: 1;
+            padding: 20px;
         }
         #news {
             background-color: purple;
@@ -50,17 +44,50 @@
             width: 80%;
             border: 5px dashed yellow;
         }
-        #tv {
-            margin: 40px auto;
-            width: 80%;
-        }
-        #characters {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
+        #tv-section {
             margin: 50px auto;
             width: 90%;
-            gap: 20px;
+        }
+        #tv-title {
+            font-size: 60px;
+            color: yellow;
+            text-shadow: 0 0 15px red;
+            margin-bottom: 20px;
+        }
+        #tv-controls {
+            margin: 20px 0;
+        }
+        .tv-button {
+            font-family: Impact, sans-serif;
+            font-size: 28px;
+            padding: 15px 30px;
+            margin: 0 15px;
+            cursor: pointer;
+            border: none;
+        }
+        #open-tv {
+            background-color: red;
+            color: white;
+            border-radius: 50px; /* pyöreä */
+            box-shadow: 0 0 20px red;
+        }
+        #change-channel {
+            background-color: orange;
+            color: black;
+            border-radius: 10px; /* suorakaide, mutta vähän pyöristetty */
+            box-shadow: 0 0 15px yellow;
+        }
+        #close-tv {
+            background-color: #333;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px white;
+        }
+        #tv-player {
+            display: none; /* aluksi piilossa */
+            margin: 30px auto;
+            width: 860px;
+            height: 515px;
         }
         .character {
             background-color: #111;
@@ -83,6 +110,14 @@
         .character p {
             color: white;
             font-size: 18px;
+        }
+        #characters {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 50px auto;
+            width: 90%;
+            gap: 20px;
         }
         ul {
             list-style-type: square;
@@ -110,34 +145,47 @@
             </ul>
         </div>
 
-        <div id="tv">
-            <h2>TELEVISIO</h2>
-            <iframe width="860" height="515" src="https://www.youtube.com/embed/89F0u54M8yY?autoplay=1&loop=1&playlist=89F0u54M8yY" title="Hardcore TV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div id="tv-section">
+            <h2 id="tv-title">TELEVISIO</h2>
+
+            <div id="tv-controls">
+                <button id="open-tv" class="tv-button">AVAA TELEVISIO</button>
+                <button id="change-channel" class="tv-button">VAIHDA KANAVA</button>
+                <button id="close-tv" class="tv-button">SAMMUTA TELEVISIO</button>
+            </div>
+
+            <div id="tv-player">
+                <iframe id="youtube-frame" width="860" height="515" 
+                        src="https://www.youtube.com/embed/89F0u54M8yY?autoplay=1&loop=1&playlist=89F0u54M8yY" 
+                        title="Hardcore TV" frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
+            </div>
         </div>
 
         <div id="characters">
             <div class="character">
                 <img src="https://via.placeholder.com/200x200/000000/00FF00?text=Kasper" alt="Kasper">
                 <h3>Kasper</h3>
-                <p>Seurakunnan nuorin ja villiin jäsen. Rukoilee aina täysillä ja laulaa ylistyslauluja niin kovaa että katto värisee. Ei pelkää ketään paitsi ehkä paholaista vähän.</p>
+                <p>Seurakunnan nuorin ja villiin jäsen. Rukoilee aina täysillä ja laulaa ylistyslauluja niin kovaa että katto värisee.</p>
             </div>
 
             <div class="character">
                 <img src="https://via.placeholder.com/200x200/000000/FF00FF?text=Iivari" alt="Iivari">
                 <h3>Iivari</h3>
-                <p>Raamatun tietäjä numero yksi. Muistaa ulkoa koko Uuden testamentin ja siteeraa sitä joka tilanteessa. Hardcore-rukoilija joka polvistuu missä vaan.</p>
+                <p>Raamatun tietäjä numero yksi. Muistaa ulkoa koko Uuden testamentin ja siteeraa sitä joka tilanteessa.</p>
             </div>
 
             <div class="character">
                 <img src="https://via.placeholder.com/200x200/000000/FFFF00?text=Jerry" alt="Jerry">
                 <h3>Jerry</h3>
-                <p>Seurakunnan kitaristi ja saarnamies. Soittaa ylistysmusiikkia niin lujaa että naapurit valittaa. Jeesuksen soturi täysillä 24/7!</p>
+                <p>Seurakunnan kitaristi ja saarnamies. Soittaa ylistysmusiikkia niin lujaa että naapurit valittaa.</p>
             </div>
         </div>
     </div>
 
     <script>
-        // Parempi pomppiva liike JavaScriptillä
+        // Pomppiva Jurri
         const img = document.getElementById('bouncing-image');
         let x = 0, y = 0;
         let dx = 3, dy = 2.5;
@@ -151,6 +199,35 @@
             requestAnimationFrame(bounce);
         }
         bounce();
+
+        // Televisio-nappulat
+        const player = document.getElementById('tv-player');
+        const frame = document.getElementById('youtube-frame');
+        const openBtn = document.getElementById('open-tv');
+        const changeBtn = document.getElementById('change-channel');
+        const closeBtn = document.getElementById('close-tv');
+
+        let currentVideo = '89F0u54M8yY'; // ensimmäinen video
+
+        openBtn.onclick = function() {
+            player.style.display = 'block';
+            openBtn.style.display = 'none'; // piilota avaa-nappi kun televisiota katsotaan
+        };
+
+        changeBtn.onclick = function() {
+            if (currentVideo === '89F0u54M8yY') {
+                currentVideo = 'nytIYJL0Vr0';
+                frame.src = 'https://www.youtube.com/embed/nytIYJL0Vr0?autoplay=1&loop=1&playlist=nytIYJL0Vr0';
+            } else {
+                currentVideo = '89F0u54M8yY';
+                frame.src = 'https://www.youtube.com/embed/89F0u54M8yY?autoplay=1&loop=1&playlist=89F0u54M8yY';
+            }
+        };
+
+        closeBtn.onclick = function() {
+            player.style.display = 'none';
+            openBtn.style.display = 'inline-block'; // näytä avaa-nappi uudestaan
+        };
     </script>
 </body>
 </html>
