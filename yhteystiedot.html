@@ -35,39 +35,37 @@
         section{padding:100px 20px;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
         #contact{max-width:800px;margin:0 auto}
 
-        /* VAIHTUVA OTSIKKO – KORJATTU NÄKYMÄÄN (alkuopacity 1, slide up + fade) */
+        /* VAIHTUVA OTSIKKO – TÄYSIN KORJATTU: ENSIMMÄINEN NÄKYY HETI, SAMA SLIDE UP + FADE */
         #dynamic-title{
             position:relative;
-            height:80px;
+            height:100px;
             overflow:hidden;
-            display:flex;
-            align-items:center;
-            justify-content:center;
             margin-bottom:40px;
         }
         #dynamic-title span{
             position:absolute;
             width:100%;
-            text-align:center;
+            top:50%;
+            left:50%;
+            transform:translate(-50%, -50%) translateY(50px);
             font-size:clamp(2.5rem,8vw,3.5rem);
             opacity:0;
-            transform:translateY(50px);
             animation:slideUpFade 18s infinite;
         }
         #dynamic-title span:nth-child(1){
             opacity:1;
-            transform:translateY(0);
-            animation-delay:0s
+            transform:translate(-50%, -50%) translateY(0);
+            animation-delay:0s;
         }
         #dynamic-title span:nth-child(2){animation-delay:6s}
         #dynamic-title span:nth-child(3){animation-delay:12s}
 
         @keyframes slideUpFade{
-            0%{opacity:0;transform:translateY(50px)}
-            10%{opacity:1;transform:translateY(0)}
-            25%{opacity:1;transform:translateY(0)}
-            33%{opacity:0;transform:translateY(-50px)}
-            100%{opacity:0;transform:translateY(-50px)}
+            0%{opacity:0;transform:translate(-50%, -50%) translateY(50px)}
+            10%{opacity:1;transform:translate(-50%, -50%) translateY(0)}
+            25%{opacity:1;transform:translate(-50%, -50%) translateY(0)}
+            33%{opacity:0;transform:translate(-50%, -50%) translateY(-50px)}
+            100%{opacity:0;transform:translate(-50%, -50%) translateY(-50px)}
         }
 
         #contact p{font-size:1.4rem;margin:20px 0}
@@ -78,7 +76,7 @@
 
         @media(max-width:768px){
             nav a{margin:0 10px;font-size:1em}
-            #dynamic-title{height:60px}
+            #dynamic-title{height:80px}
             #contact p{font-size:1.2rem}
         }
     </style>
@@ -96,11 +94,11 @@
     </header>
 
     <section id="contact">
-        <h2 id="dynamic-title">
+        <div id="dynamic-title">
             <span>Ota yhteyttä</span>
             <span>Työskennellään yhdessä</span>
             <span>Keskustellaan projekteista</span>
-        </h2>
+        </div>
         <p>Sähköposti: <a href="mailto:example@email.com">example@email.com</a></p>
         <p>Puhelin: <a href="tel:+358405247918">040 5247918</a></p>
     </section>
