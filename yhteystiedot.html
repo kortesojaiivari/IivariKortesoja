@@ -35,7 +35,39 @@
         section{padding:100px 20px;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
         #contact{max-width:1200px;margin:0 auto}
 
-        h2{font-size:3.5em;margin-bottom:20px;text-shadow:0 0 30px rgba(0,0,0,.8)}
+        /* TÄYSIN SAMA SLIDE UP + FADE ANIMAATIO KUIN ETUSIVULLA */
+        #dynamic-title{
+            position:relative;
+            height:100px;
+            overflow:hidden;
+            margin-bottom:20px;
+        }
+        #dynamic-title span{
+            position:absolute;
+            width:100%;
+            top:0;
+            left:0;
+            font-size:3.5em;
+            text-shadow:0 0 30px rgba(0,0,0,.8);
+            opacity:0;
+            transform:translateY(50px);
+            animation:slideUpFade 18s infinite;
+        }
+        #dynamic-title span:nth-child(1){
+            opacity:1;
+            transform:translateY(0);
+            animation-delay:0s;
+        }
+        #dynamic-title span:nth-child(2){animation-delay:6s}
+        #dynamic-title span:nth-child(3){animation-delay:12s}
+
+        @keyframes slideUpFade{
+            0%{opacity:0;transform:translateY(50px)}
+            10%{opacity:1;transform:translateY(0)}
+            25%{opacity:1;transform:translateY(0)}
+            33%{opacity:0;transform:translateY(-50px)}
+            100%{opacity:0;transform:translateY(-50px)}
+        }
 
         #contact p{font-size:1.3em;margin:15px 0}
         #contact a{color:#4ade80;transition:.3s}
@@ -45,7 +77,8 @@
 
         @media(max-width:768px){
             nav a{font-size:1em;margin:0 10px}
-            h2{font-size:2.5em}
+            #dynamic-title{height:80px}
+            #dynamic-title span{font-size:2.5em}
             #contact p{font-size:1.1em}
         }
     </style>
@@ -63,7 +96,11 @@
     </header>
 
     <section id="contact">
-        <h2>Ota yhteyttä</h2>
+        <div id="dynamic-title">
+            <span>Ota yhteyttä</span>
+            <span>Työskennellään yhdessä</span>
+            <span>Keskustellaan projekteista</span>
+        </div>
         <p>Sähköposti: <a href="mailto:example@email.com">example@email.com</a></p>
         <p>Puhelin: <a href="tel:+358405247918">040 5247918</a></p>
     </section>
@@ -72,26 +109,5 @@
         <p>© Iivari Kortesoja 2025 | Y-tunnus A38904</p>
     </footer>
 
-    <script>
-        // Dynaaminen otsikko – VANHA TOIMIVA VERSIO + PARANNETTU ANIMAATIO
-        const titles = ['Ota yhteyttä','Työskennellään yhdessä','Keskustellaan projekteista'];
-        let i = 0;
-        const titleEl = document.querySelector('#contact h2');
-
-        // Näytetään ensimmäinen heti
-        titleEl.textContent = titles[0];
-        titleEl.style.opacity = 1;
-
-        setInterval(() => {
-            titleEl.style.opacity = 0;
-            titleEl.style.transform = 'translateY(20px)';
-            setTimeout(() => {
-                i = (i + 1) % titles.length;
-                titleEl.textContent = titles[i];
-                titleEl.style.opacity = 1;
-                titleEl.style.transform = 'translateY(0)';
-            }, 600);
-        }, 3000);
-    </script>
 </body>
 </html>
