@@ -85,6 +85,18 @@
         #contact a{color:#4ade80;text-decoration:none;transition:.3s}
         #contact a:hover{text-decoration:underline}
 
+        /* LinkedIn-ikoni */
+        .linkedin-link{
+            display:inline-flex;
+            align-items:center;
+            gap:12px;
+        }
+        .linkedin-icon{
+            width:40px;
+            height:40px;
+            object-fit:contain;
+        }
+
         footer{background:#000;padding:40px 20px;text-align:center;font-size:1rem;border-top:1px solid #333}
 
         /* MOBIILI: Pienempi fontti ja vasemmalle tasattu teksti + portfolio 1x6 */
@@ -101,6 +113,10 @@
             }
             .portfolio-gallery{
                 grid-template-columns:1fr;
+            }
+            .linkedin-icon{
+                width:32px;
+                height:32px;
             }
         }
 
@@ -147,11 +163,11 @@
     <!-- PORTFOLIO: 3x2 TIETOKONEELLA, MOBIILISSA 1x6 -->
     <section id="portfolio">
         <div class="portfolio-gallery">
-            <div class="portfolio-item"><video autoplay muted loop playsinline><source src="Ruutu1.mov" type="video/quicktime"></video></div>
+            <div class="portfolio-item"><video autoplay muted loop playsinline poster="Ruutu1-poster.webp"><source src="Ruutu1.mp4" type="video/mp4"></video></div>
             <div class="portfolio-item"><img src="Ruutu2.webp" alt="Projekti"></div>
-            <div class="portfolio-item"><video autoplay muted loop playsinline><source src="Ruutu3.mov" type="video/quicktime"></video></div>
+            <div class="portfolio-item"><video autoplay muted loop playsinline poster="Ruutu3-poster.webp"><source src="Ruutu3.mp4" type="video/mp4"></video></div>
             <div class="portfolio-item"><img src="Ruutu4.webp" alt="Projekti"></div>
-            <div class="portfolio-item"><video autoplay muted loop playsinline><source src="Ruutu5.mov" type="video/quicktime"></video></div>
+            <div class="portfolio-item"><video autoplay muted loop playsinline poster="Ruutu5-poster.webp"><source src="Ruutu5.mp4" type="video/mp4"></video></div>
             <div class="portfolio-item"><img src="Ruutu6.webp" alt="Projekti"></div>
         </div>
 
@@ -168,8 +184,8 @@
                 Tuotantokalustoni on modernia ja mahdollistaa teknisesti korkealaatuisen materiaalin tuottamisen. Pääkameroina ovat Nikon Z 6II- ja Z 7II -järjestelmäkamerat sekä RED Komodo 6K -elokuvakamera. Lisäkameroina GoPro-actionkamerat villeihin kulmiin.
             </p>
             <div class="equipment-grid">
-                <div class="media-item"><video autoplay muted loop playsinline><source src="nikon_zr_demo.mov" type="video/quicktime"></video></div>
-                <div class="media-item"><video autoplay muted loop playsinline><source src="gopro_action.mov" type="video/quicktime"></video></div>
+                <div class="media-item"><video autoplay muted loop playsinline poster="nikon-poster.webp"><source src="nikon_zr_demo.mp4" type="video/mp4"></video></div>
+                <div class="media-item"><video autoplay muted loop playsinline poster="gopro-poster.webp"><source src="gopro_action.mp4" type="video/mp4"></video></div>
                 <div class="media-item"><img src="nikon_zr_camera.webp" alt="Nikon ZR"></div>
             </div>
         </div>
@@ -179,8 +195,8 @@
                 Käytössäni on myös aitoja 2000-luvun alun videokameroita (esim. Sony Handycam DCR-TRV900E), joilla tallennetaan nostalgista ja aitonaista materiaalia. Näissä laitteissa on elektroninen ja digitaalinen zoom sekä infrapunakuvaus (NightShot), jolla voi kuvata pimeässäkin.
             </div>
             <div class="retro-video">
-                <video autoplay muted loop playsinline>
-                    <source src="2000luvunkamera.mov" type="video/quicktime">
+                <video autoplay muted loop playsinline poster="retro-poster.webp">
+                    <source src="2000luvunkamera.mp4" type="video/mp4">
                 </video>
             </div>
         </div>
@@ -191,7 +207,12 @@
         <p>Ota yhteyttä ja keskustellaan tulevista projekteista!</p>
         <p>Email: <a href="mailto:esimerkki@email.com">esimerkki@email.com</a></p>
         <p>Puhelin: <a href="tel:+358123456789">+358 123 456 789</a></p>
-        <p><a href="https://www.linkedin.com/in/iivarikortesoja" target="_blank">LinkedIn-profiili</a></p>
+        <p class="linkedin-link">
+            <a href="https://www.linkedin.com/in/iivarikortesoja" target="_blank">
+                <img src="linkedin.webp" alt="LinkedIn" class="linkedin-icon">
+                LinkedIn-profiili
+            </a>
+        </p>
     </section>
 
     <footer>
