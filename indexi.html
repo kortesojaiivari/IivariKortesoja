@@ -68,15 +68,40 @@
 
         #services,#equipment{max-width:1200px;margin:0 auto 100px;text-align:center;padding:0 20px}
         #services h2,#equipment h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:30px}
-        #services h2{
+
+        /* PARANNETTU VAIHTUVA OTSIKKO – KESKITETTY, LOOPPAAVA, SLIDE UP + FADE */
+        #dynamic-title{
+            position:relative;
+            height:70px;
+            overflow:hidden;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+        #dynamic-title span{
+            position:absolute;
+            width:100%;
+            text-align:center;
             opacity:0;
-            animation:fadeInOut 21s infinite;
+            transform:translateY(50px);
+            animation:slideUpFade 21s infinite;
         }
-        @keyframes fadeInOut{
-            0%,100%{opacity:0}
-            10%,90%{opacity:1}
-            95%{opacity:0}
+        #dynamic-title span:nth-child(1){animation-delay:0s}
+        #dynamic-title span:nth-child(2){animation-delay:3s}
+        #dynamic-title span:nth-child(3){animation-delay:6s}
+        #dynamic-title span:nth-child(4){animation-delay:9s}
+        #dynamic-title span:nth-child(5){animation-delay:12s}
+        #dynamic-title span:nth-child(6){animation-delay:15s}
+        #dynamic-title span:nth-child(7){animation-delay:18s}
+
+        @keyframes slideUpFade{
+            0%{opacity:0;transform:translateY(50px)}
+            5%{opacity:1;transform:translateY(0)}
+            14%{opacity:1;transform:translateY(0)}
+            19%{opacity:0;transform:translateY(-50px)}
+            100%{opacity:0;transform:translateY(-50px)}
         }
+
         .service-text,#equipment p{font-size:1.3rem;color:#ddd;line-height:1.7;margin-bottom:60px;max-width:900px;margin-left:auto;margin-right:auto}
 
         .equipment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;max-width:1200px;margin:60px auto}
@@ -94,7 +119,7 @@
         #contact a{color:#4ade80;text-decoration:none;transition:.3s}
         #contact a:hover{text-decoration:underline}
 
-        /* LinkedIn-ikoni – VAIN KLIKKAAVA IKONI, EI TEKSTIÄ */
+        /* LinkedIn-ikoni – VAIN KLIKKAAVA IKONI */
         .linkedin-link{
             display:inline-block;
             margin-top:20px;
@@ -184,7 +209,15 @@
         </div>
 
         <div id="services">
-            <h2 id="dynamic-title">Yritys</h2>
+            <h2 id="dynamic-title">
+                <span>Yritys</span>
+                <span>Bändi</span>
+                <span>Järjestö</span>
+                <span>Yrittäjä</span>
+                <span>Tapahtuma</span>
+                <span>Hääpari</span>
+                <span>Valokuvaus</span>
+            </h2>
             <p class="service-text">
                 Tarvitsetko ammattimaista audiovisuaalista materiaalia? Toteutan laadukkaita, tehokkaita ja edullisia tuotantoja ympäri Suomea. Olipa kyseessä sosiaalisen median video, hääkuvaus, yritysvideo, haastattelu, musiikkivideo tai jotain ihan muuta.
             </p>
@@ -236,14 +269,6 @@
         new IntersectionObserver(e => e.forEach(en => en.isIntersecting ? bgVideo.play() : bgVideo.pause()), {threshold: 0.5})
             .observe(document.getElementById('home'));
 
-        // PARANNETTU VAIHTUVA OTSIKKO – NYT CSS-ANIMAATIOLLA (ei JS:ää tarvita)
-        const titles = ['Yritys','Bändi','Järjestö','Yrittäjä','Tapahtuma','Hääpari','Valokuvaus'];
-        let html = '';
-        titles.forEach((title, i) => {
-            html += `<span style="animation-delay:${i * 3}s">${title}</span>`;
-        });
-        document.getElementById('dynamic-title').innerHTML = html;
-
         // About-kuvakaruselli
         const slides = document.querySelectorAll('.about-slide');
         let current = 0;
@@ -253,27 +278,5 @@
             slides[current].classList.add('active');
         }, 4000);
     </script>
-    <style>
-        /* CSS-animaatio vaihtuvalle otsikolle – pehmeämpi ja tehokkaampi */
-        #dynamic-title{
-            position:relative;
-            height:60px;
-            overflow:hidden;
-        }
-        #dynamic-title span{
-            position:absolute;
-            width:100%;
-            text-align:center;
-            opacity:0;
-            animation:fadeCycle 21s infinite;
-        }
-        @keyframes fadeCycle{
-            0%{opacity:0;transform:translateY(20px)}
-            5%{opacity:1;transform:translateY(0)}
-            14%{opacity:1;transform:translateY(0)}
-            19%{opacity:0;transform:translateY(-20px)}
-            100%{opacity:0}
-        }
-    </style>
 </body>
 </html>
