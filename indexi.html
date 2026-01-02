@@ -68,15 +68,7 @@
 
         #services,#equipment{max-width:1200px;margin:0 auto 100px;text-align:center;padding:0 20px}
         #services h2,#equipment h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:30px}
-        #services h2{
-            opacity:0;
-            animation:fadeInOut 21s infinite;
-        }
-        @keyframes fadeInOut{
-            0%,100%{opacity:0}
-            10%,90%{opacity:1}
-            95%{opacity:0}
-        }
+
         .service-text,#equipment p{font-size:1.3rem;color:#ddd;line-height:1.7;margin-bottom:60px;max-width:900px;margin-left:auto;margin-right:auto}
 
         .equipment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;max-width:1200px;margin:60px auto}
@@ -87,14 +79,6 @@
         .retro-text{flex:1;min-width:300px;font-size:1.35rem;color:#e0e0e0;line-height:1.8}
         .retro-video{flex:1;min-width:300px;max-width:600px;position:relative;padding-bottom:56.25%;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.9)}
         #retro-camera video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
-
-        #contact{max-width:800px;margin:0 auto 100px;text-align:center;padding:80px 20px}
-        #contact h2{font-size:2.8rem;margin-bottom:30px}
-        #contact p{font-size:1.3rem;margin:15px 0}
-        #contact a{color:#4ade80;text-decoration:none;transition:.3s}
-        #contact a:hover{text-decoration:underline}
-
-        footer{background:#000;padding:40px 20px;text-align:center;font-size:1rem;border-top:1px solid #333}
 
         /* MOBIILI: Pienempi fontti ja vasemmalle tasattu teksti */
         @media(max-width:768px){
@@ -116,6 +100,23 @@
         @media(max-width:992px){
             .about-section,#retro-camera{flex-direction:column;text-align:center}
             .about-image-container,.retro-video{max-width:100%}
+        }
+
+        /* LinkedIn-ikoni – SOPIVA KOKO */
+        .linkedin-icon{
+            width:40px;
+            height:40px;
+            object-fit:contain;
+            transition:transform .3s ease;
+        }
+        .linkedin-icon:hover{
+            transform:scale(1.15);
+        }
+        @media(max-width:768px){
+            .linkedin-icon{
+                width:32px;
+                height:32px;
+            }
         }
     </style>
 </head>
@@ -200,7 +201,7 @@
         <h2>Yhteystiedot</h2>
         <p>Ota yhteyttä ja keskustellaan tulevista projekteista!</p>
         <p>Email: <a href="mailto:esimerkki@email.com">esimerkki@email.com</a></p>
-        <p>Puhelin: <a href="tel:+358123456789">+358 123 456 789</a></p>
+        <p>Puhelin: <a href="tel:+358405247918">040 524 7918</a></p>
         <p class="linkedin-link">
             <a href="https://www.linkedin.com/in/iivarikortesoja" target="_blank">
                 <img src="linkedin.webp" alt="LinkedIn" class="linkedin-icon">
@@ -209,7 +210,7 @@
     </section>
 
     <footer>
-        <p>© Iivari Kortesoja 2025 | Y-tunnus A38904</p>
+        <p>© Iivari Kortesoja 2026 | Y-tunnus A38904</p>
     </footer>
 
     <script>
@@ -218,10 +219,11 @@
         new IntersectionObserver(e => e.forEach(en => en.isIntersecting ? bgVideo.play() : bgVideo.pause()), {threshold: 0.5})
             .observe(document.getElementById('home'));
 
-        // Vaihtuva otsikko
+        // VAIHTUVA OTSIKKO – PALAUTETTU TOIMIVAKSI VANHAKSI VERSIOKSI
         const titles = ['Yritys','Bändi','Järjestö','Yrittäjä','Tapahtuma','Hääpari','Valokuvaus'];
         let index = 0;
         const titleEl = document.getElementById('dynamic-title');
+        titleEl.textContent = titles[0]; // Näytetään ensimmäinen heti
         setInterval(() => {
             titleEl.style.opacity = 0;
             setTimeout(() => {
