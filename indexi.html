@@ -160,7 +160,7 @@
         <div class="portfolio-gallery">
             <div class="portfolio-item"><video autoplay muted loop playsinline poster="Ruutu1-poster.webp"><source src="Ruutu1.mp4" type="video/mp4"></video></div>
             <div class="portfolio-item"><img src="Ruutu2.webp" alt="Projekti"></div>
-            <div class="portfolio-item"><img src="Ruutu3.webp" alt="Projekti"></div>
+            <div class="portfolio-item"><video autoplay muted loop playsinline poster="Ruutu3-poster.webp"><source src="Ruutu3.mp4" type="video/mp4"></video></div>
             <div class="portfolio-item"><img src="Ruutu4.webp" alt="Projekti"></div>
             <div class="portfolio-item"><video autoplay muted loop playsinline poster="Ruutu5-poster.webp"><source src="Ruutu5.mp4" type="video/mp4"></video></div>
             <div class="portfolio-item"><img src="Ruutu6.webp" alt="Projekti"></div>
@@ -219,11 +219,11 @@
         new IntersectionObserver(e => e.forEach(en => en.isIntersecting ? bgVideo.play() : bgVideo.pause()), {threshold: 0.5})
             .observe(document.getElementById('home'));
 
-        // VAIHTUVA OTSIKKO – PALAUTETTU TOIMIVAKSI VANHAKSI VERSIOKSI
+        // VAIHTUVA OTSIKKO – TOIMIVA VANHA VERSIO
         const titles = ['Yritys','Bändi','Järjestö','Yrittäjä','Tapahtuma','Hääpari','Valokuvaus'];
         let index = 0;
         const titleEl = document.getElementById('dynamic-title');
-        titleEl.textContent = titles[0]; // Näytetään ensimmäinen heti
+        titleEl.textContent = titles[0];
         setInterval(() => {
             titleEl.style.opacity = 0;
             setTimeout(() => {
