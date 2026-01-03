@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Puolustusvoimat & Combat Camera</title>
+    <title>Iivari Kortesoja</title>
 
     <!-- GOOGLE ANALYTICS 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
@@ -25,237 +25,58 @@
 
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
-        header{background:#000;padding:15px 20px;text-align:center;position:fixed;width:100%;top:0;z-index:1000;backdrop-filter:blur(10px)}
-        nav a{color:#fff;text-decoration:none;margin:0 15px;font-size:1.2em;position:relative;transition:.3s}
-        nav a:hover{color:#4ade80}
-        nav a::after{content:'';position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:0;height:2px;background:#4ade80;transition:width .3s}
-        nav a:hover::after{width:100%}
+        body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;overflow-x:hidden}
+        .container{max-width:600px;width:100%;padding:20px;text-align:center}
+        h1{font-size:clamp(2.5rem,8vw,4rem);margin-bottom:40px;text-shadow:0 0 30px rgba(0,0,0,.8)}
+        .links{list-style:none;display:flex;flex-direction:column;gap:20px}
+        .links a{display:flex;align-items:center;justify-content:center;padding:20px;border-radius:20px;background:#000;box-shadow:0 10px 30px rgba(0,0,0,.7);text-decoration:none;color:#fff;font-size:1.4rem;transition:.3s;position:relative;overflow:hidden;gap:15px}
+        .links a:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(0,0,0,.8);background:#333}
+        .links a::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:4px;background:#4ade80;transition:width .3s}
+        .links a:hover::after{width:80%}
+        .icon{width:50px;height:50px;object-fit:contain;flex-shrink:0}
+        .emoji-icon{font-size:2.5rem}
+        footer{margin-top:80px;font-size:1rem;color:#aaa}
 
-        #home{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
-        #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
-        #home h2{font-size:clamp(2.5rem,8vw,4.5rem);text-shadow:0 0 40px rgba(0,0,0,.9)}
-
-        .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:30px;max-width:1400px;margin:100px auto;padding:0 20px;position:relative}
-        .gallery-item{position:relative;height:220px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.7);cursor:pointer;opacity:0;transform:translateX(-80px);transition:all 0.7s cubic-bezier(0.25,0.46,0.45,0.94)}
-        .gallery-item.visible{opacity:1;transform:translateX(0)}
-        .gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .4s}
-        .gallery-item::after{
-            content:'▶';
-            position:absolute;
-            top:50%;left:50%;
-            transform:translate(-50%,-50%);
-            font-size:4.5rem;
-            color:#fff;
-            opacity:0;
-            transition:opacity .4s ease, transform .4s ease;
-            pointer-events:none;
-            text-shadow:0 0 20px rgba(0,0,0,.8);
+        @media(max-width:480px){
+            .links a{font-size:1.2rem;padding:18px;gap:12px}
+            .icon{width:40px;height:40px}
+            .emoji-icon{font-size:2rem}
         }
-        .gallery-item:hover::after{
-            opacity:0.9;
-            transform:translate(-50%,-50%) scale(1.2);
-        }
-        .gallery-item:hover img{opacity:0.7}
-        .gallery-item:hover{transform:scale(1.05)}
-
-        .recommendation{
-            grid-column: 1 / -1;
-            text-align:center;
-            margin-top:30px;
-            font-size:1.3rem;
-            font-weight:bold;
-            color:#fff;
-        }
-
-        .about-section{max-width:1200px;margin:120px auto;display:flex;align-items:center;gap:60px;flex-wrap:wrap;padding:0 20px}
-        .about-image{position:relative;flex:1;min-width:300px;max-width:500px;height:600px;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.9)}
-        .about-image img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
-        .about-image img.active{opacity:1}
-        .about-text{flex:1.5;min-width:300px;font-size:1.35rem;color:#e0e0e0;line-height:1.8}
-        .btw-text{margin-top:40px;font-size:1.2rem;color:#bbb}
-
-        /* MOBIILI: Teksti vasemmalle tasattu, pienempi fontti, ei täytä ruutua */
-        @media(max-width:768px){
-            .about-text{
-                font-size:1.1rem;
-                text-align:left;
-                padding:0 20px;
-            }
-            .btw-text{
-                font-size:1rem;
-            }
-            .recommendation{
-                font-size:1.1rem;
-                padding:0 20px;
-            }
-        }
-
-        .extra-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:30px;max-width:1400px;margin:140px auto 100px;padding:0 20px}
-        .extra-item{position:relative;height:420px;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.8)}
-        .extra-item img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease}
-        .extra-item img.active{opacity:1}
-
-        .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:2000;align-items:center;justify-content:center;padding:20px}
-        .modal-content{width:100%;max-width:1000px;aspect-ratio:16/9;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.8)}
-        .modal-content iframe{width:100%;height:100%;border:none}
-        .close{position:absolute;top:30px;right:40px;font-size:3rem;color:#fff;cursor:pointer;opacity:0.8}
-        .close:hover{opacity:1}
-
-        footer{background:#000;padding:40px 20px;text-align:center;border-top:1px solid #333;font-size:1rem}
-
-        @media(max-width:992px){.about-section{flex-direction:column;text-align:center}}
-        @media(max-width:600px){.gallery,.extra-gallery{grid-template-columns:1fr}}
     </style>
 </head>
 <body>
 
-    <header>
-        <nav>
-            <a href="indexi.html">Koti</a>
-            <a href="portfolio.html">Portfolio</a>
-            <a href="valokuvaus.html">Valokuvaus</a>
-            <a href="yhteystiedot.html">Yhteystiedot</a>
-            <a href="puolustusvoimat.html">Puolustusvoimat</a>
-        </nav>
-    </header>
-
-    <section id="home">
-        <video autoplay muted loop playsinline poster="pv-poster.webp">
-            <source src="tst_testi_footgae.mp4" type="video/mp4">
-        </video>
-        <h2>Puolustusvoimat & Combat Camera</h2>
-    </section>
-
-    <!-- Thumbnail-galleria + SUOSITTELUTEKSTI -->
-    <section class="gallery">
-        <div class="gallery-item" data-video-id="91wex5Lgolc"><img src="thumbnail1.webp" alt="1"></div>
-        <div class="gallery-item" data-video-id="GLP9QxcEbXk"><img src="thumbnail2.webp" alt="2"></div>
-        <div class="gallery-item" data-video-id="3AwEUP7o0qc"><img src="thumbnail3.webp" alt="3"></div>
-        <div class="gallery-item" data-video-id="F-2a-c5J2ms"><img src="thumbnail4.webp" alt="4"></div>
-        <div class="gallery-item" data-video-id="82S6evKfyPY"><img src="thumbnail5.webp" alt="5"></div>
-        <div class="gallery-item" data-video-id="AcLYbg2Jk9c"><img src="thumbnail6.webp" alt="Combat Camera Showreel 2025"></div>
-    </section>
-    <p class="recommendation">Suosittelen katsomaan Combat Camera Showreel 2025</p>
-
-    <!-- Esittelyosio – PVIIVARI KUVAT NYT .webp -->
-    <div class="about-section">
-        <div class="about-image">
-            <img src="IivariKortesoja1.webp" alt="Iivari 1" class="active">
-            <img src="pviivari2.webp" alt="Iivari 2">
-        </div>
-        <div class="about-text">
-            <p>Palvelukseni Puolustusvoimissa oli unelma, jota en olisi uskonut kokevani. Pääsin valtakunnallisessa erityistehtävähaussa <strong>Combat Cameraan</strong>.</p>
-            <p>Työskentely vaativissa olosuhteissa testasi fyysistä ja psyykkistä kestävyyttäni äärimmilleen. Viikot metsissä ympäri Suomea, kuvaten ja taistellen suomalaisten sekä ulkomaalaisten joukkojen kanssa harjoituksissa – olivat äärimmäisen palkitsevia ja opettavaisia.</p>
-            <p class="btw-text">Olen myös työskennellyt Puolustusvoimilla videotuotannoissa jo ennen varusmiespalvelustani. Tehtäviin on kuulunut kuvaamista, editointia ja videotuotantoja.</p>
-        </div>
+    <div class="container">
+        <h1>Iivari Kortesoja</h1>
+        <ul class="links">
+            <!-- 1. NETTISIVUT -->
+            <li><a href="https://iivarikortesoja.media" target="_blank">
+                <span class="emoji-icon">🌐</span>
+                Nettisivut (iivarikortesoja.media)
+            </a></li>
+            <!-- 2. YKSITYISTEN IHMISTEN VALOKUVAUS -->
+            <li><a href="valokuvaus.html">
+                <span class="emoji-icon">📸</span>
+                Yksityisten ihmisten valokuvaus
+            </a></li>
+            <!-- 3. LINKEDIN -->
+            <li><a href="https://www.linkedin.com/in/iivarikortesoja/" target="_blank">
+                <img src="linkedin.webp" alt="LinkedIn" class="icon">
+                LinkedIn
+            </a></li>
+            <!-- 4. INSTAGRAM -->
+            <li><a href="https://www.instagram.com/iivarikortesoja/" target="_blank">
+                <img src="instagram.png" alt="Instagram" class="icon">
+                Instagram
+            </a></li>
+            <!-- 5. YOUTUBE -->
+            <li><a href="https://studio.youtube.com/channel/UCnyz7Jyse_kNI745fRcTNDQ" target="_blank">
+                <img src="youtube.webp" alt="YouTube" class="icon">
+                YouTube
+            </a></li>
+        </ul>
+        <footer>© Iivari Kortesoja 2026</footer>
     </div>
 
-    <!-- 6 isoa kuvaboksia -->
-    <div class="extra-gallery">
-        <div class="extra-item">
-            <img src="comcam1.webp" class="active">
-            <img src="comcam2.webp">
-            <img src="comcam3.webp">
-        </div>
-        <div class="extra-item">
-            <img src="comcam4.webp" class="active">
-            <img src="comcam5.webp">
-            <img src="comcam6.webp">
-        </div>
-        <div class="extra-item">
-            <img src="comcam7.webp" class="active">
-            <img src="comcam8.webp">
-            <img src="comcam9.webp">
-        </div>
-        <div class="extra-item">
-            <img src="comcam10.webp" class="active">
-            <img src="comcam11.webp">
-            <img src="comcam12.webp">
-        </div>
-        <div class="extra-item">
-            <img src="comcam13.webp" class="active">
-            <img src="comcam14.webp">
-            <img src="comcam15.webp">
-        </div>
-        <div class="extra-item">
-            <img src="comcam16.webp" class="active">
-            <img src="comcam17.webp">
-            <img src="comcam18.webp">
-            <img src="comcam19.webp">
-        </div>
-    </div>
-
-    <!-- Modaali -->
-    <div class="modal" id="videoModal">
-        <span class="close">×</span>
-        <div class="modal-content">
-            <iframe id="youtubePlayer" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-    </div>
-
-    <footer>
-        <p>© Iivari Kortesoja 2025 | Y-tunnus A38904</p>
-    </footer>
-
-    <script>
-        // Taustavideo
-        const bgVideo = document.querySelector('#home video');
-        new IntersectionObserver(e => e.forEach(en => en.isIntersecting ? bgVideo.play() : bgVideo.pause()), {threshold: 0.5})
-            .observe(document.getElementById('home'));
-
-        // Thumbnail-animaatio
-        const thumbnails = document.querySelectorAll('.gallery-item');
-        const thumbObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry, i) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => entry.target.classList.add('visible'), i * 120);
-                    thumbObserver.unobserve(entry.target);
-                }
-            });
-        }, {threshold: 0.2});
-        thumbnails.forEach(t => thumbObserver.observe(t));
-
-        // Iivari-kuvan vaihto – 10 SEKUNTIA
-        const aboutImgs = document.querySelectorAll('.about-image img');
-        let aboutIdx = 0;
-        setInterval(() => {
-            aboutImgs[aboutIdx].classList.remove('active');
-            aboutIdx = (aboutIdx + 1) % aboutImgs.length;
-            aboutImgs[aboutIdx].classList.add('active');
-        }, 10000);
-
-        // Isojen kuvaboksien vaihto – KESTO ENNALLAAN (5s)
-        document.querySelectorAll('.extra-item').forEach(box => {
-            const imgs = box.querySelectorAll('img');
-            let idx = 0;
-            setInterval(() => {
-                imgs[idx].classList.remove('active');
-                idx = (idx + 1) % imgs.length;
-                imgs[idx].classList.add('active');
-            }, 5000);
-        });
-
-        // Modaali
-        const modal = document.getElementById('videoModal');
-        const iframe = document.getElementById('youtubePlayer');
-        const closeBtn = document.querySelector('.close');
-
-        document.querySelectorAll('.gallery-item').forEach(item => {
-            item.onclick = () => {
-                iframe.src = `https://www.youtube.com/embed/${item.dataset.videoId}?autoplay=1&rel=0`;
-                modal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            };
-        });
-
-        closeBtn.onclick = modal.onclick = () => {
-            modal.style.display = 'none';
-            iframe.src = '';
-            document.body.style.overflow = '';
-        };
-
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBtn.click(); });
-    </script>
 </body>
 </html>
