@@ -41,10 +41,12 @@
         .icon-wrapper{display:flex;align-items:center;gap:15px}
         .icon{width:2.5rem;height:2.5rem;object-fit:contain;flex-shrink:0}
         .emoji-icon{font-size:2.5rem;flex-shrink:0}
-        /* INSTAGRAM LÄHEMPÄNÄ TEKSTIÄ */
+        /* INSTAGRAM SUUREMPI */
         .instagram-wrapper{gap:8px}
-        /* LINKEDIN ENEMMÄN VÄLIÄ */
+        .instagram-icon{width:3.5rem;height:3.5rem}
+        /* LINKEDIN PIENEMPI */
         .linkedin-wrapper{gap:22px}
+        .linkedin-icon{width:2.2rem;height:2.2rem}
         footer{margin-top:80px;font-size:1rem;color:#aaa;opacity:0;animation:fadeIn .8s ease forwards;animation-delay:1.3s}
 
         @keyframes fadeInDown{
@@ -63,6 +65,8 @@
         @media(max-width:480px){
             .links a{font-size:1.2rem;padding:16px}
             .icon,.emoji-icon{width:2rem;height:2rem;font-size:2rem}
+            .instagram-icon{width:3rem;height:3rem}
+            .linkedin-icon{width:1.8rem;height:1.8rem}
             .instagram-wrapper{gap:6px}
             .linkedin-wrapper{gap:18px}
             .links{gap:15px}
@@ -88,14 +92,14 @@
                     Yksityisten ihmisten valokuvaus
                 </div>
             </a></li>
-            <!-- 3. LINKEDIN – ENEMMÄN VÄLIÄ -->
+            <!-- 3. LINKEDIN -->
             <li><a href="https://www.linkedin.com/in/iivarikortesoja/" target="_blank">
                 <div class="icon-wrapper linkedin-wrapper">
-                    <img src="linkedin.webp" alt="LinkedIn" class="icon">
+                    <img src="linkedin.webp" alt="LinkedIn" class="icon linkedin-icon">
                     LinkedIn
                 </div>
             </a></li>
-            <!-- 4. INSTAGRAM – LÄHEMPÄNÄ TEKSTIÄ -->
+            <!-- 4. INSTAGRAM – SUUREMPI IKONI -->
             <li><a href="https://www.instagram.com/iivarikortesoja/" target="_blank">
                 <div class="icon-wrapper instagram-wrapper">
                     <img src="instagram.png" alt="Instagram" class="icon instagram-icon">
