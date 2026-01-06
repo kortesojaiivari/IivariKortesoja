@@ -37,10 +37,10 @@
         #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
         #home h2{font-size:clamp(2.5rem,8vw,4.5rem);text-shadow:0 0 40px rgba(0,0,0,.9)}
 
-        /* VAIHTUVA OTSIKKO – TÄSMÄLLEEN SAMA KUIN PÄÄSIVULLA */
+        /* VAIHTUVA OTSIKKO – TÄSMÄLLEEN SAMA KUIN HINNOITTELU-OTSIKKO */
         #dynamic-subtitle{
             position:relative;
-            height:70px;
+            height:100px;
             overflow:hidden;
             display:flex;
             align-items:center;
@@ -51,6 +51,7 @@
             position:absolute;
             width:100%;
             text-align:center;
+            font-size:clamp(2.2rem,7vw,3.5rem);
             opacity:0;
             transform:translateY(50px);
             animation:slideUpFade 21s infinite;
@@ -65,7 +66,6 @@
         #dynamic-subtitle span:nth-child(4){animation-delay:9s}
         #dynamic-subtitle span:nth-child(5){animation-delay:12s}
         #dynamic-subtitle span:nth-child(6){animation-delay:15s}
-        #dynamic-subtitle span:nth-child(7){animation-delay:18s}
 
         @keyframes slideUpFade{
             0%{opacity:0;transform:translateY(50px)}
@@ -81,7 +81,7 @@
         .about-image img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
         .about-image img.active{opacity:1}
 
-        /* YLIN KUVAGALLERIA – 5x1, 1.5x ISOMPI */
+        /* PIENET VAIHTUVAT KUVARUUDUT (5x1) */
         .small-gallery{
             display:grid;
             grid-template-columns:repeat(auto-fit,minmax(225px,1fr));
@@ -152,6 +152,10 @@
             left:0;
             color:#4ade80;
         }
+        .pricing-box ul li strong{
+            font-size:1.4rem;
+            font-weight:bold;
+        }
         .pricing-box .quote{
             font-size:1.1rem;
             color:#aaa;
@@ -185,7 +189,12 @@
         }
         .contact-btn:hover{background:#5aff90;transform:scale(1.05)}
 
-        /* ALAOSAN ISOMMAT VAIHTUVAT KUVAT */
+        /* ALAOSAN ISOMMAT VAIHTUVAT KUVAT – SAMA TYYLI KUIN HINNOITTELU */
+        .large-gallery h2{
+            font-size:clamp(2.2rem,7vw,3.5rem);
+            margin-bottom:30px;
+            text-align:center;
+        }
         .large-gallery{
             display:grid;
             grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
@@ -246,7 +255,7 @@
         <h2>Valokuvaus</h2>
     </section>
 
-    <!-- VAIHTUVA OTSIKKO -->
+    <!-- VAIHTUVA OTSIKKO – TÄSMÄLLEEN SAMA KOKO JA TYYLI KUIN HINNOITTELU -->
     <div id="dynamic-subtitle">
         <span>Häät</span>
         <span>Valmistujaiset</span>
@@ -271,13 +280,13 @@
         </div>
     </div>
 
-    <!-- YLIN KUVAGALLERIA – 5x1 -->
+    <!-- PIENET VAIHTUVAT KUVARUUDUT – 5x1 -->
     <div class="small-gallery">
-        <!-- MUOKKAA TÄÄLTÄ RANGEA: minSmall = alaraja, maxSmall = yläraja (esim. minSmall = 10, maxSmall = 19) -->
+        <!-- MUOKKAA TÄÄLTÄ RANGEA -->
         <script>
-            const minSmall = 1;   // <-- MUOKKAA TÄTÄ (alaraja)
-            const maxSmall = 9;  // <-- MUOKKAA TÄTÄ (yläraja, kuinka monta kuvaa kansiossa on)
-            const smallCount = 5; // kuinka monta ruutua näytetään
+            const minSmall = 1;
+            const maxSmall = 19;
+            const smallCount = 5;
 
             for (let i = 0; i < smallCount; i++) {
                 const num = Math.floor(Math.random() * (maxSmall - minSmall + 1)) + minSmall;
@@ -339,13 +348,14 @@
         </div>
     </section>
 
-    <!-- ALAOSAN ISOMMAT VAIHTUVAT KUVAT -->
-    <div class="large-gallery">
-        <!-- MUOKKAA TÄÄLTÄ RANGEA: minLarge = alaraja, maxLarge = yläraja -->
+    <!-- ALAOSAN ISOMMAT VAIHTUVAT KUVAT – SAMA TYYLI KUIN HINNOITTELU -->
+    <section class="large-gallery">
+        <h2>Muotokuvat</h2>
+        <!-- MUOKKAA TÄÄLTÄ RANGEA -->
         <script>
-            const minLarge = 1;   // <-- MUOKKAA TÄTÄ (alaraja)
-            const maxLarge = 19;  // <-- MUOKKAA TÄTÄ (yläraja)
-            const largeCount = 6; // kuinka monta ruutua näytetään
+            const minLarge = 1;
+            const maxLarge = 42;
+            const largeCount = 6;
 
             for (let i = 0; i < largeCount; i++) {
                 const num = Math.floor(Math.random() * (maxLarge - minLarge + 1)) + minLarge;
@@ -358,7 +368,7 @@
                 `);
             }
         </script>
-    </div>
+    </section>
 
     <footer>
         <p>© Iivari Kortesoja 2025 | Y-tunnus A38904</p>
