@@ -81,10 +81,10 @@
         .about-image img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
         .about-image img.active{opacity:1}
 
-        /* PIENET VAIHTUVAT KUVARUUDUT – NYT 6x1, 1.5x ISOMPI */
+        /* YLIN KUVAGALLERIA – 5x1, 1.5x ISOMPI */
         .small-gallery{
             display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(225px,1fr)); /* 1.5x isompi min-width */
+            grid-template-columns:repeat(auto-fit,minmax(225px,1fr));
             gap:30px;
             max-width:1400px;
             margin:80px auto 60px;
@@ -92,7 +92,7 @@
         }
         .small-item{
             position:relative;
-            height:300px; /* 1.5x isompi korkeus */
+            height:300px;
             border-radius:20px;
             overflow:hidden;
             box-shadow:0 15px 50px rgba(0,0,0,.8);
@@ -107,7 +107,7 @@
         }
         .small-item img.active{opacity:1}
 
-        /* HINNOITTELU – YLÄRIVI TUNNIT, ALARIVI HÄÄPAKETTI + YHTEYS */
+        /* HINNOITTELU */
         #pricing{max-width:1400px;margin:80px auto;padding:0 20px}
         #pricing h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:20px;text-align:center}
         #pricing .disclaimer{font-size:1rem;color:#bbb;text-align:center;margin-bottom:40px}
@@ -271,38 +271,25 @@
         </div>
     </div>
 
-    <!-- PIENET VAIHTUVAT KUVARUUDUT – NYT 6x1, 1.5x ISOMPI -->
+    <!-- YLIN KUVAGALLERIA – 5x1 -->
     <div class="small-gallery">
-        <div class="small-item">
-            <img src="VALOKUVAUS/Valokuvaus1.webp" class="active">
-            <img src="VALOKUVAUS/Valokuvaus2.webp">
-            <img src="VALOKUVAUS/Valokuvaus3.webp">
-        </div>
-        <div class="small-item">
-            <img src="VALOKUVAUS/Valokuvaus4.webp" class="active">
-            <img src="VALOKUVAUS/Valokuvaus5.webp">
-            <img src="VALOKUVAUS/Valokuvaus6.webp">
-        </div>
-        <div class="small-item">
-            <img src="VALOKUVAUS/Valokuvaus7.webp" class="active">
-            <img src="VALOKUVAUS/Valokuvaus8.webp">
-            <img src="VALOKUVAUS/Valokuvaus9.webp">
-        </div>
-        <div class="small-item">
-            <img src="VALOKUVAUS/Valokuvaus10.webp" class="active">
-            <img src="VALOKUVAUS/Valokuvaus11.webp">
-            <img src="VALOKUVAUS/Valokuvaus12.webp">
-        </div>
-        <div class="small-item">
-            <img src="VALOKUVAUS/Valokuvaus13.webp" class="active">
-            <img src="VALOKUVAUS/Valokuvaus14.webp">
-            <img src="VALOKUVAUS/Valokuvaus15.webp">
-        </div>
-        <div class="small-item">
-            <img src="VALOKUVAUS/Valokuvaus16.webp" class="active">
-            <img src="VALOKUVAUS/Valokuvaus17.webp">
-            <img src="VALOKUVAUS/Valokuvaus18.webp">
-        </div>
+        <!-- MUOKKAA TÄÄLTÄ RANGEA: minSmall = alaraja, maxSmall = yläraja (esim. minSmall = 10, maxSmall = 19) -->
+        <script>
+            const minSmall = 1;   // <-- MUOKKAA TÄTÄ (alaraja)
+            const maxSmall = 9;  // <-- MUOKKAA TÄTÄ (yläraja, kuinka monta kuvaa kansiossa on)
+            const smallCount = 5; // kuinka monta ruutua näytetään
+
+            for (let i = 0; i < smallCount; i++) {
+                const num = Math.floor(Math.random() * (maxSmall - minSmall + 1)) + minSmall;
+                document.write(`
+                <div class="small-item">
+                    <img src="VALOKUVAUS/Valokuvaus${num}.webp" class="active">
+                    <img src="VALOKUVAUS/Valokuvaus${Math.floor(Math.random() * (maxSmall - minSmall + 1)) + minSmall}.webp">
+                    <img src="VALOKUVAUS/Valokuvaus${Math.floor(Math.random() * (maxSmall - minSmall + 1)) + minSmall}.webp">
+                </div>
+                `);
+            }
+        </script>
     </div>
 
     <!-- HINNOITTELU -->
@@ -354,36 +341,23 @@
 
     <!-- ALAOSAN ISOMMAT VAIHTUVAT KUVAT -->
     <div class="large-gallery">
-        <div class="large-item">
-            <img src="VALOKUVAUS/Valokuvaus25.webp" class="active">
-            <img src="VALOKUVAUS/Valokuvaus26.webp">
-            <img src="VALOKUVAUS/Valokuvaus27.webp">
-        </div>
-        <div class="large-item">
-            <img src="VALOKUVAUS/Valokuvaus28.webp" class="active">
-            <img src="VALOKUVAUS/Valokuvaus29.webp">
-            <img src="VALOKUVAUS/Valokuvaus30.webp">
-        </div>
-        <div class="large-item">
-            <img src="VALOKUVAUS/Valokuvaus31.webp" class="active">
-            <img src="VALOKUVAUS/Valokuvaus32.webp">
-            <img src="VALOKUVAUS/Valokuvaus33.webp">
-        </div>
-        <div class="large-item">
-            <img src="VALOKUVAUS/Valokuvaus34.webp" class="active">
-            <img src="VALOKUVAUS/Valokuvaus35.webp">
-            <img src="VALOKUVAUS/Valokuvaus36.webp">
-        </div>
-        <div class="large-item">
-            <img src="VALOKUVAUS/Valokuvaus37.webp" class="active">
-            <img src="VALOKUVAUS/Valokuvaus38.webp">
-            <img src="VALOKUVAUS/Valokuvaus39.webp">
-        </div>
-        <div class="large-item">
-            <img src="VALOKUVAUS/Valokuvaus40.webp" class="active">
-            <img src="VALOKUVAUS/Valokuvaus41.webp">
-            <img src="VALOKUVAUS/Valokuvaus42.webp">
-        </div>
+        <!-- MUOKKAA TÄÄLTÄ RANGEA: minLarge = alaraja, maxLarge = yläraja -->
+        <script>
+            const minLarge = 1;   // <-- MUOKKAA TÄTÄ (alaraja)
+            const maxLarge = 19;  // <-- MUOKKAA TÄTÄ (yläraja)
+            const largeCount = 6; // kuinka monta ruutua näytetään
+
+            for (let i = 0; i < largeCount; i++) {
+                const num = Math.floor(Math.random() * (maxLarge - minLarge + 1)) + minLarge;
+                document.write(`
+                <div class="large-item">
+                    <img src="VALOKUVAUS/Valokuvaus${num}.webp" class="active">
+                    <img src="VALOKUVAUS/Valokuvaus${Math.floor(Math.random() * (maxLarge - minLarge + 1)) + minLarge}.webp">
+                    <img src="VALOKUVAUS/Valokuvaus${Math.floor(Math.random() * (maxLarge - minLarge + 1)) + minLarge}.webp">
+                </div>
+                `);
+            }
+        </script>
     </div>
 
     <footer>
