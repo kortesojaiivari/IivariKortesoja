@@ -107,13 +107,19 @@
         }
         .small-item img.active{opacity:1}
 
-        /* HINNOITTELU – JOKAINEN TUNNITPAKETTI OMANA LAATIKKONA */
+        /* HINNOITTELU – YLÄRIVI TUNNIT (PIENEMPI FONTTI), ALARIVI HÄÄPAKETTI (LEVEÄMPI) + YHTEYS-NAPPI */
         #pricing{max-width:1400px;margin:80px auto;padding:0 20px}
         #pricing h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:20px;text-align:center}
         #pricing .disclaimer{font-size:1rem;color:#bbb;text-align:center;margin-bottom:40px}
-        .pricing-grid{
+        .upper-row{
             display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+            gap:30px;
+            margin-bottom:40px;
+        }
+        .lower-row{
+            display:grid;
+            grid-template-columns:2fr 1fr;
             gap:30px;
         }
         .pricing-box{
@@ -125,8 +131,10 @@
             transition:transform .3s ease;
         }
         .pricing-box:hover{transform:translateY(-10px)}
-        .pricing-box h3{font-size:1.8rem;margin-bottom:15px}
-        .pricing-box .price{font-size:2.8rem;font-weight:bold;margin:15px 0;color:#4ade80}
+        .upper-row .pricing-box h3{font-size:1.6rem;margin-bottom:15px}
+        .upper-row .pricing-box .price{font-size:2.4rem}
+        .lower-row .pricing-box h3{font-size:2rem;margin-bottom:20px}
+        .lower-row .pricing-box .price{font-size:2.8rem}
         .pricing-box ul{
             list-style:none;
             text-align:left;
@@ -150,6 +158,32 @@
             font-style:italic;
             margin-top:20px;
         }
+        .contact-box{
+            background:#333;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            padding:30px;
+            border-radius:20px;
+            box-shadow:0 15px 50px rgba(0,0,0,.6);
+        }
+        .contact-box p{
+            font-size:1.3rem;
+            margin-bottom:30px;
+            text-align:center;
+        }
+        .contact-btn{
+            background:#4ade80;
+            color:#000;
+            padding:15px 30px;
+            border-radius:50px;
+            text-decoration:none;
+            font-size:1.3rem;
+            font-weight:bold;
+            transition:.3s;
+        }
+        .contact-btn:hover{background:#5aff90;transform:scale(1.05)}
 
         /* ALAOSAN ISOMMAT VAIHTUVAT KUVAT */
         .large-gallery{
@@ -182,7 +216,7 @@
         @media(max-width:992px){
             .about-section{flex-direction:column;text-align:center}
             nav a{margin:0 10px;font-size:1.1em}
-            .pricing-grid{grid-template-columns:1fr}
+            .upper-row,.lower-row{grid-template-columns:1fr}
         }
         @media(max-width:600px){
             nav a{margin:0 8px;font-size:1em}
@@ -279,12 +313,13 @@
         </div>
     </div>
 
-    <!-- HINNOITTELU – JOKAINEN TUNNITPAKETTI OMANA LAATIKKONA -->
+    <!-- HINNOITTELU -->
     <section id="pricing">
         <h2>Hinnoittelu</h2>
         <p class="disclaimer">*Nämä ovat suuntaa-antavia hintoja. Hinnat sisältävät ALV 25,5 %. Matkakustannukset (kilometrikorvaus) lisätään erikseen tarpeen mukaan.</p>
 
-        <div class="pricing-grid">
+        <!-- YLÄRIVI: TUNNIT (PIENEMPI FONTTI) -->
+        <div class="upper-row">
             <div class="pricing-box">
                 <h3>3 tuntia</h3>
                 <p class="price">300 €</p>
@@ -302,7 +337,10 @@
                 <p class="price">500 €</p>
                 <p>Esimerkiksi dokumentaarinen hääkuvaus</p>
             </div>
+        </div>
 
+        <!-- ALARIVI: HÄÄPAKETTI (LEVEÄMPI) + YHTEYS-NAPPI -->
+        <div class="lower-row">
             <div class="pricing-box">
                 <h3>Hääpaketti</h3>
                 <p class="price">700 €</p>
@@ -314,9 +352,12 @@
                 </ul>
                 <p class="quote">Monet sanovat, että kuva kertoo enemmän kuin tuhat sanaa. Minä sanon, että liikkuva kuva kertoo vieläkin enemmän.</p>
             </div>
-        </div>
 
-        <p style="text-align:center;margin-top:60px;font-size:1.3rem;">Eikö mieleistä pakettia löytynyt? Ota yhteyttä, niin räätälöidään juuri sinulle sopiva ratkaisu!</p>
+            <div class="contact-box">
+                <p>Eikö mieleistä pakettia löytynyt?<br>Ota yhteyttä, niin räätälöidään juuri sinulle sopiva ratkaisu!</p>
+                <a href="yhteystiedot.html" class="contact-btn">Ota yhteyttä</a>
+            </div>
+        </div>
     </section>
 
     <!-- ALAOSAN ISOMMAT VAIHTUVAT KUVAT -->
