@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valokuvaus | Iivari Kortesoja</title>
+    <meta name="description" content="Edullista valokuvausta yksityisille – häät, valmistujaiset, hautajaiset, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta. Myös videopalvelut saatavilla. Ota yhteyttä!">
+
+    <!-- GOOGLE ANALYTICS 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
+    </script>
+
+    <!-- MICROSOFT CLARITY -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "ud6y4jpngh");
+    </script>
+
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
+        header{background:#000;padding:15px 20px;text-align:center;position:fixed;width:100%;top:0;z-index:1000;backdrop-filter:blur(10px)}
+        nav a{color:#fff;text-decoration:none;margin:0 15px;font-size:1.2em;position:relative;transition:.3s}
+        nav a:hover{color:#4ade80}
+        nav a::after{content:'';position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:0;height:2px;background:#4ade80;transition:width .3s}
+        nav a:hover::after{width:100%}
+
+        #home{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+        #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
+        #home h2{font-size:clamp(2.5rem,8vw,4.5rem);text-shadow:0 0 40px rgba(0,0,0,.9)}
+
+        /* VAIHTUVA OTSIKKO – TÄSMÄLLEEN SAMA KUIN PÄÄSIVULLA */
+        #dynamic-subtitle{
+            position:relative;
+            height:70px;
+            overflow:hidden;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            margin:60px 0 40px;
+        }
+        #dynamic-subtitle span{
+            position:absolute;
+            width:100%;
+            text-align:center;
+            opacity:0;
+            transform:translateY(50px);
+            animation:slideUpFade 21s infinite;
+        }
+        #dynamic-subtitle span:nth-child(1){
+            opacity:1;
+            transform:translateY(0);
+            animation-delay:0s;
+        }
+        #dynamic-subtitle span:nth-child(2){animation-delay:3s}
+        #dynamic-subtitle span:nth-child(3){animation-delay:6s}
+        #dynamic-subtitle span:nth-child(4){animation-delay:9s}
+        #dynamic-subtitle span:nth-child(5){animation-delay:12s}
+        #dynamic-subtitle span:nth-child(6){animation-delay:15s}
+        #dynamic-subtitle span:nth-child(7){animation-delay:18s}
+
+        @keyframes slideUpFade{
+            0%{opacity:0;transform:translateY(50px)}
+            5%{opacity:1;transform:translateY(0)}
+            14%{opacity:1;transform:translateY(0)}
+            19%{opacity:0;transform:translateY(-50px)}
+            100%{opacity:0;transform:translateY(-50px)}
+        }
+
+        .about-section{max-width:1200px;margin:80px auto;display:flex;align-items:center;gap:60px;flex-wrap:wrap;padding:0 20px}
+        .about-text{flex:1.5;min-width:300px;font-size:1.35rem;color:#e0e0e0;line-height:1.8}
+        .about-image{position:relative;flex:1;min-width:300px;max-width:500px;height:600px;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.9)}
+        .about-image img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
+        .about-image img.active{opacity:1}
+
+        /* PIENET VAIHTUVAT KUVARUUDUT (8x1) */
+        .small-gallery{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+            gap:20px;
+            max-width:1400px;
+            margin:80px auto 60px;
+            padding:0 20px;
+        }
+        .small-item{
+            position:relative;
+            height:200px;
+            border-radius:16px;
+            overflow:hidden;
+            box-shadow:0 10px 30px rgba(0,0,0,.7);
+        }
+        .small-item img{
+            position:absolute;
+            top:0;left:0;
+            width:100%;height:100%;
+            object-fit:cover;
+            opacity:0;
+            transition:opacity 1.4s ease;
+        }
+        .small-item img.active{opacity:1}
+
+        /* HINNOITTELU – YLÄRIVI TUNNIT, ALARIVI HÄÄPAKETTI + YHTEYS */
+        #pricing{max-width:1400px;margin:80px auto;padding:0 20px}
+        #pricing h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:20px;text-align:center}
+        #pricing .disclaimer{font-size:1rem;color:#bbb;text-align:center;margin-bottom:40px}
+        .upper-row{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+            gap:30px;
+            margin-bottom:40px;
+        }
+        .lower-row{
+            display:grid;
+            grid-template-columns:2fr 1fr;
+            gap:30px;
+        }
+        .pricing-box{
+            background:#222;
+            padding:30px;
+            border-radius:20px;
+            box-shadow:0 15px 50px rgba(0,0,0,.6);
+            text-align:center;
+            transition:transform .3s ease;
+        }
+        .pricing-box:hover{transform:translateY(-10px)}
+        .upper-row .pricing-box h3{font-size:1.6rem;margin-bottom:15px}
+        .upper-row .pricing-box .price{font-size:2.4rem}
+        .lower-row .pricing-box h3{font-size:2rem;margin-bottom:20px}
+        .lower-row .pricing-box .price{font-size:2.8rem}
+        .pricing-box ul{
+            list-style:none;
+            text-align:left;
+            margin:20px 0;
+            font-size:1.2rem;
+            line-height:1.8;
+        }
+        .pricing-box ul li{
+            padding-left:20px;
+            position:relative;
+        }
+        .pricing-box ul li::before{
+            content:"–";
+            position:absolute;
+            left:0;
+            color:#4ade80;
+        }
+        .pricing-box .quote{
+            font-size:1.1rem;
+            color:#aaa;
+            font-style:italic;
+            margin-top:20px;
+        }
+        .contact-box{
+            background:#333;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            padding:30px;
+            border-radius:20px;
+            box-shadow:0 15px 50px rgba(0,0,0,.6);
+        }
+        .contact-box p{
+            font-size:1.3rem;
+            margin-bottom:30px;
+            text-align:center;
+        }
+        .contact-btn{
+            background:#4ade80;
+            color:#000;
+            padding:15px 30px;
+            border-radius:50px;
+            text-decoration:none;
+            font-size:1.3rem;
+            font-weight:bold;
+            transition:.3s;
+        }
+        .contact-btn:hover{background:#5aff90;transform:scale(1.05)}
+
+        /* ALAOSAN ISOMMAT VAIHTUVAT KUVAT */
+        .large-gallery{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+            gap:30px;
+            max-width:1400px;
+            margin:140px auto 100px;
+            padding:0 20px;
+        }
+        .large-item{
+            position:relative;
+            height:420px;
+            border-radius:20px;
+            overflow:hidden;
+            box-shadow:0 15px 50px rgba(0,0,0,.8);
+        }
+        .large-item img{
+            position:absolute;
+            top:0;left:0;
+            width:100%;height:100%;
+            object-fit:cover;
+            opacity:0;
+            transition:opacity 1.4s ease;
+        }
+        .large-item img.active{opacity:1}
+
+        footer{background:#000;padding:40px 20px;text-align:center;font-size:1rem;border-top:1px solid #333}
+
+        @media(max-width:992px){
+            .about-section{flex-direction:column;text-align:center}
+            nav a{margin:0 10px;font-size:1.1em}
+            .upper-row,.lower-row{grid-template-columns:1fr}
+        }
+        @media(max-width:600px){
+            nav a{margin:0 8px;font-size:1em}
+            .small-gallery{grid-template-columns:repeat(auto-fit,minmax(120px,1fr))}
+            .small-item{height:160px}
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="indexi.html">Koti</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="yhteystiedot.html">Yhteystiedot</a>
+            <a href="valokuvaus.html">Valokuvaus</a>
+            <a href="puolustusvoimat.html">Puolustusvoimat</a>
+        </nav>
+    </header>
+
+    <section id="home">
+        <video autoplay muted loop playsinline poster="VALOKUVAUS/valokuvaus-poster.webp">
+            <source src="valokuvaus_otsikko.mp4" type="video/mp4">
+        </video>
+        <h2>Valokuvaus</h2>
+    </section>
+
+    <!-- VAIHTUVA OTSIKKO -->
+    <div id="dynamic-subtitle">
+        <span>Häät</span>
+        <span>Valmistujaiset</span>
+        <span>Hautajaiset</span>
+        <span>Tilaisuudet</span>
+        <span>Ristiäiset</span>
+        <span>Muotokuvat</span>
+    </div>
+
+    <!-- Esittelyteksti -->
+    <div class="about-section">
+        <div class="about-text">
+            <p>Valokuvausta tarjoan yksityisille ihmisille tällä sivulla. Yritykset ja muut asiakkaat, mainitkaa yhteydenotossa valokuvaustarpeestanne.</p><br><br>
+            <p>Olipa kyseessä häät, juhlat, tilaisuudet, hautajaiset, valmistujaiset tai ihan mitä vain, ota yhteyttä niin sovitaan keikasta.</p><br><br>
+            <p>Tarkoitukseni on tarjota kuluttajaystävällistä valokuvausta, jolloin hinta on edullista ja erottuu merkittävästi muista kuvaajista.</p><br><br>
+            <p>Tarjoan myös valokuvauksen ohella videopalveluita, jolloin tärkeä tilanne tallennetaan laadukkaina kuvina ja liikkuvana kuvana. Kaikki on sovittavissa ja neuvoteltavissa!</p>
+        </div>
+        <div class="about-image">
+            <img src="VALOKUVAUS/valokuvaaja1.webp" alt="Valokuvaus 1" class="active">
+            <img src="VALOKUVAUS/valokuvaaja2.webp" alt="Valokuvaus 2">
+            <img src="VALOKUVAUS/valokuvaaja3.webp" alt="Valokuvaus 3">
+        </div>
+    </div>
+
+    <!-- PIENET VAIHTUVAT KUVARUUDUT (8x1) -->
+    <div class="small-gallery">
+        <div class="small-item">
+            <img src="VALOKUVAUS/Valokuvaus1.webp" class="active">
+            <img src="VALOKUVAUS/Valokuvaus2.webp">
+            <img src="VALOKUVAUS/Valokuvaus3.webp">
+        </div>
+        <div class="small-item">
+            <img src="VALOKUVAUS/Valokuvaus4.webp" class="active">
+            <img src="VALOKUVAUS/Valokuvaus5.webp">
+            <img src="VALOKUVAUS/Valokuvaus6.webp">
+        </div>
+        <div class="small-item">
+            <img src="VALOKUVAUS/Valokuvaus7.webp" class="active">
+            <img src="VALOKUVAUS/Valokuvaus8.webp">
+            <img src="VALOKUVAUS/Valokuvaus9.webp">
+        </div>
+        <div class="small-item">
+            <img src="VALOKUVAUS/Valokuvaus10.webp" class="active">
+            <img src="VALOKUVAUS/Valokuvaus11.webp">
+            <img src="VALOKUVAUS/Valokuvaus12.webp">
+        </div>
+        <div class="small-item">
+            <img src="VALOKUVAUS/Valokuvaus13.webp" class="active">
+            <img src="VALOKUVAUS/Valokuvaus14.webp">
+            <img src="VALOKUVAUS/Valokuvaus15.webp">
+        </div>
+        <div class="small-item">
+            <img src="VALOKUVAUS/Valokuvaus16.webp" class="active">
+            <img src="VALOKUVAUS/Valokuvaus17.webp">
+            <img src="VALOKUVAUS/Valokuvaus18.webp">
+        </div>
+        <div class="small-item">
+            <img src="VALOKUVAUS/Valokuvaus19.webp" class="active">
+            <img src="VALOKUVAUS/Valokuvaus20.webp">
+            <img src="VALOKUVAUS/Valokuvaus21.webp">
+        </div>
+        <div class="small-item">
+            <img src="VALOKUVAUS/Valokuvaus22.webp" class="active">
+            <img src="VALOKUVAUS/Valokuvaus23.webp">
+            <img src="VALOKUVAUS/Valokuvaus24.webp">
+        </div>
+    </div>
+
+    <!-- HINNOITTELU -->
+    <section id="pricing">
+        <h2>Hinnoittelu</h2>
+        <p class="disclaimer">*Nämä ovat suuntaa-antavia hintoja. Hinnat sisältävät ALV 25,5 %. Matkakustannukset (kilometrikorvaus) lisätään erikseen tarpeen mukaan.</p>
+
+        <!-- YLÄRIVI: TUNNIT -->
+        <div class="upper-row">
+            <div class="pricing-box">
+                <h3>3 tuntia</h3>
+                <p class="price">300 €</p>
+                <p>Esimerkiksi hautajaiset tai valmistujaisjuhlat</p>
+            </div>
+
+            <div class="pricing-box">
+                <h3>4–6 tuntia</h3>
+                <p class="price">400 €</p>
+                <p>Pidempään kestävät tilaisuudet</p>
+            </div>
+
+            <div class="pricing-box">
+                <h3>6 tuntia +</h3>
+                <p class="price">500 €</p>
+                <p>Esimerkiksi dokumentaarinen hääkuvaus</p>
+            </div>
+        </div>
+
+        <!-- ALARIVI: HÄÄPAKETTI + YHTEYS -->
+        <div class="lower-row">
+            <div class="pricing-box">
+                <h3>Hääpaketti</h3>
+                <p class="price">700 €</p>
+                <ul>
+                    <li>Dokumentaarinen hääkuvaus <strong>koko häiden ajan</strong></li>
+                    <li>Elokuvallinen häävideo tärkeimmästä päivästä</li>
+                    <li>Ei stressiä kuvausajasta</li>
+                    <li>Eniten valokuvia</li>
+                </ul>
+                <p class="quote">Monet sanovat, että kuva kertoo enemmän kuin tuhat sanaa. Minä sanon, että liikkuva kuva kertoo vieläkin enemmän.</p>
+            </div>
+
+            <div class="contact-box">
+                <p>Eikö mieleistä pakettia löytynyt?<br>Ota yhteyttä, niin räätälöidään juuri sinulle sopiva ratkaisu!</p>
+                <a href="yhteystiedot.html" class="contact-btn">Ota yhteyttä</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ALAOSAN ISOMMAT VAIHTUVAT KUVAT -->
+    <div class="large-gallery">
+        <div class="large-item">
+            <img src="VALOKUVAUS/Valokuvaus25.webp" class="active">
+            <img src="VALOKUVAUS/Valokuvaus26.webp">
+            <img src="VALOKUVAUS/Valokuvaus27.webp">
+        </div>
+        <div class="large-item">
+            <img src="VALOKUVAUS/Valokuvaus28.webp" class="active">
+            <img src="VALOKUVAUS/Valokuvaus29.webp">
+            <img src="VALOKUVAUS/Valokuvaus30.webp">
+        </div>
+        <div class="large-item">
+            <img src="VALOKUVAUS/Valokuvaus31.webp" class="active">
+            <img src="VALOKUVAUS/Valokuvaus32.webp">
+            <img src="VALOKUVAUS/Valokuvaus33.webp">
+        </div>
+        <div class="large-item">
+            <img src="VALOKUVAUS/Valokuvaus34.webp" class="active">
+            <img src="VALOKUVAUS/Valokuvaus35.webp">
+            <img src="VALOKUVAUS/Valokuvaus36.webp">
+        </div>
+        <div class="large-item">
+            <img src="VALOKUVAUS/Valokuvaus37.webp" class="active">
+            <img src="VALOKUVAUS/Valokuvaus38.webp">
+            <img src="VALOKUVAUS/Valokuvaus39.webp">
+        </div>
+        <div class="large-item">
+            <img src="VALOKUVAUS/Valokuvaus40.webp" class="active">
+            <img src="VALOKUVAUS/Valokuvaus41.webp">
+            <img src="VALOKUVAUS/Valokuvaus42.webp">
+        </div>
+    </div>
+
+    <footer>
+        <p>© Iivari Kortesoja 2025 | Y-tunnus A38904</p>
+    </footer>
+
+    <script>
+        // Taustavideo
+        const bgVideo = document.querySelector('#home video');
+        new IntersectionObserver(entries => {
+            entries.forEach(entry => entry.isIntersecting ? bgVideo.play() : bgVideo.pause());
+        }, {threshold: 0.5}).observe(document.getElementById('home'));
+
+        // About-kuvan vaihto
+        const aboutImgs = document.querySelectorAll('.about-image img');
+        let aboutIdx = 0;
+        setInterval(() => {
+            aboutImgs[aboutIdx].classList.remove('active');
+            aboutIdx = (aboutIdx + 1) % aboutImgs.length;
+            aboutImgs[aboutIdx].classList.add('active');
+        }, 5000);
+
+        // Pienten kuvaboksien vaihto
+        document.querySelectorAll('.small-item').forEach(box => {
+            const imgs = box.querySelectorAll('img');
+            let idx = 0;
+            setInterval(() => {
+                imgs[idx].classList.remove('active');
+                idx = (idx + 1) % imgs.length;
+                imgs[idx].classList.add('active');
+            }, 4000);
+        });
+
+        // Isojen kuvaboksien vaihto
+        document.querySelectorAll('.large-item').forEach(box => {
+            const imgs = box.querySelectorAll('img');
+            let idx = 0;
+            setInterval(() => {
+                imgs[idx].classList.remove('active');
+                idx = (idx + 1) % imgs.length;
+                imgs[idx].classList.add('active');
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
