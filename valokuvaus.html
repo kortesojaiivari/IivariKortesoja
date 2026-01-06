@@ -37,10 +37,10 @@
         #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
         #home h2{font-size:clamp(2.5rem,8vw,4.5rem);text-shadow:0 0 40px rgba(0,0,0,.9)}
 
-        /* VAIHTUVA OTSIKKO – SAMANLAINEN KUIN ETUSIVULLA */
+        /* VAIHTUVA OTSIKKO – TÄSMÄLLEEN SAMA SULAVA ANIMAATIO KUIN ETUSIVULLA (ease-in-out, pidempi näkyvyys) */
         #dynamic-subtitle{
             position:relative;
-            height:80px;
+            height:100px;
             overflow:hidden;
             display:flex;
             align-items:center;
@@ -53,22 +53,22 @@
             text-align:center;
             font-size:clamp(2rem,6vw,3rem);
             opacity:0;
-            transform:translateY(50px);
-            animation:slideUpFade 21s infinite;
+            transform:translateY(60px);
+            animation:slideUpFade 24s infinite ease-in-out;
         }
         #dynamic-subtitle span:nth-child(1){opacity:1;transform:translateY(0);animation-delay:0s}
-        #dynamic-subtitle span:nth-child(2){animation-delay:3.5s}
-        #dynamic-subtitle span:nth-child(3){animation-delay:7s}
-        #dynamic-subtitle span:nth-child(4){animation-delay:10.5s}
-        #dynamic-subtitle span:nth-child(5){animation-delay:14s}
-        #dynamic-subtitle span:nth-child(6){animation-delay:17.5s}
+        #dynamic-subtitle span:nth-child(2){animation-delay:4s}
+        #dynamic-subtitle span:nth-child(3){animation-delay:8s}
+        #dynamic-subtitle span:nth-child(4){animation-delay:12s}
+        #dynamic-subtitle span:nth-child(5){animation-delay:16s}
+        #dynamic-subtitle span:nth-child(6){animation-delay:20s}
 
         @keyframes slideUpFade{
-            0%{opacity:0;transform:translateY(50px)}
-            10%{opacity:1;transform:translateY(0)}
+            0%{opacity:0;transform:translateY(60px)}
+            8%{opacity:1;transform:translateY(0)}
             25%{opacity:1;transform:translateY(0)}
-            33%{opacity:0;transform:translateY(-50px)}
-            100%{opacity:0;transform:translateY(-50px)}
+            33%{opacity:0;transform:translateY(-60px)}
+            100%{opacity:0;transform:translateY(-60px)}
         }
 
         .about-section{max-width:1200px;margin:80px auto;display:flex;align-items:center;gap:60px;flex-wrap:wrap;padding:0 20px}
@@ -89,7 +89,7 @@
         }
         @media(max-width:600px){
             nav a{margin:0 8px;font-size:1em}
-            #dynamic-subtitle{height:60px}
+            #dynamic-subtitle{height:80px}
         }
     </style>
 </head>
@@ -112,7 +112,7 @@
         <h2>Valokuvaus</h2>
     </section>
 
-    <!-- VAIHTUVA OTSIKKO – SAMANLAINEN KUIN ETUSIVULLA -->
+    <!-- VAIHTUVA OTSIKKO – NYT TÄYSIN SULAVA JA SAMANLAINEN KUIN ETUSIVULLA -->
     <div id="dynamic-subtitle">
         <span>Häät</span>
         <span>Valmistujaiset</span>
@@ -122,12 +122,12 @@
         <span>Muotokuvat</span>
     </div>
 
-    <!-- Esittelyteksti -->
+    <!-- Esittelyteksti – ETUSIVUN TYYLIIN (kappalevälit <br><br>) -->
     <div class="about-section">
         <div class="about-text">
-            <p>Valokuvausta tarjoan yksityisille ihmisille tällä sivulla. Yritykset ja muut asiakkaat, mainitkaa yhteydenotossa valokuvaustarpeestanne.</p>
-            <p>Olipa kyseessä häät, juhlat, tilaisuudet, hautajaiset, valmistujaiset tai ihan mitä vain, ota yhteyttä niin sovitaan keikasta.</p>
-            <p>Tarkoitukseni on tarjota kuluttajaystävällistä valokuvausta, jolloin hinta on edullista ja erottuu merkittävästi muista kuvaajista.</p>
+            <p>Valokuvausta tarjoan yksityisille ihmisille tällä sivulla. Yritykset ja muut asiakkaat, mainitkaa yhteydenotossa valokuvaustarpeestanne.</p><br><br>
+            <p>Olipa kyseessä häät, juhlat, tilaisuudet, hautajaiset, valmistujaiset tai ihan mitä vain, ota yhteyttä niin sovitaan keikasta.</p><br><br>
+            <p>Tarkoitukseni on tarjota kuluttajaystävällistä valokuvausta, jolloin hinta on edullista ja erottuu merkittävästi muista kuvaajista.</p><br><br>
             <p>Tarjoan myös valokuvauksen ohella videopalveluita, jolloin tärkeä tilanne tallennetaan laadukkaina kuvina ja liikkuvana kuvana. Kaikki on sovittavissa ja neuvoteltavissa!</p>
         </div>
         <div class="about-image">
@@ -147,7 +147,7 @@
     </section>
 
     <footer>
-        <p>© Iivari Kortesoja 2025 | Y-tunnus A38904</p>
+        <p>© Iivari Kortesoja 2026 | Y-tunnus A38904</p>
     </footer>
 
     <script>
