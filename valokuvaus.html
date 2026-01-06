@@ -107,14 +107,14 @@
         }
         .small-item img.active{opacity:1}
 
-        /* HINNOITTELU – KAKSI SARAKETTA */
-        #pricing{max-width:1200px;margin:80px auto;padding:0 20px}
+        /* HINNOITTELU – JOKAINEN TUNNITPAKETTI OMANA LAATIKKONA */
+        #pricing{max-width:1400px;margin:80px auto;padding:0 20px}
         #pricing h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:20px;text-align:center}
         #pricing .disclaimer{font-size:1rem;color:#bbb;text-align:center;margin-bottom:40px}
         .pricing-grid{
             display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
-            gap:40px;
+            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+            gap:30px;
         }
         .pricing-box{
             background:#222;
@@ -122,12 +122,36 @@
             border-radius:20px;
             box-shadow:0 15px 50px rgba(0,0,0,.6);
             text-align:center;
+            transition:transform .3s ease;
         }
-        .pricing-box h3{font-size:2rem;margin-bottom:20px}
-        .pricing-box .price{font-size:2.5rem;font-weight:bold;margin:20px 0;color:#4ade80}
-        .pricing-box p{font-size:1.2rem;line-height:1.7;color:#ddd}
+        .pricing-box:hover{transform:translateY(-10px)}
+        .pricing-box h3{font-size:1.8rem;margin-bottom:15px}
+        .pricing-box .price{font-size:2.8rem;font-weight:bold;margin:15px 0;color:#4ade80}
+        .pricing-box ul{
+            list-style:none;
+            text-align:left;
+            margin:20px 0;
+            font-size:1.2rem;
+            line-height:1.8;
+        }
+        .pricing-box ul li{
+            padding-left:20px;
+            position:relative;
+        }
+        .pricing-box ul li::before{
+            content:"–";
+            position:absolute;
+            left:0;
+            color:#4ade80;
+        }
+        .pricing-box .quote{
+            font-size:1.1rem;
+            color:#aaa;
+            font-style:italic;
+            margin-top:20px;
+        }
 
-        /* ALAOSAN ISOMMAT VAIHTUVAT KUVAT (PUOLUSTUSVOIMAT-TYYLIIN) */
+        /* ALAOSAN ISOMMAT VAIHTUVAT KUVAT */
         .large-gallery{
             display:grid;
             grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
@@ -255,34 +279,47 @@
         </div>
     </div>
 
-    <!-- HINNOITTELU -->
+    <!-- HINNOITTELU – JOKAINEN TUNNITPAKETTI OMANA LAATIKKONA -->
     <section id="pricing">
         <h2>Hinnoittelu</h2>
         <p class="disclaimer">*Nämä ovat suuntaa-antavia hintoja. Hinnat sisältävät ALV 25,5 %. Matkakustannukset (kilometrikorvaus) lisätään erikseen tarpeen mukaan.</p>
 
         <div class="pricing-grid">
             <div class="pricing-box">
-                <h3>Tuntipohjaiset paketit</h3>
-                <p class="price">3 h – 300 €</p>
+                <h3>3 tuntia</h3>
+                <p class="price">300 €</p>
                 <p>Esimerkiksi hautajaiset tai valmistujaisjuhlat</p>
-                <p class="price">4–6 h – 400 €</p>
+            </div>
+
+            <div class="pricing-box">
+                <h3>4–6 tuntia</h3>
+                <p class="price">400 €</p>
                 <p>Pidempään kestävät tilaisuudet</p>
-                <p class="price">6 h+ – 500 €</p>
+            </div>
+
+            <div class="pricing-box">
+                <h3>6 tuntia +</h3>
+                <p class="price">500 €</p>
                 <p>Esimerkiksi dokumentaarinen hääkuvaus</p>
             </div>
 
             <div class="pricing-box">
                 <h3>Hääpaketti</h3>
                 <p class="price">700 €</p>
-                <p>Dokumentaarinen hääkuvaus koko häiden ajan + elokuvallinen häävideo tärkeimmästä päivästä.</p>
-                <p>Monet sanovat, että kuva kertoo enemmän kuin tuhat sanaa. Minä sanon, että liikkuva kuva kertoo vielä enemmän.</p>
+                <ul>
+                    <li>Dokumentaarinen hääkuvaus <strong>koko häiden ajan</strong></li>
+                    <li>Elokuvallinen häävideo tärkeimmästä päivästä</li>
+                    <li>Ei stressiä kuvausajasta</li>
+                    <li>Eniten valokuvia</li>
+                </ul>
+                <p class="quote">Monet sanovat, että kuva kertoo enemmän kuin tuhat sanaa. Minä sanon, että liikkuva kuva kertoo vieläkin enemmän.</p>
             </div>
         </div>
 
         <p style="text-align:center;margin-top:60px;font-size:1.3rem;">Eikö mieleistä pakettia löytynyt? Ota yhteyttä, niin räätälöidään juuri sinulle sopiva ratkaisu!</p>
     </section>
 
-    <!-- ALAOSAN ISOMMAT VAIHTUVAT KUVAT (PUOLUSTUSVOIMAT-TYYLIIN, 6 BOKSIA) -->
+    <!-- ALAOSAN ISOMMAT VAIHTUVAT KUVAT -->
     <div class="large-gallery">
         <div class="large-item">
             <img src="Valokuvaus25.webp" class="active">
