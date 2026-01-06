@@ -37,7 +37,7 @@
         #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
         #home h2{font-size:clamp(2.5rem,8vw,4.5rem);text-shadow:0 0 40px rgba(0,0,0,.9)}
 
-        /* VAIHTUVA OTSIKKO – TÄSMÄLLEEN SAMA KUIN PÄÄSIVULLA (kopioitu suoraan) */
+        /* VAIHTUVA OTSIKKO – TÄSMÄLLEEN SAMA KUIN PÄÄSIVULLA */
         #dynamic-subtitle{
             position:relative;
             height:70px;
@@ -81,19 +81,89 @@
         .about-image img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
         .about-image img.active{opacity:1}
 
-        #pricing{max-width:800px;margin:80px auto;text-align:center;padding:0 20px}
-        #pricing h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:30px}
-        #pricing p{font-size:1.3rem;color:#ddd;line-height:1.7;margin-bottom:40px}
+        /* PIENET VAIHTUVAT KUVARUUDUT (8x1) */
+        .small-gallery{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+            gap:20px;
+            max-width:1400px;
+            margin:80px auto 60px;
+            padding:0 20px;
+        }
+        .small-item{
+            position:relative;
+            height:200px;
+            border-radius:16px;
+            overflow:hidden;
+            box-shadow:0 10px 30px rgba(0,0,0,.7);
+        }
+        .small-item img{
+            position:absolute;
+            top:0;left:0;
+            width:100%;height:100%;
+            object-fit:cover;
+            opacity:0;
+            transition:opacity 1.4s ease;
+        }
+        .small-item img.active{opacity:1}
+
+        /* HINNOITTELU – KAKSI SARAKETTA */
+        #pricing{max-width:1200px;margin:80px auto;padding:0 20px}
+        #pricing h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:20px;text-align:center}
+        #pricing .disclaimer{font-size:1rem;color:#bbb;text-align:center;margin-bottom:40px}
+        .pricing-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
+            gap:40px;
+        }
+        .pricing-box{
+            background:#222;
+            padding:30px;
+            border-radius:20px;
+            box-shadow:0 15px 50px rgba(0,0,0,.6);
+            text-align:center;
+        }
+        .pricing-box h3{font-size:2rem;margin-bottom:20px}
+        .pricing-box .price{font-size:2.5rem;font-weight:bold;margin:20px 0;color:#4ade80}
+        .pricing-box p{font-size:1.2rem;line-height:1.7;color:#ddd}
+
+        /* ALAOSAN ISOMMAT VAIHTUVAT KUVAT (PUOLUSTUSVOIMAT-TYYLIIN) */
+        .large-gallery{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+            gap:30px;
+            max-width:1400px;
+            margin:140px auto 100px;
+            padding:0 20px;
+        }
+        .large-item{
+            position:relative;
+            height:420px;
+            border-radius:20px;
+            overflow:hidden;
+            box-shadow:0 15px 50px rgba(0,0,0,.8);
+        }
+        .large-item img{
+            position:absolute;
+            top:0;left:0;
+            width:100%;height:100%;
+            object-fit:cover;
+            opacity:0;
+            transition:opacity 1.4s ease;
+        }
+        .large-item img.active{opacity:1}
 
         footer{background:#000;padding:40px 20px;text-align:center;font-size:1rem;border-top:1px solid #333}
 
         @media(max-width:992px){
             .about-section{flex-direction:column;text-align:center}
             nav a{margin:0 10px;font-size:1.1em}
+            .pricing-grid{grid-template-columns:1fr}
         }
         @media(max-width:600px){
             nav a{margin:0 8px;font-size:1em}
-            #dynamic-subtitle{height:60px}
+            .small-gallery{grid-template-columns:repeat(auto-fit,minmax(120px,1fr))}
+            .small-item{height:160px}
         }
     </style>
 </head>
@@ -116,7 +186,7 @@
         <h2>Valokuvaus</h2>
     </section>
 
-    <!-- VAIHTUVA OTSIKKO – TÄSMÄLLEEN SAMA KUIN PÄÄSIVULLA -->
+    <!-- VAIHTUVA OTSIKKO -->
     <div id="dynamic-subtitle">
         <span>Häät</span>
         <span>Valmistujaiset</span>
@@ -126,7 +196,7 @@
         <span>Muotokuvat</span>
     </div>
 
-    <!-- Esittelyteksti – TÄSMÄLLEEN PÄÄSIVUN TYYLIIN (kappalevälit <br><br>) -->
+    <!-- Esittelyteksti -->
     <div class="about-section">
         <div class="about-text">
             <p>Valokuvausta tarjoan yksityisille ihmisille tällä sivulla. Yritykset ja muut asiakkaat, mainitkaa yhteydenotossa valokuvaustarpeestanne.</p><br><br>
@@ -141,14 +211,110 @@
         </div>
     </div>
 
-    <!-- Hinnoittelusektio (vakiohinnat) -->
+    <!-- PIENET VAIHTUVAT KUVARUUDUT (8x1) -->
+    <div class="small-gallery">
+        <div class="small-item">
+            <img src="Valokuvaus1.webp" class="active">
+            <img src="Valokuvaus2.webp">
+            <img src="Valokuvaus3.webp">
+        </div>
+        <div class="small-item">
+            <img src="Valokuvaus4.webp" class="active">
+            <img src="Valokuvaus5.webp">
+            <img src="Valokuvaus6.webp">
+        </div>
+        <div class="small-item">
+            <img src="Valokuvaus7.webp" class="active">
+            <img src="Valokuvaus8.webp">
+            <img src="Valokuvaus9.webp">
+        </div>
+        <div class="small-item">
+            <img src="Valokuvaus10.webp" class="active">
+            <img src="Valokuvaus11.webp">
+            <img src="Valokuvaus12.webp">
+        </div>
+        <div class="small-item">
+            <img src="Valokuvaus13.webp" class="active">
+            <img src="Valokuvaus14.webp">
+            <img src="Valokuvaus15.webp">
+        </div>
+        <div class="small-item">
+            <img src="Valokuvaus16.webp" class="active">
+            <img src="Valokuvaus17.webp">
+            <img src="Valokuvaus18.webp">
+        </div>
+        <div class="small-item">
+            <img src="Valokuvaus19.webp" class="active">
+            <img src="Valokuvaus20.webp">
+            <img src="Valokuvaus21.webp">
+        </div>
+        <div class="small-item">
+            <img src="Valokuvaus22.webp" class="active">
+            <img src="Valokuvaus23.webp">
+            <img src="Valokuvaus24.webp">
+        </div>
+    </div>
+
+    <!-- HINNOITTELU -->
     <section id="pricing">
         <h2>Hinnoittelu</h2>
-        <p>Perusvalokuvauskeikka: 100 € (sis. 2 tuntia kuvausta + editointi)</p>
-        <p>Lisätunti: 40 €</p>
-        <p>Video + valokuvaus: 150 € (sis. 2 tuntia + editointi)</p>
-        <p>Hinnat sisältävät ALV:n. Matkakustannukset sovitaan erikseen.</p>
+        <p class="disclaimer">*Nämä ovat suuntaa-antavia hintoja. Hinnat sisältävät ALV 25,5 %. Matkakustannukset (kilometrikorvaus) lisätään erikseen tarpeen mukaan.</p>
+
+        <div class="pricing-grid">
+            <div class="pricing-box">
+                <h3>Tuntipohjaiset paketit</h3>
+                <p class="price">3 h – 300 €</p>
+                <p>Esimerkiksi hautajaiset tai valmistujaisjuhlat</p>
+                <p class="price">4–6 h – 400 €</p>
+                <p>Pidempään kestävät tilaisuudet</p>
+                <p class="price">6 h+ – 500 €</p>
+                <p>Esimerkiksi dokumentaarinen hääkuvaus</p>
+            </div>
+
+            <div class="pricing-box">
+                <h3>Hääpaketti</h3>
+                <p class="price">700 €</p>
+                <p>Dokumentaarinen hääkuvaus koko häiden ajan + elokuvallinen häävideo tärkeimmästä päivästä.</p>
+                <p>Monet sanovat, että kuva kertoo enemmän kuin tuhat sanaa. Minä sanon, että liikkuva kuva kertoo vielä enemmän.</p>
+            </div>
+        </div>
+
+        <p style="text-align:center;margin-top:60px;font-size:1.3rem;">Eikö mieleistä pakettia löytynyt? Ota yhteyttä, niin räätälöidään juuri sinulle sopiva ratkaisu!</p>
     </section>
+
+    <!-- ALAOSAN ISOMMAT VAIHTUVAT KUVAT (PUOLUSTUSVOIMAT-TYYLIIN, 6 BOKSIA) -->
+    <div class="large-gallery">
+        <div class="large-item">
+            <img src="Valokuvaus25.webp" class="active">
+            <img src="Valokuvaus26.webp">
+            <img src="Valokuvaus27.webp">
+        </div>
+        <div class="large-item">
+            <img src="Valokuvaus28.webp" class="active">
+            <img src="Valokuvaus29.webp">
+            <img src="Valokuvaus30.webp">
+        </div>
+        <div class="large-item">
+            <img src="Valokuvaus31.webp" class="active">
+            <img src="Valokuvaus32.webp">
+            <img src="Valokuvaus33.webp">
+        </div>
+        <div class="large-item">
+            <img src="Valokuvaus34.webp" class="active">
+            <img src="Valokuvaus35.webp">
+            <img src="Valokuvaus36.webp">
+        </div>
+        <div class="large-item">
+            <img src="Valokuvaus37.webp" class="active">
+            <img src="Valokuvaus38.webp">
+            <img src="Valokuvaus39.webp">
+        </div>
+        <div class="large-item">
+            <img src="Valokuvaus40.webp" class="active">
+            <img src="Valokuvaus41.webp">
+            <img src="Valokuvaus42.webp">
+        </div>
+    </div>
 
     <footer>
         <p>© Iivari Kortesoja 2025 | Y-tunnus A38904</p>
@@ -169,6 +335,28 @@
             aboutIdx = (aboutIdx + 1) % aboutImgs.length;
             aboutImgs[aboutIdx].classList.add('active');
         }, 5000);
+
+        // Pienten kuvaboksien vaihto
+        document.querySelectorAll('.small-item').forEach(box => {
+            const imgs = box.querySelectorAll('img');
+            let idx = 0;
+            setInterval(() => {
+                imgs[idx].classList.remove('active');
+                idx = (idx + 1) % imgs.length;
+                imgs[idx].classList.add('active');
+            }, 4000);
+        });
+
+        // Isojen kuvaboksien vaihto
+        document.querySelectorAll('.large-item').forEach(box => {
+            const imgs = box.querySelectorAll('img');
+            let idx = 0;
+            setInterval(() => {
+                imgs[idx].classList.remove('active');
+                idx = (idx + 1) % imgs.length;
+                imgs[idx].classList.add('active');
+            }, 5000);
+        });
     </script>
 </body>
 </html>
