@@ -254,6 +254,11 @@
             flex-direction:column;
             align-items:center;
             justify-content:center;
+            cursor:pointer;
+            transition:transform .3s ease;
+        }
+        #final-contact .qr-box:hover{
+            transform:translateY(-10px);
         }
         #final-contact .qr-box .recommended{
             background:#4ade80;
@@ -264,10 +269,17 @@
             margin-bottom:30px;
             font-size:1.2rem;
         }
+        #final-contact .qr-box a{
+            display:block;
+        }
         #final-contact .qr-box img{
             max-width:280px;
             width:100%;
             border-radius:12px;
+            transition:opacity .3s;
+        }
+        #final-contact .qr-box:hover img{
+            opacity:0.9;
         }
 
         footer{background:#000;padding:40px 20px;text-align:center;font-size:1rem;border-top:1px solid #333}
@@ -378,7 +390,7 @@
             </div>
         </div>
 
-        <!-- ALARIVI: HÄÄPAKETTI + YHTEYS -->
+        <!-- ALARIVI: HÄÄPAKETTI + YHTEYS (SCROLLAA ALAOSAAN) -->
         <div class="lower-row">
             <div class="pricing-box">
                 <h3>Hääpaketti</h3>
@@ -394,7 +406,7 @@
 
             <div class="contact-box">
                 <p>Eikö mieleistä pakettia löytynyt?<br>Ota yhteyttä, niin räätälöidään juuri sinulle sopiva ratkaisu!</p>
-                <a href="yhteystiedot.html" class="contact-btn">Ota yhteyttä</a>
+                <a href="#final-contact" class="contact-btn">Ota yhteyttä</a>
             </div>
         </div>
     </section>
@@ -429,8 +441,10 @@
         </div>
 
         <div class="qr-box">
-            <div class="recommended">NOPEA TAPA</div>
-            <img src="QR.webp" alt="WhatsApp QR-koodi">
+            <div class="recommended">Lue QR-koodi tai Klikkaa ruutua</div>
+            <a href="https://wa.me/message/2JQ4G2D3EXLID1" target="_blank">
+                <img src="QR.webp" alt="WhatsApp QR-koodi">
+            </a>
         </div>
     </section>
 
