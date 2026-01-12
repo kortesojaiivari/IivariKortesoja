@@ -37,10 +37,10 @@
         #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
         #home h2{font-size:clamp(2.5rem,8vw,4.5rem);text-shadow:0 0 40px rgba(0,0,0,.9)}
 
-        /* VAIHTUVA OTSIKKO – TÄSMÄLLEEN SAMA KUIN HINNOITTELU-OTSIKKO */
+        /* VAIHTUVA OTSIKKO – TÄSMÄLLEEN SAMA KUIN PÄÄSIVUN NIMIOTSIKKO */
         #dynamic-subtitle{
             position:relative;
-            height:100px;
+            height:120px;
             overflow:hidden;
             display:flex;
             align-items:center;
@@ -51,7 +51,8 @@
             position:absolute;
             width:100%;
             text-align:center;
-            font-size:clamp(2.2rem,7vw,3.5rem);
+            font-size:clamp(2.5rem,8vw,4.5rem);
+            text-shadow:0 0 40px rgba(0,0,0,.9);
             opacity:0;
             transform:translateY(50px);
             animation:slideUpFade 21s infinite;
@@ -189,18 +190,13 @@
         }
         .contact-btn:hover{background:#5aff90;transform:scale(1.05)}
 
-        /* ALAOSAN ISOMMAT VAIHTUVAT KUVAT – SAMA TYYLI KUIN HINNOITTELU */
-        .large-gallery h2{
-            font-size:clamp(2.2rem,7vw,3.5rem);
-            margin-bottom:30px;
-            text-align:center;
-        }
+        /* ALAOSAN ISOMMAT VAIHTUVAT KUVAT */
         .large-gallery{
             display:grid;
             grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
             gap:30px;
             max-width:1400px;
-            margin:140px auto 100px;
+            margin:140px auto 60px;
             padding:0 20px;
         }
         .large-item{
@@ -220,6 +216,72 @@
         }
         .large-item img.active{opacity:1}
 
+        /* YHTEYSTIEDOT OSIO ALAREUNASSA */
+        #final-contact{
+            max-width:1400px;
+            margin:0 auto 100px;
+            padding:0 20px;
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:40px;
+        }
+        #final-contact .contact-info{
+            background:#222;
+            padding:40px;
+            border-radius:20px;
+            box-shadow:0 15px 50px rgba(0,0,0,.6);
+            text-align:center;
+        }
+        #final-contact .contact-info h2{
+            font-size:2.2rem;
+            margin-bottom:30px;
+        }
+        #final-contact .contact-info p{
+            font-size:1.4rem;
+            margin:20px 0;
+        }
+        #final-contact .contact-info a{
+            color:#4ade80;
+            text-decoration:none;
+        }
+        #final-contact .qr-box{
+            background:#222;
+            padding:40px;
+            border-radius:20px;
+            box-shadow:0 15px 50px rgba(0,0,0,.6);
+            text-align:center;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            cursor:pointer;
+            transition:transform .3s ease;
+        }
+        #final-contact .qr-box:hover{
+            transform:translateY(-10px);
+        }
+        #final-contact .qr-box .recommended{
+            background:#4ade80;
+            color:#000;
+            padding:10px 20px;
+            border-radius:10px;
+            font-weight:bold;
+            margin-bottom:30px;
+            font-size:1.2rem;
+        }
+        #final-contact .qr-box a{
+            display:block;
+        }
+        #final-contact .qr-box img{
+            max-width:280px;
+            width:100%;
+            border-radius:12px;
+            transition:opacity .3s;
+        }
+        #final-contact .qr-box:hover img{
+            opacity:0.9;
+        }
+
         footer{background:#000;padding:40px 20px;text-align:center;font-size:1rem;border-top:1px solid #333}
 
         @media(max-width:992px){
@@ -228,6 +290,7 @@
             .upper-row,.lower-row{grid-template-columns:1fr}
             .small-gallery{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
             .small-item{height:240px}
+            #final-contact{grid-template-columns:1fr}
         }
         @media(max-width:600px){
             nav a{margin:0 8px;font-size:1em}
@@ -255,7 +318,7 @@
         <h2>Valokuvaus</h2>
     </section>
 
-    <!-- VAIHTUVA OTSIKKO – TÄSMÄLLEEN SAMA KOKO JA TYYLI KUIN HINNOITTELU -->
+    <!-- VAIHTUVA OTSIKKO -->
     <div id="dynamic-subtitle">
         <span>Häät</span>
         <span>Valmistujaiset</span>
@@ -327,7 +390,7 @@
             </div>
         </div>
 
-        <!-- ALARIVI: HÄÄPAKETTI + YHTEYS -->
+        <!-- ALARIVI: HÄÄPAKETTI + YHTEYS (SCROLLAA ALAOSAAN) -->
         <div class="lower-row">
             <div class="pricing-box">
                 <h3>Hääpaketti</h3>
@@ -343,14 +406,13 @@
 
             <div class="contact-box">
                 <p>Eikö mieleistä pakettia löytynyt?<br>Ota yhteyttä, niin räätälöidään juuri sinulle sopiva ratkaisu!</p>
-                <a href="yhteystiedot.html" class="contact-btn">Ota yhteyttä</a>
+                <a href="#final-contact" class="contact-btn">Ota yhteyttä</a>
             </div>
         </div>
     </section>
 
-    <!-- ALAOSAN ISOMMAT VAIHTUVAT KUVAT – SAMA TYYLI KUIN HINNOITTELU -->
-    <section class="large-gallery">
-        <h2>Muotokuvat</h2>
+    <!-- ALAOSAN ISOMMAT VAIHTUVAT KUVAT -->
+    <div class="large-gallery">
         <!-- MUOKKAA TÄÄLTÄ RANGEA -->
         <script>
             const minLarge = 1;
@@ -368,6 +430,22 @@
                 `);
             }
         </script>
+    </div>
+
+    <!-- YHTEYSTIEDOT OSIO ALAREUNASSA -->
+    <section id="final-contact">
+        <div class="contact-info">
+            <h2>Ota yhteyttä</h2>
+            <p>Sähköposti: <a href="mailto:example@email.com">example@email.com</a></p>
+            <p>Puhelin: <a href="tel:+358405247918">040 524 7918</a></p>
+        </div>
+
+        <div class="qr-box">
+            <div class="recommended">Lue QR-koodi tai Klikkaa ruutua</div>
+            <a href="https://wa.me/message/2JQ4G2D3EXLID1" target="_blank">
+                <img src="QR.webp" alt="WhatsApp QR-koodi">
+            </a>
+        </div>
     </section>
 
     <footer>
