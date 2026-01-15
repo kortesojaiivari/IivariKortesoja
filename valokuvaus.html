@@ -216,7 +216,7 @@
         }
         .large-item img.active{opacity:1}
 
-        /* YHTEYSTIEDOT OSIO ALAREUNASSA */
+        /* YHTEYSTIEDOT OSIO ALAREUNASSA – QR-BOKSI MUOKATTU 1247×453 KUVAA VARTEN */
         #final-contact{
             max-width:1400px;
             margin:0 auto 100px;
@@ -224,6 +224,7 @@
             display:grid;
             grid-template-columns:1fr 1fr;
             gap:40px;
+            align-items:start;
         }
         #final-contact .contact-info{
             background:#222;
@@ -246,27 +247,28 @@
         }
         #final-contact .qr-box{
             background:#222;
-            padding:30px;
+            padding:20px;
             border-radius:20px;
             box-shadow:0 15px 50px rgba(0,0,0,.6);
             text-align:center;
             display:flex;
-            flex-direction:column;
             align-items:center;
             justify-content:center;
             cursor:pointer;
             transition:transform .3s ease;
+            aspect-ratio: auto;
         }
         #final-contact .qr-box:hover{
             transform:translateY(-10px);
         }
         #final-contact .qr-box a{
             display:block;
+            width:100%;
         }
         #final-contact .qr-box img{
-            width:430px;
-            height:658px;
-            object-fit:contain;
+            width:100%;
+            max-width:500px;
+            height:auto;
             border-radius:12px;
             transition:opacity .3s;
         }
@@ -288,10 +290,6 @@
             nav a{margin:0 8px;font-size:1em}
             .small-gallery{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
             .small-item{height:200px}
-            #final-contact .qr-box img{
-                width:100%;
-                height:auto;
-            }
         }
     </style>
 </head>
@@ -428,7 +426,7 @@
         </script>
     </div>
 
-    <!-- YHTEYSTIEDOT OSIO ALAREUNASSA -->
+    <!-- YHTEYSTIEDOT OSIO ALAREUNASSA – QR-BOKSI MUOKATTU 1247×453 KUVAA VARTEN -->
     <section id="final-contact">
         <div class="contact-info">
             <h2>Ota yhteyttä</h2>
