@@ -132,21 +132,37 @@
         </div>
     </div>
 
-    <!-- ISOT KUVAELEMENTIT – comcam-kansiosta -->
+    <!-- ISOT KUVAELEMENTIT – comcam-kansiosta, jokaisessa ruudussa eri kuvat -->
     <div class="extra-gallery">
         <!-- MUOKKAA TÄÄLTÄ: maxComcamImages = kuinka monta kuvaa comcam-kansiossa on -->
         <script>
-            const maxComcamImages = 40; // comcam1.webp – comcam40.webp
-            const comcamCount = 6;      // näytetään 6 isoa boksia
-            for (let i = 0; i < comcamCount; i++) {
-                const num1 = Math.floor(Math.random() * maxComcamImages) + 1;
-                const num2 = Math.floor(Math.random() * maxComcamImages) + 1;
-                const num3 = Math.floor(Math.random() * maxComcamImages) + 1;
+            const maxComcamImages = 40;
+            const comcamCount = 6;      // 6 isoa boksia
+
+            // Luodaan taulukko kaikista kuvista ja sekoitetaan se
+            let allImages = [];
+            for (let i = 1; i <= maxComcamImages; i++) {
+                allImages.push(i);
+            }
+            // Fisher-Yates shuffle
+            for (let i = allImages.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [allImages[i], allImages[j]] = [allImages[j], allImages[i]];
+            }
+
+            // Jaetaan sekoitettu lista 6 boksiin (jokaisessa 3 kuvaa)
+            const imagesPerBox = 3;
+            for (let box = 0; box < comcamCount; box++) {
+                const start = box * imagesPerBox;
+                const img1 = allImages[start];
+                const img2 = allImages[start + 1];
+                const img3 = allImages[start + 2];
+
                 document.write(`
                 <div class="extra-item">
-                    <img src="comcam/comcam${num1}.webp" class="active">
-                    <img src="comcam/comcam${num2}.webp">
-                    <img src="comcam/comcam${num3}.webp">
+                    <img src="comcam/comcam${img1}.webp" class="active">
+                    <img src="comcam/comcam${img2}.webp">
+                    <img src="comcam/comcam${img3}.webp">
                 </div>
                 `);
             }
