@@ -37,7 +37,7 @@
         #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
         #home h2{font-size:clamp(2.5rem,8vw,4.5rem);text-shadow:0 0 40px rgba(0,0,0,.9)}
 
-        /* VAIHTUVA OTSIKKO */
+        /* VAIHTUVA OTSIKKO – TÄSMÄLLEEN SAMA KUIN PÄÄSIVUN NIMIOTSIKKO */
         #dynamic-subtitle{
             position:relative;
             height:120px;
@@ -216,7 +216,7 @@
         }
         .large-item img.active{opacity:1}
 
-        /* YHTEYSTIEDOT OSIO – LAATIKOT SAMAN KOKOISIA */
+        /* YHTEYSTIEDOT OSIO ALAREUNASSA – LAATIKOT SAMAN KOKOISIA */
         #final-contact{
             max-width:1400px;
             margin:0 auto 100px;
@@ -342,24 +342,27 @@
         </div>
     </div>
 
-    <!-- PIENET VAIHTUVAT KUVARUUDUT – 5x1 -->
+    <!-- YLÄOSAN PIENET VAIHTUVAT KUVARUUDUT – SCRIPTATTAVA JÄRJESTYS -->
     <div class="small-gallery">
-        <!-- MUOKKAA TÄÄLTÄ RANGEA -->
         <script>
-            const minSmall = 1;
-            const maxSmall = 19;
-            const smallCount = 5;
+            // MUOKKAA TÄÄLTÄ YLÄOSAN JÄRJESTYSTÄ
+            // Jokainen sisempi taulukko = yksi boksi (max 3 kuvaa per boksi)
+            const smallSequence = [
+                [1, 7, 13, 19, 25, 31],  // Boksi 1
+                [2, 8, 14, 20, 26, 32],  // Boksi 2
+                [3, 9, 15, 21, 27, 33],  // Boksi 3
+                [4, 10, 16, 22, 28, 34],  // Boksi 4
+                [5, 11, 17, 23, 29, 35],  // Boksi 5
+            ];
 
-            for (let i = 0; i < smallCount; i++) {
-                const num = Math.floor(Math.random() * (maxSmall - minSmall + 1)) + minSmall;
-                document.write(`
-                <div class="small-item">
-                    <img src="VALOKUVAUS/Valokuvaus${num}.webp" class="active">
-                    <img src="VALOKUVAUS/Valokuvaus${Math.floor(Math.random() * (maxSmall - minSmall + 1)) + minSmall}.webp">
-                    <img src="VALOKUVAUS/Valokuvaus${Math.floor(Math.random() * (maxSmall - minSmall + 1)) + minSmall}.webp">
-                </div>
-                `);
-            }
+            smallSequence.forEach(boxImages => {
+                document.write('<div class="small-item">');
+                boxImages.forEach((num, index) => {
+                    const activeClass = index === 0 ? ' class="active"' : '';
+                    document.write(`<img src="VALOKUVAUS/Valokuvaus${num}.webp"${activeClass}>`);
+                });
+                document.write('</div>');
+            });
         </script>
     </div>
 
@@ -410,24 +413,28 @@
         </div>
     </section>
 
-    <!-- ALAOSAN ISOMMAT VAIHTUVAT KUVAT -->
+    <!-- ALAOSAN ISOMMAT VAIHTUVAT KUVAT – SCRIPTATTAVA JÄRJESTYS -->
     <div class="large-gallery">
-        <!-- MUOKKAA TÄÄLTÄ RANGEA -->
         <script>
-            const minLarge = 1;
-            const maxLarge = 42;
-            const largeCount = 6;
+            // MUOKKAA TÄÄLTÄ ALAOSAN JÄRJESTYSTÄ
+            // Jokainen sisempi taulukko = yksi boksi (max 3 kuvaa per boksi)
+            const largeSequence = [
+                [1, 7, 13, 19, 25, 31],  // Boksi 1
+                [2, 8, 14, 20, 26, 32],  // Boksi 2
+                [3, 9, 15, 21, 27, 33],  // Boksi 3
+                [4, 10, 16, 22, 28, 34],  // Boksi 4
+                [5, 11, 17, 23, 29, 35],  // Boksi 5
+                [6, 12, 18, 24, 30, 36]   // Boksi 6
+            ];
 
-            for (let i = 0; i < largeCount; i++) {
-                const num = Math.floor(Math.random() * (maxLarge - minLarge + 1)) + minLarge;
-                document.write(`
-                <div class="large-item">
-                    <img src="VALOKUVAUS/Valokuvaus${num}.webp" class="active">
-                    <img src="VALOKUVAUS/Valokuvaus${Math.floor(Math.random() * (maxLarge - minLarge + 1)) + minLarge}.webp">
-                    <img src="VALOKUVAUS/Valokuvaus${Math.floor(Math.random() * (maxLarge - minLarge + 1)) + minLarge}.webp">
-                </div>
-                `);
-            }
+            largeSequence.forEach(boxImages => {
+                document.write('<div class="large-item">');
+                boxImages.forEach((num, index) => {
+                    const activeClass = index === 0 ? ' class="active"' : '';
+                    document.write(`<img src="VALOKUVAUS/Valokuvaus${num}.webp"${activeClass}>`);
+                });
+                document.write('</div>');
+            });
         </script>
     </div>
 
@@ -440,7 +447,6 @@
         </div>
 
         <div class="qr-box">
-            <div class="recommended">Ota yhteyttä nopeasti</div>
             <a href="https://wa.me/message/2JQ4G2D3EXLID1" target="_blank">
                 <img src="QR.webp" alt="WhatsApp QR-koodi">
             </a>
