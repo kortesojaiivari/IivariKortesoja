@@ -69,7 +69,7 @@
         #services,#equipment{max-width:1200px;margin:0 auto 100px;text-align:center;padding:0 20px}
         #services h2,#equipment h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:30px}
 
-        /* VAIHTUVA OTSIKKO */
+        /* VAIHTUVA OTSIKKO - styling for script-driven animation */
         #dynamic-title{
             position:relative;
             height:70px;
@@ -82,28 +82,8 @@
             position:absolute;
             width:100%;
             text-align:center;
-            opacity:0;
-            transform:translateY(50px);
-            animation:slideUpFade 21s infinite;
-        }
-        #dynamic-title span:nth-child(1){
-            opacity:1;
-            transform:translateY(0);
-            animation-delay:0s;
-        }
-        #dynamic-title span:nth-child(2){animation-delay:3s}
-        #dynamic-title span:nth-child(3){animation-delay:6s}
-        #dynamic-title span:nth-child(4){animation-delay:9s}
-        #dynamic-title span:nth-child(5){animation-delay:12s}
-        #dynamic-title span:nth-child(6){animation-delay:15s}
-        #dynamic-title span:nth-child(7){animation-delay:18s}
-
-        @keyframes slideUpFade{
-            0%{opacity:0;transform:translateY(50px)}
-            5%{opacity:1;transform:translateY(0)}
-            14%{opacity:1;transform:translateY(0)}
-            19%{opacity:0;transform:translateY(-50px)}
-            100%{opacity:0;transform:translateY(-50px)}
+            /* Inline animation/transform styles are applied by the script for smooth control */
+            pointer-events:none;
         }
 
         .service-text,#equipment p{font-size:1.3rem;color:#ddd;line-height:1.7;margin-bottom:60px;max-width:900px;margin-left:auto;margin-right:auto}
@@ -165,6 +145,9 @@
             .about-image-container,.retro-video{max-width:100%}
         }
     </style>
+
+    <!-- Dynamic title script (shared reusable) -->
+    <script src="SKRIPTIT/dynamic-title.js" defer></script>
 </head>
 <body>
 
@@ -189,10 +172,10 @@
     <!-- Esittely + vaihtuva kuva -->
     <div class="about-section">
         <div class="about-text">
-            Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelancer-yrittäjänä. Toteutan videotuotantoja ja valokuvauskeikkoja ja työskentelen myös muille AV-alan hommissa osana työryhmää.<br><br>
-            Intohimonani on ollut ala-asteesta pitäen videotuotannot, joten pienestä pitäen olen oppinut editoimaan ja kuvaamaan. Vuosien varrella olen ottanut vastaan uutta tietoa ja taitoa esimerkiksi 3D-mallinnuksesta ja animoinnista.<br><br>
+            Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelancer-yrittäjänä. Toteutan videotuotantoja ja valokuvauskeikkoja ja työskentelen myös muille A[...]
+            Intohimonani on ollut ala-asteesta pitäen videotuotannot, joten pienestä pitäen olen oppinut editoimaan ja kuvaamaan. Vuosien varrella olen ottanut vastaan uutta tietoa ja taitoa esimer[...]
             Opintojeni kautta osaamiseni laajentui hurjasti. Koulun resurssien ansiosta esimerkiksi studiotyöskentely, monikamera ja kameraoperaattorina toimiminen tulivat tutuiksi.<br><br>
-            Olen toiminut Suomi Areenassa (MTV) kameraoperaattorina. Puolustusvoimille kuvannut ja leikannut videoita, suorittanut varusmiespalveluksen valtakunnallisessa erikoistehtävässä Combat Camerassa.
+            Olen toiminut Suomi Areenassa (MTV) kameraoperaattorina. Puolustusvoimille kuvannut ja leikannut videoita, suorittanut varusmiespalveluksen valtakunnallisessa erikoistehtävässä Combat C[...]
         </div>
         <div class="about-image-container">
             <div class="about-slide active"><img src="IivariKortesoja1.webp" alt="Iivari Kortesoja"></div>
@@ -213,7 +196,9 @@
         </div>
 
         <div id="services">
-            <h2 id="dynamic-title">
+            <!-- Uusi uudelleenkäytettävä vaihtuva otsikko (script hoitaa animaation).
+                 Säilytin alkuperäiset fraasit span-elementteinä jotta ne löytyvät suoraan skripiltä. -->
+            <h2 id="dynamic-title" class="dynamic-title" data-interval="3000">
                 <span>Yritys</span>
                 <span>Bändi</span>
                 <span>Järjestö</span>
@@ -222,15 +207,16 @@
                 <span>Hääpari</span>
                 <span>Valokuvaus</span>
             </h2>
+
             <p class="service-text">
-                Tarvitsetko ammattimaista audiovisuaalista materiaalia? Teen laadukkaita, tehokkaita ja edullisia tuotantoja ympäri Suomea. Olipa kyseessä sosiaalisen median video, hääkuvaus, yritysvideo, haastattelu, musiikkivideo tai jotain ihan muuta. Ota yhteyttä ja aletaan suunnittelemaan!
+                Tarvitsetko ammattimaista audiovisuaalista materiaalia? Teen laadukkaita, tehokkaita ja edullisia tuotantoja ympäri Suomea. Olipa kyseessä sosiaalisen median video, hääkuvaus, yrit[...]
             </p>
         </div>
 
         <div id="equipment">
             <h2>Kalusto</h2>
             <p>
-                Tuotantokalustoni on modernia ja mahdollistaa teknisesti korkealaatuisen materiaalin tuottamisen. Pääkameroina ovat Nikon ZR -järjestelmäkamerat, jotka pohjautuvat RED-elokuvakameran teknologiaan. Näillä kameroilla onnistuu 6K- ja 4K-kuvaus. Lisäkameroina GoPro-actionkamerat villeihin kulmiin.
+                Tuotantokalustoni on modernia ja mahdollistaa teknisesti korkealaatuisen materiaalin tuottamisen. Pääkameroina ovat Nikon ZR -järjestelmäkamerat, jotka pohjautuvat RED-elokuvakamer[...]
             </p>
             <div class="equipment-grid">
                 <div class="media-item"><video autoplay muted loop playsinline poster="nikon-poster.webp"><source src="nikon_zr_demo.mp4" type="video/mp4"></video></div>
@@ -241,7 +227,7 @@
 
         <div id="retro-camera">
             <div class="retro-text">
-                Käytössäni on myös aitoja 2000-luvun alun videokameroita, joilla saa tallennettua nostalgista ja särön näköistä materiaalia. Näissä laitteissa on elektroninen ja digitaalinen zoom sekä infrapunakuvaus (Night Vision), jolla voi kuvata pimeässäkin.
+                Käytössäni on myös aitoja 2000-luvun alun videokameroita, joilla saa tallennettua nostalgista ja särön näköistä materiaalia. Näissä laitteissa on elektroninen ja digitaaline[...]
             </div>
             <div class="retro-video">
                 <video autoplay muted loop playsinline poster="retro-poster.webp">
@@ -268,7 +254,7 @@
     </footer>
 
     <script>
-        // Taustavideo
+        // Taustavideo: autoplay/pause based on visibility
         const bgVideo = document.querySelector('#home video');
         new IntersectionObserver(e => e.forEach(en => en.isIntersecting ? bgVideo.play() : bgVideo.pause()), {threshold: 0.5})
             .observe(document.getElementById('home'));
