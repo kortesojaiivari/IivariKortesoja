@@ -11,6 +11,12 @@
    * better spacing and zoom level for mobile displays.
    */
 
+  // Configuration constants
+  const VIEWPORT_SETTINGS = 'width=device-width, initial-scale=0.9, maximum-scale=1.5, user-scalable=yes';
+  
+  // Module-scoped timeout variable
+  let resizeTimeout = null;
+
   // Mobile device detection
   function isMobileDevice() {
     // Check user agent
@@ -46,9 +52,7 @@
     // initial-scale=0.9 creates slight zoom out effect
     // maximum-scale=1.5 allows users to zoom in if needed
     // user-scalable=yes ensures users can zoom
-    viewportMeta.setAttribute('content', 
-      'width=device-width, initial-scale=0.9, maximum-scale=1.5, user-scalable=yes'
-    );
+    viewportMeta.setAttribute('content', VIEWPORT_SETTINGS);
 
     // Add mobile-specific body styling for better spacing
     injectMobileStyles();
@@ -61,36 +65,39 @@
       return;
     }
 
+    // Add mobile-device class to body for scoped styling
+    document.body.classList.add('mobile-device');
+
     const style = document.createElement('style');
     style.id = 'mobile-scaling-styles';
     style.textContent = `
       /* Mobile scaling styles - injected by SKRIPTIT/mobile-scaling.js */
       @media (max-width: 768px) {
-        body {
-          /* Add subtle horizontal padding on mobile for breathing room */
-          padding-left: 4px !important;
-          padding-right: 4px !important;
+        /* Add subtle horizontal padding on mobile for breathing room */
+        body.mobile-device {
+          padding-left: 4px;
+          padding-right: 4px;
         }
 
         /* Ensure sections have proper spacing */
-        section {
-          padding-left: max(20px, env(safe-area-inset-left, 0px)) !important;
-          padding-right: max(20px, env(safe-area-inset-right, 0px)) !important;
+        body.mobile-device section {
+          padding-left: max(20px, env(safe-area-inset-left, 0px));
+          padding-right: max(20px, env(safe-area-inset-right, 0px));
         }
 
         /* Respect safe areas for notched devices */
-        #site-header,
-        header {
-          padding-left: max(20px, env(safe-area-inset-left, 0px)) !important;
-          padding-right: max(20px, env(safe-area-inset-right, 0px)) !important;
+        body.mobile-device #site-header,
+        body.mobile-device header {
+          padding-left: max(20px, env(safe-area-inset-left, 0px));
+          padding-right: max(20px, env(safe-area-inset-right, 0px));
         }
       }
 
       /* Extra small screens (phones in portrait) */
       @media (max-width: 480px) {
-        body {
-          padding-left: 6px !important;
-          padding-right: 6px !important;
+        body.mobile-device {
+          padding-left: 6px;
+          padding-right: 6px;
         }
       }
     `;
@@ -101,8 +108,8 @@
   // Re-check on orientation change or resize
   function handleOrientationChange() {
     // Debounce to avoid excessive calls
-    clearTimeout(window.__mobileScalingTimeout);
-    window.__mobileScalingTimeout = setTimeout(adjustMobileViewport, 200);
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(adjustMobileViewport, 200);
   }
 
   // Initialize mobile scaling
