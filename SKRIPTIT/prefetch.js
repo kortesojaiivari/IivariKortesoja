@@ -114,28 +114,29 @@
         // Use fetch for videos
         return fetch(url, { mode: 'no-cors' })
           .then(function() {
-            // Success - don't need to do anything
+            return { status: 'fulfilled', url: url };
           })
           .catch(function(err) {
             console.warn('Prefetch: Failed to fetch video:', url, err);
+            return { status: 'rejected', url: url, error: err };
           });
       } else {
         // Use Image object for images
         return new Promise(function(resolve, reject) {
           const img = new Image();
-          img.onload = function() { resolve(); };
-          img.onerror = function() { 
+          img.onload = function() { resolve({ status: 'fulfilled', url: url, img: img }); };
+          img.onerror = function(err) { 
             console.warn('Prefetch: Failed to load image:', url);
-            reject(); 
+            reject(new Error('Failed to load image: ' + url)); 
           };
           img.src = url;
+        }).catch(function(err) {
+          return { status: 'rejected', url: url, error: err };
         });
       }
     });
     
-    return Promise.allSettled ? Promise.allSettled(promises) : Promise.all(promises.map(function(p) {
-      return p.catch(function() { return null; });
-    }));
+    return Promise.allSettled ? Promise.allSettled(promises) : Promise.all(promises);
   }
 
   // Main prefetch function
