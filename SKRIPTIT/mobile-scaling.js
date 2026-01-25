@@ -16,6 +16,7 @@
   
   // Module-scoped timeout variable
   let resizeTimeout = null;
+  let isInitialized = false;
 
   // Mobile device detection
   function isMobileDevice() {
@@ -38,6 +39,11 @@
       return; // Not a mobile device, no adjustment needed
     }
 
+    // Only adjust once to prevent scroll jumps
+    if (isInitialized) {
+      return;
+    }
+
     // Find existing viewport meta tag
     let viewportMeta = document.querySelector('meta[name="viewport"]');
     
@@ -56,6 +62,8 @@
 
     // Add mobile-specific body styling for better spacing
     injectMobileStyles();
+    
+    isInitialized = true;
   }
 
   // Inject mobile-specific CSS for better spacing

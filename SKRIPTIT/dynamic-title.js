@@ -212,14 +212,17 @@
 
       // After transition, reset prev immediately to below position WITHOUT transition so it's ready for future cycles.
       setTimeout(() => {
-        prevNode.style.transition = 'none';
-        prevNode.style.opacity = '0';
-        prevNode.style.transform = `translate(-50%,-50%) translateY(${this._slidePx}px)`;
-        // force reflow
-        // eslint-disable-next-line no-unused-expressions
-        prevNode.offsetHeight;
-        // restore transition for next use
-        prevNode.style.transition = `opacity ${TRANSITION_MS}ms ease, transform ${TRANSITION_MS}ms ease`;
+        // Double-check we're still pointing to the right element
+        if (this._items && this._items[prev] && this._items[prev].real) {
+          prevNode.style.transition = 'none';
+          prevNode.style.opacity = '0';
+          prevNode.style.transform = `translate(-50%,-50%) translateY(${this._slidePx}px)`;
+          // force reflow
+          // eslint-disable-next-line no-unused-expressions
+          prevNode.offsetHeight;
+          // restore transition for next use
+          prevNode.style.transition = `opacity ${TRANSITION_MS}ms ease, transform ${TRANSITION_MS}ms ease`;
+        }
       }, TRANSITION_MS + 20);
 
       this.current = next;
