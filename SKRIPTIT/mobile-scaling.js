@@ -73,31 +73,43 @@
     style.textContent = `
       /* Mobile scaling styles - injected by SKRIPTIT/mobile-scaling.js */
       @media (max-width: 768px) {
-        /* Add subtle horizontal padding on mobile for breathing room */
-        body.mobile-device {
-          padding-left: 4px;
-          padding-right: 4px;
+        /* Ensure html and body have no padding - keep full width for background elements */
+        html, body.mobile-device {
+          padding: 0 !important;
+          margin: 0 !important;
         }
 
-        /* Ensure sections have proper spacing */
-        body.mobile-device section {
-          padding-left: max(20px, env(safe-area-inset-left, 0px));
-          padding-right: max(20px, env(safe-area-inset-right, 0px));
-        }
-
-        /* Respect safe areas for notched devices */
+        /* Full-width elements (header, footer) should extend to viewport edges */
         body.mobile-device #site-header,
-        body.mobile-device header {
+        body.mobile-device header,
+        body.mobile-device footer {
+          width: 100vw !important;
+          margin-left: 0 !important;
+          margin-right: 0 !important;
+          padding-left: max(20px, env(safe-area-inset-left, 0px)) !important;
+          padding-right: max(20px, env(safe-area-inset-right, 0px)) !important;
+        }
+
+        /* Content sections get breathing room with padding */
+        body.mobile-device section:not(#home) {
           padding-left: max(20px, env(safe-area-inset-left, 0px));
           padding-right: max(20px, env(safe-area-inset-right, 0px));
+        }
+
+        /* Home/hero sections should also be full width */
+        body.mobile-device #home,
+        body.mobile-device section#home {
+          width: 100vw !important;
+          margin-left: 0 !important;
+          margin-right: 0 !important;
         }
       }
 
       /* Extra small screens (phones in portrait) */
       @media (max-width: 480px) {
+        /* Maintain full width on small screens too */
         body.mobile-device {
-          padding-left: 6px;
-          padding-right: 6px;
+          padding: 0 !important;
         }
       }
     `;
