@@ -278,7 +278,15 @@
             #final-contact{grid-template-columns:1fr}
         }
         @media(max-width:600px){
-            .small-gallery{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+            .small-gallery{
+                grid-template-columns:repeat(2,1fr);
+            }
+            /* 5. ruutu keskelle omalle rivilleen */
+            .small-gallery .small-item:nth-child(5){
+                grid-column:1 / -1;
+                max-width:50%;
+                margin:0 auto;
+            }
             .small-item{height:200px}
             /* Mobile: lisää vielä tilaa otsikolle */
             #dynamic-title{padding-bottom:80px;padding-top:24px;min-height:180px}
@@ -290,7 +298,8 @@
     <script src="SKRIPTIT/dynamic-title.js" defer></script>
     <!-- Shared header script (injects header/nav with bold titles and green underline on hover) -->
     <script src="SKRIPTIT/header.js" defer></script>
-     <script src="SKRIPTIT/mobile-scaling.js" defer></script>
+    <!-- Mobile scaling script for better mobile experience -->
+    <script src="SKRIPTIT/mobile-scaling.js" defer></script>
 </head>
 <body>
 
