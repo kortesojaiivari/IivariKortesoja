@@ -80,6 +80,15 @@
     document.head.appendChild(s);
   }
 
+  // Inject prefetch script once
+  if (!document.getElementById('prefetch-script')) {
+    const prefetchScript = document.createElement('script');
+    prefetchScript.id = 'prefetch-script';
+    prefetchScript.src = 'SKRIPTIT/prefetch.js';
+    prefetchScript.defer = true;
+    document.head.appendChild(prefetchScript);
+  }
+
   function injectHeader(){
     if (document.getElementById('site-header')) return;
 
