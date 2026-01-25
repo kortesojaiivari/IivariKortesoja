@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Valokuvaus | Iivari Kortesoja</title>
-    <meta name="description" content="Edullista valokuvausta yksityisille – häät, valmistujaiset, hautajaiset, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta. Myös videopalvelut saatavilla. Ota yhteyttä!">
+    <meta name="description" content="Valokuvaus — häät, valmistujaiset, tilaisuudet, muotokuvat ja videopalvelut. Ota yhteyttä.">
 
-    <!-- GOOGLE ANALYTICS 4 -->
+    <!-- GOOGLE ANALYTICS 4 (säilytetty) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);} 
+      function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
     </script>
 
-    <!-- MICROSOFT CLARITY -->
+    <!-- Microsoft Clarity (säilytetty) -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -25,54 +25,115 @@
     </script>
 
     <style>
+        /* Perus */
         *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
-        header{background:#000;padding:15px 20px;text-align:center;position:fixed;width:100%;top:0;z-index:1000;backdrop-filter:blur(10px)}
-        nav a{color:#fff;text-decoration:none;margin:0 15px;font-size:1.2em;position:relative;transition:.3s}
+        html,body{height:100%}
+        body{font-family:Arial, Helvetica, sans-serif;background:#111; color:#fff; line-height:1.6; overflow-x:hidden}
+
+        /* Header */
+        header{position:fixed;top:0;left:0;right:0;background:#000;padding:12px 18px;z-index:1200;text-align:center;backdrop-filter:blur(8px)}
+        nav a{color:#fff;text-decoration:none;margin:0 12px;font-size:1.05rem;position:relative;transition:.18s}
         nav a:hover{color:#4ade80}
-        nav a::after{content:'';position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:0;height:2px;background:#4ade80;transition:width .3s}
+        nav a::after{content:'';position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:0;height:2px;background:#4ade80;transition:width .18s}
         nav a:hover::after{width:100%}
 
-        #home{position:relative;min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding-top:80px}
-        #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
-        #home h2{font-size:clamp(2rem,6vw,3.5rem);text-shadow:0 0 30px rgba(0,0,0,.9)}
+        /* Banner / home */
+        #home{position:relative;min-height:58vh;display:flex;align-items:center;justify-content:center;text-align:center;padding-top:72px;overflow:hidden}
+        #home video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1}
+        #home h2{font-size:clamp(2rem,6vw,3.5rem);text-shadow:0 0 30px rgba(0,0,0,.8);margin-top:8px}
 
-        /* Dynamic title container: do not hard-clip; script adjusts min-height/padding precisely */
-        #dynamic-title{position:relative;overflow:visible;display:flex;align-items:center;justify-content:center;margin:40px 0 20px;padding-top:12px;padding-bottom:18px}
-        #dynamic-title span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;will-change:transform,opacity;font-size:clamp(2.5rem,7.5vw,4.5rem);text-align:center}
+        /* VAIHTUVA OTSIKKO - iso CSS-turva + JS mittaus */
+        #dynamic-title{
+            position:relative;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            margin:48px 0 24px;
+            /* base padding; JS will increase if needed */
+            padding-top:20px;
+            padding-bottom:100px;
+            line-height:1.25;
+            overflow:visible; /* tärkeä, estää selaimien leikkaamisen */
+            min-height: clamp(160px, 20vh, 360px);
+            z-index:100;
+            text-align:center;
+        }
+        /* spanit päällekkäin, animaatio kuten alkuperäisessä */
+        #dynamic-title span{
+            position:absolute;
+            width:100%;
+            left:50%;
+            transform:translateX(-50%);
+            text-align:center;
+            opacity:0;
+            transform-origin:center;
+            will-change:transform,opacity;
+            font-size:clamp(2.4rem,7.5vw,4.2rem);
+            text-shadow:0 0 30px rgba(0,0,0,.9);
+            animation:slideUpFade 21s infinite;
+            padding:0 12px; /* estää leikkausta jos pitkät sanat */
+            box-sizing:border-box;
+            white-space:nowrap;
+        }
+        /* eri delayit (7-syklin tyyli alkuperäisestä, käytämme 6 spans) */
+        #dynamic-title span:nth-child(1){animation-delay:0s;opacity:1;transform:translate(-50%,0)}
+        #dynamic-title span:nth-child(2){animation-delay:3s}
+        #dynamic-title span:nth-child(3){animation-delay:6s}
+        #dynamic-title span:nth-child(4){animation-delay:9s}
+        #dynamic-title span:nth-child(5){animation-delay:12s}
+        #dynamic-title span:nth-child(6){animation-delay:15s}
 
-        .about-section{max-width:1200px;margin:40px auto;display:flex;align-items:center;gap:60px;flex-wrap:wrap;padding:0 20px}
-        .about-text{flex:1;min-width:280px;font-size:1.15rem;color:#e0e0e0;line-height:1.8}
-        .about-image{position:relative;flex:1;min-width:300px;max-width:600px;padding-bottom:56.25%;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.9)}
-        .about-image img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
+        @keyframes slideUpFade{
+            0%{opacity:0;transform:translate(-50%,40px)}
+            5%{opacity:1;transform:translate(-50%,0)}
+            14%{opacity:1;transform:translate(-50%,0)}
+            19%{opacity:0;transform:translate(-50%,-40px)}
+            100%{opacity:0;transform:translate(-50%,-40px)}
+        }
+
+        /* Sisältö */
+        .about-section{max-width:1200px;margin:36px auto 20px;display:flex;gap:38px;align-items:center;flex-wrap:wrap;padding:0 18px}
+        .about-text{flex:1;min-width:280px;font-size:1.08rem;color:#e6e6e6;line-height:1.7}
+        .about-image{flex:1;min-width:300px;max-width:600px;position:relative;padding-bottom:56.25%;border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.8)}
+        .about-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
         .about-image img.active{opacity:1}
 
-        .portfolio-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;max-width:1200px;margin:40px auto;padding:0 20px}
-        .portfolio-item{position:relative;height:300px;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.8)}
-        .portfolio-item img,.portfolio-item video{width:100%;height:100%;object-fit:cover}
+        .small-gallery{max-width:1400px;margin:32px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;padding:0 18px}
+        .small-item{position:relative;height:260px;border-radius:14px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.7)}
+        .small-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s}
+        .small-item img.active{opacity:1}
 
-        .small-gallery,.large-gallery{max-width:1400px;margin:40px auto;padding:0 20px}
-        .small-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
-        .large-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin-top:60px}
+        .large-gallery{max-width:1400px;margin:48px auto 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;padding:0 18px}
+        .large-item{position:relative;height:420px;border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.7)}
+        .large-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s}
+        .large-item img.active{opacity:1}
 
-        #pricing{max-width:1200px;margin:40px auto;padding:0 20px}
-        .pricing-box{background:#222;padding:24px;border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.6)}
+        #pricing{max-width:1200px;margin:40px auto;padding:0 18px}
+        .pricing-box{background:#202020;padding:18px;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,.6)}
 
-        footer{background:#000;padding:30px 20px;text-align:center;font-size:0.95rem;border-top:1px solid #333;margin-top:60px}
+        #final-contact{max-width:1200px;margin:40px auto 80px;padding:0 18px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+        #final-contact .contact-info,#final-contact .qr-box{background:#202020;padding:22px;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,.6);text-align:center}
 
-        @media(max-width:768px){
-            #home{padding-top:110px}
-            #dynamic-title span{font-size:clamp(1.8rem,6.5vw,3rem)}
-            .portfolio-gallery{grid-template-columns:1fr}
-            .about-text{font-size:1.05rem}
+        footer{background:#000;padding:28px 18px;text-align:center;border-top:1px solid #252525;color:#bbb;font-size:.95rem}
+
+        @media(max-width:900px){
+            header{padding:10px 14px}
+            #home{padding-top:90px}
+            #dynamic-title{padding-bottom:64px;padding-top:16px;min-height:120px}
+            #dynamic-title span{font-size:clamp(1.8rem,6.5vw,3.2rem)}
+        }
+        @media(max-width:600px){
+            .about-section{margin:24px auto}
+            .about-image{padding-bottom:66.66%}
+            #dynamic-title span{font-size:clamp(1.5rem,5.5vw,2.6rem)}
+            #dynamic-title{padding-bottom:80px}
         }
     </style>
 
-    <!-- Shared dynamic title script -->
+    <!-- Shared dynamic title script (preferred). If missing, the inline fallback init below will animate via CSS keyframes. -->
     <script src="SKRIPTIT/dynamic-title.js" defer></script>
 </head>
 <body>
-
     <header>
         <nav>
             <a href="indexi.html">Koti</a>
@@ -83,136 +144,208 @@
         </nav>
     </header>
 
-    <section id="home">
-        <video autoplay muted loop playsinline poster="VALOKUVAUS/valokuvaus-poster.webp">
-            <source src="valokuvaus_otsikko.mp4" type="video/mp4">
-        </video>
-        <h2>Valokuvaus</h2>
-    </section>
+    <main>
+        <section id="home" aria-label="Banner">
+            <video autoplay muted loop playsinline poster="VALOKUVAUS/valokuvaus-poster.webp">
+                <source src="valokuvaus_otsikko.mp4" type="video/mp4">
+            </video>
+            <h2>Valokuvaus</h2>
+        </section>
 
-    <!-- Dynamic title using shared script. Keep spans for phrases. -->
-    <h2 id="dynamic-title" class="dynamic-title" data-interval="3000" aria-label="Valokuvaus: vaihtuva otsikko">
-        <span>Häät</span>
-        <span>Valmistujaiset</span>
-        <span>Hautajaiset</span>
-        <span>Tilaisuudet</span>
-        <span>Ristiäiset</span>
-        <span>Muotokuvat</span>
-    </h2>
+        <!-- Täysi koodi vaihtuvasta otsikosta (aina mukana) -->
+        <h2 id="dynamic-title" data-interval="3000" aria-live="polite" aria-atomic="true" role="region">
+            <span>Häät</span>
+            <span>Valmistujaiset</span>
+            <span>Hautajaiset</span>
+            <span>Tilaisuudet</span>
+            <span>Ristiäiset</span>
+            <span>Muotokuvat</span>
+        </h2>
 
-    <div class="about-section">
-        <div class="about-text">
-            <p>Valokuvausta tarjoan yksityisille ihmisille tällä sivulla. Yritykset ja muut asiakkaat, mainitkaa yhteydenotossa valokuvaustarpeestanne.</p>
-            <p>Olipa kyseessä häät, juhlat, tilaisuudet, hautajaiset, valmistujaiset tai ihan mitä vain, ota yhteyttä niin sovitaan keikasta.</p>
-            <p>Tarkoitukseni on tarjota kuluttajaystävällistä valokuvausta, jolloin hinta on edullista ja erottuu merkittävästi muista kuvaajista.</p>
-            <p>Tarjoan myös valokuvauksen ohella videopalveluita. Kaikki on sovittavissa ja neuvoteltavissa!</p>
-        </div>
-        <div class="about-image">
-            <img src="VALOKUVAUS/valokuvaaja1.webp" alt="Valokuvaus 1" class="active">
-            <img src="VALOKUVAUS/valokuvaaja2.webp" alt="Valokuvaus 2">
-            <img src="VALOKUVAUS/valokuvaaja3.webp" alt="Valokuvaus 3">
-        </div>
-    </div>
+        <section class="about-section" aria-label="Esittely">
+            <div class="about-text">
+                <p>Valokuvausta tarjoan yksityisille ihmisille tällä sivulla. Yritykset ja muut asiakkaat, mainitkaa yhteydenotossa valokuvaustarpeestanne.</p>
+                <p>Olipa kyseessä häät, juhlat, tilaisuudet tai muotokuvaus — sovitaan juuri teille sopiva kokonaisuus.</p>
+                <p>Tarjoan myös videopalveluita ja erilaisia paketiratkaisuja. Kysy lisää!</p>
+            </div>
+            <div class="about-image" aria-hidden="false">
+                <img src="VALOKUVAUS/valokuvaaja1.webp" alt="Valokuvaaja työssään" class="active">
+                <img src="VALOKUVAUS/valokuvaaja2.webp" alt="Valokuvaus kuvaus 2">
+                <img src="VALOKUVAUS/valokuvaaja3.webp" alt="Valokuvaus kuvaus 3">
+            </div>
+        </section>
 
-    <div class="small-gallery" aria-hidden="false">
-        <script>
-            const smallSequence = [
-                [1,7,13,19,25,31],[2,8,14,20,26,32],[3,9,15,21,27,33],[4,10,16,22,28,34],[5,11,17,23,29,35]
-            ];
-            smallSequence.forEach(box=>{
-                document.write('<div class="small-item">');
-                box.forEach((n,i)=>{
-                    document.write(`<img src="VALOKUVAUS/Valokuvaus${n}.webp"${i===0? ' class="active"':''}>`);
+        <div class="small-gallery" aria-label="Galleria">
+            <script>
+                const smallSequence = [
+                    [1,7,13,19,25,31],
+                    [2,8,14,20,26,32],
+                    [3,9,15,21,27,33],
+                    [4,10,16,22,28,34],
+                    [5,11,17,23,29,35]
+                ];
+                smallSequence.forEach(box => {
+                    document.write('<div class="small-item">');
+                    box.forEach((n, i) => document.write(`<img src="VALOKUVAUS/Valokuvaus${n}.webp"${i===0? ' class="active"':''} alt="Valokuva ${n}">`));
+                    document.write('</div>');
                 });
-                document.write('</div>');
-            });
-        </script>
-    </div>
-
-    <section id="pricing">
-        <h2>Hinnoittelu</h2>
-        <p class="disclaimer">*Suuntaa-antavat hinnat. Hinnat sisältävät ALV.</p>
-        <div class="upper-row">
-            <div class="pricing-box"><h3>3 tuntia</h3><p class="price">300 €</p></div>
-            <div class="pricing-box"><h3>4–6 tuntia</h3><p class="price">400 €</p></div>
-            <div class="pricing-box"><h3>6 tuntia +</h3><p class="price">500 €</p></div>
+            </script>
         </div>
-    </section>
 
-    <div class="large-gallery">
-        <script>
-            const largeSequence = [
-                [1,7,13,19,25,31],[2,8,14,20,26,32],[3,9,15,21,27,33],[4,10,16,22,28,34],[5,11,17,23,29,35],[6,12,18,24,30,36]
-            ];
-            largeSequence.forEach(box=>{
-                document.write('<div class="large-item">');
-                box.forEach((n,i)=>{
-                    document.write(`<img src="VALOKUVAUS/Valokuvaus${n}.webp"${i===0? ' class="active"':''}>`);
+        <section id="pricing" aria-label="Hinnoittelu">
+            <h2>Hinnoittelu</h2>
+            <p class="disclaimer">*Suuntaa-antavat hinnat. Ota yhteyttä tarkempaan tarjoukseen.</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;max-width:1200px;margin:0 auto;">
+                <div class="pricing-box"><h3>3 tuntia</h3><p>300 €</p></div>
+                <div class="pricing-box"><h3>4–6 tuntia</h3><p>400 €</p></div>
+                <div class="pricing-box"><h3>6 tuntia +</h3><p>500 €</p></div>
+            </div>
+        </section>
+
+        <div class="large-gallery" aria-label="Suuremmat kuvat">
+            <script>
+                const largeSequence = [
+                    [1,7,13,19,25,31],
+                    [2,8,14,20,26,32],
+                    [3,9,15,21,27,33],
+                    [4,10,16,22,28,34],
+                    [5,11,17,23,29,35],
+                    [6,12,18,24,30,36]
+                ];
+                largeSequence.forEach(box => {
+                    document.write('<div class="large-item">');
+                    box.forEach((n, i) => document.write(`<img src="VALOKUVAUS/Valokuvaus${n}.webp"${i===0? ' class="active"':''} alt="Valokuva suuri ${n}">`));
+                    document.write('</div>');
                 });
-                document.write('</div>');
-            });
-        </script>
-    </div>
+            </script>
+        </div>
 
-    <section id="final-contact">
-        <div class="contact-info">
-            <h2>Ota yhteyttä</h2>
-            <p>Sähköposti: <a href="mailto:example@email.com">example@email.com</a></p>
-            <p>Puhelin: <a href="tel:+358405247918">040 524 7918</a></p>
-        </div>
-        <div class="qr-box">
-            <a href="https://wa.me/message/2JQ4G2D3EXLID1" target="_blank" rel="noopener"><img src="QR.webp" alt="WhatsApp QR-koodi"></a>
-        </div>
-    </section>
+        <section id="final-contact" aria-label="Yhteystiedot">
+            <div class="contact-info">
+                <h2>Ota yhteyttä</h2>
+                <p>Sähköposti: <a href="mailto:example@email.com">example@email.com</a></p>
+                <p>Puhelin: <a href="tel:+358405247918">040 524 7918</a></p>
+            </div>
+            <div class="qr-box">
+                <a href="https://wa.me/message/2JQ4G2D3EXLID1" target="_blank" rel="noopener">
+                    <img src="QR.webp" alt="WhatsApp QR-koodi" style="max-width:320px;width:100%;height:auto;border-radius:10px">
+                </a>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <p>© Iivari Kortesoja 2026 | Y-tunnus A38904</p>
+        <p>© Iivari Kortesoja • 2026</p>
     </footer>
 
     <script>
-        // Video visibility
-        (function(){
-            const bgVideo = document.querySelector('#home video');
-            if (!bgVideo) return;
-            if ('IntersectionObserver' in window){
-                new IntersectionObserver(entries=>entries.forEach(e=>e.isIntersecting?bgVideo.play():bgVideo.pause()),{threshold:0.5}).observe(document.getElementById('home'));
-            }
-        })();
+    /* Taustavideo play/pause */
+    (function(){
+        const bg = document.querySelector('#home video');
+        if (!bg) return;
+        if ('IntersectionObserver' in window){
+            new IntersectionObserver(entries => entries.forEach(en => en.isIntersecting ? bg.play() : bg.pause()), {threshold:0.5})
+                .observe(document.getElementById('home'));
+        }
+    })();
 
-        // image cycling
-        (function(){
-            const aboutImgs = document.querySelectorAll('.about-image img');
-            if (aboutImgs.length>0){
-                let i=0;setInterval(()=>{aboutImgs[i].classList.remove('active');i=(i+1)%aboutImgs.length;aboutImgs[i].classList.add('active');},5000);
-            }
-            document.querySelectorAll('.small-item').forEach(box=>{const imgs=box.querySelectorAll('img');let idx=0;setInterval(()=>{imgs[idx].classList.remove('active');idx=(idx+1)%imgs.length;imgs[idx].classList.add('active');},4000);});
-            document.querySelectorAll('.large-item').forEach(box=>{const imgs=box.querySelectorAll('img');let idx=0;setInterval(()=>{imgs[idx].classList.remove('active');idx=(idx+1)%imgs.length;imgs[idx].classList.add('active');},5000);});
-        })();
+    /* Kuvien vaihtajat */
+    (function(){
+        function swap(nodeList, interval){
+            if (!nodeList || nodeList.length < 2) return;
+            let i = 0;
+            setInterval(() => {
+                nodeList[i].classList.remove('active');
+                i = (i + 1) % nodeList.length;
+                nodeList[i].classList.add('active');
+            }, interval);
+        }
 
-        // Ensure dynamic-title has enough space. Run after fonts & dynamic-title script.
-        function ensureTitleSafe(){
-            const el = document.getElementById('dynamic-title');
-            if (!el) return;
+        // about images
+        const aboutImgs = document.querySelectorAll('.about-image img');
+        swap(aboutImgs, 5000);
+
+        // small & large galleries: initialize after DOM
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.small-item').forEach(box => swap(box.querySelectorAll('img'), 4000));
+            document.querySelectorAll('.large-item').forEach(box => swap(box.querySelectorAll('img'), 5000));
+        });
+    })();
+
+    /* VARSINAISEN vaihtuvan otsikon turvallinen säätö:
+       - mittaa näytettävän fontin korkeus sisältäen descenderit
+       - kasvattaa padding-bottom / min-height reilusti, jos tarvitaan
+       - odottaa webfontteja (document.fonts.ready) jos saatavilla
+    */
+    (function(){
+        const el = document.getElementById('dynamic-title');
+        if (!el) return;
+
+        function measureHeightForSample(sampleText){
             const sample = document.createElement('span');
-            sample.textContent = 'Hgjpqy';
-            const ref = el.querySelector('span')||el;
-            const cs = getComputedStyle(ref);
-            sample.style.cssText = `position:absolute;left:-9999px;top:-9999px;visibility:hidden;white-space:nowrap;font-family:${cs.fontFamily};font-size:${cs.fontSize};font-weight:${cs.fontWeight};line-height:${cs.lineHeight}`;
+            sample.textContent = sampleText;
+            const ref = el.querySelector('span') || el;
+            const cs = window.getComputedStyle(ref);
+            sample.style.cssText = [
+                'position:absolute',
+                'left:-9999px',
+                'top:-9999px',
+                'visibility:hidden',
+                'white-space:nowrap',
+                `font-family:${cs.fontFamily}`,
+                `font-size:${cs.fontSize}`,
+                `font-weight:${cs.fontWeight}`,
+                `line-height:${cs.lineHeight}`,
+                `letter-spacing:${cs.letterSpacing}`
+            ].join(';');
             document.body.appendChild(sample);
             const h = Math.ceil(sample.getBoundingClientRect().height);
             document.body.removeChild(sample);
-            const extra = Math.max(40, Math.round(h*0.8));
-            const curBot = parseInt(getComputedStyle(el).paddingBottom)||0;
-            if (curBot < extra) el.style.paddingBottom = (extra+20)+'px';
-            const desiredMin = h + (parseInt(el.style.paddingTop||getComputedStyle(el).paddingTop)||0) + (parseInt(el.style.paddingBottom||getComputedStyle(el).paddingBottom)||0) + 8;
-            const curMin = parseInt(getComputedStyle(el).minHeight)||0;
-            if (desiredMin>curMin) el.style.minHeight = desiredMin+'px';
-            el.style.overflow='visible';
+            return h;
         }
-        function runSafe(){
-            if (document.fonts && document.fonts.ready){document.fonts.ready.then(()=>setTimeout(ensureTitleSafe,80)).catch(()=>setTimeout(ensureTitleSafe,120));}else{setTimeout(ensureTitleSafe,150);}
+
+        function adjust(){
+            // measure with chars that include ascenders/descenders
+            const measured = measureHeightForSample('Hg j p q y'); // covers problematic glyphs
+            // compute generous extra space
+            const extraBottom = Math.max(80, Math.round(measured * 1.0)); // at least 80px or measured size
+            const extraTop = Math.max(18, Math.round(measured * 0.35));
+            // apply only if larger than current to avoid shrinking
+            const cs = getComputedStyle(el);
+            const curBottom = parseInt(cs.paddingBottom) || 0;
+            const curTop = parseInt(cs.paddingTop) || 0;
+            if (curBottom < extraBottom) el.style.paddingBottom = (extraBottom + 16) + 'px';
+            if (curTop < extraTop) el.style.paddingTop = (extraTop) + 'px';
+            // ensure min-height
+            const desiredMin = measured + (parseInt(el.style.paddingTop||cs.paddingTop) || 0) + (parseInt(el.style.paddingBottom||cs.paddingBottom) || 0) + 12;
+            const curMin = parseInt(cs.minHeight) || 0;
+            if (desiredMin > curMin) el.style.minHeight = desiredMin + 'px';
+            el.style.overflow = 'visible';
         }
-        document.addEventListener('DOMContentLoaded', ()=>{runSafe();setTimeout(runSafe,800);setTimeout(runSafe,1800);window.addEventListener('resize', ()=>setTimeout(runSafe,200)); if (window.DynamicTitle) DynamicTitle.initAll();});
+
+        function runAdjustSafely(){
+            // small delay so any external dynamic-title.js has a chance to run
+            setTimeout(adjust, 60);
+            setTimeout(adjust, 700);
+            setTimeout(adjust, 1500);
+        }
+
+        if (document.fonts && document.fonts.ready){
+            document.fonts.ready.then(runAdjustSafely).catch(runAdjustSafely);
+        } else {
+            document.addEventListener('DOMContentLoaded', runAdjustSafely);
+            setTimeout(runAdjustSafely, 700);
+        }
+        window.addEventListener('resize', function(){
+            // debounce-ish
+            clearTimeout(window.__dynamicTitleResizeTimer);
+            window.__dynamicTitleResizeTimer = setTimeout(runAdjustSafely, 220);
+        });
+    })();
+
+    /* Jos SKRIPTIT/dynamic-title.js ei ole olemassa, tyylillinen CSS-animaatio hoitaa vaihtamisen.
+       Jos sinulla on SKRIPTIT/dynamic-title.js niin se voi korvata tai alustaa lisälogiikalla.
+    */
     </script>
 </body>
 </html>
