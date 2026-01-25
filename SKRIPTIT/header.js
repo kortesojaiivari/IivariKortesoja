@@ -1,7 +1,6 @@
 (function(){
-  // Header HTML — muokkaa linkkejä tarvittaessa
   const headerHTML = `
-    <header id="site-header" role="banner">
+    <header id="site-header" role="banner" aria-label="Sivun navigaatio">
       <nav>
         <a href="indexi.html">Koti</a>
         <a href="portfolio.html">Portfolio</a>
@@ -12,23 +11,25 @@
     </header>
   `;
 
-  // Yhteinen header-tyyli: font-weight changed to normal (400) to remove bolding
   const styleText = `
     /* Shared header styles injected by SKRIPTIT/header.js */
     #site-header{
       background:#000;
-      padding:15px 20px;
+      padding:12px 20px;
       text-align:center;
       position:fixed;
       width:100%;
       top:0;
+      left:0;
       z-index:1000;
       -webkit-backdrop-filter: blur(10px);
       backdrop-filter: blur(10px);
+      box-sizing:border-box;
     }
     #site-header nav{
       display:inline-block;
     }
+    /* Do not force a specific font-family or weight here — inherit from page */
     #site-header nav a{
       color:#fff;
       text-decoration:none;
@@ -36,10 +37,10 @@
       font-size:1.15rem;
       position:relative;
       transition:color .25s ease;
-      font-weight:400; /* normal weight (not bold) */
+      font-weight: inherit; /* inherit sivun font-weight - palauttaa alkuperäisen fontin käytön */
       letter-spacing:0.2px;
     }
-    /* vihreä aliiviinaus/underline efektin säilytys hoverissa */
+    /* vihreä alaviivaus hoverissa */
     #site-header nav a::after{
       content:'';
       position:absolute;
@@ -58,7 +59,6 @@
       width:100%;
     }
 
-    /* Responsiivisuus: pienemmillä näytöillä tiiviimpi marginaali */
     @media(max-width:768px){
       #site-header nav a{
         margin:0 10px;
@@ -66,16 +66,13 @@
       }
     }
 
-    /* Lisää body-top-paddingia jotta fixed-header ei peitä sisältöä */
+    /* fallback classes; these may be toggled by script */
     .has-shared-header{
-      padding-top:64px !important; /* säädä tarvittaessa; header-korkeus ~64px */
-    }
-    @media(max-width:768px){
-      .has-shared-header{ padding-top:72px !important; }
+      /* tämä luokka asetetaan dynaamisesti vain jos tarvitaan siirtoa sisällölle */
     }
   `;
 
-  // Inject style only once
+  // Inject style once
   if (!document.getElementById('shared-header-styles')) {
     const s = document.createElement('style');
     s.id = 'shared-header-styles';
@@ -83,18 +80,44 @@
     document.head.appendChild(s);
   }
 
-  // Inject header only once
   function injectHeader(){
-    if (!document.getElementById('site-header')) {
-      const container = document.createElement('div');
-      container.innerHTML = headerHTML;
-      // Lisää header body:n alkuun
-      const first = document.body.firstChild;
-      document.body.insertBefore(container.firstElementChild, first);
-      // Lisää luokka body/html:lle jotta sisältö ei jää headerin alle
-      document.documentElement.classList.add('has-shared-header');
-      document.body.classList.add('has-shared-header');
-    }
+    if (document.getElementById('site-header')) return;
+
+    // Insert header as first element in body
+    const container = document.createElement('div');
+    container.innerHTML = headerHTML;
+    const headerEl = container.firstElementChild;
+    document.body.insertBefore(headerEl, document.body.firstChild);
+
+    // After header is in DOM, compute its height and decide padding
+    // If the element immediately after header is the hero/video (#home), DO NOT add top padding.
+    // Otherwise add padding equal to header height so content is not hidden under fixed header.
+    requestAnimationFrame(() => {
+      const headerRect = headerEl.getBoundingClientRect();
+      const headerH = Math.ceil(headerRect.height) || 64;
+
+      const next = headerEl.nextElementSibling;
+      const shouldAddPadding = !(next && (next.id === 'home' || next.classList.contains('hero') || next.classList.contains('video-hero')));
+
+      // Remove any previously set inline padding to avoid accumulation
+      document.documentElement.style.paddingTop = '';
+      document.body.style.paddingTop = '';
+
+      if (shouldAddPadding) {
+        // set padding on documentElement and body to be safe across stylesheets
+        document.documentElement.style.paddingTop = headerH + 'px';
+        document.body.style.paddingTop = headerH + 'px';
+        // add a class for visibility if needed by other CSS
+        document.documentElement.classList.add('has-shared-header');
+        document.body.classList.add('has-shared-header');
+      } else {
+        // Ensure no extra padding remains so header sits flush with hero/video
+        document.documentElement.classList.remove('has-shared-header');
+        document.body.classList.remove('has-shared-header');
+        document.documentElement.style.paddingTop = '';
+        document.body.style.paddingTop = '';
+      }
+    });
   }
 
   if (document.readyState === 'loading') {
@@ -102,4 +125,29 @@
   } else {
     injectHeader();
   }
+
+  // Also re-evaluate on resize (header height could change)
+  window.addEventListener('resize', function(){
+    const headerEl = document.getElementById('site-header');
+    if (!headerEl) return;
+    // debounce quick resizes
+    clearTimeout(window.__sharedHeaderResizeTimer);
+    window.__sharedHeaderResizeTimer = setTimeout(() => {
+      const headerRect = headerEl.getBoundingClientRect();
+      const headerH = Math.ceil(headerRect.height) || 64;
+      const next = headerEl.nextElementSibling;
+      const shouldAddPadding = !(next && (next.id === 'home' || next.classList.contains('hero') || next.classList.contains('video-hero')));
+      if (shouldAddPadding) {
+        document.documentElement.style.paddingTop = headerH + 'px';
+        document.body.style.paddingTop = headerH + 'px';
+        document.documentElement.classList.add('has-shared-header');
+        document.body.classList.add('has-shared-header');
+      } else {
+        document.documentElement.style.paddingTop = '';
+        document.body.style.paddingTop = '';
+        document.documentElement.classList.remove('has-shared-header');
+        document.body.classList.remove('has-shared-header');
+      }
+    }, 120);
+  });
 })();
