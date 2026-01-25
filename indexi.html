@@ -3,78 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iivari Kortesoja – Tulossa pian</title>
-    <meta name="description" content="Iivari Kortesojan uusi verkkosivu on työn alla. Sivusto avautuu pian!">
+    <title>Iivari Kortesoja</title>
+
+    <!-- GOOGLE ANALYTICS & CLARITY -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
+    </script>
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "ud6y4jpngh");
+    </script>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
-        
         *{margin:0;padding:0;box-sizing:border-box}
-        body{
-            background:#0f0f0f;
-            color:#fff;
-            font-family:'Roboto',sans-serif;
-            min-height:100vh;
+        body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
+
+        /* Header/nav styles removed — shared header handled by SKRIPTIT/header.js */
+
+        #home{position:relative;overflow:hidden;text-align:center;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+        #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
+        #home h1{font-size:clamp(2.5rem,8vw,4.5rem);margin-bottom:20px;text-shadow:0 0 30px rgba(0,0,0,.9)}
+        .btn{background:#333;color:#fff;padding:14px 32px;border-radius:50px;text-decoration:none;margin-top:30px;font-size:1.1rem;transition:.3s;box-shadow:0 4px 15px rgba(0,0,0,.5)}
+        .btn:hover{background:#4ade80;transform:translateY(-3px)}
+
+        .about-section{max-width:1200px;margin:100px auto;display:flex;align-items:center;gap:60px;flex-wrap:wrap;padding:0 20px}
+        .about-text{flex:1;min-width:300px;font-size:1.35rem;color:#e0e0e0;line-height:1.8}
+        .about-image-container{position:relative;flex:1;min-width:300px;max-width:600px;padding-bottom:56.25%;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.9)}
+        .about-slide{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1.2s ease}
+        .about-slide.active{opacity:1}
+        .about-slide img{width:100%;height:100%;object-fit:cover}
+
+        /* PORTFOLIO: 3x2 TIETOKONEELLA, MOBIILISSA 1x6 */
+        .portfolio-gallery{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:30px;
+            max-width:1200px;
+            margin:80px auto 140px;
+            padding:0 20px;
+        }
+        .portfolio-item{
+            position:relative;
+            height:300px;
+            border-radius:20px;
+            overflow:hidden;
+            box-shadow:0 15px 50px rgba(0,0,0,.8);
+        }
+        .portfolio-item video,
+        .portfolio-item img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+        }
+
+        #services,#equipment{max-width:1200px;margin:0 auto 100px;text-align:center;padding:0 20px}
+        #services h2,#equipment h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:30px}
+
+        /* VAIHTUVA OTSIKKO - styling complements the JS (script sets min-height/padding precisely) */
+        #dynamic-title{
+            position:relative;
+            overflow:hidden;
             display:flex;
-            flex-direction:column;
             align-items:center;
             justify-content:center;
+            padding-top:4px;    /* baseline extra space for tall glyphs */
+            padding-bottom:6px; /* extra for descenders */
+            line-height:1.05;
+        }
+        #dynamic-title span{
+            position:absolute;
+            left:50%;
+            top:50%;
+            transform:translate(-50%,-50%);
+            width:auto;
             text-align:center;
-            padding:20px;
+            pointer-events:none;
+            white-space:nowrap;
+            will-change:transform, opacity;
+            font-weight:600;
         }
-        h1{
-            font-size:clamp(2.5rem,8vw,5rem);
-            font-weight:300;
-            margin-bottom:20px;
-            letter-spacing:2px;
+
+        .service-text,#equipment p{font-size:1.3rem;color:#ddd;line-height:1.7;margin-bottom:60px;max-width:900px;margin-left:auto;margin-right:auto}
+
+        .equipment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;max-width:1200px;margin:60px auto}
+        .media-item{position:relative;padding-bottom:56.25%;background:#000;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.7)}
+        .media-item video,.media-item img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
+
+        #retro-camera{max-width:1200px;margin:120px auto;display:flex;align-items:center;gap:60px;flex-wrap:wrap;padding:0 20px}
+        .retro-text{flex:1;min-width:300px;font-size:1.35rem;color:#e0e0e0;line-height:1.8}
+        .retro-video{flex:1;min-width:300px;max-width:600px;position:relative;padding-bottom:56.25%;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.9)}
+        #retro-camera video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
+
+        #contact{max-width:800px;margin:0 auto 100px;text-align:center;padding:80px 20px}
+        #contact h2{font-size:2.8rem;margin-bottom:30px}
+        #contact p{font-size:1.3rem;margin:15px 0}
+        #contact a{color:#4ade80;text-decoration:none;transition:.3s}
+        #contact a:hover{text-decoration:underline}
+
+        /* LinkedIn-ikoni – PIENENNETTY */
+        .linkedin-link{
+            display:inline-block;
+            margin-top:20px;
         }
-        p{
-            font-size:1.4rem;
-            max-width:800px;
-            margin-bottom:40px;
-            opacity:0.9;
-            line-height:1.6;
+        .linkedin-icon{
+            width:32px;
+            height:32px;
+            object-fit:contain;
+            transition:transform .3s ease;
         }
-        .highlight{
-            color:#4ade80;
-            font-weight:500;
+        .linkedin-icon:hover{
+            transform:scale(1.2);
         }
-        .spinner{
-            width:60px;
-            height:60px;
-            border:4px solid rgba(255,255,255,.2);
-            border-top:4px solid #4ade80;
-            border-radius:50%;
-            animation:spin 1.2s linear infinite;
-            margin:40px 0;
-        }
-        @keyframes spin{
-            0%{transform:rotate(0deg)}
-            100%{transform:rotate(360deg)}
-        }
-        footer{
-            margin-top:auto;
-            padding-top:40px;
-            font-size:0.9rem;
-            opacity:0.6;
-        }
+
+        footer{background:#000;padding:40px 20px;text-align:center;font-size:1rem;border-top:1px solid #333}
+
         @media(max-width:768px){
-            h1{font-size:2.8rem}
-            p{font-size:1.2rem}
+            .about-text{
+                font-size:1.1rem;
+                text-align:left;
+                padding:0 20px;
+            }
+            .service-text, #equipment p, .retro-text{
+                font-size:1.1rem;
+                text-align:left;
+                padding:0 20px;
+            }
+            .portfolio-gallery{
+                grid-template-columns:1fr;
+            }
+            .linkedin-icon{
+                width:24px;
+                height:24px;
+            }
+            /* slightly increase dynamic title spacing on small screens to preserve descenders */
+            #dynamic-title { padding-bottom:8px; padding-top:6px; }
+        }
+
+        @media(max-width:992px){
+            .about-section,#retro-camera{flex-direction:column;text-align:center}
+            .about-image-container,.retro-video{max-width:100%}
         }
     </style>
 
-    <!-- Shared header script (in SKRIPTIT/header.js) -->
+    <!-- Dynamic title script (shared reusable) -->
+    <script src="SKRIPTIT/dynamic-title.js" defer></script>
+    <!-- Shared header script (injects header/nav with bold titles and green underline on hover) -->
     <script src="SKRIPTIT/header.js" defer></script>
 </head>
 <body>
 
-    <h1>Sivusto työn alla</h1>
-    <p>Uusi, <span class="highlight">moderni ja kaunis</span> verkkosivu on rakenteilla.</p>
-    <p>Palataan pian – lupaan, että odotus kannattaa!</p>
-    <div class="spinner"></div>
-   
+    <!-- Header is injected by SKRIPTIT/header.js (removes need for local <header>) -->
+
+    <section id="home">
+        <video autoplay muted loop playsinline poster="fallback-poster.webp">
+            <source src="tst_testi_footgae.mp4" type="video/mp4">
+        </video>
+        <h1>Iivari Kortesoja</h1>
+        <a href="#portfolio" class="btn">Katso töitäni</a>
+    </section>
+
+    <!-- Esittely + vaihtuva kuva -->
+    <div class="about-section">
+        <div class="about-text">
+            Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelancer-yrittäjänä. Toteutan videotuotantoja ja valokuvauskeikkoja ja työskentelen myös muille A[...]
+            Intohimoni on ollut ala-asteesta pitäen videotuotannot, joten pienestä pitäen olen oppinut editoimaan ja kuvaamaan. Vuosien varrella olen ottanut vastaan uutta tietoa ja taitoa esimer[...]
+            Opintojeni kautta osaamiseni laajentui hurjasti. Koulun resurssien ansiosta esimerkiksi studiotyöskentely, monikamera ja kameraoperaattorina toimiminen tulivat tutuiksi.<br><br>
+            Olen toiminut Suomi Areenassa (MTV) kameraoperaattorina. Puolustusvoimille kuvannut ja leikannut videoita, suorittanut varusmiespalveluksen valtakunnallisessa erikoistehtävässä Combat C[...]
+        </div>
+        <div class="about-image-container">
+            <div class="about-slide active"><img src="IivariKortesoja1.webp" alt="Iivari Kortesoja"></div>
+            <div class="about-slide"><img src="IivariKortesoja2.webp" alt="Iivari Kortesoja"></div>
+            <div class="about-slide"><img src="IivariKortesoja3.webp" alt="Iivari Kortesoja"></div>
+        </div>
+    </div>
+
+    <!-- PORTFOLIO: 3x2 TIETOKONEELLA, MOBIILISSA 1x6 -->
+    <section id="portfolio">
+        <div class="portfolio-gallery">
+            <div class="portfolio-item"><video autoplay muted loop playsinline poster="Ruutu1-poster.webp"><source src="Ruutu1.mp4" type="video/mp4"></video></div>
+            <div class="portfolio-item"><img src="Ruutu2.webp" alt="Projekti"></div>
+            <div class="portfolio-item"><video autoplay muted loop playsinline poster="Ruutu3-poster.webp"><source src="Ruutu3.mp4" type="video/mp4"></video></div>
+            <div class="portfolio-item"><img src="Ruutu4.webp" alt="Projekti"></div>
+            <div class="portfolio-item"><video autoplay muted loop playsinline poster="Ruutu5-poster.webp"><source src="Ruutu5.mp4" type="video/mp4"></video></div>
+            <div class="portfolio-item"><img src="Ruutu6.webp" alt="Projekti"></div>
+        </div>
+
+        <div id="services">
+            <!-- Sulava, looppaava vaihtuva otsikko: aina sama suunta (ylös) -->
+            <h2 id="dynamic-title" class="dynamic-title" data-interval="3000" aria-label="Palvelut: vaihtuva otsikko">
+                <span>Yritys</span>
+                <span>Bändi</span>
+                <span>Järjestö</span>
+                <span>Yrittäjä</span>
+                <span>Tapahtuma</span>
+                <span>Hääpari</span>
+                <span>Valokuvaus</span>
+            </h2>
+
+            <p class="service-text">
+                Tarvitsetko ammattimaista audiovisuaalista materiaalia? Teen laadukkaita, tehokkaita ja edullisia tuotantoja ympäri Suomea. Olipa kyseessä sosiaalisen median video, hääkuvaus, yrit[...]
+            </p>
+        </div>
+
+        <div id="equipment">
+            <h2>Kalusto</h2>
+            <p>
+                Tuotantokalustoni on modernia ja mahdollistaa teknisesti korkealaatuisen materiaalin tuottamisen. Pääkameroina ovat Nikon ZR -järjestelmäkamerat, jotka pohjautuvat RED-elokuvakamer[...]
+            </p>
+            <div class="equipment-grid">
+                <div class="media-item"><video autoplay muted loop playsinline poster="nikon-poster.webp"><source src="nikon_zr_demo.mp4" type="video/mp4"></video></div>
+                <div class="media-item"><video autoplay muted loop playsinline poster="gopro-poster.webp"><source src="gopro_action.mp4" type="video/mp4"></video></div>
+                <div class="media-item"><img src="nikon_zr_camera.webp" alt="Nikon ZR"></div>
+            </div>
+        </div>
+
+        <div id="retro-camera">
+            <div class="retro-text">
+                Käytössäni on myös aitoja 2000-luvun alun videokameroita, joilla saa tallennettua nostalgista ja särön näköistä materiaalia. Näissä laitteissa on elektroninen ja digitaaline[...]
+            </div>
+            <div class="retro-video">
+                <video autoplay muted loop playsinline poster="retro-poster.webp">
+                    <source src="2000luvunkamera.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Yhteystiedot</h2>
+        <p>Ota yhteyttä ja keskustellaan tulevista projekteista!</p>
+        <p>Email: <a href="mailto:esimerkki@email.com">esimerkki@email.com</a></p>
+        <p>Puhelin: <a href="tel:+358405247918">040 524 7918</a></p>
+        <p class="linkedin-link">
+            <a href="https://www.linkedin.com/in/iivarikortesoja" target="_blank">
+                <img src="linkedin.webp" alt="LinkedIn" class="linkedin-icon">
+            </a>
+        </p>
+    </section>
+
     <footer>
-        © Iivari Kortesoja 2025
+        <p>© Iivari Kortesoja 2026 | Y-tunnus A38904</p>
     </footer>
+
+    <script>
+        // Taustavideo: play/pause based on visibility
+        const bgVideo = document.querySelector('#home video');
+        new IntersectionObserver(e => e.forEach(en => en.isIntersecting ? bgVideo.play() : bgVideo.pause()), {threshold: 0.5})
+            .observe(document.getElementById('home'));
+
+        // About-kuvakaruselli
+        const slides = document.querySelectorAll('.about-slide');
+        let current = 0;
+        setInterval(() => {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }, 4000);
+    </script>
 </body>
 </html>
