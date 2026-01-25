@@ -12,7 +12,7 @@
     </header>
   `;
 
-  // Yhteinen header-tyyli: sis. bold-otsikot ja vihreän aliiviivauksen hoverissa
+  // Yhteinen header-tyyli: font-weight changed to normal (400) to remove bolding
   const styleText = `
     /* Shared header styles injected by SKRIPTIT/header.js */
     #site-header{
@@ -36,7 +36,7 @@
       font-size:1.15rem;
       position:relative;
       transition:color .25s ease;
-      font-weight:700; /* BOLD otsikoille kuten pyydetty */
+      font-weight:400; /* normal weight (not bold) */
       letter-spacing:0.2px;
     }
     /* vihreä aliiviinaus/underline efektin säilytys hoverissa */
