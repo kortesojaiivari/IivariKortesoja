@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valokuvaus | Iivari Kortesoja</title>
-    <meta name="description" content="Edullista valokuvausta yksityisille – häät, valmistujaiset, hautajaiset, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta. Myös videopalvelut saatavilla.">
+    <meta name="description" content="Edullista valokuvausta yksityisille – häät, valmistujaiset, hautajaiset, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta. Myös videopalvelut saatavilla. Ota yhteyttä!">
 
     <!-- GOOGLE ANALYTICS 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
@@ -25,110 +25,553 @@
     </script>
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
+
+        /* Header injected by SKRIPTIT/header.js (keeps markup konsistent sivuilla) */
+
+        #home{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+        #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
+        #home h2{font-size:clamp(2.5rem,8vw,4.5rem);text-shadow:0 0 40px rgba(0,0,0,.9)}
+
+        /* VAIHTUVA OTSIKKO – tilaa runsaasti descenderille ja eri fonttikokoihin */
+        #dynamic-title{
+            position:relative;
+            overflow:visible; /* varmista ettei selaimen oma raja leikkaa descendereitä */
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            margin:60px 0 40px;
+            padding-top:28px;     /* reilumpi ylätila */
+            padding-bottom:80px;  /* huomattava alatila descenderille */
+            line-height:1.6;      /* suurempi line-height */
+            min-height: clamp(180px, 22vh, 360px); /* riittävä korkeus eri näytöillä */
+            z-index:5;
         }
-        body {
-            font-family: 'Arial', sans-serif;
-            background: #1a1a1a;
-            color: #fff;
-            line-height: 1.6;
-            overflow-x: hidden;
+        #dynamic-title span{
+            position:absolute;
+            left:50%;
+            top:50%;
+            transform:translate(-50%,-50%);
+            width:auto;
+            text-align:center;
+            font-size:clamp(2.5rem,8vw,4.5rem);
+            text-shadow:0 0 40px rgba(0,0,0,.9);
+            pointer-events:none;
+            white-space:nowrap;
+            will-change:transform,opacity;
+            line-height:1.5; /* spanin line-height varmistaa rivikorkeuden */
         }
 
-        /* Dropdown styling */
-        .dropdown-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 40px 0;
+        .about-section{max-width:1200px;margin:80px auto;display:flex;align-items:center;gap:60px;flex-wrap:wrap;padding:0 20px}
+        .about-text{flex:1.5;min-width:300px;font-size:1.35rem;color:#e0e0e0;line-height:1.8}
+        .about-image{position:relative;flex:1;min-width:300px;max-width:500px;height:600px;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.9)}
+        .about-image img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
+        .about-image img.active{opacity:1}
+
+        /* PIENET VAIHTUVAT KUVARUUDUT (5x1) */
+        .small-gallery{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(225px,1fr));
+            gap:30px;
+            max-width:1400px;
+            margin:80px auto 60px;
+            padding:0 20px;
         }
-        .dropdown-container label {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+        .small-item{
+            position:relative;
+            height:300px;
+            border-radius:20px;
+            overflow:hidden;
+            box-shadow:0 15px 50px rgba(0,0,0,.8);
         }
-        .dropdown-container select {
-            padding: 10px 15px;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            background-color: #f4f4f4;
-            color: #333;
+        .small-item img{
+            position:absolute;
+            top:0;left:0;
+            width:100%;height:100%;
+            object-fit:cover;
+            opacity:0;
+            transition:opacity 1.4s ease;
+        }
+        .small-item img.active{opacity:1}
+
+        /* HINNOITTELU */
+        #pricing{max-width:1400px;margin:80px auto;padding:0 20px}
+        #pricing h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:20px;text-align:center}
+        #pricing .disclaimer{font-size:1rem;color:#bbb;text-align:center;margin-bottom:40px}
+        .upper-row{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+            gap:30px;
+            margin-bottom:40px;
+        }
+        .lower-row{
+            display:grid;
+            grid-template-columns:2fr 1fr;
+            gap:30px;
+        }
+        .pricing-box{
+            background:#222;
+            padding:30px;
+            border-radius:20px;
+            box-shadow:0 15px 50px rgba(0,0,0,.6);
+            text-align:center;
+            transition:transform .3s ease;
+        }
+        .pricing-box:hover{transform:translateY(-10px)}
+        .upper-row .pricing-box h3{font-size:1.6rem;margin-bottom:15px}
+        .upper-row .pricing-box .price{font-size:2.4rem}
+        .lower-row .pricing-box h3{font-size:2rem;margin-bottom:20px}
+        .lower-row .pricing-box .price{font-size:2.8rem}
+        .pricing-box ul{
+            list-style:none;
+            text-align:left;
+            margin:20px 0;
+            font-size:1.2rem;
+            line-height:1.8;
+        }
+        .pricing-box ul li{
+            padding-left:20px;
+            position:relative;
+        }
+        .pricing-box ul li::before{
+            content:"–";
+            position:absolute;
+            left:0;
+            color:#4ade80;
+        }
+        .pricing-box ul li strong{
+            font-size:1.4rem;
+            font-weight:bold;
+        }
+        .pricing-box .quote{
+            font-size:1.1rem;
+            color:#aaa;
+            font-style:italic;
+            margin-top:20px;
+        }
+        .contact-box{
+            background:#333;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            padding:30px;
+            border-radius:20px;
+            box-shadow:0 15px 50px rgba(0,0,0,.6);
+        }
+        .contact-box p{
+            font-size:1.3rem;
+            margin-bottom:30px;
+            text-align:center;
+        }
+        .contact-btn{
+            background:#4ade80;
+            color:#000;
+            padding:15px 30px;
+            border-radius:50px;
+            text-decoration:none;
+            font-size:1.3rem;
+            font-weight:bold;
+            transition:.3s;
+        }
+        .contact-btn:hover{background:#5aff90;transform:scale(1.05)}
+
+        /* ALAOSAN ISOMMAT VAIHTUVAT KUVAT */
+        .large-gallery{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+            gap:30px;
+            max-width:1400px;
+            margin:140px auto 60px;
+            padding:0 20px;
+        }
+        .large-item{
+            position:relative;
+            height:420px;
+            border-radius:20px;
+            overflow:hidden;
+            box-shadow:0 15px 50px rgba(0,0,0,.8);
+        }
+        .large-item img{
+            position:absolute;
+            top:0;left:0;
+            width:100%;height:100%;
+            object-fit:cover;
+            opacity:0;
+            transition:opacity 1.4s ease;
+        }
+        .large-item img.active{opacity:1}
+
+        /* YHTEYSTIEDOT OSIO ALAREUNASSA – LAATIKOT SAMAN KOKOISIA */
+        #final-contact{
+            max-width:1400px;
+            margin:0 auto 100px;
+            padding:0 20px;
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:40px;
+        }
+        #final-contact .contact-info,
+        #final-contact .qr-box{
+            background:#222;
+            padding:40px;
+            border-radius:20px;
+            box-shadow:0 15px 50px rgba(0,0,0,.6);
+            min-height:420px;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+        }
+        #final-contact .contact-info h2{
+            font-size:2.2rem;
+            margin-bottom:30px;
+        }
+        #final-contact .contact-info p{
+            font-size:1.4rem;
+            margin:20px 0;
+        }
+        #final-contact .contact-info a{
+            color:#4ade80;
+            text-decoration:none;
+        }
+        #final-contact .qr-box{
+            cursor:pointer;
+            transition:transform .3s ease;
+        }
+        #final-contact .qr-box:hover{
+            transform:translateY(-10px);
+        }
+        #final-contact .qr-box a{
+            display:block;
+            width:100%;
+            max-width:430px;
+        }
+        #final-contact .qr-box img{
+            width:100%;
+            height:auto;
+            border-radius:12px;
+            transition:opacity .3s;
+        }
+        #final-contact .qr-box:hover img{
+            opacity:0.9;
+        }
+        #final-contact .qr-box .recommended{
+            background:#4ade80;
+            color:#000;
+            padding:10px 20px;
+            border-radius:10px;
+            font-weight:bold;
+            margin-bottom:20px;
+            font-size:1.2rem;
+        }
+
+        footer{background:#000;padding:40px 20px;text-align:center;font-size:1rem;border-top:1px solid #333}
+
+        @media(max-width:992px){
+            .about-section{flex-direction:column;text-align:center}
+            .upper-row,.lower-row{grid-template-columns:1fr}
+            .small-gallery{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+            .small-item{height:240px}
+            #final-contact{grid-template-columns:1fr}
+        }
+        @media(max-width:600px){
+            .small-gallery{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+            .small-item{height:200px}
+            /* Mobile: lisää vielä tilaa otsikolle */
+            #dynamic-title{padding-bottom:80px;padding-top:24px;min-height:180px}
+            #dynamic-title span{font-size:clamp(1.8rem,7vw,3rem)}
         }
     </style>
 
-    <script src="SKRIPTIT/optionsData.js" defer></script>
-    <script src="SKRIPTIT/dropdownScript.js" defer></script>
+    <!-- Shared dynamic title script (re-usable) -->
+    <script src="SKRIPTIT/dynamic-title.js" defer></script>
+    <!-- Shared header script (injects header/nav with bold titles and green underline on hover) -->
+    <script src="SKRIPTIT/header.js" defer></script>
+     <script src="SKRIPTIT/mobile-scaling.js" defer></script>
 </head>
 <body>
+
     <!-- Header is injected by SKRIPTIT/header.js to keep site navigation consistent -->
 
     <section id="home">
-        <video autoplay muted loop playsinline>
+        <video autoplay muted loop playsinline poster="VALOKUVAUS/valokuvaus-poster.webp">
             <source src="valokuvaus_otsikko.mp4" type="video/mp4">
         </video>
         <h2>Valokuvaus</h2>
     </section>
 
-    <!-- HINNOITTELU -->
-    <section id="pricing">
-        <h2>Hinnoittelu</h2>
-        <p class="disclaimer">*Nämä ovat suuntaa-antavia hintoja. Hinnat sisältävät ALV 25,5 %. Matkakustannukset (kilometrikorvaus) lisätään erikseen tarpeen mukaan.</p>
+    <!-- VAIHTUVA OTSIKKO (KÄYTÄ samaa skriptiä kuin indexi.html) -->
+    <h2 id="dynamic-title" class="dynamic-title" data-interval="3000" aria-label="Valokuvaus: vaihtuva otsikko">
+        <span>Häät</span>
+        <span>Valmistujaiset</span>
+        <span>Hautajaiset</span>
+        <span>Tilaisuudet</span>
+        <span>Ristiäiset</span>
+        <span>Muotokuvat</span>
+    </h2>
 
-        <div class="upper-row">
-            <div class="pricing-box">
-                <h3>3 tuntia</h3>
-                <p class="price">300 €</p>
-                <p>Esimerkiksi hautajaiset tai valmistujaisjuhlat</p>
-            </div>
-            <div class="pricing-box">
-                <h3>4–6 tuntia</h3>
-                <p class="price">400 €</p>
-                <p>Pidempään kestävät tilaisuudet</p>
-            </div>
-            <div class="pricing-box">
-                <h3>6 tuntia +</h3>
-                <p class="price">500 €</p>
-                <p>Esimerkiksi dokumentaarinen hääkuvaus</p>
-            </div>
+    <!-- Esittelyteksti -->
+    <div class="about-section">
+        <div class="about-text">
+            <p>Valokuvausta tarjoan yksityisille ihmisille tällä sivulla. Yritykset ja muut asiakkaat, mainitkaa yhteydenotossa valokuvaustarpeestanne.</p><br><br>
+            <p>Olipa kyseessä häät, juhlat, tilaisuudet, hautajaiset, valmistujaiset tai ihan mitä vain, ota yhteyttä niin sovitaan keikasta.</p><br><br>
+            <p>Tarkoitukseni on tarjota kuluttajaystävällistä valokuvausta, jolloin hinta on edullista ja erottuu merkittävästi muista kuvaajista.</p><br><br>
+            <p>Tarjoan myös valokuvauksen ohella videopalveluita, jolloin tärkeä tilanne tallennetaan laadukkaina kuvina ja liikkuvana kuvana. Kaikki on sovittavissa ja neuvoteltavissa!</p>
         </div>
-    </section>
-
-    <!-- Dropdown selector -->
-    <div class="dropdown-container">
-        <label for="paikkakunta">Valitse paikkakunta:</label>
-        <select id="paikkakunta">
-            <!-- Options filled dynamically through optionsData.js -->
-        </select>
+        <div class="about-image">
+            <img src="VALOKUVAUS/valokuvaaja1.webp" alt="Valokuvaus 1" class="active">
+            <img src="VALOKUVAUS/valokuvaaja2.webp" alt="Valokuvaus 2">
+            <img src="VALOKUVAUS/valokuvaaja3.webp" alt="Valokuvaus 3">
+        </div>
     </div>
 
-    <!-- ALAOSAN ISOMMAT VAIHTUVAT KUVAT -->
-    <div class="large-gallery">
+    <!-- YLÄOSAN PIENET VAIHTUVAT KUVARUUDUT – SCRIPTATTAVA JÄRJESTYSTÄ -->
+    <div class="small-gallery" aria-hidden="false">
         <script>
-            const largeSequence = [
-                [1, 7, 13, 19, 25, 31],
-                [2, 8, 14, 20, 26, 32],
-                [3, 9, 15, 21, 27, 33],
-                [4, 10, 16, 22, 28, 34],
-                [5, 11, 17, 23, 29, 35],
-                [6, 12, 18, 24, 30, 36]
+            // Jokainen sisempi taulukko = yksi boksi (max 6 kuvaa per boksi)
+            const smallSequence = [
+                [1, 7, 13, 19, 25, 31],  // Boksi 1
+                [2, 8, 14, 20, 26, 32],  // Boksi 2
+                [3, 9, 15, 21, 27, 33],  // Boksi 3
+                [4, 10, 16, 22, 28, 34],  // Boksi 4
+                [5, 11, 17, 23, 29, 35],  // Boksi 5
             ];
 
-            largeSequence.forEach(boxImages => {
-                document.write('<div class="large-item">');
+            smallSequence.forEach(boxImages => {
+                document.write('<div class="small-item">');
                 boxImages.forEach((num, index) => {
-                    const active = index === 0 ? ' class="active"' : '';
-                    document.write(`<img src="VALOKUVAUS/Valokuvaus${num}.webp"${active} alt="Valokuvaus ${num}">`);
+                    const activeClass = index === 0 ? ' class="active"' : '';
+                    document.write(`<img src="VALOKUVAUS/Valokuvaus${num}.webp"${activeClass} alt="Valokuvaus ${num}">`);
                 });
                 document.write('</div>');
             });
         </script>
     </div>
 
+    <!-- HINNOITTELU -->
+    <section id="pricing">
+        <h2>Hinnoittelu</h2>
+        <p class="disclaimer">*Nämä ovat suuntaa-antavia hintoja. Hinnat sisältävät ALV 25,5 %. Matkakustannukset (kilometrikorvaus) lisätään erikseen tarpeen mukaan.</p>
+
+        <!-- YLÄRIVI: TUNNIT -->
+        <div class="upper-row">
+            <div class="pricing-box">
+                <h3>3 tuntia</h3>
+                <p class="price">300 €</p>
+                <p>Esimerkiksi hautajaiset tai valmistujaisjuhlat</p>
+            </div>
+
+            <div class="pricing-box">
+                <h3>4–6 tuntia</h3>
+                <p class="price">400 €</p>
+                <p>Pidempään kestävät tilaisuudet</p>
+            </div>
+
+            <div class="pricing-box">
+                <h3>6 tuntia +</h3>
+                <p class="price">500 €</p>
+                <p>Esimerkiksi dokumentaarinen hääkuvaus</p>
+            </div>
+        </div>
+
+        <!-- ALARIVI: HÄÄPAKETTI + YHTEYS (SCROLLAA ALAOSAAN) -->
+        <div class="lower-row">
+            <div class="pricing-box">
+                <h3>Hääpaketti</h3>
+                <p class="price">700 €</p>
+                <ul>
+                    <li>Dokumentaarinen hääkuvaus <strong>koko häiden ajan</strong></li>
+                    <li>Elokuvallinen häävideo tärkeimmästä päivästä</li>
+                    <li>Ei stressiä kuvausajasta</li>
+                    <li>Eniten valokuvia</li>
+                </ul>
+                <p class="quote">Monet sanovat, että kuva kertoo enemmän kuin tuhat sanaa. Minä sanon, että liikkuva kuva kertoo vieläkin enemmän.</p>
+            </div>
+
+            <div class="contact-box">
+                <p>Eikö mieleistä pakettia löytynyt?<br>Ota yhteyttä, niin räätälöidään juuri sinulle sopiva ratkaisu!</p>
+                <a href="#final-contact" class="contact-btn">Ota yhteyttä</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ALAOSAN ISOMMAT VAIHTUVAT KUVAT – SCRIPTATTAVA JÄRJESTYSTÄ -->
+    <div class="large-gallery">
+        <script>
+            const largeSequence = [
+                [1, 7, 13, 19, 25, 31],  // Boksi 1
+                [2, 8, 14, 20, 26, 32],  // Boksi 2
+                [3, 9, 15, 21, 27, 33],  // Boksi 3
+                [4, 10, 16, 22, 28, 34],  // Boksi 4
+                [5, 11, 17, 23, 29, 35],  // Boksi 5
+                [6, 12, 18, 24, 30, 36]   // Boksi 6
+            ];
+
+            largeSequence.forEach(boxImages => {
+                document.write('<div class="large-item">');
+                boxImages.forEach((num, index) => {
+                    const activeClass = index === 0 ? ' class="active"' : '';
+                    document.write(`<img src="VALOKUVAUS/Valokuvaus${num}.webp"${activeClass} alt="Valokuvaus ${num}">`);
+                });
+                document.write('</div>');
+            });
+        </script>
+    </div>
+
+    <!-- YHTEYSTIEDOT OSIO ALAREUNASSA -->
+    <section id="final-contact">
+        <div class="contact-info">
+            <h2>Ota yhteyttä</h2>
+            <p>Sähköposti: <a href="mailto:example@email.com">example@email.com</a></p>
+            <p>Puhelin: <a href="tel:+358405247918">040 524 7918</a></p>
+        </div>
+
+        <div class="qr-box">
+            <a href="https://wa.me/message/2JQ4G2D3EXLID1" target="_blank" rel="noopener">
+                <img src="QR.webp" alt="WhatsApp QR-koodi">
+            </a>
+        </div>
+    </section>
+
     <footer>
         <p>© Iivari Kortesoja 2025 | Y-Tunnus 3591660-9</p>
     </footer>
+
+    <script>
+        // Taustavideo: play/pause based on visibility
+        (function(){
+            const bg = document.querySelector('#home video');
+            const home = document.getElementById('home');
+            if (!bg || !home) return;
+            if ('IntersectionObserver' in window) {
+                new IntersectionObserver(entries => {
+                    entries.forEach(entry => entry.isIntersecting ? bg.play() : bg.pause());
+                }, {threshold: 0.5}).observe(home);
+            } else {
+                // fallback: yritetään soittaa (muted)
+                try { bg.play(); } catch(e) {}
+            }
+        })();
+
+        // About-kuvan vaihto (smooth)
+        (function(){
+            const aboutImgs = document.querySelectorAll('.about-image img');
+            if (!aboutImgs || aboutImgs.length === 0) return;
+            let aboutIdx = 0;
+            setInterval(() => {
+                aboutImgs[aboutIdx].classList.remove('active');
+                aboutIdx = (aboutIdx + 1) % aboutImgs.length;
+                aboutImgs[aboutIdx].classList.add('active');
+            }, 5000);
+        })();
+
+        // Pienten kuvaboksien vaihto
+        (function(){
+            document.querySelectorAll('.small-item').forEach(box => {
+                const imgs = box.querySelectorAll('img');
+                if (!imgs || imgs.length <= 1) return;
+                let idx = 0;
+                setInterval(() => {
+                    imgs[idx].classList.remove('active');
+                    idx = (idx + 1) % imgs.length;
+                    imgs[idx].classList.add('active');
+                }, 4000);
+            });
+        })();
+
+        // Isojen kuvaboksien vaihto
+        (function(){
+            document.querySelectorAll('.large-item').forEach(box => {
+                const imgs = box.querySelectorAll('img');
+                if (!imgs || imgs.length <= 1) return;
+                let idx = 0;
+                setInterval(() => {
+                    imgs[idx].classList.remove('active');
+                    idx = (idx + 1) % imgs.length;
+                    imgs[idx].classList.add('active');
+                }, 5000);
+            });
+        })();
+    </script>
+
+    <!-- DYNAMIC TITLE FIX & INITIALISATION (kopioitu VERSIO7:n luotettavasta ratkaisusta) -->
+    <script>
+        // Debounce helper
+        function debounce(fn, wait){ let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn.apply(this,args), wait); }; }
+
+        // Mittaa ja asettaa tarvittavat paddingit/min-height dynamic-title -elementille jotta descenderit eivät leikkautuisi
+        function ensureDynamicTitleSpace(){
+            const el = document.getElementById('dynamic-title');
+            if (!el) return;
+
+            // Luo offscreen-mittaus-elementti käytännön fontti- ja kokoasetuksilla
+            const sampleText = 'Hgjpqy'; // sisältää ascender/descender -caseja
+            const meas = document.createElement('span');
+            meas.textContent = sampleText;
+            const realSpan = el.querySelector('span') || el;
+            const cs = window.getComputedStyle(realSpan);
+
+            meas.style.cssText = [
+                'position:absolute',
+                'left:-9999px',
+                'top:-9999px',
+                'visibility:hidden',
+                'white-space:nowrap',
+                `font-family:${cs.fontFamily}`,
+                `font-size:${cs.fontSize}`,
+                `font-weight:${cs.fontWeight}`,
+                `line-height:${cs.lineHeight}`,
+                `letter-spacing:${cs.letterSpacing}`,
+                `text-transform:${cs.textTransform}`
+            ].join(';');
+            document.body.appendChild(meas);
+
+            const rect = meas.getBoundingClientRect();
+            const measuredHeight = Math.ceil(rect.height);
+
+            document.body.removeChild(meas);
+
+            // Lasketaan turvalliset paddings-arvot
+            const extraForDescenders = Math.max(48, Math.round(measuredHeight * 0.9));
+            const currentPadTop = parseInt(getComputedStyle(el).paddingTop) || 0;
+            const currentPadBottom = parseInt(getComputedStyle(el).paddingBottom) || 0;
+            const desiredPadBottom = Math.max(currentPadBottom, extraForDescenders + 20);
+            const desiredPadTop = Math.max(currentPadTop, Math.round(measuredHeight * 0.4));
+
+            el.style.paddingBottom = desiredPadBottom + 'px';
+            el.style.paddingTop = desiredPadTop + 'px';
+
+            const desiredMinHeight = measuredHeight + desiredPadTop + desiredPadBottom + 8;
+            const curMin = parseInt(getComputedStyle(el).minHeight) || 0;
+            if (desiredMinHeight > curMin) el.style.minHeight = desiredMinHeight + 'px';
+
+            el.style.overflow = 'visible';
+            el.style.zIndex = '5';
+        }
+
+        // Init-funktio, odottaa webfont-tiedot jos saatavilla ja antaa pieni viive että SKRIPTIT/dynamic-title.js ehtii alustaa
+        function initDynamicTitleFix(){
+            const run = () => {
+                setTimeout(ensureDynamicTitleSpace, 60);
+            };
+            if (document.fonts && document.fonts.ready){
+                document.fonts.ready.then(run).catch(run);
+            } else {
+                window.setTimeout(run, 150);
+            }
+        }
+
+        // Käynnistys: suorita heti DOMContentLoaded -tapahtumassa, sekä aseta resize-handler deboucingilla.
+        document.addEventListener('DOMContentLoaded', () => {
+            initDynamicTitleFix();
+            window.addEventListener('resize', debounce(initDynamicTitleFix, 220));
+            // varmuuskutsut jos fontit latautuvat hitaasti
+            setTimeout(initDynamicTitleFix, 1000);
+            setTimeout(initDynamicTitleFix, 2000);
+        });
+    </script>
 </body>
 </html>
