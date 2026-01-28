@@ -28,13 +28,12 @@
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
 
-        /* Header injected by SKRIPTIT/header.js (keeps markup konsistent sivuilla) */
+        /* Header injected by SKRIPTIT/header.js */
 
         #home{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
         #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
         #home h2{font-size:clamp(2.5rem,8vw,4.5rem);text-shadow:0 0 40px rgba(0,0,0,.9)}
 
-        /* VAIHTUVA OTSIKKO – tilaa runsaasti descenderille ja eri fonttikokoihin */
         #dynamic-title{
             position:relative;
             overflow:visible;
@@ -69,7 +68,6 @@
         .about-image img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
         .about-image img.active{opacity:1}
 
-        /* PIENET VAIHTUVAT KUVARUUDUT (5x1) */
         .small-gallery{
             display:grid;
             grid-template-columns:repeat(auto-fit,minmax(225px,1fr));
@@ -95,7 +93,6 @@
         }
         .small-item img.active{opacity:1}
 
-        /* HINNOITTELU */
         #pricing{max-width:1400px;margin:80px auto;padding:0 20px}
         #pricing h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:20px;text-align:center}
         #pricing .disclaimer{font-size:1rem;color:#bbb;text-align:center;margin-bottom:40px}
@@ -177,7 +174,54 @@
         }
         .contact-btn:hover{background:#5aff90;transform:scale(1.05)}
 
-        /* ALAOSAN ISOMMAT VAIHTUVAT KUVAT */
+        /* ──────────────────────────────────────────────── */
+        /* UUSI: Paikkakuntavalitsin hinnoittelun alapuolella */
+        /* ──────────────────────────────────────────────── */
+        #location-selector {
+            max-width: 1400px;
+            margin: 60px auto 100px;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        #location-selector h2 {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            margin-bottom: 24px;
+            color: #4ade80;
+        }
+
+        #location-selector select {
+            width: 100%;
+            max-width: 420px;
+            padding: 14px 20px;
+            font-size: 1.25rem;
+            background: #222;
+            color: #eee;
+            border: 2px solid #444;
+            border-radius: 12px;
+            appearance: none;
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%234ade80' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        #location-selector select:hover,
+        #location-selector select:focus {
+            border-color: #4ade80;
+            box-shadow: 0 0 0 3px rgba(74,222,128,0.2);
+            outline: none;
+        }
+
+        #location-selector .info {
+            margin-top: 16px;
+            font-size: 1.05rem;
+            color: #aaa;
+        }
+
         .large-gallery{
             display:grid;
             grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
@@ -203,7 +247,6 @@
         }
         .large-item img.active{opacity:1}
 
-        /* YHTEYSTIEDOT OSIO ALAREUNASSA – LAATIKOT SAMAN KOKOISIA */
         #final-contact{
             max-width:1400px;
             margin:0 auto 100px;
@@ -270,97 +313,6 @@
 
         footer{background:#000;padding:40px 20px;text-align:center;font-size:1rem;border-top:1px solid #333}
 
-        /* ──────────────────────────────────────────────── */
-        /* Paikkakunta-overlay (minimalistinen, kiinteä oikeassa alakulmassa) */
-        /* ──────────────────────────────────────────────── */
-        #paikkakunta-overlay {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            background: rgba(34, 34, 34, 0.94);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid #444;
-            border-radius: 16px;
-            padding: 20px 24px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-            z-index: 9999;
-            width: 280px;
-            color: #eee;
-            font-size: 1.05rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-
-        #paikkakunta-overlay.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        #paikkakunta-overlay h3 {
-            margin: 0 0 14px;
-            font-size: 1.3rem;
-            color: #4ade80;
-        }
-
-        #paikkakunta-overlay select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 16px;
-            background: #2a2a2a;
-            color: #eee;
-            border: 1px solid #555;
-            border-radius: 8px;
-            font-size: 1.05rem;
-        }
-
-        #paikkakunta-overlay .buttons {
-            display: flex;
-            gap: 12px;
-            justify-content: flex-end;
-        }
-
-        #paikkakunta-overlay button {
-            padding: 8px 16px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        #paikkakunta-overlay #btn-choose {
-            background: #4ade80;
-            color: #000;
-        }
-
-        #paikkakunta-overlay #btn-choose:hover {
-            background: #5aff90;
-            transform: translateY(-1px);
-        }
-
-        #paikkakunta-overlay #btn-close {
-            background: #444;
-            color: #ccc;
-        }
-
-        #paikkakunta-overlay #btn-close:hover {
-            background: #555;
-            color: #fff;
-        }
-
-        @media (max-width: 600px) {
-            #paikkakunta-overlay {
-                bottom: 16px;
-                right: 16px;
-                left: 16px;
-                width: auto;
-                max-width: 320px;
-                margin: 0 auto;
-            }
-        }
-
         @media(max-width:992px){
             .about-section{flex-direction:column;text-align:center}
             .upper-row,.lower-row{grid-template-columns:1fr}
@@ -373,20 +325,17 @@
             .small-item{height:200px}
             #dynamic-title{padding-bottom:80px;padding-top:24px;min-height:180px}
             #dynamic-title span{font-size:clamp(1.8rem,7vw,3rem)}
+            #location-selector select{font-size:1.1rem;padding:12px 16px;}
         }
     </style>
 
-    <!-- Shared dynamic title script -->
     <script src="SKRIPTIT/dynamic-title.js" defer></script>
-    <!-- Shared header script -->
     <script src="SKRIPTIT/header.js" defer></script>
     <script src="SKRIPTIT/mobile-scaling.js" defer></script>
-    <!-- Uusi paikkakunta-overlay-skripti -->
-    <script src="SKRIPTIT/paikkakunta-overlay.js" defer></script>
 </head>
 <body>
 
-    <!-- Header is injected by SKRIPTIT/header.js -->
+    <!-- Header injected by header.js -->
 
     <section id="home">
         <video autoplay muted loop playsinline poster="VALOKUVAUS/valokuvaus-poster.webp">
@@ -395,7 +344,6 @@
         <h2>Valokuvaus</h2>
     </section>
 
-    <!-- VAIHTUVA OTSIKKO -->
     <h2 id="dynamic-title" class="dynamic-title" data-interval="3000" aria-label="Valokuvaus: vaihtuva otsikko">
         <span>Häät</span>
         <span>Valmistujaiset</span>
@@ -405,7 +353,6 @@
         <span>Muotokuvat</span>
     </h2>
 
-    <!-- Esittelyteksti -->
     <div class="about-section">
         <div class="about-text">
             <p>Valokuvausta tarjoan yksityisille ihmisille tällä sivulla. Yritykset ja muut asiakkaat, mainitkaa yhteydenotossa valokuvaustarpeestanne.</p><br><br>
@@ -420,7 +367,6 @@
         </div>
     </div>
 
-    <!-- YLÄOSAN PIENET VAIHTUVAT KUVARUUDUT -->
     <div class="small-gallery" aria-hidden="false">
         <script>
             const smallSequence = [
@@ -442,7 +388,6 @@
         </script>
     </div>
 
-    <!-- HINNOITTELU -->
     <section id="pricing">
         <h2>Hinnoittelu</h2>
         <p class="disclaimer">*Nämä ovat suuntaa-antavia hintoja. Hinnat sisältävät ALV 25,5 %. Matkakustannukset (kilometrikorvaus) lisätään erikseen tarpeen mukaan.</p>
@@ -487,7 +432,31 @@
         </div>
     </section>
 
-    <!-- ALAOSAN ISOMMAT VAIHTUVAT KUVAT -->
+    <!-- PAIKKAKUNTAVALINTA – hinnoittelun alla, isojen kuvien yläpuolella -->
+    <div id="location-selector">
+        <h2>Valitse kuvauspaikkakunta</h2>
+        <select id="paikkakunta-dropdown" onchange="handlePaikkakuntaChange(this.value)">
+            <option value="">Valitse paikkakunta...</option>
+            <option value="kuopio">Kuopio & lähiseutu</option>
+            <option value="helsinki">Helsinki & Uusimaa</option>
+            <option value="tampere">Tampere & Pirkanmaa</option>
+            <option value="jyvaskyla">Jyväskylä & Keski-Suomi</option>
+            <option value="nakkila">Nakkila & lähiympäristö</option>
+            <option value="oulu">Oulu & Pohjois-Pohjanmaa</option>
+            <option value="muu">Muu Suomi (kysy tarjousta)</option>
+        </select>
+        <p class="info">Valitsemalla paikkakunnan siirryt aluekohtaiselle sivulle, jossa on tarkemmat tiedot ja esimerkit.</p>
+    </div>
+
+    <script>
+        function handlePaikkakuntaChange(value) {
+            if (!value) return; // tyhjä valinta → ei tee mitään
+
+            const url = `valokuvaus_${value}.html`;
+            window.location.href = url;
+        }
+    </script>
+
     <div class="large-gallery">
         <script>
             const largeSequence = [
@@ -510,7 +479,6 @@
         </script>
     </div>
 
-    <!-- YHTEYSTIEDOT OSIO ALAREUNASSA -->
     <section id="final-contact">
         <div class="contact-info">
             <h2>Ota yhteyttä</h2>
@@ -530,7 +498,7 @@
     </footer>
 
     <script>
-        // Taustavideo: play/pause based on visibility
+        // Taustavideo visibility
         (function(){
             const bg = document.querySelector('#home video');
             const home = document.getElementById('home');
@@ -556,7 +524,7 @@
             }, 5000);
         })();
 
-        // Pienten kuvaboksien vaihto
+        // Pienten boksien vaihto
         (function(){
             document.querySelectorAll('.small-item').forEach(box => {
                 const imgs = box.querySelectorAll('img');
@@ -570,7 +538,7 @@
             });
         })();
 
-        // Isojen kuvaboksien vaihto
+        // Isojen boksien vaihto
         (function(){
             document.querySelectorAll('.large-item').forEach(box => {
                 const imgs = box.querySelectorAll('img');
@@ -585,7 +553,7 @@
         })();
     </script>
 
-    <!-- DYNAMIC TITLE FIX & INITIALISATION -->
+    <!-- DYNAMIC TITLE FIX -->
     <script>
         function debounce(fn, wait){ let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn.apply(this,args), wait); }; }
 
@@ -636,9 +604,7 @@
         }
 
         function initDynamicTitleFix(){
-            const run = () => {
-                setTimeout(ensureDynamicTitleSpace, 60);
-            };
+            const run = () => setTimeout(ensureDynamicTitleSpace, 60);
             if (document.fonts && document.fonts.ready){
                 document.fonts.ready.then(run).catch(run);
             } else {
