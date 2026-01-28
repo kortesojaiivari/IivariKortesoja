@@ -23,7 +23,84 @@
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "ud6y4jpngh");
     </script>
+  <style>
+    /* Style and positioning for the overlay */
+    .overlay {
+      position: fixed; /* Stays in the same place when scrolling */
+      top: 50%; /* Center vertically */
+      left: 50%; /* Center horizontally */
+      transform: translate(-50%, -50%);
+      display: none;
+      border: 1px solid #ccc;
+      background-color: white;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 10px;
+      border-radius: 8px;
+    }
 
+    .overlay:hover {
+      display: block;
+    }
+
+    .trigger {
+      position: fixed;
+      bottom: 20px; 
+      right: 20px; 
+      z-index: 1001;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      padding: 5px;
+      cursor: pointer;
+    }
+
+    li:hover {
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <button class="trigger">Valitse Paikka</button>
+
+  <div class="overlay" id="overlay">
+    <p>Valitse paikkakunta:</p>
+    <ul>
+      <li>Helsinki</li>
+      <li>Turku</li>
+      <li>Tampere</li>
+      <li>Oulu</li>
+    </ul>
+  </div>
+
+  <script>
+    // Script to control overlay functionality
+    document.addEventListener('DOMContentLoaded', function () {
+      const overlay = document.getElementById('overlay');
+      const trigger = document.querySelector('.trigger');
+
+      trigger.addEventListener('mouseenter', function () {
+        overlay.style.display = 'block';
+      });
+
+      overlay.addEventListener('mouseleave', function () {
+        overlay.style.display = 'none';
+      });
+    });
+  </script>
+</body>
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
