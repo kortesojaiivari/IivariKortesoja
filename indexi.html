@@ -107,18 +107,20 @@
         #contact a{color:#4ade80;text-decoration:none;transition:.3s}
         #contact a:hover{text-decoration:underline}
 
-        /* LinkedIn-ikoni – PIENENNETTY */
-        .linkedin-link{
-            display:inline-block;
+        /* Some yhteystiedot ikonit – nyt sekä LinkedIn että WhatsApp */
+        .social-links{
+            display:flex;
+            gap:24px;
+            justify-content:center;
             margin-top:20px;
         }
-        .linkedin-icon{
+        .social-icon{
             width:32px;
             height:32px;
             object-fit:contain;
             transition:transform .3s ease;
         }
-        .linkedin-icon:hover{
+        .social-icon:hover{
             transform:scale(1.2);
         }
 
@@ -138,11 +140,11 @@
             .portfolio-gallery{
                 grid-template-columns:1fr;
             }
-            .linkedin-icon{
+            .social-icon{
                 width:24px;
                 height:24px;
             }
-            /* slightly increase dynamic title spacing on small screens to preserve descenders */
+            /* slightly increase dynamic title spacing on small screens */
             #dynamic-title { padding-bottom:8px; padding-top:6px; }
         }
 
@@ -154,13 +156,13 @@
 
     <!-- Dynamic title script (shared reusable) -->
     <script src="SKRIPTIT/dynamic-title.js" defer></script>
-    <!-- Shared header script (injects header/nav with bold titles and green underline on hover) -->
+    <!-- Shared header script -->
     <script src="SKRIPTIT/header.js" defer></script>
     <script src="SKRIPTIT/mobile-scaling.js" defer></script>
 </head>
 <body>
 
-    <!-- Header is injected by SKRIPTIT/header.js (removes need for local <header>) -->
+    <!-- Header is injected by SKRIPTIT/header.js -->
 
     <section id="home">
         <video autoplay muted loop playsinline poster="fallback-poster.webp">
@@ -185,7 +187,7 @@
         </div>
     </div>
 
-    <!-- PORTFOLIO: 3x2 TIETOKONEELLA, MOBIILISSA 1x6 -->
+    <!-- PORTFOLIO etc. remains unchanged -->
     <section id="portfolio">
         <div class="portfolio-gallery">
             <div class="portfolio-item"><video autoplay muted loop playsinline poster="Ruutu1-poster.webp"><source src="Ruutu1.mp4" type="video/mp4"></video></div>
@@ -197,7 +199,6 @@
         </div>
 
         <div id="services">
-            <!-- Sulava, looppaava vaihtuva otsikko: aina sama suunta (ylös) -->
             <h2 id="dynamic-title" class="dynamic-title" data-interval="3000" aria-label="Palvelut: vaihtuva otsikko">
                 <span>Yritys</span>
                 <span>Bändi</span>
@@ -242,15 +243,19 @@
         <p>Ota yhteyttä ja keskustellaan tulevista projekteista!</p>
         <p>Email: <a href="mailto:esimerkki@email.com">esimerkki@email.com</a></p>
         <p>Puhelin: <a href="tel:+358405247918">040 524 7918</a></p>
-        <p class="linkedin-link">
+        
+        <div class="social-links">
             <a href="https://www.linkedin.com/in/iivarikortesoja" target="_blank">
-                <img src="linkedin.webp" alt="LinkedIn" class="linkedin-icon">
+                <img src="linkedin.webp" alt="LinkedIn" class="social-icon">
             </a>
-        </p>
+            <a href="https://api.whatsapp.com/message/2JQ4G2D3EXLID1?autoload=1&app_absent=0" target="_blank">
+                <img src="whatsapp.webp" alt="WhatsApp" class="social-icon">
+            </a>
+        </div>
     </section>
 
     <footer>
-        <p>© Iivari Kortesoja 2026 | Y-tunnus A38904</p>
+        <p>© Iivari Kortesoja 2026 | Y-tunnus 3591660-9</p>
     </footer>
 
     <script>
