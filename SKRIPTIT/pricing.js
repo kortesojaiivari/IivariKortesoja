@@ -1,66 +1,48 @@
-// SKRIPTIT/pricing.js: Dynamically manage pricing package rendering
+// Pricing script to manage styles, visibility, and functionalities dynamically.
 
-document.addEventListener("DOMContentLoaded", () => {
-    const pricingContainer = document.querySelector("#pricing .upper-row");
-    const hääPakettiContainer = document.querySelector("#pricing .lower-row");
+const pricingData = [
+    { type: 'Basic', price: 10, features: ['Feature 1', 'Feature 2'] },
+    { type: 'Standard', price: 20, features: ['Feature 1', 'Feature 2', 'Feature 3'] },
+    { type: 'Premium', price: 30, features: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4'] }
+];
 
-    const pricingData = [
-        {
-            title: "3 tuntia",
-            price: "300 €",
-            description: "Esimerkiksi hautajaiset tai valmistujaisjuhlat",
-        },
-        {
-            title: "4–6 tuntia",
-            price: "400 €",
-            description: "Pidempään kestävät tilaisuudet",
-        },
-        {
-            title: "6 tuntia +",
-            price: "500 €",
-            description: "Esimerkiksi dokumentaarinen hääkuvaus",
-        },
-    ];
+const pricingContainer = document.getElementById('pricing');
 
-    const hääPakettiData = {
-        title: "Hääpaketti",
-        price: "700 €",
-        details: [
-            "Dokumentaarinen hääkuvaus koko häiden ajan",
-            "Elokuvallinen häävideo tärkeimmästä päivästä",
-            "Ei stressiä kuvausajasta",
-            "Eniten valokuvia",
-        ],
-        quote: "Monet sanovat, että kuva kertoo enemmän kuin tuhat sanaa. Minä sanon, että liikkuva kuva kertoo vieläkin enemmän.",
-    };
+function renderPricing() {
+    pricingContainer.innerHTML = '';
+    pricingData.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'pricing-card';
+        card.style.transition = 'all 0.3s ease';
+        card.style.border = '1px solid #ccc';
+        card.style.borderRadius = '8px';
+        card.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.1)';
+        card.style.padding = '20px';
+        card.style.margin = '10px';
+        
+        const title = document.createElement('h3');
+        title.innerText = item.type;
+        card.appendChild(title);
 
-    // Function to render individual pricing boxes
-    function renderPricingBox({ title, price, description }) {
-        return `
-            <div class="pricing-box">
-                <h3>${title}</h3>
-                <p class="price">${price}</p>
-                <p>${description}</p>
-            </div>
-        `;
-    }
+        const price = document.createElement('p');
+        price.innerText = `$${item.price}`;
+        card.appendChild(price);
 
-    // Render and inject upper row pricing packages
-    pricingContainer.innerHTML = pricingData.map(renderPricingBox).join("");
+        const featureList = document.createElement('ul');
+        item.features.forEach(feature => {
+            const li = document.createElement('li');
+            li.innerText = feature;
+            featureList.appendChild(li);
+        });
+        card.appendChild(featureList);
 
-    // Render and inject hääpaketti information
-    hääPakettiContainer.innerHTML = `
-        <div class="pricing-box">
-            <h3>${hääPakettiData.title}</h3>
-            <p class="price">${hääPakettiData.price}</p>
-            <ul>
-                ${hääPakettiData.details.map(detail => `<li>${detail}</li>`).join("")}
-            </ul>
-            <p class="quote">${hääPakettiData.quote}</p>
-        </div>
-        <div class="contact-box">
-            <p>Eikö mieleistä pakettia löytynyt?<br />Ota yhteyttä, niin räätälöidään juuri sinulle sopiva ratkaisu!</p>
-            <a href="#final-contact" class="contact-btn">Ota yhteyttä</a>
-        </div>
-    `;
-});
+        pricingContainer.appendChild(card);
+    });
+}
+
+// Initial render
+renderPricing();
+
+// For dynamic updates in future
+// Example: pricingData.push(newPricing);
+// renderPricing();
