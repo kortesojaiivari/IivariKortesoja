@@ -26,18 +26,14 @@
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
-        header{background:#000;padding:15px 20px;text-align:center;position:fixed;width:100%;top:0;z-index:1000;backdrop-filter:blur(10px)}
-        nav a{color:#fff;text-decoration:none;margin:0 15px;font-size:1.2em;position:relative;transition:.3s}
-        nav a:hover{color:#4ade80}
-        nav a::after{content:'';position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:0;height:2px;background:#4ade80;transition:width .3s}
-        nav a:hover::after{width:100%}
+        /* header/nav styles moved to SKRIPTIT/header.js to keep header yhtenäisenä */
 
         #home{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
         #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
         #home h2{font-size:clamp(2.5rem,8vw,4.5rem);text-shadow:0 0 40px rgba(0,0,0,.9)}
 
         .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:30px;max-width:1400px;margin:100px auto;padding:0 20px;position:relative}
-        .gallery-item{position:relative;height:220px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.7);cursor:pointer;opacity:0;transform:translateX(-80px);transition:all 0.7s cubic-bezier(0.25,0.46,0.45,0.94)}
+        .gallery-item{position:relative;height:220px;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.7);cursor:pointer;opacity:0;transform:translateX(-80px);transition:all .5s ease}
         .gallery-item.visible{opacity:1;transform:translateX(0)}
         .gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .4s}
         .gallery-item::after{
@@ -75,22 +71,6 @@
         .about-text{flex:1.5;min-width:300px;font-size:1.35rem;color:#e0e0e0;line-height:1.8}
         .btw-text{margin-top:40px;font-size:1.2rem;color:#bbb}
 
-        /* MOBIILI: Teksti vasemmalle tasattu, pienempi fontti, ei täytä ruutua */
-        @media(max-width:768px){
-            .about-text{
-                font-size:1.1rem;
-                text-align:left;
-                padding:0 20px;
-            }
-            .btw-text{
-                font-size:1rem;
-            }
-            .recommendation{
-                font-size:1.1rem;
-                padding:0 20px;
-            }
-        }
-
         .extra-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:30px;max-width:1400px;margin:140px auto 100px;padding:0 20px}
         .extra-item{position:relative;height:420px;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.8)}
         .extra-item img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease}
@@ -107,18 +87,12 @@
         @media(max-width:992px){.about-section{flex-direction:column;text-align:center}}
         @media(max-width:600px){.gallery,.extra-gallery{grid-template-columns:1fr}}
     </style>
+
+    <!-- Shared header script (in SKRIPTIT/header.js) -->
+    <script src="SKRIPTIT/header.js" defer></script>
+     <script src="SKRIPTIT/mobile-scaling.js" defer></script>
 </head>
 <body>
-
-    <header>
-        <nav>
-            <a href="indexi.html">Koti</a>
-            <a href="portfolio.html">Portfolio</a>
-            <a href="valokuvaus.html">Valokuvaus</a>
-            <a href="yhteystiedot.html">Yhteystiedot</a>
-            <a href="puolustusvoimat.html">Puolustusvoimat</a>
-        </nav>
-    </header>
 
     <section id="home">
         <video autoplay muted loop playsinline poster="pv-poster.webp">
@@ -127,7 +101,7 @@
         <h2>Puolustusvoimat & Combat Camera</h2>
     </section>
 
-    <!-- Thumbnail-galleria + SUOSITTELUTEKSTI -->
+    <!-- Thumbnail-galleria -->
     <section class="gallery">
         <div class="gallery-item" data-video-id="91wex5Lgolc"><img src="thumbnail1.webp" alt="1"></div>
         <div class="gallery-item" data-video-id="GLP9QxcEbXk"><img src="thumbnail2.webp" alt="2"></div>
@@ -138,7 +112,7 @@
     </section>
     <p class="recommendation">Suosittelen katsomaan Combat Camera Showreel 2025</p>
 
-    <!-- Esittelyosio – PVIIVARI KUVAT NYT .webp -->
+    <!-- Esittelyosio -->
     <div class="about-section">
         <div class="about-image">
             <img src="IivariKortesoja1.webp" alt="Iivari 1" class="active">
@@ -146,44 +120,36 @@
         </div>
         <div class="about-text">
             <p>Palvelukseni Puolustusvoimissa oli unelma, jota en olisi uskonut kokevani. Pääsin valtakunnallisessa erityistehtävähaussa <strong>Combat Cameraan</strong>.</p>
-            <p>Työskentely vaativissa olosuhteissa testasi fyysistä ja psyykkistä kestävyyttäni äärimmilleen. Viikot metsissä ympäri Suomea, kuvaten ja taistellen suomalaisten sekä ulkomaalaisten joukkojen kanssa harjoituksissa – olivat äärimmäisen palkitsevia ja opettavaisia.</p>
-            <p class="btw-text">Olen myös työskennellyt Puolustusvoimilla videotuotannoissa jo ennen varusmiespalvelustani. Tehtäviin on kuulunut kuvaamista, editointia ja videotuotantoja.</p>
+            <p>Työskentely vaativissa olosuhteissa testasi fyysistä ja psyykkistä kestävyyttäni äärimmilleen. Viikot metsissä ympäri Suomea, kuvaten ja taistellen suomalaisten sekä ulko[...]
+            <p class="btw-text">Olen myös työskennellyt Puolustusvoimilla videotuotannoissa jo ennen varusmiespalvelustani. Tehtäviin on kuulunut kuvaamista, editointia ja monikameratuotantoja[...]
         </div>
     </div>
 
-    <!-- 6 isoa kuvaboksia -->
+    <!-- ISOT KUVAELEMENTIT – comcam-kansiosta, scriptattava järjestys -->
     <div class="extra-gallery">
-        <div class="extra-item">
-            <img src="comcam1.webp" class="active">
-            <img src="comcam2.webp">
-            <img src="comcam3.webp">
-        </div>
-        <div class="extra-item">
-            <img src="comcam4.webp" class="active">
-            <img src="comcam5.webp">
-            <img src="comcam6.webp">
-        </div>
-        <div class="extra-item">
-            <img src="comcam7.webp" class="active">
-            <img src="comcam8.webp">
-            <img src="comcam9.webp">
-        </div>
-        <div class="extra-item">
-            <img src="comcam10.webp" class="active">
-            <img src="comcam11.webp">
-            <img src="comcam12.webp">
-        </div>
-        <div class="extra-item">
-            <img src="comcam13.webp" class="active">
-            <img src="comcam14.webp">
-            <img src="comcam15.webp">
-        </div>
-        <div class="extra-item">
-            <img src="comcam16.webp" class="active">
-            <img src="comcam17.webp">
-            <img src="comcam18.webp">
-            <img src="comcam19.webp">
-        </div>
+        <script>
+            // TÄMÄN LISTAN VÄLITTÄ VAIHAT JÄRJESTYKSEN
+            // Jokainen sisempi taulukko on yksi boksi (max 3 kuvaa per boksi)
+            // Voit lisätä/poistaa kuvia tarpeen mukaan
+            const imageSequence = [
+                [7, 1, 11, 28, 4, 39, 35],    // Boksi 1
+                [3, 5, 31, 29, 13, 36, 11],    // Boksi 2
+                [12, 6, 19, 15, 14, 37, 19],    // Boksi 3
+                [20, 8, 26, 2, 30, 23, 15],    // Boksi 4
+                [25, 9, 33, 16, 32, 24, 8],    // Boksi 5
+                [38, 10, 34, 17, 40, 27, 22],    // Boksi 6
+            ];
+
+            // Luo bokseja sequence-taulukon mukaan
+            imageSequence.forEach(boxImages => {
+                document.write('<div class="extra-item">');
+                boxImages.forEach((num, index) => {
+                    const activeClass = index === 0 ? ' class="active"' : '';
+                    document.write(`<img src="comcam/comcam${num}.webp"${activeClass}>`);
+                });
+                document.write('</div>');
+            });
+        </script>
     </div>
 
     <!-- Modaali -->
@@ -195,7 +161,7 @@
     </div>
 
     <footer>
-        <p>© Iivari Kortesoja 2025 | Y-tunnus A38904</p>
+        <p>© Iivari Kortesoja 2025 | Y-tunnus 3591660-9</p>
     </footer>
 
     <script>
@@ -225,7 +191,7 @@
             aboutImgs[aboutIdx].classList.add('active');
         }, 10000);
 
-        // Isojen kuvaboksien vaihto – KESTO ENNALLAAN (5s)
+        // Isojen kuvaboksien vaihto – 5 sekuntia
         document.querySelectorAll('.extra-item').forEach(box => {
             const imgs = box.querySelectorAll('img');
             let idx = 0;

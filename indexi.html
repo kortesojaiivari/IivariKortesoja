@@ -24,11 +24,8 @@
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
-        header{background:#000;padding:15px 20px;text-align:center;position:fixed;width:100%;top:0;z-index:1000;backdrop-filter:blur(10px)}
-        nav a{color:#fff;text-decoration:none;margin:0 15px;font-size:1.2em;position:relative;transition:.3s}
-        nav a:hover{color:#4ade80}
-        nav a::after{content:'';position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:0;height:2px;background:#4ade80;transition:width .3s}
-        nav a:hover::after{width:100%}
+
+        /* Header/nav styles removed — shared header handled by SKRIPTIT/ */
 
         #home{position:relative;overflow:hidden;text-align:center;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
         #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
@@ -69,41 +66,28 @@
         #services,#equipment{max-width:1200px;margin:0 auto 100px;text-align:center;padding:0 20px}
         #services h2,#equipment h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:30px}
 
-        /* VAIHTUVA OTSIKKO */
+        /* VAIHTUVA OTSIKKO - styling complements the JS (script sets min-height/padding precisely) */
         #dynamic-title{
             position:relative;
-            height:70px;
             overflow:hidden;
             display:flex;
             align-items:center;
             justify-content:center;
+            padding-top:4px;    /* baseline extra space for tall glyphs */
+            padding-bottom:6px; /* extra for descenders */
+            line-height:1.05;
         }
         #dynamic-title span{
             position:absolute;
-            width:100%;
+            left:50%;
+            top:50%;
+            transform:translate(-50%,-50%);
+            width:auto;
             text-align:center;
-            opacity:0;
-            transform:translateY(50px);
-            animation:slideUpFade 21s infinite;
-        }
-        #dynamic-title span:nth-child(1){
-            opacity:1;
-            transform:translateY(0);
-            animation-delay:0s;
-        }
-        #dynamic-title span:nth-child(2){animation-delay:3s}
-        #dynamic-title span:nth-child(3){animation-delay:6s}
-        #dynamic-title span:nth-child(4){animation-delay:9s}
-        #dynamic-title span:nth-child(5){animation-delay:12s}
-        #dynamic-title span:nth-child(6){animation-delay:15s}
-        #dynamic-title span:nth-child(7){animation-delay:18s}
-
-        @keyframes slideUpFade{
-            0%{opacity:0;transform:translateY(50px)}
-            5%{opacity:1;transform:translateY(0)}
-            14%{opacity:1;transform:translateY(0)}
-            19%{opacity:0;transform:translateY(-50px)}
-            100%{opacity:0;transform:translateY(-50px)}
+            pointer-events:none;
+            white-space:nowrap;
+            will-change:transform, opacity;
+            font-weight:600;
         }
 
         .service-text,#equipment p{font-size:1.3rem;color:#ddd;line-height:1.7;margin-bottom:60px;max-width:900px;margin-left:auto;margin-right:auto}
@@ -158,6 +142,8 @@
                 width:24px;
                 height:24px;
             }
+            /* slightly increase dynamic title spacing on small screens to preserve descenders */
+            #dynamic-title { padding-bottom:8px; padding-top:6px; }
         }
 
         @media(max-width:992px){
@@ -165,18 +151,16 @@
             .about-image-container,.retro-video{max-width:100%}
         }
     </style>
+
+    <!-- Dynamic title script (shared reusable) -->
+    <script src="SKRIPTIT/dynamic-title.js" defer></script>
+    <!-- Shared header script (injects header/nav with bold titles and green underline on hover) -->
+    <script src="SKRIPTIT/header.js" defer></script>
+    <script src="SKRIPTIT/mobile-scaling.js" defer></script>
 </head>
 <body>
 
-    <header>
-        <nav>
-            <a href="#home">Koti</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="yhteystiedot.html">Yhteystiedot</a>
-            <a href="valokuvaus.html">Valokuvaus</a>
-            <a href="puolustusvoimat.html">Puolustusvoimat</a>
-        </nav>
-    </header>
+    <!-- Header is injected by SKRIPTIT/header.js (removes need for local <header>) -->
 
     <section id="home">
         <video autoplay muted loop playsinline poster="fallback-poster.webp">
@@ -213,7 +197,8 @@
         </div>
 
         <div id="services">
-            <h2 id="dynamic-title">
+            <!-- Sulava, looppaava vaihtuva otsikko: aina sama suunta (ylös) -->
+            <h2 id="dynamic-title" class="dynamic-title" data-interval="3000" aria-label="Palvelut: vaihtuva otsikko">
                 <span>Yritys</span>
                 <span>Bändi</span>
                 <span>Järjestö</span>
@@ -222,6 +207,7 @@
                 <span>Hääpari</span>
                 <span>Valokuvaus</span>
             </h2>
+
             <p class="service-text">
                 Tarvitsetko ammattimaista audiovisuaalista materiaalia? Teen laadukkaita, tehokkaita ja edullisia tuotantoja ympäri Suomea. Olipa kyseessä sosiaalisen median video, hääkuvaus, yritysvideo, haastattelu, musiikkivideo tai jotain ihan muuta. Ota yhteyttä ja aletaan suunnittelemaan!
             </p>
@@ -268,7 +254,7 @@
     </footer>
 
     <script>
-        // Taustavideo
+        // Taustavideo: play/pause based on visibility
         const bgVideo = document.querySelector('#home video');
         new IntersectionObserver(e => e.forEach(en => en.isIntersecting ? bgVideo.play() : bgVideo.pause()), {threshold: 0.5})
             .observe(document.getElementById('home'));
