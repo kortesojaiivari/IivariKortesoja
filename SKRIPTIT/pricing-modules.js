@@ -6,7 +6,7 @@ const upperPackages = [
     },
     {
         title: '4-6 tuntia',
-        price: '600 €',
+        price: '700 €',
         desc: 'Pidempään kestävät tilaisuudet tai kevyempi hääkuvaus'
     }
 ];
