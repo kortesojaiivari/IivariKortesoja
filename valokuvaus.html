@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fi">
 <head>
@@ -5,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valokuvaus | Iivari Kortesoja</title>
     <meta name="description" content="Edullista valokuvausta yksityisille – häät, valmistujaiset, hautajaiset, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta. Myös videopalvelut saatavilla. Ota yhteyttä!">
-
     <!-- GOOGLE ANALYTICS 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
     <script>
@@ -14,7 +14,6 @@
       gtag('js', new Date());
       gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
     </script>
-
     <!-- MICROSOFT CLARITY -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
@@ -23,17 +22,13 @@
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "ud6y4jpngh");
     </script>
-
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
-
         /* Header injected by SKRIPTIT/header.js */
-
         #home{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
         #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
         #home h2{font-size:clamp(2.5rem,8vw,4.5rem);text-shadow:0 0 40px rgba(0,0,0,.9)}
-
         #dynamic-title{
             position:relative;
             overflow:visible;
@@ -61,13 +56,11 @@
             will-change:transform,opacity;
             line-height:1.5;
         }
-
         .about-section{max-width:1200px;margin:80px auto;display:flex;align-items:center;gap:60px;flex-wrap:wrap;padding:0 20px}
         .about-text{flex:1.5;min-width:300px;font-size:1.35rem;color:#e0e0e0;line-height:1.8}
         .about-image{position:relative;flex:1;min-width:300px;max-width:500px;height:600px;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.9)}
         .about-image img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
         .about-image img.active{opacity:1}
-
         .small-gallery{
             display:grid;
             grid-template-columns:repeat(auto-fit,minmax(225px,1fr));
@@ -92,7 +85,6 @@
             transition:opacity 1.4s ease;
         }
         .small-item img.active{opacity:1}
-
         #pricing{max-width:1400px;margin:80px auto;padding:0 20px}
         #pricing h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:20px;text-align:center}
         #pricing .disclaimer{font-size:1rem;color:#bbb;text-align:center;margin-bottom:40px}
@@ -173,7 +165,6 @@
             transition:.3s;
         }
         .contact-btn:hover{background:#5aff90;transform:scale(1.05)}
-
         /* ──────────────────────────────────────────────── */
         /* UUSI: Paikkakuntavalitsin hinnoittelun alapuolella */
         /* ──────────────────────────────────────────────── */
@@ -183,13 +174,11 @@
             padding: 0 20px;
             text-align: center;
         }
-
         #location-selector h2 {
             font-size: clamp(1.8rem, 5vw, 2.8rem);
             margin-bottom: 24px;
             color: #4ade80;
         }
-
         #location-selector select {
             width: 100%;
             max-width: 420px;
@@ -208,20 +197,17 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-
         #location-selector select:hover,
         #location-selector select:focus {
             border-color: #4ade80;
             box-shadow: 0 0 0 3px rgba(74,222,128,0.2);
             outline: none;
         }
-
         #location-selector .info {
             margin-top: 16px;
             font-size: 1.05rem;
             color: #aaa;
         }
-
         .large-gallery{
             display:grid;
             grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
@@ -246,7 +232,6 @@
             transition:opacity 1.4s ease;
         }
         .large-item img.active{opacity:1}
-
         #final-contact{
             max-width:1400px;
             margin:0 auto 100px;
@@ -310,9 +295,7 @@
             margin-bottom:20px;
             font-size:1.2rem;
         }
-
         footer{background:#000;padding:40px 20px;text-align:center;font-size:1rem;border-top:1px solid #333}
-
         @media(max-width:992px){
             .about-section{flex-direction:column;text-align:center}
             .upper-row,.lower-row{grid-template-columns:1fr}
@@ -328,22 +311,19 @@
             #location-selector select{font-size:1.1rem;padding:12px 16px;}
         }
     </style>
-
     <script src="SKRIPTIT/dynamic-title.js" defer></script>
     <script src="SKRIPTIT/header.js" defer></script>
     <script src="SKRIPTIT/mobile-scaling.js" defer></script>
+    <script src="SKRIPTIT/pricing-modules.js" defer></script>
 </head>
 <body>
-
     <!-- Header injected by header.js -->
-
     <section id="home">
         <video autoplay muted loop playsinline poster="VALOKUVAUS/valokuvaus-poster.webp">
             <source src="valokuvaus_otsikko.mp4" type="video/mp4">
         </video>
         <h2>Valokuvaus</h2>
     </section>
-
     <h2 id="dynamic-title" class="dynamic-title" data-interval="3000" aria-label="Valokuvaus: vaihtuva otsikko">
         <span>Häät</span>
         <span>Valmistujaiset</span>
@@ -352,12 +332,17 @@
         <span>Ristiäiset</span>
         <span>Muotokuvat</span>
     </h2>
-
    <div class="about-section">
         <div class="about-text">
-            Tarjoan valokuvausta yksityisille ihmisille, tällä sivulla Yritykset ja yhdistykset ottakaa yhteyttä ja mainitkaa valokuvaustarpeesta<br><br>
-            Olipa kyseessä niin valmistujaiset, hautahaiset, häät, ristiäiset tai mitä vaan. Dokumentoin tärkeät hetkesi, jolloin voit keskittyä hetkeesi ja muistella sitä valokuvien kautta jälkikäteen.<br><br>
-            Tarkoitukseni on tarjota kuluttaja ja buddjetti ystävällisempää valokuvausta, pitäen laadun ja ammattimaisuuden täysillä. <br><br>
+            Tarjoan valokuvausta yksityisille ihmisille, tällä sivulla Yritykset ja yhdistykset ottakaa yhteyttä ja mainitkaa valokuvaustarpeesta
+
+
+            Olipa kyseessä niin valmistujaiset, hautahaiset, häät, ristiäiset tai mitä vaan. Dokumentoin tärkeät hetkesi, jolloin voit keskittyä hetkeesi ja muistella sitä valokuvien kautta jälkikäteen.
+
+
+            Tarkoitukseni on tarjota kuluttaja ja buddjetti ystävällisempää valokuvausta, pitäen laadun ja ammattimaisuuden täysillä. 
+
+
             Valokuvauksen ohella tarjoan myös videollista kuvaamista, joka voi olla niin häävideo tai muuten vaan muisteluvideo tilanteesta.
         </div>
         <div class="about-image">
@@ -366,7 +351,6 @@
             <img src="VALOKUVAUS/valokuvaaja3.webp" alt="Valokuvaus 3">
         </div>
     </div>
-
     <div class="small-gallery" aria-hidden="false">
         <script>
             const smallSequence = [
@@ -376,7 +360,6 @@
                 [4, 10, 16, 22, 28, 34],
                 [5, 11, 17, 23, 29, 35],
             ];
-
             smallSequence.forEach(boxImages => {
                 document.write('<div class="small-item">');
                 boxImages.forEach((num, index) => {
@@ -387,51 +370,18 @@
             });
         </script>
     </div>
-
     <section id="pricing">
         <h2>Hinnoittelu</h2>
         <p class="disclaimer">*Nämä ovat suuntaa-antavia hintoja. Hinnat sisältävät ALV 25,5 %. Matkakustannukset (kilometrikorvaus) lisätään erikseen tarpeen mukaan.</p>
-
-        <div class="upper-row">
-            <div class="pricing-box">
-                <h3>3 tuntia</h3>
-                <p class="price">300 €</p>
-                <p>Esimerkiksi hautajaiset tai valmistujaisjuhlat</p>
-            </div>
-
-            <div class="pricing-box">
-                <h3>4–6 tuntia</h3>
-                <p class="price">400 €</p>
-                <p>Pidempään kestävät tilaisuudet</p>
-            </div>
-
-            <div class="pricing-box">
-                <h3>6 tuntia +</h3>
-                <p class="price">500 €</p>
-                <p>Esimerkiksi dokumentaarinen hääkuvaus</p>
-            </div>
-        </div>
-
+        <div class="upper-row"></div>
         <div class="lower-row">
-            <div class="pricing-box">
-                <h3>Hääpaketti</h3>
-                <p class="price">700 €</p>
-                <ul>
-                    <li>Dokumentaarinen hääkuvaus <strong>koko häiden ajan</strong></li>
-                    <li>Elokuvallinen häävideo tärkeimmästä päivästä</li>
-                    <li>Ei stressiä kuvausajasta</li>
-                    <li>Eniten valokuvia</li>
-                </ul>
-                <p class="quote">Monet sanovat, että kuva kertoo enemmän kuin tuhat sanaa. Minä sanon, että liikkuva kuva kertoo vieläkin enemmän.</p>
-            </div>
-
             <div class="contact-box">
-                <p>Eikö mieleistä pakettia löytynyt?<br>Ota yhteyttä, niin räätälöidään juuri sinulle sopiva ratkaisu!</p>
+                <p>Eikö mieleistä pakettia löytynyt?
+Ota yhteyttä, niin räätälöidään juuri sinulle sopiva ratkaisu!</p>
                 <a href="#final-contact" class="contact-btn">Ota yhteyttä</a>
             </div>
         </div>
     </section>
-
     <!-- PAIKKAKUNTAVALINTA – hinnoittelun alla, isojen kuvien yläpuolella -->
     <div id="location-selector">
         <h2>Valitse kuvauspaikkakunta</h2>
@@ -461,16 +411,13 @@
         </select>
         <p class="info">Valitsemalla paikkakunnan siirryt aluekohtaiselle sivulle, jossa on tarkemmat hinnoittelut.</p>
     </div>
-
     <script>
         function handlePaikkakuntaChange(value) {
             if (!value) return; // tyhjä valinta → ei tee mitään
-
             const url = `valokuvaus_${value}.html`;
             window.location.href = url;
         }
     </script>
-
     <div class="large-gallery">
         <script>
             const largeSequence = [
@@ -481,7 +428,6 @@
                 [5, 11, 17, 23, 29, 35],
                 [6, 12, 18, 24, 30, 36]
             ];
-
             largeSequence.forEach(boxImages => {
                 document.write('<div class="large-item">');
                 boxImages.forEach((num, index) => {
@@ -492,25 +438,21 @@
             });
         </script>
     </div>
-
     <section id="final-contact">
         <div class="contact-info">
             <h2>Ota yhteyttä</h2>
             <p>Sähköposti: <a href="mailto:example@email.com">example@email.com</a></p>
             <p>Puhelin: <a href="tel:+358405247918">040 524 7918</a></p>
         </div>
-
         <div class="qr-box">
             <a href="https://wa.me/message/2JQ4G2D3EXLID1" target="_blank" rel="noopener">
                 <img src="QR.webp" alt="WhatsApp QR-koodi">
             </a>
         </div>
     </section>
-
     <footer>
         <p>© Iivari Kortesoja 2025 | Y-Tunnus 3591660-9</p>
     </footer>
-
     <script>
         // Taustavideo visibility
         (function(){
@@ -525,7 +467,6 @@
                 try { bg.play(); } catch(e) {}
             }
         })();
-
         // About-kuvan vaihto
         (function(){
             const aboutImgs = document.querySelectorAll('.about-image img');
@@ -537,7 +478,6 @@
                 aboutImgs[aboutIdx].classList.add('active');
             }, 5000);
         })();
-
         // Pienten boksien vaihto
         (function(){
             document.querySelectorAll('.small-item').forEach(box => {
@@ -551,7 +491,6 @@
                 }, 4000);
             });
         })();
-
         // Isojen boksien vaihto
         (function(){
             document.querySelectorAll('.large-item').forEach(box => {
@@ -565,22 +504,55 @@
                 }, 5000);
             });
         })();
+        // Hinnoittelumoduulien renderointi
+        function renderPricingBox(pkg) {
+            let html = `<h3>${pkg.title}</h3><p class="price">${pkg.price}</p>`;
+            if (pkg.desc) {
+                html += `<p>${pkg.desc}</p>`;
+            }
+            if (pkg.features) {
+                html += '<ul>';
+                pkg.features.forEach(feature => {
+                    html += `<li>${feature}</li>`;
+                });
+                html += '</ul>';
+            }
+            if (pkg.quote) {
+                html += `<p class="quote">${pkg.quote}</p>`;
+            }
+            const box = document.createElement('div');
+            box.className = 'pricing-box';
+            box.innerHTML = html;
+            return box;
+        }
+        // Odota, että pricing-modules.js on ladattu
+        window.addEventListener('load', () => {
+            const upperRow = document.querySelector('.upper-row');
+            upperPackages.forEach(pkg => {
+                upperRow.appendChild(renderPricingBox(pkg));
+            });
+            const lowerRow = document.querySelector('.lower-row');
+            const contactBox = lowerRow.querySelector('.contact-box');
+            lowerPackages.forEach(pkg => {
+                lowerRow.insertBefore(renderPricingBox(pkg), contactBox);
+            });
+            // Jos lowerPackages.length != 1, mukauta gridiä tarvittaessa (esim. jos lisäät paketteja tulevaisuudessa)
+            if (lowerPackages.length !== 1) {
+                lowerRow.style.gridTemplateColumns = `repeat(${lowerPackages.length + 1}, 1fr)`;
+            }
+        });
     </script>
-
     <!-- DYNAMIC TITLE FIX -->
     <script>
         function debounce(fn, wait){ let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn.apply(this,args), wait); }; }
-
         function ensureDynamicTitleSpace(){
             const el = document.getElementById('dynamic-title');
             if (!el) return;
-
             const sampleText = 'Hgjpqy';
             const meas = document.createElement('span');
             meas.textContent = sampleText;
             const realSpan = el.querySelector('span') || el;
             const cs = window.getComputedStyle(realSpan);
-
             meas.style.cssText = [
                 'position:absolute',
                 'left:-9999px',
@@ -595,28 +567,22 @@
                 `text-transform:${cs.textTransform}`
             ].join(';');
             document.body.appendChild(meas);
-
             const rect = meas.getBoundingClientRect();
             const measuredHeight = Math.ceil(rect.height);
             document.body.removeChild(meas);
-
             const extraForDescenders = Math.max(48, Math.round(measuredHeight * 0.9));
             const currentPadTop = parseInt(getComputedStyle(el).paddingTop) || 0;
             const currentPadBottom = parseInt(getComputedStyle(el).paddingBottom) || 0;
             const desiredPadBottom = Math.max(currentPadBottom, extraForDescenders + 20);
             const desiredPadTop = Math.max(currentPadTop, Math.round(measuredHeight * 0.4));
-
             el.style.paddingBottom = desiredPadBottom + 'px';
             el.style.paddingTop = desiredPadTop + 'px';
-
             const desiredMinHeight = measuredHeight + desiredPadTop + desiredPadBottom + 8;
             const curMin = parseInt(getComputedStyle(el).minHeight) || 0;
             if (desiredMinHeight > curMin) el.style.minHeight = desiredMinHeight + 'px';
-
             el.style.overflow = 'visible';
             el.style.zIndex = '5';
         }
-
         function initDynamicTitleFix(){
             const run = () => setTimeout(ensureDynamicTitleSpace, 60);
             if (document.fonts && document.fonts.ready){
@@ -625,7 +591,6 @@
                 window.setTimeout(run, 150);
             }
         }
-
         document.addEventListener('DOMContentLoaded', () => {
             initDynamicTitleFix();
             window.addEventListener('resize', debounce(initDynamicTitleFix, 220));
@@ -633,6 +598,5 @@
             setTimeout(initDynamicTitleFix, 2000);
         });
     </script>
-
 </body>
 </html>
