@@ -1,12 +1,12 @@
 const upperPackages = [
     {
         title: '3 tuntia',
-        price: '400 €',
+        price: '350 €',
         desc: 'Esimerkiksi hautajaiset tai valmistujaisjuhlat'
     },
     {
         title: '4-6 tuntia',
-        price: '700 €',
+        price: '600 €',
         desc: 'Pidempään kestävät tilaisuudet tai kevyempi hääkuvaus'
     }
 ];
@@ -14,7 +14,7 @@ const upperPackages = [
 const lowerPackages = [
     {
         title: 'Hääpaketti',
-        price: '1 000 €',
+        price: '900 €',
         features: [
             'Dokumentaarinen hääkuvaus <strong>koko hääpäivän ajan</strong>',
             'Elokuvallinen häävideo tärkeimmästä päivästä',
