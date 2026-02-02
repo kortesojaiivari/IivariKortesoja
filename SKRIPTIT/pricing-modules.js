@@ -3,8 +3,7 @@ const upperPackages = [
         title: '3 tuntia',
         price: '300 €',
         desc: 'Esimerkiksi hautajaiset tai valmistujaisjuhlat'
-    },
-   
+    }
 ];
 
 const lowerPackages = [
