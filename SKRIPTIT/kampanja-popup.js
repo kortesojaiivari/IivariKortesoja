@@ -1,8 +1,8 @@
-// skriptit/kampanja-popup.js
+// skriptit/kesakampanja-popup.js
 // Konfiguraatio - muuta näitä tarpeen mukaan
 
 const popupEnabled = true;              // true = popup tulee näkyviin, false = ei tule
-const delaySeconds = 30;                // kuinka monen sekunnin kuluttua popup ilmestyy
+const delaySeconds = 5;                // kuinka monen sekunnin kuluttua popup ilmestyy
 const popupHeightVh = 33;               // kuinka iso osa sivusta (prosentteina korkeudesta)
 
 // ÄLÄ MUOKKAA ALLA OLEVAA ellei tiedä mitä tekee
