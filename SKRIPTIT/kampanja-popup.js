@@ -19,7 +19,7 @@ if (popupEnabled) {
         transform: translateX(-50%);
         width: 94%;
         max-width: 700px;
-        background-color: #f8f9fa;
+        background-color: #e0e0e0;
         border-radius: 12px;
         box-shadow: 0 10px 30px rgba(0,0,0,0.25);
         display: flex;
@@ -52,13 +52,14 @@ if (popupEnabled) {
     popup.innerHTML = `
         <div style="text-align: center; padding: 28px 20px; color: #111; width: 100%;">
             <h2 style="margin: 0 0 16px; font-size: ${isMobile ? '1.9rem' : '2.2rem'}; color: #2e7d32;">
-                Kesäkampanja käynnissä!
+                Kevät kampanja on käynnissä!
             </h2>
             <p style="font-size: ${isMobile ? '1.15rem' : '1.3rem'}; margin: 0 0 20px; line-height: 1.45;">
-                Kesään mahtuu vielä muutama valokuvauskeikka vapaana – varaa pian!
+                Jos varaat valokuvauksen vuodelle 2026 saat 100€ pois hinnasta.  
+                
             </p>
             <p style="font-size: ${isMobile ? '1.05rem' : '1.15rem'}; margin: 0 0 24px;">
-                Ota yhteyttä: iivari@esimerkki.fi | 040 123 4567
+    
             </p>
             <button id="suljePopup" style="
                 padding: 14px 40px;
