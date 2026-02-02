@@ -2,7 +2,7 @@
 // Konfiguraatio - muuta näitä tarpeen mukaan
 
 const popupEnabled = true;              // true = popup tulee näkyviin, false = ei tule
-const delaySeconds = 30;                // kuinka monen sekunnin kuluttua popup ilmestyy
+const delaySeconds = 10;                // kuinka monen sekunnin kuluttua popup ilmestyy
 const popupHeightVhDesktop = 33;        // desktop: alaosan korkeus
 const popupHeightVhMobile  = 60;        // mobiili: keskellä isompi korkeus
 
