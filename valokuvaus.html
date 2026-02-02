@@ -1,4 +1,30 @@
+pricing-modules.js content:
+```javascript
+const upperPackages = [
+    {
+        title: '3 tuntia',
+        price: '300 €',
+        desc: 'Esimerkiksi hautajaiset tai valmistujaisjuhlat'
+    }
+];
 
+const lowerPackages = [
+    {
+        title: 'Hääpaketti',
+        price: '700 €',
+        features: [
+            'Dokumentaarinen hääkuvaus <strong>koko häiden ajan</strong>',
+            'Elokuvallinen häävideo tärkeimmästä päivästä',
+            'Ei stressiä kuvausajasta',
+            'Eniten valokuvia'
+        ],
+        quote: 'Monet sanovat, että kuva kertoo enemmän kuin tuhat sanaa. Minä sanon, että liikkuva kuva kertoo vieläkin enemmän.'
+    }
+];
+```
+
+New valokuvaus.html content:
+```html
 <!DOCTYPE html>
 <html lang="fi">
 <head>
@@ -540,6 +566,7 @@ Ota yhteyttä, niin räätälöidään juuri sinulle sopiva ratkaisu!</p>
             if (lowerPackages.length !== 1) {
                 lowerRow.style.gridTemplateColumns = `repeat(${lowerPackages.length + 1}, 1fr)`;
             }
+            // Jos upperPackages.length < 3, mukauta upper-rowin gridiä jos haluat (esim. centeröinti), mutta auto-fit hoitaa sen
         });
     </script>
     <!-- DYNAMIC TITLE FIX -->
@@ -600,3 +627,4 @@ Ota yhteyttä, niin räätälöidään juuri sinulle sopiva ratkaisu!</p>
     </script>
 </body>
 </html>
+```
