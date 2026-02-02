@@ -4,16 +4,7 @@ const upperPackages = [
         price: '300 €',
         desc: 'Esimerkiksi hautajaiset tai valmistujaisjuhlat'
     },
-    {
-        title: '4–6 tuntia',
-        price: '400 €',
-        desc: 'Pidempään kestävät tilaisuudet'
-    },
-    {
-        title: '6 tuntia +',
-        price: '500 €',
-        desc: 'Esimerkiksi dokumentaarinen hääkuvaus'
-    }
+   
 ];
 
 const lowerPackages = [
