@@ -4,9 +4,8 @@ const upperPackages = [
         price: '400 €',
         desc: 'Esimerkiksi hautajaiset tai valmistujaisjuhlat'
     }
-];
 
-const upperPackages = [
+
     {
         title: '6 tuntia',
         price: '700 €',
