@@ -2,10 +2,10 @@
 <html lang="fi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Valokuvaus | Iivari Kortesoja</title>
     <meta name="description" content="Edullista valokuvausta yksityisille – häät, valmistujaiset, hautajaiset, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta. Myös videopalvelut saatavilla. Ota yhteyttä!">
-   
+  
     <!-- GOOGLE ANALYTICS 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
     <script>
@@ -14,6 +14,7 @@
       gtag('js', new Date());
       gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
     </script>
+
     <!-- MICROSOFT CLARITY -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
@@ -22,14 +23,42 @@
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "ud6y4jpngh");
     </script>
+
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
-       
-        #home{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
-        #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
-        #home h2{font-size:clamp(2.5rem,8vw,4.5rem);text-shadow:0 0 40px rgba(0,0,0,.9);margin-bottom:20px}
-       
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #1a1a1a;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        #home {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        #home video {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        #home h2 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            text-shadow: 0 0 40px rgba(0,0,0,.9);
+            margin-bottom: 20px;
+        }
+
         #photo-button-container {
             display: flex;
             flex-wrap: wrap;
@@ -39,114 +68,382 @@
             z-index: 10;
         }
         .btn {
-            background:#333;
-            color:#fff;
-            padding:14px 32px;
-            border-radius:50px;
-            text-decoration:none;
-            font-size:1.1rem;
-            transition:.3s;
-            box-shadow:0 4px 15px rgba(0,0,0,.5);
-            cursor:pointer;
-            white-space:nowrap;
+            background: #333;
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: .3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,.5);
+            cursor: pointer;
+            white-space: nowrap;
         }
         .btn:hover {
-            background:#4ade80;
-            transform:translateY(-3px);
+            background: #4ade80;
+            transform: translateY(-3px);
         }
-        #dynamic-title{position:relative;overflow:visible;display:flex;align-items:center;justify-content:center;margin:60px 0 40px;padding-top:28px;padding-bottom:80px;line-height:1.6;min-height:clamp(180px,22vh,360px);z-index:5}
-        #dynamic-title span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:auto;text-align:center;font-size:clamp(2.5rem,8vw,4.5rem);text-shadow:0 0 40px rgba(0,0,0,.9);pointer-events:none;white-space:nowrap;will-change:transform,opacity;line-height:1.5}
-       
-        .about-section{max-width:1200px;margin:80px auto;display:flex;align-items:center;gap:60px;flex-wrap:wrap;padding:0 20px}
-        .about-text{flex:1.5;min-width:300px;font-size:1.35rem;color:#e0e0e0;line-height:1.8}
-        .about-image{position:relative;flex:1;min-width:300px;max-width:500px;height:600px;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.9)}
-        .about-image img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
-        .about-image img.active{opacity:1}
-       
-        .small-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:30px;max-width:1400px;margin:80px auto 60px;padding:0 20px}
-        .small-item{position:relative;height:300px;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.8)}
-        .small-item img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease}
-        .small-item img.active{opacity:1}
-       
-        #pricing{max-width:1400px;margin:80px auto;padding:0 20px;min-height:300px}
-        #pricing h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:20px;text-align:center}
-        #pricing .disclaimer{font-size:1rem;color:#bbb;text-align:center;margin-bottom:40px}
-        .upper-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;margin-bottom:40px}
-        .lower-row{display:grid;grid-template-columns:2fr 1fr;gap:30px}
-        .pricing-box{background:#222;padding:30px;border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,.6);text-align:center;transition:transform .3s ease}
-        .pricing-box:hover{transform:translateY(-10px)}
-        .upper-row .pricing-box h3{font-size:1.6rem;margin-bottom:15px}
-        .upper-row .pricing-box .price{font-size:2.4rem}
-        .lower-row .pricing-box h3{font-size:2rem;margin-bottom:20px}
-        .lower-row .pricing-box .price{font-size:2.8rem}
-        .pricing-box ul{list-style:none;text-align:left;margin:20px 0;font-size:1.2rem;line-height:1.8}
-        .pricing-box ul li{padding-left:20px;position:relative}
-        .pricing-box ul li::before{content:"–";position:absolute;left:0;color:#4ade80}
-        .pricing-box ul li strong{font-size:1.4rem;font-weight:bold}
-        .pricing-box .quote{font-size:1.1rem;color:#aaa;font-style:italic;margin-top:20px}
-        .contact-box{background:#333;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,.6)}
-        .contact-box p{font-size:1.3rem;margin-bottom:30px;text-align:center}
-        .contact-btn{background:#4ade80;color:#000;padding:15px 30px;border-radius:50px;text-decoration:none;font-size:1.3rem;font-weight:bold;transition:.3s}
-        .contact-btn:hover{background:#5aff90;transform:scale(1.05)}
-       
-        #location-selector{max-width:1400px;margin:60px auto 100px;padding:0 20px;text-align:center}
-        #location-selector h2{font-size:clamp(1.8rem,5vw,2.8rem);margin-bottom:24px;color:#4ade80}
-        #location-selector select{width:100%;max-width:420px;padding:14px 20px;font-size:1.25rem;background:#222;color:#eee;border:2px solid #444;border-radius:12px;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%234ade80' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;background-size:16px;cursor:pointer;transition:all 0.2s}
-        #location-selector select:hover,#location-selector select:focus{border-color:#4ade80;box-shadow:0 0 0 3px rgba(74,222,128,0.2);outline:none}
-        #location-selector .info{margin-top:16px;font-size:1.05rem;color:#aaa}
-       
-        .large-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:30px;max-width:1400px;margin:140px auto 60px;padding:0 20px}
-        .large-item{position:relative;height:420px;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.8)}
-        .large-item img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease}
-        .large-item img.active{opacity:1}
-       
-        #final-contact{max-width:1400px;margin:0 auto 100px;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:40px}
-        #final-contact .contact-info,#final-contact .qr-box{background:#222;padding:40px;border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,.6);min-height:420px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
-        #final-contact .contact-info h2{font-size:2.2rem;margin-bottom:30px}
-        #final-contact .contact-info p{font-size:1.4rem;margin:20px 0}
-        #final-contact .contact-info a{color:#4ade80;text-decoration:none}
-        #final-contact .qr-box{cursor:pointer;transition:transform .3s ease}
-        #final-contact .qr-box:hover{transform:translateY(-10px)}
-        #final-contact .qr-box a{display:block;width:100%;max-width:430px}
-        #final-contact .qr-box img{width:100%;height:auto;border-radius:12px;transition:opacity .3s}
-        #final-contact .qr-box:hover img{opacity:0.9}
-       
-        footer{background:#000;padding:40px 20px;text-align:center;font-size:1rem;border-top:1px solid #333}
-       
-        @media(max-width:992px){
-            .about-section{flex-direction:column;text-align:center}
-            .upper-row,.lower-row{grid-template-columns:1fr}
-            .small-gallery{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
-            .small-item{height:240px}
-            #final-contact{grid-template-columns:1fr}
+
+        #dynamic-title {
+            position: relative;
+            overflow: visible;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 60px 0 40px;
+            padding: 28px 0 80px;
+            line-height: 1.6;
+            min-height: clamp(180px, 22vh, 360px);
+            z-index: 5;
         }
-        @media(max-width:768px){
-            #photo-button-container{flex-direction:column;gap:16px}
+        #dynamic-title span {
+            position: absolute;
+            left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+            width: auto;
+            text-align: center;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            text-shadow: 0 0 40px rgba(0,0,0,.9);
+            pointer-events: none;
+            white-space: nowrap;
+            line-height: 1.5;
         }
-        @media(max-width:600px){
-            .small-gallery{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
-            .small-item{height:200px}
-            #dynamic-title{padding-bottom:80px;padding-top:24px;min-height:180px}
-            #dynamic-title span{font-size:clamp(1.8rem,7vw,3rem)}
-            #location-selector select{font-size:1.1rem;padding:12px 16px;}
+
+        .about-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+        .about-text {
+            flex: 1.5;
+            min-width: 300px;
+            font-size: 1.35rem;
+            color: #e0e0e0;
+            line-height: 1.8;
+        }
+        .about-image {
+            position: relative;
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            height: 600px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0,0,0,.9);
+        }
+        .about-image img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.2s ease;
+        }
+        .about-image img.active { opacity: 1; }
+
+        .small-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 80px auto 60px;
+            padding: 0 20px;
+        }
+        .small-item {
+            position: relative;
+            height: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0,0,0,.8);
+        }
+        .small-item img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.4s ease;
+        }
+        .small-item img.active { opacity: 1; }
+
+        #pricing {
+            max-width: 1400px;
+            margin: 80px auto;
+            padding: 0 20px;
+            min-height: 300px;
+        }
+        #pricing h2 {
+            font-size: clamp(2.2rem, 7vw, 3.5rem);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        #pricing .disclaimer {
+            font-size: 1rem;
+            color: #bbb;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .upper-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .lower-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+        .pricing-box {
+            background: #222;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0,0,0,.6);
+            text-align: center;
+            transition: transform .3s ease;
+        }
+        .pricing-box:hover { transform: translateY(-10px); }
+        .upper-row .pricing-box h3 { font-size: 1.6rem; margin-bottom: 15px; }
+        .upper-row .pricing-box .price { font-size: 2.4rem; }
+        .lower-row .pricing-box h3 { font-size: 2rem; margin-bottom: 20px; }
+        .lower-row .pricing-box .price { font-size: 2.8rem; }
+        .pricing-box ul {
+            list-style: none;
+            text-align: left;
+            margin: 20px 0;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+        .pricing-box ul li {
+            padding-left: 20px;
+            position: relative;
+        }
+        .pricing-box ul li::before {
+            content: "–";
+            position: absolute;
+            left: 0;
+            color: #4ade80;
+        }
+        .pricing-box .quote {
+            font-size: 1.1rem;
+            color: #aaa;
+            font-style: italic;
+            margin-top: 20px;
+        }
+        .contact-box {
+            background: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0,0,0,.6);
+        }
+        .contact-box p { font-size: 1.3rem; margin-bottom: 30px; text-align: center; }
+        .contact-btn {
+            background: #4ade80;
+            color: #000;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: bold;
+            transition: .3s;
+        }
+        .contact-btn:hover {
+            background: #5aff90;
+            transform: scale(1.05);
+        }
+
+        #location-selector {
+            max-width: 1400px;
+            margin: 60px auto 100px;
+            padding: 0 20px;
+            text-align: center;
+        }
+        #location-selector h2 {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+            margin-bottom: 24px;
+            color: #4ade80;
+        }
+        #location-selector select {
+            width: 100%;
+            max-width: 420px;
+            padding: 14px 20px;
+            font-size: 1.25rem;
+            background: #222;
+            color: #eee;
+            border: 2px solid #444;
+            border-radius: 12px;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%234ade80' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        #location-selector select:hover,
+        #location-selector select:focus {
+            border-color: #4ade80;
+            box-shadow: 0 0 0 3px rgba(74,222,128,0.2);
+            outline: none;
+        }
+
+        .large-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 140px auto 60px;
+            padding: 0 20px;
+        }
+        .large-item {
+            position: relative;
+            height: 420px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0,0,0,.8);
+        }
+        .large-item img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.4s ease;
+        }
+        .large-item img.active { opacity: 1; }
+
+        #final-contact {
+            max-width: 1400px;
+            margin: 0 auto 100px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        #final-contact .contact-info,
+        #final-contact .qr-box {
+            background: #222;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0,0,0,.6);
+            min-height: 420px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        #final-contact .contact-info h2 { font-size: 2.2rem; margin-bottom: 30px; }
+        #final-contact .contact-info p { font-size: 1.4rem; margin: 20px 0; }
+        #final-contact .contact-info a { color: #4ade80; text-decoration: none; }
+        #final-contact .qr-box { cursor: pointer; transition: transform .3s ease; }
+        #final-contact .qr-box:hover { transform: translateY(-10px); }
+        #final-contact .qr-box a { display: block; width: 100%; max-width: 430px; }
+        #final-contact .qr-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            transition: opacity .3s;
+        }
+        #final-contact .qr-box:hover img { opacity: 0.9; }
+
+        footer {
+            background: #000;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 1rem;
+            border-top: 1px solid #333;
+        }
+
+        /* ────────────────────────────────────────
+           MOBIILIOPTIMOINNIT – parannettu scroll & layout
+        ──────────────────────────────────────── */
+        @media (max-width: 992px) {
+            .about-section { flex-direction: column; text-align: center; }
+            .upper-row, .lower-row { grid-template-columns: 1fr; }
+            .small-gallery { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+            .small-item { height: 240px; }
+            #final-contact { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: transparent;
+            }
+            #home {
+                min-height: 85vh;
+            }
+            #home video {
+                object-fit: cover;
+                object-position: center;
+            }
+            #photo-button-container {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .small-gallery, .large-gallery {
+                gap: 16px;
+                padding: 0 12px;
+            }
+            .small-item, .large-item {
+                height: 220px;
+                border-radius: 12px;
+            }
+            .about-section {
+                padding: 0 16px;
+                gap: 32px;
+            }
+            .about-image {
+                height: 400px;
+                max-width: 100%;
+            }
+            #pricing .upper-row {
+                gap: 20px;
+            }
+            #final-contact {
+                gap: 24px;
+                padding: 0 16px;
+            }
+            #dynamic-title {
+                padding: 24px 0 80px;
+                min-height: 180px;
+            }
+            #dynamic-title span {
+                font-size: clamp(1.8rem, 7vw, 3rem);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .small-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+            .small-item { height: 200px; }
         }
     </style>
-    <!-- Skriptit – pricing-modules ensimmäisenä -->
+
+    <!-- Skriptit -->
     <script src="SKRIPTIT/pricing-modules.js" defer></script>
     <script src="SKRIPTIT/dynamic-title.js" defer></script>
     <script src="SKRIPTIT/header.js" defer></script>
-    <script src="SKRIPTIT/mobile-scaling.js" defer></script>
+    <!-- POISTETTU: <script src="SKRIPTIT/mobile-scaling.js" defer></script> -->
     <script src="SKRIPTIT/kampanja-popup.js" defer></script>
     <script src="SKRIPTIT/photo-buttons.js" defer></script>
 </head>
 <body>
 
-    <!-- Hinnoittelun renderöinti heti kun DOM valmis -->
+    <!-- Hinnoittelun renderöinti -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Odota hetki että defer-skripti ehtii ladata datan
             setTimeout(() => {
-                // Luo pricing box
                 function createPricingBox(pkg) {
                     let html = `<h3>${pkg.title}</h3><p class="price">${pkg.price}</p>`;
                     if (pkg.desc) html += `<p>${pkg.desc}</p>`;
@@ -162,27 +459,22 @@
                     return box;
                 }
 
-                // Upper row
                 const upperRow = document.querySelector('#pricing .upper-row');
                 if (upperRow && typeof upperPackages !== 'undefined' && Array.isArray(upperPackages)) {
-                    upperPackages.forEach(pkg => {
-                        upperRow.appendChild(createPricingBox(pkg));
-                    });
+                    upperPackages.forEach(pkg => upperRow.appendChild(createPricingBox(pkg)));
                 }
 
-                // Lower row
                 const lowerRow = document.querySelector('#pricing .lower-row');
                 const contactBox = lowerRow ? lowerRow.querySelector('.contact-box') : null;
                 if (lowerRow && contactBox && typeof lowerPackages !== 'undefined' && Array.isArray(lowerPackages)) {
                     lowerPackages.forEach(pkg => {
                         lowerRow.insertBefore(createPricingBox(pkg), contactBox);
                     });
-                    // Jos useampi lower-paketti → mukauta grid
                     if (lowerPackages.length > 1) {
                         lowerRow.style.gridTemplateColumns = `repeat(${lowerPackages.length + 1}, 1fr)`;
                     }
                 }
-            }, 0); // pieni viive varmuuden vuoksi
+            }, 0);
         });
     </script>
 
@@ -206,7 +498,7 @@
     <div class="about-section">
         <div class="about-text">
             Olipa kyseessä niin valmistujaiset, hautajaiset, häät, ristiäiset tai mitä vaan. Dokumentoin tärkeät hetkesi, jolloin voit keskittyä hetkeesi ja muistella sitä valokuvien kautta jälkikäteen.<br><br>
-            Vahvuuteni ovat parhaimillaan dokumentaarisessa kuvaamisessa, jossa ikuistan tilanteita mahdollisimman autenttisesti. Tällöin kuvausreissuilta tulee kuvattua kameraan noin sadan ja tuhannen kuvan väliltä, mistä valitsen ja muokkaan parhaimmat teidän käyttöönne.<br><br>
+            Vahvuuteni ovat parhaimmillaan dokumentaarisessa kuvaamisessa, jossa ikuistan tilanteita mahdollisimman autenttisesti. Tällöin kuvausreissuilta tulee kuvattua kameraan noin sadan ja tuhannen kuvan väliltä, mistä valitsen ja muokkaan parhaimmat teidän käyttöönne.<br><br>
             Tarkoitukseni on tarjota kuluttaja- ja budjettiystävällisempää valokuvausta, pitäen laadun ja luovuuden täysillä.<br>
             Valokuvauksen ohella tarjoan myös videollista kuvaamista, joka voi olla niin häävideo tai muuten vaan muisteluvideo tilanteesta.<br><br>
             Teen valokuvausta Satakunnassa pääosin, mutta toimin myös mm. Vaasassa, Seinäjoella ja Tampereella.
@@ -321,6 +613,7 @@
                 }, {threshold: 0.5}).observe(home);
             } else { try { bg.play(); } catch(e) {} }
         })();
+
         (function(){
             const imgs = document.querySelectorAll('.about-image img');
             if (imgs.length < 1) return;
@@ -331,6 +624,7 @@
                 imgs[i].classList.add('active');
             }, 5000);
         })();
+
         document.querySelectorAll('.small-item, .large-item').forEach(box => {
             const imgs = box.querySelectorAll('img');
             if (imgs.length <= 1) return;
@@ -344,7 +638,7 @@
         });
     </script>
 
-    <!-- DYNAMIC TITLE FIX -->
+    <!-- DYNAMIC TITLE AVARUUDEN KORJAUS -->
     <script>
         function debounce(fn, wait){ let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn.apply(this,args), wait); }; }
         function ensureDynamicTitleSpace(){
