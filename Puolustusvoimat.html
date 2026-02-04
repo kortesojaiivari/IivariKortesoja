@@ -95,33 +95,36 @@
 <body>
 
     <section id="home">
-        <video autoplay muted loop playsinline poster="pv-poster.webp">
-            <source src="tst_testi_footgae.mp4" type="video/mp4">
-        </video>
+    <video autoplay muted loop playsinline>
+        <source src="MEDIA/Puolustusvoimat/tst_footage.webm" type="video/webm">
+        <source src="MEDIA/Puolustusvoimat/tst_footage.mp4" type="video/mp4">
+        <!-- fallback-teksti jos video ei toimi -->
+        Selain ei tue taustavideota.
+    </video>
         <h2>Puolustusvoimat & Combat Camera</h2>
     </section>
 
     <!-- Thumbnail-galleria -->
     <section class="gallery">
-        <div class="gallery-item" data-video-id="91wex5Lgolc"><img src="thumbnail1.webp" alt="1"></div>
-        <div class="gallery-item" data-video-id="GLP9QxcEbXk"><img src="thumbnail2.webp" alt="2"></div>
-        <div class="gallery-item" data-video-id="3AwEUP7o0qc"><img src="thumbnail3.webp" alt="3"></div>
-        <div class="gallery-item" data-video-id="F-2a-c5J2ms"><img src="thumbnail4.webp" alt="4"></div>
-        <div class="gallery-item" data-video-id="82S6evKfyPY"><img src="thumbnail5.webp" alt="5"></div>
-        <div class="gallery-item" data-video-id="AcLYbg2Jk9c"><img src="thumbnail6.webp" alt="Combat Camera Showreel 2025"></div>
+        <div class="gallery-item" data-video-id="91wex5Lgolc"><img src="MEDIA/Puolustusvoimat/thumbnail1.webp" alt="thumbnail1"></div>
+        <div class="gallery-item" data-video-id="GLP9QxcEbXk"><img src="MEDIA/Puolustusvoimat/thumbnail2.webp" alt="thumbnail2"></div>
+        <div class="gallery-item" data-video-id="3AwEUP7o0qc"><img src="MEDIA/Puolustusvoimat/thumbnail3.webp" alt="thumbnail3"></div>
+        <div class="gallery-item" data-video-id="F-2a-c5J2ms"><img src="MEDIA/Puolustusvoimat/thumbnail4.webp" alt="thumbnail4"></div>
+        <div class="gallery-item" data-video-id="82S6evKfyPY"><img src="MEDIA/Puolustusvoimat/thumbnail5.webp" alt="thumbnail5"></div>
+        <div class="gallery-item" data-video-id="AcLYbg2Jk9c"><img src="MEDIA/Puolustusvoimat/thumbnail6.webp" alt="Combat Camera Showreel 2025"></div>
     </section>
     <p class="recommendation">Suosittelen katsomaan Combat Camera Showreel 2025</p>
 
     <!-- Esittelyosio -->
     <div class="about-section">
         <div class="about-image">
-            <img src="IivariKortesoja1.webp" alt="Iivari 1" class="active">
-            <img src="pviivari2.webp" alt="Iivari 2">
+            <img src="MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja1.webp" alt="Iivari 1" class="active">
+            <img src="MEDIA/Puolustusvoimat/pviivari2.webp" alt="Iivari 2">
         </div>
         <div class="about-text">
             <p>Palvelukseni Puolustusvoimissa oli unelma, jota en olisi uskonut kokevani. Pääsin valtakunnallisessa erityistehtävähaussa <strong>Combat Cameraan</strong>.</p>
-            <p>Työskentely vaativissa olosuhteissa testasi fyysistä ja psyykkistä kestävyyttäni äärimmilleen. Viikot metsissä ympäri Suomea, kuvaten ja taistellen suomalaisten sekä ulko[...]
-            <p class="btw-text">Olen myös työskennellyt Puolustusvoimilla videotuotannoissa jo ennen varusmiespalvelustani. Tehtäviin on kuulunut kuvaamista, editointia ja monikameratuotantoja[...]
+            <p>Työskentely vaativissa olosuhteissa testasi fyysistä ja psyykkistä kestävyyttä äärimmilleen. Viikot metsissä ympäri Suomea, kuvaten ja taistellen suomalaisten sekä ulkomaalaisten kanssa olivat palkitsevia.
+            <p class="btw-text">Olen myös työskennellyt Puolustusvoimilla videotuotannoissa jo ennen varusmiespalvelustani. Tehtäviin on kuulunut kuvaamista, editointia ja videoiden tuottamista.
         </div>
     </div>
 
@@ -145,7 +148,7 @@
                 document.write('<div class="extra-item">');
                 boxImages.forEach((num, index) => {
                     const activeClass = index === 0 ? ' class="active"' : '';
-                    document.write(`<img src="comcam/comcam${num}.webp"${activeClass}>`);
+                    document.write(`<img src="MEDIA/Puolustusvoimat/comcam/comcam${num}.webp"${activeClass}>`);
                 });
                 document.write('</div>');
             });
