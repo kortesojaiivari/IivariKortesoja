@@ -9,7 +9,7 @@ const photoButtons = [
     {
         text: "Hinnoittelu",
         type: "link",
-        url: "#pricing",
+        url: "#kuvat1",
         smoothScroll: true
     }
 ];
