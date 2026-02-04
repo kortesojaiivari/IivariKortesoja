@@ -4,7 +4,7 @@
       <nav>
         <a href="indexi.html">Koti</a>
         <a href="yhteystiedot.html">Yhteystiedot</a>
-        <a href="valokuvaus.html">Valokuvaus</a>
+        <a href="Valokuvaus.html">Valokuvaus</a>
         <a href="puolustusvoimat.html">Puolustusvoimat</a>
       </nav>
     </header>

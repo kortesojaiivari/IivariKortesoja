@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valokuvaus | Iivari Kortesoja</title>
-    <meta name="description" content="Edullista valokuvausta yksityisille – häät, valmistujaiset, hautajaiset, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta. Myös videopalvelut saatavilla. Ota yhteyttä!">
+    <title>Valokuvaus Satakunta | Iivari Kortesoja</title>
+    <meta name="description" content="Edullista Valokuvausta Satakunnassa – Hääkuvaus Satakunta, kokopäiväinen hääkuvaus, valmistujaiset, hautajais kuvaus, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta. Satakunnassa Valokuvausta Edullisesti. Valokuvaus Pori, Rauma, Kankaanpää, Kokemäki, Harjavalta ja muualla Satakunnassa! ">
     <!-- GOOGLE ANALYTICS 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
     <script>
@@ -89,7 +89,6 @@
     <script src="SKRIPTIT/kampanja-popup.js" defer></script>
 </head>
 <body>
-
     <!-- Hinnoittelu renderöidään heti kun DOM on valmis -->
     <script>
         // Hinnoittelun renderöinti heti DOMContentLoaded-tilassa
@@ -107,7 +106,6 @@
             box.innerHTML = html;
             return box;
         }
-
         document.addEventListener('DOMContentLoaded', () => {
             // Upper row
             const upperRow = document.querySelector('#pricing .upper-row');
@@ -116,7 +114,6 @@
                     upperRow.appendChild(createPricingBox(pkg));
                 });
             }
-
             // Lower row – lisätään ennen contact-boxia
             const lowerRow = document.querySelector('#pricing .lower-row');
             const contactBox = lowerRow ? lowerRow.querySelector('.contact-box') : null;
@@ -131,15 +128,13 @@
             }
         });
     </script>
-
     <!-- Header injected by header.js -->
     <section id="home">
-        <video autoplay muted loop playsinline poster="VALOKUVAUS/valokuvaus-poster.webp">
+        <video autoplay muted loop playsinline poster="MEDIA/VALOKUVAUS/valokuvaus-poster.webp">
             <source src="MEDIA/Pääsivu_Videotuotannot ja Valokuvaus/2000luvunkamera.webm" type="video/webm">
         </video>
-        <h2>Valokuvaus</h2>
+        <h1>Valokuvaus Satakunta</h1>
     </section>
-
     <h2 id="dynamic-title" class="dynamic-title" data-interval="3000" aria-label="Valokuvaus: vaihtuva otsikko">
         <span>Häät</span>
         <span>Valmistujaiset</span>
@@ -147,16 +142,16 @@
         <span>Tilaisuudet</span>
         <span>Ristiäiset</span>
         <span>Muotokuvat</span>
+        <span>Satakunnassa</span>
     </h2>
-
     <div class="about-section">
         <div class="about-text">
             Olipa kyseessä niin valmistujaiset, hautajaiset, häät, ristiäiset tai mitä vaan. Dokumentoin tärkeät hetkesi, jolloin voit keskittyä hetkeesi ja muistella sitä valokuvien kautta jälkikäteen.
-            Vahvuuteni ovat parhaimillaan dokumentaarisessa kuvaamisessa, jossa ikuistan tilanteita mahdollisemman autenttisesti. Tällöin kuvausreissuilta tulee kuvattua kameraan noin sadan ja tuhannen kuvan väliltä, mistä valitsen ja muokkaan parhaimmat teidän käyttöönne.    <br><br>
+            Vahvuuteni ovat parhaimillaan dokumentaarisessa kuvaamisessa, jossa ikuistan tilanteita mahdollisemman autenttisesti. Tällöin kuvausreissuilta tulee kuvattua kameraan noin sadan ja tuhannen kuvan väliltä, mistä valitsen ja muokkaan parhaimmat teidän käyttöönne. <br><br>
             Tarkoitukseni on tarjota kuluttaja- ja budjettiystävällisempää valokuvausta, pitäen laadun ja luovuuden täysillä.
             Valokuvauksen ohella tarjoan myös videollista kuvaamista, joka voi olla niin häävideo tai muuten vaan muisteluvideo tilanteesta.<br><br>
-            Teen valokuvausta Satakunnassa pääosin, mutta toimin myös mm. Vaasassa, Seinäjoella ja Tampereella.
-            
+            Teen valokuvausta Satakunnan alueella Pori, Rauma, Kokemäki ja Kankaanpää akselilla. Myös muuallakin.
+           
         </div>
         <div class="about-image">
             <img src="MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja1.webp" alt="Valokuvaus 1" class="active">
@@ -164,7 +159,6 @@
             <img src="MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja3.webp" alt="Valokuvaus 3">
         </div>
     </div>
-
     <div class="small-gallery" aria-hidden="false">
         <script>
             const smallSequence = [[1,7,13,19,25,31],[2,8,14,20,26,32],[3,9,15,21,27,33],[4,10,16,22,28,34],[5,11,17,23,29,35]];
@@ -178,7 +172,6 @@
             });
         </script>
     </div>
-
     <section id="pricing">
         <h2>Hinnoittelu</h2>
         <p class="disclaimer">*Nämä ovat suuntaa-antavia hintoja. Hinnat sisältävät ALV 25,5 %. Matkakustannukset (kilometrikorvaus) lisätään erikseen tarpeen mukaan.</p>
@@ -190,7 +183,6 @@
             </div>
         </div>
     </section>
-
     <div id="location-selector">
         <h2>Valitse kuvauspaikkakunta</h2>
         <select id="paikkakunta-dropdown" onchange="handlePaikkakuntaChange(this.value)">
@@ -219,14 +211,12 @@
         </select>
         <p class="info">Valitsemalla paikkakunnan siirryt aluekohtaiselle sivulle, jossa on tarkemmat hinnoittelut.</p>
     </div>
-
     <script>
         function handlePaikkakuntaChange(value) {
             if (!value) return;
             window.location.href = `valokuvaus_${value}.html`;
         }
     </script>
-
     <div class="large-gallery">
         <script>
             const largeSequence = [[1,7,13,19,25,31],[2,8,14,20,26,32],[3,9,15,21,27,33],[4,10,16,22,28,34],[5,11,17,23,29,35],[6,12,18,24,30,36]];
@@ -240,11 +230,10 @@
             });
         </script>
     </div>
-
     <section id="final-contact">
         <div class="contact-info">
             <h2>Ota yhteyttä</h2>
-            <p>Sähköposti: <a href="mailto:kortesoja.iivari@gmail.com">kortesoja.iivari@gmail.com</a></p>
+            <p>Sähköposti: <a href="mailto:example@email.com">example@email.com</a></p>
             <p>Puhelin: <a href="tel:+358405247918">040 524 7918</a></p>
         </div>
         <div class="qr-box">
@@ -253,11 +242,9 @@
             </a>
         </div>
     </section>
-
     <footer>
         <p>© Iivari Kortesoja 2025 | Y-Tunnus 3591660-9</p>
     </footer>
-
     <script>
         // Taustavideo + kuvien vaihdot (ei kiireellisiä)
         (function(){
@@ -270,7 +257,6 @@
                 }, {threshold: 0.5}).observe(home);
             } else { try { bg.play(); } catch(e) {} }
         })();
-
         (function(){
             const imgs = document.querySelectorAll('.about-image img');
             if (imgs.length < 1) return;
@@ -281,7 +267,6 @@
                 imgs[i].classList.add('active');
             }, 5000);
         })();
-
         document.querySelectorAll('.small-item, .large-item').forEach(box => {
             const imgs = box.querySelectorAll('img');
             if (imgs.length <= 1) return;
@@ -294,7 +279,6 @@
             }, delay);
         });
     </script>
-
     <!-- DYNAMIC TITLE FIX -->
     <script>
         function debounce(fn, wait){ let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn.apply(this,args), wait); }; }
@@ -337,6 +321,5 @@
             setTimeout(initDTF, 2000);
         });
     </script>
-
 </body>
 </html>
