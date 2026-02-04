@@ -135,7 +135,7 @@
     <!-- Header injected by header.js -->
     <section id="home">
         <video autoplay muted loop playsinline poster="VALOKUVAUS/valokuvaus-poster.webp">
-            <source src="valokuvaus_otsikko.mp4" type="video/mp4">
+            <source src="MEDIA/Pääsivu_Videotuotannot ja Valokuvaus/2000luvunkamera.webm" type="video/webm">
         </video>
         <h2>Valokuvaus</h2>
     </section>
@@ -159,9 +159,9 @@
             
         </div>
         <div class="about-image">
-            <img src="VALOKUVAUS/valokuvaaja1.webp" alt="Valokuvaus 1" class="active">
-            <img src="VALOKUVAUS/valokuvaaja2.webp" alt="Valokuvaus 2">
-            <img src="VALOKUVAUS/valokuvaaja3.webp" alt="Valokuvaus 3">
+            <img src="MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja1.webp" alt="Valokuvaus 1" class="active">
+            <img src="MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja2.webp" alt="Valokuvaus 2">
+            <img src="MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja3.webp" alt="Valokuvaus 3">
         </div>
     </div>
 
@@ -172,7 +172,7 @@
                 document.write('<div class="small-item">');
                 boxImages.forEach((num, idx) => {
                     const cls = idx === 0 ? ' class="active"' : '';
-                    document.write(`<img src="VALOKUVAUS/Valokuvaus${num}.webp"${cls} alt="Valokuvaus ${num}">`);
+                    document.write(`<img src="MEDIA/VALOKUVAUS/Valokuvaus${num}.webp"${cls} alt="Valokuvaus ${num}">`);
                 });
                 document.write('</div>');
             });
@@ -234,7 +234,7 @@
                 document.write('<div class="large-item">');
                 boxImages.forEach((num, idx) => {
                     const cls = idx === 0 ? ' class="active"' : '';
-                    document.write(`<img src="VALOKUVAUS/Valokuvaus${num}.webp"${cls} alt="Valokuvaus ${num}">`);
+                    document.write(`<img src="MEDIA/VALOKUVAUS/Valokuvaus${num}.webp"${cls} alt="Valokuvaus ${num}">`);
                 });
                 document.write('</div>');
             });
