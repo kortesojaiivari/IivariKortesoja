@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iivari Kortesoja</title>
 
-    <!-- GOOGLE ANALYTICS & CLARITY -->
+    <!-- GOOGLE ANALYTICS 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -13,6 +13,8 @@
       gtag('js', new Date());
       gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
     </script>
+
+    <!-- MICROSOFT CLARITY -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -24,8 +26,6 @@
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
-
-        /* Header/nav styles removed — shared header handled by SKRIPTIT/ */
 
         #home{position:relative;overflow:hidden;text-align:center;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
         #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
@@ -40,7 +40,6 @@
         .about-slide.active{opacity:1}
         .about-slide img{width:100%;height:100%;object-fit:cover}
 
-        /* PORTFOLIO: 3x2 TIETOKONEELLA, MOBIILISSA 1x6 */
         .portfolio-gallery{
             display:grid;
             grid-template-columns:repeat(3,1fr);
@@ -66,15 +65,14 @@
         #services,#equipment{max-width:1200px;margin:0 auto 100px;text-align:center;padding:0 20px}
         #services h2,#equipment h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:30px}
 
-        /* VAIHTUVA OTSIKKO - styling complements the JS (script sets min-height/padding precisely) */
         #dynamic-title{
             position:relative;
             overflow:hidden;
             display:flex;
             align-items:center;
             justify-content:center;
-            padding-top:4px;    /* baseline extra space for tall glyphs */
-            padding-bottom:6px; /* extra for descenders */
+            padding-top:4px;
+            padding-bottom:6px;
             line-height:1.05;
         }
         #dynamic-title span{
@@ -107,7 +105,6 @@
         #contact a{color:#4ade80;text-decoration:none;transition:.3s}
         #contact a:hover{text-decoration:underline}
 
-        /* Some yhteystiedot ikonit – nyt sekä LinkedIn että WhatsApp */
         .social-links{
             display:flex;
             gap:24px;
@@ -144,7 +141,6 @@
                 width:24px;
                 height:24px;
             }
-            /* slightly increase dynamic title spacing on small screens */
             #dynamic-title { padding-bottom:8px; padding-top:6px; }
         }
 
@@ -154,25 +150,20 @@
         }
     </style>
 
-    <!-- Dynamic title script (shared reusable) -->
     <script src="SKRIPTIT/dynamic-title.js" defer></script>
-    <!-- Shared header script -->
     <script src="SKRIPTIT/header.js" defer></script>
     <script src="SKRIPTIT/mobile-scaling.js" defer></script>
 </head>
 <body>
 
-    <!-- Header is injected by SKRIPTIT/header.js -->
-
     <section id="home">
-        <video autoplay muted loop playsinline poster="fallback-poster.webp">
-            <source src="tst_testi_footgae.mp4" type="video/mp4">
+        <video autoplay muted loop playsinline>
+            <source src="MEDIA/Puolustusvoimat/tst_footage.mp4" type="video/mp4">
         </video>
         <h1>Iivari Kortesoja</h1>
         <a href="#portfolio" class="btn">Katso töitäni</a>
     </section>
 
-    <!-- Esittely + vaihtuva kuva -->
     <div class="about-section">
         <div class="about-text">
             Olen 20-vuotias valmistunut elokuva- ja tv-alan ammattilainen, joka toimii nykyisin freelancer-yrittäjänä. Toteutan videotuotantoja ja valokuvauskeikkoja.<br><br>
@@ -181,21 +172,20 @@
             Työkokemus
         </div>
         <div class="about-image-container">
-            <div class="about-slide active"><img src="IivariKortesoja1.webp" alt="Iivari Kortesoja"></div>
-            <div class="about-slide"><img src="IivariKortesoja2.webp" alt="Iivari Kortesoja"></div>
-            <div class="about-slide"><img src="IivariKortesoja3.webp" alt="Iivari Kortesoja"></div>
+            <div class="about-slide active"><img src="MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja1.webp" alt="Iivari Kortesoja"></div>
+            <div class="about-slide"><img src="MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja2.webp" alt="Iivari Kortesoja"></div>
+            <div class="about-slide"><img src="MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja3.webp" alt="Iivari Kortesoja"></div>
         </div>
     </div>
 
-    <!-- PORTFOLIO etc. remains unchanged -->
     <section id="portfolio">
         <div class="portfolio-gallery">
-            <div class="portfolio-item"><video autoplay muted loop playsinline poster="Ruutu1-poster.webp"><source src="Ruutu1.mp4" type="video/mp4"></video></div>
-            <div class="portfolio-item"><img src="Ruutu2.webp" alt="Projekti"></div>
-            <div class="portfolio-item"><video autoplay muted loop playsinline poster="Ruutu3-poster.webp"><source src="Ruutu3.mp4" type="video/mp4"></video></div>
-            <div class="portfolio-item"><img src="Ruutu4.webp" alt="Projekti"></div>
-            <div class="portfolio-item"><video autoplay muted loop playsinline poster="Ruutu5-poster.webp"><source src="Ruutu5.mp4" type="video/mp4"></video></div>
-            <div class="portfolio-item"><img src="Ruutu6.webp" alt="Projekti"></div>
+            <div class="portfolio-item"><video autoplay muted loop playsinline><source src="MEDIA/Ruutumedia/Ruutu1.mp4" type="video/mp4"></video></div>
+            <div class="portfolio-item"><img src="MEDIA/Ruutumedia/Ruutu2.webp" alt="Projekti"></div>
+            <div class="portfolio-item"><video autoplay muted loop playsinline><source src="MEDIA/Ruutumedia/Ruutu3.mp4" type="video/mp4"></video></div>
+            <div class="portfolio-item"><img src="MEDIA/Ruutumedia/Ruutu4.webp" alt="Projekti"></div>
+            <div class="portfolio-item"><video autoplay muted loop playsinline><source src="MEDIA/Ruutumedia/Ruutu5.mp4" type="video/mp4"></video></div>
+            <div class="portfolio-item"><img src="MEDIA/Ruutumedia/Ruutu6.webp" alt="Projekti"></div>
         </div>
 
         <div id="services">
@@ -220,9 +210,9 @@
                 Tuotantokalustoni on modernia ja mahdollistaa teknisesti korkealaatuisen materiaalin tuottamisen. Pääkameroina ovat Nikon ZR -järjestelmäkamerat, jotka pohjautuvat RED-elokuvakameran teknologiaan. Näillä kameroilla onnistuu 6K- ja 4K-kuvaus. Lisäkameroina GoPro-actionkamerat villeihin kulmiin.
             </p>
             <div class="equipment-grid">
-                <div class="media-item"><video autoplay muted loop playsinline poster="nikon-poster.webp"><source src="nikon_zr_demo.mp4" type="video/mp4"></video></div>
-                <div class="media-item"><video autoplay muted loop playsinline poster="gopro-poster.webp"><source src="gopro_action.mp4" type="video/mp4"></video></div>
-                <div class="media-item"><img src="nikon_zr_camera.webp" alt="Nikon ZR"></div>
+                <div class="media-item"><video autoplay muted loop playsinline><source src="MEDIA/Pääsivu_Videotuotannot ja Valokuvaus/nikon_zr_demo.mp4" type="video/mp4"></video></div>
+                <div class="media-item"><video autoplay muted loop playsinline><source src="MEDIA/Pääsivu_Videotuotannot ja Valokuvaus/gopro_action.mp4" type="video/mp4"></video></div>
+                <div class="media-item"><img src="MEDIA/Pääsivu_Videotuotannot ja Valokuvaus/nikon_zr_camera.webp" alt="Nikon ZR"></div>
             </div>
         </div>
 
@@ -231,8 +221,8 @@
                 Käytössäni on myös aitoja 2000-luvun alun videokameroita, joilla saa tallennettua nostalgista ja särön näköistä materiaalia. Näissä laitteissa on elektroninen ja digitaalinen zoom sekä infrapunakuvaus (Night Vision), jolla voi kuvata pimeässäkin.
             </div>
             <div class="retro-video">
-                <video autoplay muted loop playsinline poster="retro-poster.webp">
-                    <source src="2000luvunkamera.mp4" type="video/mp4">
+                <video autoplay muted loop playsinline>
+                    <source src="MEDIA/Pääsivu_Videotuotannot ja Valokuvaus/2000luvunkamera.mp4" type="video/mp4">
                 </video>
             </div>
         </div>
@@ -246,10 +236,10 @@
         
         <div class="social-links">
             <a href="https://www.linkedin.com/in/iivarikortesoja" target="_blank">
-                <img src="linkedin.webp" alt="LinkedIn" class="social-icon">
+                <img src="MEDIA/Ikonit/linkedin.webp" alt="LinkedIn" class="social-icon">
             </a>
             <a href="https://api.whatsapp.com/message/2JQ4G2D3EXLID1?autoload=1&app_absent=0" target="_blank">
-                <img src="whatsapp.webp" alt="WhatsApp" class="social-icon">
+                <img src="MEDIA/Ikonit/whatsapp.webp" alt="WhatsApp" class="social-icon">
             </a>
         </div>
     </section>
@@ -259,12 +249,10 @@
     </footer>
 
     <script>
-        // Taustavideo: play/pause based on visibility
         const bgVideo = document.querySelector('#home video');
         new IntersectionObserver(e => e.forEach(en => en.isIntersecting ? bgVideo.play() : bgVideo.pause()), {threshold: 0.5})
             .observe(document.getElementById('home'));
 
-        // About-kuvakaruselli
         const slides = document.querySelectorAll('.about-slide');
         let current = 0;
         setInterval(() => {
