@@ -3,7 +3,7 @@ const photoButtons = [
     {
         text: "Varaa kuvaus",
         type: "link",
-        url: "#final-contact",
+        url: "#kuvat2",
         smoothScroll: true
     },
     {
