@@ -3,9 +3,9 @@
     <header id="site-header" role="banner" aria-label="Sivun navigaatio">
       <nav>
         <a href="indexi.html">Koti</a>
-        <a href="yhteystiedot.html">Yhteystiedot</a>
+        <a href="Yhteystiedot.html">Yhteystiedot</a>
         <a href="Valokuvaus.html">Valokuvaus</a>
-        <a href="puolustusvoimat.html">Puolustusvoimat</a>
+        <a href="Puolustusvoimat.html">Puolustusvoimat</a>
       </nav>
     </header>
   `;
