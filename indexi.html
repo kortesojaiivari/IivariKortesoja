@@ -117,13 +117,16 @@
 </head>
 <body>
 
-    <section id="home">
-        <video autoplay muted loop playsinline>
-            <source src="MEDIA/Puolustusvoimat/tst_footage.mp4" type="video/mp4">
-        </video>
-        <h1>Iivari Kortesoja</h1>
-        <div id="button-container"></div>
-    </section>
+   <section id="home">
+    <video autoplay muted loop playsinline>
+        <source src="MEDIA/Puolustusvoimat/tst_footage.webm" type="video/webm">
+        <source src="MEDIA/Puolustusvoimat/tst_footage.mp4" type="video/mp4">
+        <!-- fallback-teksti jos video ei toimi -->
+        Selain ei tue taustavideota.
+    </video>
+    <h1>Iivari Kortesoja</h1>
+    <div id="button-container"></div>
+</section>
 
     <div class="about-section">
         <div class="about-text">
