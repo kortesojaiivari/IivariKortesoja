@@ -31,7 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (target) {
                     target.scrollIntoView({
                         behavior: config.smoothScroll ? "smooth" : "auto",
-                        block: "start"
+                        block: "center",          // <-- TÄÄ MUUTOS: tuo osion keskelle
+                        inline: "nearest"
                     });
                 }
             });
