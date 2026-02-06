@@ -77,53 +77,77 @@
       width:100%;
     }
 
-    /* Tablet and below */
+    /* Tablet */
     @media(max-width:1024px){
       #site-header{
-        padding:10px 16px;
+        padding:11px 18px;
       }
       #site-header nav a{
-        margin:0 12px;
-        font-size:1.05rem;
+        margin:0 13px;
+        font-size:1.1rem;
       }
     }
 
-    /* Mobile - much thinner header */
+    /* Mobile - TWO ROWS for better spacing */
     @media(max-width:768px){
       #site-header{
-        padding:8px 12px;
+        padding:10px 16px 12px;
         background:rgba(0,0,0,0.98);
       }
       #site-header nav{
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        gap:8px;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        grid-template-rows:auto auto;
+        gap:10px 16px;
+        max-width:500px;
+        margin:0 auto;
       }
       #site-header nav a{
-        margin:0 6px;
-        font-size:0.95rem;
-        padding:4px 8px;
+        margin:0;
+        font-size:1.1rem;
+        padding:10px 16px;
+        min-height:46px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        background:rgba(255,255,255,0.05);
+        border-radius:8px;
+        transition:all .25s ease;
+      }
+      #site-header nav a:hover,
+      #site-header nav a:active{
+        background:rgba(74,222,128,0.15);
+        color:#4ade80;
       }
       #site-header nav a::after{
-        bottom:-4px;
-        height:1.5px;
+        display:none; /* Remove underline on mobile, use background instead */
       }
     }
     
-    /* Extra small mobile - even thinner */
+    /* Extra small mobile - still two rows */
     @media(max-width:480px){
       #site-header{
-        padding:6px 8px;
+        padding:8px 12px 10px;
       }
       #site-header nav{
-        gap:4px;
+        gap:8px 12px;
+        max-width:100%;
       }
       #site-header nav a{
-        margin:0 4px;
-        font-size:0.88rem;
-        padding:3px 6px;
-        letter-spacing:0;
+        font-size:1.05rem;
+        padding:8px 12px;
+        min-height:44px;
+      }
+    }
+    
+    /* Very small screens - stack vertically if needed */
+    @media(max-width:360px){
+      #site-header nav{
+        grid-template-columns:1fr;
+        gap:8px;
+      }
+      #site-header nav a{
+        font-size:1rem;
       }
     }
 
