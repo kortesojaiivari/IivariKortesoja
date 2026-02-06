@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valokuvaus | Iivari Kortesoja</title>
-    <meta name="description" content="Edullista valokuvausta yksityisille – häät, valmistujaiset, hautajaiset, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta. Myös videopalvelut saatavilla. Ota yhteyttä!">
+    <meta name="description" content="Edullista valokuvausta yksityisille – häät, valmistujaiset, hautajaiset, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta. Myös videopalvelut saatavilla.">
   
     <!-- GOOGLE ANALYTICS 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
@@ -54,8 +54,35 @@
             background:#4ade80;
             transform:translateY(-3px);
         }
-        #dynamic-title{position:relative;overflow:visible;display:flex;align-items:center;justify-content:center;margin:60px 0 40px;padding-top:28px;padding-bottom:80px;line-height:1.6;min-height:clamp(180px,22vh,360px);z-index:5}
-        #dynamic-title span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:auto;text-align:center;font-size:clamp(2.5rem,8vw,4.5rem);text-shadow:0 0 40px rgba(0,0,0,.9);pointer-events:none;white-space:nowrap;will-change:transform,opacity;line-height:1.5}
+        
+        /* PARANNETTU DYNAMIC TITLE */
+        #dynamic-title {
+            position: relative;
+            overflow: visible;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 80px auto 60px;
+            padding: 40px 20px;
+            min-height: 160px;
+            z-index: 5;
+        }
+        
+        #dynamic-title span {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: auto;
+            max-width: 90vw;
+            text-align: center;
+            font-size: clamp(2.2rem, 7vw, 4rem);
+            font-weight: bold;
+            text-shadow: 0 4px 20px rgba(0,0,0,.8);
+            pointer-events: none;
+            white-space: nowrap;
+            will-change: transform, opacity;
+        }
       
         .about-section{max-width:1200px;margin:80px auto;display:flex;align-items:center;gap:60px;flex-wrap:wrap;padding:0 20px}
         .about-text{flex:1.5;min-width:300px;font-size:1.35rem;color:#e0e0e0;line-height:1.8}
@@ -91,7 +118,7 @@
       
         #location-selector{max-width:1400px;margin:60px auto 100px;padding:0 20px;text-align:center}
         #location-selector h2{font-size:clamp(1.8rem,5vw,2.8rem);margin-bottom:24px;color:#4ade80}
-        #location-selector select{width:100%;max-width:420px;padding:14px 20px;font-size:1.25rem;background:#222;color:#eee;border:2px solid #444;border-radius:12px;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%234ade80' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;background-size:16px;cursor:pointer;transition:all 0.2s}
+        #location-selector select{width:100%;max-width:420px;padding:14px 20px;font-size:1.25rem;background:#222;color:#eee;border:2px solid #444;border-radius:12px;appearance:none;-webkit-appearance:none;cursor:pointer;transition:.3s}
         #location-selector select:hover,#location-selector select:focus{border-color:#4ade80;box-shadow:0 0 0 3px rgba(74,222,128,0.2);outline:none}
         #location-selector .info{margin-top:16px;font-size:1.05rem;color:#aaa}
       
@@ -101,7 +128,7 @@
         .large-item img.active{opacity:1}
       
         #final-contact{max-width:1400px;margin:0 auto 100px;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:40px}
-        #final-contact .contact-info,#final-contact .qr-box{background:#222;padding:40px;border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,.6);min-height:420px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+        #final-contact .contact-info,#final-contact .qr-box{background:#222;padding:40px;border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,.6);min-height:420px;display:flex;flex-direction:column;justify-content:center;align-items:center}
         #final-contact .contact-info h2{font-size:2.2rem;margin-bottom:30px}
         #final-contact .contact-info p{font-size:1.4rem;margin:20px 0}
         #final-contact .contact-info a{color:#4ade80;text-decoration:none}
@@ -113,22 +140,106 @@
       
         footer{background:#000;padding:40px 20px;text-align:center;font-size:1rem;border-top:1px solid #333}
       
+        /* PARANNETUT MOBILE TYYLIT */
         @media(max-width:992px){
             .about-section{flex-direction:column;text-align:center}
             .upper-row,.lower-row{grid-template-columns:1fr}
             .small-gallery{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
             .small-item{height:240px}
             #final-contact{grid-template-columns:1fr}
+            
+            #dynamic-title {
+                margin: 60px auto 50px;
+                padding: 35px 15px;
+                min-height: 140px;
+            }
         }
+        
         @media(max-width:768px){
-            #photo-button-container{flex-direction:column;gap:16px}
+            #photo-button-container{flex-direction:column;gap:16px;padding:0 20px}
+            .btn{width:100%;max-width:320px;padding:16px 24px;font-size:1.15rem}
+            
+            #dynamic-title {
+                margin: 50px auto 40px;
+                padding: 30px 10px;
+                min-height: 120px;
+            }
+            
+            #dynamic-title span {
+                font-size: clamp(1.8rem, 6.5vw, 3rem);
+                max-width: 85vw;
+            }
+            
+            .about-section{gap:40px;margin:60px auto}
+            .about-text{font-size:1.2rem}
+            .about-image{height:500px}
+            
+            #location-selector{margin:50px auto 80px}
+            #location-selector select{max-width:100%;font-size:1.15rem}
+            
+            .large-gallery{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin:100px auto 50px}
+            .large-item{height:360px}
         }
+        
         @media(max-width:600px){
-            .small-gallery{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+            .small-gallery{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px}
             .small-item{height:200px}
-            #dynamic-title{padding-bottom:80px;padding-top:24px;min-height:180px}
-            #dynamic-title span{font-size:clamp(1.8rem,7vw,3rem)}
-            #location-selector select{font-size:1.1rem;padding:12px 16px;}
+            
+            #dynamic-title{
+                margin: 40px auto 30px;
+                padding: 25px 8px;
+                min-height: 100px;
+            }
+            
+            #dynamic-title span{
+                font-size: clamp(1.6rem, 6vw, 2.5rem);
+                max-width: 90vw;
+            }
+            
+            #location-selector select{font-size:1.1rem;padding:12px 16px}
+            
+            .about-section{margin:50px auto}
+            .about-image{height:400px}
+        }
+        
+        @media(max-width:480px){
+            #home h2{font-size:clamp(2rem,7vw,3.5rem)}
+            
+            #dynamic-title{
+                margin: 30px auto 25px;
+                padding: 20px 5px;
+                min-height: 90px;
+            }
+            
+            #dynamic-title span{
+                font-size: clamp(1.4rem, 5.5vw, 2.2rem);
+            }
+            
+            .btn{padding:14px 20px;font-size:1.05rem}
+            .about-text{font-size:1.1rem}
+            .about-image{height:350px}
+            
+            .small-gallery{grid-template-columns:repeat(2,1fr);gap:15px}
+            .large-gallery{grid-template-columns:1fr;gap:20px}
+        }
+        
+        /* Touch device improvements */
+        @media (hover: none) and (pointer: coarse) {
+            .btn{
+                padding:16px 28px;
+                font-size:1.12rem;
+                min-height:50px;
+            }
+            
+            #location-selector select{
+                min-height:52px;
+                font-size:1.2rem;
+            }
+            
+            .contact-btn{
+                min-height:54px;
+                padding:16px 32px;
+            }
         }
     </style>
     <!-- Skriptit – pricing-modules ensimmäisenä -->
@@ -179,19 +290,19 @@
                         lowerRow.style.gridTemplateColumns = `repeat(${lowerPackages.length + 1}, 1fr)`;
                     }
                 }
-            }, 0); // pieni viive varmuuden vuoksi
+            }, 0);
         });
     </script>
     <section id="home">
         <video autoplay muted loop playsinline poster="VALOKUVAUS/valokuvaus-poster.webp">
             <source src="MEDIA/Pääsivu_Videotuotannot ja Valokuvaus/2000luvunkamera.webm" type="video/webm">
-            <!-- Poistettu MP4 – käytetään vain WebM:ää suorituskyvyn parantamiseksi -->
             Selain ei tue taustavideota.
         </video>
         <h2>Valokuvaus</h2>
         <div id="photo-button-container"></div>
     </section>
-    <h2 id="dynamic-title" class="dynamic-title" data-interval="3000" aria-label="Valokuvaus: vaihtuva otsikko">
+    
+    <h2 id="dynamic-title" class="dynamic-title" data-interval="2500" aria-live="polite" aria-label="Valokuvauspalvelut">
         <span>Häät</span>
         <span>Valmistujaiset</span>
         <span>Hautajaiset</span>
@@ -199,10 +310,11 @@
         <span>Ristiäiset</span>
         <span>Muotokuvat</span>
     </h2>
+    
     <div class="about-section">
         <div class="about-text">
             Olipa kyseessä niin valmistujaiset, hautajaiset, häät, ristiäiset tai mitä vaan. Dokumentoin tärkeät hetkesi, jolloin voit keskittyä hetkeesi ja muistella sitä valokuvien kautta jälkikäteen.<br><br>
-            Vahvuuteni ovat parhaimillaan dokumentaarisessa kuvaamisessa, jossa ikuistan tilanteita mahdollisimman autenttisesti. Tällöin kuvausreissuilta tulee kuvattua kameraan noin sadan ja tuhannen kuvan väliltä, mistä valitsen ja muokkaan parhaimmat teidän käyttöönne.<br><br>
+            Vahvuuteni ovat parhaimillaan dokumentaarisessa kuvaamisessa, jossa ikuistan tilanteita mahdollisimman autenttisesti. Tällöin kuvausreissuilta tulee kuvattua kameraan noin sadan ja tuhannen kuvan väliltä, josta sitten valitaan esim. valmistujaiskuvauksen tapauksessa paras 100 kuvaa, missä ei ole päällekkäisiä kuvia.<br><br>
             Tarkoitukseni on tarjota kuluttaja- ja budjettiystävällisempää valokuvausta, pitäen laadun ja luovuuden täysillä.<br>
             Valokuvauksen ohella tarjoan myös videollista kuvaamista, joka voi olla niin häävideo tai muuten vaan muisteluvideo tilanteesta.<br><br>
             Teen valokuvausta Satakunnassa pääosin, mutta toimin myös mm. Vaasassa, Seinäjoella ja Tampereella.
@@ -211,6 +323,7 @@
             <img src="MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja1.webp" alt="Valokuvaus 1" class="active">
         </div>
     </div>
+    
     <div class="small-gallery" aria-hidden="false">
         <script>
             const smallSequence = [[1,7,13,19,25,31],[2,8,14,20,26,32],[3,9,15,21,27,33],[4,10,16,22,28,34],[5,11,17,23,29,35]];
@@ -224,6 +337,7 @@
             });
         </script>
     </div>
+    
     <section id="pricing">
         <h2>Hinnoittelu</h2>
         <p class="disclaimer">*Nämä ovat suuntaa-antavia hintoja. Hinnat sisältävät ALV 25,5 %. Matkakustannukset (kilometrikorvaus) lisätään erikseen tarpeen mukaan.</p>
@@ -235,9 +349,10 @@
             </div>
         </div>
     </section>
+    
     <div id="location-selector">
         <h2>Valitse kuvauspaikkakunta</h2>
-        <select id="paikkakunta-dropdown" onchange="handlePaikkakuntaChange(this.value)">
+        <select id="paikkakunta-dropdown" onchange="handlePaikkakuntaChange(this.value)" aria-label="Valitse kuvauspaikkakunta">
             <option value="">Valitse paikkakunta...</option>
             <option value="Eura">Eura</option>
             <option value="Eurajoki">Eurajoki</option>
@@ -263,12 +378,14 @@
         </select>
         <p class="info">Valitsemalla paikkakunnan siirryt aluekohtaiselle sivulle, jossa on tarkemmat hinnoittelut.</p>
     </div>
+    
     <script>
         function handlePaikkakuntaChange(value) {
             if (!value) return;
             window.location.href = `valokuvaus_${value}.html`;
         }
     </script>
+    
     <div class="large-gallery">
         <script>
             const largeSequence = [[1,7,13,19,25,31],[2,8,14,20,26,32],[3,9,15,21,27,33],[4,10,16,22,28,34],[5,11,17,23,29,35],[6,12,18,24,30,36]];
@@ -282,6 +399,7 @@
             });
         </script>
     </div>
+    
     <section id="final-contact">
         <div class="contact-info">
             <h2>Ota yhteyttä</h2>
@@ -294,9 +412,11 @@
             </a>
         </div>
     </section>
+    
     <footer>
         <p>© Iivari Kortesoja 2026 | Y-Tunnus 3591660-9</p>
     </footer>
+    
     <script>
         // Taustavideo + kuvien vaihdot
         (function(){
@@ -309,6 +429,7 @@
                 }, {threshold: 0.5}).observe(home);
             } else { try { bg.play(); } catch(e) {} }
         })();
+        
         (function(){
             const imgs = document.querySelectorAll('.about-image img');
             if (imgs.length < 1) return;
@@ -319,6 +440,7 @@
                 imgs[i].classList.add('active');
             }, 5000);
         })();
+        
         document.querySelectorAll('.small-item, .large-item').forEach(box => {
             const imgs = box.querySelectorAll('img');
             if (imgs.length <= 1) return;
@@ -329,48 +451,6 @@
                 i = (i + 1) % imgs.length;
                 imgs[i].classList.add('active');
             }, delay);
-        });
-    </script>
-    <!-- DYNAMIC TITLE FIX -->
-    <script>
-        function debounce(fn, wait){ let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn.apply(this,args), wait); }; }
-        function ensureDynamicTitleSpace(){
-            const el = document.getElementById('dynamic-title');
-            if (!el) return;
-            const sample = 'Hgjpqy';
-            const meas = document.createElement('span');
-            meas.textContent = sample;
-            const rs = el.querySelector('span') || el;
-            const cs = window.getComputedStyle(rs);
-            meas.style.cssText = `position:absolute;left:-9999px;top:-9999px;visibility:hidden;white-space:nowrap;font-family:${cs.fontFamily};font-size:${cs.fontSize};font-weight:${cs.fontWeight};line-height:${cs.lineHeight};letter-spacing:${cs.letterSpacing};text-transform:${cs.textTransform}`;
-            document.body.appendChild(meas);
-            const rect = meas.getBoundingClientRect();
-            const h = Math.ceil(rect.height);
-            document.body.removeChild(meas);
-            const ed = Math.max(48, Math.round(h * 0.9));
-            const pt = parseInt(getComputedStyle(el).paddingTop) || 0;
-            const pb = parseInt(getComputedStyle(el).paddingBottom) || 0;
-            el.style.paddingBottom = Math.max(pb, ed + 20) + 'px';
-            el.style.paddingTop = Math.max(pt, Math.round(h * 0.4)) + 'px';
-            const dm = h + parseInt(el.style.paddingTop) + parseInt(el.style.paddingBottom) + 8;
-            const cm = parseInt(getComputedStyle(el).minHeight) || 0;
-            if (dm > cm) el.style.minHeight = dm + 'px';
-            el.style.overflow = 'visible';
-            el.style.zIndex = '5';
-        }
-        function initDTF(){
-            const run = () => setTimeout(ensureDynamicTitleSpace, 60);
-            if (document.fonts && document.fonts.ready) {
-                document.fonts.ready.then(run).catch(run);
-            } else {
-                setTimeout(run, 150);
-            }
-        }
-        document.addEventListener('DOMContentLoaded', () => {
-            initDTF();
-            window.addEventListener('resize', debounce(initDTF, 220));
-            setTimeout(initDTF, 1000);
-            setTimeout(initDTF, 2000);
         });
     </script>
 </body>
