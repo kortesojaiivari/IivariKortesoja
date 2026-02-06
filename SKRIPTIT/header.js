@@ -13,7 +13,7 @@
   const styleText = `
     /* Shared header styles injected by SKRIPTIT/header.js */
     #site-header{
-      background:#000;
+      background:rgba(0,0,0,0.95);
       padding:12px 20px;
       text-align:center;
       position:fixed;
@@ -24,11 +24,26 @@
       -webkit-backdrop-filter: blur(10px);
       backdrop-filter: blur(10px);
       box-sizing:border-box;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                  padding 0.3s ease,
+                  background 0.3s ease;
+      will-change: transform;
     }
+    
+    /* Hide header when scrolling down */
+    #site-header.hidden{
+      transform: translateY(-100%);
+    }
+    
+    /* Show header when scrolling up */
+    #site-header.visible{
+      transform: translateY(0);
+    }
+    
     #site-header nav{
       display:inline-block;
     }
-    /* Do not force a specific font-family or weight here — inherit from page */
+    
     #site-header nav a{
       color:#fff;
       text-decoration:none;
@@ -36,10 +51,12 @@
       font-size:1.15rem;
       position:relative;
       transition:color .25s ease;
-      font-weight: inherit; /* inherit sivun font-weight - palauttaa alkuperäisen fontin käytön */
+      font-weight: inherit;
       letter-spacing:0.2px;
+      display:inline-block;
     }
-    /* vihreä alaviivaus hoverissa */
+    
+    /* Green underline on hover */
     #site-header nav a::after{
       content:'';
       position:absolute;
@@ -51,23 +68,68 @@
       background:#4ade80;
       transition:width .28s ease;
     }
+    
     #site-header nav a:hover{
       color:#4ade80;
     }
+    
     #site-header nav a:hover::after{
       width:100%;
     }
 
-    @media(max-width:768px){
+    /* Tablet and below */
+    @media(max-width:1024px){
+      #site-header{
+        padding:10px 16px;
+      }
       #site-header nav a{
-        margin:0 10px;
-        font-size:1rem;
+        margin:0 12px;
+        font-size:1.05rem;
       }
     }
 
-    /* fallback classes; these may be toggled by script */
+    /* Mobile - much thinner header */
+    @media(max-width:768px){
+      #site-header{
+        padding:8px 12px;
+        background:rgba(0,0,0,0.98);
+      }
+      #site-header nav{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:8px;
+      }
+      #site-header nav a{
+        margin:0 6px;
+        font-size:0.95rem;
+        padding:4px 8px;
+      }
+      #site-header nav a::after{
+        bottom:-4px;
+        height:1.5px;
+      }
+    }
+    
+    /* Extra small mobile - even thinner */
+    @media(max-width:480px){
+      #site-header{
+        padding:6px 8px;
+      }
+      #site-header nav{
+        gap:4px;
+      }
+      #site-header nav a{
+        margin:0 4px;
+        font-size:0.88rem;
+        padding:3px 6px;
+        letter-spacing:0;
+      }
+    }
+
+    /* Fallback classes */
     .has-shared-header{
-      /* tämä luokka asetetaan dynaamisesti vain jos tarvitaan siirtoa sisällölle */
+      /* This class is set dynamically if content needs offset */
     }
   `;
 
@@ -79,6 +141,56 @@
     document.head.appendChild(s);
   }
 
+  // Scroll management variables
+  let lastScrollY = 0;
+  let ticking = false;
+  const scrollThreshold = 10; // minimum scroll distance to trigger hide/show
+
+  function handleScroll() {
+    const headerEl = document.getElementById('site-header');
+    if (!headerEl) return;
+
+    const currentScrollY = window.pageYOffset || window.scrollY;
+
+    // At top of page - always show
+    if (currentScrollY < 10) {
+      headerEl.classList.remove('hidden');
+      headerEl.classList.add('visible');
+      lastScrollY = currentScrollY;
+      return;
+    }
+
+    // Check scroll direction
+    const scrollDifference = currentScrollY - lastScrollY;
+
+    if (Math.abs(scrollDifference) < scrollThreshold) {
+      // Not scrolled enough to trigger change
+      return;
+    }
+
+    if (scrollDifference > 0) {
+      // Scrolling down - hide header
+      headerEl.classList.add('hidden');
+      headerEl.classList.remove('visible');
+    } else {
+      // Scrolling up - show header
+      headerEl.classList.remove('hidden');
+      headerEl.classList.add('visible');
+    }
+
+    lastScrollY = currentScrollY;
+  }
+
+  function requestScrollTick() {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        handleScroll();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
   function injectHeader(){
     if (document.getElementById('site-header')) return;
 
@@ -88,9 +200,13 @@
     const headerEl = container.firstElementChild;
     document.body.insertBefore(headerEl, document.body.firstChild);
 
+    // Initialize scroll position
+    lastScrollY = window.pageYOffset || window.scrollY;
+
+    // Start with header visible
+    headerEl.classList.add('visible');
+
     // After header is in DOM, compute its height and decide padding
-    // If the element immediately after header is the hero/video (#home), DO NOT add top padding.
-    // Otherwise add padding equal to header height so content is not hidden under fixed header.
     requestAnimationFrame(() => {
       const headerRect = headerEl.getBoundingClientRect();
       const headerH = Math.ceil(headerRect.height) || 64;
@@ -103,20 +219,20 @@
       document.body.style.paddingTop = '';
 
       if (shouldAddPadding) {
-        // set padding on documentElement and body to be safe across stylesheets
         document.documentElement.style.paddingTop = headerH + 'px';
         document.body.style.paddingTop = headerH + 'px';
-        // add a class for visibility if needed by other CSS
         document.documentElement.classList.add('has-shared-header');
         document.body.classList.add('has-shared-header');
       } else {
-        // Ensure no extra padding remains so header sits flush with hero/video
         document.documentElement.classList.remove('has-shared-header');
         document.body.classList.remove('has-shared-header');
         document.documentElement.style.paddingTop = '';
         document.body.style.paddingTop = '';
       }
     });
+
+    // Attach scroll listener
+    window.addEventListener('scroll', requestScrollTick, { passive: true });
   }
 
   if (document.readyState === 'loading') {
@@ -125,17 +241,18 @@
     injectHeader();
   }
 
-  // Also re-evaluate on resize (header height could change)
+  // Re-evaluate on resize (header height could change)
   window.addEventListener('resize', function(){
     const headerEl = document.getElementById('site-header');
     if (!headerEl) return;
-    // debounce quick resizes
+    
     clearTimeout(window.__sharedHeaderResizeTimer);
     window.__sharedHeaderResizeTimer = setTimeout(() => {
       const headerRect = headerEl.getBoundingClientRect();
       const headerH = Math.ceil(headerRect.height) || 64;
       const next = headerEl.nextElementSibling;
       const shouldAddPadding = !(next && (next.id === 'home' || next.classList.contains('hero') || next.classList.contains('video-hero')));
+      
       if (shouldAddPadding) {
         document.documentElement.style.paddingTop = headerH + 'px';
         document.body.style.paddingTop = headerH + 'px';
@@ -147,6 +264,10 @@
         document.documentElement.classList.remove('has-shared-header');
         document.body.classList.remove('has-shared-header');
       }
+      
+      // Reset scroll tracking on resize
+      lastScrollY = window.pageYOffset || window.scrollY;
     }, 120);
-  });
+  }, { passive: true });
+
 })();
