@@ -1,14 +1,13 @@
 (function (global) {
   'use strict';
 
-  const DEFAULT_INTERVAL = 3000; // ms
-  const TRANSITION_MS = 600;     // ms
-  const SAFETY_PX = 8;           // extra space to avoid clipping
-  const RESIZE_DEBOUNCE_MS = 200;
+  const DEFAULT_INTERVAL = 2500; // ms - nopeampi vaihto
+  const TRANSITION_MS = 500;     // ms - sujuvampi transitio
+  const SAFETY_PX = 12;          // extra space to avoid clipping
+  const RESIZE_DEBOUNCE_MS = 150; // nopeampi reagointi
 
   function copyFontStyles(sourceEl) {
     const cs = window.getComputedStyle(sourceEl);
-    // copy key font related properties so offscreen measurement matches
     return [
       `font-style: ${cs.fontStyle}`,
       `font-variant: ${cs.fontVariant}`,
@@ -44,6 +43,13 @@
         this._onResizeDebounce = setTimeout(() => this.rebuild(), RESIZE_DEBOUNCE_MS);
       };
       window.addEventListener('resize', this._resizeHandler, { passive: true });
+      
+      // Handle orientation change separately for mobile
+      this._orientationHandler = () => {
+        clearTimeout(this._onResizeDebounce);
+        this._onResizeDebounce = setTimeout(() => this.rebuild(), 300);
+      };
+      window.addEventListener('orientationchange', this._orientationHandler, { passive: true });
     }
 
     _collectPhrases() {
@@ -65,22 +71,18 @@
     }
 
     _setup() {
-      // clear any existing content/state
       this.stop();
       this.el.innerHTML = '';
       this.el.style.position = this.el.style.position || 'relative';
-      this.el.style.overflow = 'hidden';
+      this.el.style.overflow = 'visible'; // Parannettu - ei leikkaa tekstiä
       this.el.setAttribute('aria-live', 'polite');
       this.el.setAttribute('role', this.el.getAttribute('role') || 'status');
 
-      // create DOM and compute sizes
       this._buildDOM();
     }
 
     rebuild() {
-      // Re-read phrases in case someone changed DOM (not typical)
       this.phrases = this._collectPhrases();
-      // teardown nodes
       this._cleanupSpans();
       this._setup();
       this._start();
@@ -92,7 +94,6 @@
       // Offscreen measurement div
       const measure = document.createElement('div');
       measure.style.cssText = 'position:absolute;left:-9999px;top:-9999px;visibility:hidden;white-space:nowrap;';
-      // copy font styles from container to measurement context
       measure.style.cssText += copyFontStyles(this.el);
       document.body.appendChild(measure);
 
@@ -100,7 +101,7 @@
       this._items = this.phrases.map(text => {
         const real = document.createElement('span');
         real.textContent = text;
-        // base styles for real spans
+        // Parannetut base styles
         real.style.position = 'absolute';
         real.style.left = '50%';
         real.style.top = '50%';
@@ -108,8 +109,10 @@
         real.style.whiteSpace = 'nowrap';
         real.style.pointerEvents = 'none';
         real.style.willChange = 'transform, opacity';
-        real.style.transition = `opacity ${TRANSITION_MS}ms ease, transform ${TRANSITION_MS}ms ease`;
+        real.style.transition = `opacity ${TRANSITION_MS}ms cubic-bezier(0.4, 0, 0.2, 1), transform ${TRANSITION_MS}ms cubic-bezier(0.4, 0, 0.2, 1)`;
         real.style.opacity = '0';
+        real.style.backfaceVisibility = 'hidden'; // Parantaa suorituskykyä
+        real.style.WebkitFontSmoothing = 'antialiased'; // Parempi fonttien renderöinti
 
         const m = document.createElement('span');
         m.textContent = text;
@@ -119,31 +122,33 @@
         return { real, measured: m };
       });
 
-      // measure heights (measured elements are inline, getBoundingClientRect works)
+      // Measure heights and widths
       const heights = this._items.map(it => {
         const r = it.measured.getBoundingClientRect();
         return Math.max(0, r.height || 0);
       });
       const maxHeight = Math.max(...heights, 0) || parseFloat(window.getComputedStyle(this.el).fontSize) * 1.2;
 
-      // compute slide distance: how much items move up/down relative to center
-      this._slidePx = Math.max(18, Math.round(maxHeight * 0.5));
+      // Parannettu slide distance - vähemmän liikettä, sujuvampi
+      this._slidePx = Math.max(15, Math.round(maxHeight * 0.4));
 
-      // set minHeight to avoid clipping of descenders + movement
+      // Set minHeight with better calculation
       const minH = Math.ceil(maxHeight + this._slidePx + SAFETY_PX);
       this.el.style.minHeight = minH + 'px';
 
-      // give a bit extra padding if not set
-      if (!this.el.style.paddingBottom) this.el.style.paddingBottom = Math.max(6, Math.round(minH * 0.06)) + 'px';
-      if (!this.el.style.paddingTop) this.el.style.paddingTop = Math.max(2, Math.round(minH * 0.02)) + 'px';
+      // Better padding calculation
+      const paddingBottom = Math.max(8, Math.round(minH * 0.08));
+      const paddingTop = Math.max(4, Math.round(minH * 0.04));
+      
+      if (!this.el.style.paddingBottom) this.el.style.paddingBottom = paddingBottom + 'px';
+      if (!this.el.style.paddingTop) this.el.style.paddingTop = paddingTop + 'px';
 
-      // remove measurement DOM
+      // Remove measurement DOM
       document.body.removeChild(measure);
 
-      // append real spans and set initial positions (first visible)
+      // Append real spans with initial positions
       this._items.forEach((it, i) => {
         const s = it.real;
-        // place center for first, below for others
         if (i === 0) {
           s.style.opacity = '1';
           s.style.transform = `translate(-50%,-50%) translateY(0px)`;
@@ -154,10 +159,11 @@
         this.el.appendChild(s);
       });
 
-      // If reduced motion is requested, remove transitions
+      // If reduced motion, simplify
       if (this._reducedMotion) {
         this._items.forEach((it, i) => {
-          it.real.style.transition = 'none';
+          it.real.style.transition = 'opacity 300ms ease';
+          it.real.style.transform = 'translate(-50%,-50%)';
           it.real.style.opacity = i === 0 ? '1' : '0';
         });
       }
@@ -178,7 +184,7 @@
         return;
       }
 
-      // Normal loop
+      // Normal animated loop
       this.timer = setInterval(() => this._tick(), this.interval);
     }
 
@@ -188,20 +194,20 @@
       const prevNode = this._items[prev].real;
       const nextNode = this._items[next].real;
 
-      // Position next below instantaneously (no transition) to guarantee single direction
+      // Position next below instantly
       nextNode.style.transition = 'none';
       nextNode.style.opacity = '0';
       nextNode.style.transform = `translate(-50%,-50%) translateY(${this._slidePx}px)`;
 
-      // Force style flush
-      // eslint-disable-next-line no-unused-expressions
+      // Force reflow
       nextNode.offsetHeight;
 
-      // Restore transitions
-      nextNode.style.transition = `opacity ${TRANSITION_MS}ms ease, transform ${TRANSITION_MS}ms ease`;
-      prevNode.style.transition = `opacity ${TRANSITION_MS}ms ease, transform ${TRANSITION_MS}ms ease`;
+      // Restore transitions with better easing
+      const easing = 'cubic-bezier(0.4, 0, 0.2, 1)';
+      nextNode.style.transition = `opacity ${TRANSITION_MS}ms ${easing}, transform ${TRANSITION_MS}ms ${easing}`;
+      prevNode.style.transition = `opacity ${TRANSITION_MS}ms ${easing}, transform ${TRANSITION_MS}ms ${easing}`;
 
-      // Animate: next up to center, prev up and fade out
+      // Animate: next slides up to center, prev slides up and fades
       requestAnimationFrame(() => {
         nextNode.style.opacity = '1';
         nextNode.style.transform = `translate(-50%,-50%) translateY(0px)`;
@@ -210,16 +216,13 @@
         prevNode.style.transform = `translate(-50%,-50%) translateY(-${this._slidePx}px)`;
       });
 
-      // After transition, reset prev immediately to below position WITHOUT transition so it's ready for future cycles.
+      // Reset prev position after animation
       setTimeout(() => {
         prevNode.style.transition = 'none';
         prevNode.style.opacity = '0';
         prevNode.style.transform = `translate(-50%,-50%) translateY(${this._slidePx}px)`;
-        // force reflow
-        // eslint-disable-next-line no-unused-expressions
         prevNode.offsetHeight;
-        // restore transition for next use
-        prevNode.style.transition = `opacity ${TRANSITION_MS}ms ease, transform ${TRANSITION_MS}ms ease`;
+        prevNode.style.transition = `opacity ${TRANSITION_MS}ms ${easing}, transform ${TRANSITION_MS}ms ${easing}`;
       }, TRANSITION_MS + 20);
 
       this.current = next;
@@ -245,6 +248,7 @@
     destroy() {
       this.stop();
       window.removeEventListener('resize', this._resizeHandler);
+      window.removeEventListener('orientationchange', this._orientationHandler);
       this._cleanupSpans();
       this.el.removeAttribute('aria-live');
       this.el.removeAttribute('role');
@@ -268,11 +272,22 @@
     }
   }
 
-  // Auto-init
+  // Auto-init with better timing
+  function autoInit() {
+    // Wait for fonts to load for accurate measurements
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => {
+        setTimeout(() => DynamicTitle.initAll(), 50);
+      });
+    } else {
+      setTimeout(() => DynamicTitle.initAll(), 100);
+    }
+  }
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => DynamicTitle.initAll());
+    document.addEventListener('DOMContentLoaded', autoInit);
   } else {
-    DynamicTitle.initAll();
+    autoInit();
   }
 
   global.DynamicTitle = DynamicTitle;
