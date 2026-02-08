@@ -624,12 +624,20 @@
         <p class="info">Valitsemalla paikkakunnan siirryt aluekohtaiselle sivulle, jossa on tarkemmat hinnoittelut.</p>
     </div>
    
-    <script>
-        function handlePaikkakuntaChange(value) {
-            if (!value) return;
-            window.location.href = `Valokuvaus/${value}.html`;
+     <script>
+    function handlePaikkakuntaChange(value) {
+        if (!value) return;
+        
+        let url;
+        if (value === "muu") {
+            url = "https://iivarikortesoja.media/Valokuvaus.html"; // tai mikä tahansa haluamasi tiedosto
+        } else {
+            url = `https://iivarikortesoja.media/Valokuvaus/${value}.html`;
         }
-    </script>
+        
+        window.location.href = url;
+    }
+</script>
    
     <div class="large-gallery">
         <script>
