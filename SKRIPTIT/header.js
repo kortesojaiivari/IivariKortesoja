@@ -2,10 +2,10 @@
   const headerHTML = `
     <header id="site-header" role="banner" aria-label="Sivun navigaatio">
       <nav>
-        <a href="indexi.html">Koti</a>
-        <a href="Yhteystiedot.html">Yhteystiedot</a>
-        <a href="Valokuvaus.html">Valokuvaus</a>
-        <a href="Puolustusvoimat.html">Puolustusvoimat</a>
+        <a href="/indexi.html">Koti</a>
+        <a href="/Yhteystiedot.html">Yhteystiedot</a>
+        <a href="/Valokuvaus.html">Valokuvaus</a>
+        <a href="/Puolustusvoimat.html">Puolustusvoimat</a>
       </nav>
     </header>
   `;
