@@ -570,12 +570,18 @@
         <p class="info">Valitsemalla paikkakunnan siirryt aluekohtaiselle sivulle, jossa on tarkemmat hinnoittelut.</p>
     </div>
     
-   <script>
-        function handlePaikkakuntaChange(value) {
-            if (!value) return;
+  <script>
+    function handlePaikkakuntaChange(value) {
+        if (!value) return;
+        
+        // "muu" saa oman käsittelyn, muut paikkakunnat ilman etuliitettä
+        if (value === "muu") {
+    
+        } else {
             window.location.href = `https://iivarikortesoja.media/Valokuvaus/${value}.html`;
         }
-    </script>
+    }
+</script>
     
     <div class="large-gallery">
         <script>
