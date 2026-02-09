@@ -1,423 +1,405 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="fi">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.4">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; -webkit-text-stroke: #000000; min-height: 14.0px}
-    span.s1 {font-kerning: none}
-    span.Apple-tab-span {white-space:pre}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valokuvaus Karvia | Iivari Kortesoja</title>
+    <meta name="description" content="Edullista Valokuvausta Karviassa – Hääkuvaus Karvia, kokopäiväinen hääkuvaus, valmistujaiset, hautajaiskuvaus, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta. Karviassa Valokuvausta Edullisesti. Tarjolla on myös videointia valokuvauksen ohella, jolloin Häävideo tai muisteluvideo tilanteesta on saatavilla.">
+
+    <!-- GOOGLE ANALYTICS 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
+    </script>
+
+    <!-- MICROSOFT CLARITY -->
+    <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "ud6y4jpngh");
+    </script>
+
+    <script>
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Valokuvaus Karvia | Iivari Kortesoja",
+    "description": "Edullista Valokuvausta Karviassa: Hääkuvaus, kokopäiväinen hääkuvaus, valmistujaiset, hautajaiskuvaus, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta. -Tarjolla on myös videointia valokuvauksen ohella, jolloin Häävideo tai muisteluvideo tilanteesta on saatavilla.",
+    "telephone": "+358405247918",
+    "email": "kortesoja.iivari@gmail.com",
+    "url": "https://www.iivarikortesoja.media/Valokuvaus/Karvia.html",
+    "image": "https://www.iivarikortesoja.media/MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja1.webp",
+    "priceRange": ”380 - 930 €",
+    "sameAs": [
+    "https://wa.me/message/2JQ4G2D3EXLID1",
+    "https://www.linkedin.com/in/iivarikortesoja/",
+    "https://iivarikortesoja.media"
+    ],
+    "address": {
+    "@type": "PostalAddress",
+    "addressLocality": ”Karvia”,
+    "addressRegion": "Satakunta",
+    "addressCountry": "FI"
+    },
+    "areaServed": [
+    ”Karvia”,
+    "Satakunta"
+    ]
+}
+</script>
+    </script>
+
+    <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
+    #home{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+    #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
+    #home h2{font-size:clamp(2.5rem,8vw,4.5rem);text-shadow:0 0 40px rgba(0,0,0,.9);margin-bottom:20px}
+    #photo-button-container {display: flex;flex-wrap: wrap;gap: 20px;justify-content: center;margin-top: 40px;z-index: 10;}
+    .btn {background:#333;color:#fff;padding:14px 32px;border-radius:50px;text-decoration:none;font-size:1.1rem;transition:.3s;box-shadow:0 4px 15px rgba(0,0,0,.5);cursor:pointer;white-space:nowrap;}
+    .btn:hover {background:#4ade80;transform:translateY(-3px);}
+    #dynamic-title {position: relative;overflow: visible;display: flex;align-items: center;justify-content: center;margin: 80px auto 60px;padding: 40px 20px;min-height: 160px;z-index: 5;}
+    #dynamic-title span {position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);width: auto;max-width: 90vw;text-align: center;font-size: clamp(2.2rem, 7vw, 4rem);font-weight: bold;text-shadow: 0 4px 20px rgba(0,0,0,.8);pointer-events: none;white-space: nowrap;will-change: transform, opacity;}
+    .about-section{max-width:1200px;margin:80px auto;display:flex;align-items:center;gap:60px;flex-wrap:wrap;padding:0 20px}
+    .about-text{flex:1.5;min-width:300px;font-size:1.35rem;color:#e0e0e0;line-height:1.8}
+    .about-image{position:relative;flex:1;min-width:300px;max-width:500px;height:600px;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.9)}
+    .about-image img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
+    .about-image img.active{opacity:1}
+    .small-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:30px;max-width:1400px;margin:80px auto 60px;padding:0 20px}
+    .small-item{position:relative;height:300px;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.8)}
+    .small-item img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease}
+    .small-item img.active{opacity:1}
+    #pricing{max-width:1400px;margin:80px auto;padding:0 20px;min-height:300px}
+    #pricing h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:20px;text-align:center}
+    #pricing .disclaimer{font-size:1rem;color:#bbb;text-align:center;margin-bottom:40px}
+    .upper-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;margin-bottom:40px}
+    .lower-row{display:grid;grid-template-columns:2fr 1fr;gap:30px}
+    .pricing-box{background:#222;padding:30px;border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,.6);text-align:center;transition:transform .3s ease}
+    .pricing-box:hover{transform:translateY(-10px)}
+    .upper-row .pricing-box h3{font-size:1.6rem;margin-bottom:15px}
+    .upper-row .pricing-box .price{font-size:2.4rem}
+    .lower-row .pricing-box h3{font-size:2rem;margin-bottom:20px}
+    .lower-row .pricing-box .price{font-size:2.8rem}
+    .pricing-box ul{list-style:none;text-align:left;margin:20px 0;font-size:1.2rem;line-height:1.8}
+    .pricing-box ul li{padding-left:20px;position:relative}
+    .pricing-box ul li::before{content:"–";position:absolute;left:0;color:#4ade80}
+    .pricing-box ul li strong{font-size:1.4rem;font-weight:bold}
+    .pricing-box .quote{font-size:1.1rem;color:#aaa;font-style:italic;margin-top:20px}
+    .contact-box{background:#333;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,.6)}
+    .contact-box p{font-size:1.3rem;margin-bottom:30px;text-align:center}
+    .contact-btn{background:#4ade80;color:#000;padding:15px 30px;border-radius:50px;text-decoration:none;font-size:1.3rem;font-weight:bold;transition:.3s}
+    .contact-btn:hover{background:#5aff90;transform:scale(1.05)}
+    #location-selector{max-width:1400px;margin:60px auto 100px;padding:0 20px;text-align:center}
+    #location-selector h2{font-size:clamp(1.8rem,5vw,2.8rem);margin-bottom:24px;color:#4ade80}
+    #location-selector select{width:100%;max-width:420px;padding:14px 20px;font-size:1.25rem;background:#222;color:#eee;border:2px solid #444;border-radius:12px;appearance:none;-webkit-appearance:none;cursor:pointer;transition:.3s}
+    #location-selector select:hover,#location-selector select:focus{border-color:#4ade80;box-shadow:0 0 0 3px rgba(74,222,128,0.2);outline:none}
+    #location-selector .info{margin-top:16px;font-size:1.05rem;color:#aaa}
+    .large-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:30px;max-width:1400px;margin:140px auto 60px;padding:0 20px}
+    .large-item{position:relative;height:420px;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.8)}
+    .large-item img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease}
+    .large-item img.active{opacity:1}
+    #final-contact{max-width:1400px;margin:0 auto 100px;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:40px}
+    #final-contact .contact-info,#final-contact .qr-box{background:#222;padding:40px;border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,.6);min-height:420px;display:flex;flex-direction:column;justify-content:center;align-items:center}
+    #final-contact .contact-info h2{font-size:2.2rem;margin-bottom:30px}
+    #final-contact .contact-info p{font-size:1.4rem;margin:20px 0}
+    #final-contact .contact-info a{color:#4ade80;text-decoration:none}
+    #final-contact .qr-box{cursor:pointer;transition:transform .3s ease}
+    #final-contact .qr-box:hover{transform:translateY(-10px)}
+    #final-contact .qr-box a{display:block;width:100%;max-width:430px}
+    #final-contact .qr-box img{width:100%;height:auto;border-radius:12px;transition:opacity .3s}
+    #final-contact .qr-box:hover img{opacity:0.9}
+    footer{background:#000;padding:40px 20px;text-align:center;font-size:1rem;border-top:1px solid #333}
+
+    @media(max-width:992px){
+    .about-section{flex-direction:column;text-align:center}
+    .upper-row,.lower-row{grid-template-columns:1fr}
+    .small-gallery{grid-template-columns:repeat(auto-fit,minmax(225px,1fr))}
+    .small-item{height:300px}
+    #final-contact{grid-template-columns:1fr}
+    #dynamic-title {margin: 60px auto 50px;padding: 35px 15px;min-height: 200px;}
+    #dynamic-title span {font-size: clamp(3.5rem, 12vw, 6rem);}
+    }
+    @media(max-width:768px){
+    body {font-size: 0.9rem;}
+    #home h2 {font-size: clamp(2rem, 7vw, 3.5rem);}
+    #photo-button-container{flex-direction: column;gap: 12px;padding: 0 15px;margin-top: 30px;}
+    .btn{width: 100%;max-width: 300px;padding: 12px 24px;font-size: 1rem;}
+    #dynamic-title {margin: 40px auto 35px;padding: 25px 10px;min-height: 180px;}
+    #dynamic-title span {font-size: clamp(3rem, 11vw, 5.5rem);max-width: 95vw;}
+    .about-section{gap: 40px;margin: 50px auto;padding: 0 15px;}
+    .about-text{font-size: 1.1rem;line-height: 1.7;}
+    .about-image{height: 600px;}
+    .small-gallery{grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));gap: 25px;margin: 60px auto 50px;padding: 0 15px;}
+    .small-item{height: 300px;}
+    #pricing{margin: 60px auto;padding: 0 15px;}
+    #pricing h2{font-size: clamp(1.8rem, 6vw, 3rem);}
+    #pricing .disclaimer{font-size: 0.9rem;}
+    .pricing-box{padding: 20px;}
+    .upper-row .pricing-box h3{font-size: 1.3rem;}
+    .upper-row .pricing-box .price{font-size: 2rem;}
+    .pricing-box ul{font-size: 1rem;}
+    .contact-box p{font-size: 1.1rem;}
+    .contact-btn{font-size: 1.1rem;padding: 12px 24px;}
+    #location-selector{margin: 50px auto 80px;padding: 0 15px;}
+    #location-selector h2{font-size: clamp(1.5rem, 5vw, 2.5rem);}
+    #location-selector select{max-width: 100%;font-size: 1.1rem;padding: 12px 16px;}
+    .large-gallery{grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));gap: 25px;margin: 100px auto 50px;padding: 0 15px;}
+    .large-item{height: 420px;}
+    #final-contact{padding: 0 15px;gap: 30px;}
+    #final-contact .contact-info,#final-contact .qr-box{padding: 30px;min-height: 350px;}
+    #final-contact .contact-info h2{font-size: 1.8rem;}
+    #final-contact .contact-info p{font-size: 1.2rem;}
+    footer{padding: 30px 15px;font-size: 0.9rem;}
+    }
+    @media(max-width:600px){
+    .small-gallery{grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));}
+    .small-item{height: 300px;}
+    #dynamic-title{margin: 30px auto 25px;padding: 20px 8px;min-height: 160px;}
+    #dynamic-title span{font-size: clamp(2.8rem, 10vw, 5rem);max-width: 95vw;}
+    #location-selector select{font-size: 1rem;padding: 11px 14px;}
+    }
+    @media(max-width:480px){
+    body {font-size: 0.85rem;}
+    #home h2{font-size: clamp(1.8rem, 6.5vw, 3rem);}
+    #dynamic-title{margin: 25px auto 20px;padding: 18px 5px;min-height: 140px;}
+    #dynamic-title span{font-size: clamp(2.5rem, 9.5vw, 4.5rem);}
+    .btn{padding: 11px 20px;font-size: 0.95rem;}
+    .about-text{font-size: 1rem;}
+    .about-image{height: 500px;}
+    .small-gallery{grid-template-columns: repeat(2, 1fr);gap: 20px;}
+    .small-item{height: 280px;}
+    .large-gallery{grid-template-columns: 1fr;gap: 20px;}
+    .large-item{height: 400px;}
+    .pricing-box{padding: 18px;}
+    .pricing-box ul{font-size: 0.95rem;}
+    #final-contact .contact-info,#final-contact .qr-box{padding: 25px;}
+    #final-contact .contact-info h2{font-size: 1.6rem;}
+    #final-contact .contact-info p{font-size: 1.1rem;}
+    }
+    @media (hover: none) and (pointer: coarse) {
+    .btn{min-height: 48px;}
+    #location-selector select{min-height: 50px;}
+    .contact-btn{min-height: 50px;}
+    }
+    </style>
+
+    <link rel="canonical" href=”https://www.iivarikortesoja.media/Valokuvaus_Satakunta.html">
+
+    <!-- Skriptit -->
+    <script src="../SKRIPTIT/30pricing-modules.js" defer></script>
+    <script src="../SKRIPTIT/dynamic-title.js" defer></script>
+    <script src="../SKRIPTIT/header.js" defer></script>
+    <script src="../SKRIPTIT/mobile-scaling.js" defer></script>
+    <script src="../SKRIPTIT/kampanja-popup.js" defer></script>
+    <script src="../SKRIPTIT/photo-buttons.js" defer></script>
 </head>
 <body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html lang="fi"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;Valokuvaus Karvia | Iivari Kortesoja&lt;/title&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="description" content="Edullista Valokuvausta Karviassa – Hääkuvaus Karvia, kokopäiväinen hääkuvaus, valmistujaiset, hautajaiskuvaus, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta. Karviassa Valokuvausta Edullisesti. Tarjolla on myös videointia valokuvauksen ohella, jolloin Häävideo tai muisteluvideo tilanteesta on saatavilla."&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- GOOGLE ANALYTICS 4 --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"&gt;&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>window.dataLayer = window.dataLayer || [];</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>function gtag(){dataLayer.push(arguments);}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>gtag('js', new Date());</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- MICROSOFT CLARITY --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script type="text/javascript"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>(function(c,l,a,r,i,t,y){</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>})(window, document, "clarity", "script", "ud6y4jpngh");</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Structured Data (JSON-LD) --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;script type="application/ld+json"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;script type="application/ld+json"&gt;</span></p>
-<p class="p1"><span class="s1">{</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>"@context": "https://schema.org",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>"@type": "LocalBusiness",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>"name": "Valokuvaus Karvia | Iivari Kortesoja",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>"description": "Edullista Valokuvausta Karviassa: Hääkuvaus, kokopäiväinen hääkuvaus, valmistujaiset, hautajaiskuvaus, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta. -Tarjolla on myös videointia valokuvauksen ohella, jolloin Häävideo tai muisteluvideo tilanteesta on saatavilla.",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>"telephone": "+358405247918",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>"email": "kortesoja.iivari@gmail.com",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>"url": "https://www.iivarikortesoja.media/Valokuvaus/Karvia.html",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>"image": "https://www.iivarikortesoja.media/MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja1.webp",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>"priceRange": ”380 - 930 €",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>"sameAs": [</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>"https://wa.me/message/2JQ4G2D3EXLID1",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>"https://www.linkedin.com/in/iivarikortesoja/",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>"https://iivarikortesoja.media"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>],</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>"address": {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>"@type": "PostalAddress",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>"addressLocality": ”Karvia”,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>"addressRegion": "Satakunta",</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>"addressCountry": "FI"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>},</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>"areaServed": [</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>”Karvia”,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>"Satakunta"</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>]</span></p>
-<p class="p1"><span class="s1">}</span></p>
-<p class="p1"><span class="s1">&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;style&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>*{margin:0;padding:0;box-sizing:border-box}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#home{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#home h2{font-size:clamp(2.5rem,8vw,4.5rem);text-shadow:0 0 40px rgba(0,0,0,.9);margin-bottom:20px}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#photo-button-container {display: flex;flex-wrap: wrap;gap: 20px;justify-content: center;margin-top: 40px;z-index: 10;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.btn {background:#333;color:#fff;padding:14px 32px;border-radius:50px;text-decoration:none;font-size:1.1rem;transition:.3s;box-shadow:0 4px 15px rgba(0,0,0,.5);cursor:pointer;white-space:nowrap;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.btn:hover {background:#4ade80;transform:translateY(-3px);}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#dynamic-title {position: relative;overflow: visible;display: flex;align-items: center;justify-content: center;margin: 80px auto 60px;padding: 40px 20px;min-height: 160px;z-index: 5;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#dynamic-title span {position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);width: auto;max-width: 90vw;text-align: center;font-size: clamp(2.2rem, 7vw, 4rem);font-weight: bold;text-shadow: 0 4px 20px rgba(0,0,0,.8);pointer-events: none;white-space: nowrap;will-change: transform, opacity;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.about-section{max-width:1200px;margin:80px auto;display:flex;align-items:center;gap:60px;flex-wrap:wrap;padding:0 20px}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.about-text{flex:1.5;min-width:300px;font-size:1.35rem;color:#e0e0e0;line-height:1.8}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.about-image{position:relative;flex:1;min-width:300px;max-width:500px;height:600px;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.9)}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.about-image img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.about-image img.active{opacity:1}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.small-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:30px;max-width:1400px;margin:80px auto 60px;padding:0 20px}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.small-item{position:relative;height:300px;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.8)}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.small-item img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.small-item img.active{opacity:1}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#pricing{max-width:1400px;margin:80px auto;padding:0 20px;min-height:300px}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#pricing h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:20px;text-align:center}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#pricing .disclaimer{font-size:1rem;color:#bbb;text-align:center;margin-bottom:40px}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.upper-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;margin-bottom:40px}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.lower-row{display:grid;grid-template-columns:2fr 1fr;gap:30px}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.pricing-box{background:#222;padding:30px;border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,.6);text-align:center;transition:transform .3s ease}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.pricing-box:hover{transform:translateY(-10px)}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.upper-row .pricing-box h3{font-size:1.6rem;margin-bottom:15px}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.upper-row .pricing-box .price{font-size:2.4rem}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.lower-row .pricing-box h3{font-size:2rem;margin-bottom:20px}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.lower-row .pricing-box .price{font-size:2.8rem}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.pricing-box ul{list-style:none;text-align:left;margin:20px 0;font-size:1.2rem;line-height:1.8}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.pricing-box ul li{padding-left:20px;position:relative}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.pricing-box ul li::before{content:"–";position:absolute;left:0;color:#4ade80}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.pricing-box ul li strong{font-size:1.4rem;font-weight:bold}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.pricing-box .quote{font-size:1.1rem;color:#aaa;font-style:italic;margin-top:20px}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.contact-box{background:#333;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,.6)}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.contact-box p{font-size:1.3rem;margin-bottom:30px;text-align:center}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.contact-btn{background:#4ade80;color:#000;padding:15px 30px;border-radius:50px;text-decoration:none;font-size:1.3rem;font-weight:bold;transition:.3s}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.contact-btn:hover{background:#5aff90;transform:scale(1.05)}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#location-selector{max-width:1400px;margin:60px auto 100px;padding:0 20px;text-align:center}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#location-selector h2{font-size:clamp(1.8rem,5vw,2.8rem);margin-bottom:24px;color:#4ade80}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#location-selector select{width:100%;max-width:420px;padding:14px 20px;font-size:1.25rem;background:#222;color:#eee;border:2px solid #444;border-radius:12px;appearance:none;-webkit-appearance:none;cursor:pointer;transition:.3s}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#location-selector select:hover,#location-selector select:focus{border-color:#4ade80;box-shadow:0 0 0 3px rgba(74,222,128,0.2);outline:none}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#location-selector .info{margin-top:16px;font-size:1.05rem;color:#aaa}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.large-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:30px;max-width:1400px;margin:140px auto 60px;padding:0 20px}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.large-item{position:relative;height:420px;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.8)}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.large-item img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.large-item img.active{opacity:1}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#final-contact{max-width:1400px;margin:0 auto 100px;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:40px}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#final-contact .contact-info,#final-contact .qr-box{background:#222;padding:40px;border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,.6);min-height:420px;display:flex;flex-direction:column;justify-content:center;align-items:center}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#final-contact .contact-info h2{font-size:2.2rem;margin-bottom:30px}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#final-contact .contact-info p{font-size:1.4rem;margin:20px 0}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#final-contact .contact-info a{color:#4ade80;text-decoration:none}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#final-contact .qr-box{cursor:pointer;transition:transform .3s ease}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#final-contact .qr-box:hover{transform:translateY(-10px)}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#final-contact .qr-box a{display:block;width:100%;max-width:430px}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#final-contact .qr-box img{width:100%;height:auto;border-radius:12px;transition:opacity .3s}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>#final-contact .qr-box:hover img{opacity:0.9}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>footer{background:#000;padding:40px 20px;text-align:center;font-size:1rem;border-top:1px solid #333}</span></p>
-<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>@media(max-width:992px){</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.about-section{flex-direction:column;text-align:center}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.upper-row,.lower-row{grid-template-columns:1fr}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.small-gallery{grid-template-columns:repeat(auto-fit,minmax(225px,1fr))}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.small-item{height:300px}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#final-contact{grid-template-columns:1fr}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#dynamic-title {margin: 60px auto 50px;padding: 35px 15px;min-height: 200px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#dynamic-title span {font-size: clamp(3.5rem, 12vw, 6rem);}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>@media(max-width:768px){</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>body {font-size: 0.9rem;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#home h2 {font-size: clamp(2rem, 7vw, 3.5rem);}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#photo-button-container{flex-direction: column;gap: 12px;padding: 0 15px;margin-top: 30px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.btn{width: 100%;max-width: 300px;padding: 12px 24px;font-size: 1rem;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#dynamic-title {margin: 40px auto 35px;padding: 25px 10px;min-height: 180px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#dynamic-title span {font-size: clamp(3rem, 11vw, 5.5rem);max-width: 95vw;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.about-section{gap: 40px;margin: 50px auto;padding: 0 15px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.about-text{font-size: 1.1rem;line-height: 1.7;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.about-image{height: 600px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.small-gallery{grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));gap: 25px;margin: 60px auto 50px;padding: 0 15px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.small-item{height: 300px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#pricing{margin: 60px auto;padding: 0 15px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#pricing h2{font-size: clamp(1.8rem, 6vw, 3rem);}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#pricing .disclaimer{font-size: 0.9rem;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.pricing-box{padding: 20px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.upper-row .pricing-box h3{font-size: 1.3rem;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.upper-row .pricing-box .price{font-size: 2rem;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.pricing-box ul{font-size: 1rem;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.contact-box p{font-size: 1.1rem;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.contact-btn{font-size: 1.1rem;padding: 12px 24px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#location-selector{margin: 50px auto 80px;padding: 0 15px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#location-selector h2{font-size: clamp(1.5rem, 5vw, 2.5rem);}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#location-selector select{max-width: 100%;font-size: 1.1rem;padding: 12px 16px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.large-gallery{grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));gap: 25px;margin: 100px auto 50px;padding: 0 15px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.large-item{height: 420px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#final-contact{padding: 0 15px;gap: 30px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#final-contact .contact-info,#final-contact .qr-box{padding: 30px;min-height: 350px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#final-contact .contact-info h2{font-size: 1.8rem;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#final-contact .contact-info p{font-size: 1.2rem;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>footer{padding: 30px 15px;font-size: 0.9rem;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>@media(max-width:600px){</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.small-gallery{grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.small-item{height: 300px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#dynamic-title{margin: 30px auto 25px;padding: 20px 8px;min-height: 160px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#dynamic-title span{font-size: clamp(2.8rem, 10vw, 5rem);max-width: 95vw;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#location-selector select{font-size: 1rem;padding: 11px 14px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>@media(max-width:480px){</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>body {font-size: 0.85rem;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#home h2{font-size: clamp(1.8rem, 6.5vw, 3rem);}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#dynamic-title{margin: 25px auto 20px;padding: 18px 5px;min-height: 140px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#dynamic-title span{font-size: clamp(2.5rem, 9.5vw, 4.5rem);}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.btn{padding: 11px 20px;font-size: 0.95rem;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.about-text{font-size: 1rem;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.about-image{height: 500px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.small-gallery{grid-template-columns: repeat(2, 1fr);gap: 20px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.small-item{height: 280px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.large-gallery{grid-template-columns: 1fr;gap: 20px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.large-item{height: 400px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.pricing-box{padding: 18px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.pricing-box ul{font-size: 0.95rem;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#final-contact .contact-info,#final-contact .qr-box{padding: 25px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#final-contact .contact-info h2{font-size: 1.6rem;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#final-contact .contact-info p{font-size: 1.1rem;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>@media (hover: none) and (pointer: coarse) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.btn{min-height: 48px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>#location-selector select{min-height: 50px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>.contact-btn{min-height: 50px;}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link rel="canonical" href=”https://www.iivarikortesoja.media/Valokuvaus_Satakunta.html"&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- Skriptit --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="../SKRIPTIT/30pricing-modules.js" defer&gt;&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="../SKRIPTIT/dynamic-title.js" defer&gt;&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="../SKRIPTIT/header.js" defer&gt;&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="../SKRIPTIT/mobile-scaling.js" defer&gt;&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="../SKRIPTIT/kampanja-popup.js" defer&gt;&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="../SKRIPTIT/photo-buttons.js" defer&gt;&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;body&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>document.addEventListener('DOMContentLoaded', () =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>setTimeout(() =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>function createPricingBox(pkg) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>let html = `&lt;h3&gt;${pkg.title}&lt;/h3&gt;&lt;p class="price"&gt;${pkg.price}&lt;/p&gt;`;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>if (pkg.desc) html += `&lt;p&gt;${pkg.desc}&lt;/p&gt;`;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>if (pkg.features) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>html += '&lt;ul&gt;';</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>pkg.features.forEach(f =&gt; html += `&lt;li&gt;${f}&lt;/li&gt;`);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>html += '&lt;/ul&gt;';</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>if (pkg.quote) html += `&lt;p class="quote"&gt;${pkg.quote}&lt;/p&gt;`;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const box = document.createElement('div');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>box.className = 'pricing-box';</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>box.innerHTML = html;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>return box;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const upperRow = document.querySelector('#pricing .upper-row');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (upperRow &amp;&amp; typeof upperPackages !== 'undefined' &amp;&amp; Array.isArray(upperPackages)) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>upperPackages.forEach(pkg =&gt; upperRow.appendChild(createPricingBox(pkg)));</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const lowerRow = document.querySelector('#pricing .lower-row');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const contactBox = lowerRow ? lowerRow.querySelector('.contact-box') : null;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (lowerRow &amp;&amp; contactBox &amp;&amp; typeof lowerPackages !== 'undefined' &amp;&amp; Array.isArray(lowerPackages)) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>lowerPackages.forEach(pkg =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>lowerRow.insertBefore(createPricingBox(pkg), contactBox);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>if (lowerPackages.length &gt; 1) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>lowerRow.style.gridTemplateColumns = `repeat(${lowerPackages.length + 1}, 1fr)`;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}, 0);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section id="home"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;video autoplay muted loop playsinline poster="../VALOKUVAUS/valokuvaus-poster.webp"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;source src="../MEDIA/Pääsivu_Videotuotannot ja Valokuvaus/2000luvunkamera.webm" type="video/webm"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>Selain ei tue taustavideota.</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/video&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h2&gt;Valokuvaus Karvia&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div id="photo-button-container"&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;h2 id="dynamic-title" class="dynamic-title" data-interval="2500" aria-live="polite" aria-label="Valokuvauspalvelut"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;span&gt;Häät&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;span&gt;Valmistujaiset&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;span&gt;Hautajaiset&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;span&gt;Tilaisuudet&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;span&gt;Ristiäiset&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;span&gt;Muotokuvat&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/h2&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="about-section"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="about-text"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>Olipa kyseessä niin valmistujaiset, hautajaiset, häät, ristiäiset tai mitä vaan. Dokumentoin tärkeät hetkesi, jolloin voit keskittyä hetkeesi ja muistella sitä valokuvien kautta jälkikäteen.&lt;br&gt;&lt;br&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>Vahvuuteni ovat parhaimillaan dokumentaarisessa kuvaamisessa, jossa ikuistan tilanteita mahdollisimman autenttisesti. Tällöin kuvausreissuilta tulee kuvattua kameraan noin sadan ja tuhannen kuvan väliltä, mistä valitsen ja muokkaan parhaimmat teidän käyttöönne. &lt;br&gt;&lt;br&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>Tarkoitukseni on tarjota kuluttaja- ja budjettiystävällisempää valokuvausta, pitäen laadun ja luovuuden täysillä.&lt;br&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>Valokuvauksen ohella tarjoan myös videollista kuvaamista, joka voi olla niin häävideo tai muuten vaan muisteluvideo tilanteesta.&lt;br&gt;&lt;br&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="about-image"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;img src="../MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja1.webp" alt="Valokuvaus 1" class="active"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="small-gallery" aria-hidden="false"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const smallSequence = [[1,7,13,19,25,31],[2,8,14,20,26,32],[3,9,15,21,27,33],[4,10,16,22,28,34],[5,11,17,23,29,35]];</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>smallSequence.forEach(boxImages =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>document.write('&lt;div class="small-item"&gt;');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>boxImages.forEach((num, idx) =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const cls = idx === 0 ? ' class="active"' : '';</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>document.write(`&lt;img src="../MEDIA/VALOKUVAUS/Valokuvaus${num}.webp"${cls} alt="Valokuvaus ${num}"&gt;`);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>document.write('&lt;/div&gt;');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section id="pricing"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h2&gt;Hinnoittelu&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p class="disclaimer"&gt;*Nämä ovat suuntaa-antavia hintoja. Hinnat sisältävät ALV 25,5 %. Matkakustannukset (kilometrikorvaus) lisätään erikseen tarpeen mukaan.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="upper-row"&gt;&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="lower-row"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="contact-box"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p&gt;Eikö mieleistä pakettia löytynyt?&lt;br&gt;Ota yhteyttä, niin räätälöidään juuri sinulle sopiva ratkaisu!&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#final-contact" class="contact-btn"&gt;Ota yhteyttä&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div id="location-selector"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;h2&gt;Valitse kuvauspaikkakunta&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;select id="paikkakunta-dropdown" onchange="handlePaikkakuntaChange(this.value)" aria-label="Valitse kuvauspaikkakunta"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;option value="Karvia"&gt;Karvia&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span> &lt;option value="Eurajoki"&gt;Eurajoki&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;option value="Eura"&gt;Eura&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;option value="Harjavalta"&gt;Harjavalta&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;option value="Huittinen"&gt;Huittinen&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span> &lt;option value="Ikaalinen"&gt;Ikaalinen&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;option value="Kankaanpää"&gt;Kankaanpää&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;option value="Kokemäki"&gt;Kokemäki&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;option value="Nakkila"&gt;Nakkila&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;option value="Noormarkku"&gt;Noormarkku&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;option value="Parkano"&gt;Parkano&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-tab-span">	</span> &lt;option value="Pori"&gt;Pori&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;option value="Pomarkku"&gt;Pomarkku&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;option value="Rauma"&gt;Rauma&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;option value="Sastamala"&gt;Sastamala&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;option value="Seinäjoki"&gt;Seinäjoki&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;option value="Säkylä"&gt;Säkylä&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;option value="Tampere"&gt;Tampere&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;option value="Vaasa"&gt;Vaasa&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;option value="Ylöjärvi"&gt;Ylöjärvi&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;option value="muu"&gt;Muu Suomi (kysy tarjousta)&lt;/option&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/select&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p class="info"&gt;Valitsemalla paikkakunnan siirryt aluekohtaiselle sivulle, jossa on tarkemmat hinnoittelut.&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>function handlePaikkakuntaChange(value) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (!value) return;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let url;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (value === "muu") {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>url = "https://iivarikortesoja.media/Valokuvaus.html";</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} else {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>url = `https://iivarikortesoja.media/Valokuvaus/${value}.html`;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>window.location.href = url;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="large-gallery"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const largeSequence = [[1,7,13,19,25,31],[2,8,14,20,26,32],[3,9,15,21,27,33],[4,10,16,22,28,34],[5,11,17,23,29,35],[6,12,18,24,30,36]];</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>largeSequence.forEach(boxImages =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>document.write('&lt;div class="large-item"&gt;');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>boxImages.forEach((num, idx) =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>const cls = idx === 0 ? ' class="active"' : '';</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>document.write(`&lt;img src="../MEDIA/VALOKUVAUS/Valokuvaus${num}.webp"${cls} alt="Valokuvaus ${num}"&gt;`);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>document.write('&lt;/div&gt;');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section id="final-contact"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="contact-info"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Ota yhteyttä&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p&gt;Sähköposti: &lt;a href="mailto:kortesoja.iivari@gmail.com"&gt;kortesoja.iivari@gmail.com&lt;/a&gt;&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p&gt;Puhelin: &lt;a href="tel:+358405247918"&gt;040 524 7918&lt;/a&gt;&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="qr-box"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;a href="https://wa.me/message/2JQ4G2D3EXLID1" target="_blank" rel="noopener"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;img src="../MEDIA/Ikonit/QR.webp" alt="WhatsApp QR-koodi"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;footer&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p&gt;© Iivari Kortesoja 2026 | Y-Tunnus 3591660-9&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/footer&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>(function(){</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const bg = document.querySelector('#home video');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const home = document.getElementById('home');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (!bg || !home) return;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if ('IntersectionObserver' in window) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>new IntersectionObserver(entries =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>entries.forEach(entry =&gt; entry.isIntersecting ? bg.play() : bg.pause());</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}, {threshold: 0.5}).observe(home);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>} else { try { bg.play(); } catch(e) {} }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>})();</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>(function(){</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const imgs = document.querySelectorAll('.about-image img');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (imgs.length &lt; 1) return;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let i = 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>setInterval(() =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>imgs[i].classList.remove('active');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>i = (i + 1) % imgs.length;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>imgs[i].classList.add('active');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}, 5000);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>})();</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>document.querySelectorAll('.small-item, .large-item').forEach(box =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const imgs = box.querySelectorAll('img');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (imgs.length &lt;= 1) return;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>let i = 0;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const delay = box.classList.contains('small-item') ? 4000 : 5000;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>setInterval(() =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>imgs[i].classList.remove('active');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>i = (i + 1) % imgs.length;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>imgs[i].classList.add('active');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}, delay);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+    function createPricingBox(pkg) {
+    let html = `<h3>${pkg.title}</h3><p class="price">${pkg.price}</p>`;
+    if (pkg.desc) html += `<p>${pkg.desc}</p>`;
+    if (pkg.features) {
+    html += '<ul>';
+    pkg.features.forEach(f => html += `<li>${f}</li>`);
+    html += '</ul>';
+    }
+    if (pkg.quote) html += `<p class="quote">${pkg.quote}</p>`;
+    const box = document.createElement('div');
+    box.className = 'pricing-box';
+    box.innerHTML = html;
+    return box;
+    }
+    const upperRow = document.querySelector('#pricing .upper-row');
+    if (upperRow && typeof upperPackages !== 'undefined' && Array.isArray(upperPackages)) {
+    upperPackages.forEach(pkg => upperRow.appendChild(createPricingBox(pkg)));
+    }
+    const lowerRow = document.querySelector('#pricing .lower-row');
+    const contactBox = lowerRow ? lowerRow.querySelector('.contact-box') : null;
+    if (lowerRow && contactBox && typeof lowerPackages !== 'undefined' && Array.isArray(lowerPackages)) {
+    lowerPackages.forEach(pkg => {
+    lowerRow.insertBefore(createPricingBox(pkg), contactBox);
+    });
+    if (lowerPackages.length > 1) {
+    lowerRow.style.gridTemplateColumns = `repeat(${lowerPackages.length + 1}, 1fr)`;
+    }
+    }
+    }, 0);
+    });
+    </script>
+
+    <section id="home">
+    <video autoplay muted loop playsinline poster="../VALOKUVAUS/valokuvaus-poster.webp">
+    <source src="../MEDIA/Pääsivu_Videotuotannot ja Valokuvaus/2000luvunkamera.webm" type="video/webm">
+    Selain ei tue taustavideota.
+    </video>
+    <h2>Valokuvaus Karvia</h2>
+    <div id="photo-button-container"></div>
+    </section>
+
+    <h2 id="dynamic-title" class="dynamic-title" data-interval="2500" aria-live="polite" aria-label="Valokuvauspalvelut">
+    <span>Häät</span>
+    <span>Valmistujaiset</span>
+    <span>Hautajaiset</span>
+    <span>Tilaisuudet</span>
+    <span>Ristiäiset</span>
+    <span>Muotokuvat</span>
+    </h2>
+
+    <div class="about-section">
+    <div class="about-text">
+    Olipa kyseessä niin valmistujaiset, hautajaiset, häät, ristiäiset tai mitä vaan. Dokumentoin tärkeät hetkesi, jolloin voit keskittyä hetkeesi ja muistella sitä valokuvien kautta jälkikäteen.<br><br>
+    Vahvuuteni ovat parhaimillaan dokumentaarisessa kuvaamisessa, jossa ikuistan tilanteita mahdollisimman autenttisesti. Tällöin kuvausreissuilta tulee kuvattua kameraan noin sadan ja tuhannen kuvan väliltä, mistä valitsen ja muokkaan parhaimmat teidän käyttöönne. <br><br>
+    Tarkoitukseni on tarjota kuluttaja- ja budjettiystävällisempää valokuvausta, pitäen laadun ja luovuuden täysillä.<br>
+    Valokuvauksen ohella tarjoan myös videollista kuvaamista, joka voi olla niin häävideo tai muuten vaan muisteluvideo tilanteesta.<br><br>
+    </div>
+    <div class="about-image">
+    <img src="../MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja1.webp" alt="Valokuvaus 1" class="active">
+    </div>
+    </div>
+
+    <div class="small-gallery" aria-hidden="false">
+    <script>
+    const smallSequence = [[1,7,13,19,25,31],[2,8,14,20,26,32],[3,9,15,21,27,33],[4,10,16,22,28,34],[5,11,17,23,29,35]];
+    smallSequence.forEach(boxImages => {
+    document.write('<div class="small-item">');
+    boxImages.forEach((num, idx) => {
+    const cls = idx === 0 ? ' class="active"' : '';
+    document.write(`<img src="../MEDIA/VALOKUVAUS/Valokuvaus${num}.webp"${cls} alt="Valokuvaus ${num}">`);
+    });
+    document.write('</div>');
+    });
+    </script>
+    </div>
+
+    <section id="pricing">
+    <h2>Hinnoittelu</h2>
+    <p class="disclaimer">*Nämä ovat suuntaa-antavia hintoja. Hinnat sisältävät ALV 25,5 %. Matkakustannukset (kilometrikorvaus) lisätään erikseen tarpeen mukaan.</p>
+    <div class="upper-row"></div>
+    <div class="lower-row">
+    <div class="contact-box">
+    <p>Eikö mieleistä pakettia löytynyt?<br>Ota yhteyttä, niin räätälöidään juuri sinulle sopiva ratkaisu!</p>
+    <a href="#final-contact" class="contact-btn">Ota yhteyttä</a>
+    </div>
+    </div>
+    </section>
+
+    <div id="location-selector">
+    <h2>Valitse kuvauspaikkakunta</h2>
+    <select id="paikkakunta-dropdown" onchange="handlePaikkakuntaChange(this.value)" aria-label="Valitse kuvauspaikkakunta">
+    <option value="Karvia">Karvia</option>
+<span class="Apple-tab-span">	 <option value="Eurajoki">Eurajoki</option></span>
+    <option value="Eura">Eura</option>
+    <option value="Harjavalta">Harjavalta</option>
+    <option value="Huittinen">Huittinen</option>
+<span class="Apple-tab-span">	 <option value="Ikaalinen">Ikaalinen</option></span>
+    <option value="Kankaanpää">Kankaanpää</option>
+    <option value="Kokemäki">Kokemäki</option>
+    <option value="Nakkila">Nakkila</option>
+    <option value="Noormarkku">Noormarkku</option>
+    <option value="Parkano">Parkano</option>
+<span class="Apple-tab-span">	 <option value="Pori">Pori</option></span>
+    <option value="Pomarkku">Pomarkku</option>
+    <option value="Rauma">Rauma</option>
+    <option value="Sastamala">Sastamala</option>
+    <option value="Seinäjoki">Seinäjoki</option>
+    <option value="Säkylä">Säkylä</option>
+    <option value="Tampere">Tampere</option>
+    <option value="Vaasa">Vaasa</option>
+    <option value="Ylöjärvi">Ylöjärvi</option>
+    <option value="muu">Muu Suomi (kysy tarjousta)</option>
+    </select>
+    <p class="info">Valitsemalla paikkakunnan siirryt aluekohtaiselle sivulle, jossa on tarkemmat hinnoittelut.</p>
+    </div>
+
+    <script>
+    function handlePaikkakuntaChange(value) {
+    if (!value) return;
+    let url;
+    if (value === "muu") {
+    url = "https://iivarikortesoja.media/Valokuvaus.html";
+    } else {
+    url = `https://iivarikortesoja.media/Valokuvaus/${value}.html`;
+    }
+    window.location.href = url;
+    }
+    </script>
+
+    <div class="large-gallery">
+    <script>
+    const largeSequence = [[1,7,13,19,25,31],[2,8,14,20,26,32],[3,9,15,21,27,33],[4,10,16,22,28,34],[5,11,17,23,29,35],[6,12,18,24,30,36]];
+    largeSequence.forEach(boxImages => {
+    document.write('<div class="large-item">');
+    boxImages.forEach((num, idx) => {
+    const cls = idx === 0 ? ' class="active"' : '';
+    document.write(`<img src="../MEDIA/VALOKUVAUS/Valokuvaus${num}.webp"${cls} alt="Valokuvaus ${num}">`);
+    });
+    document.write('</div>');
+    });
+    </script>
+    </div>
+
+    <section id="final-contact">
+    <div class="contact-info">
+    <h2>Ota yhteyttä</h2>
+    <p>Sähköposti: <a href="mailto:kortesoja.iivari@gmail.com">kortesoja.iivari@gmail.com</a></p>
+    <p>Puhelin: <a href="tel:+358405247918">040 524 7918</a></p>
+    </div>
+    <div class="qr-box">
+    <a href="https://wa.me/message/2JQ4G2D3EXLID1" target="_blank" rel="noopener">
+    <img src="../MEDIA/Ikonit/QR.webp" alt="WhatsApp QR-koodi">
+    </a>
+    </div>
+    </section>
+
+    <footer>
+    <p>© Iivari Kortesoja 2026 | Y-Tunnus 3591660-9</p>
+    </footer>
+
+    <script>
+    (function(){
+    const bg = document.querySelector('#home video');
+    const home = document.getElementById('home');
+    if (!bg || !home) return;
+    if ('IntersectionObserver' in window) {
+    new IntersectionObserver(entries => {
+    entries.forEach(entry => entry.isIntersecting ? bg.play() : bg.pause());
+    }, {threshold: 0.5}).observe(home);
+    } else { try { bg.play(); } catch(e) {} }
+    })();
+
+    (function(){
+    const imgs = document.querySelectorAll('.about-image img');
+    if (imgs.length < 1) return;
+    let i = 0;
+    setInterval(() => {
+    imgs[i].classList.remove('active');
+    i = (i + 1) % imgs.length;
+    imgs[i].classList.add('active');
+    }, 5000);
+    })();
+
+    document.querySelectorAll('.small-item, .large-item').forEach(box => {
+    const imgs = box.querySelectorAll('img');
+    if (imgs.length <= 1) return;
+    let i = 0;
+    const delay = box.classList.contains('small-item') ? 4000 : 5000;
+    setInterval(() => {
+    imgs[i].classList.remove('active');
+    i = (i + 1) % imgs.length;
+    imgs[i].classList.add('active');
+    }, delay);
+    });
+    </script>
 </body>
 </html>
