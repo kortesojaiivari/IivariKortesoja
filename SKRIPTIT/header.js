@@ -5,6 +5,7 @@
         <a href="/index.html">Koti</a>
         <a href="/Yhteystiedot.html">Yhteystiedot</a>
         <a href="/Valokuvaus.html">Valokuvaus</a>
+        <a href="/Puolustusvoimat.html">Puolustusvoimat</a>
       </nav>
     </header>
   `;
