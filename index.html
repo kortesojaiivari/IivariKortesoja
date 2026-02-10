@@ -48,22 +48,20 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
-       
+      
         *{margin:0;padding:0;box-sizing:border-box}
         body{
             background:#0f0f0f;
             color:#fff;
             font-family:'Roboto',sans-serif;
-            height:100vh;
+            min-height:100vh;
             display:flex;
             flex-direction:column;
-            align-items:center;
-            justify-content:center;
             text-align:center;
             padding:20px;
         }
         h1{font-size:clamp(2.8rem, 10vw, 5rem);margin-bottom:1.5rem;text-shadow:0 0 30px rgba(0,0,0,.9)}
-        #home{position:relative;overflow:hidden;text-align:center;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+        #home{position:relative;overflow:hidden;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
         #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
         #button-container {
             display: flex;
@@ -201,7 +199,7 @@
         <p>Ota yhteyttä ja keskustellaan tulevista projekteista!</p>
         <p>Sähköposti: <a href="mailto:kortesoja.iivari@gmail.com">kortesoja.iivari@gmail.com</a></p>
         <p>Puhelin: <a href="tel:+358405247918">040 524 7918</a></p>
-      
+     
         <div class="social-links">
             <a href="https://www.linkedin.com/in/iivarikortesoja" target="_blank">
                 <img src="MEDIA/Ikonit/linkedin.webp" alt="LinkedIn" class="social-icon">
