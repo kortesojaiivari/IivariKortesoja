@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yhteystiedot | Iivari Kortesoja</title>
+    <title>Ota yhteyttä | Iivari Kortesoja</title>
 
     <!-- GOOGLE ANALYTICS 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
@@ -24,119 +24,119 @@
     </script>
 
     <style>
-        *{margin:0;padding:0;box-sizing:border-box;font-family:'Arial',sans-serif}
-        body{background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
 
         section{padding:80px 20px;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-        #contact{max-width:1000px;margin:0 auto}
 
-        /* Dynamic title – pienempi koko */
+        #contact{max-width:800px;margin:0 auto}
+
         #dynamic-title{
-            position: relative;
-            width: 100%;
-            min-height: 80px;          /* pienempi korkeus */
-            margin-bottom: 25px;
-            overflow: hidden;
+            position:relative;
+            overflow:hidden;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            min-height:80px;
+            margin-bottom:30px;
+            padding:4px 0 8px;
         }
 
         #dynamic-title span{
-            font-size: 2.6rem;         /* selvästi pienempi kuin aiempi 3.8em */
-            font-weight: 700;
-            text-shadow: 0 0 20px rgba(0,0,0,.7);
-            white-space: nowrap;
+            position:absolute;
+            left:50%;
+            top:50%;
+            transform:translate(-50%,-50%);
+            font-size:clamp(1.8rem, 6vw, 2.8rem);
+            font-weight:600;
+            text-shadow:0 0 20px rgba(0,0,0,.7);
+            white-space:nowrap;
+            pointer-events:none;
         }
 
-        #contact .intro-text{
-            font-size: 1.25rem;        /* pienempi */
-            margin: 0 0 30px;
-            color: #d1d5db;
-            max-width: 680px;
+        #contact h2{
+            font-size:clamp(2rem, 6vw, 2.8rem);
+            margin-bottom:25px;
         }
 
-        #contact .contact-info{
-            font-size: 1.2rem;         /* hieman pienempi */
-            margin: 18px 0;
+        #contact p{
+            font-size:1.25rem;
+            margin:18px 0;
+            color:#e0e0e0;
         }
 
         #contact a{
-            color: #4ade80;
-            text-decoration: none;
-            transition: .3s;
+            color:#4ade80;
+            text-decoration:none;
+            transition:.25s;
         }
 
         #contact a:hover{
-            opacity: 0.85;
-            text-decoration: underline;
+            text-decoration:underline;
+            opacity:0.9;
         }
 
         .social-links{
-            margin-top: 35px;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
+            display:flex;
+            gap:28px;
+            justify-content:center;
+            margin-top:35px;
         }
 
         .social-icon{
-            width: 52px;               /* hieman pienemmät ikonit */
-            height: 52px;
-            transition: transform .3s ease, filter .3s ease;
-            filter: brightness(0.92) contrast(1.08);
+            width:40px;
+            height:40px;
+            object-fit:contain;
+            transition:transform .3s ease;
         }
 
         .social-icon:hover{
-            transform: scale(1.12);
-            filter: brightness(1.15) drop-shadow(0 0 10px rgba(74,222,128,0.45));
+            transform:scale(1.18);
         }
 
         footer{
-            background: #000;
-            text-align: center;
-            padding: 25px 20px;
-            font-size: 0.9rem;
-            color: #888;
+            background:#000;
+            padding:35px 20px;
+            text-align:center;
+            font-size:0.95rem;
+            color:#888;
+            border-top:1px solid #222;
         }
 
-        footer a{
-            color: #4ade80;
-            text-decoration: none;
-        }
-
-        footer a:hover{
-            text-decoration: underline;
-        }
-
-        @media(max-width: 768px){
+        @media(max-width:768px){
             section{padding:60px 16px;}
             #dynamic-title{
-                min-height: 70px;
+                min-height:70px;
             }
             #dynamic-title span{
-                font-size: 2.1rem;     /* mobiilissa vielä pienempi */
+                font-size:clamp(1.6rem, 7vw, 2.3rem);
             }
-            .intro-text{
-                font-size: 1.1rem;
+            #contact h2{
+                font-size:clamp(1.9rem, 7vw, 2.4rem);
             }
-            .contact-info{
-                font-size: 1.05rem;
+            #contact p{
+                font-size:1.1rem;
             }
             .social-icon{
-                width: 48px;
-                height: 48px;
+                width:36px;
+                height:36px;
             }
         }
 
-        @media(max-width: 480px){
+        @media(max-width:480px){
+            #dynamic-title{
+                min-height:60px;
+            }
             #dynamic-title span{
-                font-size: 1.9rem;
+                font-size:clamp(1.5rem, 8vw, 2.1rem);
             }
         }
     </style>
 
-    <!-- Shared header script -->
+    <!-- Skriptit -->
+    <script src="SKRIPTIT/dynamic-title.js" defer></script>
     <script src="SKRIPTIT/header.js" defer></script>
     <script src="SKRIPTIT/mobile-scaling.js" defer></script>
-    <!-- Dynaaminen otsikko -->
-    <script src="SKRIPTIT/dynamic-title.js" defer></script>
 </head>
 <body>
 
@@ -144,16 +144,15 @@
         <div id="dynamic-title">
             <span>Ota yhteyttä</span>
             <span>Työskennellään yhdessä</span>
-            <span>Keskustellaan projekteista</span>
-            <span>Löydetään ratkaisu</span>
+            <span>Katsotaan projektisi</span>
+            <span>Laitetaan hommiin</span>
         </div>
 
-        <p class="intro-text">Ota rohkeasti yhteyttä – katsotaan, miten voin auttaa sinun projektissasi tai ideassasi!</p>
-
-        <div class="contact-info">
-            <p>Sähköposti: <a href="mailto:kortesoja.iivari@gmail.com">kortesoja.iivari@gmail.com</a></p>
-            <p>Puhelin: <a href="tel:+358405247918">040 524 7918</a></p>
-        </div>
+        <h2>Yhteystiedot</h2>
+        
+        <p>Ota yhteyttä ja keskustellaan tulevista projekteista!</p>
+        <p>Sähköposti: <a href="mailto:kortesoja.iivari@gmail.com">kortesoja.iivari@gmail.com</a></p>
+        <p>Puhelin: <a href="tel:+358405247918">040 524 7918</a></p>
 
         <div class="social-links">
             <a href="https://www.linkedin.com/in/iivarikortesoja" target="_blank" rel="noopener noreferrer">
@@ -166,7 +165,7 @@
     </section>
 
     <footer>
-        <p>© Iivari Kortesoja 2025–2026 | Y-tunnus 3591660-9</p>
+        <p>© Iivari Kortesoja 2026 | Y-tunnus 3591660-9</p>
     </footer>
 
 </body>
