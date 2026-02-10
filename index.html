@@ -48,66 +48,183 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
-      
+
         *{margin:0;padding:0;box-sizing:border-box}
         body{
-            background:#0f0f0f;
-            color:#fff;
             font-family:'Roboto',sans-serif;
+            background:#1a1a1a;
+            color:#fff;
+            line-height:1.6;
+            overflow-x:hidden;
+        }
+
+        #home{
+            position:relative;
+            overflow:hidden;
+            text-align:center;
             min-height:100vh;
             display:flex;
             flex-direction:column;
-            text-align:center;
-            padding:20px;
+            align-items:center;
+            justify-content:center;
         }
-        h1{font-size:clamp(2.8rem, 10vw, 5rem);margin-bottom:1.5rem;text-shadow:0 0 30px rgba(0,0,0,.9)}
-        #home{position:relative;overflow:hidden;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
-        #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
-        #button-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 30px;
+        #home video{
+            position:absolute;
+            top:0;left:0;
+            width:100%;height:100%;
+            object-fit:cover;
+            z-index:-1;
         }
-        .btn {
+        #home h1{
+            font-size:clamp(2.5rem,8vw,4.5rem);
+            margin-bottom:20px;
+            text-shadow:0 0 30px rgba(0,0,0,.9);
+        }
+        #button-container{
+            display:flex;
+            flex-wrap:wrap;
+            gap:20px;
+            justify-content:center;
+            margin-top:30px;
+        }
+        .btn{
             background:#333;
             color:#fff;
             padding:14px 32px;
             border-radius:50px;
             text-decoration:none;
             font-size:1.1rem;
+            font-weight:500;
             transition:.3s;
             box-shadow:0 4px 15px rgba(0,0,0,.5);
-            cursor: pointer;
-            white-space: nowrap;
+            cursor:pointer;
+            white-space:nowrap;
         }
         .btn:hover{
             background:#4ade80;
-            transform:translateY(-3px)
+            transform:translateY(-3px);
+            box-shadow:0 8px 25px rgba(74,222,128,.4);
         }
-        .about-section{max-width:1200px;margin:100px auto;display:flex;align-items:center;gap:60px;flex-wrap:wrap;padding:0 20px}
-        .about-text{flex:1;min-width:300px;font-size:1.35rem;color:#e0e0e0;line-height:1.8}
-        .about-image-container{position:relative;flex:1;min-width:300px;max-width:600px;padding-bottom:56.25%;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.9)}
-        .about-slide{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1.2s ease}
+
+        .about-section{
+            max-width:1200px;
+            margin:100px auto;
+            display:flex;
+            align-items:center;
+            gap:60px;
+            flex-wrap:wrap;
+            padding:0 20px;
+        }
+        .about-text{
+            flex:1;
+            min-width:300px;
+            font-size:1.35rem;
+            color:#e0e0e0;
+            line-height:1.8;
+        }
+        .about-image-container{
+            position:relative;
+            flex:1;
+            min-width:300px;
+            max-width:600px;
+            padding-bottom:56.25%;
+            border-radius:20px;
+            overflow:hidden;
+            box-shadow:0 15px 50px rgba(0,0,0,.9);
+        }
+        .about-slide{
+            position:absolute;
+            top:0;left:0;
+            width:100%;height:100%;
+            opacity:0;
+            transition:opacity 1.2s ease;
+        }
         .about-slide.active{opacity:1}
-        .about-slide img{width:100%;height:100%;object-fit:cover}
-        .portfolio-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;max-width:1200px;margin:80px auto 140px;padding:0 20px}
-        .portfolio-item{position:relative;height:300px;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.8)}
-        .portfolio-item video,.portfolio-item img{width:100%;height:100%;object-fit:cover}
-        #services,#equipment{max-width:1200px;margin:0 auto 100px;text-align:center;padding:0 20px}
-        #services h2,#equipment h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:30px}
-        #dynamic-title{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding-top:4px;padding-bottom:6px;line-height:1.05}
-        #dynamic-title span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:auto;text-align:center;pointer-events:none;white-space:nowrap;will-change:transform, opacity;font-weight:600}
-        .service-text,#equipment p{font-size:1.3rem;color:#ddd;line-height:1.7;margin-bottom:60px;max-width:900px;margin-left:auto;margin-right:auto}
-        .equipment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;max-width:1200px;margin:60px auto}
-        .media-item{position:relative;padding-bottom:56.25%;background:#000;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.7)}
-        .media-item video,.media-item img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
-        #retro-camera{max-width:1200px;margin:120px auto;display:flex;align-items:center;gap:60px;flex-wrap:wrap;padding:0 20px}
-        .retro-text{flex:1;min-width:300px;font-size:1.35rem;color:#e0e0e0;line-height:1.8}
-        .retro-video{flex:1;min-width:300px;max-width:600px;position:relative;padding-bottom:56.25%;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.9)}
-        #retro-camera video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
-        #contact{max-width:800px;margin:0 auto 100px;text-align:center;padding:80px 20px}
+        .about-slide img{
+            width:100%;height:100%;
+            object-fit:cover;
+        }
+
+        #services,#equipment{
+            max-width:1200px;
+            margin:0 auto 100px;
+            text-align:center;
+            padding:0 20px;
+        }
+        #services h2,#equipment h2{
+            font-size:clamp(2.2rem,7vw,3.5rem);
+            margin-bottom:30px;
+        }
+        #dynamic-title{
+            position:relative;
+            overflow:hidden;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            padding-top:4px;
+            padding-bottom:6px;
+            line-height:1.05;
+        }
+        #dynamic-title span{
+            position:absolute;
+            left:50%;top:50%;
+            transform:translate(-50%,-50%);
+            width:auto;
+            text-align:center;
+            pointer-events:none;
+            white-space:nowrap;
+            will-change:transform, opacity;
+            font-weight:600;
+        }
+        .service-text,#equipment p{
+            font-size:1.3rem;
+            color:#ddd;
+            line-height:1.7;
+            margin-bottom:60px;
+            max-width:900px;
+            margin-left:auto;
+            margin-right:auto;
+        }
+
+        #retro-camera{
+            max-width:1200px;
+            margin:120px auto;
+            display:flex;
+            align-items:center;
+            gap:60px;
+            flex-wrap:wrap;
+            padding:0 20px;
+        }
+        .retro-text{
+            flex:1;
+            min-width:300px;
+            font-size:1.35rem;
+            color:#e0e0e0;
+            line-height:1.8;
+        }
+        .retro-video{
+            flex:1;
+            min-width:300px;
+            max-width:600px;
+            position:relative;
+            padding-bottom:56.25%;
+            border-radius:20px;
+            overflow:hidden;
+            box-shadow:0 15px 50px rgba(0,0,0,.9);
+        }
+        #retro-camera video{
+            position:absolute;
+            top:0;left:0;
+            width:100%;height:100%;
+            object-fit:cover;
+        }
+
+        #contact{
+            max-width:800px;
+            margin:0 auto 100px;
+            text-align:center;
+            padding:80px 20px;
+        }
         #contact h2{font-size:2.8rem;margin-bottom:30px}
         #contact p{font-size:1.3rem;margin:15px 0}
         #contact a{color:#4ade80;text-decoration:none;transition:.3s}
@@ -115,18 +232,25 @@
         .social-links{display:flex;gap:24px;justify-content:center;margin-top:20px}
         .social-icon{width:32px;height:32px;object-fit:contain;transition:transform .3s ease}
         .social-icon:hover{transform:scale(1.2)}
-        footer{background:#000;padding:40px 20px;text-align:center;font-size:1rem;border-top:1px solid #333}
-        @media(max-width:768px){
-            .about-text{font-size:1.1rem;text-align:left;padding:0 20px}
-            .service-text, #equipment p, .retro-text{font-size:1.1rem;text-align:left;padding:0 20px}
-            .portfolio-gallery{grid-template-columns:1fr}
-            .social-icon{width:24px;height:24px}
-            #dynamic-title {padding-bottom:8px; padding-top:6px}
-            #button-container{flex-direction:column;gap:16px}
+
+        footer{
+            background:#000;
+            padding:40px 20px;
+            text-align:center;
+            font-size:1rem;
+            border-top:1px solid #333;
         }
+
         @media(max-width:992px){
             .about-section,#retro-camera{flex-direction:column;text-align:center}
             .about-image-container,.retro-video{max-width:100%}
+        }
+        @media(max-width:768px){
+            .about-text{font-size:1.1rem;text-align:left;padding:0 20px}
+            .service-text, #equipment p, .retro-text{font-size:1.1rem;text-align:left;padding:0 20px}
+            .social-icon{width:24px;height:24px}
+            #dynamic-title {padding-bottom:8px; padding-top:6px}
+            #button-container{flex-direction:column;gap:16px}
         }
     </style>
 
@@ -199,7 +323,7 @@
         <p>Ota yhteyttä ja keskustellaan tulevista projekteista!</p>
         <p>Sähköposti: <a href="mailto:kortesoja.iivari@gmail.com">kortesoja.iivari@gmail.com</a></p>
         <p>Puhelin: <a href="tel:+358405247918">040 524 7918</a></p>
-     
+      
         <div class="social-links">
             <a href="https://www.linkedin.com/in/iivarikortesoja" target="_blank">
                 <img src="MEDIA/Ikonit/linkedin.webp" alt="LinkedIn" class="social-icon">
