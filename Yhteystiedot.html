@@ -26,57 +26,110 @@
     <style>
         *{margin:0;padding:0;box-sizing:border-box;font-family:'Arial',sans-serif}
         body{background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
-        /* header/nav styles moved to SKRIPTIT/header.js to keep header yhtenäisenä */
 
         section{padding:100px 20px;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
         #contact{max-width:1200px;margin:0 auto}
 
-        /* TÄYSIN SAMA SLIDE UP + FADE ANIMAATIO KUIN ETUSIVULLA – TOIMII NYT */
+        /* Dynamic title container – tyhjäksi jätettävä paikka, korkeus hoidetaan JS:llä */
         #dynamic-title{
-            position:relative;
-            height:100px;
-            overflow:hidden;
-            margin-bottom:20px;
+            position: relative;
+            width: 100%;
+            min-height: 120px; /* fallback, JS ylikirjoittaa */
+            margin-bottom: 35px;
+            overflow: hidden;
         }
+
         #dynamic-title span{
-            position:absolute;
-            width:100%;
-            text-align:center;
-            font-size:3.5em;
-            text-shadow:0 0 30px rgba(0,0,0,.8);
-            opacity:0;
-            transform:translateY(100%);
-            animation:slideUpFade 18s infinite linear;
-        }
-        #dynamic-title span:nth-child(1){animation-delay:0s}
-        #dynamic-title span:nth-child(2){animation-delay:6s}
-        #dynamic-title span:nth-child(3){animation-delay:12s}
-
-        @keyframes slideUpFade{
-            0% {opacity:0; transform:translateY(100%)}
-            8% {opacity:1; transform:translateY(0)}
-            25% {opacity:1; transform:translateY(0)}
-            33% {opacity:0; transform:translateY(-100%)}
-            100% {opacity:0; transform:translateY(-100%)}
+            font-size: 3.8em;
+            font-weight: 700;
+            text-shadow: 0 0 30px rgba(0,0,0,.8);
+            white-space: nowrap;
         }
 
-        #contact p{font-size:1.3em;margin:15px 0}
-        #contact a{color:#4ade80;transition:.3s}
-        #contact a:hover{opacity:0.8}
+        #contact .intro-text{
+            font-size: 1.4em;
+            margin: 0 0 35px;
+            color: #d1d5db;
+            max-width: 720px;
+        }
 
-        footer{background:#000;text-align:center;padding:25px}
+        #contact .contact-info{
+            font-size: 1.3em;
+            margin: 20px 0;
+        }
 
-        @media(max-width:768px){
-            /* nav a styles removed here — now in shared header */
-            #dynamic-title{height:80px}
-            #dynamic-title span{font-size:2.5em}
-            #contact p{font-size:1.1em}
+        #contact a{
+            color: #4ade80;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        #contact a:hover{
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        .social-links{
+            margin-top: 45px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .social-icon{
+            width: 64px;
+            height: 64px;
+            transition: transform .3s ease, filter .3s ease;
+            filter: brightness(0.9) contrast(1.1);
+        }
+
+        .social-icon:hover{
+            transform: scale(1.15);
+            filter: brightness(1.2) drop-shadow(0 0 12px rgba(74,222,128,0.5));
+        }
+
+        footer{
+            background: #000;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.95em;
+            color: #888;
+        }
+
+        footer a{
+            color: #4ade80;
+            text-decoration: none;
+        }
+
+        footer a:hover{
+            text-decoration: underline;
+        }
+
+        @media(max-width: 768px){
+            #dynamic-title{
+                min-height: 90px;
+            }
+            #dynamic-title span{
+                font-size: 2.8em;
+            }
+            .social-icon{
+                width: 56px;
+                height: 56px;
+            }
+            #contact .intro-text{
+                font-size: 1.25em;
+            }
+            #contact .contact-info{
+                font-size: 1.15em;
+            }
         }
     </style>
 
-    <!-- Shared header script (in SKRIPTIT/header.js) -->
+    <!-- Shared header script -->
     <script src="SKRIPTIT/header.js" defer></script>
-     <script src="SKRIPTIT/mobile-scaling.js" defer></script>
+    <script src="SKRIPTIT/mobile-scaling.js" defer></script>
+    <!-- Uusi dynaaminen otsikko-skripti -->
+    <script src="SKRIPTIT/dynamic-title.js" defer></script>
 </head>
 <body>
 
@@ -85,13 +138,28 @@
             <span>Ota yhteyttä</span>
             <span>Työskennellään yhdessä</span>
             <span>Keskustellaan projekteista</span>
+            <span>Löydetään ratkaisu</span>
         </div>
-        <p>Sähköposti: <a href="mailto:example@email.com">example@email.com</a></p>
-        <p>Puhelin: <a href="tel:+358405247918">040 5247918</a></p>
+
+        <p class="intro-text">Ota rohkeasti yhteyttä – katsotaan, miten voin auttaa sinun projektissasi tai ideassasi!</p>
+
+        <div class="contact-info">
+            <p>Sähköposti: <a href="mailto:kortesoja.iivari@gmail.com">kortesoja.iivari@gmail.com</a></p>
+            <p>Puhelin: <a href="tel:+358405247918">040 524 7918</a></p>
+        </div>
+
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/iivarikortesoja" target="_blank" rel="noopener noreferrer">
+                <img src="MEDIA/Ikonit/linkedin.webp" alt="LinkedIn" class="social-icon">
+            </a>
+            <a href="https://api.whatsapp.com/message/2JQ4G2D3EXLID1?autoload=1&app_absent=0" target="_blank" rel="noopener noreferrer">
+                <img src="MEDIA/Ikonit/whatsapp.webp" alt="WhatsApp" class="social-icon">
+            </a>
+        </div>
     </section>
 
     <footer>
-        <p>© Iivari Kortesoja 2025 | Y-tunnus A38904</p>
+        <p>© Iivari Kortesoja 2025 | Y-tunnus 3591660-9</p>
     </footer>
 
 </body>
