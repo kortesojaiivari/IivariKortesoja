@@ -27,35 +27,35 @@
         *{margin:0;padding:0;box-sizing:border-box;font-family:'Arial',sans-serif}
         body{background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
 
-        section{padding:100px 20px;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-        #contact{max-width:1200px;margin:0 auto}
+        section{padding:80px 20px;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+        #contact{max-width:1000px;margin:0 auto}
 
-        /* Dynamic title container – tyhjäksi jätettävä paikka, korkeus hoidetaan JS:llä */
+        /* Dynamic title – pienempi koko */
         #dynamic-title{
             position: relative;
             width: 100%;
-            min-height: 120px; /* fallback, JS ylikirjoittaa */
-            margin-bottom: 35px;
+            min-height: 80px;          /* pienempi korkeus */
+            margin-bottom: 25px;
             overflow: hidden;
         }
 
         #dynamic-title span{
-            font-size: 3.8em;
+            font-size: 2.6rem;         /* selvästi pienempi kuin aiempi 3.8em */
             font-weight: 700;
-            text-shadow: 0 0 30px rgba(0,0,0,.8);
+            text-shadow: 0 0 20px rgba(0,0,0,.7);
             white-space: nowrap;
         }
 
         #contact .intro-text{
-            font-size: 1.4em;
-            margin: 0 0 35px;
+            font-size: 1.25rem;        /* pienempi */
+            margin: 0 0 30px;
             color: #d1d5db;
-            max-width: 720px;
+            max-width: 680px;
         }
 
         #contact .contact-info{
-            font-size: 1.3em;
-            margin: 20px 0;
+            font-size: 1.2rem;         /* hieman pienempi */
+            margin: 18px 0;
         }
 
         #contact a{
@@ -65,34 +65,34 @@
         }
 
         #contact a:hover{
-            opacity: 0.8;
+            opacity: 0.85;
             text-decoration: underline;
         }
 
         .social-links{
-            margin-top: 45px;
+            margin-top: 35px;
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 30px;
         }
 
         .social-icon{
-            width: 64px;
-            height: 64px;
+            width: 52px;               /* hieman pienemmät ikonit */
+            height: 52px;
             transition: transform .3s ease, filter .3s ease;
-            filter: brightness(0.9) contrast(1.1);
+            filter: brightness(0.92) contrast(1.08);
         }
 
         .social-icon:hover{
-            transform: scale(1.15);
-            filter: brightness(1.2) drop-shadow(0 0 12px rgba(74,222,128,0.5));
+            transform: scale(1.12);
+            filter: brightness(1.15) drop-shadow(0 0 10px rgba(74,222,128,0.45));
         }
 
         footer{
             background: #000;
             text-align: center;
-            padding: 30px 20px;
-            font-size: 0.95em;
+            padding: 25px 20px;
+            font-size: 0.9rem;
             color: #888;
         }
 
@@ -106,21 +106,28 @@
         }
 
         @media(max-width: 768px){
+            section{padding:60px 16px;}
             #dynamic-title{
-                min-height: 90px;
+                min-height: 70px;
             }
             #dynamic-title span{
-                font-size: 2.8em;
+                font-size: 2.1rem;     /* mobiilissa vielä pienempi */
+            }
+            .intro-text{
+                font-size: 1.1rem;
+            }
+            .contact-info{
+                font-size: 1.05rem;
             }
             .social-icon{
-                width: 56px;
-                height: 56px;
+                width: 48px;
+                height: 48px;
             }
-            #contact .intro-text{
-                font-size: 1.25em;
-            }
-            #contact .contact-info{
-                font-size: 1.15em;
+        }
+
+        @media(max-width: 480px){
+            #dynamic-title span{
+                font-size: 1.9rem;
             }
         }
     </style>
@@ -128,7 +135,7 @@
     <!-- Shared header script -->
     <script src="SKRIPTIT/header.js" defer></script>
     <script src="SKRIPTIT/mobile-scaling.js" defer></script>
-    <!-- Uusi dynaaminen otsikko-skripti -->
+    <!-- Dynaaminen otsikko -->
     <script src="SKRIPTIT/dynamic-title.js" defer></script>
 </head>
 <body>
@@ -159,7 +166,7 @@
     </section>
 
     <footer>
-        <p>© Iivari Kortesoja 2025 | Y-tunnus 3591660-9</p>
+        <p>© Iivari Kortesoja 2025–2026 | Y-tunnus 3591660-9</p>
     </footer>
 
 </body>
