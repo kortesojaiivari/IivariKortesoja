@@ -88,7 +88,7 @@
         }
         .portfolio-item{
             position:relative;
-            width:200px;
+            width:400px;
             height:200px;
             border-radius:20px;
             overflow:hidden;
@@ -124,8 +124,16 @@
         @media(max-width:768px){
             .about-text{font-size:1.1rem;text-align:left;padding:0 20px}
             .service-text, #equipment p, .retro-text{font-size:1.1rem;text-align:left;padding:0 20px}
-            .portfolio-gallery{grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:20px;}
-            .portfolio-item{width:200px; height:200px;}
+            .portfolio-gallery{
+                grid-template-columns:1fr;
+                gap:20px;
+            }
+            .portfolio-item{
+                width:100%;
+                max-width:400px;
+                height:200px;
+                margin:0 auto;
+            }
             .social-icon{width:24px;height:24px}
             #dynamic-title {padding-bottom:8px; padding-top:6px}
             #button-container{flex-direction:column;gap:16px}
