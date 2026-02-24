@@ -206,6 +206,7 @@
     <script src="../SKRIPTIT/mobile-scaling.js" defer></script>
     <script src="../SKRIPTIT/kampanja-popup.js" defer></script>
     <script src="../SKRIPTIT/photo-buttons.js" defer></script>
+    <script src="../SKRIPTIT/paikkakunta-dropdown.js" defer></script>
 </head>
 <body>
 
@@ -299,35 +300,11 @@
             </div>
         </div>
     </section>
-
     <div id="location-selector">
         <h2>Valitse kuvauspaikkakunta</h2>
-        <select id="paikkakunta-dropdown" onchange="handlePaikkakuntaChange(this.value)" aria-label="Valitse kuvauspaikkakunta">
-            <option value="Seinäjoki">Seinäjoki</option>
-            <option value="Eura">Eura</option>
-            <option value="Eurajoki">Eurajoki</option>
-            <option value="Harjavalta">Harjavalta</option>
-            <option value="Huittinen">Huittinen</option>
-            <option value="Ikaalinen">Ikaalinen</option>
-            <option value="Kankaanpää">Kankaanpää</option>
-            <option value="Karvia">Karvia</option>
-            <option value="Kokemäki">Kokemäki</option>
-            <option value="Nakkila">Nakkila</option>
-            <option value="Noormarkku">Noormarkku</option>
-            <option value="Parkano">Parkano</option>
-            <option value="Pori">Pori</option>
-            <option value="Pomarkku">Pomarkku</option>
-            <option value="Rauma">Rauma</option>
-            <option value="Sastamala">Sastamala</option>
-            <option value="Säkylä">Säkylä</option>
-            <option value="Tampere">Tampere</option>
-            <option value="Vaasa">Vaasa</option>
-            <option value="Ylöjärvi">Ylöjärvi</option>
-            <option value="muu">Muu Suomi (kysy tarjousta)</option>
-        </select>
+        <select id="paikkakunta-dropdown" onchange="handlePaikkakuntaChange(this.value)" aria-label="Valitse kuvauspaikkakunta"></select>
         <p class="info">Valitsemalla paikkakunnan siirryt aluekohtaiselle sivulle, jossa on tarkemmat hinnoittelut.</p>
     </div>
-
     <script>
         function handlePaikkakuntaChange(value) {
             if (!value) return;
