@@ -1,5 +1,4 @@
 const allLocations = [
-  {value: "Pori", text: "Pori"},
   {value: "Eura", text: "Eura"},
   {value: "Eurajoki", text: "Eurajoki"},
   {value: "Harjavalta", text: "Harjavalta"},
@@ -11,6 +10,7 @@ const allLocations = [
   {value: "Nakkila", text: "Nakkila"},
   {value: "Noormarkku", text: "Noormarkku"},
   {value: "Parkano", text: "Parkano"},
+  {value: "Pori", text: "Pori"},
   {value: "Pomarkku", text: "Pomarkku"},
   {value: "Rauma", text: "Rauma"},
   {value: "Sastamala", text: "Sastamala"},
