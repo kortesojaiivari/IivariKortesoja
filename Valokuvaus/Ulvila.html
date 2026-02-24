@@ -296,33 +296,9 @@
             </div>
         </div>
     </section>
-
     <div id="location-selector">
         <h2>Valitse kuvauspaikkakunta</h2>
-        <select id="paikkakunta-dropdown" onchange="handlePaikkakuntaChange(this.value)" aria-label="Valitse kuvauspaikkakunta">
-            <option value="Ulvila">Ulvila</option>
-            <option value="Eura">Eura</option>
-            <option value="Eurajoki">Eurajoki</option>
-            <option value="Harjavalta">Harjavalta</option>
-            <option value="Huittinen">Huittinen</option>
-            <option value="Ikaalinen">Ikaalinen</option>
-            <option value="Kankaanpää">Kankaanpää</option>
-            <option value="Karvia">Karvia</option>
-            <option value="Kokemäki">Kokemäki</option>
-            <option value="Nakkila">Nakkila</option>
-            <option value="Noormarkku">Noormarkku</option>
-            <option value="Parkano">Parkano</option>
-            <option value="Pori">Pori</option>
-            <option value="Pomarkku">Pomarkku</option>
-            <option value="Rauma">Rauma</option>
-            <option value="Sastamala">Sastamala</option>
-            <option value="Seinäjoki">Seinäjoki</option>
-            <option value="Säkylä">Säkylä</option>
-            <option value="Tampere">Tampere</option>
-            <option value="Vaasa">Vaasa</option>
-            <option value="Ylöjärvi">Ylöjärvi</option>
-            <option value="muu">Muu Suomi (kysy tarjousta)</option>
-        </select>
+        <select id="paikkakunta-dropdown" onchange="handlePaikkakuntaChange(this.value)" aria-label="Valitse kuvauspaikkakunta"></select>
         <p class="info">Valitsemalla paikkakunnan siirryt aluekohtaiselle sivulle, jossa on tarkemmat hinnoittelut.</p>
     </div>
 
@@ -338,8 +314,7 @@
             window.location.href = url;
         }
     </script>
-
-    <div class="large-gallery">
+        <div class="large-gallery">
         <script>
             const largeSequence = [[1,7,13,19,25,31],[2,8,14,20,26,32],[3,9,15,21,27,33],[4,10,16,22,28,34],[5,11,17,23,29,35],[6,12,18,24,30,36]];
             largeSequence.forEach(boxImages => {
