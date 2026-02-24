@@ -296,12 +296,11 @@
             </div>
         </div>
     </section>
-    <div id="location-selector">
+<div id="location-selector">
         <h2>Valitse kuvauspaikkakunta</h2>
         <select id="paikkakunta-dropdown" onchange="handlePaikkakuntaChange(this.value)" aria-label="Valitse kuvauspaikkakunta"></select>
         <p class="info">Valitsemalla paikkakunnan siirryt aluekohtaiselle sivulle, jossa on tarkemmat hinnoittelut.</p>
     </div>
-
     <script>
         function handlePaikkakuntaChange(value) {
             if (!value) return;
