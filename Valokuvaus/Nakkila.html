@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valokuvaus Nakkila | Iivari Kortesoja</title>
     <meta name="description" content="Edullista Valokuvausta Nakkilassa – Hääkuvaus Nakkila, kokopäiväinen hääkuvaus, valmistujaiset, hautajaiskuvaus, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta. Nakkilassa Valokuvausta Edullisesti. Tarjolla on myös videointia valokuvauksen ohella, jolloin Häävideo tai muisteluvideo tilanteesta on saatavilla.">
-    <!-- Google Analytics 4 -->
+    <!-- GOOGLE ANALYTICS 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
     </script>
-    <!-- Microsoft Clarity -->
+    <!-- MICROSOFT CLARITY -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -21,7 +21,8 @@
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "ud6y4jpngh");
     </script>
-    <!-- Open Graph / Social Media Preview (korjattu – nyt näkyy linkin esikatselu WhatsAppissa, Facebookissa, Instagramissa, LinkedInissä jne.) -->
+
+    <!-- Open Graph / Social Media Preview (korjattu – nyt näkyy siisti esikatselu WhatsAppissa, Facebookissa, Instagramissa, LinkedInissä jne.) -->
     <meta property="og:title" content="Valokuvaus Nakkila | Iivari Kortesoja">
     <meta property="og:description" content="Edullista Valokuvausta Nakkilassa – Hääkuvaus Nakkila, kokopäiväinen hääkuvaus, valmistujaiset, hautajaiskuvaus, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta. Tarjolla myös videointia.">
     <meta property="og:image" content="https://www.iivarikortesoja.media/MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja1.webp">
@@ -33,7 +34,8 @@
     <meta name="twitter:title" content="Valokuvaus Nakkila | Iivari Kortesoja">
     <meta name="twitter:description" content="Edullista Valokuvausta Nakkilassa – Hääkuvaus Nakkila, kokopäiväinen hääkuvaus, valmistujaiset, hautajaiskuvaus, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta.">
     <meta name="twitter:image" content="https://www.iivarikortesoja.media/MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja1.webp">
-    <!-- Structured Data (JSON-LD) -->
+
+    <!-- Structured Data (JSON-LD) – korjattu (poistettu ylimääräiset script-tagit) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -64,6 +66,7 @@
       ]
     }
     </script>
+
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
@@ -124,6 +127,7 @@
         #final-contact .qr-box img{width:100%;height:auto;border-radius:12px;transition:opacity .3s}
         #final-contact .qr-box:hover img{opacity:0.9}
         footer{background:#000;padding:40px 20px;text-align:center;font-size:1rem;border-top:1px solid #333}
+       
         @media(max-width:992px){
             .about-section{flex-direction:column;text-align:center}
             .upper-row,.lower-row{grid-template-columns:1fr}
@@ -196,7 +200,7 @@
             .contact-btn{min-height: 50px;}
         }
     </style>
-    <link rel="canonical" href="https://www.iivarikortesoja.media/Valokuvaus_Satakunta.html">
+    <link rel="canonical" href="https://www.iivarikortesoja.media/Valokuvaus/Nakkila.html">
     <!-- Skriptit -->
     <script src="../SKRIPTIT/40pricing-modules.js" defer></script>
     <script src="../SKRIPTIT/dynamic-title.js" defer></script>
@@ -207,6 +211,41 @@
     <script src="../SKRIPTIT/paikkakunta-dropdown.js" defer></script>
 </head>
 <body>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                function createPricingBox(pkg) {
+                    let html = `<h3>${pkg.title}</h3><p class="price">${pkg.price}</p>`;
+                    if (pkg.desc) html += `<p>${pkg.desc}</p>`;
+                    if (pkg.features) {
+                        html += '<ul>';
+                        pkg.features.forEach(f => html += `<li>${f}</li>`);
+                        html += '</ul>';
+                    }
+                    if (pkg.quote) html += `<p class="quote">${pkg.quote}</p>`;
+                    const box = document.createElement('div');
+                    box.className = 'pricing-box';
+                    box.innerHTML = html;
+                    return box;
+                }
+                const upperRow = document.querySelector('#pricing .upper-row');
+                if (upperRow && typeof upperPackages !== 'undefined' && Array.isArray(upperPackages)) {
+                    upperPackages.forEach(pkg => upperRow.appendChild(createPricingBox(pkg)));
+                }
+                const lowerRow = document.querySelector('#pricing .lower-row');
+                const contactBox = lowerRow ? lowerRow.querySelector('.contact-box') : null;
+                if (lowerRow && contactBox && typeof lowerPackages !== 'undefined' && Array.isArray(lowerPackages)) {
+                    lowerPackages.forEach(pkg => {
+                        lowerRow.insertBefore(createPricingBox(pkg), contactBox);
+                    });
+                    if (lowerPackages.length > 1) {
+                        lowerRow.style.gridTemplateColumns = `repeat(${lowerPackages.length + 1}, 1fr)`;
+                    }
+                }
+            }, 0);
+        });
+    </script>
+
     <section id="home">
         <video autoplay muted loop playsinline poster="../VALOKUVAUS/valokuvaus-poster.webp">
             <source src="../MEDIA/Pääsivu_Videotuotannot ja Valokuvaus/2000luvunkamera.webm" type="video/webm">
@@ -294,7 +333,7 @@
             <p>Sähköposti: <a href="mailto:kortesoja.iivari@gmail.com">kortesoja.iivari@gmail.com</a></p>
             <p>Puhelin: <a href="tel:+358405247918">040 524 7918</a></p>
         </div>
-    <div class="qr-box">
+      <div class="qr-box">
     <a href="https://wa.me/message/2JQ4G2D3EXLID1" target="_blank" rel="noopener">
         <img src="../MEDIA/Ikonit/QR.webp" alt="WhatsApp QR-koodi">
     </a>
@@ -307,7 +346,6 @@
         <p>© Iivari Kortesoja 2026 | Y-Tunnus 3591660-9</p>
     </footer>
     <script>
-        // Videon IntersectionObserver
         (function(){
             const bg = document.querySelector('#home video');
             const home = document.getElementById('home');
@@ -316,11 +354,8 @@
                 new IntersectionObserver(entries => {
                     entries.forEach(entry => entry.isIntersecting ? bg.play() : bg.pause());
                 }, {threshold: 0.5}).observe(home);
-            } else {
-                try { bg.play(); } catch(e) {}
-            }
+            } else { try { bg.play(); } catch(e) {} }
         })();
-        // About-kuvan vaihto
         (function(){
             const imgs = document.querySelectorAll('.about-image img');
             if (imgs.length < 1) return;
@@ -331,7 +366,6 @@
                 imgs[i].classList.add('active');
             }, 5000);
         })();
-        // Galleria-kuvien vaihto
         document.querySelectorAll('.small-item, .large-item').forEach(box => {
             const imgs = box.querySelectorAll('img');
             if (imgs.length <= 1) return;
@@ -342,41 +376,6 @@
                 i = (i + 1) % imgs.length;
                 imgs[i].classList.add('active');
             }, delay);
-        });
-    </script>
-    <!-- Hinnoittelupakettien luonti (esimerkki inline, voit siirtää omaan .js-tiedostoon) -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                function createPricingBox(pkg) {
-                    let html = `<h3>${pkg.title}</h3><p class="price">${pkg.price}</p>`;
-                    if (pkg.desc) html += `<p>${pkg.desc}</p>`;
-                    if (pkg.features) {
-                        html += '<ul>';
-                        pkg.features.forEach(f => html += `<li>${f}</li>`);
-                        html += '</ul>';
-                    }
-                    if (pkg.quote) html += `<p class="quote">${pkg.quote}</p>`;
-                    const box = document.createElement('div');
-                    box.className = 'pricing-box';
-                    box.innerHTML = html;
-                    return box;
-                }
-                const upperRow = document.querySelector('#pricing .upper-row');
-                if (upperRow && typeof upperPackages !== 'undefined' && Array.isArray(upperPackages)) {
-                    upperPackages.forEach(pkg => upperRow.appendChild(createPricingBox(pkg)));
-                }
-                const lowerRow = document.querySelector('#pricing .lower-row');
-                const contactBox = lowerRow ? lowerRow.querySelector('.contact-box') : null;
-                if (lowerRow && contactBox && typeof lowerPackages !== 'undefined' && Array.isArray(lowerPackages)) {
-                    lowerPackages.forEach(pkg => {
-                        lowerRow.insertBefore(createPricingBox(pkg), contactBox);
-                    });
-                    if (lowerPackages.length > 1) {
-                        lowerRow.style.gridTemplateColumns = `repeat(${lowerPackages.length + 1}, 1fr)`;
-                    }
-                }
-            }, 0);
         });
     </script>
 </body>
