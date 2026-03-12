@@ -201,6 +201,7 @@
     <script src="../SKRIPTIT/kampanja-popup.js" defer></script>
     <script src="../SKRIPTIT/photo-buttons.js" defer></script>
     <script src="../SKRIPTIT/paikkakunta-dropdown.js" defer></script>
+    <script src="../SKRIPTIT/valokuvaus-gallery.js" defer></script>
 </head>
 <body>
 
@@ -268,21 +269,7 @@
             <img src="../MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja1.webp" alt="Valokuvaus 1" class="active">
         </div>
     </div>
-
-    <div class="small-gallery" aria-hidden="false">
-        <script>
-            const smallSequence = [[1,7,13,19,25,31],[2,8,14,20,26,32],[3,9,15,21,27,33],[4,10,16,22,28,34],[5,11,17,23,29,35]];
-            smallSequence.forEach(boxImages => {
-                document.write('<div class="small-item">');
-                boxImages.forEach((num, idx) => {
-                    const cls = idx === 0 ? ' class="active"' : '';
-                    document.write(`<img src="../MEDIA/VALOKUVAUS/Valokuvaus${num}.webp"${cls} alt="Valokuvaus ${num}">`);
-                });
-                document.write('</div>');
-            });
-        </script>
-    </div>
-
+<div class="small-gallery" aria-hidden="false"></div>
     <section id="pricing">
         <h2>Hinnoittelu</h2>
         <p class="disclaimer">*Nämä ovat suuntaa-antavia hintoja. Hinnat sisältävät ALV 25,5 %. Matkakustannukset (kilometrikorvaus) lisätään erikseen tarpeen mukaan.</p>
@@ -311,21 +298,7 @@
             window.location.href = url;
         }
     </script>
-
-    <div class="large-gallery">
-        <script>
-            const largeSequence = [[1,7,13,19,25,31],[2,8,14,20,26,32],[3,9,15,21,27,33],[4,10,16,22,28,34],[5,11,17,23,29,35],[6,12,18,24,30,36]];
-            largeSequence.forEach(boxImages => {
-                document.write('<div class="large-item">');
-                boxImages.forEach((num, idx) => {
-                    const cls = idx === 0 ? ' class="active"' : '';
-                    document.write(`<img src="../MEDIA/VALOKUVAUS/Valokuvaus${num}.webp"${cls} alt="Valokuvaus ${num}">`);
-                });
-                document.write('</div>');
-            });
-        </script>
-    </div>
-
+<div class="large-gallery" aria-hidden="false"></div>
     <section id="final-contact">
         <div class="contact-info">
             <h2>Ota yhteyttä</h2>
