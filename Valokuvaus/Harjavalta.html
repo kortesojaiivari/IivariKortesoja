@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valokuvaus Harjavalta | Iivari Kortesoja</title>
     <meta name="description" content="Edullista Valokuvausta Harjavallassa – Hääkuvaus Harjavalta, kokopäiväinen hääkuvaus, valmistujaiset, hautajaiskuvaus, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta. Harjavallassa Valokuvausta Edullisesti. Tarjolla on myös videointia valokuvauksen ohella, jolloin Häävideo tai muisteluvideo tilanteesta on saatavilla.">
-
     <!-- GOOGLE ANALYTICS 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
     <script>
@@ -14,7 +13,6 @@
         gtag('js', new Date());
         gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
     </script>
-
     <!-- MICROSOFT CLARITY -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
@@ -23,7 +21,6 @@
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "ud6y4jpngh");
     </script>
-
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
     {
@@ -53,7 +50,7 @@
       ]
     }
     </script>
-
+    <link rel="canonical" href="https://www.iivarikortesoja.media/Valokuvaus/Satakunta.html">
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
@@ -63,7 +60,7 @@
         #photo-button-container {display: flex;flex-wrap: wrap;gap: 20px;justify-content: center;margin-top: 40px;z-index: 10;}
         .btn {background:#333;color:#fff;padding:14px 32px;border-radius:50px;text-decoration:none;font-size:1.1rem;transition:.3s;box-shadow:0 4px 15px rgba(0,0,0,.5);cursor:pointer;white-space:nowrap;}
         .btn:hover {background:#4ade80;transform:translateY(-3px);}
-        #dynamic-title {position: relative;overflow: visible;display: flex;align-items: center;justify-content: center;margin: 80px auto 60px;padding: 40px 20px;min-height: 160px;z-index: 5;}
+        #dynamic-title {position: relative;overflow: visible;display: flex;align-items:center;justify-content:center;margin: 80px auto 60px;padding: 40px 20px;min-height: 160px;z-index: 5;}
         #dynamic-title span {position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);width: auto;max-width: 90vw;text-align: center;font-size: clamp(2.2rem, 7vw, 4rem);font-weight: bold;text-shadow: 0 4px 20px rgba(0,0,0,.8);pointer-events: none;white-space: nowrap;will-change: transform, opacity;}
         .about-section{max-width:1200px;margin:80px auto;display:flex;align-items:center;gap:60px;flex-wrap:wrap;padding:0 20px}
         .about-text{flex:1.5;min-width:300px;font-size:1.35rem;color:#e0e0e0;line-height:1.8}
@@ -114,7 +111,6 @@
         #final-contact .qr-box img{width:100%;height:auto;border-radius:12px;transition:opacity .3s}
         #final-contact .qr-box:hover img{opacity:0.9}
         footer{background:#000;padding:40px 20px;text-align:center;font-size:1rem;border-top:1px solid #333}
-
         @media(max-width:992px){
             .about-section{flex-direction:column;text-align:center}
             .upper-row,.lower-row{grid-template-columns:1fr}
@@ -187,9 +183,6 @@
             .contact-btn{min-height: 50px;}
         }
     </style>
-
-    <link rel="canonical" href="https://www.iivarikortesoja.media/Valokuvaus/Satakunta.html">
-
     <!-- Skriptit -->
     <script src="../SKRIPTIT/40pricing-modules.js" defer></script>
     <script src="../SKRIPTIT/dynamic-title.js" defer></script>
@@ -199,10 +192,8 @@
     <script src="../SKRIPTIT/photo-buttons.js" defer></script>
     <script src="../SKRIPTIT/paikkakunta-dropdown.js" defer></script>
     <script src="../SKRIPTIT/valokuvaus-gallery.js" defer></script>
-    
 </head>
 <body>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
@@ -220,12 +211,10 @@
                     box.innerHTML = html;
                     return box;
                 }
-
                 const upperRow = document.querySelector('#pricing .upper-row');
                 if (upperRow && typeof upperPackages !== 'undefined' && Array.isArray(upperPackages)) {
                     upperPackages.forEach(pkg => upperRow.appendChild(createPricingBox(pkg)));
                 }
-
                 const lowerRow = document.querySelector('#pricing .lower-row');
                 const contactBox = lowerRow ? lowerRow.querySelector('.contact-box') : null;
                 if (lowerRow && contactBox && typeof lowerPackages !== 'undefined' && Array.isArray(lowerPackages)) {
@@ -239,7 +228,6 @@
             }, 0);
         });
     </script>
-
     <section id="home">
         <video autoplay muted loop playsinline poster="../VALOKUVAUS/valokuvaus-poster.webp">
             <source src="../MEDIA/Pääsivu_Videotuotannot ja Valokuvaus/2000luvunkamera.webm" type="video/webm">
@@ -248,7 +236,6 @@
         <h2>Valokuvaus Harjavalta</h2>
         <div id="photo-button-container"></div>
     </section>
-
     <h2 id="dynamic-title" class="dynamic-title" data-interval="2500" aria-live="polite" aria-label="Valokuvauspalvelut">
         <span>Häät</span>
         <span>Valmistujaiset</span>
@@ -257,7 +244,6 @@
         <span>Ristiäiset</span>
         <span>Muotokuvat</span>
     </h2>
-
     <div class="about-section">
         <div class="about-text">
             Olipa kyseessä niin valmistujaiset, hautajaiset, häät, ristiäiset tai mitä vaan. Dokumentoin tärkeät hetkesi, jolloin voit keskittyä hetkeesi ja muistella sitä valokuvien kautta jälkikäteen.<br><br>
@@ -269,7 +255,7 @@
             <img src="../MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja1.webp" alt="Valokuvaus 1" class="active">
         </div>
     </div>
-<div class="small-gallery" aria-hidden="false"></div>
+    <div class="small-gallery" aria-hidden="false"></div>
     <section id="pricing">
         <h2>Hinnoittelu</h2>
         <p class="disclaimer">*Nämä ovat suuntaa-antavia hintoja. Hinnat sisältävät ALV 25,5 %. Matkakustannukset (kilometrikorvaus) lisätään erikseen tarpeen mukaan.</p>
@@ -297,27 +283,26 @@
             }
             window.location.href = url;
         }
- <div class="large-gallery" aria-hidden="false"></div>
+    </script>
+    <div class="large-gallery" aria-hidden="false"></div>
     <section id="final-contact">
         <div class="contact-info">
             <h2>Ota yhteyttä</h2>
             <p>Sähköposti: <a href="mailto:kortesoja.iivari@gmail.com">kortesoja.iivari@gmail.com</a></p>
             <p>Puhelin: <a href="tel:+358405247918">040 524 7918</a></p>
         </div>
-   <div class="qr-box">
-    <a href="https://wa.me/message/2JQ4G2D3EXLID1" target="_blank" rel="noopener">
-        <img src="../MEDIA/Ikonit/QR.webp" alt="WhatsApp QR-koodi">
-    </a>
-    <p style="text-align: center; margin-top: 20px; color: #bbb; font-size: 1.05rem; line-height: 1.4;">
-        Klikkaa elementtiä tai lue QR-koodi päästäksesi keskustelemaan
-    </p>
-</div>
+        <div class="qr-box">
+            <a href="https://wa.me/message/2JQ4G2D3EXLID1" target="_blank" rel="noopener">
+                <img src="../MEDIA/Ikonit/QR.webp" alt="WhatsApp QR-koodi">
+            </a>
+            <p style="text-align: center; margin-top: 20px; color: #bbb; font-size: 1.05rem; line-height: 1.4;">
+                Klikkaa elementtiä tai lue QR-koodi päästäksesi keskustelemaan
+            </p>
+        </div>
     </section>
-
     <footer>
         <p>© Iivari Kortesoja 2026 | Y-Tunnus 3591660-9</p>
     </footer>
-
     <script>
         (function(){
             const bg = document.querySelector('#home video');
@@ -329,7 +314,6 @@
                 }, {threshold: 0.5}).observe(home);
             } else { try { bg.play(); } catch(e) {} }
         })();
-
         (function(){
             const imgs = document.querySelectorAll('.about-image img');
             if (imgs.length < 1) return;
@@ -340,18 +324,6 @@
                 imgs[i].classList.add('active');
             }, 5000);
         })();
-
-        document.querySelectorAll('.small-item, .large-item').forEach(box => {
-            const imgs = box.querySelectorAll('img');
-            if (imgs.length <= 1) return;
-            let i = 0;
-            const delay = box.classList.contains('small-item') ? 4000 : 5000;
-            setInterval(() => {
-                imgs[i].classList.remove('active');
-                i = (i + 1) % imgs.length;
-                imgs[i].classList.add('active');
-            }, delay);
-        });
     </script>
 </body>
 </html>
