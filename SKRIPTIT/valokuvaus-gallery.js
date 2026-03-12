@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // TÄSSÄ MÄÄRITETÄÄN KAIKKI KUVAT – muutos täällä vaikuttaa kaikkiin Valokuvaus-sivuihin automaattisesti!
+    // Toimii sekä pääsivulla että kaikilla alisivuilla (/Valokuvaus/Eura.html jne.)
+    const basePath = window.location.pathname.includes('/Valokuvaus/') ? '../' : '';
+
+    // TÄSSÄ MÄÄRITETÄÄN KAIKKI KUVAT – muutos täällä vaikuttaa kaikkiin sivuihin!
     const smallSequence = [[40,1,7,13,19,25,31],[41,2,8,14,20,26,32],[42,3,9,15,21,27,33],[43,4,10,16,22,28,34],[44,5,11,17,23,29,35]];
     const largeSequence = [[1,7,13,19,25,31,45],[2,8,14,20,26,32,43],[3,9,15,21,27,33,44],[4,10,16,22,28,34,41],[5,11,17,23,29,35,42],[6,12,18,24,30,36,40]];
 
