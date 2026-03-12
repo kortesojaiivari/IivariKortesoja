@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // TÄSSÄ MÄÄRITETÄÄN KAIKKI KUVAT – muutos täällä vaikuttaa kaikkiin Valokuvaus-sivuihin automaattisesti!
-    const smallSequence = [[1,7,13,19,25,31],[2,8,14,20,26,32],[3,9,15,21,27,33],[4,10,16,22,28,34],[5,11,17,23,29,35]];
+    const smallSequence = [[40,1,7,13,19,25,31],[41,2,8,14,20,26,32],[42,3,9,15,21,27,33],[43,4,10,16,22,28,34],[44,5,11,17,23,29,35]];
     const largeSequence = [[1,7,13,19,25,31],[2,8,14,20,26,32],[3,9,15,21,27,33],[4,10,16,22,28,34],[5,11,17,23,29,35],[6,12,18,24,30,36]];
 
     // Renderöi pieni galleria (yläosa)
