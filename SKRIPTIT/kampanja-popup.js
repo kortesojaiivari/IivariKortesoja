@@ -1,7 +1,7 @@
 // skriptit/kampanja-popup.js
 // Konfiguraatio - muuta näitä tarpeen mukaan
 
-const popupEnabled = true;              // true = popup tulee näkyviin, false = ei tule
+const popupEnabled = false;              // true = popup tulee näkyviin, false = ei tule
 const delaySeconds = 7;                // kuinka monen sekunnin kuluttua popup ilmestyy
 const popupHeightVhDesktop = 33;        // desktop: alaosan korkeus
 const popupHeightVhMobile  = 60;        // mobiili: keskellä isompi korkeus
