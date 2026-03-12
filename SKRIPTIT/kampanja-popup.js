@@ -2,7 +2,7 @@
 // Konfiguraatio - muuta näitä tarpeen mukaan
 
 const popupEnabled = false;              // true = popup tulee näkyviin, false = ei tule
-const delaySeconds = 25;                // kuinka monen sekunnin kuluttua popup ilmestyy
+const delaySeconds = 10;                // kuinka monen sekunnin kuluttua popup ilmestyy
 const popupHeightVhDesktop = 33;        // desktop: alaosan korkeus
 const popupHeightVhMobile  = 60;        // mobiili: keskellä isompi korkeus
 
@@ -52,10 +52,10 @@ if (popupEnabled) {
     popup.innerHTML = `
         <div style="text-align: center; padding: 28px 20px; color: #111; width: 100%;">
             <h2 style="margin: 0 0 16px; font-size: ${isMobile ? '1.9rem' : '2.2rem'}; color: #2e7d32;">
-                Kevät kampanja on käynnissä!
+                Päivitän Verkkosivuja
             </h2>
             <p style="font-size: ${isMobile ? '1.15rem' : '1.3rem'}; margin: 0 0 20px; line-height: 1.45;">
-                Jos varaat valokuvauksen vuodelle 2026 saat 100€ pois hinnasta.  
+                Tällä hetkellä päivitän verkkosivujani. Sivu voi käyttäytyä oudosti tai asiat eivät näy oikein.  
                 
             </p>
             <p style="font-size: ${isMobile ? '1.05rem' : '1.15rem'}; margin: 0 0 24px;">
