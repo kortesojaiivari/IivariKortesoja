@@ -303,19 +303,6 @@
         }
     </script>
     <div class="large-gallery" aria-hidden="false"></div>
-        <script>
-            const largeSequence = [[1,7,13,19,25,31],[2,8,14,20,26,32],[3,9,15,21,27,33],[4,10,16,22,28,34],[5,11,17,23,29,35],[6,12,18,24,30,36]];
-            largeSequence.forEach(boxImages => {
-                document.write('<div class="large-item">');
-                boxImages.forEach((num, idx) => {
-                    const cls = idx === 0 ? ' class="active"' : '';
-                    document.write(`<img src="../MEDIA/VALOKUVAUS/Valokuvaus${num}.webp"${cls} alt="Valokuvaus ${num}">`);
-                });
-                document.write('</div>');
-            });
-        </script>
-    </div>
-
     <section id="final-contact">
         <div class="contact-info">
             <h2>Ota yhteyttä</h2>
