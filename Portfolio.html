@@ -22,7 +22,7 @@
     </script>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Header script (kuten muilla sivuillasi) -->
+    <!-- Header script -->
     <script src="SKRIPTIT/header.js" defer></script>
     
     <style>
@@ -55,6 +55,33 @@
         .tail-text {
             font-size: 0.95rem;
         }
+        
+        /* AUTOMAATTINEN GALLERIA + PIENET INDIKAATTORIT */
+        #dynamic-grid {
+            transition: opacity 0.7s ease-in-out;
+        }
+        
+        .gallery-pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        .dot-container {
+            display: flex;
+            gap: 7px;
+        }
+        .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 9999px;
+            background-color: #52525b;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .dot.active {
+            background-color: #e4e4e7;
+            transform: scale(1.6);
+        }
     </style>
 </head>
 <body class="bg-zinc-950 text-zinc-200">
@@ -65,50 +92,57 @@
             <p class="max-w-md mx-auto text-zinc-400 tail-text">Valokuvaus- ja mediaprojektit esiteltynä allekkain – osa 1×3 ruudukossa, osa yksittäisenä klikattavana mediana.</p>
         </div>
 
-        <!-- PROJEKTI 1: 1×3 KUVA ELEMENTTI (muokattu otsikko + vihreä väri) -->
+        <!-- ALKUPERÄINEN STAATTINEN TEATTERIKUVAUS (yläpuolella) -->
+        <section class="project-section mb-20">
+            <div class="flex justify-between items-end mb-8">
+                <div>
+                    <span class="uppercase text-emerald-400 text-xs tracking-widest font-medium">VALOKUVAUS</span>
+                    <h3 class="text-4xl font-semibold tracking-tight">TuplaKupla - Teatterikuvaus</h3>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="group relative overflow-hidden rounded-2xl aspect-[4/3] bg-zinc-900">
+                    <img src="https://picsum.photos/id/1015/1200/900" 
+                         alt="TuplaKupla 1" 
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                </div>
+                <div class="group relative overflow-hidden rounded-2xl aspect-[4/3] bg-zinc-900">
+                    <img src="https://picsum.photos/id/201/1200/900" 
+                         alt="TuplaKupla 2" 
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                </div>
+                <div class="group relative overflow-hidden rounded-2xl aspect-[4/3] bg-zinc-900">
+                    <img src="https://picsum.photos/id/301/1200/900" 
+                         alt="TuplaKupla 3" 
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                </div>
+            </div>
+        </section>
+
+        <!-- AUTOMAATTINEN VAIHTUVA VERSIO (alapuolella) -->
         <section class="project-section mb-24">
             <div class="flex justify-between items-end mb-8">
                 <div>
                     <span class="uppercase text-emerald-400 text-xs tracking-widest font-medium">VALOKUVAUS</span>
                     <h3 class="text-4xl font-semibold tracking-tight">TuplaKupla - Teatterikuvaus</h3>
                 </div>
-                <p class="max-w-xs text-zinc-400 text-sm tail-text">Kolme keskeistä hetkeä samasta sarjasta. Klikkaa kuvaa suuremmaksi (lightbox ei vielä toteutettu – lisään myöhemmin).</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Kuva 1 -->
-                <div class="group relative overflow-hidden rounded-2xl aspect-[4/3] bg-zinc-900">
-                    <img src="https://picsum.photos/id/1015/1200/900" 
-                         alt="TuplaKupla 1" 
-                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                        <p class="text-xs text-emerald-300">Kuva 1/3 • Näyttämöhetki</p>
-                    </div>
-                </div>
-                
-                <!-- Kuva 2 -->
-                <div class="group relative overflow-hidden rounded-2xl aspect-[4/3] bg-zinc-900">
-                    <img src="https://picsum.photos/id/201/1200/900" 
-                         alt="TuplaKupla 2" 
-                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                        <p class="text-xs text-emerald-300">Kuva 2/3 • Valot ja tunnelma</p>
-                    </div>
-                </div>
-                
-                <!-- Kuva 3 -->
-                <div class="group relative overflow-hidden rounded-2xl aspect-[4/3] bg-zinc-900">
-                    <img src="https://picsum.photos/id/301/1200/900" 
-                         alt="TuplaKupla 3" 
-                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                        <p class="text-xs text-emerald-300">Kuva 3/3 • Esityksen huipennus</p>
-                    </div>
+            <!-- Vaihtuva 1×3 ruudukko (sulava fade-animaatio) -->
+            <div id="dynamic-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- JS täyttää -->
+            </div>
+
+            <!-- Pienet indikaattoripallot -->
+            <div class="gallery-pagination">
+                <div class="dot-container" id="dots">
+                    <!-- JS täyttää -->
                 </div>
             </div>
         </section>
 
-        <!-- PROJEKTI 2: YKSITTÄINEN KLIKKATTAVA ELEMENTTI (media vaihtuu) -->
+        <!-- PROJEKTI 2: MEDIA-VAIHTO (ennallaan) -->
         <section class="project-section max-w-2xl mx-auto">
             <div class="flex justify-between items-end mb-8">
                 <div>
@@ -122,15 +156,12 @@
                  id="clickable-project"
                  class="media-container cursor-pointer bg-zinc-900 mx-auto">
                 
-                <!-- Media wrapper -->
                 <div id="media-wrapper" class="relative">
-                    <!-- Alkuun kuva -->
                     <img id="current-media" 
                          src="https://picsum.photos/id/1018/1200/800" 
                          alt="Kevätvirta thumbnail" 
                          class="w-full h-auto block">
                     
-                    <!-- Overlay teksti -->
                     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 flex items-end p-8">
                         <div class="flex items-center gap-3">
                             <div class="w-6 h-6 bg-white rounded-full flex items-center justify-center">
@@ -149,30 +180,94 @@
     </main>
 
     <script>
-        // Tailwind script init
+        // Tailwind init
         function initTailwind() {
             // Tailwind already loaded via CDN
         }
+
+        // === AUTOMAATTINEN VAIHTUVA GALLERIA ===
+        let currentPage = 1;
+        const totalPages = 2;
+        let autoInterval = null;
         
-        // Media toggle function
+        const imageSets = [
+            [
+                { src: "https://picsum.photos/id/401/1200/900", alt: "TuplaKupla 4" },
+                { src: "https://picsum.photos/id/501/1200/900", alt: "TuplaKupla 5" },
+                { src: "https://picsum.photos/id/601/1200/900", alt: "TuplaKupla 6" }
+            ],
+            [
+                { src: "https://picsum.photos/id/701/1200/900", alt: "TuplaKupla 7" },
+                { src: "https://picsum.photos/id/801/1200/900", alt: "TuplaKupla 8" },
+                { src: "https://picsum.photos/id/901/1200/900", alt: "TuplaKupla 9" }
+            ]
+        ];
+
+        function renderDynamicGrid() {
+            const grid = document.getElementById('dynamic-grid');
+            grid.style.opacity = '0';
+            
+            setTimeout(() => {
+                grid.innerHTML = '';
+                
+                const currentSet = imageSets[currentPage - 1];
+                currentSet.forEach(image => {
+                    const item = document.createElement('div');
+                    item.className = 'group relative overflow-hidden rounded-2xl aspect-[4/3] bg-zinc-900';
+                    item.innerHTML = `
+                        <img src="${image.src}" 
+                             alt="${image.alt}" 
+                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    `;
+                    grid.appendChild(item);
+                });
+                
+                grid.style.opacity = '1';
+                updateDots();
+            }, 350);
+        }
+
+        function createDots() {
+            const container = document.getElementById('dots');
+            container.innerHTML = '';
+            for (let i = 1; i <= totalPages; i++) {
+                const dot = document.createElement('button');
+                dot.className = `dot ${i === currentPage ? 'active' : ''}`;
+                dot.onclick = () => {
+                    clearInterval(autoInterval);
+                    currentPage = i;
+                    renderDynamicGrid();
+                    startAutoCycle();
+                };
+                container.appendChild(dot);
+            }
+        }
+
+        function updateDots() {
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index + 1 === currentPage);
+            });
+        }
+
+        function startAutoCycle() {
+            if (autoInterval) clearInterval(autoInterval);
+            autoInterval = setInterval(() => {
+                currentPage = currentPage === totalPages ? 1 : currentPage + 1;
+                renderDynamicGrid();
+            }, 4200); // 4,2 sekunnin vaihto – sulava ja rauhallinen
+        }
+
+        // === MEDIA TOGGLE ===
         let isVideo = false;
         
         function toggleMedia() {
             const wrapper = document.getElementById('media-wrapper');
-            const container = document.getElementById('clickable-project');
-            
             if (!isVideo) {
-                // Vaihda videoon
                 wrapper.innerHTML = `
-                    <video id="current-media" 
-                           controls 
-                           autoplay 
-                           loop 
-                           class="w-full h-auto block rounded-2xl">
+                    <video controls autoplay loop class="w-full h-auto block rounded-2xl">
                         <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny_720p.mp4" type="video/mp4">
-                        Selain ei tue videota.
                     </video>
-                    
                     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 flex items-end p-8 pointer-events-none">
                         <div class="flex items-center gap-3">
                             <div class="w-6 h-6 bg-white rounded-full flex items-center justify-center">
@@ -184,13 +279,8 @@
                 `;
                 isVideo = true;
             } else {
-                // Vaihda takaisin kuvaan
                 wrapper.innerHTML = `
-                    <img id="current-media" 
-                         src="https://picsum.photos/id/1018/1200/800" 
-                         alt="Kevätvirta thumbnail" 
-                         class="w-full h-auto block">
-                    
+                    <img src="https://picsum.photos/id/1018/1200/800" alt="Kevätvirta thumbnail" class="w-full h-auto block">
                     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 flex items-end p-8">
                         <div class="flex items-center gap-3">
                             <div class="w-6 h-6 bg-white rounded-full flex items-center justify-center">
@@ -203,18 +293,14 @@
                 isVideo = false;
             }
         }
-        
-        // Keyboard escape support for future lightbox
-        document.addEventListener('keydown', function(e) {
-            if (e.key === "Escape") {
-                // Placeholder for future modal close
-            }
-        });
-        
+
         // Initialize
         window.onload = function() {
             initTailwind();
-            console.log('%cPortfolio-sivu muokattu valmiiksi (header + footer poistettu, väri vihreäksi, otsikko vaihdettu). Korvaa kuvat omilla .webp-tiedostoillasi.', 'color: #10b981; font-size: 12px');
+            renderDynamicGrid();
+            createDots();
+            startAutoCycle();
+            console.log('%cPortfolio-sivu päivitetty: nuolet poistettu, vaihtuva galleria nyt automaattinen (sulava fade-animaatio 4,2 s välein), indikaattoripallot pienennetty. Korvaa kuvat omilla .webp-tiedostoillasi.', 'color: #a1a1aa; font-size: 12px');
         };
     </script>
 </body>
