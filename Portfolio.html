@@ -68,6 +68,75 @@
             background-color: #e4e4e7;
             transform: scale(1.8);
         }
+
+        /* Combat Camera -tyyli (vain 6 thumbnail + 2x3 ruudukko) */
+        .combat-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        .combat-item {
+            position: relative;
+            height: 220px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,.7);
+            cursor: pointer;
+            opacity: 0;
+            transform: translateX(-80px);
+            transition: all .5s ease;
+        }
+        .combat-item.visible { opacity: 1; transform: translateX(0); }
+        .combat-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity .4s;
+        }
+        .combat-item::after {
+            content: '▶';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4.5rem;
+            color: #fff;
+            opacity: 0;
+            transition: all .4s ease;
+            pointer-events: none;
+            text-shadow: 0 0 20px rgba(0,0,0,.8);
+        }
+        .combat-item:hover::after { opacity: 0.9; transform: translate(-50%, -50%) scale(1.2); }
+        .combat-item:hover img { opacity: 0.75; }
+        .combat-item:hover { transform: scale(1.05); }
+
+        .extra-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 80px auto 100px;
+            padding: 0 20px;
+        }
+        .extra-item {
+            position: relative;
+            height: 420px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0,0,0,.8);
+        }
+        .extra-item img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.4s ease;
+        }
+        .extra-item img.active { opacity: 1; }
     </style>
 </head>
 <body class="bg-zinc-950 text-zinc-200">
@@ -78,9 +147,7 @@
             <p class="max-w-md mx-auto text-zinc-400 tail-text">Valokuvaus- ja mediaprojektit esiteltynä allekkain – osa 1×3 ruudukossa, osa yksittäisenä klikattavana mediana.</p>
         </div>
 
-        <!-- ================================================================== -->
-        <!-- === TUPLAKUPLA – PROJEKTI 1 ======================================= -->
-        <!-- ================================================================== -->
+        <!-- TUPLAKUPLA -->
         <section class="project-section mb-24">
             <div class="flex justify-between items-end mb-8">
                 <div>
@@ -88,23 +155,13 @@
                     <h3 class="text-4xl font-semibold tracking-tight">TuplaKupla - Teatterikuvaus</h3>
                 </div>
             </div>
-            
             <div id="gallery-grid-1" class="dynamic-grid grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-            
-            <div class="gallery-pagination">
-                <div class="dot-container" id="gallery-dots-1"></div>
-            </div>
+            <div class="gallery-pagination"><div class="dot-container" id="gallery-dots-1"></div></div>
         </section>
-
-        <!-- TÄMÄN PROJEKTIN OMA KONFIGURAATIO JA MEDIA -->
         <script>
-            const galleryId1 = "gallery-grid-1";
-            const dotsId1 = "gallery-dots-1";
-            const autoCycleEnabled1 = true;
-            const cycleIntervalMs1 = 4200;
-            const showPageIndicators1 = true;
-            const imagesPerPage1 = 3;
-
+            const galleryId1 = "gallery-grid-1"; const dotsId1 = "gallery-dots-1";
+            const autoCycleEnabled1 = true; const cycleIntervalMs1 = 4200;
+            const showPageIndicators1 = true; const imagesPerPage1 = 3;
             const allMediaItems1 = [
                 { src: "MEDIA/Ruutumedia/TUPLAKUPLA.webm", alt: "TuplaKupla 4" },
                 { src: "MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "TuplaKupla 5" },
@@ -120,83 +177,15 @@
                 { src: "MEDIA/VALOKUVAUS/Valokuvaus50.webp", alt: "TuplaKupla 15" },
                 { src: "MEDIA/VALOKUVAUS/Valokuvaus51.webp", alt: "TuplaKupla 16" }
             ];
-
-            let currentPage1 = 1;
-            let totalPages1 = Math.ceil(allMediaItems1.length / imagesPerPage1);
-            let autoInterval1 = null;
-
-            function renderGallery1() {
-                const grid = document.getElementById(galleryId1);
-                if (!grid) return;
-                grid.style.opacity = '0';
-                setTimeout(() => {
-                    grid.innerHTML = '';
-                    const start = (currentPage1 - 1) * imagesPerPage1;
-                    const currentItems = allMediaItems1.slice(start, start + imagesPerPage1);
-                    currentItems.forEach(item => {
-                        const div = document.createElement('div');
-                        div.className = 'group relative overflow-hidden rounded-2xl aspect-[4/3] bg-zinc-900';
-                        const lower = item.src.toLowerCase();
-                        if (lower.endsWith('.webm') || lower.endsWith('.mp4')) {
-                            div.innerHTML = `<video src="${item.src}" autoplay muted loop playsinline class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"></video>`;
-                        } else {
-                            div.innerHTML = `<img src="${item.src}" alt="${item.alt}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">`;
-                        }
-                        grid.appendChild(div);
-                    });
-                    grid.style.opacity = '1';
-                    updateDots1();
-                }, 350);
-            }
-
-            function createDots1() {
-                if (!showPageIndicators1) return;
-                const container = document.getElementById(dotsId1);
-                if (!container) return;
-                container.innerHTML = '';
-                for (let i = 1; i <= totalPages1; i++) {
-                    const dot = document.createElement('button');
-                    dot.className = `dot ${i === currentPage1 ? 'active' : ''}`;
-                    dot.onclick = () => {
-                        if (autoInterval1) clearInterval(autoInterval1);
-                        currentPage1 = i;
-                        renderGallery1();
-                        if (autoCycleEnabled1) startAutoCycle1();
-                    };
-                    container.appendChild(dot);
-                }
-            }
-
-            function updateDots1() {
-                if (!showPageIndicators1) return;
-                const dots = document.querySelectorAll(`#${dotsId1} .dot`);
-                dots.forEach((dot, i) => dot.classList.toggle('active', i + 1 === currentPage1));
-            }
-
-            function startAutoCycle1() {
-                if (!autoCycleEnabled1 || totalPages1 <= 1) return;
-                if (autoInterval1) clearInterval(autoInterval1);
-                autoInterval1 = setInterval(() => {
-                    currentPage1 = (currentPage1 === totalPages1) ? 1 : currentPage1 + 1;
-                    renderGallery1();
-                }, cycleIntervalMs1);
-            }
-
-            window.addEventListener('load', () => {
-                if (allMediaItems1.length > 0) {
-                    renderGallery1();
-                    createDots1();
-                    startAutoCycle1();
-                }
-            });
+            let currentPage1 = 1; let totalPages1 = Math.ceil(allMediaItems1.length / imagesPerPage1); let autoInterval1 = null;
+            function renderGallery1(){const grid=document.getElementById(galleryId1);if(!grid)return;grid.style.opacity='0';setTimeout(()=>{grid.innerHTML='';const start=(currentPage1-1)*imagesPerPage1;const currentItems=allMediaItems1.slice(start,start+imagesPerPage1);currentItems.forEach(item=>{const div=document.createElement('div');div.className='group relative overflow-hidden rounded-2xl aspect-[4/3] bg-zinc-900';const lower=item.src.toLowerCase();if(lower.endsWith('.webm')||lower.endsWith('.mp4')){div.innerHTML=`<video src="${item.src}" autoplay muted loop playsinline class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"></video>`;}else{div.innerHTML=`<img src="${item.src}" alt="${item.alt}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">`;}grid.appendChild(div);});grid.style.opacity='1';updateDots1();},350);}
+            function createDots1(){if(!showPageIndicators1)return;const container=document.getElementById(dotsId1);if(!container)return;container.innerHTML='';for(let i=1;i<=totalPages1;i++){const dot=document.createElement('button');dot.className=`dot ${i===currentPage1?'active':''}`;dot.onclick=()=>{if(autoInterval1)clearInterval(autoInterval1);currentPage1=i;renderGallery1();if(autoCycleEnabled1)startAutoCycle1();};container.appendChild(dot);}}
+            function updateDots1(){if(!showPageIndicators1)return;const dots=document.querySelectorAll(`#${dotsId1} .dot`);dots.forEach((dot,i)=>dot.classList.toggle('active',i+1===currentPage1));}
+            function startAutoCycle1(){if(!autoCycleEnabled1||totalPages1<=1)return;if(autoInterval1)clearInterval(autoInterval1);autoInterval1=setInterval(()=>{currentPage1=(currentPage1===totalPages1)?1:currentPage1+1;renderGallery1();},cycleIntervalMs1);}
+            window.addEventListener('load',()=>{if(allMediaItems1.length>0){renderGallery1();createDots1();startAutoCycle1();}});
         </script>
-        <!-- ================================================================== -->
-        <!-- === KOPIOINTI LOPPUU TÄHÄN (TuplaKupla) ========================== -->
-        <!-- ================================================================== -->
 
-        <!-- ================================================================== -->
-        <!-- === BLENDER – PROJEKTI 2 ========================================== -->
-        <!-- ================================================================== -->
+        <!-- BLENDER -->
         <section class="project-section mb-24">
             <div class="flex justify-between items-end mb-8">
                 <div>
@@ -204,213 +193,126 @@
                     <h3 class="text-4xl font-semibold tracking-tight">Blender Animaatioita</h3>
                 </div>
             </div>
-            
             <div id="gallery-grid-2" class="dynamic-grid grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-            
-            <div class="gallery-pagination">
-                <div class="dot-container" id="gallery-dots-2"></div>
-            </div>
+            <div class="gallery-pagination"><div class="dot-container" id="gallery-dots-2"></div></div>
         </section>
-
-        <!-- BLENDERIN OMA KONFIGURAATIO JA MEDIA -->
         <script>
-            const galleryId2 = "gallery-grid-2";
-            const dotsId2 = "gallery-dots-2";
-            const autoCycleEnabled2 = false;
-            const cycleIntervalMs2 = 4200;
-            const showPageIndicators2 = true;
-            const imagesPerPage2 = 3;
-
+            const galleryId2 = "gallery-grid-2"; const dotsId2 = "gallery-dots-2";
+            const autoCycleEnabled2 = false; const cycleIntervalMs2 = 4200;
+            const showPageIndicators2 = true; const imagesPerPage2 = 3;
             const allMediaItems2 = [
                 { src: "MEDIA/Portfolio/TuplaKupla4.webp", alt: "Blender 1" },
                 { src: "MEDIA/Portfolio/TuplaKupla5.webp", alt: "Blender 2" },
                 { src: "MEDIA/Portfolio/TuplaKupla6.webp", alt: "Blender 3" },
                 { src: "MEDIA/Portfolio/TuplaKupla7.webp", alt: "Blender 4" }
             ];
-
-            let currentPage2 = 1;
-            let totalPages2 = Math.ceil(allMediaItems2.length / imagesPerPage2);
-            let autoInterval2 = null;
-
-            function renderGallery2() {
-                const grid = document.getElementById(galleryId2);
-                if (!grid) return;
-                grid.style.opacity = '0';
-                setTimeout(() => {
-                    grid.innerHTML = '';
-                    const start = (currentPage2 - 1) * imagesPerPage2;
-                    const currentItems = allMediaItems2.slice(start, start + imagesPerPage2);
-                    currentItems.forEach(item => {
-                        const div = document.createElement('div');
-                        div.className = 'group relative overflow-hidden rounded-2xl aspect-[4/3] bg-zinc-900';
-                        const lower = item.src.toLowerCase();
-                        if (lower.endsWith('.webm') || lower.endsWith('.mp4')) {
-                            div.innerHTML = `<video src="${item.src}" autoplay muted loop playsinline class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"></video>`;
-                        } else {
-                            div.innerHTML = `<img src="${item.src}" alt="${item.alt}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">`;
-                        }
-                        grid.appendChild(div);
-                    });
-                    grid.style.opacity = '1';
-                    updateDots2();
-                }, 350);
-            }
-
-            function createDots2() {
-                if (!showPageIndicators2) return;
-                const container = document.getElementById(dotsId2);
-                if (!container) return;
-                container.innerHTML = '';
-                for (let i = 1; i <= totalPages2; i++) {
-                    const dot = document.createElement('button');
-                    dot.className = `dot ${i === currentPage2 ? 'active' : ''}`;
-                    dot.onclick = () => {
-                        if (autoInterval2) clearInterval(autoInterval2);
-                        currentPage2 = i;
-                        renderGallery2();
-                        if (autoCycleEnabled2) startAutoCycle2();
-                    };
-                    container.appendChild(dot);
-                }
-            }
-
-            function updateDots2() {
-                if (!showPageIndicators2) return;
-                const dots = document.querySelectorAll(`#${dotsId2} .dot`);
-                dots.forEach((dot, i) => dot.classList.toggle('active', i + 1 === currentPage2));
-            }
-
-            function startAutoCycle2() {
-                if (!autoCycleEnabled2 || totalPages2 <= 1) return;
-                if (autoInterval2) clearInterval(autoInterval2);
-                autoInterval2 = setInterval(() => {
-                    currentPage2 = (currentPage2 === totalPages2) ? 1 : currentPage2 + 1;
-                    renderGallery2();
-                }, cycleIntervalMs2);
-            }
-
-            window.addEventListener('load', () => {
-                if (allMediaItems2.length > 0) {
-                    renderGallery2();
-                    createDots2();
-                    startAutoCycle2();
-                }
-            });
+            let currentPage2 = 1; let totalPages2 = Math.ceil(allMediaItems2.length / imagesPerPage2); let autoInterval2 = null;
+            function renderGallery2(){const grid=document.getElementById(galleryId2);if(!grid)return;grid.style.opacity='0';setTimeout(()=>{grid.innerHTML='';const start=(currentPage2-1)*imagesPerPage2;const currentItems=allMediaItems2.slice(start,start+imagesPerPage2);currentItems.forEach(item=>{const div=document.createElement('div');div.className='group relative overflow-hidden rounded-2xl aspect-[4/3] bg-zinc-900';const lower=item.src.toLowerCase();if(lower.endsWith('.webm')||lower.endsWith('.mp4')){div.innerHTML=`<video src="${item.src}" autoplay muted loop playsinline class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"></video>`;}else{div.innerHTML=`<img src="${item.src}" alt="${item.alt}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">`;}grid.appendChild(div);});grid.style.opacity='1';updateDots2();},350);}
+            function createDots2(){if(!showPageIndicators2)return;const container=document.getElementById(dotsId2);if(!container)return;container.innerHTML='';for(let i=1;i<=totalPages2;i++){const dot=document.createElement('button');dot.className=`dot ${i===currentPage2?'active':''}`;dot.onclick=()=>{if(autoInterval2)clearInterval(autoInterval2);currentPage2=i;renderGallery2();if(autoCycleEnabled2)startAutoCycle2();};container.appendChild(dot);}}
+            function updateDots2(){if(!showPageIndicators2)return;const dots=document.querySelectorAll(`#${dotsId2} .dot`);dots.forEach((dot,i)=>dot.classList.toggle('active',i+1===currentPage2));}
+            function startAutoCycle2(){if(!autoCycleEnabled2||totalPages2<=1)return;if(autoInterval2)clearInterval(autoInterval2);autoInterval2=setInterval(()=>{currentPage2=(currentPage2===totalPages2)?1:currentPage2+1;renderGallery2();},cycleIntervalMs2);}
+            window.addEventListener('load',()=>{if(allMediaItems2.length>0){renderGallery2();createDots2();startAutoCycle2();}});
         </script>
-        <!-- ================================================================== -->
-        <!-- === KOPIOINTI LOPPUU TÄHÄN (Blender) ============================= -->
-        <!-- ================================================================== -->
 
-        <!-- ================================================================== -->
-        <!-- === COMBAT CAMERA – PROJEKTI 3 ==================================== -->
-        <!-- ================================================================== -->
+        <!-- COMBAT CAMERA – VAIN 6 THUMBNAIL + 2×3 VALOKUVA ELEMENTTI (samassa portfolio-muodossa) -->
         <section class="project-section mb-24">
             <div class="flex justify-between items-end mb-8">
                 <div>
-                    <span class="uppercase text-emerald-400 text-xs tracking-widest font-medium">Puolustusvoimat</span>
+                    <span class="uppercase text-emerald-400 text-xs tracking-widest font-medium">PUOLUSTUSVOIMAT</span>
                     <h3 class="text-4xl font-semibold tracking-tight">Combat Camera</h3>
                 </div>
             </div>
-            
-            <div id="gallery-grid-3" class="dynamic-grid grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-            
-            <div class="gallery-pagination">
-                <div class="dot-container" id="gallery-dots-3"></div>
+
+            <!-- 1. 6 THUMBNAIL-KUVAA -->
+            <div class="combat-gallery">
+                <div class="combat-item" data-video-id="91wex5Lgolc"><img src="MEDIA/Puolustusvoimat/thumbnail1.webp" alt="thumbnail1"></div>
+                <div class="combat-item" data-video-id="GLP9QxcEbXk"><img src="MEDIA/Puolustusvoimat/thumbnail2.webp" alt="thumbnail2"></div>
+                <div class="combat-item" data-video-id="3AwEUP7o0qc"><img src="MEDIA/Puolustusvoimat/thumbnail3.webp" alt="thumbnail3"></div>
+                <div class="combat-item" data-video-id="F-2a-c5J2ms"><img src="MEDIA/Puolustusvoimat/thumbnail4.webp" alt="thumbnail4"></div>
+                <div class="combat-item" data-video-id="82S6evKfyPY"><img src="MEDIA/Puolustusvoimat/thumbnail5.webp" alt="thumbnail5"></div>
+                <div class="combat-item" data-video-id="oIx5kq1QLgE"><img src="MEDIA/Puolustusvoimat/thumbnail6.webp" alt="Combat Camera Showreel 2025"></div>
+            </div>
+
+            <!-- 2. 2×3 VALOKUVA ELEMENTTI (cycling) -->
+            <div class="extra-gallery">
+                <script>
+                    const imageSequence = [
+                        [7,1,11,28,4,39,35],
+                        [3,5,31,29,13,36,11],
+                        [12,6,19,15,14,37,19],
+                        [20,8,26,2,30,23,15],
+                        [25,9,33,16,32,24,8],
+                        [38,10,34,17,40,27,22]
+                    ];
+                    imageSequence.forEach(boxImages => {
+                        document.write('<div class="extra-item">');
+                        boxImages.forEach((num, index) => {
+                            const activeClass = index === 0 ? ' class="active"' : '';
+                            document.write(`<img src="MEDIA/Puolustusvoimat/comcam/comcam${num}.webp"${activeClass}>`);
+                        });
+                        document.write('</div>');
+                    });
+                </script>
             </div>
         </section>
 
-        <!-- COMBAT CAMERAN OMA KONFIGURAATIO JA MEDIA -->
+        <!-- Combat Camera -skriptit (thumbnail-animaatio + cycling + modal) -->
         <script>
-            const galleryId3 = "gallery-grid-3";
-            const dotsId3 = "gallery-dots-3";
-            const autoCycleEnabled3 = true;
-            const cycleIntervalMs3 = 4200;
-            const showPageIndicators3 = true;
-            const imagesPerPage3 = 4;
+            // Thumbnail-animaatio
+            const combatThumbs = document.querySelectorAll('.combat-item');
+            const combatObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, i) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => entry.target.classList.add('visible'), i * 120);
+                        combatObserver.unobserve(entry.target);
+                    }
+                });
+            }, {threshold: 0.2});
+            combatThumbs.forEach(t => combatObserver.observe(t));
 
-            const allMediaItems3 = [
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam37.webp", alt: "Combat 1" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam3.webp", alt: "Combat 2" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam25.webp", alt: "Combat 3" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam1.webp", alt: "Combat 4" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam10.webp", alt: "Combat 5" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam24.webp", alt: "Combat 6" }
-            ];
-
-            let currentPage3 = 1;
-            let totalPages3 = Math.ceil(allMediaItems3.length / imagesPerPage3);
-            let autoInterval3 = null;
-
-            function renderGallery3() {
-                const grid = document.getElementById(galleryId3);
-                if (!grid) return;
-                grid.style.opacity = '0';
-                setTimeout(() => {
-                    grid.innerHTML = '';
-                    const start = (currentPage3 - 1) * imagesPerPage3;
-                    const currentItems = allMediaItems3.slice(start, start + imagesPerPage3);
-                    currentItems.forEach(item => {
-                        const div = document.createElement('div');
-                        div.className = 'group relative overflow-hidden rounded-2xl aspect-[4/3] bg-zinc-900';
-                        const lower = item.src.toLowerCase();
-                        if (lower.endsWith('.webm') || lower.endsWith('.mp4')) {
-                            div.innerHTML = `<video src="${item.src}" autoplay muted loop playsinline class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"></video>`;
-                        } else {
-                            div.innerHTML = `<img src="${item.src}" alt="${item.alt}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">`;
-                        }
-                        grid.appendChild(div);
-                    });
-                    grid.style.opacity = '1';
-                    updateDots3();
-                }, 350);
-            }
-
-            function createDots3() {
-                if (!showPageIndicators3) return;
-                const container = document.getElementById(dotsId3);
-                if (!container) return;
-                container.innerHTML = '';
-                for (let i = 1; i <= totalPages3; i++) {
-                    const dot = document.createElement('button');
-                    dot.className = `dot ${i === currentPage3 ? 'active' : ''}`;
-                    dot.onclick = () => {
-                        if (autoInterval3) clearInterval(autoInterval3);
-                        currentPage3 = i;
-                        renderGallery3();
-                        if (autoCycleEnabled3) startAutoCycle3();
-                    };
-                    container.appendChild(dot);
-                }
-            }
-
-            function updateDots3() {
-                if (!showPageIndicators3) return;
-                const dots = document.querySelectorAll(`#${dotsId3} .dot`);
-                dots.forEach((dot, i) => dot.classList.toggle('active', i + 1 === currentPage3));
-            }
-
-            function startAutoCycle3() {
-                if (!autoCycleEnabled3 || totalPages3 <= 1) return;
-                if (autoInterval3) clearInterval(autoInterval3);
-                autoInterval3 = setInterval(() => {
-                    currentPage3 = (currentPage3 === totalPages3) ? 1 : currentPage3 + 1;
-                    renderGallery3();
-                }, cycleIntervalMs3);
-            }
-
-            window.addEventListener('load', () => {
-                if (allMediaItems3.length > 0) {
-                    renderGallery3();
-                    createDots3();
-                    startAutoCycle3();
-                }
+            // Extra-gallery cycling (5 sekuntia)
+            document.querySelectorAll('.extra-item').forEach(box => {
+                const imgs = box.querySelectorAll('img');
+                let idx = 0;
+                setInterval(() => {
+                    imgs[idx].classList.remove('active');
+                    idx = (idx + 1) % imgs.length;
+                    imgs[idx].classList.add('active');
+                }, 5000);
             });
-        </script>
-        <!-- ================================================================== -->
-        <!-- === KOPIOINTI LOPPUU TÄHÄN (Combat Camera) ======================= -->
-        <!-- ================================================================== -->
 
-        <!-- PROJEKTI 2: MEDIA-VAIHTO -->
+            // Modal YouTube-videoille
+            const modal = document.createElement('div');
+            modal.innerHTML = `
+                <div class="modal" id="videoModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:2000;align-items:center;justify-content:center;padding:20px">
+                    <span class="close" style="position:absolute;top:30px;right:40px;font-size:3rem;color:#fff;cursor:pointer;opacity:0.8">×</span>
+                    <div class="modal-content" style="width:100%;max-width:1000px;aspect-ratio:16/9;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.8)">
+                        <iframe id="youtubePlayer" src="" allow="autoplay; encrypted-media" allowfullscreen style="width:100%;height:100%;border:none"></iframe>
+                    </div>
+                </div>`;
+            document.body.appendChild(modal.firstElementChild);
+
+            const combatModal = document.getElementById('videoModal');
+            const combatIframe = document.getElementById('youtubePlayer');
+            const combatClose = document.querySelector('.close');
+            document.querySelectorAll('.combat-item').forEach(item => {
+                item.onclick = () => {
+                    combatIframe.src = `https://www.youtube.com/embed/${item.dataset.videoId}?autoplay=1&rel=0`;
+                    combatModal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                };
+            });
+            combatClose.onclick = combatModal.onclick = (e) => {
+                if (e.target === combatModal || e.target === combatClose) {
+                    combatModal.style.display = 'none';
+                    combatIframe.src = '';
+                    document.body.style.overflow = '';
+                }
+            };
+            document.addEventListener('keydown', e => { if (e.key === 'Escape') combatClose.click(); });
+        </script>
+
+        <!-- KEVÄTVIRTA -->
         <section class="project-section max-w-2xl mx-auto">
             <div class="flex justify-between items-end mb-8">
                 <div>
@@ -419,7 +321,6 @@
                 </div>
                 <p class="text-zinc-400 text-sm tail-text">Klikkaa kuvaa alla → media vaihtuu kuvasta videoksi (ja takaisin).</p>
             </div>
-            
             <div onclick="toggleMedia()" id="clickable-project" class="media-container cursor-pointer bg-zinc-900 mx-auto">
                 <div id="media-wrapper" class="relative">
                     <img id="current-media" src="https://picsum.photos/id/1018/1200/800" alt="Kevätvirta thumbnail" class="w-full h-auto block">
@@ -433,7 +334,6 @@
                     </div>
                 </div>
             </div>
-            
             <div class="mt-6 text-center">
                 <p class="text-xs text-zinc-500">Esimerkki: kuva → video → kuva. Voit vaihtaa omat .webp-kuvat ja videot myöhemmin.</p>
             </div>
@@ -441,7 +341,7 @@
     </main>
 
     <script>
-        // MEDIA TOGGLE (ennallaan)
+        // MEDIA TOGGLE
         let isVideo = false;
         function toggleMedia() {
             const wrapper = document.getElementById('media-wrapper');
