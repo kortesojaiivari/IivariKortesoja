@@ -309,65 +309,34 @@
                 }
             };
             document.addEventListener('keydown', e => { if (e.key === 'Escape') combatClose.click(); });
+            
         </script>
-
-        <!-- KEVÄTVIRTA -->
-        <section class="project-section max-w-2xl mx-auto">
+        <!-- BLENDER -->
+        <section class="project-section mb-24">
             <div class="flex justify-between items-end mb-8">
                 <div>
-                    <span class="uppercase text-sky-400 text-xs tracking-widest font-medium">MEDIA</span>
-                    <h3 class="text-4xl font-semibold tracking-tight">Kevätvirta – Videoprojekti</h3>
-                </div>
-                <p class="text-zinc-400 text-sm tail-text">Klikkaa kuvaa alla → media vaihtuu kuvasta videoksi (ja takaisin).</p>
-            </div>
-            <div onclick="toggleMedia()" id="clickable-project" class="media-container cursor-pointer bg-zinc-900 mx-auto">
-                <div id="media-wrapper" class="relative">
-                    <img id="current-media" src="https://picsum.photos/id/1018/1200/800" alt="Kevätvirta thumbnail" class="w-full h-auto block">
-                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 flex items-end p-8">
-                        <div class="flex items-center gap-3">
-                            <div class="w-6 h-6 bg-white rounded-full flex items-center justify-center">
-                                <span class="text-zinc-950 text-xs font-bold">▶</span>
-                            </div>
-                            <p class="text-white text-sm font-medium">Klikkaa vaihtaaksesi videoksi</p>
-                        </div>
-                    </div>
+                    <span class="uppercase text-emerald-400 text-xs tracking-widest font-medium">Coming soon</span>
+                    <h3 class="text-4xl font-semibold tracking-tight">Tulossa pian</h3>
                 </div>
             </div>
-            <div class="mt-6 text-center">
-                <p class="text-xs text-zinc-500">Esimerkki: kuva → video → kuva. Voit vaihtaa omat .webp-kuvat ja videot myöhemmin.</p>
-            </div>
+            <div id="gallery-grid-2" class="dynamic-grid grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+            <div class="gallery-pagination"><div class="dot-container" id="gallery-dots-2"></div></div>
         </section>
-    </main>
-
-    <script>
-        // MEDIA TOGGLE
-        let isVideo = false;
-        function toggleMedia() {
-            const wrapper = document.getElementById('media-wrapper');
-            if (!isVideo) {
-                wrapper.innerHTML = `
-                    <video controls autoplay loop class="w-full h-auto block rounded-2xl">
-                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny_720p.mp4" type="video/mp4">
-                    </video>
-                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 flex items-end p-8 pointer-events-none">
-                        <div class="flex items-center gap-3">
-                            <div class="w-6 h-6 bg-white rounded-full flex items-center justify-center"><span class="text-zinc-950 text-xs font-bold">■</span></div>
-                            <p class="text-white text-sm font-medium">Klikkaa vaihtaaksesi takaisin kuvaan</p>
-                        </div>
-                    </div>`;
-                isVideo = true;
-            } else {
-                wrapper.innerHTML = `
-                    <img src="https://picsum.photos/id/1018/1200/800" alt="Kevätvirta thumbnail" class="w-full h-auto block">
-                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 flex items-end p-8">
-                        <div class="flex items-center gap-3">
-                            <div class="w-6 h-6 bg-white rounded-full flex items-center justify-center"><span class="text-zinc-950 text-xs font-bold">▶</span></div>
-                            <p class="text-white text-sm font-medium">Klikkaa vaihtaaksesi videoksi</p>
-                        </div>
-                    </div>`;
-                isVideo = false;
-            }
-        }
-    </script>
-</body>
+        <script>
+            const galleryId2 = "gallery-grid-2"; const dotsId2 = "gallery-dots-2";
+            const autoCycleEnabled2 = false; const cycleIntervalMs2 = 4200;
+            const showPageIndicators2 = false; const imagesPerPage2 = 3;
+            const allMediaItems2 = [
+                { src: "MEDIA/Portfolio/TuplaKupla4.webp", alt: "" },
+                { src: "MEDIA/Portfolio/TuplaKupla5.webp", alt: "" },
+                { src: "MEDIA/Portfolio/TuplaKupla6.webp", alt: "" },
+                { src: "MEDIA/Portfolio/TuplaKupla7.webp", alt: "" }
+            ];
+            let currentPage2 = 1; let totalPages2 = Math.ceil(allMediaItems2.length / imagesPerPage2); let autoInterval2 = null;
+            function renderGallery2(){const grid=document.getElementById(galleryId2);if(!grid)return;grid.style.opacity='0';setTimeout(()=>{grid.innerHTML='';const start=(currentPage2-1)*imagesPerPage2;const currentItems=allMediaItems2.slice(start,start+imagesPerPage2);currentItems.forEach(item=>{const div=document.createElement('div');div.className='group relative overflow-hidden rounded-2xl aspect-[4/3] bg-zinc-900';const lower=item.src.toLowerCase();if(lower.endsWith('.webm')||lower.endsWith('.mp4')){div.innerHTML=`<video src="${item.src}" autoplay muted loop playsinline class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"></video>`;}else{div.innerHTML=`<img src="${item.src}" alt="${item.alt}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">`;}grid.appendChild(div);});grid.style.opacity='1';updateDots2();},350);}
+            function createDots2(){if(!showPageIndicators2)return;const container=document.getElementById(dotsId2);if(!container)return;container.innerHTML='';for(let i=1;i<=totalPages2;i++){const dot=document.createElement('button');dot.className=`dot ${i===currentPage2?'active':''}`;dot.onclick=()=>{if(autoInterval2)clearInterval(autoInterval2);currentPage2=i;renderGallery2();if(autoCycleEnabled2)startAutoCycle2();};container.appendChild(dot);}}
+            function updateDots2(){if(!showPageIndicators2)return;const dots=document.querySelectorAll(`#${dotsId2} .dot`);dots.forEach((dot,i)=>dot.classList.toggle('active',i+1===currentPage2));}
+            function startAutoCycle2(){if(!autoCycleEnabled2||totalPages2<=1)return;if(autoInterval2)clearInterval(autoInterval2);autoInterval2=setInterval(()=>{currentPage2=(currentPage2===totalPages2)?1:currentPage2+1;renderGallery2();},cycleIntervalMs2);}
+            window.addEventListener('load',()=>{if(allMediaItems2.length>0){renderGallery2();createDots2();startAutoCycle2();}});
+        </script>      
 </html>
