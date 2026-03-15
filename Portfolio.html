@@ -24,16 +24,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Header script -->
     <script src="SKRIPTIT/header.js" defer></script>
-   
+  
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap');
-       
+      
         body { font-family: 'Inter', system_ui, sans-serif; }
         h1, h2 { font-family: 'Playfair Display', sans-serif; }
-       
+      
         .project-section { transition: all 0.3s ease; }
         .project-section:hover { transform: translateY(-4px); }
-       
+      
         .media-container {
             position: relative;
             overflow: hidden;
@@ -41,12 +41,12 @@
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
         }
         .media-container:hover { box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
-       
+      
         .tail-text { font-size: 0.95rem; }
-       
+      
         /* AUTOMAATTINEN GALLERIA */
         .dynamic-grid { transition: opacity 0.7s ease-in-out; }
-       
+      
         .gallery-pagination {
             display: flex;
             justify-content: center;
@@ -69,7 +69,7 @@
             transform: scale(1.8);
         }
 
-        /* Combat Camera -tyyli (vain 6 thumbnail + 2x3 ruudukko) */
+        /* Combat Camera -tyyli */
         .combat-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -137,6 +137,37 @@
             transition: opacity 1.4s ease;
         }
         .extra-item img.active { opacity: 1; }
+
+        /* COMING SOON - PLANK -tyyli */
+        .coming-soon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        .plank-box {
+            position: relative;
+            height: 340px;
+            border-radius: 20px;
+            background: #27272a;
+            border: 2px dashed #3f3f46;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .plank-box:hover {
+            border-color: #a1a1aa;
+            transform: translateY(-4px);
+        }
+        .plank-text {
+            text-align: center;
+            color: #71717a;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
     </style>
 </head>
 <body class="bg-zinc-950 text-zinc-200">
@@ -213,7 +244,7 @@
             window.addEventListener('load',()=>{if(allMediaItems2.length>0){renderGallery2();createDots2();startAutoCycle2();}});
         </script>
 
-        <!-- COMBAT CAMERA – VAIN 6 THUMBNAIL + 2×3 VALOKUVA ELEMENTTI (samassa portfolio-muodossa) -->
+        <!-- COMBAT CAMERA -->
         <section class="project-section mb-24">
             <div class="flex justify-between items-end mb-8">
                 <div>
@@ -221,8 +252,6 @@
                     <h3 class="text-4xl font-semibold tracking-tight">Combat Camera</h3>
                 </div>
             </div>
-
-            <!-- 1. 6 THUMBNAIL-KUVAA -->
             <div class="combat-gallery">
                 <div class="combat-item" data-video-id="91wex5Lgolc"><img src="MEDIA/Puolustusvoimat/thumbnail1.webp" alt="thumbnail1"></div>
                 <div class="combat-item" data-video-id="GLP9QxcEbXk"><img src="MEDIA/Puolustusvoimat/thumbnail2.webp" alt="thumbnail2"></div>
@@ -231,18 +260,9 @@
                 <div class="combat-item" data-video-id="82S6evKfyPY"><img src="MEDIA/Puolustusvoimat/thumbnail5.webp" alt="thumbnail5"></div>
                 <div class="combat-item" data-video-id="oIx5kq1QLgE"><img src="MEDIA/Puolustusvoimat/thumbnail6.webp" alt="Combat Camera Showreel 2025"></div>
             </div>
-
-            <!-- 2. 2×3 VALOKUVA ELEMENTTI (cycling) -->
             <div class="extra-gallery">
                 <script>
-                    const imageSequence = [
-                        [7,1,11,28,4,39,35],
-                        [3,5,31,29,13,36,11],
-                        [12,6,19,15,14,37,19],
-                        [20,8,26,2,30,23,15],
-                        [25,9,33,16,32,24,8],
-                        [38,10,34,17,40,27,22]
-                    ];
+                    const imageSequence = [[7,1,11,28,4,39,35],[3,5,31,29,13,36,11],[12,6,19,15,14,37,19],[20,8,26,2,30,23,15],[25,9,33,16,32,24,8],[38,10,34,17,40,27,22]];
                     imageSequence.forEach(boxImages => {
                         document.write('<div class="extra-item">');
                         boxImages.forEach((num, index) => {
@@ -254,10 +274,7 @@
                 </script>
             </div>
         </section>
-
-        <!-- Combat Camera -skriptit (thumbnail-animaatio + cycling + modal) -->
         <script>
-            // Thumbnail-animaatio
             const combatThumbs = document.querySelectorAll('.combat-item');
             const combatObserver = new IntersectionObserver((entries) => {
                 entries.forEach((entry, i) => {
@@ -268,8 +285,6 @@
                 });
             }, {threshold: 0.2});
             combatThumbs.forEach(t => combatObserver.observe(t));
-
-            // Extra-gallery cycling (5 sekuntia)
             document.querySelectorAll('.extra-item').forEach(box => {
                 const imgs = box.querySelectorAll('img');
                 let idx = 0;
@@ -279,18 +294,9 @@
                     imgs[idx].classList.add('active');
                 }, 5000);
             });
-
-            // Modal YouTube-videoille
             const modal = document.createElement('div');
-            modal.innerHTML = `
-                <div class="modal" id="videoModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:2000;align-items:center;justify-content:center;padding:20px">
-                    <span class="close" style="position:absolute;top:30px;right:40px;font-size:3rem;color:#fff;cursor:pointer;opacity:0.8">×</span>
-                    <div class="modal-content" style="width:100%;max-width:1000px;aspect-ratio:16/9;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.8)">
-                        <iframe id="youtubePlayer" src="" allow="autoplay; encrypted-media" allowfullscreen style="width:100%;height:100%;border:none"></iframe>
-                    </div>
-                </div>`;
+            modal.innerHTML = `<div class="modal" id="videoModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:2000;align-items:center;justify-content:center;padding:20px"><span class="close" style="position:absolute;top:30px;right:40px;font-size:3rem;color:#fff;cursor:pointer;opacity:0.8">×</span><div class="modal-content" style="width:100%;max-width:1000px;aspect-ratio:16/9;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.8)"><iframe id="youtubePlayer" src="" allow="autoplay; encrypted-media" allowfullscreen style="width:100%;height:100%;border:none"></iframe></div></div>`;
             document.body.appendChild(modal.firstElementChild);
-
             const combatModal = document.getElementById('videoModal');
             const combatIframe = document.getElementById('youtubePlayer');
             const combatClose = document.querySelector('.close');
@@ -309,34 +315,89 @@
                 }
             };
             document.addEventListener('keydown', e => { if (e.key === 'Escape') combatClose.click(); });
-            
         </script>
-        <!-- BLENDER -->
+
+        <!-- ================================================================== -->
+        <!-- === COMING SOON – 3 TYHJÄÄ PLAKKIA (plank) ======================= -->
+        <!-- ================================================================== -->
+        <!-- Voit kopioida tämän osion myöhemmin uusille projekteille ja korvata plankit oikeilla kuvilla -->
         <section class="project-section mb-24">
             <div class="flex justify-between items-end mb-8">
                 <div>
-                    <span class="uppercase text-emerald-400 text-xs tracking-widest font-medium">Coming soon</span>
-                    <h3 class="text-4xl font-semibold tracking-tight">Tulossa pian</h3>
+                    <span class="uppercase text-emerald-400 text-xs tracking-widest font-medium">TULOSSA</span>
+                    <h3 class="text-4xl font-semibold tracking-tight">Coming soon</h3>
                 </div>
             </div>
-            <div id="gallery-grid-2" class="dynamic-grid grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-            <div class="gallery-pagination"><div class="dot-container" id="gallery-dots-2"></div></div>
+            
+            <div class="coming-soon-grid">
+                <!-- Plank 1 -->
+                <div class="plank-box">
+                    <div class="plank-text">
+                        <div class="text-5xl mb-3 text-zinc-700"></div>
+                        <p></p>
+                    </div>
+                </div>
+                <!-- Plank 2 -->
+                <div class="plank-box">
+                    <div class="plank-text">
+                        <div class="text-5xl mb-3 text-zinc-700"></div>
+                        <p></p>
+                    </div>
+                </div>
+                <!-- Plank 3 -->
+                <div class="plank-box">
+                    <div class="plank-text">
+                        <div class="text-5xl mb-3 text-zinc-700"></div>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
         </section>
-        <script>
-            const galleryId2 = "gallery-grid-2"; const dotsId2 = "gallery-dots-2";
-            const autoCycleEnabled2 = false; const cycleIntervalMs2 = 4200;
-            const showPageIndicators2 = false; const imagesPerPage2 = 3;
-            const allMediaItems2 = [
-                { src: "MEDIA/Portfolio/TuplaKupla4.webp", alt: "" },
-                { src: "MEDIA/Portfolio/TuplaKupla5.webp", alt: "" },
-                { src: "MEDIA/Portfolio/TuplaKupla6.webp", alt: "" },
-                { src: "MEDIA/Portfolio/TuplaKupla7.webp", alt: "" }
-            ];
-            let currentPage2 = 1; let totalPages2 = Math.ceil(allMediaItems2.length / imagesPerPage2); let autoInterval2 = null;
-            function renderGallery2(){const grid=document.getElementById(galleryId2);if(!grid)return;grid.style.opacity='0';setTimeout(()=>{grid.innerHTML='';const start=(currentPage2-1)*imagesPerPage2;const currentItems=allMediaItems2.slice(start,start+imagesPerPage2);currentItems.forEach(item=>{const div=document.createElement('div');div.className='group relative overflow-hidden rounded-2xl aspect-[4/3] bg-zinc-900';const lower=item.src.toLowerCase();if(lower.endsWith('.webm')||lower.endsWith('.mp4')){div.innerHTML=`<video src="${item.src}" autoplay muted loop playsinline class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"></video>`;}else{div.innerHTML=`<img src="${item.src}" alt="${item.alt}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">`;}grid.appendChild(div);});grid.style.opacity='1';updateDots2();},350);}
-            function createDots2(){if(!showPageIndicators2)return;const container=document.getElementById(dotsId2);if(!container)return;container.innerHTML='';for(let i=1;i<=totalPages2;i++){const dot=document.createElement('button');dot.className=`dot ${i===currentPage2?'active':''}`;dot.onclick=()=>{if(autoInterval2)clearInterval(autoInterval2);currentPage2=i;renderGallery2();if(autoCycleEnabled2)startAutoCycle2();};container.appendChild(dot);}}
-            function updateDots2(){if(!showPageIndicators2)return;const dots=document.querySelectorAll(`#${dotsId2} .dot`);dots.forEach((dot,i)=>dot.classList.toggle('active',i+1===currentPage2));}
-            function startAutoCycle2(){if(!autoCycleEnabled2||totalPages2<=1)return;if(autoInterval2)clearInterval(autoInterval2);autoInterval2=setInterval(()=>{currentPage2=(currentPage2===totalPages2)?1:currentPage2+1;renderGallery2();},cycleIntervalMs2);}
-            window.addEventListener('load',()=>{if(allMediaItems2.length>0){renderGallery2();createDots2();startAutoCycle2();}});
-        </script>      
+        <!-- ================================================================== -->
+        <!-- === COMING SOON LOPPUU TÄHÄN ====================================== -->
+        <!-- ================================================================== -->
+    </main>
+</div>
+    </section>
+
+    <footer>
+        <p>© Iivari Kortesoja 2026 | Y-Tunnus 3591660-9</p>
+    </footer>
+
+    <script>
+        (function(){
+            const bg = document.querySelector('#home video');
+            const home = document.getElementById('home');
+            if (!bg || !home) return;
+            if ('IntersectionObserver' in window) {
+                new IntersectionObserver(entries => {
+                    entries.forEach(entry => entry.isIntersecting ? bg.play() : bg.pause());
+                }, {threshold: 0.5}).observe(home);
+            } else { try { bg.play(); } catch(e) {} }
+        })();
+
+        (function(){
+            const imgs = document.querySelectorAll('.about-image img');
+            if (imgs.length < 1) return;
+            let i = 0;
+            setInterval(() => {
+                imgs[i].classList.remove('active');
+                i = (i + 1) % imgs.length;
+                imgs[i].classList.add('active');
+            }, 5000);
+        })();
+
+        document.querySelectorAll('.small-item, .large-item').forEach(box => {
+            const imgs = box.querySelectorAll('img');
+            if (imgs.length <= 1) return;
+            let i = 0;
+            const delay = box.classList.contains('small-item') ? 4000 : 5000;
+            setInterval(() => {
+                imgs[i].classList.remove('active');
+                i = (i + 1) % imgs.length;
+                imgs[i].classList.add('active');
+            }, delay);
+        });
+    </script>
+</body>
 </html>
