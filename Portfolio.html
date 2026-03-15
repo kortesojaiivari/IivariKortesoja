@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Iivari Kortesoja</title>
+    <!-- GOOGLE ANALYTICS 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -11,6 +12,7 @@
       gtag('js', new Date());
       gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
     </script>
+    <!-- MICROSOFT CLARITY -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -18,11 +20,13 @@
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "ud6y4jpngh");
     </script>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Header script -->
     <script src="SKRIPTIT/header.js" defer></script>
   
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap');
       
         body { font-family: 'Inter', system_ui, sans-serif; }
         h1, h2 { font-family: 'Playfair Display', sans-serif; }
@@ -164,25 +168,17 @@
             font-size: 1.1rem;
             font-weight: 500;
         }
-
-        /* FOOTER KORJAUS */
-        footer {
-            margin-top: 100px;
-            padding: 60px 20px;
-            border-top: 1px solid #27272a;
-            text-align: center;
-            width: 100%;
-            color: #71717a;
-        }
     </style>
 </head>
 <body class="bg-zinc-950 text-zinc-200">
-    <main class="max-w-7xl mx-auto px-6 pt-16">
+    <main class="max-w-7xl mx-auto px-6 pt-16 pb-24">
+        <!-- PAGE TITLE -->
         <div class="text-center mb-16">
             <h2 class="text-5xl font-bold tracking-tighter mb-3">Portfolio</h2>
             <p class="max-w-md mx-auto text-zinc-400 tail-text">Valokuvaus- ja mediaprojektit esiteltynä allekkain – osa 1×3 ruudukossa, osa yksittäisenä klikattavana mediana.</p>
         </div>
 
+        <!-- TUPLAKUPLA -->
         <section class="project-section mb-24">
             <div class="flex justify-between items-end mb-8">
                 <div>
@@ -193,7 +189,6 @@
             <div id="gallery-grid-1" class="dynamic-grid grid grid-cols-1 md:grid-cols-3 gap-6"></div>
             <div class="gallery-pagination"><div class="dot-container" id="gallery-dots-1"></div></div>
         </section>
-        
         <script>
             const galleryId1 = "gallery-grid-1"; const dotsId1 = "gallery-dots-1";
             const autoCycleEnabled1 = true; const cycleIntervalMs1 = 4200;
@@ -220,6 +215,7 @@
             window.addEventListener('load',()=>{if(allMediaItems1.length>0){renderGallery1();createDots1();startAutoCycle1();}});
         </script>
 
+        <!-- BLENDER -->
         <section class="project-section mb-24">
             <div class="flex justify-between items-end mb-8">
                 <div>
@@ -248,6 +244,7 @@
             window.addEventListener('load',()=>{if(allMediaItems2.length>0){renderGallery2();createDots2();startAutoCycle2();}});
         </script>
 
+        <!-- COMBAT CAMERA -->
         <section class="project-section mb-24">
             <div class="flex justify-between items-end mb-8">
                 <div>
@@ -264,27 +261,75 @@
                 <div class="combat-item" data-video-id="oIx5kq1QLgE"><img src="MEDIA/Puolustusvoimat/thumbnail6.webp" alt="Combat Camera Showreel 2025"></div>
             </div>
             <div class="extra-gallery">
-                <script>
-                    const imageSequence = [
-                        [7, 1, 11, 28, 4, 39, 35],
-                        [3, 5, 31, 29, 13, 36, 11],
-                        [12, 6, 19, 15, 14, 37, 19],
-                        [20, 8, 26, 2, 30, 23, 15],
-                        [25, 9, 33, 16, 32, 24, 8],
-                        [38, 10, 34, 17, 40, 27, 22]
-                    ];
-                    imageSequence.forEach(boxImages => {
-                        document.write('<div class="extra-item">');
-                        boxImages.forEach((num, index) => {
-                            const activeClass = index === 0 ? ' class="active"' : '';
-                            document.write(`<img src="MEDIA/VALOKUVAUS/Valokuvaus${num}.webp"${activeClass}>`);
-                        });
-                        document.write('</div>');
-                    });
-                </script>
+          <script>
+    const imageSequence = [
+        [7, 1, 11, 28, 4, 39, 35],
+        [3, 5, 31, 29, 13, 36, 11],
+        [12, 6, 19, 15, 14, 37, 19],
+        [20, 8, 26, 2, 30, 23, 15],
+        [25, 9, 33, 16, 32, 24, 8],
+        [38, 10, 34, 17, 40, 27, 22]
+    ];
+
+    imageSequence.forEach(boxImages => {
+        document.write('<div class="extra-item">');
+        boxImages.forEach((num, index) => {
+            const activeClass = index === 0 ? ' class="active"' : '';
+            // Päivitetty polku: MEDIA/Puolustusvoimat/Valokuvaus/Valokuvaus${num}.webp
+            document.write(`<img src="MEDIA/VALOKUVAUS/Valokuvaus${num}.webp"${activeClass}>`);
+        });
+        document.write('</div>');
+    });
+</script>
             </div>
         </section>
+        <script>
+            const combatThumbs = document.querySelectorAll('.combat-item');
+            const combatObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, i) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => entry.target.classList.add('visible'), i * 120);
+                        combatObserver.unobserve(entry.target);
+                    }
+                });
+            }, {threshold: 0.2});
+            combatThumbs.forEach(t => combatObserver.observe(t));
+            document.querySelectorAll('.extra-item').forEach(box => {
+                const imgs = box.querySelectorAll('img');
+                let idx = 0;
+                setInterval(() => {
+                    imgs[idx].classList.remove('active');
+                    idx = (idx + 1) % imgs.length;
+                    imgs[idx].classList.add('active');
+                }, 5000);
+            });
+            const modal = document.createElement('div');
+            modal.innerHTML = `<div class="modal" id="videoModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:2000;align-items:center;justify-content:center;padding:20px"><span class="close" style="position:absolute;top:30px;right:40px;font-size:3rem;color:#fff;cursor:pointer;opacity:0.8">×</span><div class="modal-content" style="width:100%;max-width:1000px;aspect-ratio:16/9;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.8)"><iframe id="youtubePlayer" src="" allow="autoplay; encrypted-media" allowfullscreen style="width:100%;height:100%;border:none"></iframe></div></div>`;
+            document.body.appendChild(modal.firstElementChild);
+            const combatModal = document.getElementById('videoModal');
+            const combatIframe = document.getElementById('youtubePlayer');
+            const combatClose = document.querySelector('.close');
+            document.querySelectorAll('.combat-item').forEach(item => {
+                item.onclick = () => {
+                    combatIframe.src = `https://www.youtube.com/embed/${item.dataset.videoId}?autoplay=1&rel=0`;
+                    combatModal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                };
+            });
+            combatClose.onclick = combatModal.onclick = (e) => {
+                if (e.target === combatModal || e.target === combatClose) {
+                    combatModal.style.display = 'none';
+                    combatIframe.src = '';
+                    document.body.style.overflow = '';
+                }
+            };
+            document.addEventListener('keydown', e => { if (e.key === 'Escape') combatClose.click(); });
+        </script>
 
+        <!-- ================================================================== -->
+        <!-- === COMING SOON – 3 TYHJÄÄ PLAKKIA (plank) ======================= -->
+        <!-- ================================================================== -->
+        <!-- Voit kopioida tämän osion myöhemmin uusille projekteille ja korvata plankit oikeilla kuvilla -->
         <section class="project-section mb-24">
             <div class="flex justify-between items-end mb-8">
                 <div>
@@ -292,75 +337,76 @@
                     <h3 class="text-4xl font-semibold tracking-tight">Coming soon</h3>
                 </div>
             </div>
+            
             <div class="coming-soon-grid">
-                <div class="plank-box"><div class="plank-text">Tulossa pian</div></div>
-                <div class="plank-box"><div class="plank-text">Tulossa pian</div></div>
-                <div class="plank-box"><div class="plank-text">Tulossa pian</div></div>
+                <!-- Plank 1 -->
+                <div class="plank-box">
+                    <div class="plank-text">
+                        <div class="text-5xl mb-3 text-zinc-700"></div>
+                        <p></p>
+                    </div>
+                </div>
+                <!-- Plank 2 -->
+                <div class="plank-box">
+                    <div class="plank-text">
+                        <div class="text-5xl mb-3 text-zinc-700"></div>
+                        <p></p>
+                    </div>
+                </div>
+                <!-- Plank 3 -->
+                <div class="plank-box">
+                    <div class="plank-text">
+                        <div class="text-5xl mb-3 text-zinc-700"></div>
+                        <p></p>
+                    </div>
+                </div>
             </div>
         </section>
+        <!-- ================================================================== -->
+        <!-- === COMING SOON LOPPUU TÄHÄN ====================================== -->
+        <!-- ================================================================== -->
     </main>
+</div>
+    </section>
 
     <footer>
         <p>© Iivari Kortesoja 2026 | Y-Tunnus 3591660-9</p>
     </footer>
 
     <script>
-        // Combat Camera logiikka
-        const combatThumbs = document.querySelectorAll('.combat-item');
-        const combatObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry, i) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => entry.target.classList.add('visible'), i * 120);
-                    combatObserver.unobserve(entry.target);
-                }
-            });
-        }, {threshold: 0.2});
-        combatThumbs.forEach(t => combatObserver.observe(t));
-
-        // Extra gallery kuva-animaatio
-        document.querySelectorAll('.extra-item').forEach(box => {
-            const imgs = box.querySelectorAll('img');
-            let idx = 0;
-            setInterval(() => {
-                imgs[idx].classList.remove('active');
-                idx = (idx + 1) % imgs.length;
-                imgs[idx].classList.add('active');
-            }, 5000);
-        });
-
-        // Video Modal
-        const modal = document.createElement('div');
-        modal.innerHTML = `<div class="modal" id="videoModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:2000;align-items:center;justify-content:center;padding:20px"><span class="close" style="position:absolute;top:30px;right:40px;font-size:3rem;color:#fff;cursor:pointer;opacity:0.8">×</span><div class="modal-content" style="width:100%;max-width:1000px;aspect-ratio:16/9;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.8)"><iframe id="youtubePlayer" src="" allow="autoplay; encrypted-media" allowfullscreen style="width:100%;height:100%;border:none"></iframe></div></div>`;
-        document.body.appendChild(modal.firstElementChild);
-        const combatModal = document.getElementById('videoModal');
-        const combatIframe = document.getElementById('youtubePlayer');
-        const combatClose = document.querySelector('.close');
-
-        document.querySelectorAll('.combat-item').forEach(item => {
-            item.onclick = () => {
-                combatIframe.src = `https://www.youtube.com/embed/${item.dataset.videoId}?autoplay=1&rel=0`;
-                combatModal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            };
-        });
-
-        combatClose.onclick = combatModal.onclick = (e) => {
-            if (e.target === combatModal || e.target === combatClose) {
-                combatModal.style.display = 'none';
-                combatIframe.src = '';
-                document.body.style.overflow = '';
-            }
-        };
-
-        // Video taustatoisto tarkistus
         (function(){
             const bg = document.querySelector('#home video');
             const home = document.getElementById('home');
             if (!bg || !home) return;
-            new IntersectionObserver(entries => {
-                entries.forEach(entry => entry.isIntersecting ? bg.play() : bg.pause());
-            }, {threshold: 0.5}).observe(home);
+            if ('IntersectionObserver' in window) {
+                new IntersectionObserver(entries => {
+                    entries.forEach(entry => entry.isIntersecting ? bg.play() : bg.pause());
+                }, {threshold: 0.5}).observe(home);
+            } else { try { bg.play(); } catch(e) {} }
         })();
+
+        (function(){
+            const imgs = document.querySelectorAll('.about-image img');
+            if (imgs.length < 1) return;
+            let i = 0;
+            setInterval(() => {
+                imgs[i].classList.remove('active');
+                i = (i + 1) % imgs.length;
+                imgs[i].classList.add('active');
+            }, 5000);
+        })();
+
+        document.querySelectorAll('.small-item, .large-item').forEach(box => {
+            const imgs = box.querySelectorAll('img');
+            if (imgs.length <= 1) return;
+            let i = 0;
+            const delay = box.classList.contains('small-item') ? 4000 : 5000;
+            setInterval(() => {
+                imgs[i].classList.remove('active');
+                i = (i + 1) % imgs.length;
+                imgs[i].classList.add('active');
+            }, delay);
+        });
     </script>
 </body>
 </html>
