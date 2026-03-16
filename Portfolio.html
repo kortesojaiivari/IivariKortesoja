@@ -138,7 +138,7 @@
         }
         .extra-item img.active { opacity: 1; }
 
-        /* COMING SOON - PLANK -tyyli */
+        /* COMING SOON - PLANK */
         .coming-soon-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -167,6 +167,16 @@
             color: #71717a;
             font-size: 1.1rem;
             font-weight: 500;
+        }
+
+        /* FOOTER – korjattu ja yhtenäinen kaikille sivuille */
+        footer {
+            background: #000;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid #333;
+            font-size: 1rem;
+            color: #71717a;
         }
     </style>
 </head>
@@ -261,26 +271,17 @@
                 <div class="combat-item" data-video-id="oIx5kq1QLgE"><img src="MEDIA/Puolustusvoimat/thumbnail6.webp" alt="Combat Camera Showreel 2025"></div>
             </div>
             <div class="extra-gallery">
-          <script>
-    const imageSequence = [
-        [7, 1, 11, 28, 4, 39, 35],
-        [3, 5, 31, 29, 13, 36, 11],
-        [12, 6, 19, 15, 14, 37, 19],
-        [20, 8, 26, 2, 30, 23, 15],
-        [25, 9, 33, 16, 32, 24, 8],
-        [38, 10, 34, 17, 40, 27, 22]
-    ];
-
-    imageSequence.forEach(boxImages => {
-        document.write('<div class="extra-item">');
-        boxImages.forEach((num, index) => {
-            const activeClass = index === 0 ? ' class="active"' : '';
-            // Päivitetty polku: MEDIA/Puolustusvoimat/Valokuvaus/Valokuvaus${num}.webp
-            document.write(`<img src="MEDIA/VALOKUVAUS/Valokuvaus${num}.webp"${activeClass}>`);
-        });
-        document.write('</div>');
-    });
-</script>
+                <script>
+                    const imageSequence = [[7,1,11,28,4,39,35],[3,5,31,29,13,36,11],[12,6,19,15,14,37,19],[20,8,26,2,30,23,15],[25,9,33,16,32,24,8],[38,10,34,17,40,27,22]];
+                    imageSequence.forEach(boxImages => {
+                        document.write('<div class="extra-item">');
+                        boxImages.forEach((num, index) => {
+                            const activeClass = index === 0 ? ' class="active"' : '';
+                            document.write(`<img src="MEDIA/Puolustusvoimat/comcam/comcam${num}.webp"${activeClass}>`);
+                        });
+                        document.write('</div>');
+                    });
+                </script>
             </div>
         </section>
         <script>
@@ -326,10 +327,7 @@
             document.addEventListener('keydown', e => { if (e.key === 'Escape') combatClose.click(); });
         </script>
 
-        <!-- ================================================================== -->
-        <!-- === COMING SOON – 3 TYHJÄÄ PLAKKIA (plank) ======================= -->
-        <!-- ================================================================== -->
-        <!-- Voit kopioida tämän osion myöhemmin uusille projekteille ja korvata plankit oikeilla kuvilla -->
+        <!-- COMING SOON – 3 TYHJÄÄ PLAKKIA -->
         <section class="project-section mb-24">
             <div class="flex justify-between items-end mb-8">
                 <div>
@@ -337,76 +335,48 @@
                     <h3 class="text-4xl font-semibold tracking-tight">Coming soon</h3>
                 </div>
             </div>
-            
             <div class="coming-soon-grid">
-                <!-- Plank 1 -->
-                <div class="plank-box">
-                    <div class="plank-text">
-                        <div class="text-5xl mb-3 text-zinc-700"></div>
-                        <p></p>
-                    </div>
-                </div>
-                <!-- Plank 2 -->
-                <div class="plank-box">
-                    <div class="plank-text">
-                        <div class="text-5xl mb-3 text-zinc-700"></div>
-                        <p></p>
-                    </div>
-                </div>
-                <!-- Plank 3 -->
-                <div class="plank-box">
-                    <div class="plank-text">
-                        <div class="text-5xl mb-3 text-zinc-700"></div>
-                        <p></p>
-                    </div>
-                </div>
+                <div class="plank-box"><div class="plank-text"><div class="text-5xl mb-3 text-zinc-700"></div><p></p></div></div>
+                <div class="plank-box"><div class="plank-text"><div class="text-5xl mb-3 text-zinc-700"></div><p></p></div></div>
+                <div class="plank-box"><div class="plank-text"><div class="text-5xl mb-3 text-zinc-700"></div><p></p></div></div>
             </div>
         </section>
-        <!-- ================================================================== -->
-        <!-- === COMING SOON LOPPUU TÄHÄN ====================================== -->
-        <!-- ================================================================== -->
     </main>
-</div>
-    </section>
 
+    <!-- KORJATTU FOOTER – yhtenäinen kaikille sivuille -->
     <footer>
         <p>© Iivari Kortesoja 2026 | Y-Tunnus 3591660-9</p>
     </footer>
 
     <script>
-        (function(){
-            const bg = document.querySelector('#home video');
-            const home = document.getElementById('home');
-            if (!bg || !home) return;
-            if ('IntersectionObserver' in window) {
-                new IntersectionObserver(entries => {
-                    entries.forEach(entry => entry.isIntersecting ? bg.play() : bg.pause());
-                }, {threshold: 0.5}).observe(home);
-            } else { try { bg.play(); } catch(e) {} }
-        })();
-
-        (function(){
-            const imgs = document.querySelectorAll('.about-image img');
-            if (imgs.length < 1) return;
-            let i = 0;
-            setInterval(() => {
-                imgs[i].classList.remove('active');
-                i = (i + 1) % imgs.length;
-                imgs[i].classList.add('active');
-            }, 5000);
-        })();
-
-        document.querySelectorAll('.small-item, .large-item').forEach(box => {
-            const imgs = box.querySelectorAll('img');
-            if (imgs.length <= 1) return;
-            let i = 0;
-            const delay = box.classList.contains('small-item') ? 4000 : 5000;
-            setInterval(() => {
-                imgs[i].classList.remove('active');
-                i = (i + 1) % imgs.length;
-                imgs[i].classList.add('active');
-            }, delay);
-        });
+        // MEDIA TOGGLE
+        let isVideo = false;
+        function toggleMedia() {
+            const wrapper = document.getElementById('media-wrapper');
+            if (!isVideo) {
+                wrapper.innerHTML = `
+                    <video controls autoplay loop class="w-full h-auto block rounded-2xl">
+                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny_720p.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 flex items-end p-8 pointer-events-none">
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 bg-white rounded-full flex items-center justify-center"><span class="text-zinc-950 text-xs font-bold">■</span></div>
+                            <p class="text-white text-sm font-medium">Klikkaa vaihtaaksesi takaisin kuvaan</p>
+                        </div>
+                    </div>`;
+                isVideo = true;
+            } else {
+                wrapper.innerHTML = `
+                    <img src="https://picsum.photos/id/1018/1200/800" alt="Kevätvirta thumbnail" class="w-full h-auto block">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 flex items-end p-8">
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 bg-white rounded-full flex items-center justify-center"><span class="text-zinc-950 text-xs font-bold">▶</span></div>
+                            <p class="text-white text-sm font-medium">Klikkaa vaihtaaksesi videoksi</p>
+                        </div>
+                    </div>`;
+                isVideo = false;
+            }
+        }
     </script>
 </body>
 </html>
