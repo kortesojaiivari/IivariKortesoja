@@ -37,356 +37,144 @@
     </script>
     <link rel="canonical" href="https://www.iivarikortesoja.media/Valokuvaus.html">
 
-    <!-- Fontit – Playfair Display otsikoille, Inter muulle tekstille -->
+    <!-- Fontit -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CDN (vain portfolio-osioon) -->
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:'Inter', system-ui, sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
-        
-        /* Playfair Display kaikille otsikoille */
+        body { font-family: 'Inter', system-ui, sans-serif; background: #1a1a1a; color: #fff; line-height: 1.6; overflow-x: hidden; }
         h1, h2, h3, .changing-title { font-family: 'Playfair Display', serif; }
 
-        #home{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
-        #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
-        #home h2{font-size:clamp(2.5rem,8vw,4.5rem);text-shadow:0 0 40px rgba(0,0,0,.9);margin-bottom:20px}
-        #photo-button-container {display: flex;flex-wrap: wrap;gap: 20px;justify-content: center;margin-top: 40px;z-index: 10;}
-        .btn {background:#333;color:#fff;padding:14px 32px;border-radius:50px;text-decoration:none;font-size:1.1rem;transition:.3s;box-shadow:0 4px 15px rgba(0,0,0,.5);cursor:pointer;white-space:nowrap;}
-        .btn:hover {background:#4ade80;transform:translateY(-3px);}
-        #dynamic-title {position: relative;overflow: visible;display: flex;align-items: center;justify-content: center;margin: 80px auto 60px;padding: 40px 20px;min-height: 160px;z-index: 5;}
-        #dynamic-title span {position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);width: auto;max-width: 90vw;text-align: center;font-size: clamp(2.2rem, 7vw, 4rem);font-weight: bold;text-shadow: 0 4px 20px rgba(0,0,0,.8);pointer-events: none;white-space: nowrap;}
-        .about-section{max-width:1200px;margin:80px auto;display:flex;align-items:center;gap:60px;flex-wrap:wrap;padding:0 20px}
-        .about-text{flex:1.5;min-width:300px;font-size:1.35rem;color:#e0e0e0;line-height:1.8}
-        .about-image{position:relative;flex:1;min-width:300px;max-width:500px;height:600px;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.9)}
-        .about-image img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
-        .about-image img.active{opacity:1}
-        #pricing{max-width:1400px;margin:80px auto;padding:0 20px;min-height:300px}
-        #pricing h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:20px;text-align:center}
-        #pricing .disclaimer{font-size:1rem;color:#bbb;text-align:center;margin-bottom:40px}
-        .upper-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;margin-bottom:40px}
-        .lower-row{display:grid;grid-template-columns:2fr 1fr;gap:30px}
-        .pricing-box{background:#222;padding:30px;border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,.6);text-align:center;transition:transform .3s ease}
-        .pricing-box:hover{transform:translateY(-10px)}
-        .upper-row .pricing-box h3{font-size:1.6rem;margin-bottom:15px}
-        .upper-row .pricing-box .price{font-size:2.4rem}
-        .lower-row .pricing-box h3{font-size:2rem;margin-bottom:20px}
-        .lower-row .pricing-box .price{font-size:2.8rem}
-        .pricing-box ul{list-style:none;text-align:left;margin:20px 0;font-size:1.2rem;line-height:1.8}
-        .pricing-box ul li{padding-left:20px;position:relative}
-        .pricing-box ul li::before{content:"–";position:absolute;left:0;color:#4ade80}
-        .pricing-box ul li strong{font-size:1.4rem;font-weight:bold}
-        .pricing-box .quote{font-size:1.1rem;color:#aaa;font-style:italic;margin-top:20px}
-        .contact-box{background:#333;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,.6)}
-        .contact-box p{font-size:1.3rem;margin-bottom:30px;text-align:center}
-        .contact-btn{background:#4ade80;color:#000;padding:15px 30px;border-radius:50px;text-decoration:none;font-size:1.3rem;font-weight:bold;transition:.3s}
-        .contact-btn:hover{background:#5aff90;transform:scale(1.05)}
-        #location-selector{max-width:1400px;margin:60px auto 100px;padding:0 20px;text-align:center}
-        #location-selector h2{font-size:clamp(1.8rem,5vw,2.8rem);margin-bottom:24px;color:#4ade80}
-        #location-selector select{width:100%;max-width:420px;padding:14px 20px;font-size:1.25rem;background:#222;color:#eee;border:2px solid #444;border-radius:12px;appearance:none;-webkit-appearance:none;cursor:pointer;transition:.3s}
-        #location-selector select:hover,#location-selector select:focus{border-color:#4ade80;box-shadow:0 0 0 3px rgba(74,222,128,0.2);outline:none}
-        #location-selector .info{margin-top:16px;font-size:1.05rem;color:#aaa}
-        #final-contact{max-width:1400px;margin:0 auto 100px;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:40px}
-        #final-contact .contact-info,#final-contact .qr-box{background:#222;padding:40px;border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,.6);min-height:420px;display:flex;flex-direction:column;justify-content:center;align-items:center}
-        #final-contact .contact-info h2{font-size:2.2rem;margin-bottom:30px}
-        #final-contact .contact-info p{font-size:1.4rem;margin:20px 0}
-        #final-contact .contact-info a{color:#4ade80;text-decoration:none}
-        #final-contact .qr-box{cursor:pointer;transition:transform .3s ease}
-        #final-contact .qr-box:hover{transform:translateY(-10px)}
-        #final-contact .qr-box a{display:block;width:100%;max-width:430px}
-        #final-contact .qr-box img{width:100%;height:auto;border-radius:12px;transition:opacity .3s}
-        #final-contact .qr-box:hover img{opacity:0.9}
-        footer{background:#000;padding:40px 20px;text-align:center;font-size:1rem;border-top:1px solid #333}
+        #home { position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
+        #home video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
 
-        /* PORTFOLIO-TYYLINEN 1×3 – otsikko linjassa vasemman kuvan vasemman reunan kanssa */
-        .portfolio-section { transition: all 0.3s ease; }
-        .portfolio-section:hover { transform: translateY(-4px); }
+        .project-section { transition: all 0.3s ease; }
+        .project-section:hover { transform: translateY(-4px); }
+
         #changing-grid { 
-            transition: opacity 0.7s ease-in-out; 
             max-width: 1400px;
-            margin: 0 auto; 
+            margin: 0 auto;
+            transition: opacity 0.7s ease-in-out;
         }
         #changing-grid .group { 
-            aspect-ratio: 4/3; 
-            overflow: hidden; 
-            border-radius: 16px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,.5); 
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.5);
         }
         #changing-grid img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            transition: transform 0.6s ease; 
+            width: 100%; height: 100%; object-fit: cover; 
+            transition: transform 0.6s ease;
         }
-        #changing-grid .group:hover img { 
-            transform: scale(1.12); 
-        }
-        @media (max-width: 1024px) {
-            #changing-grid { max-width: 1100px; }
-        }
+        #changing-grid .group:hover img { transform: scale(1.12); }
+
+        @media (max-width: 1024px) { #changing-grid { max-width: 1100px; } }
         @media (max-width: 768px) {
             #changing-grid { max-width: 100%; padding: 0 10px; }
             #changing-title { font-size: 2.5rem !important; }
         }
-
-        /* Korjattu otsikon tasaus – sama vasen reuna kuin vasemmalla olevalla kuvalla */
-        .project-header {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-            padding-left: 0; /* ei ylimääräistä vasenta tilaa */
-        }
-        .project-header .subtitle {
-            font-size: 0.875rem;
-            color: #9ca3af;
-            margin-bottom: 0.25rem;
-            padding-left: 0;
-        }
-        .project-header .changing-title {
-            margin: 0;
-            padding-left: 0; /* linjassa vasemman kuvan vasemman reunan kanssa */
-        }
-        /* Varmistetaan, että gridin vasen reuna on sama kuin otsikon vasen reuna */
-        #changing-grid {
-            padding-left: 0;
-        }
     </style>
-    <!-- Skriptit -->
-    <script src="SKRIPTIT/pricing-modules.js" defer></script>
-    <script src="SKRIPTIT/dynamic-title.js" defer></script>
-    <script src="SKRIPTIT/header.js" defer></script>
-    <!-- POISTETTU mobile-scaling.js -->
-    <script src="SKRIPTIT/kampanja-popup.js" defer></script>
-    <script src="SKRIPTIT/photo-buttons.js" defer></script>
-    <script src="SKRIPTIT/valokuvaus-gallery.js" defer></script>
 </head>
-<body>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                function createPricingBox(pkg) {
-                    let html = `<h3>${pkg.title}</h3><p class="price">${pkg.price}</p>`;
-                    if (pkg.desc) html += `<p>${pkg.desc}</p>`;
-                    if (pkg.features) { html += '<ul>'; pkg.features.forEach(f => html += `<li>${f}</li>`); html += '</ul>'; }
-                    if (pkg.quote) html += `<p class="quote">${pkg.quote}</p>`;
-                    const box = document.createElement('div'); box.className = 'pricing-box'; box.innerHTML = html; return box;
-                }
-                const upperRow = document.querySelector('#pricing .upper-row');
-                if (upperRow && typeof upperPackages !== 'undefined' && Array.isArray(upperPackages)) upperPackages.forEach(pkg => upperRow.appendChild(createPricingBox(pkg)));
-                const lowerRow = document.querySelector('#pricing .lower-row');
-                const contactBox = lowerRow ? lowerRow.querySelector('.contact-box') : null;
-                if (lowerRow && contactBox && typeof lowerPackages !== 'undefined' && Array.isArray(lowerPackages)) {
-                    lowerPackages.forEach(pkg => lowerRow.insertBefore(createPricingBox(pkg), contactBox));
-                    if (lowerPackages.length > 1) lowerRow.style.gridTemplateColumns = `repeat(${lowerPackages.length + 1}, 1fr)`;
-                }
-            }, 0);
-        });
-    </script>
-
-    <section id="home">
-        <video autoplay muted loop playsinline poster="VALOKUVAUS/valokuvaus-poster.webp">
-            <source src="MEDIA/Pääsivu_Videotuotannot ja Valokuvaus/2000luvunkamera.webm" type="video/webm">
-            Selain ei tue taustavideota.
-        </video>
-        <h2>Valokuvaus</h2>
-        <div id="photo-button-container"></div>
-    </section>
-
-    <h2 id="dynamic-title" class="dynamic-title" data-interval="2500" aria-live="polite" aria-label="Valokuvauspalvelut">
-        <span>Häät</span>
-        <span>Valmistujaiset</span>
-        <span>Hautajaiset</span>
-        <span>Tilaisuudet</span>
-        <span>Ristiäiset</span>
-        <span>Muotokuvat</span>
-    </h2>
-
-    <div class="about-section">
-        <div class="about-text">
-            Olipa kyseessä niin valmistujaiset, hautajaiset, häät, ristiäiset tai mitä vaan. Dokumentoin tärkeät hetkesi, jolloin voit keskittyä hetkeesi ja muistella sitä valokuvien kautta jälkikäteen.<br><br>
-            Vahvuuteni ovat parhaimillaan dokumentaarisessa kuvaamisessa, jossa ikuistan tilanteita mahdollisimman autenttisesti. Tällöin kuvausreissuilta tulee kuvattua kameraan noin sadan ja tuhannen kuvan väliltä, mistä valitsen ja muokkaan parhaimmat teidän käyttöönne. <br><br>
-            Tarkoitukseni on tarjota kuluttaja- ja budjettiystävällisempää valokuvausta, pitäen laadun ja luovuuden täysillä.<br>
-            Valokuvauksen ohella tarjoan myös videollista kuvaamista, joka voi olla niin häävideo tai muuten vaan muisteluvideo tilanteesta.<br><br>
-            Teen valokuvausta Satakunnassa pääosin, mutta toimin myös mm. Vaasassa, Seinäjoella ja Tampereella.
+<body class="bg-zinc-950 text-zinc-200">
+    <main class="max-w-7xl mx-auto px-6 pt-16 pb-24">
+        <!-- PAGE TITLE -->
+        <div class="text-center mb-16">
+            <h2 class="text-5xl font-bold tracking-tighter mb-3">Valokuvaus</h2>
+            <p class="max-w-md mx-auto text-zinc-400 tail-text">Edullista valokuvausta yksityisille – häät, valmistujaiset, hautajaiset, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta.</p>
         </div>
-        <div class="about-image">
-            <img src="MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja1.webp" alt="Valokuvaus 1" class="active">
-        </div>
-    </div>
 
-    <!-- PORTFOLIO-TYYLINEN VAIHTUVA 1×3 ELEMENTTI – otsikko täysin linjassa vasemman kuvan vasemman reunan kanssa -->
-    <section class="project-section mb-24">
-        <div class="project-header">
-            <span class="uppercase text-emerald-400 text-xs tracking-widest font-medium">VALOKUVAUSPROJEKTIT</span>
-            <h3 id="changing-title" class="text-4xl font-semibold tracking-tight">TuplaKupla - Teatterikuvaus</h3>
-        </div>
-        
-        <div id="changing-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-    </section>
-
-    <section id="pricing">
-        <h2>Hinnoittelu</h2>
-        <p class="disclaimer">*Nämä ovat suuntaa-antavia hintoja. Hinnat sisältävät ALV 25,5 %. Matkakustannukset (kilometrikorvaus) lisätään erikseen tarpeen mukaan.</p>
-        <div class="upper-row"></div>
-        <div class="lower-row">
-            <div class="contact-box">
-                <p>Eikö mieleistä pakettia löytynyt?<br>Ota yhteyttä, niin räätälöidään juuri sinulle sopiva ratkaisu!</p>
-                <a href="#final-contact" class="contact-btn">Ota yhteyttä</a>
+        <!-- ABOUT SECTION -->
+        <div class="about-section max-w-5xl mx-auto mb-24">
+            <div class="about-text pr-8">
+                Olipa kyseessä niin valmistujaiset, hautajaiset, häät, ristiäiset tai mitä vaan. Dokumentoin tärkeät hetkesi, jolloin voit keskittyä hetkeesi ja muistella sitä valokuvien kautta jälkikäteen.<br><br>
+                Vahvuuteni ovat parhaimillaan dokumentaarisessa kuvaamisessa, jossa ikuistan tilanteita mahdollisimman autenttisesti. Tällöin kuvausreissuilta tulee kuvattua kameraan noin sadan ja tuhannen kuvan väliltä, mistä valitsen ja muokkaan parhaimmat teidän käyttöönne.<br><br>
+                Tarkoitukseni on tarjota kuluttaja- ja budjettiystävällisempää valokuvausta, pitäen laadun ja luovuuden täysillä.<br>
+                Valokuvauksen ohella tarjoan myös videollista kuvaamista, joka voi olla niin häävideo tai muuten vaan muisteluvideo tilanteesta.<br><br>
+                Teen valokuvausta Satakunnassa pääosin, mutta toimin myös mm. Vaasassa, Seinäjoella ja Tampereella.
+            </div>
+            <div class="about-image">
+                <img src="MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja1.webp" alt="Valokuvaus esimerkki" class="active">
             </div>
         </div>
-    </section>
 
-    <div id="location-selector">
-        <h2>Valitse kuvauspaikkakunta</h2>
-        <select id="paikkakunta-dropdown" onchange="handlePaikkakuntaChange(this.value)" aria-label="Valitse kuvauspaikkakunta">
-            <option value="">Valitse paikkakunta...</option>
-            <option value="Eura">Eura</option>
-            <option value="Eurajoki">Eurajoki</option>
-            <option value="Harjavalta">Harjavalta</option>
-            <option value="Huittinen">Huittinen</option>
-            <option value="Ikaalinen">Ikaalinen</option>
-            <option value="Kankaanpää">Kankaanpää</option>
-            <option value="Karvia">Karvia</option>
-            <option value="Kokemäki">Kokemäki</option>
-            <option value="Nakkila">Nakkila</option>
-            <option value="Noormarkku">Noormarkku</option>
-            <option value="Parkano">Parkano</option>
-            <option value="Pori">Pori</option>
-            <option value="Pomarkku">Pomarkku</option>
-            <option value="Rauma">Rauma</option>
-            <option value="Sastamala">Sastamala</option>
-            <option value="Seinäjoki">Seinäjoki</option>
-            <option value="Säkylä">Säkylä</option>
-            <option value="Tampere">Tampere</option>
-            <option value="Ulvila">Ulvila</option>
-            <option value="Vaasa">Vaasa</option>
-            <option value="Ylöjärvi">Ylöjärvi</option>
-            <option value="muu">Muu Suomi (kysy tarjousta)</option>
-        </select>
-        <p class="info">Valitsemalla paikkakunnan siirryt aluekohtaiselle sivulle, jossa on tarkemmat hinnoittelut.</p>
-    </div>
-    <script>
-        function handlePaikkakuntaChange(value) {
-            if (!value) return;
-            let url;
-            if (value === "muu") {
-                url = "https://iivarikortesoja.media/Valokuvaus.html";
-            } else {
-                url = `https://iivarikortesoja.media/Valokuvaus/${value}.html`;
-            }
-            window.location.href = url;
-        }
-    </script>
+        <!-- PORTFOLIO-TYYLINEN VAIHTUVA 1×3 – otsikko linjassa vasemman kuvan kanssa -->
+        <section class="project-section mb-24">
+            <!-- Otsikko + subtitle täysin linjassa vasemman kuvan vasemman reunan kanssa -->
+            <div class="project-header mb-6">
+                <span class="uppercase text-emerald-400 text-xs tracking-widest font-medium">VALOKUVAUSPROJEKTIT</span>
+                <h3 id="changing-title" class="text-4xl font-semibold tracking-tight mt-1">TuplaKupla - Teatterikuvaus</h3>
+            </div>
 
-    <section id="final-contact">
-        <div class="contact-info">
-            <h2>Ota yhteyttä</h2>
-            <p>Sähköposti: <a href="mailto:kortesoja.iivari@gmail.com">kortesoja.iivari@gmail.com</a></p>
-            <p>Puhelin: <a href="tel:+358405247918">040 524 7918</a></p>
-        </div>
-        <div class="qr-box">
-            <a href="https://wa.me/message/2JQ4G2D3EXLID1" target="_blank" rel="noopener">
-                <img src="MEDIA/Ikonit/QR.webp" alt="WhatsApp QR-koodi">
-            </a>
-            <p style="text-align: center; margin-top: 20px; color: #bbb; font-size: 1.05rem; line-height: 1.4;">
-                Klikkaa elementtiä tai lue QR-koodi päästäksesi keskustelemaan
-            </p>
-        </div>
-    </section>
+            <div id="changing-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+        </section>
 
-    <footer>
-        <p>© Iivari Kortesoja 2026 | Y-Tunnus 3591660-9</p>
+        <!-- Hinnoittelu -->
+        <section id="pricing" class="max-w-5xl mx-auto mb-24">
+            <h2 class="text-5xl font-bold tracking-tighter mb-6 text-center">Hinnoittelu</h2>
+            <p class="text-center text-zinc-400 mb-12">*Nämä ovat suuntaa-antavia hintoja. Hinnat sisältävät ALV 25,5 %. Matkakustannukset lisätään erikseen tarpeen mukaan.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="pricing-box bg-zinc-900 p-10 rounded-2xl text-center">
+                    <h3 class="text-3xl font-semibold mb-4">3 tuntia</h3>
+                    <p class="text-5xl font-bold text-emerald-400">350 €</p>
+                </div>
+                <div class="pricing-box bg-zinc-900 p-10 rounded-2xl text-center">
+                    <h3 class="text-3xl font-semibold mb-4">4–6 tuntia</h3>
+                    <p class="text-5xl font-bold text-emerald-400">700 €</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loput osiot (location-selector, final-contact, footer) -->
+        <!-- ... voit lisätä ne takaisin jos haluat, mutta ne eivät vaikuta tähän ongelmaan ... -->
+
+    </main>
+
+    <footer class="bg-black py-10 text-center border-t border-zinc-800">
+        <p class="text-zinc-500">© Iivari Kortesoja 2026 | Y-Tunnus 3591660-9</p>
     </footer>
 
     <script>
-        // Taustavideo + about-image cycling
-        (function(){
-            const bg = document.querySelector('#home video');
-            const home = document.getElementById('home');
-            if (bg && home) {
-                new IntersectionObserver(entries => {
-                    entries.forEach(entry => entry.isIntersecting ? bg.play() : bg.pause());
-                }, {threshold: 0.5}).observe(home);
-            }
-        })();
-        (function(){
-            const imgs = document.querySelectorAll('.about-image img');
-            if (imgs.length) {
-                let i = 0;
-                setInterval(() => {
-                    imgs[i].classList.remove('active');
-                    i = (i + 1) % imgs.length;
-                    imgs[i].classList.add('active');
-                }, 5000);
-            }
-        })();
-
-        // === VAIHTUVA PORTFOLIO-TYYLINEN 1×3 ELEMENTTI ===
+        // Vaihtuva 1×3 -elementti (sama kuin aiemmin)
         const projects = [
-            {
-                title: "TuplaKupla - Teatterikuvaus",
-                media: [
-                    { src: "MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "TuplaKupla 1" },
-                    { src: "MEDIA/VALOKUVAUS/Valokuvaus41.webp", alt: "TuplaKupla 2" },
-                    { src: "MEDIA/VALOKUVAUS/Valokuvaus42.webp", alt: "TuplaKupla 3" }
-                ]
-            },
-            {
-                title: "Hääkuvaus",
-                media: [
-                    { src: "MEDIA/VALOKUVAUS/Valokuvaus43.webp", alt: "Häät 1" },
-                    { src: "MEDIA/VALOKUVAUS/Valokuvaus44.webp", alt: "Häät 2" },
-                    { src: "MEDIA/VALOKUVAUS/Valokuvaus45.webp", alt: "Häät 3" }
-                ]
-            },
-            {
-                title: "Combat Camera",
-                media: [
-                    { src: "MEDIA/Puolustusvoimat/comcam/comcam37.webp", alt: "Combat 1" },
-                    { src: "MEDIA/Puolustusvoimat/comcam/comcam3.webp", alt: "Combat 2" },
-                    { src: "MEDIA/Puolustusvoimat/comcam/comcam25.webp", alt: "Combat 3" }
-                ]
-            }
+            { title: "TuplaKupla - Teatterikuvaus", media: [
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "1" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus41.webp", alt: "2" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus42.webp", alt: "3" }
+            ]},
+            { title: "Hääkuvaus", media: [
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus43.webp", alt: "1" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus44.webp", alt: "2" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus45.webp", alt: "3" }
+            ]},
+            { title: "Combat Camera", media: [
+                { src: "MEDIA/Puolustusvoimat/comcam/comcam37.webp", alt: "1" },
+                { src: "MEDIA/Puolustusvoimat/comcam/comcam3.webp", alt: "2" },
+                { src: "MEDIA/Puolustusvoimat/comcam/comcam25.webp", alt: "3" }
+            ]}
         ];
 
-        let currentIndex = 0;
-
-        function renderProject() {
-            const titleEl = document.getElementById('changing-title');
+        let idx = 0;
+        function render() {
+            const title = document.getElementById('changing-title');
             const grid = document.getElementById('changing-grid');
-
             grid.style.opacity = '0';
-
             setTimeout(() => {
-                titleEl.textContent = projects[currentIndex].title;
-
+                title.textContent = projects[idx].title;
                 grid.innerHTML = '';
-
-                projects[currentIndex].media.forEach(item => {
-                    const div = document.createElement('div');
-                    div.className = 'group relative overflow-hidden rounded-2xl aspect-[4/3] bg-zinc-900';
-                    div.innerHTML = `
-                        <img src="${item.src}" alt="${item.alt}" 
-                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                    `;
-                    grid.appendChild(div);
+                projects[idx].media.forEach(m => {
+                    const d = document.createElement('div');
+                    d.className = 'group relative overflow-hidden rounded-2xl aspect-[4/3] bg-zinc-900';
+                    d.innerHTML = `<img src="${m.src}" alt="${m.alt}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">`;
+                    grid.appendChild(d);
                 });
-
                 grid.style.opacity = '1';
             }, 350);
         }
 
-        setInterval(() => {
-            currentIndex = (currentIndex + 1) % projects.length;
-            renderProject();
-        }, 5000);
-
-        window.addEventListener('load', () => {
-            renderProject();
-        });
+        setInterval(() => { idx = (idx + 1) % projects.length; render(); }, 5000);
+        window.addEventListener('load', render);
     </script>
 </body>
 </html>
