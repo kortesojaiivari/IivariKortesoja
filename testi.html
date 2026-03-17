@@ -47,7 +47,7 @@
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Inter', system-ui, sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
         
-        /* Playfair Display kaikille otsikoille */
+        /* Playfair Display kaikille otsikoille (kuten portfolio-sivulla) */
         h1, h2, h3, .changing-title { font-family: 'Playfair Display', serif; }
 
         #home{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
@@ -100,12 +100,12 @@
         #final-contact .qr-box:hover img{opacity:0.9}
         footer{background:#000;padding:40px 20px;text-align:center;font-size:1rem;border-top:1px solid #333}
 
-        /* PORTFOLIO-TYYLINEN 1×3 – otsikko vasemmalla, linjassa vasemman kuvan kanssa */
+        /* PORTFOLIO-TYYLINEN 1×3 – suuremmat kuvat, responsiivinen */
         .portfolio-section { transition: all 0.3s ease; }
         .portfolio-section:hover { transform: translateY(-4px); }
         #changing-grid { 
             transition: opacity 0.7s ease-in-out; 
-            max-width: 1400px;
+            max-width: 1400px;           /* suurempi koko, kuten portfolio-sivulla */
             margin: 0 auto; 
         }
         #changing-grid .group { 
@@ -130,30 +130,13 @@
             #changing-grid { max-width: 100%; padding: 0 10px; }
             #changing-title { font-size: 2.5rem !important; }
         }
-
-        /* Korjattu otsikon tasaus – ei liian kaukana vasemmasta reunasta */
-        .project-header {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-            padding-left: 0; /* vasen padding poistettu tai pieni */
-        }
-        .project-header .subtitle {
-            font-size: 0.875rem;
-            color: #9ca3af;
-            margin-bottom: 0.25rem;
-        }
-        .project-header .changing-title {
-            margin: 0;
-            padding-left: 0; /* ei ylimääräistä vasenta tilaa */
-        }
     </style>
     <!-- Skriptit -->
     <script src="SKRIPTIT/pricing-modules.js" defer></script>
     <script src="SKRIPTIT/dynamic-title.js" defer></script>
     <script src="SKRIPTIT/header.js" defer></script>
-    <!-- POISTETTU mobile-scaling.js -->
+    <!-- POISTETTU mobile-scaling.js – se saattoi aiheuttaa skaalausongelmia -->
+    <!-- <script src="SKRIPTIT/mobile-scaling.js" defer></script> -->
     <script src="SKRIPTIT/kampanja-popup.js" defer></script>
     <script src="SKRIPTIT/photo-buttons.js" defer></script>
     <script src="SKRIPTIT/valokuvaus-gallery.js" defer></script>
@@ -212,11 +195,13 @@
         </div>
     </div>
 
-    <!-- PORTFOLIO-TYYLINEN VAIHTUVA 1×3 ELEMENTTI – otsikko vasemmalla linjassa vasemman kuvan kanssa -->
+    <!-- PORTFOLIO-TYYLINEN VAIHTUVA 1×3 ELEMENTTI -->
     <section class="project-section mb-24">
-        <div class="project-header">
-            <span class="uppercase text-emerald-400 text-xs tracking-widest font-medium">VALOKUVAUSPROJEKTIT</span>
-            <h3 id="changing-title" class="text-4xl font-semibold tracking-tight">TuplaKupla - Teatterikuvaus</h3>
+        <div class="flex justify-between items-end mb-8">
+            <div>
+                <span class="uppercase text-emerald-400 text-xs tracking-widest font-medium">VALOKUVAUSPROJEKTIT</span>
+                <h3 id="changing-title" class="text-4xl font-semibold tracking-tight">TuplaKupla - Teatterikuvaus</h3>
+            </div>
         </div>
         
         <div id="changing-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
@@ -374,11 +359,13 @@
             }, 350);
         }
 
+        // Vaihda 5 sekunnin välein
         setInterval(() => {
             currentIndex = (currentIndex + 1) % projects.length;
             renderProject();
         }, 5000);
 
+        // Käynnistä ensimmäinen projekti heti sivun latautuessa
         window.addEventListener('load', () => {
             renderProject();
         });
