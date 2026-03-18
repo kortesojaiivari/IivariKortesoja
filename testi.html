@@ -94,7 +94,7 @@
         #final-contact .qr-box:hover img{opacity:0.9}
         footer{background:#000;padding:40px 20px;text-align:center;font-size:1rem;border-top:1px solid #333}
 
-        /* PORTFOLIO-TYYLINEN VAIHTUVA 1×3 – TEKSTIT SUURENNA +20% edellisestä (+44% alkuperäisestä) */
+        /* PORTFOLIO-TYYLINEN VAIHTUVA 1×3 – #changing-title suurennettu ~70 % */
         .portfolio-section { transition: all 0.3s ease; }
         .portfolio-section:hover { transform: translateY(-4px); }
 
@@ -102,7 +102,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            margin-bottom: 3rem;              /* +20% */
+            margin-bottom: 2.5rem;
             max-width: 1400px;
             margin-left: auto;
             margin-right: auto;
@@ -114,18 +114,18 @@
         }
 
         .project-header .subtitle {
-            font-size: 1.44rem;               /* +20% edellisestä: 1.2rem → 1.44rem */
+            font-size: 1rem;
             text-transform: uppercase;
-            letter-spacing: 0.216rem;         /* +20% */
+            letter-spacing: 0.15rem;
             font-weight: 500;
             color: #10b981;
-            margin-bottom: 0.72rem;
+            margin-bottom: 0.5rem;
         }
 
         .project-header .changing-title {
-            font-size: 4.32rem;               /* +20% edellisestä: 3.6rem → 4.32rem */
+            font-size: 5.1rem;              /* ~70 % suurempi kuin aiempi 3rem → 5.1rem */
             font-weight: 700;
-            letter-spacing: -0.0576em;
+            letter-spacing: -0.05em;
             line-height: 1.05;
             margin: 0;
         }
@@ -136,14 +136,14 @@
             transition: opacity 0.7s ease-in-out;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2.52rem;                     /* +20% edellisestä */
+            gap: 1.75rem;
         }
 
         #changing-grid .group {
             aspect-ratio: 4/3;
             overflow: hidden;
-            border-radius: 1.44rem;
-            box-shadow: 0 14.4px 43.2px rgba(0,0,0,.5);
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,.5);
             background: #111;
         }
 
@@ -156,21 +156,21 @@
 
         #changing-grid .group:hover img { transform: scale(1.12); }
 
-        /* Uusi 3×2 staattinen galleria – sama +20% skaalaus */
+        /* Uusi 3×2 staattinen galleria */
         .static-gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2.88rem;                     /* +20% */
+            gap: 1.75rem;
             max-width: 1400px;
-            margin: 8.64rem auto;             /* +20% */
-            padding: 0 1.8rem;
+            margin: 6rem auto;
+            padding: 0 1.25rem;
         }
 
         .static-item {
             aspect-ratio: 4/3;
             overflow: hidden;
-            border-radius: 1.44rem;
-            box-shadow: 0 14.4px 43.2px rgba(0,0,0,.5);
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,.5);
             background: #111;
         }
 
@@ -188,19 +188,20 @@
         @media (max-width: 1024px) {
             .static-gallery,
             #changing-grid { grid-template-columns: repeat(2, 1fr); }
+            .project-header .changing-title { font-size: 4.2rem; }   /* tablet-skaalaus */
         }
 
         @media (max-width: 768px) {
             .project-header {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 1.8rem;
+                gap: 1.25rem;
             }
             .project-header .subtitle {
-                font-size: 1.26rem;
+                font-size: 0.875rem;
             }
             .project-header .changing-title {
-                font-size: 3.6rem;            /* mobiilissa hieman hillitympi mutta edelleen erittäin iso */
+                font-size: 3.5rem;          /* mobiilissa silti selkeästi suurempi */
             }
             .static-gallery,
             #changing-grid { grid-template-columns: 1fr; }
@@ -247,12 +248,12 @@
         </div>
     </div>
 
-    <!-- VAIHTUVA PORTFOLIO-TYYLINEN 1×3 ELEMENTTI – TEKSTIT SUURENNA +20% edellisestä -->
+    <!-- VAIHTUVA PORTFOLIO-TYYLINEN 1×3 ELEMENTTI – #changing-title suurennettu ~70 % -->
     <section class="project-section mb-24">
         <div class="project-header">
             <div class="left">
-                <span class="subtitle uppercase text-emerald-400 tracking-widest font-medium">VALOKUVAUSPROJEKTIT</span>
-                <h3 id="changing-title" class="font-semibold tracking-tight">TuplaKupla - Teatterikuvaus</h3>
+                <span class="subtitle uppercase text-emerald-400 text-xs tracking-widest font-medium">VALOKUVAUSPROJEKTIT</span>
+                <h3 id="changing-title" class="text-4xl font-semibold tracking-tight">TuplaKupla - Teatterikuvaus</h3>
             </div>
         </div>
         
