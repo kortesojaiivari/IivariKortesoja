@@ -4,60 +4,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valokuvaus | Iivari Kortesoja</title>
+    <meta name="description" content="Edullista valokuvausta yksityisille – häät, valmistujaiset, hautajaiset, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta. Myös videopalvelut saatavilla.">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
+    </script>
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "ud6y4jpngh");
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Valokuvaus | Iivari Kortesoja",
+      "description": "Edullista Valokuvausta: Hääkuvaus, kokopäiväinen hääkuvaus, valmistujaiset, hautajaiskuvaus, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta.",
+      "telephone": "+358405247918",
+      "email": "kortesoja.iivari@gmail.com",
+      "url": "https://www.iivarikortesoja.media/Valokuvaus.html",
+      "image": "https://www.iivarikortesoja.media/MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja1.webp",
+      "priceRange": "350 - 900 €",
+      "sameAs": [
+        "https://wa.me/message/2JQ4G2D3EXLID1",
+        "https://www.linkedin.com/in/iivarikortesoja/",
+        "https://iivarikortesoja.media"
+      ]
+    }
+    </script>
+    <link rel="canonical" href="https://www.iivarikortesoja.media/Valokuvaus.html">
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
         
+        /* HOME */
         #home{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
         #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
-        #home h2{font-size:clamp(2.5rem,8vw,4rem);text-shadow:0 0 40px rgba(0,0,0,.9)}
+        #home h2{font-size:clamp(2.5rem,8vw,4.5rem);text-shadow:0 0 40px rgba(0,0,0,.9);margin-bottom:20px}
+        #photo-button-container {display: flex;flex-wrap: wrap;gap: 20px;justify-content: center;margin-top: 40px;z-index: 10;}
+        .btn {background:#333;color:#fff;padding:14px 32px;border-radius:50px;text-decoration:none;font-size:1.1rem;transition:.3s;box-shadow:0 4px 15px rgba(0,0,0,.5);cursor:pointer;white-space:nowrap;}
+        .btn:hover {background:#4ade80;transform:translateY(-3px);}
 
-        /* PORTFOLIO-OSIO – H3 ASETETTU 3REM */
-        .project-section {
-            padding: 100px 0;
-            background: #1a1a1a;
+        /* DYNAMIC TITLE */
+        #dynamic-title {position: relative;overflow: visible;display: flex;align-items: center;justify-content: center;margin: 80px auto 60px;padding: 40px 20px;min-height: 160px;z-index: 5;}
+        #dynamic-title span {position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);width: auto;max-width: 90vw;text-align: center;font-size: clamp(2.2rem, 7vw, 4rem);font-weight: bold;text-shadow: 0 4px 20px rgba(0,0,0,.8);pointer-events: none;white-space: nowrap;}
+
+        /* ABOUT */
+        .about-section{max-width:1200px;margin:80px auto;display:flex;align-items:center;gap:60px;flex-wrap:wrap;padding:0 20px}
+        .about-text{flex:1.5;min-width:300px;font-size:1.35rem;color:#e0e0e0;line-height:1.8}
+        .about-image{position:relative;flex:1;min-width:300px;max-width:500px;height:600px;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.9)}
+        .about-image img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
+        .about-image img.active{opacity:1}
+
+        /* PORTFOLIO-OSIO – H3 PÄIVITETTY 3REM */
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 2.5rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .project-header {
-            max-width: 1400px;
-            margin: 0 auto 2.5rem;
-            padding: 0 20px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 20px;
+        .project-header .left {
+            display: flex;
+            flex-direction: column;
         }
 
         .project-header .subtitle {
-            font-size: 0.75rem;
+            font-size: 0.875rem !important;
             text-transform: uppercase;
-            letter-spacing: 0.3rem;
-            font-weight: 400;
-            color: #4ade80;
+            letter-spacing: 0.2rem;
+            font-weight: 500;
+            color: #10b981;
             margin-bottom: 0.75rem;
-            display: block;
         }
 
         .project-header .changing-title {
-            font-size: 3rem !important; /* Tyylikäs ja hillitty 3rem */
-            font-weight: 700 !important;
-            letter-spacing: -0.01em !important;
+            font-size: 3rem !important;  /* TYYLIKÄS 3REM KOKO */
+            font-weight: 800 !important;
+            letter-spacing: -0.02em !important;
             line-height: 1.2 !important;
             margin: 0 !important;
-            color: #ffffff;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.4) !important;
         }
 
         #changing-grid {
             max-width: 1400px;
             margin: 0 auto;
+            transition: opacity 0.7s ease-in-out;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            padding: 0 20px;
         }
 
         #changing-grid .group {
-            aspect-ratio: 1/1; /* Neliömuoto toimii hienosti 3rem otsikon kanssa */
+            aspect-ratio: 4/3;
             overflow: hidden;
-            border-radius: 8px;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,.5);
             background: #111;
         }
 
@@ -65,49 +116,164 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.2, 0, 0.2, 1);
+            transition: transform 0.6s ease;
         }
 
-        #changing-grid .group:hover img { transform: scale(1.08); }
+        #changing-grid .group:hover img { transform: scale(1.1); }
 
-        /* Mobiilivasteet */
+        /* HINNOITTELU */
+        #pricing{max-width:1400px;margin:80px auto;padding:0 20px;min-height:300px}
+        #pricing h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:20px;text-align:center}
+        #pricing .disclaimer{font-size:1rem;color:#bbb;text-align:center;margin-bottom:40px}
+        .upper-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;margin-bottom:40px}
+        .lower-row{display:grid;grid-template-columns:2fr 1fr;gap:30px}
+        .pricing-box{background:#222;padding:30px;border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,.6);text-align:center;transition:transform .3s ease}
+        .pricing-box:hover{transform:translateY(-10px)}
+        .upper-row .pricing-box h3{font-size:1.6rem;margin-bottom:15px}
+        .upper-row .pricing-box .price{font-size:2.4rem}
+        .lower-row .pricing-box h3{font-size:2rem;margin-bottom:20px}
+        .lower-row .pricing-box .price{font-size:2.8rem}
+        .pricing-box ul{list-style:none;text-align:left;margin:20px 0;font-size:1.2rem;line-height:1.8}
+        .pricing-box ul li{padding-left:20px;position:relative}
+        .pricing-box ul li::before{content:"–";position:absolute;left:0;color:#4ade80}
+        .contact-box{background:#333;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,.6)}
+        .contact-btn{background:#4ade80;color:#000;padding:15px 30px;border-radius:50px;text-decoration:none;font-size:1.3rem;font-weight:bold;transition:.3s}
+        .contact-btn:hover{background:#5aff90;transform:scale(1.05)}
+
+        /* PAIKKAKUNTA */
+        #location-selector{max-width:1400px;margin:60px auto 100px;padding:0 20px;text-align:center}
+        #location-selector h2{font-size:clamp(1.8rem,5vw,2.8rem);margin-bottom:24px;color:#4ade80}
+        #location-selector select{width:100%;max-width:420px;padding:14px 20px;font-size:1.25rem;background:#222;color:#eee;border:2px solid #444;border-radius:12px;cursor:pointer}
+
+        /* KONTAKTI */
+        #final-contact{max-width:1400px;margin:0 auto 100px;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:40px}
+        #final-contact .contact-info,#final-contact .qr-box{background:#222;padding:40px;border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,.6);min-height:420px;display:flex;flex-direction:column;justify-content:center;align-items:center}
+        #final-contact .contact-info h2{font-size:2.2rem;margin-bottom:30px}
+        #final-contact .contact-info a{color:#4ade80;text-decoration:none}
+        #final-contact .qr-box img{width:100%;max-width:300px;height:auto;border-radius:12px}
+
+        /* STAATTINEN GALLERIA */
+        .static-gallery {display: grid;grid-template-columns: repeat(3, 1fr);gap: 2rem;max-width: 1400px;margin: 7rem auto;padding: 0 1.25rem;}
+        .static-item {aspect-ratio: 4/3;overflow: hidden;border-radius: 1rem;box-shadow: 0 10px 30px rgba(0,0,0,.5);background: #111;}
+        .static-item img {width: 100%;height: 100%;object-fit: cover;transition: transform 0.4s ease;}
+        .static-item:hover img {transform: scale(1.08);}
+
+        /* MOBIILI */
         @media (max-width: 1024px) {
-            #changing-grid { grid-template-columns: repeat(2, 1fr); }
+            .static-gallery, #changing-grid { grid-template-columns: repeat(2, 1fr); }
+            .project-header .changing-title { font-size: 2.5rem !important; }
         }
-
         @media (max-width: 768px) {
+            .project-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .static-gallery, #changing-grid { grid-template-columns: 1fr; }
             .project-header .changing-title { font-size: 2.2rem !important; }
-            #changing-grid { grid-template-columns: 1fr; }
+            #final-contact { grid-template-columns: 1fr; }
+            .lower-row { grid-template-columns: 1fr; }
         }
-
-        footer{background:#000;padding:60px 20px;text-align:center;font-size: 0.9rem;color: #666;}
+        footer{background:#000;padding:40px 20px;text-align:center;font-size:1rem;border-top:1px solid #333}
     </style>
+    <script src="SKRIPTIT/pricing-modules.js" defer></script>
+    <script src="SKRIPTIT/dynamic-title.js" defer></script>
+    <script src="SKRIPTIT/header.js" defer></script>
+    <script src="SKRIPTIT/kampanja-popup.js" defer></script>
+    <script src="SKRIPTIT/photo-buttons.js" defer></script>
+    <script src="SKRIPTIT/valokuvaus-gallery.js" defer></script>
 </head>
 <body>
 
     <section id="home">
-        <video autoplay muted loop playsinline>
+        <video autoplay muted loop playsinline poster="VALOKUVAUS/valokuvaus-poster.webp">
             <source src="MEDIA/Pääsivu_Videotuotannot ja Valokuvaus/2000luvunkamera.webm" type="video/webm">
         </video>
         <h2>Valokuvaus</h2>
+        <div id="photo-button-container"></div>
     </section>
 
-    <section class="project-section">
+    <h2 id="dynamic-title" class="dynamic-title" data-interval="2500" aria-live="polite">
+        <span>Häät</span>
+        <span>Valmistujaiset</span>
+        <span>Hautajaiset</span>
+        <span>Tilaisuudet</span>
+        <span>Ristiäiset</span>
+        <span>Muotokuvat</span>
+    </h2>
+
+    <div class="about-section">
+        <div class="about-text">
+            Dokumentoin tärkeät hetkesi mahdollisimman autenttisesti. Tarjoan kuluttaja- ja budjettiystävällisempää valokuvausta laadusta tinkimättä. Toimin pääosin Satakunnassa, mutta myös mm. Vaasassa, Seinäjoella ja Tampereella.
+        </div>
+        <div class="about-image">
+            <img src="MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja1.webp" alt="Valokuvaus 1" class="active">
+        </div>
+    </div>
+
+    <section class="project-section" style="padding: 0 20px; margin-bottom: 100px;">
         <div class="project-header">
-            <span class="subtitle">VALIKOIDUT TYÖT</span>
-            <h3 id="changing-title" class="changing-title">Ladataan...</h3>
+            <div class="left">
+                <span class="subtitle">VALOKUVAUSPROJEKTIT</span>
+                <h3 id="changing-title" class="changing-title">Ladataan...</h3>
+            </div>
         </div>
         <div id="changing-grid"></div>
     </section>
 
+    <section id="pricing">
+        <h2>Hinnoittelu</h2>
+        <p class="disclaimer">*Hinnat sisältävät ALV 25,5 %. Matkakustannukset lisätään tarpeen mukaan.</p>
+        <div class="upper-row"></div>
+        <div class="lower-row">
+            <div class="contact-box">
+                <p>Ota yhteyttä, niin räätälöidään juuri sinulle sopiva paketti!</p>
+                <a href="#final-contact" class="contact-btn">Ota yhteyttä</a>
+            </div>
+        </div>
+    </section>
+
+    <div id="location-selector">
+        <h2>Valitse kuvauspaikkakunta</h2>
+        <select id="paikkakunta-dropdown" onchange="handlePaikkakuntaChange(this.value)">
+            <option value="">Valitse paikkakunta...</option>
+            <option value="Kankaanpää">Kankaanpää</option>
+            <option value="Pori">Pori</option>
+            <option value="Rauma">Rauma</option>
+            <option value="Tampere">Tampere</option>
+            <option value="muu">Muu Suomi</option>
+        </select>
+    </div>
+
+    <section id="final-contact">
+        <div class="contact-info">
+            <h2>Ota yhteyttä</h2>
+            <p>Sähköposti: <a href="mailto:kortesoja.iivari@gmail.com">kortesoja.iivari@gmail.com</a></p>
+            <p>Puhelin: <a href="tel:+358405247918">040 524 7918</a></p>
+        </div>
+        <div class="qr-box">
+            <a href="https://wa.me/message/2JQ4G2D3EXLID1" target="_blank">
+                <img src="MEDIA/Ikonit/QR.webp" alt="WhatsApp QR-koodi">
+            </a>
+            <p style="margin-top: 20px; color: #bbb;">Klikkaa tai lue QR koodi</p>
+        </div>
+    </section>
+
+    <div class="static-gallery">
+        <div class="static-item"><img src="MEDIA/VALOKUVAUS/Valokuvaus40.webp" alt="Portfolio 1"></div>
+        <div class="static-item"><img src="MEDIA/VALOKUVAUS/Valokuvaus41.webp" alt="Portfolio 2"></div>
+        <div class="static-item"><img src="MEDIA/VALOKUVAUS/Valokuvaus42.webp" alt="Portfolio 3"></div>
+    </div>
+
     <footer>
-        <p>© Iivari Kortesoja 2026 | Portfolio</p>
+        <p>© Iivari Kortesoja 2026 | Y-Tunnus 3591660-9</p>
     </footer>
 
     <script>
+        function handlePaikkakuntaChange(value) {
+            if (!value) return;
+            window.location.href = (value === "muu") ? "Valokuvaus.html" : `Valokuvaus/${value}.html`;
+        }
+
         const projects = [
             {
-                title: "TuplaKupla - Teatteri",
+                title: "TuplaKupla - Teatterikuvaus",
                 media: [
                     { src: "MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "1" },
                     { src: "MEDIA/VALOKUVAUS/Valokuvaus41.webp", alt: "2" },
@@ -129,22 +295,18 @@
             const titleEl = document.getElementById('changing-title');
             const grid = document.getElementById('changing-grid');
             if(!titleEl || !grid) return;
-
             grid.style.opacity = '0';
             setTimeout(() => {
                 titleEl.textContent = projects[currentIndex].title;
-                grid.innerHTML = projects[currentIndex].media.map(item => `
-                    <div class="group"><img src="${item.src}" alt="${item.alt}"></div>
-                `).join('');
+                grid.innerHTML = projects[currentIndex].media.map(m => `<div class="group"><img src="${m.src}" alt="${m.alt}"></div>`).join('');
                 grid.style.opacity = '1';
-            }, 300);
+            }, 350);
         }
 
         setInterval(() => {
             currentIndex = (currentIndex + 1) % projects.length;
             renderProject();
         }, 5000);
-
         window.onload = renderProject;
     </script>
 </body>
