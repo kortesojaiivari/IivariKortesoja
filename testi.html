@@ -68,9 +68,28 @@
         .project-section { max-width: 1400px; margin: 100px auto 80px; padding: 0 20px; }
         .project-header { margin-bottom: 2.5rem; }
         .project-header .subtitle { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.15rem; font-weight: 500; color: #4ade80; margin-bottom: 0.6rem; }
-        #changing-title-container { position: relative; width: 100%; min-height: 5rem; }
-        .changing-title { font-size: clamp(2.1rem, 6.5vw, 3.8rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; text-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: all 0.45s cubic-bezier(0.4,0,0.2,1); }
-        .slide-up-exit { transform: translateY(-130%); opacity: 0; }
+      #changing-title-container { 
+    position: relative; 
+    width: 100%; 
+    min-height: 4rem; /* Laskettu 3rem fontille + pieni liikkumavara */
+    display: flex;
+    align-items: center;
+}
+
+.changing-title { 
+    /* clamp pitää huolen, että mobiilissa fontti on 2rem ja kasvaa max 3rem kokoon */
+    font-size: clamp(2.0rem, 6.5vw, 3.0rem); 
+    font-weight: 700; 
+    letter-spacing: -0.02em; 
+    line-height: 1.2; 
+    text-shadow: 0 4px 15px rgba(0,0,0,0.5); 
+    transition: all 0.45s cubic-bezier(0.4,0,0.2,1); 
+}
+
+.slide-up-exit { 
+    transform: translateY(-130%); 
+    opacity: 0; 
+}
         .slide-up-enter-prep { transform: translateY(130%); opacity: 0; transition: none; }
         .slide-up-active { transform: translateY(0); opacity: 1; }
         #changing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.25rem; transition: opacity 0.65s ease; }
@@ -244,6 +263,30 @@
     <div id="location-selector">
         <h2>Valitse kuvauspaikkakunta</h2>
         <select id="paikkakunta-dropdown" onchange="handlePaikkakuntaChange(this.value)" aria-label="Valitse kuvauspaikkakunta">
+            <option value="">Valitse paikkakunta...</option>
+            <option value="Eura">Eura</option>
+            <option value="Eurajoki">Eurajoki</option>
+            <option value="Harjavalta">Harjavalta</option>
+            <option value="Huittinen">Huittinen</option>
+            <option value="Ikaalinen">Ikaalinen</option>
+            <option value="Kankaanpää">Kankaanpää</option>
+            <option value="Karvia">Karvia</option>
+            <option value="Kokemäki">Kokemäki</option>
+            <option value="Nakkila">Nakkila</option>
+            <option value="Noormarkku">Noormarkku</option>
+            <option value="Parkano">Parkano</option>
+            <option value="Pori">Pori</option>
+            <option value="Pomarkku">Pomarkku</option>
+            <option value="Rauma">Rauma</option>
+            <option value="Sastamala">Sastamala</option>
+            <option value="Seinäjoki">Seinäjoki</option>
+            <option value="Säkylä">Säkylä</option>
+            <option value="Tampere">Tampere</option>
+            <option value="Ulvila">Ulvila</option>
+            <option value="Vaasa">Vaasa</option>
+            <option value="Ylöjärvi">Ylöjärvi</option>
+            <option value="muu">Muu Suomi (kysy tarjousta)</option>
+        </select>
         <p class="info">Valitsemalla paikkakunnan siirryt aluekohtaiselle sivulle, jossa on tarkemmat hinnoittelut.</p>
     </div>
 
