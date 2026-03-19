@@ -56,7 +56,7 @@
         .about-image img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
         .about-image img.active{opacity:1}
 
-        /* PORTFOLIO-TYYLINEN VAIHTUVA 1×3 – H3 PÄIVITETTY */
+        /* PORTFOLIO-TYYLINEN VAIHTUVA 1×3 – H3 PÄIVITETTY 2.5 REM */
         .project-section { max-width: 1400px; margin: 80px auto; padding: 0 20px; }
         .project-header {
             display: flex;
@@ -74,12 +74,12 @@
             margin-bottom: 0.5rem;
         }
         .project-header .changing-title {
-            font-size: 3rem !important; /* ASETETTU 3 REM */
-            font-weight: 800 !important;
-            letter-spacing: -0.05em !important;
-            line-height: 1.1 !important;
+            font-size: 2.5rem !important; /* PÄIVITETTY 2.5 REM */
+            font-weight: 700 !important;
+            letter-spacing: -0.02em !important;
+            line-height: 1.2 !important;
             margin: 0 !important;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.5) !important;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.4) !important;
             color: #fff;
         }
 
@@ -130,12 +130,12 @@
 
         @media (max-width: 1024px) {
             #changing-grid, .static-gallery { grid-template-columns: repeat(2, 1fr); }
-            .project-header .changing-title { font-size: 2.5rem !important; }
+            .project-header .changing-title { font-size: 2.2rem !important; }
         }
         @media (max-width: 768px) {
             #changing-grid, .static-gallery, #final-contact, .lower-row { grid-template-columns: 1fr; }
             .project-header { flex-direction: column; align-items: flex-start; }
-            .project-header .changing-title { font-size: 2rem !important; }
+            .project-header .changing-title { font-size: 1.8rem !important; }
         }
         footer{background:#000;padding:40px 20px;text-align:center;border-top:1px solid #333}
     </style>
@@ -168,6 +168,7 @@
     <div class="about-section">
         <div class="about-text">
             Olipa kyseessä niin valmistujaiset, hautajaiset, häät, ristiäiset tai mitä vaan. Dokumentoin tärkeät hetkesi, jolloin voit keskittyä hetkeesi ja muistella sitä valokuvien kautta jälkikäteen.<br><br>
+            Vahvuuteni ovat parhaimillaan dokumentaarisessa kuvaamisessa, jossa ikuistan tilanteita mahdollisimman autenttisesti. Tällöin kuvausreissuilta tulee kuvattua kameraan noin sadan ja tuhannen kuvan väliltä, mistä valitsen ja muokkaan parhaimmat teidän käyttöönne. <br><br>
             Tarkoitukseni on tarjota kuluttaja- ja budjettiystävällisempää valokuvausta, pitäen laadun ja luovuuden täysillä.
         </div>
         <div class="about-image">
@@ -187,7 +188,7 @@
 
     <section id="pricing">
         <h2>Hinnoittelu</h2>
-        <p class="disclaimer">*Nämä ovat suuntaa-antavia hintoja. Hinnat sisältävät ALV 25,5 %.</p>
+        <p class="disclaimer">*Nämä ovat suuntaa-antavia hintoja. Hinnat sisältävät ALV 25,5 %. Matkakustannukset (kilometrikorvaus) lisätään erikseen tarpeen mukaan.</p>
         <div class="upper-row"></div>
         <div class="lower-row">
             <div class="contact-box">
@@ -201,11 +202,28 @@
         <h2>Valitse kuvauspaikkakunta</h2>
         <select id="paikkakunta-dropdown" onchange="handlePaikkakuntaChange(this.value)">
             <option value="">Valitse paikkakunta...</option>
+            <option value="Eura">Eura</option>
+            <option value="Eurajoki">Eurajoki</option>
+            <option value="Harjavalta">Harjavalta</option>
+            <option value="Huittinen">Huittinen</option>
+            <option value="Ikaalinen">Ikaalinen</option>
             <option value="Kankaanpää">Kankaanpää</option>
+            <option value="Karvia">Karvia</option>
+            <option value="Kokemäki">Kokemäki</option>
+            <option value="Nakkila">Nakkila</option>
+            <option value="Noormarkku">Noormarkku</option>
+            <option value="Parkano">Parkano</option>
             <option value="Pori">Pori</option>
+            <option value="Pomarkku">Pomarkku</option>
             <option value="Rauma">Rauma</option>
+            <option value="Sastamala">Sastamala</option>
+            <option value="Seinäjoki">Seinäjoki</option>
+            <option value="Säkylä">Säkylä</option>
             <option value="Tampere">Tampere</option>
-            <option value="muu">Muu Suomi</option>
+            <option value="Ulvila">Ulvila</option>
+            <option value="Vaasa">Vaasa</option>
+            <option value="Ylöjärvi">Ylöjärvi</option>
+            <option value="muu">Muu Suomi (kysy tarjousta)</option>
         </select>
     </div>
 
@@ -219,7 +237,7 @@
             <a href="https://wa.me/message/2JQ4G2D3EXLID1" target="_blank" rel="noopener">
                 <img src="MEDIA/Ikonit/QR.webp" alt="WhatsApp QR-koodi">
             </a>
-            <p style="text-align: center; margin-top: 20px; color: #bbb;">Klikkaa tai lue koodi</p>
+            <p style="text-align: center; margin-top: 20px; color: #bbb;">Klikkaa elementtiä tai lue QR-koodi</p>
         </div>
     </section>
 
@@ -244,7 +262,8 @@
 
         const projects = [
             { title: "TuplaKupla - Teatterikuvaus", media: [{src:"MEDIA/VALOKUVAUS/Valokuvaus40.webp",alt:"1"},{src:"MEDIA/VALOKUVAUS/Valokuvaus41.webp",alt:"2"},{src:"MEDIA/VALOKUVAUS/Valokuvaus42.webp",alt:"3"}] },
-            { title: "Hääkuvaus", media: [{src:"MEDIA/VALOKUVAUS/Valokuvaus43.webp",alt:"1"},{src:"MEDIA/VALOKUVAUS/Valokuvaus44.webp",alt:"2"},{src:"MEDIA/VALOKUVAUS/Valokuvaus45.webp",alt:"3"}] }
+            { title: "Hääkuvaus", media: [{src:"MEDIA/VALOKUVAUS/Valokuvaus43.webp",alt:"1"},{src:"MEDIA/VALOKUVAUS/Valokuvaus44.webp",alt:"2"},{src:"MEDIA/VALOKUVAUS/Valokuvaus45.webp",alt:"3"}] },
+            { title: "Combat Camera", media: [{src:"MEDIA/Puolustusvoimat/comcam/comcam37.webp",alt:"1"},{src:"MEDIA/Puolustusvoimat/comcam/comcam3.webp",alt:"2"},{src:"MEDIA/Puolustusvoimat/comcam/comcam25.webp",alt:"3"}] }
         ];
 
         let currentIndex = 0;
