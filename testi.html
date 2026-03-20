@@ -269,35 +269,8 @@
         <p>© Iivari Kortesoja 2026 | Y-Tunnus 3591660-9</p>
     </footer>
 
-    <!-- HINNOITTELU – referöi ulkoiseen skriptiin + varmistus että paketit näkyvät -->
+    <!-- Hinnoittelu (referöi ulkoiseen 60pricing-modules.js + varmistus) -->
     <script>
-        // Varmistetaan paketit (jos 60pricing-modules.js ei lataudu heti)
-        const upperPackages = [
-            {
-                title: '3 tuntia',
-                price: '350 €',
-                desc: 'Esimerkiksi hautajaiset tai valmistujaisjuhlat'
-            },
-            {
-                title: '4-6 tuntia',
-                price: '700 €',
-                desc: 'Pidempään kestävät tilaisuudet tai kevyempi hääkuvaus'
-            }
-        ];
-        const lowerPackages = [
-            {
-                title: 'Hääpaketti',
-                price: '900 €',
-                features: [
-                    'Dokumentaarinen hääkuvaus <strong>koko hääpäivän ajan</strong>',
-                    'Elokuvallinen häävideo tärkeimmästä päivästä',
-                    'Ei stressiä kuvausajasta',
-                    'Eniten valokuvia'
-                ],
-                quote: 'Monet sanovat, että kuva kertoo enemmän kuin tuhat sanaa. Minä sanon, että liikkuva kuva kertoo vieläkin enemmän.'
-            }
-        ];
-
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 function createPricingBox(pkg) {
@@ -314,12 +287,10 @@
                     box.innerHTML = html;
                     return box;
                 }
-
                 const upperRow = document.querySelector('#pricing .upper-row');
                 if (upperRow) {
                     upperPackages.forEach(pkg => upperRow.appendChild(createPricingBox(pkg)));
                 }
-
                 const lowerRow = document.querySelector('#pricing .lower-row');
                 const contactBox = lowerRow ? lowerRow.querySelector('.contact-box') : null;
                 if (lowerRow && contactBox) {
