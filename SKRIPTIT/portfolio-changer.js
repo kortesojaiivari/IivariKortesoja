@@ -14,16 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 { src: "MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "Teatterikuvaus 1" },
                 { src: "MEDIA/VALOKUVAUS/Valokuvaus41.webp", alt: "Teatterikuvaus 2" },
                 { src: "MEDIA/VALOKUVAUS/Valokuvaus42.webp", alt: "Teatterikuvaus 3" }
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus43.webp", alt: "Teatterikuvaus 4" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus44.webp", alt: "Teatterikuvaus 5" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus45.webp", alt: "Teatterikuvaus 6" }
                 // voit lisätä vaikka 10 kuvaa, ne kiertävät 3 kerrallaan
-            ]
-        },
-        {
-            title: "Hääkuvaus",
-            media: [
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus43.webp", alt: "Hääkuvaus 1" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus44.webp", alt: "Hääkuvaus 2" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus45.webp", alt: "Hääkuvaus 3" },
-                { src: "MEDIA/VALOKUVAUS/hää4.webp", alt: "Hääkuvaus 4" } // esimerkki lisäkuvista
             ]
         },
         {
