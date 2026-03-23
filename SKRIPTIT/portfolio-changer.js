@@ -1,44 +1,44 @@
-// portfolio-changer.js – LOPULLINEN VERSIO (subtitle vaihtuu VAIN kategoriavaihdossa)
+// portfolio-changer.js
 document.addEventListener('DOMContentLoaded', () => {
     const categories = [
         {
             title: "TuplaKupla - Teatterikuvaus",
             media: [
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "1" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus41.webp", alt: "2" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus42.webp", alt: "3" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus43.webp", alt: "4" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus44.webp", alt: "5" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus45.webp", alt: "6" }
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "Teatterikuvaus 1" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus41.webp", alt: "Teatterikuvaus 2" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus42.webp", alt: "Teatterikuvaus 3" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus43.webp", alt: "Teatterikuvaus 4" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus44.webp", alt: "Teatterikuvaus 5" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus45.webp", alt: "Teatterikuvaus 6" }
             ]
         },
         {
             title: "Combat Camera",
             media: [
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam37.webp", alt: "1" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam3.webp", alt: "2" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam25.webp", alt: "3" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam12.webp", alt: "4" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam8.webp", alt: "5" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam19.webp", alt: "6" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam44.webp", alt: "7" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam31.webp", alt: "8" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam50.webp", alt: "9" }
+                { src: "MEDIA/Puolustusvoimat/comcam/comcam37.webp", alt: "Combat 1" },
+                { src: "MEDIA/Puolustusvoimat/comcam/comcam3.webp", alt: "Combat 2" },
+                { src: "MEDIA/Puolustusvoimat/comcam/comcam25.webp", alt: "Combat 3" },
+                { src: "MEDIA/Puolustusvoimat/comcam/comcam12.webp", alt: "Combat 4" },
+                { src: "MEDIA/Puolustusvoimat/comcam/comcam8.webp", alt: "Combat 5" },
+                { src: "MEDIA/Puolustusvoimat/comcam/comcam19.webp", alt: "Combat 6" },
+                { src: "MEDIA/Puolustusvoimat/comcam/comcam44.webp", alt: "Combat 7" },
+                { src: "MEDIA/Puolustusvoimat/comcam/comcam31.webp", alt: "Combat 8" },
+                { src: "MEDIA/Puolustusvoimat/comcam/comcam50.webp", alt: "Combat 9" }
             ]
         }
     ];
 
     const titleElement = document.getElementById('changing-title');
-    const gridElement   = document.getElementById('changing-grid');
+    const gridElement = document.getElementById('changing-grid');
     const dotsContainer = document.getElementById('category-dots');
 
     if (!titleElement || !gridElement) return;
 
     let currentCategoryIndex = 0;
-    let currentImageOffset   = 0;
-    let previousCategory     = -1;
+    let currentImageOffset = 0;
+    let lastDisplayedCategoryIndex = -1;
 
-    // Luodaan pisteet
+    // Luo dots
     if (dotsContainer) {
         dotsContainer.innerHTML = '';
         categories.forEach((_, i) => {
@@ -63,12 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateDisplay() {
         const category = categories[currentCategoryIndex];
-        const isNewCategory = currentCategoryIndex !== previousCategory;
+        // Tarkistetaan onko kategoria oikeasti vaihtunut edellisestä kerrasta
+        const isNewCategory = currentCategoryIndex !== lastDisplayedCategoryIndex;
 
         gridElement.classList.add('loading');
         gridElement.style.opacity = '0';
 
-        // SUBTITLE VAIHTUU VAIN KUN KATEGORIA VAIHTUU
         if (isNewCategory && titleElement) {
             titleElement.classList.remove('slide-up-active');
             titleElement.classList.add('slide-up-exit');
@@ -78,11 +78,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isNewCategory && titleElement) {
                 titleElement.textContent = category.title;
                 titleElement.classList.remove('slide-up-exit');
+                titleElement.classList.add('slide-up-enter-prep');
+                void titleElement.offsetWidth; // Force reflow
+                titleElement.classList.remove('slide-up-enter-prep');
                 titleElement.classList.add('slide-up-active');
+                lastDisplayedCategoryIndex = currentCategoryIndex;
             }
 
             const imagesToShow = category.media.slice(currentImageOffset, currentImageOffset + 3);
-            gridElement.innerHTML = imagesToShow.map(img =>
+            gridElement.innerHTML = imagesToShow.map(img => 
                 `<div class="group"><img src="${img.src}" alt="${img.alt || ''}"></div>`
             ).join('');
 
@@ -90,13 +94,12 @@ document.addEventListener('DOMContentLoaded', () => {
             gridElement.classList.remove('loading');
             updateDots();
 
+            // Lasketaan valmiiksi seuraava askel
             currentImageOffset += 3;
             if (currentImageOffset >= category.media.length) {
                 currentCategoryIndex = (currentCategoryIndex + 1) % categories.length;
                 currentImageOffset = 0;
             }
-
-            previousCategory = currentCategoryIndex;
         }, 280);
     }
 
