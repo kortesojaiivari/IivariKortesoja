@@ -2,6 +2,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     const categories = [
         {
+            title: "Iivari Kortesoja | Portfolio", // UUSI: Myyntiä edistävä aloitus
+            media: [
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "Hääkuvaus" }, // Vaihda näihin parhaat kuvasi eri kategorioista
+                { src: "MEDIA/Puolustusvoimat/comcam/comcam37.webp", alt: "Combat Camera" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus42.webp", alt: "Tapahtumakuvaus" }
+            ]
+        },
+        {
             title: "TuplaKupla - Teatterikuvaus",
             media: [
                 { src: "MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "Teatterikuvaus 1" },
@@ -25,16 +33,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 { src: "MEDIA/Puolustusvoimat/comcam/comcam31.webp", alt: "Combat 8" },
                 { src: "MEDIA/Puolustusvoimat/comcam/comcam50.webp", alt: "Combat 9" }
             ]
-        },
-               {
-            title: "Laura Voutilainen -Kerran Keväällä",
+        }, // <--- TÄMÄ PILKKU PUUTTUI!
+        {
+            title: "Laura Voutilainen - Kerran Keväällä",
             media: [
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "Teatterikuvaus 1" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus41.webp", alt: "Teatterikuvaus 2" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus42.webp", alt: "Teatterikuvaus 3" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus43.webp", alt: "Teatterikuvaus 4" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus44.webp", alt: "Teatterikuvaus 5" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam44.webp", alt: "Teatterikuvaus 6" }
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "Laura Voutilainen 1" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus41.webp", alt: "Laura Voutilainen 2" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus42.webp", alt: "Laura Voutilainen 3" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus43.webp", alt: "Laura Voutilainen 4" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus44.webp", alt: "Laura Voutilainen 5" },
+                { src: "MEDIA/Puolustusvoimat/comcam/comcam44.webp", alt: "Laura Voutilainen 6" }
             ]
         }
     ];
@@ -48,15 +56,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentCategoryIndex = 0;
     let currentImageOffset = 0;
     let lastDisplayedCategoryIndex = -1;
-    let autoCycleInterval; // Muuttuja ajastimelle
+    let autoCycleInterval;
 
-    // Funktio ajastimen nollaamiseen
     function resetAutoCycle() {
         clearInterval(autoCycleInterval);
         autoCycleInterval = setInterval(updateDisplay, 5000);
     }
 
-    // Luo dots
     if (dotsContainer) {
         dotsContainer.innerHTML = '';
         categories.forEach((_, i) => {
@@ -67,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentCategoryIndex = i;
                 currentImageOffset = 0;
                 updateDisplay();
-                resetAutoCycle(); // Nollataan ajastin klikkauksesta
+                resetAutoCycle();
             });
             dotsContainer.appendChild(dot);
         });
@@ -84,13 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const category = categories[currentCategoryIndex];
         const isNewCategory = currentCategoryIndex !== lastDisplayedCategoryIndex;
 
-        // Lisätään loading-luokka (joka hoitaa opacityn heti)
         gridElement.classList.add('loading');
         gridElement.style.opacity = '0';
-
-        // Viivästetty "Ladataan" tekstin näyttäminen (CSS hoitaa näkyvyyden viiveellä)
-        // Poistetaan vanha inline-tyyli jos sellainen on
-        gridElement.style.setProperty('--loading-delay', '1.5s');
 
         if (isNewCategory && titleElement) {
             titleElement.classList.remove('slide-up-active');
@@ -125,7 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 280);
     }
 
-    // Käynnistetään ensimmäinen näyttö ja ajastin
     updateDisplay();
     resetAutoCycle();
 });
