@@ -26,6 +26,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 { src: "MEDIA/Puolustusvoimat/comcam/comcam50.webp", alt: "Combat 9" }
             ]
         }
+               {
+            title: "Laura Voutilainen -Kerran Keväällä",
+            media: [
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "Teatterikuvaus 1" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus41.webp", alt: "Teatterikuvaus 2" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus42.webp", alt: "Teatterikuvaus 3" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus43.webp", alt: "Teatterikuvaus 4" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus44.webp", alt: "Teatterikuvaus 5" },
+                { src: "MEDIA/Puolustusvoimat/comcam/comcam44.webp", alt: "Teatterikuvaus 6" }
+            ]
+        },
     ];
 
     const titleElement = document.getElementById('changing-title');
