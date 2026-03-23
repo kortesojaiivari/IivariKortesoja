@@ -1,4 +1,4 @@
-// portfolio-changer.js – KORJATTU (subtitle vaihtuu automaattisesti kategoriavaihdossa)
+// portfolio-changer.js – PAKOTETTU SUBTITLE-VAIHTO
 document.addEventListener('DOMContentLoaded', () => {
     const categories = [
         {
@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentCategoryIndex = 0;
     let currentImageOffset   = 0;
-    let lastCategoryIndex    = -1;
 
     // Luodaan pisteet
     if (dotsContainer) {
@@ -63,28 +62,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateDisplay() {
         const category = categories[currentCategoryIndex];
-        const isNewCategory = currentCategoryIndex !== lastCategoryIndex;
 
-        gridElement.classList.add('loading');
-        gridElement.style.opacity = '0';
-
-        // Otsikko animoi VAIN kun kategoria vaihtuu
-        if (isNewCategory && titleElement) {
+        // === PAKOTETTU SUBTITLE-VAIHTO ===
+        if (titleElement) {
             titleElement.classList.remove('slide-up-active');
             titleElement.classList.add('slide-up-exit');
         }
 
+        gridElement.style.opacity = '0';
+        gridElement.classList.add('loading');
+
         setTimeout(() => {
-            if (isNewCategory && titleElement) {
+            // Vaihdetaan teksti
+            if (titleElement) {
                 titleElement.textContent = category.title;
                 titleElement.classList.remove('slide-up-exit');
-                titleElement.classList.add('slide-up-enter-prep');
-                void titleElement.offsetWidth;
-                titleElement.classList.remove('slide-up-enter-prep');
                 titleElement.classList.add('slide-up-active');
             }
 
-            // Näytetään max 3 kuvaa
+            // Kuvat (3 kerrallaan)
             const imagesToShow = category.media.slice(currentImageOffset, currentImageOffset + 3);
             gridElement.innerHTML = imagesToShow.map(img =>
                 `<div class="group"><img src="${img.src}" alt="${img.alt || ''}"></div>`
@@ -94,17 +90,16 @@ document.addEventListener('DOMContentLoaded', () => {
             gridElement.classList.remove('loading');
             updateDots();
 
-            // Siirrytään eteenpäin
+            // Siirry eteenpäin
             currentImageOffset += 3;
             if (currentImageOffset >= category.media.length) {
                 currentCategoryIndex = (currentCategoryIndex + 1) % categories.length;
                 currentImageOffset = 0;
             }
-
-            lastCategoryIndex = currentCategoryIndex;
         }, 280);
     }
 
+    // Käynnistys
     updateDisplay();
-    setInterval(updateDisplay, 5000);   // automaattinen vaihto
+    setInterval(updateDisplay, 5000);   // 5 sekunnin automaattinen vaihto
 });
