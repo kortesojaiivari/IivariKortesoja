@@ -20,13 +20,12 @@
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "ud6y4jpngh");
     </script>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "Valokuvaus | Iivari Kortesoja",
-      "description": "Edullista Valokuvausta: Hääkuvaus, kokopäiväinen hääkuvaus, valmistujaiset, hautajaiskuvaus, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta. -Tarjolla on myös videointia valokuvauksen ohella.",
+      "description": "Edullista Valokuvausta: Hääkuvaus, kokopäiväinen hääkuvaus, valmistujaiset, hautajaiskuvaus, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta. -Tarjolla on myös videointia valokuvauksen ohella, jolloin Häävideo tai muisteluvideo tilanteesta on saatavilla.",
       "telephone": "+358405247918",
       "email": "kortesoja.iivari@gmail.com",
       "url": "https://www.iivarikortesoja.media/Valokuvaus.html",
@@ -40,346 +39,147 @@
     }
     </script>
     <link rel="canonical" href="https://www.iivarikortesoja.media/Valokuvaus.html">
-
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-        body {
-            font-family: 'Arial', sans-serif;
-            background: #1a1a1a;
-            color: #fff;
-            line-height: 1.6;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        #home {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden;
-        }
-        #home video {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-        #home h2 {
-            font-size: clamp(2.4rem, 7vw, 4.8rem);
-            text-shadow: 0 0 40px rgba(0,0,0,0.9);
-            margin-bottom: 1.5rem;
-            padding: 0 1rem;
-        }
-        #photo-button-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.2rem;
-            justify-content: center;
-            margin-top: 2rem;
-            padding: 0 1rem;
-            z-index: 10;
-        }
-        .btn {
-            background: #333;
-            color: #fff;
-            padding: 0.9rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 1.05rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            cursor: pointer;
-            white-space: nowrap;
-        }
-        .btn:hover {
-            background: #4ade80;
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(74,222,128,0.4);
-        }
-
-        #dynamic-title {
-            position: relative;
-            margin: 5rem auto 3rem;
-            padding: 2rem 1rem;
-            min-height: 140px;
-            text-align: center;
-        }
-        #dynamic-title span {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            font-size: clamp(2rem, 6.5vw, 4rem);
-            font-weight: bold;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.8);
-            white-space: nowrap;
-            pointer-events: none;
-        }
-
-        .about-section {
-            max-width: 1200px;
-            margin: 5rem auto;
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-            flex-wrap: wrap;
-            padding: 0 1.5rem;
-        }
-        .about-text {
-            flex: 1.6;
-            min-width: 300px;
-            font-size: 1.25rem;
-            color: #e0e0e0;
-        }
-        .about-image {
-            flex: 1;
-            min-width: 300px;
-            max-width: 480px;
-            height: 560px;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.8);
-            position: relative;
-        }
-        .about-image img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
+        #home{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+        #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
+        #home h2{font-size:clamp(2.5rem,8vw,4.5rem);text-shadow:0 0 40px rgba(0,0,0,.9);margin-bottom:20px}
+        #photo-button-container {display: flex;flex-wrap: wrap;gap: 20px;justify-content: center;margin-top: 40px;z-index: 10;}
+        .btn {background:#333;color:#fff;padding:14px 32px;border-radius:50px;text-decoration:none;font-size:1.1rem;transition:.3s;box-shadow:0 4px 15px rgba(0,0,0,.5);cursor:pointer;white-space:nowrap;}
+        .btn:hover {background:#4ade80;transform:translateY(-3px);}
+        #dynamic-title {position: relative;overflow: visible;display: flex;align-items: center;justify-content: center;margin: 80px auto 60px;padding: 40px 20px;min-height: 160px;z-index: 5;}
+        #dynamic-title span {position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);width: auto;max-width: 90vw;text-align: center;font-size: clamp(2.2rem, 7vw, 4rem);font-weight: bold;text-shadow: 0 4px 20px rgba(0,0,0,.8);pointer-events: none;white-space: nowrap;will-change: transform, opacity;}
+     
+        .about-section{max-width:1200px;margin:80px auto;display:flex;align-items:center;gap:60px;flex-wrap:wrap;padding:0 20px}
+        .about-text{flex:1.5;min-width:300px;font-size:1.35rem;color:#e0e0e0;line-height:1.8}
+        .about-image{position:relative;flex:1;min-width:300px;max-width:500px;height:600px;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.9)}
+        .about-image img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
+        .about-image img.active{opacity:1}
+     
+        .project-section { max-width: 1400px; margin: 100px auto 80px; padding: 0 20px; }
+        .project-header { margin-bottom: 2.5rem; }
+        .project-header .subtitle { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.15rem; font-weight: 500; color: #4ade80; margin-bottom: 0.6rem; }
+        #changing-title-container { position: relative; width: 100%; min-height: 4rem; display: flex; align-items: center; }
+        .changing-title { font-size: clamp(2.0rem, 6.5vw, 3.0rem); font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; text-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: all 0.45s cubic-bezier(0.4,0,0.2,1); }
+        .slide-up-exit { transform: translateY(-130%); opacity: 0; }
+        .slide-up-enter-prep { transform: translateY(130%); opacity: 0; transition: none; }
+        .slide-up-active { transform: translateY(0); opacity: 1; }
+        #changing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.25rem; transition: opacity 0.65s ease; min-height: 320px; position: relative; }
+        #changing-grid.loading::after { 
+            content: "Kuvia ladataan..."; 
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            color: #4ade80; 
+            font-size: 1.15rem; 
+            font-weight: 500; 
+            z-index: 2;
             opacity: 0;
-            transition: opacity 1.2s ease;
+            animation: fadeInAfter 0.1s forwards;
+            animation-delay: 1.5s; 
         }
-        .about-image img.active {
-            opacity: 1;
-        }
+        @keyframes fadeInAfter { to { opacity: 1; } }
+        #changing-grid .group { aspect-ratio: 4/3; overflow: hidden; border-radius: 1rem; box-shadow: 0 12px 35px rgba(0,0,0,.55); background: #111; }
+        #changing-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+        #changing-grid .group:hover img { transform: scale(1.08); }
+       
+        #category-dots { display: flex; gap: 10px; justify-content: center; margin: 25px auto 0; flex-wrap: wrap; }
+        .category-dot { width: 11px; height: 11px; background: #444; border-radius: 50%; transition: all 0.35s ease; cursor: pointer; }
+        .category-dot.active { background: #4ade80; transform: scale(1.45); box-shadow: 0 0 12px rgba(74,222,128,0.6); }
 
-        .project-section {
-            max-width: 1400px;
-            margin: 6rem auto 4rem;
-            padding: 0 1.5rem;
+        #pricing{max-width:1400px;margin:80px auto;padding:0 20px;min-height:300px}
+        #pricing h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:20px;text-align:center}
+        #pricing .disclaimer{font-size:1rem;color:#bbb;text-align:center;margin-bottom:40px}
+        .upper-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;margin-bottom:40px}
+        .lower-row{display:grid;grid-template-columns:2fr 1fr;gap:30px}
+        .pricing-box{background:#222;padding:30px;border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,.6);text-align:center;transition:transform .3s ease}
+        .pricing-box:hover{transform:translateY(-10px)}
+        .upper-row .pricing-box h3{font-size:1.6rem;margin-bottom:15px}
+        .upper-row .pricing-box .price{font-size:2.4rem}
+        .lower-row .pricing-box h3{font-size:2rem;margin-bottom:20px}
+        .lower-row .pricing-box .price{font-size:2.8rem}
+        .pricing-box ul{list-style:none;text-align:left;margin:20px 0;font-size:1.2rem;line-height:1.8}
+        .pricing-box ul li{padding-left:20px;position:relative}
+        .pricing-box ul li::before{content:"–";position:absolute;left:0;color:#4ade80}
+        .pricing-box ul li strong{font-size:1.4rem;font-weight:bold}
+        .pricing-box .quote{font-size:1.1rem;color:#aaa;font-style:italic;margin-top:20px}
+        .contact-box{background:#333;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,.6)}
+        .contact-box p{font-size:1.3rem;margin-bottom:30px;text-align:center}
+        .contact-btn{background:#4ade80;color:#000;padding:15px 30px;border-radius:50px;text-decoration:none;font-size:1.3rem;font-weight:bold;transition:.3s}
+        .contact-btn:hover{background:#5aff90;transform:scale(1.05)}
+      
+        #location-selector{max-width:1400px;margin:60px auto 100px;padding:0 20px;text-align:center}
+        #location-selector h2{font-size:clamp(1.8rem,5vw,2.8rem);margin-bottom:24px;color:#4ade80}
+        #location-selector select{width:100%;max-width:420px;padding:14px 20px;font-size:1.25rem;background:#222;color:#eee;border:2px solid #444;border-radius:12px;appearance:none;cursor:pointer;transition:.3s}
+        #location-selector select:hover,#location-selector select:focus{border-color:#4ade80;box-shadow:0 0 0 3px rgba(74,222,128,0.2);outline:none}
+        #location-selector .info{margin-top:16px;font-size:1.05rem;color:#aaa}
+     
+        #final-contact{max-width:1400px;margin:0 auto 100px;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:40px}
+        #final-contact .contact-info,
+        #final-contact .qr-box {
+            background:#222;padding:40px;border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,.6);min-height:420px;
+            display:flex;flex-direction:column;justify-content:center;align-items:center;transition: all 0.35s ease;
         }
-        .project-header .subtitle {
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15rem;
-            color: #4ade80;
-            margin-bottom: 0.6rem;
-        }
-        .changing-title {
-            font-size: clamp(1.9rem, 6vw, 3.2rem);
-            font-weight: 700;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-        #changing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.8rem;
-            min-height: 300px;
-        }
-        #changing-grid .group {
-            aspect-ratio: 4/3;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-            background: #111;
-        }
-        #changing-grid img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-        #changing-grid .group:hover img {
-            transform: scale(1.07);
-        }
-
-        #pricing {
-            max-width: 1400px;
-            margin: 5rem auto;
-            padding: 0 1.5rem;
-        }
-        #pricing h2 {
-            font-size: clamp(2.1rem, 6.5vw, 3.8rem);
-            text-align: center;
-            margin-bottom: 1.2rem;
-        }
-        #pricing .disclaimer {
-            font-size: 0.95rem;
-            color: #bbb;
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-        .upper-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.8rem;
-            margin-bottom: 2.5rem;
-        }
-        .lower-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.8rem;
-        }
-        .pricing-box {
-            background: #222;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.6);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        .pricing-box:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.7);
-        }
-        .pricing-box h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.8rem;
-        }
-        .pricing-box .price {
-            font-size: 2.2rem;
-            color: #4ade80;
-            margin: 0.5rem 0 1rem;
-        }
-        .pricing-box ul {
-            list-style: none;
-            text-align: left;
-            margin: 1rem 0;
-        }
-        .pricing-box li {
-            margin: 0.6rem 0;
-            padding-left: 1.4rem;
-            position: relative;
-        }
-        .pricing-box li::before {
-            content: "✓";
-            color: #4ade80;
-            position: absolute;
-            left: 0;
-        }
-
-        #location-selector {
-            max-width: 1400px;
-            margin: 4rem auto 6rem;
-            padding: 0 1.5rem;
-            text-align: center;
-        }
-        #location-selector h2 {
-            font-size: clamp(1.8rem, 5.5vw, 3rem);
-            color: #4ade80;
-            margin-bottom: 1.5rem;
-        }
-        #location-selector select {
-            width: 100%;
-            max-width: 420px;
-            padding: 1rem 1.5rem;
-            font-size: 1.15rem;
-            background: #222;
-            color: #eee;
-            border: 2px solid #444;
-            border-radius: 12px;
-            cursor: pointer;
-        }
-
-        #final-contact {
-            max-width: 1200px;
-            margin: 0 auto 6rem;
-            padding: 0 1.5rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-            gap: 2rem;
-        }
-        .contact-info, .qr-box {
-            background: #222;
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.6);
-            text-align: center;
-        }
-
+        #final-contact .contact-info:hover,
+        #final-contact .qr-box:hover {transform: translateY(-8px) scale(1.015);box-shadow: 0 25px 70px rgba(0,0,0,.75);background: #2a2a2a;}
+        #final-contact .contact-info h2{font-size:2.2rem;margin-bottom:30px}
+        #final-contact .contact-info p{font-size:1.4rem;margin:20px 0; transition: color 0.3s ease;}
+        #final-contact .contact-info:hover p { color: #e0e0e0; }
+        #final-contact .contact-info a{color:#4ade80;text-decoration:none;transition: color 0.25s ease;}
+        #final-contact .contact-info a:hover { color: #6aff9c; }
+        #final-contact .qr-box{cursor:pointer}
+        #final-contact .qr-box a{display:block;width:100%;max-width:430px}
+        #final-contact .qr-box img{width:100%;height:auto;border-radius:12px;transition:opacity .3s}
+        #final-contact .qr-box:hover img{opacity:0.92}
+      
         .static-gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.8rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.25rem;
             max-width: 1400px;
-            margin: 5rem auto;
-            padding: 0 1.5rem;
+            margin: 100px auto 120px;
+            padding: 0 20px;
         }
         .static-item {
             aspect-ratio: 4/3;
             overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-            transition: all 0.4s ease;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,.5);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
-        .static-item:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 45px rgba(0,0,0,0.7);
-        }
-        .static-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        .static-item:hover img {
-            transform: scale(1.06);
-        }
+        .static-item:hover {transform: translateY(-6px);box-shadow: 0 20px 50px rgba(0,0,0,.7);}
+        .static-item img {width: 100%;height: 100%;object-fit: cover;transition: transform 0.5s ease;}
+        .static-item:hover img {transform: scale(1.06);}
 
-        footer {
-            background: #000;
-            padding: 3rem 1.5rem;
-            text-align: center;
-            font-size: 0.95rem;
-            border-top: 1px solid #333;
+        footer{background:#000;padding:40px 20px;text-align:center;font-size:1rem;border-top:1px solid #333}
+     
+        @media(max-width:992px){
+            .about-section{flex-direction:column;text-align:center}
+            .upper-row,.lower-row{grid-template-columns:1fr}
+            #final-contact{grid-template-columns:1fr}
+            #changing-grid, .static-gallery { grid-template-columns: repeat(2, 1fr); }
         }
-
-        @media (max-width: 992px) {
-            .about-section { flex-direction: column; text-align: center; }
-            .about-image { max-width: 500px; height: 500px; margin: 2rem auto; }
+        @media(max-width:768px){
+            #changing-grid, .static-gallery { grid-template-columns: 1fr; }
+            #changing-title-container { min-height: 6rem; }
+            #location-selector select{max-width:100%}
+            .static-gallery { margin: 80px auto 100px; }
         }
-
-        @media (max-width: 768px) {
-            #home h2 { font-size: clamp(2.2rem, 9vw, 3.8rem); }
-            #dynamic-title { margin: 4rem auto 2.5rem; }
-            .about-text { font-size: 1.15rem; }
-        }
-
-        @media (max-width: 480px) {
-            .btn { padding: 0.8rem 1.6rem; font-size: 1rem; }
-            #pricing .price { font-size: 1.8rem; }
+        @media(max-width:600px){
+            .project-section, .static-gallery { margin: 70px auto; }
         }
     </style>
-
-    <!-- Hinnoittelu -->
-    <script src="SKRIPTIT/hinnat-config.js" defer></script>
     <script src="SKRIPTIT/dynamic-title.js" defer></script>
     <script src="SKRIPTIT/header.js" defer></script>
+    <script src="SKRIPTIT/mobile-scaling.js" defer></script>
     <script src="SKRIPTIT/kampanja-popup.js" defer></script>
     <script src="SKRIPTIT/photo-buttons.js" defer></script>
     <script src="SKRIPTIT/paikkakunta-dropdown.js" defer></script>
-    <script src="SKRIPTIT/paikkakunta-redirect.js" defer></script>
     <script src="SKRIPTIT/portfolio-changer.js" defer></script>
-
 </head>
 <body>
-
-    <!-- ... (sama body-sisältö kuin aiemmin, ei muutoksia sisältöön) ... -->
-
     <section id="home">
         <video autoplay muted loop playsinline poster="VALOKUVAUS/valokuvaus-poster.webp">
             <source src="MEDIA/Pääsivu_Videotuotannot ja Valokuvaus/2000luvunkamera.webm" type="video/webm">
@@ -388,7 +188,6 @@
         <h2>Valokuvaus</h2>
         <div id="photo-button-container"></div>
     </section>
-
     <h2 id="dynamic-title" class="dynamic-title" data-interval="2500" aria-live="polite" aria-label="Valokuvauspalvelut">
         <span>Häät</span>
         <span>Valmistujaiset</span>
@@ -397,7 +196,6 @@
         <span>Ristiäiset</span>
         <span>Muotokuvat</span>
     </h2>
-
     <div class="about-section">
         <div class="about-text">
             Olipa kyseessä niin valmistujaiset, hautajaiset, häät, ristiäiset tai mitä vaan. Dokumentoin tärkeät hetkesi, jolloin voit keskittyä hetkeesi ja muistella sitä valokuvien kautta jälkikäteen.<br><br>
@@ -410,9 +208,6 @@
             <img src="MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja1.webp" alt="Valokuvaus 1" class="active">
         </div>
     </div>
-
-    <!-- loput osiot kuten aiemmin: project-section, pricing, location-selector, final-contact, static-gallery, footer -->
-
     <section class="project-section">
         <div class="project-header">
             <span class="subtitle">VALOKUVAUSPROJEKTIT</span>
@@ -423,7 +218,6 @@
         <div id="changing-grid"></div>
         <div id="category-dots"></div>
     </section>
-
     <section id="pricing">
         <h2>Hinnoittelu</h2>
         <p class="disclaimer">*Nämä ovat suuntaa-antavia hintoja. Hinnat sisältävät ALV 25,5 %. Matkakustannukset (kilometrikorvaus) lisätään erikseen tarpeen mukaan.</p>
@@ -435,13 +229,11 @@
             </div>
         </div>
     </section>
-
     <div id="location-selector">
         <h2>Valitse kuvauspaikkakunta</h2>
-        <select id="paikkakunta-dropdown" onchange="saveAndRedirectPaikkakunta(this.value)" aria-label="Valitse kuvauspaikkakunta"></select>
+        <select id="paikkakunta-dropdown" onchange="handlePaikkakuntaChange(this.value)" aria-label="Valitse kuvauspaikkakunta"></select>
         <p class="info">Valitsemalla paikkakunnan siirryt aluekohtaiselle sivulle, jossa on tarkemmat hinnoittelut.</p>
     </div>
-
     <section id="final-contact">
         <div class="contact-info">
             <h2>Ota yhteyttä</h2>
@@ -457,7 +249,6 @@
             </p>
         </div>
     </section>
-
     <div class="static-gallery">
         <div class="static-item"><img src="MEDIA/VALOKUVAUS/Valokuvaus40.webp" alt="Kuva 1"></div>
         <div class="static-item"><img src="MEDIA/VALOKUVAUS/Valokuvaus41.webp" alt="Kuva 2"></div>
@@ -472,85 +263,122 @@
     </footer>
 
     <script>
-        // Hinnoittelu + automaattinen paikkakunta (kuten aiemmin)
+        // ───────────────────────────────────────────────
+        // UUSI KESKITETTY HINNOITTELU – muokkaa vain täältä
+        // ───────────────────────────────────────────────
+        const BASE_PRICES = {
+            "3 tuntia": 350,
+            "4-6 tuntia": 700,
+            "Hääpaketti": 900
+        };
+
+        // Tähän voit lisätä paikkakuntakohtaisia korotuksia myöhemmin
+        // Esimerkki: const LOCATION_EXTRA = { "Tampere": 50, "Vaasa": 80 };
+        const LOCATION_EXTRA = {};
+
+        // Tällä hetkellä käytetään pääsivun (= "muu") hintoja
+        const currentLocation = "muu"; // tai window.location.pathname perusteella jos haluat myöhemmin
+        const extra = LOCATION_EXTRA[currentLocation] || 0;
+
+        const prices = {
+            "3 tuntia": BASE_PRICES["3 tuntia"] + extra,
+            "4-6 tuntia": BASE_PRICES["4-6 tuntia"] + extra,
+            "Hääpaketti": BASE_PRICES["Hääpaketti"] + extra
+        };
+
+        // ───────────────────────────────────────────────
+        // Hinnoittelulaatikoiden luonti
+        // ───────────────────────────────────────────────
         document.addEventListener('DOMContentLoaded', () => {
-            const path = window.location.pathname;
-            let PAIKKAKUNTA = "Pori";
-            const match = path.match(/Valokuvaus[-_]?([^./]+)(?:\.html)?$/i);
-            if (match && match[1]) {
-                PAIKKAKUNTA = match[1].trim();
+            function createPricingBox(title, price, description = '', features = [], quote = '') {
+                let html = `<h3>${title}</h3>`;
+                html += `<p class="price">${price} €</p>`;
+                if (description) html += `<p>${description}</p>`;
+                
+                if (features.length > 0) {
+                    html += '<ul>';
+                    features.forEach(item => html += `<li>${item}</li>`);
+                    html += '</ul>';
+                }
+                
+                if (quote) html += `<p class="quote">${quote}</p>`;
+
+                const box = document.createElement('div');
+                box.className = 'pricing-box';
+                box.innerHTML = html;
+                return box;
             }
 
-            setTimeout(() => {
-                if (typeof getPricesForLocation !== 'function') {
-                    console.warn("hinnat-config.js ei latautunut");
-                    return;
-                }
-                const prices = getPricesForLocation(PAIKKAKUNTA);
+            // 3h ja 4-6h → upper row
+            const upperRow = document.querySelector('#pricing .upper-row');
+            if (upperRow) {
+                upperRow.innerHTML = ''; // tyhjennetään varmuuden vuoksi
+                
+                upperRow.appendChild(createPricingBox(
+                    '3 tuntia',
+                    prices["3 tuntia"],
+                    'Esimerkiksi hautajaiset tai valmistujaisjuhlat'
+                ));
 
-                function createPricingBox(title, price, desc = '', features = [], quote = '') {
-                    let html = `<h3>${title}</h3><p class="price">${price} €</p>`;
-                    if (desc) html += `<p>${desc}</p>`;
-                    if (features.length) {
-                        html += '<ul>';
-                        features.forEach(f => html += `<li>${f}</li>`);
-                        html += '</ul>';
-                    }
-                    if (quote) html += `<p class="quote">${quote}</p>`;
-                    const box = document.createElement('div');
-                    box.className = 'pricing-box';
-                    box.innerHTML = html;
-                    return box;
-                }
+                upperRow.appendChild(createPricingBox(
+                    '4-6 tuntia',
+                    prices["4-6 tuntia"],
+                    'Pidempään kestävät tilaisuudet tai kevyempi hääkuvaus'
+                ));
+            }
 
-                const upperRow = document.querySelector('#pricing .upper-row');
-                if (upperRow) {
-                    upperRow.innerHTML = '';
-                    upperRow.appendChild(createPricingBox('3 tuntia', prices["3 tuntia"], 'Esimerkiksi hautajaiset tai valmistujaisjuhlat'));
-                    upperRow.appendChild(createPricingBox('4-6 tuntia', prices["4-6 tuntia"], 'Pidempään kestävät tilaisuudet tai kevyempi hääkuvaus'));
-                }
+            // Hääpaketti → lower row ennen contact-boxia
+            const lowerRow = document.querySelector('#pricing .lower-row');
+            const contactBox = lowerRow?.querySelector('.contact-box');
 
-                const lowerRow = document.querySelector('#pricing .lower-row');
-                const contactBox = lowerRow?.querySelector('.contact-box');
-                if (lowerRow && contactBox) {
-                    lowerRow.insertBefore(createPricingBox(
-                        'Hääpaketti',
-                        prices["Hääpaketti"],
-                        '',
-                        [
-                            'Dokumentaarinen hääkuvaus <strong>koko hääpäivän ajan</strong>',
-                            'Elokuvallinen häävideo tärkeimmästä päivästä',
-                            'Ei stressiä kuvausajasta',
-                            'Eniten valokuvia'
-                        ],
-                        'Monet sanovat, että kuva kertoo enemmän kuin tuhat sanaa. Minä sanon, että liikkuva kuva kertoo vieläkin enemmän.'
-                    ), contactBox);
-                }
-            }, 300);
+            if (lowerRow && contactBox) {
+                lowerRow.insertBefore(createPricingBox(
+                    'Hääpaketti',
+                    prices["Hääpaketti"],
+                    '',
+                    [
+                        'Dokumentaarinen hääkuvaus <strong>koko hääpäivän ajan</strong>',
+                        'Elokuvallinen häävideo tärkeimmästä päivästä',
+                        'Ei stressiä kuvausajasta',
+                        'Eniten valokuvia'
+                    ],
+                    'Monet sanovat, että kuva kertoo enemmän kuin tuhat sanaa. Minä sanon, että liikkuva kuva kertoo vieläkin enemmän.'
+                ), contactBox);
+
+                lowerRow.style.gridTemplateColumns = 'repeat(2, 1fr)';
+            }
         });
 
-        // Taustavideo pause/play + about-kuvien vaihto
+        // ───────────────────────────────────────────────
+        // Muut vanhat skriptit säilytetty
+        // ───────────────────────────────────────────────
+        function handlePaikkakuntaChange(value) {
+            if (!value) return;
+            let url = value === "muu" 
+                ? "https://www.iivarikortesoja.media/Valokuvaus.html" 
+                : `https://www.iivarikortesoja.media/Valokuvaus/${value}.html`;
+            window.location.href = url;
+        }
+
         (function(){
-            const video = document.querySelector('#home video');
-            const section = document.getElementById('home');
-            if (video && section && 'IntersectionObserver' in window) {
+            const bg = document.querySelector('#home video');
+            const home = document.getElementById('home');
+            if (bg && home && 'IntersectionObserver' in window) {
                 new IntersectionObserver(entries => {
-                    entries.forEach(entry => entry.isIntersecting ? video.play().catch(() => {}) : video.pause());
-                }, { threshold: 0.4 }).observe(section);
-            } else if (video) {
-                video.play().catch(() => {});
-            }
+                    entries.forEach(entry => entry.isIntersecting ? bg.play() : bg.pause());
+                }, {threshold: 0.5}).observe(home);
+            } else if (bg) try { bg.play(); } catch(e) {}
         })();
 
         (function(){
             const imgs = document.querySelectorAll('.about-image img');
-            if (imgs.length <= 1) return;
+            if (imgs.length < 1) return;
             let i = 0;
             setInterval(() => {
                 imgs[i].classList.remove('active');
                 i = (i + 1) % imgs.length;
                 imgs[i].classList.add('active');
-            }, 5500);
+            }, 5000);
         })();
     </script>
 </body>
