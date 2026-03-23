@@ -1,26 +1,29 @@
-const allLocations = [
-  {value: "Eura", text: "Eura"},
-  {value: "Eurajoki", text: "Eurajoki"},
+// paikkakunta-dropdown.js
+
+// Tehdään paikkakuntalista globaaliksi, jotta redirect-skripti voi lukea sen
+window.allLocations = [
+  {value: "Eura",       text: "Eura"},
+  {value: "Eurajoki",   text: "Eurajoki"},
   {value: "Harjavalta", text: "Harjavalta"},
-  {value: "Huittinen", text: "Huittinen"},
-  {value: "Ikaalinen", text: "Ikaalinen"},
+  {value: "Huittinen",  text: "Huittinen"},
+  {value: "Ikaalinen",  text: "Ikaalinen"},
   {value: "Kankaanpää", text: "Kankaanpää"},
-  {value: "Karvia", text: "Karvia"},
-  {value: "Kokemäki", text: "Kokemäki"},
-  {value: "Nakkila", text: "Nakkila"},
+  {value: "Karvia",     text: "Karvia"},
+  {value: "Kokemäki",   text: "Kokemäki"},
+  {value: "Nakkila",    text: "Nakkila"},
   {value: "Noormarkku", text: "Noormarkku"},
-  {value: "Parkano", text: "Parkano"},
-  {value: "Pori", text: "Pori"},
-  {value: "Pomarkku", text: "Pomarkku"},
-  {value: "Rauma", text: "Rauma"},
-  {value: "Sastamala", text: "Sastamala"},
-  {value: "Seinäjoki", text: "Seinäjoki"},
-  {value: "Säkylä", text: "Säkylä"},
-  {value: "Tampere", text: "Tampere"},
-  {value: "Ulvila", text: "Ulvila"},
-  {value: "Vaasa", text: "Vaasa"},
-  {value: "Ylöjärvi", text: "Ylöjärvi"},
-  {value: "muu", text: "Muu Suomi (kysy tarjousta)"}
+  {value: "Parkano",    text: "Parkano"},
+  {value: "Pori",       text: "Pori"},
+  {value: "Pomarkku",   text: "Pomarkku"},
+  {value: "Rauma",      text: "Rauma"},
+  {value: "Sastamala",  text: "Sastamala"},
+  {value: "Seinäjoki",  text: "Seinäjoki"},
+  {value: "Säkylä",     text: "Säkylä"},
+  {value: "Tampere",    text: "Tampere"},
+  {value: "Ulvila",     text: "Ulvila"},
+  {value: "Vaasa",      text: "Vaasa"},
+  {value: "Ylöjärvi",   text: "Ylöjärvi"},
+  {value: "muu",        text: "Muu Suomi (kysy tarjousta)"}
 ];
 
 function getCurrentLocation() {
@@ -38,9 +41,8 @@ function getCurrentLocation() {
 }
 
 const current = getCurrentLocation();
-
-let orderedLocations = allLocations.filter(loc => loc.value === current);
-orderedLocations = orderedLocations.concat(allLocations.filter(loc => loc.value !== current));
+let orderedLocations = window.allLocations.filter(loc => loc.value === current);
+orderedLocations = orderedLocations.concat(window.allLocations.filter(loc => loc.value !== current));
 
 const select = document.getElementById("paikkakunta-dropdown");
 if (select) {
@@ -56,13 +58,15 @@ if (select) {
   });
 }
 
+// Dropdownin vaihto-ohjaus (käytetään edelleen tätä nimeä)
 window.handlePaikkakuntaChange = function(value) {
   if (!value) return;
+
   let url;
   if (value === "muu") {
-    url = "https://iivarikortesoja.media/Valokuvaus.html";
+    url = "https://www.iivarikortesoja.media/Valokuvaus.html";
   } else {
-    url = `https://iivarikortesoja.media/Valokuvaus/${value}.html`;
+    url = `https://www.iivarikortesoja.media/Valokuvaus/${value}.html`;
   }
   window.location.href = url;
 };
