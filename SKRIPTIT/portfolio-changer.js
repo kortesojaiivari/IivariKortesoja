@@ -37,6 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentCategoryIndex = 0;
     let currentImageOffset = 0;
     let lastDisplayedCategoryIndex = -1;
+    let autoCycleInterval; // Muuttuja ajastimelle
+
+    // Funktio ajastimen nollaamiseen
+    function resetAutoCycle() {
+        clearInterval(autoCycleInterval);
+        autoCycleInterval = setInterval(updateDisplay, 5000);
+    }
 
     // Luo dots
     if (dotsContainer) {
@@ -49,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentCategoryIndex = i;
                 currentImageOffset = 0;
                 updateDisplay();
+                resetAutoCycle(); // Nollataan ajastin klikkauksesta
             });
             dotsContainer.appendChild(dot);
         });
@@ -63,11 +71,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateDisplay() {
         const category = categories[currentCategoryIndex];
-        // Tarkistetaan onko kategoria oikeasti vaihtunut edellisestä kerrasta
         const isNewCategory = currentCategoryIndex !== lastDisplayedCategoryIndex;
 
+        // Lisätään loading-luokka (joka hoitaa opacityn heti)
         gridElement.classList.add('loading');
         gridElement.style.opacity = '0';
+
+        // Viivästetty "Ladataan" tekstin näyttäminen (CSS hoitaa näkyvyyden viiveellä)
+        // Poistetaan vanha inline-tyyli jos sellainen on
+        gridElement.style.setProperty('--loading-delay', '1.5s');
 
         if (isNewCategory && titleElement) {
             titleElement.classList.remove('slide-up-active');
@@ -79,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 titleElement.textContent = category.title;
                 titleElement.classList.remove('slide-up-exit');
                 titleElement.classList.add('slide-up-enter-prep');
-                void titleElement.offsetWidth; // Force reflow
+                void titleElement.offsetWidth; 
                 titleElement.classList.remove('slide-up-enter-prep');
                 titleElement.classList.add('slide-up-active');
                 lastDisplayedCategoryIndex = currentCategoryIndex;
@@ -94,7 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
             gridElement.classList.remove('loading');
             updateDots();
 
-            // Lasketaan valmiiksi seuraava askel
             currentImageOffset += 3;
             if (currentImageOffset >= category.media.length) {
                 currentCategoryIndex = (currentCategoryIndex + 1) % categories.length;
@@ -103,6 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 280);
     }
 
+    // Käynnistetään ensimmäinen näyttö ja ajastin
     updateDisplay();
-    setInterval(updateDisplay, 5000);
+    resetAutoCycle();
 });
