@@ -2,14 +2,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const categories = [
         {
-            title: "Iivari Kortesoja | Portfolio", // UUSI: Myyntiä edistävä aloitus
-            media: [
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "Hääkuvaus" }, // Vaihda näihin parhaat kuvasi eri kategorioista
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam37.webp", alt: "Combat Camera" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus42.webp", alt: "Tapahtumakuvaus" }
-            ]
-        },
-        {
             title: "TuplaKupla - Teatterikuvaus",
             media: [
                 { src: "MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "Teatterikuvaus 1" },
