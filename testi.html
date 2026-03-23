@@ -86,7 +86,7 @@
         #changing-grid .group:hover img { transform: scale(1.08); }
        
         #category-dots { display: flex; gap: 10px; justify-content: center; margin: 25px auto 0; flex-wrap: wrap; }
-        .category-dot { width: 11px; height: 11px; background: #444; border-radius: 50%; transition: all 0.35s ease; cursor: pointer; }
+        .category-dot { width: 11px; height: 11px; background: #444; border-radius: 50%; transition: all 0.35s ease; cursor:pointer; }
         .category-dot.active { background: #4ade80; transform: scale(1.45); box-shadow: 0 0 12px rgba(74,222,128,0.6); }
 
         #pricing{max-width:1400px;margin:80px auto;padding:0 20px;min-height:300px}
@@ -264,38 +264,64 @@
 
     <script>
         // ───────────────────────────────────────────────
-        // UUSI KESKITETTY HINNOITTELU – muokkaa vain täältä
+        // HINNAT MÄÄRITETÄÄN TÄSSÄ – muokkaa vain näitä arvoja
         // ───────────────────────────────────────────────
-        const BASE_PRICES = {
-            "3 tuntia": 350,
-            "4-6 tuntia": 700,
-            "Hääpaketti": 900
+        const PRICING_DATA = {
+            // Base-hinnat (muokkaa näitä kun haluat muuttaa lähtötasoa)
+            base: {
+                "3 tuntia": 350,
+                "4-6 tuntia": 700,
+                "Hääpaketti": 900
+            },
+
+            // Paikkakuntakohtaiset lisät (euroa) – tällä hetkellä tyhjä
+            locationExtras: {
+                // Esim:
+                // "Tampere": 80,
+                // "Vaasa": 50,
+                // "Seinäjoki": 60
+            },
+
+            // Pakettien lisätiedot (kuvaukset, ominaisuudet jne.)
+            details: {
+                "3 tuntia": {
+                    desc: "Esimerkiksi hautajaiset tai valmistujaisjuhlat"
+                },
+                "4-6 tuntia": {
+                    desc: "Pidempään kestävät tilaisuudet tai kevyempi hääkuvaus"
+                },
+                "Hääpaketti": {
+                    features: [
+                        'Dokumentaarinen hääkuvaus <strong>koko hääpäivän ajan</strong>',
+                        'Elokuvallinen häävideo tärkeimmästä päivästä',
+                        'Ei stressiä kuvausajasta',
+                        'Eniten valokuvia'
+                    ],
+                    quote: 'Monet sanovat, että kuva kertoo enemmän kuin tuhat sanaa. Minä sanon, että liikkuva kuva kertoo vieläkin enemmän.'
+                }
+            }
         };
 
-        // Tähän voit lisätä paikkakuntakohtaisia korotuksia myöhemmin
-        // Esimerkki: const LOCATION_EXTRA = { "Tampere": 50, "Vaasa": 80 };
-        const LOCATION_EXTRA = {};
-
-        // Tällä hetkellä käytetään pääsivun (= "muu") hintoja
-        const currentLocation = "muu"; // tai window.location.pathname perusteella jos haluat myöhemmin
-        const extra = LOCATION_EXTRA[currentLocation] || 0;
-
-        const prices = {
-            "3 tuntia": BASE_PRICES["3 tuntia"] + extra,
-            "4-6 tuntia": BASE_PRICES["4-6 tuntia"] + extra,
-            "Hääpaketti": BASE_PRICES["Hääpaketti"] + extra
-        };
-
         // ───────────────────────────────────────────────
-        // Hinnoittelulaatikoiden luonti
+        // Hinnat lasketaan ja laatikot luodaan dynaamisesti
         // ───────────────────────────────────────────────
         document.addEventListener('DOMContentLoaded', () => {
-            function createPricingBox(title, price, description = '', features = [], quote = '') {
+            // Tällä hetkellä käytetään base-hintoja (pääsivu / "muu")
+            const location = "muu"; // Voit myöhemmin hakea esim. URL:stä
+            const extra = PRICING_DATA.locationExtras[location] || 0;
+
+            const prices = {
+                "3 tuntia": PRICING_DATA.base["3 tuntia"] + extra,
+                "4-6 tuntia": PRICING_DATA.base["4-6 tuntia"] + extra,
+                "Hääpaketti": PRICING_DATA.base["Hääpaketti"] + extra
+            };
+
+            function createPricingBox(title, price, desc = '', features = [], quote = '') {
                 let html = `<h3>${title}</h3>`;
                 html += `<p class="price">${price} €</p>`;
-                if (description) html += `<p>${description}</p>`;
+                if (desc) html += `<p>${desc}</p>`;
                 
-                if (features.length > 0) {
+                if (features && features.length > 0) {
                     html += '<ul>';
                     features.forEach(item => html += `<li>${item}</li>`);
                     html += '</ul>';
@@ -309,40 +335,32 @@
                 return box;
             }
 
-            // 3h ja 4-6h → upper row
+            // Upper row – 3h ja 4–6h
             const upperRow = document.querySelector('#pricing .upper-row');
             if (upperRow) {
-                upperRow.innerHTML = ''; // tyhjennetään varmuuden vuoksi
-                
+                upperRow.innerHTML = '';
                 upperRow.appendChild(createPricingBox(
                     '3 tuntia',
                     prices["3 tuntia"],
-                    'Esimerkiksi hautajaiset tai valmistujaisjuhlat'
+                    PRICING_DATA.details["3 tuntia"]?.desc || ''
                 ));
-
                 upperRow.appendChild(createPricingBox(
                     '4-6 tuntia',
                     prices["4-6 tuntia"],
-                    'Pidempään kestävät tilaisuudet tai kevyempi hääkuvaus'
+                    PRICING_DATA.details["4-6 tuntia"]?.desc || ''
                 ));
             }
 
-            // Hääpaketti → lower row ennen contact-boxia
+            // Lower row – Hääpaketti ennen contact-boxia
             const lowerRow = document.querySelector('#pricing .lower-row');
             const contactBox = lowerRow?.querySelector('.contact-box');
-
             if (lowerRow && contactBox) {
                 lowerRow.insertBefore(createPricingBox(
                     'Hääpaketti',
                     prices["Hääpaketti"],
                     '',
-                    [
-                        'Dokumentaarinen hääkuvaus <strong>koko hääpäivän ajan</strong>',
-                        'Elokuvallinen häävideo tärkeimmästä päivästä',
-                        'Ei stressiä kuvausajasta',
-                        'Eniten valokuvia'
-                    ],
-                    'Monet sanovat, että kuva kertoo enemmän kuin tuhat sanaa. Minä sanon, että liikkuva kuva kertoo vieläkin enemmän.'
+                    PRICING_DATA.details["Hääpaketti"]?.features || [],
+                    PRICING_DATA.details["Hääpaketti"]?.quote || ''
                 ), contactBox);
 
                 lowerRow.style.gridTemplateColumns = 'repeat(2, 1fr)';
@@ -350,7 +368,7 @@
         });
 
         // ───────────────────────────────────────────────
-        // Muut vanhat skriptit säilytetty
+        // Muut funktiot ennallaan
         // ───────────────────────────────────────────────
         function handlePaikkakuntaChange(value) {
             if (!value) return;
