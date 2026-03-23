@@ -6,7 +6,7 @@
 const PRICE_CONFIG = {
     // Kaikille paikkakunnille yhteinen korotus (euroa)
     // Muuta tätä jos haluat nostaa/laskea kaikkia hintoja kerralla
-    globalExtra: 0,
+    globalExtra: 500,
 
     // Paikkakuntakohtaiset asetukset
     locations: {
