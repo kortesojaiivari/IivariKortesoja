@@ -42,7 +42,6 @@
     }
     </script>
     <link rel="canonical" href="https://www.iivarikortesoja.media/Valokuvaus.html">
-
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
@@ -289,7 +288,12 @@
             {
                 title: 'Hääpaketti',
                 price: '900 €',
-                features: ['Dokumentaarinen hääkuvaus <strong>koko hääpäivän ajan</strong>','Elokuvallinen häävideo tärkeimmästä päivästä','Ei stressiä kuvausajasta','Eniten valokuvia'],
+                features: [
+                    'Dokumentaarinen hääkuvaus <strong>koko hääpäivän ajan</strong>',
+                    'Elokuvallinen häävideo tärkeimmästä päivästä',
+                    'Ei stressiä kuvausajasta',
+                    'Eniten valokuvia'
+                ],
                 quote: 'Monet sanovat, että kuva kertoo enemmän kuin tuhat sanaa. Minä sanon, että liikkuva kuva kertoo vieläkin enemmän.'
             }
         ];
@@ -299,9 +303,16 @@
                 function createPricingBox(pkg) {
                     let html = `<h3>${pkg.title}</h3><p class="price">${pkg.price}</p>`;
                     if (pkg.desc) html += `<p>${pkg.desc}</p>`;
-                    if (pkg.features) { html += '<ul>'; pkg.features.forEach(f => html += `<li>${f}</li>`); html += '</ul>'; }
+                    if (pkg.features) {
+                        html += '<ul>';
+                        pkg.features.forEach(f => html += `<li>${f}</li>`);
+                        html += '</ul>';
+                    }
                     if (pkg.quote) html += `<p class="quote">${pkg.quote}</p>`;
-                    const box = document.createElement('div'); box.className = 'pricing-box'; box.innerHTML = html; return box;
+                    const box = document.createElement('div');
+                    box.className = 'pricing-box';
+                    box.innerHTML = html;
+                    return box;
                 }
                 const upperRow = document.querySelector('#pricing .upper-row');
                 if (upperRow) upperPackages.forEach(pkg => upperRow.appendChild(createPricingBox(pkg)));
@@ -318,7 +329,9 @@
     <script>
         function handlePaikkakuntaChange(value) {
             if (!value) return;
-            let url = value === "muu" ? "https://www.iivarikortesoja.media/Valokuvaus.html" : `https://www.iivarikortesoja.media/Valokuvaus/${value}.html`;
+            let url = value === "muu" 
+                ? "https://www.iivarikortesoja.media/Valokuvaus.html" 
+                : `https://www.iivarikortesoja.media/Valokuvaus/${value}.html`;
             window.location.href = url;
         }
     </script>
