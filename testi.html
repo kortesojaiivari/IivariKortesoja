@@ -268,19 +268,11 @@
         <p>© Iivari Kortesoja 2026 | Y-Tunnus 3591660-9</p>
     </footer>
 
-    <!-- HINNOITTELU – pakettien määrittely + dynaaminen lisäys -->
+    <!-- HINNOITTELU (paketit + dynaaminen lisäys) -->
     <script>
         const upperPackages = [
-            {
-                title: '3 tuntia',
-                price: '350 €',
-                desc: 'Esimerkiksi hautajaiset tai valmistujaisjuhlat'
-            },
-            {
-                title: '4-6 tuntia',
-                price: '700 €',
-                desc: 'Pidempään kestävät tilaisuudet tai kevyempi hääkuvaus'
-            }
+            { title: '3 tuntia', price: '350 €', desc: 'Esimerkiksi hautajaiset tai valmistujaisjuhlat' },
+            { title: '4-6 tuntia', price: '700 €', desc: 'Pidempään kestävät tilaisuudet tai kevyempi hääkuvaus' }
         ];
         const lowerPackages = [
             {
@@ -313,15 +305,11 @@
                     return box;
                 }
                 const upperRow = document.querySelector('#pricing .upper-row');
-                if (upperRow) {
-                    upperPackages.forEach(pkg => upperRow.appendChild(createPricingBox(pkg)));
-                }
+                if (upperRow) upperPackages.forEach(pkg => upperRow.appendChild(createPricingBox(pkg)));
                 const lowerRow = document.querySelector('#pricing .lower-row');
                 const contactBox = lowerRow ? lowerRow.querySelector('.contact-box') : null;
                 if (lowerRow && contactBox) {
-                    lowerPackages.forEach(pkg => {
-                        lowerRow.insertBefore(createPricingBox(pkg), contactBox);
-                    });
+                    lowerPackages.forEach(pkg => lowerRow.insertBefore(createPricingBox(pkg), contactBox));
                     lowerRow.style.gridTemplateColumns = `repeat(2, 1fr)`;
                 }
             }, 100);
@@ -331,8 +319,8 @@
     <script>
         function handlePaikkakuntaChange(value) {
             if (!value) return;
-            let url = value === "muu"
-                ? "https://www.iivarikortesoja.media/Valokuvaus.html"
+            let url = value === "muu" 
+                ? "https://www.iivarikortesoja.media/Valokuvaus.html" 
                 : `https://www.iivarikortesoja.media/Valokuvaus/${value}.html`;
             window.location.href = url;
         }
