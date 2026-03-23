@@ -1,4 +1,4 @@
-// portfolio-changer.js – Korjattu versio (otsikko vaihtuu VAIN kategoriavaihdossa)
+// portfolio-changer.js – KORJATTU VERSIO (subtitle vaihtuu automaattisesti)
 document.addEventListener('DOMContentLoaded', () => {
     const categories = [
         {
@@ -26,19 +26,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 { src: "MEDIA/Puolustusvoimat/comcam/comcam50.webp", alt: "Combat 9" }
             ]
         }
+        // Lisää uusia kategorioita tähän
     ];
 
     const titleElement = document.getElementById('changing-title');
-    const gridElement = document.getElementById('changing-grid');
+    const gridElement   = document.getElementById('changing-grid');
     const dotsContainer = document.getElementById('category-dots');
 
     if (!titleElement || !gridElement) return;
 
     let currentCategoryIndex = 0;
-    let currentImageOffset = 0;
-    let lastCategoryIndex = -1;
+    let currentImageOffset   = 0;
+    let lastShownCategory    = -1;
 
-    // Luo dots
+    // Luo pisteet
     if (dotsContainer) {
         dotsContainer.innerHTML = '';
         categories.forEach((_, i) => {
@@ -48,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             dot.addEventListener('click', () => {
                 currentCategoryIndex = i;
                 currentImageOffset = 0;
-                updateDisplay();
+                updateDisplay(true); // force title animation
             });
             dotsContainer.appendChild(dot);
         });
@@ -61,9 +62,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function updateDisplay() {
+    function updateDisplay(forceTitle = false) {
         const category = categories[currentCategoryIndex];
-        const isNewCategory = currentCategoryIndex !== lastCategoryIndex;
+        const isNewCategory = (currentCategoryIndex !== lastShownCategory) || forceTitle;
 
         gridElement.classList.add('loading');
         gridElement.style.opacity = '0';
@@ -74,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         setTimeout(() => {
+            // Otsikko vaihtuu VAIN kun kategoria vaihtuu
             if (isNewCategory && titleElement) {
                 titleElement.textContent = category.title;
                 titleElement.classList.remove('slide-up-exit');
@@ -83,8 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 titleElement.classList.add('slide-up-active');
             }
 
+            // Näytetään max 3 kuvaa kerrallaan
             const imagesToShow = category.media.slice(currentImageOffset, currentImageOffset + 3);
-            gridElement.innerHTML = imagesToShow.map(img => 
+            gridElement.innerHTML = imagesToShow.map(img =>
                 `<div class="group"><img src="${img.src}" alt="${img.alt || ''}"></div>`
             ).join('');
 
@@ -92,15 +95,18 @@ document.addEventListener('DOMContentLoaded', () => {
             gridElement.classList.remove('loading');
             updateDots();
 
+            // Siirry seuraaviin kuviin tai seuraavaan kategoriaan
             currentImageOffset += 3;
             if (currentImageOffset >= category.media.length) {
                 currentCategoryIndex = (currentCategoryIndex + 1) % categories.length;
                 currentImageOffset = 0;
             }
-            lastCategoryIndex = currentCategoryIndex;
+
+            lastShownCategory = currentCategoryIndex;
         }, 280);
     }
 
+    // Käynnistys
     updateDisplay();
-    setInterval(updateDisplay, 5000);
+    setInterval(updateDisplay, 5000);   // 5 sekunnin automaattinen vaihto
 });
