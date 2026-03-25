@@ -39,6 +39,7 @@
     }
     </script>
     <link rel="canonical" href="https://www.iivarikortesoja.media/Valokuvaus.html">
+
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
@@ -86,7 +87,7 @@
         #changing-grid .group:hover img { transform: scale(1.08); }
        
         #category-dots { display: flex; gap: 10px; justify-content: center; margin: 25px auto 0; flex-wrap: wrap; }
-        .category-dot { width: 11px; height: 11px; background: #444; border-radius: 50%; transition: all 0.35s ease; cursor:pointer; }
+        .category-dot { width: 11px; height: 11px; background: #444; border-radius: 50%; transition: all 0.35s ease; cursor: pointer; }
         .category-dot.active { background: #4ade80; transform: scale(1.45); box-shadow: 0 0 12px rgba(74,222,128,0.6); }
 
         #pricing{max-width:1400px;margin:80px auto;padding:0 20px;min-height:300px}
@@ -125,9 +126,9 @@
         #final-contact .contact-info:hover,
         #final-contact .qr-box:hover {transform: translateY(-8px) scale(1.015);box-shadow: 0 25px 70px rgba(0,0,0,.75);background: #2a2a2a;}
         #final-contact .contact-info h2{font-size:2.2rem;margin-bottom:30px}
-        #final-contact .contact-info p{font-size:1.4rem;margin:20px 0; transition: color 0.3s ease;}
+        #final-contact .contact-info p{font-size:1.4rem;margin:20px 0;}
         #final-contact .contact-info:hover p { color: #e0e0e0; }
-        #final-contact .contact-info a{color:#4ade80;text-decoration:none;transition: color 0.25s ease;}
+        #final-contact .contact-info a{color:#4ade80;text-decoration:none;}
         #final-contact .contact-info a:hover { color: #6aff9c; }
         #final-contact .qr-box{cursor:pointer}
         #final-contact .qr-box a{display:block;width:100%;max-width:430px}
@@ -171,6 +172,8 @@
             .project-section, .static-gallery { margin: 70px auto; }
         }
     </style>
+
+    <!-- Hinnoittelu tulee tästä tiedostosta -->
     <script src="SKRIPTIT/hinnat-config.js" defer></script>
     <script src="SKRIPTIT/dynamic-title.js" defer></script>
     <script src="SKRIPTIT/header.js" defer></script>
@@ -264,113 +267,54 @@
     </footer>
 
     <script>
-        // ───────────────────────────────────────────────
-        // HINNAT MÄÄRITETÄÄN TÄSSÄ – muokkaa vain näitä arvoja
-        // ───────────────────────────────────────────────
-        const PRICING_DATA = {
-            // Base-hinnat (muokkaa näitä kun haluat muuttaa lähtötasoa)
-            base: {
-                "3 tuntia": 350,
-                "4-6 tuntia": 700,
-                "Hääpaketti": 900
-            },
-
-            // Paikkakuntakohtaiset lisät (euroa) – tällä hetkellä tyhjä
-            locationExtras: {
-                // Esim:
-                // "Tampere": 80,
-                // "Vaasa": 50,
-                // "Seinäjoki": 60
-            },
-
-            // Pakettien lisätiedot (kuvaukset, ominaisuudet jne.)
-            details: {
-                "3 tuntia": {
-                    desc: "Esimerkiksi hautajaiset tai valmistujaisjuhlat"
-                },
-                "4-6 tuntia": {
-                    desc: "Pidempään kestävät tilaisuudet tai kevyempi hääkuvaus"
-                },
-                "Hääpaketti": {
-                    features: [
-                        'Dokumentaarinen hääkuvaus <strong>koko hääpäivän ajan</strong>',
-                        'Elokuvallinen häävideo tärkeimmästä päivästä',
-                        'Ei stressiä kuvausajasta',
-                        'Eniten valokuvia'
-                    ],
-                    quote: 'Monet sanovat, että kuva kertoo enemmän kuin tuhat sanaa. Minä sanon, että liikkuva kuva kertoo vieläkin enemmän.'
-                }
-            }
-        };
-
-        // ───────────────────────────────────────────────
-        // Hinnat lasketaan ja laatikot luodaan dynaamisesti
-        // ───────────────────────────────────────────────
+        // Hinnoittelu ladataan ulkoisesta config-tiedostosta
         document.addEventListener('DOMContentLoaded', () => {
-            // Tällä hetkellä käytetään base-hintoja (pääsivu / "muu")
-            const location = "muu"; // Voit myöhemmin hakea esim. URL:stä
-            const extra = PRICING_DATA.locationExtras[location] || 0;
+            // Määritä paikkakunta tälle sivulle (tämä on pääsivu → "muu")
+            const PAIKKAKUNTA = "muu";
 
-            const prices = {
-                "3 tuntia": PRICING_DATA.base["3 tuntia"] + extra,
-                "4-6 tuntia": PRICING_DATA.base["4-6 tuntia"] + extra,
-                "Hääpaketti": PRICING_DATA.base["Hääpaketti"] + extra
-            };
+            const prices = getPricesForLocation(PAIKKAKUNTA);
 
             function createPricingBox(title, price, desc = '', features = [], quote = '') {
-                let html = `<h3>${title}</h3>`;
-                html += `<p class="price">${price} €</p>`;
+                let html = `<h3>${title}</h3><p class="price">${price} €</p>`;
                 if (desc) html += `<p>${desc}</p>`;
-                
-                if (features && features.length > 0) {
+                if (features.length > 0) {
                     html += '<ul>';
-                    features.forEach(item => html += `<li>${item}</li>`);
+                    features.forEach(f => html += `<li>${f}</li>`);
                     html += '</ul>';
                 }
-                
                 if (quote) html += `<p class="quote">${quote}</p>`;
-
                 const box = document.createElement('div');
                 box.className = 'pricing-box';
                 box.innerHTML = html;
                 return box;
             }
 
-            // Upper row – 3h ja 4–6h
             const upperRow = document.querySelector('#pricing .upper-row');
             if (upperRow) {
                 upperRow.innerHTML = '';
-                upperRow.appendChild(createPricingBox(
-                    '3 tuntia',
-                    prices["3 tuntia"],
-                    PRICING_DATA.details["3 tuntia"]?.desc || ''
-                ));
-                upperRow.appendChild(createPricingBox(
-                    '4-6 tuntia',
-                    prices["4-6 tuntia"],
-                    PRICING_DATA.details["4-6 tuntia"]?.desc || ''
-                ));
+                upperRow.appendChild(createPricingBox('3 tuntia', prices["3 tuntia"], 'Esimerkiksi hautajaiset tai valmistujaisjuhlat'));
+                upperRow.appendChild(createPricingBox('4-6 tuntia', prices["4-6 tuntia"], 'Pidempään kestävät tilaisuudet tai kevyempi hääkuvaus'));
             }
 
-            // Lower row – Hääpaketti ennen contact-boxia
             const lowerRow = document.querySelector('#pricing .lower-row');
-            const contactBox = lowerRow?.querySelector('.contact-box');
+            const contactBox = lowerRow ? lowerRow.querySelector('.contact-box') : null;
             if (lowerRow && contactBox) {
                 lowerRow.insertBefore(createPricingBox(
                     'Hääpaketti',
                     prices["Hääpaketti"],
                     '',
-                    PRICING_DATA.details["Hääpaketti"]?.features || [],
-                    PRICING_DATA.details["Hääpaketti"]?.quote || ''
+                    [
+                        'Dokumentaarinen hääkuvaus <strong>koko hääpäivän ajan</strong>',
+                        'Elokuvallinen häävideo tärkeimmästä päivästä',
+                        'Ei stressiä kuvausajasta',
+                        'Eniten valokuvia'
+                    ],
+                    'Monet sanovat, että kuva kertoo enemmän kuin tuhat sanaa. Minä sanon, että liikkuva kuva kertoo vieläkin enemmän.'
                 ), contactBox);
-
                 lowerRow.style.gridTemplateColumns = 'repeat(2, 1fr)';
             }
         });
 
-        // ───────────────────────────────────────────────
-        // Muut funktiot ennallaan
-        // ───────────────────────────────────────────────
         function handlePaikkakuntaChange(value) {
             if (!value) return;
             let url = value === "muu" 
@@ -379,6 +323,7 @@
             window.location.href = url;
         }
 
+        // Taustavideo + about-kuvan vaihto
         (function(){
             const bg = document.querySelector('#home video');
             const home = document.getElementById('home');
