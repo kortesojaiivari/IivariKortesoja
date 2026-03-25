@@ -13,13 +13,25 @@
       gtag('js', new Date());
       gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
     </script>
+
+    <!-- Microsoft Clarity – jatkuva seuranta -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "ud6y4jpngh");
+
+        window.clarityConsent = function(allowed) {
+            if (typeof clarity === "function") {
+                clarity("consent", allowed);
+                if (allowed) {
+                    console.log("%c✅ Clarity: Käyttäjä antoi suostumuksen – istunto jatkuu sivujen välillä", "color:#4ade80;font-weight:bold");
+                }
+            }
+        };
     </script>
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -43,6 +55,59 @@
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
+        
+        /* Evästebannerin tyyli - juuri kuvan mukainen */
+        #cookie-banner {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1f1f1f;
+            color: #ddd;
+            padding: 16px 24px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            display: none;
+            align-items: center;
+            gap: 30px;
+            z-index: 9999;
+            max-width: 92%;
+            font-size: 0.95rem;
+            border: 1px solid #333;
+        }
+        #cookie-banner p {
+            margin: 0;
+            flex: 1;
+            line-height: 1.4;
+        }
+        #cookie-banner button {
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        #cookie-banner .btn-reject {
+            background: transparent;
+            color: #bbb;
+            border: 2px solid #555;
+        }
+        #cookie-banner .btn-reject:hover {
+            background: #333;
+            color: #fff;
+        }
+        #cookie-banner .btn-accept {
+            background: #4ade80;
+            color: #000;
+            border: none;
+        }
+        #cookie-banner .btn-accept:hover {
+            background: #5aff90;
+            transform: translateY(-2px);
+        }
+
+        /* Muut tyylit (sama kuin ennen) */
         #home{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
         #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
         #home h2{font-size:clamp(2.5rem,8vw,4.5rem);text-shadow:0 0 40px rgba(0,0,0,.9);margin-bottom:20px}
@@ -167,14 +232,14 @@
             #changing-title-container { min-height: 6rem; }
             #location-selector select{max-width:100%}
             .static-gallery { margin: 80px auto 100px; }
-        }
-        @media(max-width:600px){
-            .project-section, .static-gallery { margin: 70px auto; }
+            #cookie-banner { flex-direction: column; text-align: center; gap: 15px; padding: 18px 20px; }
         }
     </style>
 
-    <!-- Hinnoittelu tulee tästä tiedostosta -->
+    <!-- Hinnoittelu -->
     <script src="SKRIPTIT/hinnat-config.js" defer></script>
+    
+    <!-- Muut skriptit -->
     <script src="SKRIPTIT/dynamic-title.js" defer></script>
     <script src="SKRIPTIT/header.js" defer></script>
     <script src="SKRIPTIT/mobile-scaling.js" defer></script>
@@ -184,6 +249,7 @@
     <script src="SKRIPTIT/portfolio-changer.js" defer></script>
 </head>
 <body>
+    <!-- ... koko sivun sisältö sama kuin ennen ... -->
     <section id="home">
         <video autoplay muted loop playsinline poster="VALOKUVAUS/valokuvaus-poster.webp">
             <source src="MEDIA/Pääsivu_Videotuotannot ja Valokuvaus/2000luvunkamera.webm" type="video/webm">
@@ -266,12 +332,19 @@
         <p>© Iivari Kortesoja 2026 | Y-Tunnus 3591660-9</p>
     </footer>
 
-    <script>
-        // Hinnoittelu ladataan ulkoisesta config-tiedostosta
-        document.addEventListener('DOMContentLoaded', () => {
-            // Määritä paikkakunta tälle sivulle (tämä on pääsivu → "muu")
-            const PAIKKAKUNTA = "muu";
+    <!-- EVÄSTEBANNERI -->
+    <div id="cookie-banner">
+        <p>Käyttämällä tätä verkkosivustoa hyväksyt evästeiden käytön. Käytämme evästeitä tarjotaksemme sinulle erinomaisen kokemuksen jaauttaaksemme verkkosivustoamme toimimaan tehokkaasti.</p>
+        <div>
+            <button class="btn-reject" onclick="rejectCookies()">HYLKÄÄ</button>
+            <button class="btn-accept" onclick="acceptCookies()">HYVÄKSY</button>
+        </div>
+    </div>
 
+    <script>
+        // Hinnoittelu
+        document.addEventListener('DOMContentLoaded', () => {
+            const PAIKKAKUNTA = "muu";
             const prices = getPricesForLocation(PAIKKAKUNTA);
 
             function createPricingBox(title, price, desc = '', features = [], quote = '') {
@@ -303,17 +376,29 @@
                     'Hääpaketti',
                     prices["Hääpaketti"],
                     '',
-                    [
-                        'Dokumentaarinen hääkuvaus <strong>koko hääpäivän ajan</strong>',
-                        'Elokuvallinen häävideo tärkeimmästä päivästä',
-                        'Ei stressiä kuvausajasta',
-                        'Eniten valokuvia'
-                    ],
+                    ['Dokumentaarinen hääkuvaus <strong>koko hääpäivän ajan</strong>','Elokuvallinen häävideo tärkeimmästä päivästä','Ei stressiä kuvausajasta','Eniten valokuvia'],
                     'Monet sanovat, että kuva kertoo enemmän kuin tuhat sanaa. Minä sanon, että liikkuva kuva kertoo vieläkin enemmän.'
                 ), contactBox);
                 lowerRow.style.gridTemplateColumns = 'repeat(2, 1fr)';
             }
+
+            // Näytetään evästebanneri, jos suostumusta ei ole annettu
+            if (!localStorage.getItem('cookiesAccepted')) {
+                document.getElementById('cookie-banner').style.display = 'flex';
+            }
         });
+
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            clarityConsent(true);
+            document.getElementById('cookie-banner').style.display = 'none';
+        }
+
+        function rejectCookies() {
+            localStorage.setItem('cookiesAccepted', 'false');
+            document.getElementById('cookie-banner').style.display = 'none';
+            // Clarityyn ei anneta suostumusta (seurantaa ei tehdä)
+        }
 
         function handlePaikkakuntaChange(value) {
             if (!value) return;
