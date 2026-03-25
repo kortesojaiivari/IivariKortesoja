@@ -1,5 +1,8 @@
-// portfolio-changer.js
+// SKRIPTIT/portfolio-changer.js
+// Päivitetty versio: sisältää sekä pääportfolion (otsikolla + dots) että 3x2 static-gallery cyclingin
+
 document.addEventListener('DOMContentLoaded', () => {
+    // ──────── PÄÄPORTFOLIO (otsikolla + kategoriapisteet) ────────
     const categories = [
         {
             title: "TuplaKupla - Teatterikuvaus",
@@ -25,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 { src: "MEDIA/Puolustusvoimat/comcam/comcam31.webp", alt: "Combat 8" },
                 { src: "MEDIA/Puolustusvoimat/comcam/comcam50.webp", alt: "Combat 9" }
             ]
-        }, // <--- TÄMÄ PILKKU PUUTTUI!
+        },
         {
             title: "Laura Voutilainen - Kerran Keväällä",
             media: [
@@ -55,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         autoCycleInterval = setInterval(updateDisplay, 5000);
     }
 
+    // Kategoriapisteet
     if (dotsContainer) {
         dotsContainer.innerHTML = '';
         categories.forEach((_, i) => {
@@ -95,14 +99,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 titleElement.textContent = category.title;
                 titleElement.classList.remove('slide-up-exit');
                 titleElement.classList.add('slide-up-enter-prep');
-                void titleElement.offsetWidth; 
+                void titleElement.offsetWidth;
                 titleElement.classList.remove('slide-up-enter-prep');
                 titleElement.classList.add('slide-up-active');
                 lastDisplayedCategoryIndex = currentCategoryIndex;
             }
 
             const imagesToShow = category.media.slice(currentImageOffset, currentImageOffset + 3);
-            gridElement.innerHTML = imagesToShow.map(img => 
+            gridElement.innerHTML = imagesToShow.map(img =>
                 `<div class="group"><img src="${img.src}" alt="${img.alt || ''}"></div>`
             ).join('');
 
@@ -120,4 +124,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateDisplay();
     resetAutoCycle();
+
+    // ──────── UUSI 3x2 STATIC GALLERY CYCLING (ei otsikkoa, ei pisteitä) ────────
+    const staticCycles = [
+        {
+            media: [
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "Valokuvaus 1" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus41.webp", alt: "Valokuvaus 2" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus42.webp", alt: "Valokuvaus 3" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus43.webp", alt: "Valokuvaus 4" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus44.webp", alt: "Valokuvaus 5" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus45.webp", alt: "Valokuvaus 6" }
+            ]
+        },
+        {
+            media: [
+                { src: "MEDIA/Puolustusvoimat/comcam/comcam37.webp", alt: "Combat 1" },
+                { src: "MEDIA/Puolustusvoimat/comcam/comcam3.webp", alt: "Combat 2" },
+                { src: "MEDIA/Puolustusvoimat/comcam/comcam25.webp", alt: "Combat 3" },
+                { src: "MEDIA/Puolustusvoimat/comcam/comcam12.webp", alt: "Combat 4" },
+                { src: "MEDIA/Puolustusvoimat/comcam/comcam8.webp", alt: "Combat 5" },
+                { src: "MEDIA/Puolustusvoimat/comcam/comcam19.webp", alt: "Combat 6" }
+            ]
+        }
+        // Lisää tähän uusia 6 kuvan settejä halutessasi
+    ];
+
+    let currentStaticIndex = 0;
+    const staticGallery = document.querySelector('.static-gallery');
+
+    function updateStaticGallery() {
+        if (!staticGallery) return;
+        const cycle = staticCycles[currentStaticIndex];
+        staticGallery.innerHTML = cycle.media.map(img => `
+            <div class="static-item">
+                <img src="${img.src}" alt="${img.alt}">
+            </div>
+        `).join('');
+        currentStaticIndex = (currentStaticIndex + 1) % staticCycles.length;
+    }
+
+    if (staticGallery) {
+        updateStaticGallery();
+        setInterval(updateStaticGallery, 6000);   // Vaihtuu 6 sekunnin välein
+    }
 });
