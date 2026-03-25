@@ -6,7 +6,7 @@
 const PRICE_CONFIG = {
     // Kaikille paikkakunnille yhteinen korotus (euroa)
     // Muuta tätä jos haluat nostaa/laskea kaikkia hintoja kerralla
-    globalExtra: 500,
+    globalExtra: ,
 
     // Paikkakuntakohtaiset asetukset
     locations: {
@@ -14,7 +14,7 @@ const PRICE_CONFIG = {
             extra: 0,
             "3 tuntia": 350,
             "4-6 tuntia": 700,
-            "Hääpaketti": 900
+            "Hääpaketti": 3000
         },
         "Eurajoki": {
             extra: 0,
