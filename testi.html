@@ -25,9 +25,7 @@
         window.clarityConsent = function(allowed) {
             if (typeof clarity === "function") {
                 clarity("consent", allowed);
-                if (allowed) {
-                    console.log("%c✅ Clarity: Käyttäjä antoi suostumuksen – istunto jatkuu sivujen välillä", "color:#4ade80;font-weight:bold");
-                }
+                if (allowed) console.log("%c✅ Clarity: Suostumus annettu – istunto jatkuu", "color:#4ade80;font-weight:bold");
             }
         };
     </script>
@@ -52,16 +50,14 @@
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
 
-        /* KORJATTU EVÄSTEBANNERI – mobiili + slide-in */
+        /* EVÄSTEBANNERI – koko ruudun levyinen + slide-in */
         #cookie-banner {
             position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            bottom: 0; left: 0; right: 0;
             background: #1f1f1f;
             color: #ddd;
             padding: 18px 20px;
-            display: none;                    /* Täysin piilossa aluksi */
+            display: none;
             align-items: center;
             justify-content: center;
             gap: 40px;
@@ -69,58 +65,33 @@
             border-top: 1px solid #333;
             box-shadow: 0 -8px 25px rgba(0,0,0,0.8);
             font-size: 0.96rem;
-            transform: translateY(100%);       /* Alkuasento: kokonaan piilossa alhaalla */
+            transform: translateY(100%);
             transition: transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         #cookie-banner.show {
-            transform: translateY(0);          /* Slide ylös */
-            display: flex;
+            transform: translateY(0);
         }
-        #cookie-banner p {
-            margin: 0;
-            max-width: 820px;
-            line-height: 1.45;
-        }
-        #cookie-banner .buttons {
-            display: flex;
-            gap: 12px;
-            flex-shrink: 0;
-        }
+        #cookie-banner p { margin: 0; max-width: 820px; line-height: 1.45; }
+        #cookie-banner .buttons { display: flex; gap: 12px; flex-shrink: 0; }
         #cookie-banner button {
             padding: 11px 26px;
             border-radius: 50px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 0.95rem;
         }
-        #cookie-banner .btn-reject {
-            background: transparent;
-            color: #bbb;
-            border: 2px solid #555;
-        }
-        #cookie-banner .btn-reject:hover {
-            background: #333;
-            color: #fff;
-        }
-        #cookie-banner .btn-accept {
-            background: #4ade80;
-            color: #000;
-            border: none;
-        }
-        #cookie-banner .btn-accept:hover {
-            background: #5aff90;
-            transform: translateY(-2px);
-        }
+        #cookie-banner .btn-reject { background: transparent; color: #bbb; border: 2px solid #555; }
+        #cookie-banner .btn-reject:hover { background: #333; color: #fff; }
+        #cookie-banner .btn-accept { background: #4ade80; color: #000; border: none; }
+        #cookie-banner .btn-accept:hover { background: #5aff90; transform: translateY(-2px); }
 
-        /* Muut tyylit pysyvät samoina */
+        /* Muut sivun tyylit (sama kuin ennen) */
         #home{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
         #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
         #home h2{font-size:clamp(2.5rem,8vw,4.5rem);text-shadow:0 0 40px rgba(0,0,0,.9);margin-bottom:20px}
         #photo-button-container {display: flex;flex-wrap: wrap;gap: 20px;justify-content: center;margin-top: 40px;z-index: 10;}
         .btn {background:#333;color:#fff;padding:14px 32px;border-radius:50px;text-decoration:none;font-size:1.1rem;transition:.3s;box-shadow:0 4px 15px rgba(0,0,0,.5);cursor:pointer;white-space:nowrap;}
         .btn:hover {background:#4ade80;transform:translateY(-3px);}
-
         #dynamic-title {position: relative;overflow: visible;display: flex;align-items: center;justify-content: center;margin: 80px auto 60px;padding: 40px 20px;min-height: 160px;z-index: 5;}
         #dynamic-title span {position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);width: auto;max-width: 90vw;text-align: center;font-size: clamp(2.2rem, 7vw, 4rem);font-weight: bold;text-shadow: 0 4px 20px rgba(0,0,0,.8);pointer-events: none;white-space: nowrap;will-change: transform, opacity;}
      
@@ -139,20 +110,7 @@
         .slide-up-enter-prep { transform: translateY(130%); opacity: 0; transition: none; }
         .slide-up-active { transform: translateY(0); opacity: 1; }
         #changing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.25rem; transition: opacity 0.65s ease; min-height: 320px; position: relative; }
-        #changing-grid.loading::after { 
-            content: "Kuvia ladataan..."; 
-            position: absolute; 
-            top: 50%; 
-            left: 50%; 
-            transform: translate(-50%, -50%); 
-            color: #4ade80; 
-            font-size: 1.15rem; 
-            font-weight: 500; 
-            z-index: 2;
-            opacity: 0;
-            animation: fadeInAfter 0.1s forwards;
-            animation-delay: 1.5s; 
-        }
+        #changing-grid.loading::after { content: "Kuvia ladataan..."; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #4ade80; font-size: 1.15rem; font-weight: 500; z-index: 2; opacity: 0; animation: fadeInAfter 0.1s forwards; animation-delay: 1.5s; }
         @keyframes fadeInAfter { to { opacity: 1; } }
         #changing-grid .group { aspect-ratio: 4/3; overflow: hidden; border-radius: 1rem; box-shadow: 0 12px 35px rgba(0,0,0,.55); background: #111; }
         #changing-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
@@ -191,10 +149,7 @@
      
         #final-contact{max-width:1400px;margin:0 auto 100px;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:40px}
         #final-contact .contact-info,
-        #final-contact .qr-box {
-            background:#222;padding:40px;border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,.6);min-height:420px;
-            display:flex;flex-direction:column;justify-content:center;align-items:center;transition: all 0.35s ease;
-        }
+        #final-contact .qr-box {background:#222;padding:40px;border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,.6);min-height:420px;display:flex;flex-direction:column;justify-content:center;align-items:center;transition: all 0.35s ease;}
         #final-contact .contact-info:hover,
         #final-contact .qr-box:hover {transform: translateY(-8px) scale(1.015);box-shadow: 0 25px 70px rgba(0,0,0,.75);background: #2a2a2a;}
         #final-contact .contact-info h2{font-size:2.2rem;margin-bottom:30px}
@@ -207,21 +162,8 @@
         #final-contact .qr-box img{width:100%;height:auto;border-radius:12px;transition:opacity .3s}
         #final-contact .qr-box:hover img{opacity:0.92}
       
-        .static-gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2.25rem;
-            max-width: 1400px;
-            margin: 100px auto 120px;
-            padding: 0 20px;
-        }
-        .static-item {
-            aspect-ratio: 4/3;
-            overflow: hidden;
-            border-radius: 1rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,.5);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
+        .static-gallery {display: grid;grid-template-columns: repeat(3, 1fr);gap: 2.25rem;max-width: 1400px;margin: 100px auto 120px;padding: 0 20px;}
+        .static-item {aspect-ratio: 4/3;overflow: hidden;border-radius: 1rem;box-shadow: 0 10px 30px rgba(0,0,0,.5);transition: transform 0.4s ease, box-shadow 0.4s ease;}
         .static-item:hover {transform: translateY(-6px);box-shadow: 0 20px 50px rgba(0,0,0,.7);}
         .static-item img {width: 100%;height: 100%;object-fit: cover;transition: transform 0.5s ease;}
         .static-item:hover img {transform: scale(1.06);}
@@ -229,33 +171,25 @@
         footer{background:#000;padding:40px 20px;text-align:center;font-size:1rem;border-top:1px solid #333}
      
         @media(max-width:768px){
-            #cookie-banner { 
-                flex-direction: column; 
-                text-align: center; 
-                gap: 15px; 
-                padding: 20px 15px; 
-            }
-            #cookie-banner .buttons { 
-                width: 100%; 
-                justify-content: center; 
-            }
+            #cookie-banner { flex-direction: column; text-align: center; gap: 15px; padding: 20px 15px; }
+            #cookie-banner .buttons { width: 100%; justify-content: center; }
         }
     </style>
 
     <!-- Hinnoittelu -->
     <script src="SKRIPTIT/hinnat-config.js" defer></script>
-    
-    <!-- Muut skriptit -->
+    <script src="SKRIPTIT/cookie-consent.js" defer></script>
     <script src="SKRIPTIT/dynamic-title.js" defer></script>
     <script src="SKRIPTIT/header.js" defer></script>
     <script src="SKRIPTIT/mobile-scaling.js" defer></script>
     <script src="SKRIPTIT/kampanja-popup.js" defer></script>
     <script src="SKRIPTIT/photo-buttons.js" defer></script>
     <script src="SKRIPTIT/paikkakunta-dropdown.js" defer></script>
+        <!-- Portfolio elementin ja kategorian muokkaus -->
     <script src="SKRIPTIT/portfolio-changer.js" defer></script>
 </head>
 <body>
-    <!-- Sivun sisältö (lyhennettynä tilan säästämiseksi – voit kopioida koko edellisen sisällön tähän) -->
+    <!-- Sivun sisältö (sama kuin ennen) -->
     <section id="home">
         <video autoplay muted loop playsinline poster="VALOKUVAUS/valokuvaus-poster.webp">
             <source src="MEDIA/Pääsivu_Videotuotannot ja Valokuvaus/2000luvunkamera.webm" type="video/webm">
@@ -272,13 +206,73 @@
         <span>Ristiäiset</span>
         <span>Muotokuvat</span>
     </h2>
-    <!-- ... loput sisällöstä (about, project, pricing, location, final-contact, static-gallery, footer) ... -->
+    <div class="about-section">
+        <div class="about-text">
+            Olipa kyseessä niin valmistujaiset, hautajaiset, häät, ristiäiset tai mitä vaan. Dokumentoin tärkeät hetkesi, jolloin voit keskittyä hetkeesi ja muistella sitä valokuvien kautta jälkikäteen.<br><br>
+            Vahvuuteni ovat parhaimillaan dokumentaarisessa kuvaamisessa, jossa ikuistan tilanteita mahdollisimman autenttisesti. Tällöin kuvausreissuilta tulee kuvattua kameraan noin sadan ja tuhannen kuvan väliltä, mistä valitsen ja muokkaan parhaimmat teidän käyttöönne. <br><br>
+            Tarkoitukseni on tarjota kuluttaja- ja budjettiystävällisempää valokuvausta, pitäen laadun ja luovuuden täysillä.<br>
+            Valokuvauksen ohella tarjoan myös videollista kuvaamista, joka voi olla niin häävideo tai muuten vaan muisteluvideo tilanteesta.<br><br>
+            Teen valokuvausta Satakunnassa pääosin, mutta toimin myös mm. Vaasassa, Seinäjoella ja Tampereella.
+        </div>
+        <div class="about-image">
+            <img src="MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja1.webp" alt="Valokuvaus 1" class="active">
+        </div>
+    </div>
+    <section class="project-section">
+        <div class="project-header">
+            <span class="subtitle">VALOKUVAUSPROJEKTIT</span>
+            <div id="changing-title-container">
+                <h3 id="changing-title" class="changing-title slide-up-active">TuplaKupla - Teatterikuvaus</h3>
+            </div>
+        </div>
+        <div id="changing-grid"></div>
+        <div id="category-dots"></div>
+    </section>
+    <section id="pricing">
+        <h2>Hinnoittelu</h2>
+        <p class="disclaimer">*Nämä ovat suuntaa-antavia hintoja. Hinnat sisältävät ALV 25,5 %. Matkakustannukset (kilometrikorvaus) lisätään erikseen tarpeen mukaan.</p>
+        <div class="upper-row"></div>
+        <div class="lower-row">
+            <div class="contact-box">
+                <p>Eikö mieleistä pakettia löytynyt?<br>Ota yhteyttä, niin räätälöidään juuri sinulle sopiva ratkaisu!</p>
+                <a href="#final-contact" class="contact-btn">Ota yhteyttä</a>
+            </div>
+        </div>
+    </section>
+    <div id="location-selector">
+        <h2>Valitse kuvauspaikkakunta</h2>
+        <select id="paikkakunta-dropdown" onchange="handlePaikkakuntaChange(this.value)" aria-label="Valitse kuvauspaikkakunta"></select>
+        <p class="info">Valitsemalla paikkakunnan siirryt aluekohtaiselle sivulle, jossa on tarkemmat hinnoittelut.</p>
+    </div>
+    <section id="final-contact">
+        <div class="contact-info">
+            <h2>Ota yhteyttä</h2>
+            <p>Sähköposti: <a href="mailto:kortesoja.iivari@gmail.com">kortesoja.iivari@gmail.com</a></p>
+            <p>Puhelin: <a href="tel:+358405247918">040 524 7918</a></p>
+        </div>
+        <div class="qr-box">
+            <a href="https://wa.me/message/2JQ4G2D3EXLID1" target="_blank" rel="noopener">
+                <img src="MEDIA/Ikonit/QR.webp" alt="WhatsApp QR-koodi">
+            </a>
+            <p style="text-align: center; margin-top: 20px; color: #bbb; font-size: 1.05rem; line-height: 1.4;">
+                Klikkaa elementtiä tai lue QR-koodi päästäksesi keskustelemaan
+            </p>
+        </div>
+    </section>
+    <div class="static-gallery">
+        <div class="static-item"><img src="MEDIA/VALOKUVAUS/Valokuvaus40.webp" alt="Kuva 1"></div>
+        <div class="static-item"><img src="MEDIA/VALOKUVAUS/Valokuvaus41.webp" alt="Kuva 2"></div>
+        <div class="static-item"><img src="MEDIA/VALOKUVAUS/Valokuvaus42.webp" alt="Kuva 3"></div>
+        <div class="static-item"><img src="MEDIA/VALOKUVAUS/Valokuvaus43.webp" alt="Kuva 4"></div>
+        <div class="static-item"><img src="MEDIA/VALOKUVAUS/Valokuvaus44.webp" alt="Kuva 5"></div>
+        <div class="static-item"><img src="MEDIA/VALOKUVAUS/Valokuvaus45.webp" alt="Kuva 6"></div>
+    </div>
 
     <footer>
         <p>© Iivari Kortesoja 2026 | Y-Tunnus 3591660-9</p>
     </footer>
 
-    <!-- EVÄSTEBANNERI – korjattu mobiilille -->
+    <!-- Evästebanneri (HTML pysyy sivulla, logiikka on nyt ulkoisessa skriptissä) -->
     <div id="cookie-banner">
         <p>Käyttämällä tätä verkkosivustoa hyväksyt evästeiden käytön. Käytämme evästeitä tarjotaksemme sinulle erinomaisen kokemuksen ja auttaaksemme verkkosivustoamme toimimaan tehokkaasti.</p>
         <div class="buttons">
@@ -288,40 +282,46 @@
     </div>
 
     <script>
-        // Hinnoittelu + muut toiminnot
+        // Hinnoittelu + muut funktiot
         document.addEventListener('DOMContentLoaded', () => {
             const PAIKKAKUNTA = "muu";
             const prices = getPricesForLocation(PAIKKAKUNTA);
 
-            // ... (hinnoittelun luonti sama kuin ennen) ...
-
-            // 5 sekunnin viive + slide-in animaatio
-            setTimeout(() => {
-                if (!localStorage.getItem('cookiesAccepted')) {
-                    const banner = document.getElementById('cookie-banner');
-                    banner.style.display = 'flex';           // Tehdään näkyväksi
-                    // Pieni viive, jotta transition toimii luotettavasti
-                    setTimeout(() => {
-                        banner.classList.add('show');
-                    }, 30);
+            function createPricingBox(title, price, desc = '', features = [], quote = '') {
+                let html = `<h3>${title}</h3><p class="price">${price} €</p>`;
+                if (desc) html += `<p>${desc}</p>`;
+                if (features.length > 0) {
+                    html += '<ul>';
+                    features.forEach(f => html += `<li>${f}</li>`);
+                    html += '</ul>';
                 }
-            }, 5000);
+                if (quote) html += `<p class="quote">${quote}</p>`;
+                const box = document.createElement('div');
+                box.className = 'pricing-box';
+                box.innerHTML = html;
+                return box;
+            }
+
+            const upperRow = document.querySelector('#pricing .upper-row');
+            if (upperRow) {
+                upperRow.innerHTML = '';
+                upperRow.appendChild(createPricingBox('3 tuntia', prices["3 tuntia"], 'Esimerkiksi hautajaiset tai valmistujaisjuhlat'));
+                upperRow.appendChild(createPricingBox('4-6 tuntia', prices["4-6 tuntia"], 'Pidempään kestävät tilaisuudet tai kevyempi hääkuvaus'));
+            }
+
+            const lowerRow = document.querySelector('#pricing .lower-row');
+            const contactBox = lowerRow ? lowerRow.querySelector('.contact-box') : null;
+            if (lowerRow && contactBox) {
+                lowerRow.insertBefore(createPricingBox(
+                    'Hääpaketti',
+                    prices["Hääpaketti"],
+                    '',
+                    ['Dokumentaarinen hääkuvaus <strong>koko hääpäivän ajan</strong>','Elokuvallinen häävideo tärkeimmästä päivästä','Ei stressiä kuvausajasta','Eniten valokuvia'],
+                    'Monet sanovat, että kuva kertoo enemmän kuin tuhat sanaa. Minä sanon, että liikkuva kuva kertoo vieläkin enemmän.'
+                ), contactBox);
+                lowerRow.style.gridTemplateColumns = 'repeat(2, 1fr)';
+            }
         });
-
-        function acceptCookies() {
-            localStorage.setItem('cookiesAccepted', 'true');
-            clarityConsent(true);
-            const banner = document.getElementById('cookie-banner');
-            banner.classList.remove('show');
-            setTimeout(() => { banner.style.display = 'none'; }, 700);
-        }
-
-        function rejectCookies() {
-            localStorage.setItem('cookiesAccepted', 'false');
-            const banner = document.getElementById('cookie-banner');
-            banner.classList.remove('show');
-            setTimeout(() => { banner.style.display = 'none'; }, 700);
-        }
 
         function handlePaikkakuntaChange(value) {
             if (!value) return;
@@ -331,7 +331,7 @@
             window.location.href = url;
         }
 
-        // Taustavideo + about-kuvan vaihto (sama kuin ennen)
+        // Taustavideo + about-kuvan vaihto
         (function(){
             const bg = document.querySelector('#home video');
             const home = document.getElementById('home');
