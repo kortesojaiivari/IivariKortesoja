@@ -1,8 +1,9 @@
 // SKRIPTIT/portfolio-changer.js
-// Päivitetty versio: sisältää sekä pääportfolion (otsikolla + dots) että 3x2 static-gallery cyclingin
+// Päivitetty: pääportfolio + 3x2 static-gallery molemmilla on sama fade-animaatio
 
 document.addEventListener('DOMContentLoaded', () => {
-    // ──────── PÄÄPORTFOLIO (otsikolla + kategoriapisteet) ────────
+
+    // ──────── 1. PÄÄPORTFOLIO (otsikolla + kategoriapisteet) ────────
     const categories = [
         {
             title: "TuplaKupla - Teatterikuvaus",
@@ -45,8 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const titleElement = document.getElementById('changing-title');
     const gridElement = document.getElementById('changing-grid');
     const dotsContainer = document.getElementById('category-dots');
-
-    if (!titleElement || !gridElement) return;
 
     let currentCategoryIndex = 0;
     let currentImageOffset = 0;
@@ -125,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateDisplay();
     resetAutoCycle();
 
-    // ──────── UUSI 3x2 STATIC GALLERY CYCLING (ei otsikkoa, ei pisteitä) ────────
+    // ──────── 2. 3x2 STATIC GALLERY (automaattinen cycling + sama animaatio) ────────
     const staticCycles = [
         {
             media: [
@@ -147,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 { src: "MEDIA/Puolustusvoimat/comcam/comcam19.webp", alt: "Combat 6" }
             ]
         }
-        // Lisää tähän uusia 6 kuvan settejä halutessasi
+        // Voit lisätä tähän uusia 6 kuvan settejä
     ];
 
     let currentStaticIndex = 0;
@@ -155,17 +154,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateStaticGallery() {
         if (!staticGallery) return;
-        const cycle = staticCycles[currentStaticIndex];
-        staticGallery.innerHTML = cycle.media.map(img => `
-            <div class="static-item">
-                <img src="${img.src}" alt="${img.alt}">
-            </div>
-        `).join('');
-        currentStaticIndex = (currentStaticIndex + 1) % staticCycles.length;
+
+        staticGallery.classList.add('loading');
+        staticGallery.style.opacity = '0';
+
+        setTimeout(() => {
+            const cycle = staticCycles[currentStaticIndex];
+
+            staticGallery.innerHTML = cycle.media.map(img => `
+                <div class="static-item">
+                    <img src="${img.src}" alt="${img.alt}">
+                </div>
+            `).join('');
+
+            staticGallery.style.opacity = '1';
+            staticGallery.classList.remove('loading');
+
+            currentStaticIndex = (currentStaticIndex + 1) % staticCycles.length;
+        }, 280);
     }
 
     if (staticGallery) {
-        updateStaticGallery();
+        updateStaticGallery();                    // Ensimmäinen näyttö
         setInterval(updateStaticGallery, 6000);   // Vaihtuu 6 sekunnin välein
     }
 });
