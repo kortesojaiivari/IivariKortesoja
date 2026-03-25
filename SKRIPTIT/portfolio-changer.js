@@ -1,5 +1,5 @@
 // SKRIPTIT/portfolio-changer.js
-// Päivitetty: pääportfolio + 3x2 static-gallery molemmilla on sama fade-animaatio
+// Päivitetty: sekä pääportfolio että 3x2 static-gallery käyttävät samaa fade-animaatiota
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -57,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
         autoCycleInterval = setInterval(updateDisplay, 5000);
     }
 
-    // Kategoriapisteet
     if (dotsContainer) {
         dotsContainer.innerHTML = '';
         categories.forEach((_, i) => {
@@ -124,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateDisplay();
     resetAutoCycle();
 
-    // ──────── 2. 3x2 STATIC GALLERY (automaattinen cycling + sama animaatio) ────────
+    // ──────── 2. 3x2 STATIC GALLERY – nyt sama animaatio kuin yllä ────────
     const staticCycles = [
         {
             media: [
@@ -146,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 { src: "MEDIA/Puolustusvoimat/comcam/comcam19.webp", alt: "Combat 6" }
             ]
         }
-        // Voit lisätä tähän uusia 6 kuvan settejä
+        // Lisää uusia 6 kuvan settejä tähän halutessasi
     ];
 
     let currentStaticIndex = 0;
@@ -155,6 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateStaticGallery() {
         if (!staticGallery) return;
 
+        // Sama animaatio kuin pääportfoliossa
         staticGallery.classList.add('loading');
         staticGallery.style.opacity = '0';
 
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (staticGallery) {
-        updateStaticGallery();                    // Ensimmäinen näyttö
+        updateStaticGallery();           // Ensimmäinen näyttö
         setInterval(updateStaticGallery, 6000);   // Vaihtuu 6 sekunnin välein
     }
 });
