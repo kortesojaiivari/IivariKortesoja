@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valokuvaus | Iivari Kortesoja</title>
     <meta name="description" content="Edullista valokuvausta yksityisille – häät, valmistujaiset, hautajaiset, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta. Myös videopalvelut saatavilla.">
- 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -13,7 +12,6 @@
       gtag('js', new Date());
       gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
     </script>
-
     <!-- Microsoft Clarity -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
@@ -21,7 +19,6 @@
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "ud6y4jpngh");
-
         window.clarityConsent = function(allowed) {
             if (typeof clarity === "function") {
                 clarity("consent", allowed);
@@ -29,7 +26,6 @@
             }
         };
     </script>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -45,12 +41,10 @@
     }
     </script>
     <link rel="canonical" href="https://www.iivarikortesoja.media/Valokuvaus.html">
-
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
-
-        /* Evästebanneri */
+        /* Evästebanneri – yhtenäinen tyyli kaikille sivuille */
         #cookie-banner {
             position: fixed;
             bottom: 0; left: 0; right: 0;
@@ -82,7 +76,6 @@
         #cookie-banner .btn-reject:hover { background: #333; color: #fff; }
         #cookie-banner .btn-accept { background: #4ade80; color: #000; border: none; }
         #cookie-banner .btn-accept:hover { background: #5aff90; transform: translateY(-2px); }
-
         /* Muut tyylit */
         #home{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}
         #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
@@ -92,13 +85,12 @@
         .btn:hover {background:#4ade80;transform:translateY(-3px);}
         #dynamic-title {position: relative;overflow: visible;display: flex;align-items: center;justify-content: center;margin: 80px auto 60px;padding: 40px 20px;min-height: 160px;z-index: 5;}
         #dynamic-title span {position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);width: auto;max-width: 90vw;text-align: center;font-size: clamp(2.2rem, 7vw, 4rem);font-weight: bold;text-shadow: 0 4px 20px rgba(0,0,0,.8);pointer-events: none;white-space: nowrap;will-change: transform, opacity;}
-     
+    
         .about-section{max-width:1200px;margin:80px auto;display:flex;align-items:center;gap:60px;flex-wrap:wrap;padding:0 20px}
         .about-text{flex:1.5;min-width:300px;font-size:1.35rem;color:#e0e0e0;line-height:1.8}
         .about-image{position:relative;flex:1;min-width:300px;max-width:500px;height:600px;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.9)}
         .about-image img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s ease}
         .about-image img.active{opacity:1}
-
         .project-section { max-width: 1400px; margin: 100px auto 80px; padding: 0 20px; }
         .project-header { margin-bottom: 2.5rem; }
         .project-header .subtitle { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.15rem; font-weight: 500; color: #4ade80; margin-bottom: 0.6rem; }
@@ -107,81 +99,73 @@
         .slide-up-exit { transform: translateY(-130%); opacity: 0; }
         .slide-up-enter-prep { transform: translateY(130%); opacity: 0; transition: none; }
         .slide-up-active { transform: translateY(0); opacity: 1; }
-
-        /* PÄÄGRID */
-        #changing-grid { 
-            display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 2.25rem; 
-            transition: opacity 0.65s ease; 
-            min-height: 320px; 
-            position: relative; 
+        #changing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.25rem;
+            transition: opacity 0.65s ease;
+            min-height: 320px;
+            position: relative;
         }
-        #changing-grid.loading::after { 
-            content: "Kuvia ladataan..."; 
-            position: absolute; 
-            top: 50%; left: 50%; 
-            transform: translate(-50%, -50%); 
-            color: #4ade80; 
-            font-size: 1.15rem; 
-            font-weight: 500; 
+        #changing-grid.loading::after {
+            content: "Kuvia ladataan...";
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            color: #4ade80;
+            font-size: 1.15rem;
+            font-weight: 500;
             z-index: 2;
             opacity: 0;
             animation: fadeInAfter 0.1s forwards;
-            animation-delay: 1.5s; 
+            animation-delay: 1.5s;
         }
-
-        /* 3x2 STATIC GALLERY – nyt sama animaatio! */
-        .static-gallery { 
-            display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 2.25rem; 
+        .static-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.25rem;
             max-width: 1400px;
             margin: 100px auto 120px;
             padding: 0 20px;
-            transition: opacity 0.65s ease; 
-            min-height: 320px; 
-            position: relative; 
+            transition: opacity 0.65s ease;
+            min-height: 320px;
+            position: relative;
         }
-        .static-gallery.loading::after { 
-            content: "Kuvia ladataan..."; 
-            position: absolute; 
-            top: 50%; left: 50%; 
-            transform: translate(-50%, -50%); 
-            color: #4ade80; 
-            font-size: 1.15rem; 
-            font-weight: 500; 
+        .static-gallery.loading::after {
+            content: "Kuvia ladataan...";
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            color: #4ade80;
+            font-size: 1.15rem;
+            font-weight: 500;
             z-index: 2;
             opacity: 0;
             animation: fadeInAfter 0.1s forwards;
-            animation-delay: 1.5s; 
+            animation-delay: 1.5s;
         }
-
         @keyframes fadeInAfter { to { opacity: 1; } }
-
         #changing-grid .group,
-        .static-gallery .static-item { 
-            aspect-ratio: 4/3; 
-            overflow: hidden; 
-            border-radius: 1rem; 
-            box-shadow: 0 12px 35px rgba(0,0,0,.55); 
-            background: #111; 
+        .static-gallery .static-item {
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 12px 35px rgba(0,0,0,.55);
+            background: #111;
         }
         #changing-grid img,
-        .static-gallery img { 
-            width: 100%; height: 100%; 
-            object-fit: cover; 
-            transition: transform 0.7s ease; 
+        .static-gallery img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
         }
         #changing-grid .group:hover img,
-        .static-gallery .static-item:hover img { 
-            transform: scale(1.08); 
+        .static-gallery .static-item:hover img {
+            transform: scale(1.08);
         }
-
         #category-dots { display: flex; gap: 10px; justify-content: center; margin: 25px auto 0; flex-wrap: wrap; }
         .category-dot { width: 11px; height: 11px; background: #444; border-radius: 50%; transition: all 0.35s ease; cursor: pointer; }
         .category-dot.active { background: #4ade80; transform: scale(1.45); box-shadow: 0 0 12px rgba(74,222,128,0.6); }
-
         #pricing{max-width:1400px;margin:80px auto;padding:0 20px;min-height:300px}
         #pricing h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:20px;text-align:center}
         #pricing .disclaimer{font-size:1rem;color:#bbb;text-align:center;margin-bottom:40px}
@@ -202,13 +186,13 @@
         .contact-box p{font-size:1.3rem;margin-bottom:30px;text-align:center}
         .contact-btn{background:#4ade80;color:#000;padding:15px 30px;border-radius:50px;text-decoration:none;font-size:1.3rem;font-weight:bold;transition:.3s}
         .contact-btn:hover{background:#5aff90;transform:scale(1.05)}
-      
+     
         #location-selector{max-width:1400px;margin:60px auto 100px;padding:0 20px;text-align:center}
         #location-selector h2{font-size:clamp(1.8rem,5vw,2.8rem);margin-bottom:24px;color:#4ade80}
         #location-selector select{width:100%;max-width:420px;padding:14px 20px;font-size:1.25rem;background:#222;color:#eee;border:2px solid #444;border-radius:12px;appearance:none;cursor:pointer;transition:.3s}
         #location-selector select:hover,#location-selector select:focus{border-color:#4ade80;box-shadow:0 0 0 3px rgba(74,222,128,0.2);outline:none}
         #location-selector .info{margin-top:16px;font-size:1.05rem;color:#aaa}
-     
+    
         #final-contact{max-width:1400px;margin:0 auto 100px;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:40px}
         #final-contact .contact-info,
         #final-contact .qr-box {background:#222;padding:40px;border-radius:20px;box-shadow:0 15px 50px rgba(0,0,0,.6);min-height:420px;display:flex;flex-direction:column;justify-content:center;align-items:center;transition: all 0.35s ease;}
@@ -223,9 +207,8 @@
         #final-contact .qr-box a{display:block;width:100%;max-width:430px}
         #final-contact .qr-box img{width:100%;height:auto;border-radius:12px;transition:opacity .3s}
         #final-contact .qr-box:hover img{opacity:0.92}
-
         footer{background:#000;padding:40px 20px;text-align:center;font-size:1rem;border-top:1px solid #333}
-     
+    
         @media(max-width:992px){
             .about-section{flex-direction:column;text-align:center}
             .upper-row,.lower-row{grid-template-columns:1fr}
@@ -241,7 +224,6 @@
             #cookie-banner .buttons { width: 100%; justify-content: center; }
         }
     </style>
-
     <!-- Skriptit -->
     <script src="SKRIPTIT/hinnat-config.js" defer></script>
     <script src="SKRIPTIT/cookie-consent.js" defer></script>
@@ -323,15 +305,13 @@
             </p>
         </div>
     </section>
-
     <!-- 3x2 static-gallery (tyhjä – portfolio-changer.js täyttää sen) -->
     <div class="static-gallery"></div>
-
     <footer>
         <p>© Iivari Kortesoja 2026 | Y-Tunnus 3591660-9</p>
     </footer>
 
-    <!-- Evästebanneri -->
+    <!-- Evästebanneri (HTML säilytetään, logiikka siirretty erilliseen skriptiin) -->
     <div id="cookie-banner">
         <p>Käyttämällä tätä verkkosivustoa hyväksyt evästeiden käytön. Käytämme evästeitä tarjotaksemme sinulle erinomaisen kokemuksen ja auttaaksemme verkkosivustoamme toimimaan tehokkaasti.</p>
         <div class="buttons">
@@ -341,11 +321,10 @@
     </div>
 
     <script>
-        // Hinnoittelu
+        // Hinnoittelu (pysyy ennallaan)
         document.addEventListener('DOMContentLoaded', () => {
             const PAIKKAKUNTA = "muu";
             const prices = getPricesForLocation(PAIKKAKUNTA);
-
             function createPricingBox(title, price, desc = '', features = [], quote = '') {
                 let html = `<h3>${title}</h3><p class="price">${price} €</p>`;
                 if (desc) html += `<p>${desc}</p>`;
@@ -360,14 +339,12 @@
                 box.innerHTML = html;
                 return box;
             }
-
             const upperRow = document.querySelector('#pricing .upper-row');
             if (upperRow) {
                 upperRow.innerHTML = '';
                 upperRow.appendChild(createPricingBox('3 tuntia', prices["3 tuntia"], 'Esimerkiksi hautajaiset tai valmistujaisjuhlat'));
                 upperRow.appendChild(createPricingBox('4-6 tuntia', prices["4-6 tuntia"], 'Pidempään kestävät tilaisuudet tai kevyempi hääkuvaus'));
             }
-
             const lowerRow = document.querySelector('#pricing .lower-row');
             const contactBox = lowerRow ? lowerRow.querySelector('.contact-box') : null;
             if (lowerRow && contactBox) {
@@ -389,8 +366,8 @@
 
         function handlePaikkakuntaChange(value) {
             if (!value) return;
-            let url = value === "muu" 
-                ? "https://www.iivarikortesoja.media/Valokuvaus.html" 
+            let url = value === "muu"
+                ? "https://www.iivarikortesoja.media/Valokuvaus.html"
                 : `https://www.iivarikortesoja.media/Valokuvaus/${value}.html`;
             window.location.href = url;
         }
@@ -405,7 +382,6 @@
                 }, {threshold: 0.5}).observe(home);
             } else if (bg) try { bg.play(); } catch(e) {}
         })();
-
         (function(){
             const imgs = document.querySelectorAll('.about-image img');
             if (imgs.length < 1) return;
