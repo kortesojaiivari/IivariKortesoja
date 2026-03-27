@@ -44,8 +44,10 @@
       
         .tail-text { font-size: 0.95rem; }
       
-        /* AUTOMAATTINEN GALLERIA */
-        .dynamic-grid { transition: opacity 0.7s ease-in-out; }
+        /* AUTOMAATTINEN GALLERIA – parannettu valokuvaus-sivun tyyliin */
+        .dynamic-grid { 
+            transition: opacity 0.7s ease-in-out; 
+        }
       
         .gallery-pagination {
             display: flex;
@@ -54,22 +56,24 @@
         }
         .dot-container {
             display: flex;
-            gap: 6px;
+            gap: 8px;
         }
+        /* Cycle-indikaattori vihreänä pallona (valokuvaus-sivun portfolio-elementin tyyli) */
         .dot {
-            width: 6px;
-            height: 6px;
+            width: 8px;
+            height: 8px;
             border-radius: 9999px;
-            background-color: #52525b;
+            background-color: #27272a;
             transition: all 0.3s ease;
             cursor: pointer;
         }
         .dot.active {
-            background-color: #e4e4e7;
+            background-color: #4ade80;
             transform: scale(1.8);
+            box-shadow: 0 0 12px rgba(74, 222, 128, 0.5);
         }
 
-        /* Combat Camera -tyyli */
+        /* Combat Camera -tyyli (pidetty alkuperäisenä, mutta harmonisoitu) */
         .combat-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -185,7 +189,7 @@
         <!-- PAGE TITLE -->
         <div class="text-center mb-16">
             <h2 class="text-5xl font-bold tracking-tighter mb-3">Portfolio</h2>
-            <p class="max-w-md mx-auto text-zinc-400 tail-text">Valokuvaus- ja mediaprojektit esiteltynä allekkain – osa 1×3 ruudukossa, osa yksittäisenä klikattavana mediana.</p>
+            <p class="max-w-md mx-auto text-zinc-400 tail-text">Valokuvaus- ja mediaprojektit esiteltynä allekkain – osa 1×3 ruudukossa, osa yksittäisenä klikattavana mediana. Parannettu valokuvaus-sivun dynaamisella fade-animaatiolla ja vihreillä cycle-indikaattoreilla.</p>
         </div>
 
         <!-- TUPLAKUPLA -->
@@ -225,12 +229,12 @@
             window.addEventListener('load',()=>{if(allMediaItems1.length>0){renderGallery1();createDots1();startAutoCycle1();}});
         </script>
 
-        <!-- BLENDER -->
+        <!-- LAURA VOUTILAINEN -->
         <section class="project-section mb-24">
             <div class="flex justify-between items-end mb-8">
                 <div>
-                    <span class="uppercase text-emerald-400 text-xs tracking-widest font-medium">3D Animointi</span>
-                    <h3 class="text-4xl font-semibold tracking-tight">Blender Animaatioita</h3>
+                    <span class="uppercase text-emerald-400 text-xs tracking-widest font-medium">VALOKUVAUS</span>
+                    <h3 class="text-4xl font-semibold tracking-tight">Laura Voutilainen - Kerran Keväällä</h3>
                 </div>
             </div>
             <div id="gallery-grid-2" class="dynamic-grid grid grid-cols-1 md:grid-cols-3 gap-6"></div>
@@ -238,13 +242,15 @@
         </section>
         <script>
             const galleryId2 = "gallery-grid-2"; const dotsId2 = "gallery-dots-2";
-            const autoCycleEnabled2 = false; const cycleIntervalMs2 = 4200;
-            const showPageIndicators2 = false; const imagesPerPage2 = 3;
+            const autoCycleEnabled2 = true; const cycleIntervalMs2 = 4200;
+            const showPageIndicators2 = true; const imagesPerPage2 = 3;
             const allMediaItems2 = [
-                { src: "MEDIA/Portfolio/TuplaKupla4.webp", alt: "Blender 1" },
-                { src: "MEDIA/Portfolio/TuplaKupla5.webp", alt: "Blender 2" },
-                { src: "MEDIA/Portfolio/TuplaKupla6.webp", alt: "Blender 3" },
-                { src: "MEDIA/Portfolio/TuplaKupla7.webp", alt: "Blender 4" }
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "Laura Voutilainen 1" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus41.webp", alt: "Laura Voutilainen 2" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus42.webp", alt: "Laura Voutilainen 3" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus43.webp", alt: "Laura Voutilainen 4" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus44.webp", alt: "Laura Voutilainen 5" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus45.webp", alt: "Laura Voutilainen 6" }
             ];
             let currentPage2 = 1; let totalPages2 = Math.ceil(allMediaItems2.length / imagesPerPage2); let autoInterval2 = null;
             function renderGallery2(){const grid=document.getElementById(galleryId2);if(!grid)return;grid.style.opacity='0';setTimeout(()=>{grid.innerHTML='';const start=(currentPage2-1)*imagesPerPage2;const currentItems=allMediaItems2.slice(start,start+imagesPerPage2);currentItems.forEach(item=>{const div=document.createElement('div');div.className='group relative overflow-hidden rounded-2xl aspect-[4/3] bg-zinc-900';const lower=item.src.toLowerCase();if(lower.endsWith('.webm')||lower.endsWith('.mp4')){div.innerHTML=`<video src="${item.src}" autoplay muted loop playsinline class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"></video>`;}else{div.innerHTML=`<img src="${item.src}" alt="${item.alt}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">`;}grid.appendChild(div);});grid.style.opacity='1';updateDots2();},350);}
@@ -349,7 +355,7 @@
     </footer>
 
     <script>
-        // MEDIA TOGGLE
+        // MEDIA TOGGLE (pidetty varmuuden vuoksi)
         let isVideo = false;
         function toggleMedia() {
             const wrapper = document.getElementById('media-wrapper');
