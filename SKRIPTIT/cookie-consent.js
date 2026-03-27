@@ -1,5 +1,5 @@
 // SKRIPTIT/cookie-consent.js
-// Evästebanneri + Google Analytics + Microsoft Clarity -suostumus
+// Yhtenäinen evästebanneri kaikille sivuille – täysin sama toiminnallisuus kuin alkuperäisessä
 
 document.addEventListener('DOMContentLoaded', () => {
     const banner = document.getElementById('cookie-banner');
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Näytetään banneri 5 sekunnin viiveellä
+    // Näytetään banneri 5 sekunnin viiveellä (sama kuin alkuperäisessä)
     setTimeout(() => {
         if (!localStorage.getItem('cookiesAccepted')) {
             banner.style.display = 'flex';
@@ -24,11 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
 // Hyväksy-nappi
 window.acceptCookies = function() {
     localStorage.setItem('cookiesAccepted', 'true');
-
-    // Clarity
+    
+    // Microsoft Clarity – suostumus annetaan
     if (typeof clarityConsent === 'function') clarityConsent(true);
-
-    // Google Analytics
+    
+    // Google Analytics – sallitaan
     if (typeof gtag === 'function') {
         gtag('consent', 'update', {
             'analytics_storage': 'granted'
@@ -43,6 +43,9 @@ window.acceptCookies = function() {
 // Hylkää-nappi
 window.rejectCookies = function() {
     localStorage.setItem('cookiesAccepted', 'false');
+    
+    // Microsoft Clarity – suostumus evätään (tärkeä lisäys, jotta seuranta ei jatku)
+    if (typeof clarityConsent === 'function') clarityConsent(false);
 
     const banner = document.getElementById('cookie-banner');
     banner.classList.remove('show');
