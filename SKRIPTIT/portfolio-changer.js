@@ -33,12 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: "Laura Voutilainen - Kerran Keväällä",
             media: [
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "Laura Voutilainen 1" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus41.webp", alt: "Laura Voutilainen 2" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus42.webp", alt: "Laura Voutilainen 3" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus43.webp", alt: "Laura Voutilainen 4" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus44.webp", alt: "Laura Voutilainen 5" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam44.webp", alt: "Laura Voutilainen 6" }
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus62.webp", alt: "Laura Voutilainen 1" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus68.webp", alt: "Laura Voutilainen 2" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus73.webp", alt: "Laura Voutilainen 3" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus54.webp", alt: "Laura Voutilainen 4" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus76.webp", alt: "Laura Voutilainen 5" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus65.webp", alt: "Laura Voutilainen 6" }
             ]
         }
     ];
@@ -143,6 +143,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 { src: "MEDIA/Puolustusvoimat/comcam/comcam12.webp", alt: "Combat 4" },
                 { src: "MEDIA/Puolustusvoimat/comcam/comcam8.webp", alt: "Combat 5" },
                 { src: "MEDIA/Puolustusvoimat/comcam/comcam19.webp", alt: "Combat 6" }
+            ]
+        },
+        {
+            media: [
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus70.webp", alt: "Laura 1" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus74.webp", alt: "Laura 2" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus65.webp", alt: "Laura 3" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus72.webp", alt: "Laura 4" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus56.webp", alt: "Laura 5" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus59.webp", alt: "Laura 6" }
             ]
         }
         // Lisää uusia 6 kuvan settejä tähän halutessasi
