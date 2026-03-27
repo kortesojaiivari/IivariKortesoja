@@ -27,14 +27,14 @@
     <loc>https://iivarikortesoja.media/Yhteystiedot.html</loc>
     <lastmod>2026-02-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://iivarikortesoja.media/Puolustusvoimat.html</loc>
-    <lastmod>2026-02-11</lastmod>
+    <loc>https://iivarikortesoja.media/Portfolio.html</loc>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.0</priority>
+    <priority>0.8</priority>
   </url>
   
   <!-- Valokuvaus Location Pages -->
