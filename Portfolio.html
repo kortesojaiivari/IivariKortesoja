@@ -282,12 +282,24 @@
             const autoCycleEnabled2 = true; const cycleIntervalMs2 = 4200;
             const showPageIndicators2 = true; const imagesPerPage2 = 3;
             const allMediaItems2 = [
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "Laura Voutilainen 1" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus41.webp", alt: "Laura Voutilainen 2" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus42.webp", alt: "Laura Voutilainen 3" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus43.webp", alt: "Laura Voutilainen 4" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus44.webp", alt: "Laura Voutilainen 5" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus45.webp", alt: "Laura Voutilainen 6" }
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus62.webp", alt: "Laura Voutilainen 1" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus68.webp", alt: "Laura Voutilainen 2" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus73.webp", alt: "Laura Voutilainen 3" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus54.webp", alt: "Laura Voutilainen 4" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus76.webp", alt: "Laura Voutilainen 5" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus65.webp", alt: "Laura Voutilainen 6" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus70.webp", alt: "Laura Voutilainen 3" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus71.webp", alt: "Laura Voutilainen 4" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus64.webp", alt: "Laura Voutilainen 5" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus75.webp", alt: "Laura Voutilainen 3" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus74.webp", alt: "Laura Voutilainen 4" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus65.webp", alt: "Laura Voutilainen 5" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus72.webp", alt: "Laura Voutilainen 3" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus56.webp", alt: "Laura Voutilainen 4" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus59.webp", alt: "Laura Voutilainen 5" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus53.webp", alt: "Laura Voutilainen 3" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus60.webp", alt: "Laura Voutilainen 4" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus57.webp", alt: "Laura Voutilainen 5" }
             ];
             let currentPage2 = 1; let totalPages2 = Math.ceil(allMediaItems2.length / imagesPerPage2); let autoInterval2 = null;
             function renderGallery2(){const grid=document.getElementById(galleryId2);if(!grid)return;grid.style.opacity='0';setTimeout(()=>{grid.innerHTML='';const start=(currentPage2-1)*imagesPerPage2;const currentItems=allMediaItems2.slice(start,start+imagesPerPage2);currentItems.forEach(item=>{const div=document.createElement('div');div.className='group relative overflow-hidden rounded-2xl aspect-[4/3] bg-zinc-900';const lower=item.src.toLowerCase();if(lower.endsWith('.webm')||lower.endsWith('.mp4')){div.innerHTML=`<video src="${item.src}" autoplay muted loop playsinline class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"></video>`;}else{div.innerHTML=`<img src="${item.src}" alt="${item.alt}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">`;}grid.appendChild(div);});grid.style.opacity='1';updateDots2();},350);}
