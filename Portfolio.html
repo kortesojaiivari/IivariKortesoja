@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Iivari Kortesoja</title>
-    <!-- GOOGLE ANALYTICS 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -12,7 +11,6 @@
       gtag('js', new Date());
       gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
     </script>
-    <!-- MICROSOFT CLARITY -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -26,7 +24,6 @@
             }
         };
     </script>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="SKRIPTIT/header.js" defer></script>
     <script src="SKRIPTIT/cookie-consent.js" defer></script>
@@ -34,7 +31,7 @@
     <script src="SKRIPTIT/kampanja-popup.js" defer></script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap');
     
         body { font-family: 'Inter', system_ui, sans-serif; }
         h1, h2 { font-family: 'Playfair Display', sans-serif; }
@@ -73,17 +70,20 @@
         .extra-item { height: 280px; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 50px rgba(0,0,0,.8); }
         .combat-item img, .extra-item img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* MOBIILI: Indikaattoripallerot nyt 1 px (erittäin pieni) */
+        /* MOBIILI: Korjattu palleroiden koko pyynnön mukaan */
         @media (max-width: 768px) {
             .dot { 
-                width: 1px; 
-                height: 1px; 
+                width: 0.1px; 
+                height: 0.1px; 
             }
             .dot.active { 
-                transform: scale(3);           /* aktiivinen pallero näkyy paremmin */
+                width: 0.5px;
+                height: 0.5px;
+                transform: none; /* Poistetaan scale, jotta koko on tarkka 0.5px */
+                box-shadow: none; /* Pienen koon vuoksi varjo voi näyttää suttuiselta */
             }
             .dot-container { 
-                gap: 3px; 
+                gap: 2px; 
             }
             .combat-item { height: 170px; }
             .extra-item { height: 240px; }
@@ -130,7 +130,6 @@
 <body class="bg-zinc-950 text-zinc-200">
 
     <main class="max-w-7xl mx-auto px-6 pt-16 pb-24">
-        <!-- TUPLAKUPLA -->
         <section class="project-section mb-24">
             <div class="flex justify-between items-end mb-8">
                 <div>
@@ -142,7 +141,6 @@
             <div class="gallery-pagination"><div class="dot-container" id="gallery-dots-1"></div></div>
         </section>
 
-        <!-- LAURA VOUTILAINEN -->
         <section class="project-section mb-24">
             <div class="flex justify-between items-end mb-8">
                 <div>
@@ -154,7 +152,6 @@
             <div class="gallery-pagination"><div class="dot-container" id="gallery-dots-2"></div></div>
         </section>
 
-        <!-- COMBAT CAMERA -->
         <section class="project-section mb-24">
             <div class="flex justify-between items-end mb-8">
                 <div>
@@ -185,7 +182,6 @@
             </div>
         </section>
 
-        <!-- COMING SOON -->
         <section class="project-section mb-24">
             <div class="flex justify-between items-end mb-8">
                 <div>
@@ -205,7 +201,6 @@
         <p>© Iivari Kortesoja 2026 | Y-Tunnus 3591660-9</p>
     </footer>
 
-    <!-- Evästebanneri -->
     <div id="cookie-banner">
         <p>Käyttämällä tätä verkkosivustoa hyväksyt evästeiden käytön. Käytämme evästeitä tarjotaksemme sinulle erinomaisen kokemuksen ja auttaaksemme verkkosivustoamme toimimaan tehokkaasti.</p>
         <div class="buttons">
@@ -214,7 +209,6 @@
         </div>
     </div>
 
-    <!-- GALLERIA SKRIPTIT -->
     <script>
         // TUPLAKUPLA
         const galleryId1 = "gallery-grid-1"; const dotsId1 = "gallery-dots-1";
