@@ -199,11 +199,6 @@
             </a>
         </div>
     </section>
-
-    <footer>
-        <p>© Iivari Kortesoja 2026 | Y-tunnus 3591660-9</p>
-    </footer>
-
     <script>
         const bgVideo = document.querySelector('#home video');
         new IntersectionObserver(e => e.forEach(en => en.isIntersecting ? bgVideo.play() : bgVideo.pause()), {threshold: 0.5})
@@ -216,5 +211,8 @@
             slides[current].classList.add('active');
         }, 4000);
     </script>
+        <footer>
+        <p>© Iivari Kortesoja 2026 | Y-tunnus 3591660-9</p>
+    </footer>
 </body>
 </html>
