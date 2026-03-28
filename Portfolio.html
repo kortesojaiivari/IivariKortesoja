@@ -30,20 +30,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Header script -->
     <script src="SKRIPTIT/header.js" defer></script>
-    <!-- Lisätyt skriptit valokuvaus.html:stä (tarvittavat yhteiset) -->
+    <!-- UUSI YHTENÄINEN EVÄSTE-SKRIPTI -->
     <script src="SKRIPTIT/cookie-consent.js" defer></script>
+    <!-- Lisätyt skriptit -->
     <script src="SKRIPTIT/mobile-scaling.js" defer></script>
     <script src="SKRIPTIT/kampanja-popup.js" defer></script>
-
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap');
-     
+    
         body { font-family: 'Inter', system_ui, sans-serif; }
         h1, h2 { font-family: 'Playfair Display', sans-serif; }
-     
+    
         .project-section { transition: all 0.3s ease; }
         .project-section:hover { transform: translateY(-4px); }
-     
+    
         .media-container {
             position: relative;
             overflow: hidden;
@@ -51,14 +51,14 @@
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
         }
         .media-container:hover { box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
-     
+    
         .tail-text { font-size: 0.95rem; }
-     
+    
         /* AUTOMAATTINEN GALLERIA – parannettu valokuvaus-sivun tyyliin */
         .dynamic-grid {
             transition: opacity 0.7s ease-in-out;
         }
-     
+    
         .gallery-pagination {
             display: flex;
             justify-content: center;
@@ -68,7 +68,6 @@
             display: flex;
             gap: 8px;
         }
-        /* Cycle-indikaattori vihreänä pallona (valokuvaus-sivun portfolio-elementin tyyli) */
         .dot {
             width: 8px;
             height: 8px;
@@ -82,7 +81,6 @@
             transform: scale(1.8);
             box-shadow: 0 0 12px rgba(74, 222, 128, 0.5);
         }
-        /* Combat Camera -tyyli (pidetty alkuperäisenä, mutta harmonisoitu) */
         .combat-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -149,7 +147,6 @@
             transition: opacity 1.4s ease;
         }
         .extra-item img.active { opacity: 1; }
-        /* COMING SOON - PLANK */
         .coming-soon-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -179,7 +176,6 @@
             font-size: 1.1rem;
             font-weight: 500;
         }
-        /* FOOTER – korjattu ja yhtenäinen kaikille sivuille */
         footer {
             background: #000;
             padding: 40px 20px;
@@ -188,8 +184,7 @@
             font-size: 1rem;
             color: #71717a;
         }
-
-        /* Evästebanneri – kopioitu suoraan valokuvaus.html:stä */
+        /* Evästebanneri – YHTENÄINEN TYyLI (sama kuin valokuvaus-sivulla) */
         #cookie-banner {
             position: fixed;
             bottom: 0; left: 0; right: 0;
@@ -221,7 +216,6 @@
         #cookie-banner .btn-reject:hover { background: #333; color: #fff; }
         #cookie-banner .btn-accept { background: #4ade80; color: #000; border: none; }
         #cookie-banner .btn-accept:hover { background: #5aff90; transform: translateY(-2px); }
-
         @media(max-width:768px){
             #cookie-banner { flex-direction: column; text-align: center; gap: 15px; padding: 20px 15px; }
             #cookie-banner .buttons { width: 100%; justify-content: center; }
@@ -266,6 +260,7 @@
             function startAutoCycle1(){if(!autoCycleEnabled1||totalPages1<=1)return;if(autoInterval1)clearInterval(autoInterval1);autoInterval1=setInterval(()=>{currentPage1=(currentPage1===totalPages1)?1:currentPage1+1;renderGallery1();},cycleIntervalMs1);}
             window.addEventListener('load',()=>{if(allMediaItems1.length>0){renderGallery1();createDots1();startAutoCycle1();}});
         </script>
+
         <!-- LAURA VOUTILAINEN -->
         <section class="project-section mb-24">
             <div class="flex justify-between items-end mb-8">
@@ -308,6 +303,7 @@
             function startAutoCycle2(){if(!autoCycleEnabled2||totalPages2<=1)return;if(autoInterval2)clearInterval(autoInterval2);autoInterval2=setInterval(()=>{currentPage2=(currentPage2===totalPages2)?1:currentPage2+1;renderGallery2();},cycleIntervalMs2);}
             window.addEventListener('load',()=>{if(allMediaItems2.length>0){renderGallery2();createDots2();startAutoCycle2();}});
         </script>
+
         <!-- COMBAT CAMERA -->
         <section class="project-section mb-24">
             <div class="flex justify-between items-end mb-8">
@@ -380,6 +376,7 @@
             };
             document.addEventListener('keydown', e => { if (e.key === 'Escape') combatClose.click(); });
         </script>
+
         <!-- COMING SOON – 3 TYHJÄÄ PLAKKIA -->
         <section class="project-section mb-24">
             <div class="flex justify-between items-end mb-8">
@@ -395,12 +392,13 @@
             </div>
         </section>
     </main>
+
     <!-- KORJATTU FOOTER – yhtenäinen kaikille sivuille -->
     <footer>
         <p>© Iivari Kortesoja 2026 | Y-Tunnus 3591660-9</p>
     </footer>
 
-    <!-- Evästebanneri – kopioitu suoraan valokuvaus.html:stä -->
+    <!-- Evästebanneri – nyt käytetään UUTTA yhtenäistä skriptiä -->
     <div id="cookie-banner">
         <p>Käyttämällä tätä verkkosivustoa hyväksyt evästeiden käytön. Käytämme evästeitä tarjotaksemme sinulle erinomaisen kokemuksen ja auttaaksemme verkkosivustoamme toimimaan tehokkaasti.</p>
         <div class="buttons">
