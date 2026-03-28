@@ -49,7 +49,7 @@
      
         .tail-text { font-size: 0.95rem; }
      
-        /* AUTOMAATTINEN GALLERIA – parannettu valokuvaus-sivun tyyliin */
+        /* AUTOMAATTINEN GALLERIA */
         .dynamic-grid {
             transition: opacity 0.7s ease-in-out;
         }
@@ -63,7 +63,6 @@
             display: flex;
             gap: 8px;
         }
-        /* Cycle-indikaattori vihreänä pallona (valokuvaus-sivun portfolio-elementin tyyli) */
         .dot {
             width: 8px;
             height: 8px;
@@ -77,7 +76,8 @@
             transform: scale(1.8);
             box-shadow: 0 0 12px rgba(74, 222, 128, 0.5);
         }
-        /* Combat Camera -tyyli (pidetty alkuperäisenä, mutta harmonisoitu) */
+
+        /* Combat Camera tyylit */
         .combat-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -144,7 +144,8 @@
             transition: opacity 1.4s ease;
         }
         .extra-item img.active { opacity: 1; }
-        /* COMING SOON - PLANK */
+
+        /* Coming Soon */
         .coming-soon-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -174,7 +175,7 @@
             font-size: 1.1rem;
             font-weight: 500;
         }
-        /* FOOTER – korjattu ja yhtenäinen kaikille sivuille */
+
         footer {
             background: #000;
             padding: 40px 20px;
@@ -184,7 +185,7 @@
             color: #71717a;
         }
 
-        /* Evästebanneri – kopioitu suoraan valokuvaus.html:stä */
+        /* Evästebanneri */
         #cookie-banner {
             position: fixed;
             bottom: 0; left: 0; right: 0;
@@ -221,20 +222,18 @@
             #cookie-banner { flex-direction: column; text-align: center; gap: 15px; padding: 20px 15px; }
             #cookie-banner .buttons { width: 100%; justify-content: center; }
             
-            /* INDIKAATTORI MUOKKAUKSET MOBIILISSA */
+            /* INDIKAATTORI MUOKKAUKSET MOBIILISSA - 3 KERTAA PIENEMMÄKSI */
             .dot { 
-                width: 0.05px; 
-                height: 0.05px; 
+                width: 2.5px; 
+                height: 2.5px; 
             }
             .dot.active { 
-                width: 0.25px;
-                height: 0.25px;
-                transform: none; 
-                box-shadow: none; 
+                /* Skaalataan suhteessa uuteen pieneen kokoon */
+                transform: scale(1.6);
+                box-shadow: 0 0 6px rgba(74, 222, 128, 0.4); 
             }
-            .dot-container { gap: 2px; }
+            .dot-container { gap: 6px; }
 
-            /* MOBIILI SKAALAUKSET GRID-RAKENTEILLE */
             .combat-gallery, .extra-gallery, .coming-soon-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
@@ -257,6 +256,7 @@
             <div id="gallery-grid-1" class="dynamic-grid grid grid-cols-1 md:grid-cols-3 gap-6"></div>
             <div class="gallery-pagination"><div class="dot-container" id="gallery-dots-1"></div></div>
         </section>
+        
         <script>
             const galleryId1 = "gallery-grid-1"; const dotsId1 = "gallery-dots-1";
             const autoCycleEnabled1 = true; const cycleIntervalMs1 = 4200;
@@ -282,6 +282,7 @@
             function startAutoCycle1(){if(!autoCycleEnabled1||totalPages1<=1)return;if(autoInterval1)clearInterval(autoInterval1);autoInterval1=setInterval(()=>{currentPage1=(currentPage1===totalPages1)?1:currentPage1+1;renderGallery1();},cycleIntervalMs1);}
             window.addEventListener('load',()=>{if(allMediaItems1.length>0){renderGallery1();createDots1();startAutoCycle1();}});
         </script>
+
         <section class="project-section mb-24">
             <div class="flex justify-between items-end mb-8">
                 <div>
@@ -292,6 +293,7 @@
             <div id="gallery-grid-2" class="dynamic-grid grid grid-cols-1 md:grid-cols-3 gap-6"></div>
             <div class="gallery-pagination"><div class="dot-container" id="gallery-dots-2"></div></div>
         </section>
+        
         <script>
             const galleryId2 = "gallery-grid-2"; const dotsId2 = "gallery-dots-2";
             const autoCycleEnabled2 = true; const cycleIntervalMs2 = 4200;
@@ -323,6 +325,7 @@
             function startAutoCycle2(){if(!autoCycleEnabled2||totalPages2<=1)return;if(autoInterval2)clearInterval(autoInterval2);autoInterval2=setInterval(()=>{currentPage2=(currentPage2===totalPages2)?1:currentPage2+1;renderGallery2();},cycleIntervalMs2);}
             window.addEventListener('load',()=>{if(allMediaItems2.length>0){renderGallery2();createDots2();startAutoCycle2();}});
         </script>
+
         <section class="project-section mb-24">
             <div class="flex justify-between items-end mb-8">
                 <div>
@@ -352,6 +355,7 @@
                 </script>
             </div>
         </section>
+
         <script>
             const combatThumbs = document.querySelectorAll('.combat-item');
             const combatObserver = new IntersectionObserver((entries) => {
@@ -394,6 +398,7 @@
             };
             document.addEventListener('keydown', e => { if (e.key === 'Escape') combatClose.click(); });
         </script>
+
         <section class="project-section mb-24">
             <div class="flex justify-between items-end mb-8">
                 <div>
@@ -408,6 +413,7 @@
             </div>
         </section>
     </main>
+
     <footer>
         <p>© Iivari Kortesoja 2026 | Y-Tunnus 3591660-9</p>
     </footer>
@@ -421,7 +427,6 @@
     </div>
 
     <script>
-        // MEDIA TOGGLE (pidetty varmuuden vuoksi)
         let isVideo = false;
         function toggleMedia() {
             const wrapper = document.getElementById('media-wrapper');
