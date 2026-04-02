@@ -141,8 +141,8 @@ const PRICE_CONFIG = {
         "_default": {
             extra: 0,
             "3 tuntia": 350,
-            "4-6 tuntia": 700,
-            "Hääpaketti": 900
+            "4-6 tuntia": 500-800,
+            "Hääpaketti": 1300
         }
     }
 };
@@ -158,6 +158,6 @@ function getPricesForLocation(locationName) {
     return {
         "3 tuntia":    (loc["3 tuntia"]   || 350) + totalExtra,
         "4-6 tuntia":  (loc["4-6 tuntia"] || 700) + totalExtra,
-        "Hääpaketti":  (loc["Hääpaketti"] || 900) + totalExtra
+        "Hääpaketti":  (loc["Hääpaketti"] || 1300) + totalExtra
     };
 }
