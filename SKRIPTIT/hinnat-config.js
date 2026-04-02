@@ -157,7 +157,7 @@ function getPricesForLocation(locationName) {
 
     return {
         "3 tuntia":    (loc["3 tuntia"]   || 350) + totalExtra,
-        "4-6 tuntia":  (loc["4-6 tuntia"] || 700) + totalExtra,
+        "4-6 tuntia":  (loc["4-6 tuntia"] || 500-800) + totalExtra,
         "Hääpaketti":  (loc["Hääpaketti"] || 1300) + totalExtra
     };
 }
