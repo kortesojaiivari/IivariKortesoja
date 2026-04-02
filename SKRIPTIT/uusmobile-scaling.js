@@ -1,26 +1,41 @@
 // SKRIPTIT/uusmobile-scaling.js
-// Mobiiliskaalaus + nappuloiden lyhentäminen Valokuvaus-sivulla
+// Mobiiliskaalaus: napit allekkain + lyhyemmät mobiilissa
 
 document.addEventListener('DOMContentLoaded', () => {
     function applyMobileScaling() {
         const isMobile = window.innerWidth <= 768;
-        
-        // Lyhennetään "Varaa kuvaus" ja muut napit mobiilissa
+        const buttonContainer = document.getElementById('photo-button-container');
         const buttons = document.querySelectorAll('#photo-button-container .btn');
-        buttons.forEach(btn => {
-            if (isMobile) {
-                btn.style.padding = '14px 24px';
-                btn.style.fontSize = '1.05rem';
-            } else {
-                btn.style.padding = '';      // Palautetaan alkuperäinen CSS
-                btn.style.fontSize = '';
+
+        if (isMobile) {
+            // Napit allekkain mobiilissa
+            if (buttonContainer) {
+                buttonContainer.style.flexDirection = 'column';
+                buttonContainer.style.alignItems = 'center';
             }
-        });
+            // Lyhennetään nappuloita
+            buttons.forEach(btn => {
+                btn.style.padding = '14px 28px';
+                btn.style.fontSize = '1.05rem';
+                btn.style.width = 'auto';
+                btn.style.minWidth = '220px';   // Tasainen leveys allekkain
+            });
+        } else {
+            // Palautetaan desktop-tila
+            if (buttonContainer) {
+                buttonContainer.style.flexDirection = '';
+                buttonContainer.style.alignItems = '';
+            }
+            buttons.forEach(btn => {
+                btn.style.padding = '';
+                btn.style.fontSize = '';
+                btn.style.width = '';
+                btn.style.minWidth = '';
+            });
+        }
     }
 
-    // Suorita heti latauksen jälkeen
+    // Suorita heti ja kuuntele koon muutosta
     applyMobileScaling();
-
-    // Päivitä skaalaus kun ikkunan kokoa muutetaan (esim. laitteen kääntö)
     window.addEventListener('resize', applyMobileScaling);
 });
