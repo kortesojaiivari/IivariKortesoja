@@ -30,13 +30,13 @@
         };
     </script>
 
-    <!-- Structured Data (JSON-LD) -->
+    <!-- Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "Valokuvaus Eura | Iivari Kortesoja",
-      "description": "Edullista Valokuvausta Eurarassa: Hääkuvaus, kokopäiväinen hääkuvaus, valmistujaiset, hautajaiskuvaus, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta. Tarjolla on myös videointia valokuvauksen ohella.",
+      "description": "Edullista Valokuvausta Eurarassa: Hääkuvaus, kokopäiväinen hääkuvaus, valmistujaiset, hautajaiskuvaus, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta.",
       "telephone": "+358405247918",
       "email": "kortesoja.iivari@gmail.com",
       "url": "https://www.iivarikortesoja.media/Valokuvaus/Eura.html",
@@ -55,10 +55,10 @@
 
     <link rel="canonical" href="https://www.iivarikortesoja.media/Valokuvaus/Eura.html">
 
-    <!-- Yhtenäinen tyyli -->
+    <!-- CSS -->
     <link rel="stylesheet" href="../SKRIPTIT/valokuvaus-styles.css">
 
-    <!-- Skriptit (sama järjestys kuin pääsivulla) -->
+    <!-- Skriptit (tärkeä: portfolio-changer.js on mukana) -->
     <script src="../SKRIPTIT/hinnat-config.js" defer></script>
     <script src="../SKRIPTIT/cookie-consent.js" defer></script>
     <script src="../SKRIPTIT/dynamic-title.js" defer></script>
@@ -101,7 +101,6 @@
         </div>
     </div>
 
-    <!-- Vaihtuva portfolio-osio (täysin sama kuin pääsivulla) -->
     <section class="project-section">
         <div class="project-header">
             <span class="subtitle">VALOKUVAUSPROJEKTIT</span>
@@ -147,14 +146,12 @@
         </div>
     </section>
 
-    <!-- Alaosan kiinteä galleria -->
     <div class="static-gallery"></div>
 
     <footer>
         <p>© Iivari Kortesoja 2026 | Y-Tunnus 3591660-9</p>
     </footer>
 
-    <!-- Evästebanneri -->
     <div id="cookie-banner">
         <p>Käyttämällä tätä verkkosivustoa hyväksyt evästeiden käytön. Käytämme evästeitä tarjotaksemme sinulle erinomaisen kokemuksen ja auttaaksemme verkkosivustoamme toimimaan tehokkaasti.</p>
         <div class="buttons">
@@ -164,7 +161,7 @@
     </div>
 
     <script>
-        // Hinnoittelu – paikkakunta-spesifinen
+        // Hinnoittelu
         document.addEventListener('DOMContentLoaded', () => {
             const PAIKKAKUNTA = "eura";
             const prices = getPricesForLocation(PAIKKAKUNTA);
@@ -198,12 +195,7 @@
                     'Hääpaketti',
                     prices["Hääpaketti"],
                     '',
-                    [
-                        'Dokumentaarinen hääkuvaus <strong>koko hääpäivän ajan</strong>',
-                        'Ensimmäiset kuvat toimitetaan 24 tunnin sisällä Häistä',
-                        "Instagram-valmiit kuvat mukana toimituksessa",
-                        'Eniten valokuvia'
-                    ],
+                    ['Dokumentaarinen hääkuvaus <strong>koko hääpäivän ajan</strong>','Ensimmäiset kuvat toimitetaan 24 tunnin sisällä Häistä',"Instagram-valmiit kuvat mukana toimituksessa",'Eniten valokuvia'],
                     'Monet sanovat, että kuva kertoo enemmän kuin tuhat sanaa. Minä sanon, että liikkuva kuva kertoo vieläkin enemmän.'
                 ), contactBox);
             }
@@ -217,7 +209,7 @@
             window.location.href = url;
         }
 
-        // Taustavideo + about-kuvan vaihto
+        // Taustavideo + about-kuva
         (function(){
             const bg = document.querySelector('#home video');
             const home = document.getElementById('home');
