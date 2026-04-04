@@ -154,19 +154,19 @@ document.addEventListener('DOMContentLoaded', () => {
         },
                 {
             media: [
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus9.webp", alt: "Combat 9" },
                 { src: "/MEDIA/VALOKUVAUS/Valokuvaus37.webp", alt: "Combat 37" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus3.webp", alt: "Combat 3" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus25.webp", alt: "Combat 25" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus12.webp", alt: "Combat 12" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus8.webp", alt: "Combat 8" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus19.webp", alt: "Combat 19" }
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus30.webp", alt: "Combat 30" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus11.webp", alt: "Combat 11" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus33.webp", alt: "Combat 33" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus34.webp", alt: "Combat 34" }
             ]
         },
                         {
             media: [
                 { src: "/MEDIA/VALOKUVAUS/Valokuvaus2.webp", alt: "Combat 2" },
                 { src: "/MEDIA/VALOKUVAUS/Valokuvaus6.webp", alt: "Combat 6" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus25.webp", alt: "Combat 25" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus16.webp", alt: "Combat 16" },
                 { src: "/MEDIA/VALOKUVAUS/Valokuvaus22.webp", alt: "Combat 22" },
                 { src: "/MEDIA/VALOKUVAUS/Valokuvaus23.webp", alt: "Combat 23" },
                 { src: "/MEDIA/VALOKUVAUS/Valokuvaus27.webp", alt: "Combat 27" }
