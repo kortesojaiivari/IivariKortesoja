@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 { src: "/MEDIA/Puolustusvoimat/comcam/comcam12.webp", alt: "Combat 4" },
                 { src: "/MEDIA/Puolustusvoimat/comcam/comcam8.webp", alt: "Combat 5" },
                 { src: "/MEDIA/Puolustusvoimat/comcam/comcam19.webp", alt: "Combat 6" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus26.webp", alt: "Combat 7" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus1.webp", alt: "Combat 7" },
                 { src: "/MEDIA/Puolustusvoimat/comcam/comcam31.webp", alt: "Combat 8" },
                 { src: "/MEDIA/VALOKUVAUS/Valokuvaus10.webp", alt: "Combat 9" }
             ]
