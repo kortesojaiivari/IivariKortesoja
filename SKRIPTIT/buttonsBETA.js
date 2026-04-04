@@ -1,18 +1,17 @@
 // SKRIPTIT/buttons.js
 // Hallinnoi etusivun nappuloita dynaamisesti
-
 const actionButtons = [
     {
-        text: "Videotuotannot",
-        type: "scroll",                     // scrollaa sivulla tiettyyn id:hen
-        target: "#services",               // kohde-elementin id
-        smooth: true
+        text: "Valokuvaus",
+        type: "link",
+        url: "Valokuvaus.html"
     },
     {
-        text: "Valokuvaus",
+        text: "Portfolio",
         type: "link",                       // siirtyy toiselle sivulle
-        url: "Valokuvaus.html"
+        url: "Portfolio.html"
     }
+
     // Voit lisätä tähän lisää nappuloita helposti, esim:
     // {
     //     text: "Ota yhteyttä",
