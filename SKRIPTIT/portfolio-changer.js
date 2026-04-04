@@ -1,8 +1,7 @@
-// SKRIPTIT/portfolio-changer.js
-// Korjattu versio: absoluuttiset polut juuresta (toimii sekä pääsivulla että alikansioissa)
+<!-- SKRIPTIT/portfolio-changer.js -->
+<!-- Korjattu versio: absoluuttiset polut + alaosan cycle 5 sekuntiin -->
 
 document.addEventListener('DOMContentLoaded', () => {
-
     // ──────── 1. PÄÄPORTFOLIO (vaihtuva otsikko + grid) ────────
     const categories = [
         {
@@ -94,6 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const imagesToShow = category.media.slice(currentImageOffset, currentImageOffset + 3);
+
             if (gridElement) {
                 gridElement.innerHTML = imagesToShow.map(img => `
                     <div class="group">
@@ -167,14 +167,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     <img src="${img.src}" alt="${img.alt}">
                 </div>
             `).join('');
-            staticGallery.style.opacity = '1';
 
+            staticGallery.style.opacity = '1';
             currentStaticIndex = (currentStaticIndex + 1) % staticCycles.length;
         }, 300);
     }
 
     if (staticGallery) {
         updateStaticGallery();
-        setInterval(updateStaticGallery, 7000);   // Vaihtuu n. 7 sekunnin välein
+        // Muutettu 7000 → 5000 ms (5 sekuntia)
+        setInterval(updateStaticGallery, 5000);
     }
 });
