@@ -18,9 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: "Combat Camera",
             media: [
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam37.webp", alt: "Combat 1" },
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam3.webp", alt: "Combat 2" },
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam25.webp", alt: "Combat 3" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus13.webp", alt: "Combat 1" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus3.webp", alt: "Combat 2" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus14.webp", alt: "Teatterikuvaus 3" },
                 { src: "/MEDIA/Puolustusvoimat/comcam/comcam12.webp", alt: "Combat 4" },
                 { src: "/MEDIA/Puolustusvoimat/comcam/comcam8.webp", alt: "Combat 5" },
                 { src: "/MEDIA/Puolustusvoimat/comcam/comcam19.webp", alt: "Combat 6" },
