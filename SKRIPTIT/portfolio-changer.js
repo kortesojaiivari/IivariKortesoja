@@ -154,22 +154,22 @@ document.addEventListener('DOMContentLoaded', () => {
         },
                 {
             media: [
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam37.webp", alt: "Combat 37" },
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam3.webp", alt: "Combat 3" },
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam25.webp", alt: "Combat 25" },
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam12.webp", alt: "Combat 12" },
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam8.webp", alt: "Combat 8" },
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam19.webp", alt: "Combat 19" }
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus37.webp", alt: "Combat 37" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus3.webp", alt: "Combat 3" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus25.webp", alt: "Combat 25" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus12.webp", alt: "Combat 12" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus8.webp", alt: "Combat 8" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus19.webp", alt: "Combat 19" }
             ]
         },
                         {
             media: [
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam2.webp", alt: "Combat 2" },
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam6.webp", alt: "Combat 6" },
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam25.webp", alt: "Combat 25" },
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam22.webp", alt: "Combat 22" },
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam23.webp", alt: "Combat 23" },
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam27.webp", alt: "Combat 27" }
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus2.webp", alt: "Combat 2" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus6.webp", alt: "Combat 6" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus25.webp", alt: "Combat 25" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus22.webp", alt: "Combat 22" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus23.webp", alt: "Combat 23" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus27.webp", alt: "Combat 27" }
             ]
         }
     ];
