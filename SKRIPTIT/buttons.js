@@ -3,15 +3,14 @@
 
 const actionButtons = [
     {
-        text: "Videotuotannot",
-        type: "scroll",                     // scrollaa sivulla tiettyyn id:hen
-        target: "#portfolio",               // kohde-elementin id
-        smooth: true
+        text: "Valokuvaus",
+        type: "link",
+        url: "Valokuvaus.html"
     },
     {
-        text: "Valokuvaus",
+        text: "Portfolio",
         type: "link",                       // siirtyy toiselle sivulle
-        url: "Valokuvaus.html"
+        url: "Portfolio.html"
     }
     // Voit lisätä tähän lisää nappuloita helposti, esim:
     // {
