@@ -1,44 +1,44 @@
 // SKRIPTIT/portfolio-changer.js
-// Päivitetty: sekä pääportfolio että 3x2 static-gallery käyttävät samaa fade-animaatiota
+// Korjattu versio: absoluuttiset polut juuresta (toimii sekä pääsivulla että alikansioissa)
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ──────── 1. PÄÄPORTFOLIO (otsikolla + kategoriapisteet) ────────
+    // ──────── 1. PÄÄPORTFOLIO (vaihtuva otsikko + grid) ────────
     const categories = [
         {
             title: "TuplaKupla - Teatterikuvaus",
             media: [
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "Teatterikuvaus 1" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus41.webp", alt: "Teatterikuvaus 2" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus42.webp", alt: "Teatterikuvaus 3" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus43.webp", alt: "Teatterikuvaus 4" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus44.webp", alt: "Teatterikuvaus 5" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus45.webp", alt: "Teatterikuvaus 6" }
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "Teatterikuvaus 1" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus41.webp", alt: "Teatterikuvaus 2" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus42.webp", alt: "Teatterikuvaus 3" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus43.webp", alt: "Teatterikuvaus 4" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus44.webp", alt: "Teatterikuvaus 5" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus45.webp", alt: "Teatterikuvaus 6" }
             ]
         },
         {
             title: "Combat Camera",
             media: [
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam37.webp", alt: "Combat 1" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam3.webp", alt: "Combat 2" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam25.webp", alt: "Combat 3" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam12.webp", alt: "Combat 4" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam8.webp", alt: "Combat 5" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam19.webp", alt: "Combat 6" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam44.webp", alt: "Combat 7" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam31.webp", alt: "Combat 8" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam50.webp", alt: "Combat 9" }
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam37.webp", alt: "Combat 1" },
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam3.webp", alt: "Combat 2" },
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam25.webp", alt: "Combat 3" },
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam12.webp", alt: "Combat 4" },
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam8.webp", alt: "Combat 5" },
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam19.webp", alt: "Combat 6" },
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam44.webp", alt: "Combat 7" },
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam31.webp", alt: "Combat 8" },
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam50.webp", alt: "Combat 9" }
             ]
         },
         {
             title: "Laura Voutilainen - Kerran Keväällä",
             media: [
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus62.webp", alt: "Laura Voutilainen 1" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus68.webp", alt: "Laura Voutilainen 2" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus73.webp", alt: "Laura Voutilainen 3" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus54.webp", alt: "Laura Voutilainen 4" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus76.webp", alt: "Laura Voutilainen 5" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus65.webp", alt: "Laura Voutilainen 6" }
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus62.webp", alt: "Laura Voutilainen 1" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus68.webp", alt: "Laura Voutilainen 2" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus73.webp", alt: "Laura Voutilainen 3" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus54.webp", alt: "Laura Voutilainen 4" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus76.webp", alt: "Laura Voutilainen 5" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus65.webp", alt: "Laura Voutilainen 6" }
             ]
         }
     ];
@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         autoCycleInterval = setInterval(updateDisplay, 5000);
     }
 
+    // Kategoriapisteet
     if (dotsContainer) {
         dotsContainer.innerHTML = '';
         categories.forEach((_, i) => {
@@ -84,32 +85,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const category = categories[currentCategoryIndex];
         const isNewCategory = currentCategoryIndex !== lastDisplayedCategoryIndex;
 
-        gridElement.classList.add('loading');
-        gridElement.style.opacity = '0';
-
-        if (isNewCategory && titleElement) {
-            titleElement.classList.remove('slide-up-active');
-            titleElement.classList.add('slide-up-exit');
-        }
+        if (gridElement) gridElement.style.opacity = '0';
 
         setTimeout(() => {
             if (isNewCategory && titleElement) {
                 titleElement.textContent = category.title;
-                titleElement.classList.remove('slide-up-exit');
-                titleElement.classList.add('slide-up-enter-prep');
-                void titleElement.offsetWidth;
-                titleElement.classList.remove('slide-up-enter-prep');
-                titleElement.classList.add('slide-up-active');
                 lastDisplayedCategoryIndex = currentCategoryIndex;
             }
 
             const imagesToShow = category.media.slice(currentImageOffset, currentImageOffset + 3);
-            gridElement.innerHTML = imagesToShow.map(img =>
-                `<div class="group"><img src="${img.src}" alt="${img.alt || ''}"></div>`
-            ).join('');
+            if (gridElement) {
+                gridElement.innerHTML = imagesToShow.map(img => `
+                    <div class="group">
+                        <img src="${img.src}" alt="${img.alt || ''}">
+                    </div>
+                `).join('');
+                gridElement.style.opacity = '1';
+            }
 
-            gridElement.style.opacity = '1';
-            gridElement.classList.remove('loading');
             updateDots();
 
             currentImageOffset += 3;
@@ -117,45 +110,46 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentCategoryIndex = (currentCategoryIndex + 1) % categories.length;
                 currentImageOffset = 0;
             }
-        }, 280);
+        }, 300);
     }
 
-    updateDisplay();
-    resetAutoCycle();
+    if (gridElement) {
+        updateDisplay();
+        resetAutoCycle();
+    }
 
-    // ──────── 2. 3x2 STATIC GALLERY – nyt sama animaatio kuin yllä ────────
+    // ──────── 2. ALAOSAN STATIC GALLERY (3x2) ────────
     const staticCycles = [
         {
             media: [
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "Valokuvaus 1" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus41.webp", alt: "Valokuvaus 2" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus42.webp", alt: "Valokuvaus 3" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus43.webp", alt: "Valokuvaus 4" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus44.webp", alt: "Valokuvaus 5" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus45.webp", alt: "Valokuvaus 6" }
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "Valokuvaus 1" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus41.webp", alt: "Valokuvaus 2" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus42.webp", alt: "Valokuvaus 3" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus43.webp", alt: "Valokuvaus 4" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus44.webp", alt: "Valokuvaus 5" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus45.webp", alt: "Valokuvaus 6" }
             ]
         },
         {
             media: [
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam37.webp", alt: "Combat 1" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam3.webp", alt: "Combat 2" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam25.webp", alt: "Combat 3" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam12.webp", alt: "Combat 4" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam8.webp", alt: "Combat 5" },
-                { src: "MEDIA/Puolustusvoimat/comcam/comcam19.webp", alt: "Combat 6" }
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam37.webp", alt: "Combat 1" },
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam3.webp", alt: "Combat 2" },
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam25.webp", alt: "Combat 3" },
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam12.webp", alt: "Combat 4" },
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam8.webp", alt: "Combat 5" },
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam19.webp", alt: "Combat 6" }
             ]
         },
         {
             media: [
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus70.webp", alt: "Laura 1" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus74.webp", alt: "Laura 2" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus65.webp", alt: "Laura 3" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus72.webp", alt: "Laura 4" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus56.webp", alt: "Laura 5" },
-                { src: "MEDIA/VALOKUVAUS/Valokuvaus59.webp", alt: "Laura 6" }
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus70.webp", alt: "Laura 1" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus74.webp", alt: "Laura 2" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus65.webp", alt: "Laura 3" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus72.webp", alt: "Laura 4" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus56.webp", alt: "Laura 5" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus59.webp", alt: "Laura 6" }
             ]
         }
-        // Lisää uusia 6 kuvan settejä tähän halutessasi
     ];
 
     let currentStaticIndex = 0;
@@ -164,28 +158,23 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateStaticGallery() {
         if (!staticGallery) return;
 
-        // Sama animaatio kuin pääportfoliossa
-        staticGallery.classList.add('loading');
         staticGallery.style.opacity = '0';
 
         setTimeout(() => {
             const cycle = staticCycles[currentStaticIndex];
-
             staticGallery.innerHTML = cycle.media.map(img => `
                 <div class="static-item">
                     <img src="${img.src}" alt="${img.alt}">
                 </div>
             `).join('');
-
             staticGallery.style.opacity = '1';
-            staticGallery.classList.remove('loading');
 
             currentStaticIndex = (currentStaticIndex + 1) % staticCycles.length;
-        }, 280);
+        }, 300);
     }
 
     if (staticGallery) {
-        updateStaticGallery();           // Ensimmäinen näyttö
-        setInterval(updateStaticGallery, 6000);   // Vaihtuu 6 sekunnin välein
+        updateStaticGallery();
+        setInterval(updateStaticGallery, 7000);   // Vaihtuu n. 7 sekunnin välein
     }
 });
