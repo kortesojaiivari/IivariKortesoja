@@ -68,8 +68,6 @@
     <script src="../SKRIPTIT/photo-buttons.js" defer></script>
     <script src="../SKRIPTIT/paikkakunta-dropdown.js" defer></script>
     <script src="../SKRIPTIT/portfolio-changer.js" defer></script>
-    <!-- Paikkakuntasivulle sopiva galleria-skripti (jos tarvitset pientä + isoa galleriaa) -->
-    <!-- <script src="../SKRIPTIT/valokuvaus-gallery.js" defer></script> -->
 </head>
 <body>
     <section id="home">
@@ -96,15 +94,22 @@
             Vahvuuteni ovat parhaimillaan dokumentaarisessa kuvaamisessa, jossa ikuistan tilanteita mahdollisimman autenttisesti. Tällöin kuvausreissuilta tulee kuvattua kameraan noin sadan ja tuhannen kuvan väliltä, mistä valitsen ja muokkaan parhaimmat teidän käyttöönne. <br><br>
             Tarkoitukseni on tarjota kuluttaja- ja budjettiystävällisempää valokuvausta, pitäen laadun ja luovuuden täysillä.<br>
             Valokuvauksen ohella tarjoan myös videollista kuvaamista, joka voi olla niin häävideo tai muuten vaan muisteluvideo tilanteesta.<br><br>
-            Teen valokuvausta Satakunnassa pääosin, mutta toimin myös mm. Vaasassa, Seinäjoella ja Tampereella.
         </div>
         <div class="about-image">
             <img src="../MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja1.webp" alt="Valokuvaus 1" class="active">
         </div>
     </div>
 
-    <!-- Paikkakuntasivuilla käytetään pientä galleriaa (voit lisätä .small-gallery jos haluat) -->
-    <!-- <div class="small-gallery"></div> -->
+    <section class="project-section">
+        <div class="project-header">
+            <span class="subtitle">VALOKUVAUSPROJEKTIT</span>
+            <div id="changing-title-container">
+                <h3 id="changing-title" class="changing-title slide-up-active">TuplaKupla - Teatterikuvaus</h3>
+            </div>
+        </div>
+        <div id="changing-grid"></div>
+        <div id="category-dots"></div>
+    </section>
 
     <section id="pricing">
         <h2>Hinnoittelu</h2>
@@ -140,10 +145,7 @@
         </div>
     </section>
 
-    <!-- Iso galleria paikkakuntasivuille (jos haluat käyttää) -->
-    <!-- <div class="large-gallery"></div> -->
-
-    <!-- 3x2 static-gallery (yhtenäinen pääsivun kanssa) -->
+    <!-- 3x2 static-gallery (portfolio / alaosan kuvat) -->
     <div class="static-gallery"></div>
 
     <footer>
@@ -162,7 +164,7 @@
     <script>
         // Hinnoittelu – paikkakunta-spesifinen
         document.addEventListener('DOMContentLoaded', () => {
-            const PAIKKAKUNTA = "eura";   // ← TÄMÄ MUUTETAAN jokaiselle paikkakunnalle!
+            const PAIKKAKUNTA = "eura";   // ← Muuta tarvittaessa
             const prices = getPricesForLocation(PAIKKAKUNTA);
 
             function createPricingBox(title, price, desc = '', features = [], quote = '') {
