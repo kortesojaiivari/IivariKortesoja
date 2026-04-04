@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 { src: "/MEDIA/VALOKUVAUS/Valokuvaus14.webp", alt: "Teatterikuvaus 14" },
                 
                 { src: "/MEDIA/VALOKUVAUS/Valokuvaus1.webp", alt: "Combat 1" },
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam8.webp", alt: "Combat 8" },
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam19.webp", alt: "Combat 19" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus5.webp", alt: "Combat 5" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus21.webp", alt: "Combat 21" },
                 
                 { src: "/MEDIA/VALOKUVAUS/Valokuvaus4.webp", alt: "Combat 4" },
                 { src: "/MEDIA/VALOKUVAUS/Valokuvaus77.webp", alt: "Combat 77" },
