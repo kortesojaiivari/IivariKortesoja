@@ -1,8 +1,7 @@
 // paikkakunta-redirect.js
-// Muistaa paikkakunnan evästeeseen ja ohjaa automaattisesti pääsivulta alasivulle
+// Lopullinen versio: tallentaa paikkakunnan, redirectaa kerran pääsivulle palatessa, mutta sallii seuraavan käynnin ilman redirectiä
 
 (function () {
-    // Eväste-funktiot
     function setCookie(name, value, days) {
         let expires = "";
         if (days) {
@@ -24,64 +23,52 @@
         return null;
     }
 
-    // ────────────────────────────────────────────────
-    // Päälogiikka
-    // ────────────────────────────────────────────────
     const COOKIE_NAME = 'valokuvausPaikkakunta';
     const BASE_URL = 'https://www.iivarikortesoja.media/Valokuvaus/';
-    const currentPath = window.location.pathname.toLowerCase();
+    const currentPath = window.location.pathname.toLowerCase().trim();
 
     let savedPaikkakunta = getCookie(COOKIE_NAME);
 
-    // Jos evästettä ei ole → yritä päätellä paikkakunta URL:sta JA allLocations-listasta
-    if (!savedPaikkakunta) {
-        let detected = 'muu';
-
-        // Odotetaan hetki, että paikkakunta-dropdown.js on ehtinyt ladata allLocations
-        // (käytännössä yleensä jo valmiina, mutta varmuuden vuoksi)
-        setTimeout(() => {
-            if (window.allLocations && Array.isArray(window.allLocations)) {
-                const pathLower = currentPath.toLowerCase();
-
-                for (const loc of window.allLocations) {
-                    if (loc.value !== 'muu' && pathLower.includes(loc.value.toLowerCase())) {
-                        detected = loc.value;
-                        break;
-                    }
-                }
-
-                if (detected !== 'muu') {
-                    setCookie(COOKIE_NAME, detected, 30);
-                    savedPaikkakunta = detected;
-                }
-            }
-
-            // Nyt tarkistetaan uudelleenohjaus
-            doRedirectIfNeeded();
-        }, 300); // pieni viive varmuuden vuoksi
-
-    } else {
-        // Eväste oli jo → suoraan tarkistus
-        doRedirectIfNeeded();
+    // Tarkistetaan onko kyseessä pää-Valokuvaus-sivu (ei alasivu)
+    function isMainValokuvausPage() {
+        return currentPath === '/valokuvaus.html' ||
+               currentPath === '/valokuvaus/' ||
+               currentPath.endsWith('/valokuvaus.html');
     }
 
-    function doRedirectIfNeeded() {
-        if (savedPaikkakunta && savedPaikkakunta !== 'muu') {
-            // Ohjataan vain jos ollaan pää-Valokuvaus-sivulla
-            if (
-                currentPath === '/valokuvaus.html' ||
-                currentPath === '/valokuvaus/' ||
-                currentPath.endsWith('valokuvaus.html')
-            ) {
-                window.location.replace(BASE_URL + savedPaikkakunta + '.html');
+    // Tallennetaan paikkakunta, jos ollaan alasivulla
+    if (currentPath.includes('/valokuvaus/') && currentPath.endsWith('.html')) {
+        const fileName = currentPath.split('/').pop().replace('.html', '');
+        if (fileName && fileName !== 'valokuvaus' && fileName !== 'muu') {
+            if (savedPaikkakunta !== fileName) {
+                setCookie(COOKIE_NAME, fileName, 90); // 90 päivää
+                savedPaikkakunta = fileName;
             }
         }
     }
 
-    // Dropdown-valinnan käsittely (jos halutaan käyttää samaa nimeä kuin ennen)
+    // Automaattinen redirect-logiikka
+    if (savedPaikkakunta && savedPaikkakunta !== 'muu' && isMainValokuvausPage()) {
+        
+        // Tarkistetaan onko tämä "toinen kerta" (käytetään erillistä evästä)
+        const hasVisitedMain = getCookie('valokuvausMainVisited');
+
+        if (!hasVisitedMain) {
+            // Ensimmäinen käynti pääsivulla → redirectataan alasivulle JA merkitään että on käyty
+            setCookie('valokuvausMainVisited', 'true', 90);
+            window.location.replace(BASE_URL + savedPaikkakunta + '.html');
+            return;
+        } else {
+            // Toinen (tai seuraava) käynti pääsivulle → ei redirectiä, poistetaan väliaikainen merkki
+            // (jotta seuraavalla kerralla redirect toimii taas kerran)
+            document.cookie = "valokuvausMainVisited=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        }
+    }
+
+    // Dropdownin käsittely (yhteensopiva vanhan koodin kanssa)
     window.saveAndRedirectPaikkakunta = function(value) {
         if (!value) return;
-        setCookie(COOKIE_NAME, value, 30);
+        setCookie(COOKIE_NAME, value, 90);
 
         let url = value === "muu"
             ? "https://www.iivarikortesoja.media/Valokuvaus.html"
