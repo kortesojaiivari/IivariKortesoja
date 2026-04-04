@@ -55,10 +55,10 @@
 
     <link rel="canonical" href="https://www.iivarikortesoja.media/Valokuvaus/Eura.html">
 
-    <!-- Yhtenäinen tyyli kaikille valokuvaussivuille -->
+    <!-- Yhtenäinen tyyli -->
     <link rel="stylesheet" href="../SKRIPTIT/valokuvaus-styles.css">
 
-    <!-- Skriptit (yhtenäiset uusimman pääsivun kanssa) -->
+    <!-- Skriptit -->
     <script src="../SKRIPTIT/hinnat-config.js" defer></script>
     <script src="../SKRIPTIT/cookie-consent.js" defer></script>
     <script src="../SKRIPTIT/dynamic-title.js" defer></script>
@@ -67,7 +67,7 @@
     <script src="../SKRIPTIT/kampanja-popup.js" defer></script>
     <script src="../SKRIPTIT/photo-buttons.js" defer></script>
     <script src="../SKRIPTIT/paikkakunta-dropdown.js" defer></script>
-    <script src="../SKRIPTIT/portfolio-changer.js" defer></script>
+    <script src="../SKRIPTIT/portfolio-changer.js" defer></script>   <!-- TÄMÄ ON TÄRKEIN PORTFOLIO-KUVILLE -->
 </head>
 <body>
     <section id="home">
@@ -93,13 +93,14 @@
             Olipa kyseessä niin valmistujaiset, hautajaiset, häät, ristiäiset tai mitä vaan. Dokumentoin tärkeät hetkesi, jolloin voit keskittyä hetkeesi ja muistella sitä valokuvien kautta jälkikäteen.<br><br>
             Vahvuuteni ovat parhaimillaan dokumentaarisessa kuvaamisessa, jossa ikuistan tilanteita mahdollisimman autenttisesti. Tällöin kuvausreissuilta tulee kuvattua kameraan noin sadan ja tuhannen kuvan väliltä, mistä valitsen ja muokkaan parhaimmat teidän käyttöönne. <br><br>
             Tarkoitukseni on tarjota kuluttaja- ja budjettiystävällisempää valokuvausta, pitäen laadun ja luovuuden täysillä.<br>
-            Valokuvauksen ohella tarjoan myös videollista kuvaamista, joka voi olla niin häävideo tai muuten vaan muisteluvideo tilanteesta.<br><br>
+            Valokuvauksen ohella tarjoan myös videollista kuvaamista, joka voi olla niin häävideo tai muisteluvideo tilanteesta.<br><br>
         </div>
         <div class="about-image">
             <img src="../MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja1.webp" alt="Valokuvaus 1" class="active">
         </div>
     </div>
 
+    <!-- Vaihtuva portfolio-osio -->
     <section class="project-section">
         <div class="project-header">
             <span class="subtitle">VALOKUVAUSPROJEKTIT</span>
@@ -145,7 +146,7 @@
         </div>
     </section>
 
-    <!-- 3x2 static-gallery (portfolio / alaosan kuvat) -->
+    <!-- Alaosan kiinteä galleria (static-gallery) -->
     <div class="static-gallery"></div>
 
     <footer>
@@ -162,9 +163,9 @@
     </div>
 
     <script>
-        // Hinnoittelu – paikkakunta-spesifinen
+        // Hinnoittelu
         document.addEventListener('DOMContentLoaded', () => {
-            const PAIKKAKUNTA = "eura";   // ← Muuta tarvittaessa
+            const PAIKKAKUNTA = "eura";
             const prices = getPricesForLocation(PAIKKAKUNTA);
 
             function createPricingBox(title, price, desc = '', features = [], quote = '') {
