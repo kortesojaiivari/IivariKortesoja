@@ -7,37 +7,39 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: "TuplaKupla - Teatterikuvaus",
             media: [
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "Teatterikuvaus 1" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus41.webp", alt: "Teatterikuvaus 2" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus42.webp", alt: "Teatterikuvaus 3" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus43.webp", alt: "Teatterikuvaus 4" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus44.webp", alt: "Teatterikuvaus 5" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus45.webp", alt: "Teatterikuvaus 6" }
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "Teatterikuvaus 40" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus41.webp", alt: "Teatterikuvaus 41" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus42.webp", alt: "Teatterikuvaus 42" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus43.webp", alt: "Teatterikuvaus 43" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus44.webp", alt: "Teatterikuvaus 44" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus45.webp", alt: "Teatterikuvaus 45" }
             ]
         },
         {
             title: "Combat Camera",
             media: [
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus13.webp", alt: "Combat 1" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus3.webp", alt: "Combat 2" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus14.webp", alt: "Teatterikuvaus 3" },
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam12.webp", alt: "Combat 4" },
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam8.webp", alt: "Combat 5" },
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam19.webp", alt: "Combat 6" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus1.webp", alt: "Combat 7" },
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam31.webp", alt: "Combat 8" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus10.webp", alt: "Combat 9" }
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus13.webp", alt: "Combat 13" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus3.webp", alt: "Combat 23" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus14.webp", alt: "Teatterikuvaus 14" },
+                
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus1.webp", alt: "Combat 1" },
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam8.webp", alt: "Combat 8" },
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam19.webp", alt: "Combat 19" },
+                
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus4.webp", alt: "Combat 4" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus77.webp", alt: "Combat 77" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus10.webp", alt: "Combat 10" }
             ]
         },
         {
             title: "Laura Voutilainen - Kerran Keväällä",
             media: [
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus62.webp", alt: "Laura Voutilainen 1" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus68.webp", alt: "Laura Voutilainen 2" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus73.webp", alt: "Laura Voutilainen 3" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus54.webp", alt: "Laura Voutilainen 4" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus76.webp", alt: "Laura Voutilainen 5" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus65.webp", alt: "Laura Voutilainen 6" }
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus62.webp", alt: "Laura Voutilainen 62" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus68.webp", alt: "Laura Voutilainen 68" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus73.webp", alt: "Laura Voutilainen 73" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus54.webp", alt: "Laura Voutilainen 54" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus76.webp", alt: "Laura Voutilainen 76" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus65.webp", alt: "Laura Voutilainen 65" }
             ]
         }
     ];
@@ -122,32 +124,52 @@ document.addEventListener('DOMContentLoaded', () => {
     const staticCycles = [
         {
             media: [
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "Valokuvaus 1" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus41.webp", alt: "Valokuvaus 2" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus42.webp", alt: "Valokuvaus 3" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus43.webp", alt: "Valokuvaus 4" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus44.webp", alt: "Valokuvaus 5" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus45.webp", alt: "Valokuvaus 6" }
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "Valokuvaus 40" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus41.webp", alt: "Valokuvaus 41" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus42.webp", alt: "Valokuvaus 42" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus43.webp", alt: "Valokuvaus 43" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus44.webp", alt: "Valokuvaus 44" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus45.webp", alt: "Valokuvaus 45" }
             ]
         },
         {
             media: [
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam37.webp", alt: "Combat 1" },
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam3.webp", alt: "Combat 2" },
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam25.webp", alt: "Combat 3" },
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam12.webp", alt: "Combat 4" },
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam8.webp", alt: "Combat 5" },
-                { src: "/MEDIA/Puolustusvoimat/comcam/comcam19.webp", alt: "Combat 6" }
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus6.webp", alt: "Combat 6" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus7.webp", alt: "Combat 7" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus12.webp", alt: "Combat 12" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus18.webp", alt: "Combat 18" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus24.webp", alt: "Combat 24" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus26.webp", alt: "Combat 26" }
             ]
         },
         {
             media: [
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus70.webp", alt: "Laura 1" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus74.webp", alt: "Laura 2" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus65.webp", alt: "Laura 3" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus72.webp", alt: "Laura 4" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus56.webp", alt: "Laura 5" },
-                { src: "/MEDIA/VALOKUVAUS/Valokuvaus59.webp", alt: "Laura 6" }
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus70.webp", alt: "Laura 70" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus74.webp", alt: "Laura 74" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus65.webp", alt: "Laura 65" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus72.webp", alt: "Laura 72" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus56.webp", alt: "Laura 56" },
+                { src: "/MEDIA/VALOKUVAUS/Valokuvaus59.webp", alt: "Laura 59" }
+            ]
+        },
+                {
+            media: [
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam37.webp", alt: "Combat 37" },
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam3.webp", alt: "Combat 3" },
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam25.webp", alt: "Combat 25" },
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam12.webp", alt: "Combat 12" },
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam8.webp", alt: "Combat 8" },
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam19.webp", alt: "Combat 19" }
+            ]
+        },
+                        {
+            media: [
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam2.webp", alt: "Combat 2" },
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam6.webp", alt: "Combat 6" },
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam25.webp", alt: "Combat 25" },
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam22.webp", alt: "Combat 22" },
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam23.webp", alt: "Combat 23" },
+                { src: "/MEDIA/Puolustusvoimat/comcam/comcam27.webp", alt: "Combat 27" }
             ]
         }
     ];
