@@ -14,7 +14,7 @@ const PRICE_CONFIG = {
             extra: 0,
             "3 tuntia": 410,
             "4-6 tuntia": 760,
-            "Hääpaketti": 1300
+            "Hääpaketti": 1360
         },
         "Eurajoki": {
             extra: 0,
