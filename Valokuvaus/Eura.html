@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valokuvaus Eura | Iivari Kortesoja</title>
     <meta name="description" content="Edullista Valokuvausta Eurarassa – Hääkuvaus Eura, kokopäiväinen hääkuvaus, valmistujaiset, hautajaiskuvaus, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta. Eurarassa Valokuvausta Edullisesti. Tarjolla on myös videointia valokuvauksen ohella, jolloin Häävideo tai muisteluvideo tilanteesta on saatavilla.">
-    
+   
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
     <script>
@@ -14,7 +14,6 @@
       gtag('js', new Date());
       gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
     </script>
-
     <!-- Microsoft Clarity -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
@@ -29,7 +28,6 @@
             }
         };
     </script>
-
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
@@ -52,13 +50,12 @@
       "areaServed": ["Eura", "Satakunta"]
     }
     </script>
-
     <link rel="canonical" href="https://www.iivarikortesoja.media/Valokuvaus/Eura.html">
-
+    
     <!-- CSS -->
     <link rel="stylesheet" href="../SKRIPTIT/valokuvaus-styles.css">
 
-    <!-- Skriptit (tärkeä: portfolio-changer.js on mukana) -->
+    <!-- Skriptit (tärkeä: hinnat-config.js on ladattava ennen inline-skriptiä) -->
     <script src="../SKRIPTIT/hinnat-config.js" defer></script>
     <script src="../SKRIPTIT/cookie-consent.js" defer></script>
     <script src="../SKRIPTIT/dynamic-title.js" defer></script>
@@ -161,9 +158,16 @@
     </div>
 
     <script>
-        // Hinnoittelu
+        // Hinnoittelu – korjattu versio
         document.addEventListener('DOMContentLoaded', () => {
-            const PAIKKAKUNTA = "eura";
+            const PAIKKAKUNTA = "Eura";   // ← TÄRKEÄÄ: Iso alkukirjain, koska hinnat-config.js käyttää "Eura"
+
+            // Odotetaan, että hinnat-config.js on ladattu
+            if (typeof getPricesForLocation !== 'function') {
+                console.error("getPricesForLocation-funktiota ei löydy! Tarkista, että ../SKRIPTIT/hinnat-config.js on ladattu oikein.");
+                return;
+            }
+
             const prices = getPricesForLocation(PAIKKAKUNTA);
 
             function createPricingBox(title, price, desc = '', features = [], quote = '') {
@@ -195,11 +199,17 @@
                     'Hääpaketti',
                     prices["Hääpaketti"],
                     '',
-                    ['Dokumentaarinen hääkuvaus <strong>koko hääpäivän ajan</strong>','Ensimmäiset kuvat toimitetaan 24 tunnin sisällä Häistä',"Instagram-valmiit kuvat mukana toimituksessa",'Eniten valokuvia']
+                    [
+                        'Dokumentaarinen hääkuvaus <strong>koko hääpäivän ajan</strong>',
+                        'Ensimmäiset kuvat toimitetaan 24 tunnin sisällä Häistä',
+                        'Instagram-valmiit kuvat mukana toimituksessa',
+                        'Eniten valokuvia'
+                    ]
                 ), contactBox);
             }
         });
 
+        // Paikkakunnan vaihto
         function handlePaikkakuntaChange(value) {
             if (!value) return;
             let url = value === "muu"
@@ -216,7 +226,9 @@
                 new IntersectionObserver(entries => {
                     entries.forEach(entry => entry.isIntersecting ? bg.play() : bg.pause());
                 }, {threshold: 0.5}).observe(home);
-            } else if (bg) try { bg.play(); } catch(e) {}
+            } else if (bg) {
+                try { bg.play(); } catch(e) {}
+            }
         })();
 
         (function(){
