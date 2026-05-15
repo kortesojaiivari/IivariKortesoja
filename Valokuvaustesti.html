@@ -41,10 +41,10 @@
     }
     </script>
     <link rel="canonical" href="https://www.iivarikortesoja.media/Valokuvaus.html">
-   
+  
     <!-- Kaikki CSS siirretty omaan tiedostoon -->
     <link rel="stylesheet" href="SKRIPTIT/valokuvaus-styles.css">
-   
+  
     <!-- Skriptit -->
     <script src="../SKRIPTIT/hinnat-config-new.js" defer></script>
     <script src="../SKRIPTIT/cookie-consent.js" defer></script>
@@ -140,11 +140,13 @@
             <button class="btn-accept" onclick="acceptCookies()">HYVÄKSY</button>
         </div>
     </div>
+
     <script>
         // Hinnoittelu
         document.addEventListener('DOMContentLoaded', () => {
             const PAIKKAKUNTA = "muu";
             const prices = getPricesForLocation(PAIKKAKUNTA);
+            
             function createPricingBox(title, price, desc = '', features = [], quote = '') {
                 let html = `<h3>${title}</h3><p class="price">${price} €</p>`;
                 if (desc) html += `<p>${desc}</p>`;
@@ -159,14 +161,17 @@
                 box.innerHTML = html;
                 return box;
             }
+
             const upperRow = document.querySelector('#pricing .upper-row');
             if (upperRow) {
                 upperRow.innerHTML = '';
                 upperRow.appendChild(createPricingBox('3 tuntia', prices["3 tuntia"], 'Esimerkiksi hautajaiset tai valmistujaisjuhlat'));
                 upperRow.appendChild(createPricingBox('4-6 tuntia', prices["4-6 tuntia"], 'Pidempään kestävät tilaisuudet tai kevyempi hääkuvaus'));
             }
+
             const lowerRow = document.querySelector('#pricing .lower-row');
             const contactBox = lowerRow ? lowerRow.querySelector('.contact-box') : null;
+            
             if (lowerRow && contactBox) {
                 // Hääpaketti
                 lowerRow.insertBefore(createPricingBox(
@@ -182,19 +187,20 @@
                     ''
                 ), contactBox);
 
+                // Siunaustilaisuus
                 lowerRow.insertBefore(createPricingBox(
                     'Siunaustilaisuus',
                     prices["Siunaustilaisuus"],
                     '',
                     [
-                        'Sopii sekä kirkkoon että muistotilaisuuteen'
+                        'Sopii sekä kirkkoon että muistotilaisuuteen',
                         'Kuvaamista enintään 1,5 tuntia',
                         '<strong>Lisätunnit alkaen 62 € / tunti</strong>'
-                    
                     ]
                 ), contactBox);
             }
         });
+
         function handlePaikkakuntaChange(value) {
             if (!value) return;
             let url = value === "muu"
@@ -202,6 +208,7 @@
                 : `https://www.iivarikortesoja.media/Valokuvaus/${value}.html`;
             window.location.href = url;
         }
+
         // Taustavideo + about-kuvan vaihto
         (function(){
             const bg = document.querySelector('#home video');
@@ -212,6 +219,7 @@
                 }, {threshold: 0.5}).observe(home);
             } else if (bg) try { bg.play(); } catch(e) {}
         })();
+
         (function(){
             const imgs = document.querySelectorAll('.about-image img');
             if (imgs.length < 1) return;
