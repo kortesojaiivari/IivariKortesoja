@@ -46,7 +46,7 @@
     <link rel="stylesheet" href="SKRIPTIT/valokuvaus-styles.css">
    
     <!-- Skriptit -->
-    <script src="../SKRIPTIT/hinnat-config.js" defer></script>
+    <script src="../SKRIPTIT/hinnat-config-new.js" defer></script>
     <script src="../SKRIPTIT/cookie-consent.js" defer></script>
     <script src="../SKRIPTIT/dynamic-title.js" defer></script>
     <script src="../SKRIPTIT/header.js" defer></script>
@@ -126,22 +126,6 @@
                 Klikkaa elementtiä tai lue QR-koodi päästäksesi keskustelemaan
             </p>
         </div>
-
-        <!-- X Chat banneri kuvalla (WhatsAppin alapuolella) -->
-        <div class="xchat-box" style="margin-top: 45px; text-align: center; background: #0a0a0a; border-radius: 12px; padding: 30px 20px; border: 2px solid #1d9bf0;">
-            <a href="https://x.com/messages/compose?recipient_id=1384795469298257920" 
-               target="_blank" 
-               rel="noopener" 
-               style="text-decoration: none; color: inherit; display: block;">
-                
-                <img src="MEDIA/Ikonit/XCHAT.webp" 
-                     alt="Chattaa X:ssä - Iivari Kortesoja" 
-                     style="max-width: 260px; width: 100%; height: auto; border-radius: 10px; margin-bottom: 15px; box-shadow: 0 4px 15px rgba(29, 155, 240, 0.25);">
-                
-                <h3 style="margin: 10px 0 6px 0; color: #1d9bf0;">Chattaa X:ssä</h3>
-                <p style="color: #ddd; font-size: 1.05rem; margin: 0;">Klikkaa kuvaa tai tekstiä ja aloita keskustelu suoraan X:ssä</p>
-            </a>
-        </div>
     </section>
     <!-- 3x2 static-gallery -->
     <div class="static-gallery"></div>
@@ -156,7 +140,6 @@
             <button class="btn-accept" onclick="acceptCookies()">HYVÄKSY</button>
         </div>
     </div>
-
     <script>
         // Hinnoittelu
         document.addEventListener('DOMContentLoaded', () => {
@@ -185,6 +168,7 @@
             const lowerRow = document.querySelector('#pricing .lower-row');
             const contactBox = lowerRow ? lowerRow.querySelector('.contact-box') : null;
             if (lowerRow && contactBox) {
+                // Hääpaketti
                 lowerRow.insertBefore(createPricingBox(
                     'Hääpaketti',
                     prices["Hääpaketti"],
@@ -195,7 +179,19 @@
                         "Instagram-valmiit kuvat mukana toimituksessa",
                         'Eniten valokuvia'
                     ],
-                    'Monet sanovat, että kuva kertoo enemmän kuin tuhat sanaa. Minä sanon, että liikkuva kuva kertoo vieläkin enemmän.'
+                    ''
+                ), contactBox);
+
+                // Uusi: Hautajaiset / Siunaustilaisuus
+                lowerRow.insertBefore(createPricingBox(
+                    'Hautajaiset / Siunaustilaisuus',
+                    prices["Hautajaiset / Siunaustilaisuus"],
+                    'Dokumentaarinen ja arvokas kuvaus siunaustilaisuuteen tai hautajaisiin',
+                    [
+                        'Noin 2–3 tuntia kuvausta',
+                        'Kuvat toimitetaan muokattuna ja valmiina',
+                        'Sopii myös muistotilaisuuksiin'
+                    ]
                 ), contactBox);
             }
         });
