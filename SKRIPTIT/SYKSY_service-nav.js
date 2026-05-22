@@ -1,21 +1,28 @@
 // SYKSY_service-nav.js
-// Dynaaminen palvelunavigaatio yhdellä sivulla
+// Dynaaminen palvelunavigaatio yhdellä sivulla - Syksy-versio
 
 const services = [
     {
         id: "haat",
         title: "Häät",
         buttonText: "Häät",
-        description: "Kokopäiväinen dokumentaarinen hääkuvaus. Ikuistan koko hääpäivänne alkaen aamusta valmistautumisesta aina iltaan asti. Toimitan myös Instagram-valmiit kuvat jo seuraavana päivänä.",
+        description: `
+            <p>Kokopäiväinen dokumentaarinen hääkuvaus on vahvin erikoisalani. Kuvaan koko hääpäivänne aamusta iltaan asti – valmistautumisesta häävalssiin.</p>
+            <p>Toimitan ensimmäiset kuvat jo seuraavana päivänä ja Instagram-valmiit kuvat kuuluvat pakettiin. Laadukkaat kuvat, luonnollinen tyyli ja rento tunnelma.</p>
+            <p><strong>Suositus:</strong> Kokopäiväinen paketti (8–12 h)</p>
+        `,
         image: "MEDIA/IivariKortesoja valokuvaaja/häät-esimerkki.webp",
-        priceTitle: "Hääpaketti",
+        priceTitle: "Hääpaketti (koko päivä)",
         defaultPrice: "850"
     },
     {
         id: "hautajaiset",
         title: "Hautajaiset & Siunaustilaisuudet",
         buttonText: "Hautajaiset",
-        description: "Arvokas ja rauhallinen kuvaus hautajaisiin ja muistotilaisuuksiin. Kunnioitan tilaisuuden luonnetta ja tallennan hetket herkästi ja kauniisti.",
+        description: `
+            <p>Tarjoan arvokasta ja herkkää kuvausta hautajaisiin sekä muistotilaisuuksiin. Kunnioitan tilaisuuden tunnelmaa ja tallennan hetket kauniisti ja digitaalisesti.</p>
+            <p>Sopii sekä kirkkoon, krematorioon että muistotilaisuuteen. Voit valita 1–3 tunnin paketin tarpeen mukaan.</p>
+        `,
         image: "MEDIA/IivariKortesoja valokuvaaja/hautajaiset-esimerkki.webp",
         priceTitle: "Siunaustilaisuus",
         defaultPrice: "290"
@@ -24,7 +31,10 @@ const services = [
         id: "valmistujaiset",
         title: "Valmistujaiset",
         buttonText: "Valmistujaiset",
-        description: "Valmistujaiskuvaus kotona, juhlapaikalla tai ulkona. Sekä yksilö- että ryhmäkuvat. Mukana myös lyhyt videopätkä halutessasi.",
+        description: `
+            <p>Onnittelut valmistujaisjuhlan kunniaksi! Kuvaan sekä yksilö- että ryhmäkuvat haluamassanne ympäristössä – kotona, koululla tai ulkona luonnossa.</p>
+            <p>Pakettiin kuuluu 30–50 muokattua kuvaa + lyhyt videopätkä onnitteluista.</p>
+        `,
         image: "MEDIA/IivariKortesoja valokuvaaja/valmistujaiset-esimerkki.webp",
         priceTitle: "Valmistujaispaketti",
         defaultPrice: "190"
@@ -33,25 +43,22 @@ const services = [
         id: "asuntokuvaus",
         title: "Asuntokuvaus & Kiinteistökuvaus",
         buttonText: "Asuntokuvaus",
-        description: "Laadukkaat myyntikuvat asunnoille, mökeille ja kiinteistöille. Sisältää sekä laajakulma- että yksityiskohtakuvat. Myös virtuaaliesittely mahdollinen.",
+        description: `
+            <p>Laadukkaat myyntikuvat asunnoille, mökeille ja kiinteistöille. Käytän laajakulmaa sekä yksityiskohtakuvausta, jotta kohde näyttää mahdollisimman houkuttelevalta.</p>
+            <p>Sisältää myös ilmakuvat dronella (tarvittaessa) ja virtuaaliesittelyn mahdollisuuden.</p>
+        `,
         image: "MEDIA/IivariKortesoja valokuvaaja/asuntokuvaus-esimerkki.webp",
-        priceTitle: "Asuntokuvaus",
+        priceTitle: "Asuntokuvaus (max 3h)",
         defaultPrice: "150"
-    },
-    {
-        id: "muotokuvat",
-        title: "Muotokuvat & Henkilökuvaus",
-        buttonText: "Muotokuvat",
-        description: "Yksilö- ja perhemuotokuvat studiossa tai luonnonvalossa. Myös lemmikkikuvaukset ja yritysportretit.",
-        image: "MEDIA/IivariKortesoja valokuvaaja/muotokuva-esimerkki.webp",
-        priceTitle: "Muotokuvaus 1 tunti",
-        defaultPrice: "120"
     },
     {
         id: "tuntipaketit",
         title: "Tuntipaketit",
         buttonText: "Tuntipaketit",
-        description: "Joustava tuntipohjainen kuvaus erilaisiin tilaisuuksiin. Sopii erinomaisesti lyhyempiin tapahtumiin ja kuvauksiin.",
+        description: `
+            <p>Joustavin vaihtoehto erilaisiin tarpeisiin: ristiäiset, syntymäpäivät, yritystapahtumat, lemmikkikuvaus tai muut tilaisuudet.</p>
+            <p>Veloitan vain todellisen kuvausajan mukaan. Minimiveloitus 2 tuntia.</p>
+        `,
         image: "MEDIA/IivariKortesoja valokuvaaja/tuntikuvaus-esimerkki.webp",
         priceTitle: "Tuntipaketti",
         defaultPrice: "95"
@@ -71,12 +78,21 @@ function initServiceNavigation() {
         btn.dataset.service = service.id;
         
         btn.addEventListener('click', () => {
-            // Poista aktiivisuus kaikista napeista
+            // Poista aktiivisuus kaikista
             document.querySelectorAll('.service-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             
             // Päivitä sisältö
             updateServiceContent(service);
+            
+            // Smooth scroll #dynamic-content -alueelle
+            const dynamicSection = document.getElementById('dynamic-content');
+            if (dynamicSection) {
+                dynamicSection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }
         });
         
         container.appendChild(btn);
@@ -85,7 +101,6 @@ function initServiceNavigation() {
     // Avaa ensimmäinen palvelu automaattisesti
     if (services.length > 0) {
         updateServiceContent(services[0]);
-        // Aktivoi ensimmäinen nappi
         const firstBtn = container.querySelector('.service-btn');
         if (firstBtn) firstBtn.classList.add('active');
     }
@@ -96,10 +111,7 @@ function updateServiceContent(service) {
     document.getElementById('dynamic-title').textContent = service.title;
 
     // Kuvaus
-    document.getElementById('service-description').innerHTML = `
-        <p>${service.description}</p>
-        <p style="margin-top: 20px;"><strong>Ota yhteyttä niin suunnitellaan juuri teille sopiva paketti.</strong></p>
-    `;
+    document.getElementById('service-description').innerHTML = service.description;
 
     // Kuva
     const img = document.getElementById('service-image');
@@ -112,10 +124,9 @@ function updateServiceContent(service) {
     if (upperRow) upperRow.innerHTML = '';
     if (lowerRow) lowerRow.innerHTML = '';
 
-    // Esimerkkihinnat (voidaan laajentaa myöhemmin)
     if (upperRow) {
-        const box1 = createPricingBox("3 tuntia", "290", "Lyhyempi tilaisuus");
-        const box2 = createPricingBox("4–6 tuntia", "450", "Tyypillinen pituus");
+        const box1 = createPricingBox("3 tuntia", "290 €", "Lyhyempi tilaisuus");
+        const box2 = createPricingBox("4–6 tuntia", "450 €", "Tyypillinen pituus");
         upperRow.appendChild(box1);
         upperRow.appendChild(box2);
     }
@@ -124,8 +135,8 @@ function updateServiceContent(service) {
         const mainBox = createPricingBox(
             service.priceTitle, 
             service.defaultPrice + " €", 
-            "Suosituin paketti",
-            ["Dokumentaarinen kuvaus", "Kuvat muokattuna", "Digitaalinen toimitus"]
+            "Suosituin valinta",
+            ["Laadukkaat muokatut kuvat", "Digitaalinen toimitus", "Nopea toimitus"]
         );
         lowerRow.appendChild(mainBox);
     }
@@ -133,9 +144,9 @@ function updateServiceContent(service) {
 
 function createPricingBox(title, price, desc = '', features = []) {
     let html = `<h3>${title}</h3><p class="price">${price}</p>`;
-    if (desc) html += `<p>${desc}</p>`;
+    if (desc) html += `<p class="price-desc">${desc}</p>`;
     if (features.length > 0) {
-        html += '<ul>';
+        html += '<ul class="features-list">';
         features.forEach(f => html += `<li>${f}</li>`);
         html += '</ul>';
     }
