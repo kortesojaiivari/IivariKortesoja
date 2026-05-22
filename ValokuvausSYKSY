@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valokuvaus | Iivari Kortesoja</title>
+    <meta name="description" content="Edullista valokuvausta yksityisille – häät, valmistujaiset, hautajaiset, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta. Myös videopalvelut saatavilla.">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
+    </script>
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "ud6y4jpngh");
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Valokuvaus | Iivari Kortesoja",
+      "description": "Edullista Valokuvausta: Hääkuvaus, kokopäiväinen hääkuvaus, valmistujaiset, hautajaiskuvaus, tilaisuudet, ristiäiset, muotokuvat ja paljon muuta.",
+      "telephone": "+358405247918",
+      "email": "kortesoja.iivari@gmail.com",
+      "url": "https://www.iivarikortesoja.media/Valokuvaus.html",
+      "image": "https://www.iivarikortesoja.media/MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja1.webp",
+      "priceRange": "350 - 900 €",
+      "sameAs": ["https://wa.me/message/2JQ4G2D3EXLID1","https://www.linkedin.com/in/iivarikortesoja/","https://iivarikortesoja.media"]
+    }
+    </script>
+    <link rel="canonical" href="https://www.iivarikortesoja.media/Valokuvaus.html">
+   
+    <!-- Kaikki CSS siirretty omaan tiedostoon -->
+    <link rel="stylesheet" href="SKRIPTIT/valokuvaus-styles.css">
+   
+    <!-- Skriptit -->
+    <script src="../SKRIPTIT/hinnat-config-new.js" defer></script>
+    <script src="../SKRIPTIT/cookie-consent.js" defer></script>
+    <script src="../SKRIPTIT/dynamic-title.js" defer></script>
+    <script src="../SKRIPTIT/header.js" defer></script>
+    <script src="../SKRIPTIT/uusmobile-scaling.js" defer></script>
+    <script src="../SKRIPTIT/kampanja-popup.js" defer></script>
+    <script src="../SKRIPTIT/photo-buttons.js" defer></script>
+    <script src="../SKRIPTIT/paikkakunta-dropdown.js" defer></script>
+    <script src="SKRIPTIT/paikkakunta-redirect.js" defer></script>
+    <script src="../SKRIPTIT/portfolio-changer.js" defer></script>
+    <script src="../SKRIPTIT/SYKSY_service-nav.js" defer></script>
+</head>
+<body>
+    <section id="home">
+        <video autoplay muted loop playsinline poster="VALOKUVAUS/valokuvaus-poster.webp">
+            <source src="MEDIA/Pääsivu_Videotuotannot ja Valokuvaus/2000luvunkamera.webm" type="video/webm">
+            Selain ei tue taustavideota.
+        </video>
+        
+        <div class="hero-overlay">
+            <h1>Valokuvaus</h1>
+            <p class="hero-subtitle">Ikuistan tärkeät hetkesí – ammattitaidolla ja edullisesti</p>
+            
+            <!-- Palvelut navigaatiot -->
+            <div id="service-buttons" class="service-buttons-grid">
+                <!-- Täytetään JS:llä -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Dynaaminen sisältöalue -->
+    <div id="dynamic-content">
+        <h2 id="dynamic-title" class="dynamic-title">Valitse palvelu yläpuolelta</h2>
+        
+        <div class="about-section">
+            <div class="about-text" id="service-description">
+                <!-- Dynaaminen teksti -->
+            </div>
+            <div class="about-image">
+                <img src="MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja1.webp" alt="Iivari Kortesoja" id="service-image" class="active">
+            </div>
+        </div>
+
+        <section class="project-section">
+            <div class="project-header">
+                <span class="subtitle">ESIMERKKIPROJEKTIT</span>
+                <h3 id="changing-title" class="changing-title">TuplaKupla - Teatterikuvaus</h3>
+            </div>
+            <div id="changing-grid"></div>
+            <div id="category-dots"></div>
+        </section>
+
+        <section id="pricing">
+            <h2 id="pricing-title">Hinnoittelu</h2>
+            <p class="disclaimer">*Nämä ovat suuntaa-antavia hintoja. Hinnat sisältävät ALV 25,5 %. Matkakustannukset lisätään erikseen.</p>
+            <div class="upper-row" id="pricing-upper"></div>
+            <div class="lower-row" id="pricing-lower"></div>
+        </section>
+    </div>
+
+    <div id="location-selector">
+        <h2>Valitse kuvauspaikkakunta</h2>
+        <select id="paikkakunta-dropdown" onchange="handlePaikkakuntaChange(this.value)" aria-label="Valitse kuvauspaikkakunta"></select>
+        <p class="info">Hinnat ja saatavuus voivat vaihdella paikkakunnan mukaan.</p>
+    </div>
+
+    <section id="final-contact">
+        <div class="contact-info">
+            <h2>Ota yhteyttä</h2>
+            <p>Sähköposti: <a href="mailto:kortesoja.iivari@gmail.com">kortesoja.iivari@gmail.com</a></p>
+            <p>Puhelin: <a href="tel:+358405247918">040 524 7918</a></p>
+        </div>
+        <div class="qr-box">
+            <a href="https://wa.me/message/2JQ4G2D3EXLID1" target="_blank" rel="noopener">
+                <img src="MEDIA/Ikonit/QR.webp" alt="WhatsApp QR-koodi">
+            </a>
+            <p style="text-align: center; margin-top: 20px; color: #bbb; font-size: 1.05rem;">
+                Klikkaa tai lue QR-koodi → WhatsApp
+            </p>
+        </div>
+    </section>
+
+    <!-- 3x2 static-gallery -->
+    <div class="static-gallery"></div>
+
+    <footer>
+        <p>© Iivari Kortesoja 2026 | Y-Tunnus 3591660-9</p>
+    </footer>
+
+    <!-- Evästebanneri -->
+    <div id="cookie-banner">
+        <p>Käyttämällä tätä verkkosivustoa hyväksyt evästeiden käytön. Käytämme evästeitä tarjotaksemme sinulle erinomaisen kokemuksen.</p>
+        <div class="buttons">
+            <button class="btn-reject" onclick="rejectCookies()">HYLKÄÄ</button>
+            <button class="btn-accept" onclick="acceptCookies()">HYVÄKSY</button>
+        </div>
+    </div>
+
+    <script>
+        // Pääskripti - dynaaminen sisältö
+        document.addEventListener('DOMContentLoaded', () => {
+            const bgVideo = document.querySelector('#home video');
+            if (bgVideo) bgVideo.play().catch(() => {});
+
+            if (typeof initServiceNavigation === "function") {
+                initServiceNavigation();
+            }
+        });
+    </script>
+</body>
+</html>
