@@ -1,16 +1,14 @@
 // SYKSY_service-nav.js
-// Dynaaminen palvelunavigaatio yhdellä sivulla - Syksy-versio
+// Liquid Glass -tyyli + lyhyemmät napit
 
 const services = [
     {
         id: "haat",
         title: "Häät",
         buttonText: "Häät",
-        emoji: "💒",
         description: `
-            <p>Kokopäiväinen dokumentaarinen hääkuvaus on vahvin erikoisalani. Kuvaan koko hääpäivänne aamusta iltaan asti – valmistautumisesta häävalssiin.</p>
-            <p>Toimitan ensimmäiset kuvat jo seuraavana päivänä ja Instagram-valmiit kuvat kuuluvat pakettiin.</p>
-            <p><strong>Suositus:</strong> Kokopäiväinen paketti (8–12 h)</p>
+            <p>Kokopäiväinen dokumentaarinen hääkuvaus aamusta iltaan. Ensimmäiset kuvat seuraavana päivänä.</p>
+            <p><strong>Suositus:</strong> 8–12 tunnin paketti</p>
         `,
         image: "MEDIA/IivariKortesoja valokuvaaja/häät-esimerkki.webp",
         priceTitle: "Hääpaketti (koko päivä)",
@@ -18,12 +16,11 @@ const services = [
     },
     {
         id: "hautajaiset",
-        title: "Hautajaiset & Siunaustilaisuudet",
+        title: "Hautajaiset",
         buttonText: "Hautajaiset",
-        emoji: "🕊️",
         description: `
-            <p>Tarjoan arvokasta ja herkkää kuvausta hautajaisiin sekä muistotilaisuuksiin. Kunnioitan tilaisuuden tunnelmaa.</p>
-            <p>Sopii sekä kirkkoon että muistotilaisuuteen. Voit valita 1–3 tunnin paketin.</p>
+            <p>Arvokas ja herkkä kuvaus hautajaisiin sekä muistotilaisuuksiin.</p>
+            <p>1–3 tunnin paketti tarpeen mukaan.</p>
         `,
         image: "MEDIA/IivariKortesoja valokuvaaja/hautajaiset-esimerkki.webp",
         priceTitle: "Siunaustilaisuus",
@@ -33,10 +30,9 @@ const services = [
         id: "valmistujaiset",
         title: "Valmistujaiset",
         buttonText: "Valmistujaiset",
-        emoji: "🎓",
         description: `
-            <p>Onnittelut valmistujaisjuhlan kunniaksi! Kuvaan sekä yksilö- että ryhmäkuvat haluamassanne ympäristössä.</p>
-            <p>Pakettiin kuuluu 30–50 muokattua kuvaa + lyhyt videopätkä.</p>
+            <p>Yksilö- ja ryhmäkuvaus valmistujaisiin kotona tai ulkona.</p>
+            <p>Sisältää muokatut kuvat + videopätkän.</p>
         `,
         image: "MEDIA/IivariKortesoja valokuvaaja/valmistujaiset-esimerkki.webp",
         priceTitle: "Valmistujaispaketti",
@@ -44,25 +40,21 @@ const services = [
     },
     {
         id: "asuntokuvaus",
-        title: "Asuntokuvaus & Kiinteistökuvaus",
+        title: "Asuntokuvaus",
         buttonText: "Asuntokuvaus",
-        emoji: "🏠",
         description: `
-            <p>Laadukkaat myyntikuvat asunnoille, mökeille ja kiinteistöille. Laajakulma + yksityiskohtakuvat.</p>
-            <p>Sisältää myös dronella otettuja ilmakuvia tarvittaessa.</p>
+            <p>Laadukkaat myyntikuvat asunnoille ja kiinteistöille. Laajakulma ja dronella.</p>
         `,
         image: "MEDIA/IivariKortesoja valokuvaaja/asuntokuvaus-esimerkki.webp",
-        priceTitle: "Asuntokuvaus (max 3h)",
+        priceTitle: "Asuntokuvaus",
         defaultPrice: "150"
     },
     {
         id: "tuntipaketit",
         title: "Tuntipaketit",
         buttonText: "Tuntipaketit",
-        emoji: "⏱️",
         description: `
-            <p>Joustavin vaihtoehto erilaisiin tarpeisiin: ristiäiset, syntymäpäivät, yritystapahtumat tai lemmikkikuvaus.</p>
-            <p>Minimiveloitus 2 tuntia.</p>
+            <p>Joustava tuntipohjainen kuvaus kaikkiin tilaisuuksiin. Minimiveloitus 2 tuntia.</p>
         `,
         image: "MEDIA/IivariKortesoja valokuvaaja/tuntikuvaus-esimerkki.webp",
         priceTitle: "Tuntipaketti",
@@ -79,10 +71,7 @@ function initServiceNavigation() {
     services.forEach(service => {
         const btn = document.createElement('button');
         btn.className = 'service-btn';
-        btn.innerHTML = `
-            <span>${service.emoji}</span>
-            ${service.buttonText}
-        `;
+        btn.textContent = service.buttonText;
         btn.dataset.service = service.id;
         
         btn.addEventListener('click', () => {
@@ -100,7 +89,6 @@ function initServiceNavigation() {
         container.appendChild(btn);
     });
 
-    // Avaa ensimmäinen automaattisesti
     if (services.length > 0) {
         updateServiceContent(services[0]);
         const firstBtn = container.querySelector('.service-btn');
@@ -108,8 +96,45 @@ function initServiceNavigation() {
     }
 }
 
-// Muut funktiot (updateServiceContent, createPricingBox) pysyvät samoina kuin aiemmin
-function updateServiceContent(service) { /* ... sama kuin edellisessä ... */ }
-function createPricingBox(title, price, desc = '', features = []) { /* ... sama ... */ }
+function updateServiceContent(service) {
+    document.getElementById('dynamic-title').textContent = service.title;
+    document.getElementById('service-description').innerHTML = service.description;
+
+    const img = document.getElementById('service-image');
+    if (img) img.src = service.image;
+
+    const upperRow = document.getElementById('pricing-upper');
+    const lowerRow = document.getElementById('pricing-lower');
+    
+    if (upperRow) upperRow.innerHTML = '';
+    if (lowerRow) lowerRow.innerHTML = '';
+
+    if (upperRow) {
+        upperRow.appendChild(createPricingBox("3 tuntia", "290 €", "Lyhyempi tilaisuus"));
+        upperRow.appendChild(createPricingBox("4–6 tuntia", "450 €", "Tyypillinen pituus"));
+    }
+    if (lowerRow) {
+        lowerRow.appendChild(createPricingBox(
+            service.priceTitle, 
+            service.defaultPrice + " €", 
+            "Suosituin valinta",
+            ["Muokatut kuvat", "Digitaalinen toimitus"]
+        ));
+    }
+}
+
+function createPricingBox(title, price, desc = '', features = []) {
+    let html = `<h3>${title}</h3><p class="price">${price}</p>`;
+    if (desc) html += `<p class="price-desc">${desc}</p>`;
+    if (features.length > 0) {
+        html += '<ul class="features-list">';
+        features.forEach(f => html += `<li>${f}</li>`);
+        html += '</ul>';
+    }
+    const box = document.createElement('div');
+    box.className = 'pricing-box';
+    box.innerHTML = html;
+    return box;
+}
 
 window.initServiceNavigation = initServiceNavigation;
