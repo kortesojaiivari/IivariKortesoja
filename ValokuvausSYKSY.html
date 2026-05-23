@@ -160,7 +160,8 @@
         </section>
     </div>
 
-    <div id="location-selector" style="display: none;">
+    <!-- Paikkakuntavalitsin (käytetään olemassa olevaa) -->
+    <div id="location-selector" style="display: none; padding: 30px 20px; background: #f8f8f8;">
         <h2>Valitse kuvauspaikkakunta</h2>
         <select id="paikkakunta-dropdown" onchange="handlePaikkakuntaChange(this.value)" aria-label="Valitse kuvauspaikkakunta"></select>
     </div>
@@ -204,6 +205,14 @@
             if (typeof initServiceNavigation === "function") initServiceNavigation();
             if (typeof initBottomMenu === "function") initBottomMenu();
         });
+
+        // Avaa paikkakuntavalitsin ilman scrollausta
+        window.toggleLocationSelector = function() {
+            const selector = document.getElementById('location-selector');
+            if (selector) {
+                selector.style.display = (selector.style.display === 'none' || selector.style.display === '') ? 'block' : 'none';
+            }
+        };
     </script>
 </body>
 </html>
