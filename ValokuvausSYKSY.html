@@ -38,7 +38,7 @@
    
     <link rel="stylesheet" href="SKRIPTIT/valokuvaus-styles.css">
 
-    <!-- Liquid Glass + Vihreä teema -->
+    <!-- Liquid Glass + Vihreä reunus + vahvempi shadow -->
     <style>
         .hero-overlay {
             position: absolute;
@@ -55,53 +55,55 @@
         .service-buttons-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
+            gap: 18px;
             margin-top: 35px;
             padding: 0 15px;
         }
 
         .service-btn {
-            background: rgba(40, 140, 80, 0.18);     /* Vihreä sävy lasissa */
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(80, 200, 140, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 2px solid rgba(40, 160, 90, 0.65);
             color: white;
             padding: 18px 16px;
-            font-size: 1.22rem;
-            font-weight: 600;
-            border-radius: 18px;
+            font-size: 1.46rem;           /* +20% kasvatus */
+            font-weight: 700;
+            border-radius: 20px;
             cursor: pointer;
-            transition: all 0.35s ease;
-            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
-            min-height: 88px;           /* Lyhyempi korkeus */
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.40); /* 40% dropshadow */
+            min-height: 88px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);   /* Tekstin dropshadow */
         }
 
         .service-btn:hover {
-            background: rgba(40, 140, 80, 0.28);
+            background: rgba(255, 255, 255, 0.24);
+            border-color: #f39c12;
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.45);
             transform: translateY(-5px);
-            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
         }
 
         .service-btn.active {
-            background: rgba(255, 140, 0, 0.45);     /* Oranssi aktiivinen */
-            border-color: rgba(255, 180, 60, 0.7);
-            box-shadow: 0 12px 28px rgba(255, 140, 0, 0.45);
-            transform: scale(1.04);
+            background: rgba(255, 140, 0, 0.38);
+            border-color: #ff9f1c;
+            box-shadow: 0 14px 35px rgba(255, 140, 0, 0.45);
+            transform: scale(1.05);
         }
 
         @media (max-width: 768px) {
             .service-buttons-grid {
-                grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
-                gap: 12px;
+                grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+                gap: 14px;
             }
             .service-btn {
-                font-size: 1.1rem;
-                padding: 16px 12px;
+                font-size: 1.32rem;       /* +20% myös mobiilissa */
+                padding: 16px 14px;
                 min-height: 82px;
             }
         }
@@ -135,7 +137,6 @@
         </div>
     </section>
 
-    <!-- Dynaaminen sisältö -->
     <div id="dynamic-content">
         <h2 id="dynamic-title" class="dynamic-title">Valitse palvelu yläpuolelta</h2>
         
