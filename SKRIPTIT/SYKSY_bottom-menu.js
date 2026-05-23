@@ -1,5 +1,5 @@
 // SYKSY_bottom-menu.js
-// Alapalkki - Valokuvaus sivulle
+// Alapalkki Valokuvaus-sivulle - käyttää paikkakunta-dropdown.js:ää
 
 const bottomMenuHTML = `
     <div id="bottom-menu" class="bottom-menu">
@@ -50,12 +50,14 @@ const bottomMenuStyles = `
         justify-content: space-between;
         padding: 0 20px;
         height: 100%;
+        flex-wrap: wrap;
+        gap: 12px;
     }
 
     .bottom-service-nav a {
         color: white;
         text-decoration: none;
-        margin: 0 14px;
+        margin: 0 12px;
         font-size: 1.18rem;
         font-weight: 600;
         transition: color 0.3s;
@@ -72,6 +74,7 @@ const bottomMenuStyles = `
         gap: 12px;
         color: white;
         font-size: 1.05rem;
+        white-space: nowrap;
     }
 
     .bottom-change-btn {
@@ -87,7 +90,6 @@ const bottomMenuStyles = `
 
     .bottom-change-btn:hover {
         background: rgba(255,140,0,0.5);
-        border-color: #ff9f1c;
     }
 
     @media (max-width: 768px) {
@@ -98,7 +100,7 @@ const bottomMenuStyles = `
 `;
 
 function initBottomMenu() {
-    // Inject styles
+    // Lisää tyylit
     if (!document.getElementById('bottom-menu-styles')) {
         const style = document.createElement('style');
         style.id = 'bottom-menu-styles';
@@ -106,7 +108,7 @@ function initBottomMenu() {
         document.head.appendChild(style);
     }
 
-    // Inject HTML
+    // Lisää HTML
     if (!document.getElementById('bottom-menu')) {
         const div = document.createElement('div');
         div.innerHTML = bottomMenuHTML;
@@ -114,30 +116,26 @@ function initBottomMenu() {
     }
 
     const menu = document.getElementById('bottom-menu');
-    const locationText = document.getElementById('bottom-location-text');
     const changeBtn = document.getElementById('bottom-change-location');
 
-    // Scroll behavior
+    // Scroll-käyttäytyminen (15% → 10%)
     let lastScrollY = window.scrollY;
     let ticking = false;
 
     function handleScroll() {
         const currentScroll = window.scrollY;
 
-        if (currentScroll < 50) {
+        if (currentScroll < 80) {
             menu.classList.remove('shrunk');
         } else if (currentScroll > lastScrollY) {
-            // Scroll down → shrink
             menu.classList.add('shrunk');
         } else {
-            // Scroll up → expand
             menu.classList.remove('shrunk');
         }
-
         lastScrollY = currentScroll;
     }
 
-    function onScrollTick() {
+    window.addEventListener('scroll', () => {
         if (!ticking) {
             window.requestAnimationFrame(() => {
                 handleScroll();
@@ -145,36 +143,32 @@ function initBottomMenu() {
             });
             ticking = true;
         }
+    }, { passive: true });
+
+    // Vaihda paikkakunta -nappi käyttää olemassa olevaa dropdownia
+    if (changeBtn) {
+        changeBtn.addEventListener('click', () => {
+            const selector = document.getElementById('location-selector');
+            if (selector) {
+                selector.style.display = (selector.style.display === 'none' || selector.style.display === '') ? 'block' : 'none';
+            }
+        });
     }
 
-    window.addEventListener('scroll', onScrollTick, { passive: true });
-
-    // Service links
+    // Palvelulinkit
     document.querySelectorAll('.bottom-service-nav a').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const serviceId = link.dataset.service;
-            
-            // Find and click corresponding top button
             const topBtn = document.querySelector(`.service-btn[data-service="${serviceId}"]`);
             if (topBtn) topBtn.click();
         });
     });
 
-    // Change location button
-    if (changeBtn) {
-        changeBtn.addEventListener('click', () => {
-            const selector = document.getElementById('location-selector');
-            if (selector) {
-                selector.style.display = selector.style.display === 'none' ? 'block' : 'none';
-            }
-        });
-    }
-
-    // Initial state
+    // Päivitä paikkakuntateksti
     setTimeout(() => {
-        updateBottomLocationText();
-    }, 800);
+        if (typeof updateBottomLocationText === "function") updateBottomLocationText();
+    }, 600);
 }
 
 function updateBottomLocationText() {
@@ -183,9 +177,11 @@ function updateBottomLocationText() {
 
     const path = window.location.pathname.toLowerCase();
     let city = "Muu Suomi";
+
     if (path.includes('/pori')) city = "Pori";
     else if (path.includes('/rauma')) city = "Rauma";
     else if (path.includes('/eura')) city = "Eura";
+    // Lisää tarvittaessa muita
 
     textEl.innerHTML = `Paikkakunta: <strong>${city}</strong>`;
 }
