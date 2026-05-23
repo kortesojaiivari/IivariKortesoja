@@ -96,48 +96,6 @@
             box-shadow: 0 14px 35px rgba(255, 140, 0, 0.45);
             transform: scale(1.05);
         }
-
-        /* Uusi paikkakuntavalitsin hero-alueella */
-        .location-bar {
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 14px;
-            padding: 12px 20px;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            color: white;
-            font-size: 1.1rem;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-            margin-top: 10px;
-        }
-
-        .location-bar strong {
-            color: #aaffcc;
-        }
-
-        .change-location-btn {
-            background: rgba(255,255,255,0.2);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.4);
-            padding: 8px 16px;
-            border-radius: 10px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .change-location-btn:hover {
-            background: rgba(255,140,0,0.4);
-            border-color: #ff9f1c;
-        }
-
-        @media (max-width: 768px) {
-            .service-buttons-grid { gap: 14px; }
-            .service-btn { font-size: 1.32rem; min-height: 82px; }
-            .location-bar { font-size: 1rem; padding: 10px 16px; flex-direction: column; gap: 8px; }
-        }
     </style>
 
     <!-- Skriptit -->
@@ -152,6 +110,7 @@
     <script src="SKRIPTIT/paikkakunta-redirect.js" defer></script>
     <script src="SKRIPTIT/portfolio-changer.js" defer></script>
     <script src="SKRIPTIT/SYKSY_service-nav.js" defer></script>
+    <script src="SKRIPTIT/SYKSY_bottom-menu.js" defer></script>
 </head>
 <body>
     <section id="home">
@@ -166,7 +125,6 @@
             
             <div id="service-buttons" class="service-buttons-grid"></div>
 
-            <!-- Uusi paikkakuntavalitsin hero-alueella -->
             <div class="location-bar" id="hero-location-bar">
                 <span id="current-location-text">Paikkakunta: <strong>Muu Suomi</strong></span>
                 <button class="change-location-btn" onclick="toggleLocationSelector()">Vaihda paikkakunta</button>
@@ -202,14 +160,27 @@
         </section>
     </div>
 
-    <!-- Alkuperäinen paikkakuntavalitsin (piilotetaan tai pidetään varalla) -->
     <div id="location-selector" style="display: none;">
         <h2>Valitse kuvauspaikkakunta</h2>
         <select id="paikkakunta-dropdown" onchange="handlePaikkakuntaChange(this.value)" aria-label="Valitse kuvauspaikkakunta"></select>
     </div>
 
-    <!-- Loput sivusta -->
-    <div id="final-contact"> ... </div>
+    <section id="final-contact">
+        <div class="contact-info">
+            <h2>Ota yhteyttä</h2>
+            <p>Sähköposti: <a href="mailto:kortesoja.iivari@gmail.com">kortesoja.iivari@gmail.com</a></p>
+            <p>Puhelin: <a href="tel:+358405247918">040 524 7918</a></p>
+        </div>
+        <div class="qr-box">
+            <a href="https://wa.me/message/2JQ4G2D3EXLID1" target="_blank" rel="noopener">
+                <img src="MEDIA/Ikonit/QR.webp" alt="WhatsApp QR-koodi">
+            </a>
+            <p style="text-align: center; margin-top: 20px; color: #bbb; font-size: 1.05rem;">
+                Klikkaa tai lue QR-koodi → WhatsApp
+            </p>
+        </div>
+    </section>
+
     <div class="static-gallery"></div>
 
     <footer>
@@ -230,47 +201,9 @@
             const bgVideo = document.querySelector('#home video');
             if (bgVideo) bgVideo.play().catch(() => {});
 
-            if (typeof initServiceNavigation === "function") {
-                initServiceNavigation();
-            }
-
-            // Päivitetään hero-paikkakuntateksti
-            updateHeroLocationText();
+            if (typeof initServiceNavigation === "function") initServiceNavigation();
+            if (typeof initBottomMenu === "function") initBottomMenu();
         });
-
-        function updateHeroLocationText() {
-            const textEl = document.getElementById('current-location-text');
-            if (!textEl) return;
-
-            const path = window.location.pathname.toLowerCase();
-            let city = "Muu Suomi";
-
-            if (path.includes('/pori')) city = "Pori";
-            else if (path.includes('/rauma')) city = "Rauma";
-            else if (path.includes('/eurajoki')) city = "Eurajoki";
-            // Lisää tarvittaessa muita kaupunkeja
-
-            textEl.innerHTML = `Paikkakunta: <strong>${city}</strong>`;
-        }
-
-        function toggleLocationSelector() {
-            const selector = document.getElementById('location-selector');
-            selector.style.display = selector.style.display === 'none' ? 'block' : 'none';
-            
-            // Smooth scroll paikkakuntavalitsimeen
-            if (selector.style.display === 'block') {
-                selector.scrollIntoView({ behavior: "smooth" });
-            }
-        }
-
-        // Yhteensopivuus vanhan funktion kanssa
-        window.handlePaikkakuntaChange = function(value) {
-            if (!value) return;
-            let url = value === "muu"
-                ? "https://www.iivarikortesoja.media/Valokuvaus.html"
-                : `https://www.iivarikortesoja.media/Valokuvaus/${value}.html`;
-            window.location.href = url;
-        };
     </script>
 </body>
 </html>
