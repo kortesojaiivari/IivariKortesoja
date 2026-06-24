@@ -1,148 +1,169 @@
-// SKRIPTIT/hinnat-config.js
+// SKRIPTIT/hinnat-config-new.js
 // ───────────────────────────────────────────────
 // Keskitetty hinnoittelu – muokkaa vain tästä!
 // ───────────────────────────────────────────────
 
 const PRICE_CONFIG = {
     // Kaikille paikkakunnille yhteinen korotus (euroa)
-    // Muuta tätä jos haluat nostaa/laskea kaikkia hintoja kerralla
     globalExtra: 0,
 
     // Paikkakuntakohtaiset asetukset
     locations: {
-        "Eura": {
-            extra: 0,
-            "3 tuntia": 410,
-            "4-6 tuntia": 760,
-            "Hääpaketti": 1300
-        },
-        "Eurajoki": {
-            extra: 0,
-            "3 tuntia": 410,
-            "4-6 tuntia": 760,
-            "Hääpaketti": 1300
-        },
-        "Harjavalta": {
-            extra: 0,
-            "3 tuntia": 390,
-            "4-6 tuntia": 740,
-            "Hääpaketti": 1300
-        },
-        "Huittinen": {
-            extra: 0,
-            "3 tuntia": 400,
-            "4-6 tuntia": 750,
-            "Hääpaketti": 1300
-        },
-        "Ikaalinen": {
-            extra: 0,
-            "3 tuntia": 390,
-            "4-6 tuntia": 740,
-            "Hääpaketti": 1300
-        },
         "Kankaanpää": {
             extra: 0,
             "3 tuntia": 350,
             "4-6 tuntia": 700,
-            "Hääpaketti": 1300
+            "Hääpaketti": 1300,
+            "Siunaustilaisuus": 200
         },
-        "Karvia": {
-            extra: 0,
-            "3 tuntia": 380,
-            "4-6 tuntia": 730,
-            "Hääpaketti": 1300
+        "Eura": {
+            extra: 60,
+            "3 tuntia": 410,
+            "4-6 tuntia": 760,
+            "Hääpaketti": 1300,
+            "Siunaustilaisuus": 260
         },
-        "Kokemäki": {
-            extra: 0,
+        "Eurajoki": {
+            extra: 60,
+            "3 tuntia": 410,
+            "4-6 tuntia": 760,
+            "Hääpaketti": 1300,
+            "Siunaustilaisuus": 260
+        },
+        "Harjavalta": {
+            extra: 40,
+            "3 tuntia": 390,
+            "4-6 tuntia": 740,
+            "Hääpaketti": 1300,
+            "Siunaustilaisuus": 240
+        },
+        "Huittinen": {
+            extra: 50,
             "3 tuntia": 400,
             "4-6 tuntia": 750,
-            "Hääpaketti": 1300
+            "Hääpaketti": 1300,
+            "Siunaustilaisuus": 250
+        },
+        "Ikaalinen": {
+            extra: 40,
+            "3 tuntia": 390,
+            "4-6 tuntia": 740,
+            "Hääpaketti": 1300,
+            "Siunaustilaisuus": 240
+        },
+        "Karvia": {
+            extra: 30,
+            "3 tuntia": 380,
+            "4-6 tuntia": 730,
+            "Hääpaketti": 1300,
+            "Siunaustilaisuus": 230
+        },
+        "Kokemäki": {
+            extra: 50,
+            "3 tuntia": 400,
+            "4-6 tuntia": 750,
+            "Hääpaketti": 1300,
+            "Siunaustilaisuus": 250
         },
         "Nakkila": {
-            extra: 0,
+            extra: 40,
             "3 tuntia": 390,
             "4-6 tuntia": 740,
-            "Hääpaketti": 1300
+            "Hääpaketti": 1300,
+            "Siunaustilaisuus": 240
         },
         "Noormarkku": {
-            extra: 0,
+            extra: 30,
             "3 tuntia": 380,
             "4-6 tuntia": 730,
-            "Hääpaketti": 1300
+            "Hääpaketti": 1300,
+            "Siunaustilaisuus": 230
         },
         "Parkano": {
-            extra: 0,
+            extra: 40,
             "3 tuntia": 390,
             "4-6 tuntia": 740,
-            "Hääpaketti": 1300
+            "Hääpaketti": 1300,
+            "Siunaustilaisuus": 240
         },
         "Pori": {
-            extra: 0,
+            extra: 30,
             "3 tuntia": 380,
             "4-6 tuntia": 730,
-            "Hääpaketti": 1300
+            "Hääpaketti": 1300,
+            "Siunaustilaisuus": 230
         },
         "Pomarkku": {
-            extra: 0,
+            extra: 20,
             "3 tuntia": 370,
             "4-6 tuntia": 720,
-            "Hääpaketti": 1300
+            "Hääpaketti": 1300,
+            "Siunaustilaisuus": 220
         },
         "Rauma": {
-            extra: 0,
+            extra: 60,
             "3 tuntia": 410,
             "4-6 tuntia": 760,
-            "Hääpaketti": 1300
+            "Hääpaketti": 1300,
+            "Siunaustilaisuus": 260
         },
         "Sastamala": {
-            extra: 0,
+            extra: 40,
             "3 tuntia": 390,
             "4-6 tuntia": 740,
-            "Hääpaketti": 1300
+            "Hääpaketti": 1300,
+            "Siunaustilaisuus": 240
         },
         "Seinäjoki": {
-            extra: 0,
+            extra: 100,
             "3 tuntia": 450,
             "4-6 tuntia": 800,
-            "Hääpaketti": 1300
+            "Hääpaketti": 1300,
+            "Siunaustilaisuus": 300
         },
         "Säkylä": {
-            extra: 0,
+            extra: 60,
             "3 tuntia": 410,
             "4-6 tuntia": 760,
-            "Hääpaketti": 1300
+            "Hääpaketti": 1300,
+            "Siunaustilaisuus": 260
         },
         "Tampere": {
-            extra: 0,
+            extra: 100,
             "3 tuntia": 450,
             "4-6 tuntia": 800,
-            "Hääpaketti": 1400
+            "Hääpaketti": 1400,
+            "Siunaustilaisuus": 300
         },
         "Ulvila": {
-            extra: 0,
+            extra: 40,
             "3 tuntia": 390,
             "4-6 tuntia": 740,
-            "Hääpaketti": 1300
+            "Hääpaketti": 1300,
+            "Siunaustilaisuus": 240
         },
         "Vaasa": {
-            extra: 0,
+            extra: 100,
             "3 tuntia": 450,
             "4-6 tuntia": 800,
-            "Hääpaketti": 1400
+            "Hääpaketti": 1400,
+            "Siunaustilaisuus": 300
         },
         "Ylöjärvi": {
-            extra: 0,
+            extra: 100,
             "3 tuntia": 450,
             "4-6 tuntia": 800,
-            "Hääpaketti": 1400
+            "Hääpaketti": 1400,
+            "Siunaustilaisuus": 300
         },
 
-        // Jos paikkakuntaa ei löydy listalta (turva-arvo)
+        // Turva-arvo, jos paikkakuntaa ei löydy
         "_default": {
             extra: 0,
             "3 tuntia": 350,
             "4-6 tuntia": 700,
-            "Hääpaketti": 1300
+            "Hääpaketti": 1300,
+            "Siunaustilaisuus": 200
         }
     }
 };
@@ -150,14 +171,12 @@ const PRICE_CONFIG = {
 // Funktio, joka palauttaa lopulliset hinnat tietylle paikkakunnalle
 function getPricesForLocation(locationName) {
     const loc = PRICE_CONFIG.locations[locationName] || PRICE_CONFIG.locations["_default"];
-    const globalEx = PRICE_CONFIG.globalExtra || 0;
-    const locEx    = loc.extra || 0;
-
-    const totalExtra = globalEx + locEx;
+    const totalExtra = (PRICE_CONFIG.globalExtra || 0) + (loc.extra || 0);
 
     return {
-        "3 tuntia":    (loc["3 tuntia"]   || 350) + totalExtra,
-        "4-6 tuntia":  (loc["4-6 tuntia"] || 700) + totalExtra,
-        "Hääpaketti":  (loc["Hääpaketti"] || 1300) + totalExtra
+        "3 tuntia": (loc["3 tuntia"] || 350) + totalExtra,
+        "4-6 tuntia": (loc["4-6 tuntia"] || 700) + totalExtra,
+        "Hääpaketti": (loc["Hääpaketti"] || 1300) + totalExtra,
+        "Siunaustilaisuus": (loc["Siunaustilaisuus"] || 200) + totalExtra
     };
 }
