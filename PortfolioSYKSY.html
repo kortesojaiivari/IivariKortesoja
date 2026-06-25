@@ -29,15 +29,15 @@
     <script src="SKRIPTIT/cookie-consent.js" defer></script>
     <script src="SKRIPTIT/mobile-scaling.js" defer></script>
     <script src="SKRIPTIT/kampanja-popup.js" defer></script>
-
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap');
-     
+    
         body { font-family: 'Inter', system_ui, sans-serif; }
         h1, h2 { font-family: 'Playfair Display', sans-serif; }
-     
+    
         .project-section { transition: all 0.3s ease; }
-     
+        .project-section:hover { transform: translateY(-4px); }
+    
         .media-container {
             position: relative;
             overflow: hidden;
@@ -45,57 +45,14 @@
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
         }
         .media-container:hover { box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
-     
-        /* HERO 5-KUVAN KARUSELLI */
-        #hero-slideshow {
-            position: relative;
-            height: 85vh;
-            min-height: 620px;
-            overflow: hidden;
-            background: #000;
-        }
-        .hero-slide {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            transition: opacity 1.4s ease-in-out;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        .hero-slide.active {
-            opacity: 1;
-        }
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4));
-            pointer-events: none;
-        }
-
-        /* TOGGLE-SECTION – HOVERILLA AVAAUTUVA */
-        .toggle-header {
-            cursor: pointer;
-            user-select: none;
-            position: relative;
-        }
-        .chevron {
-            transition: transform 0.4s ease;
-            font-size: 1.75rem;
-        }
-        .gallery-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        .gallery-content.open {
-            max-height: 3000px;
-        }
-
-        /* AUTOMAATTINEN GALLERIA */
+    
+        .tail-text { font-size: 0.95rem; }
+    
+        /* AUTOMAATTINEN GALLERIA – parannettu valokuvaus-sivun tyyliin */
         .dynamic-grid {
             transition: opacity 0.7s ease-in-out;
         }
+    
         .gallery-pagination {
             display: flex;
             justify-content: center;
@@ -118,7 +75,6 @@
             transform: scale(1.8);
             box-shadow: 0 0 12px rgba(74, 222, 128, 0.5);
         }
-
         .combat-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -161,7 +117,6 @@
         .combat-item:hover::after { opacity: 0.9; transform: translate(-50%, -50%) scale(1.2); }
         .combat-item:hover img { opacity: 0.75; }
         .combat-item:hover { transform: scale(1.05); }
-
         .extra-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -186,7 +141,6 @@
             transition: opacity 1.4s ease;
         }
         .extra-item img.active { opacity: 1; }
-
         .coming-soon-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -216,7 +170,6 @@
             font-size: 1.1rem;
             font-weight: 500;
         }
-
         footer {
             background: #000;
             padding: 40px 20px;
@@ -225,7 +178,6 @@
             font-size: 1rem;
             color: #71717a;
         }
-
         #cookie-banner {
             position: fixed;
             bottom: 0; left: 0; right: 0;
@@ -257,10 +209,12 @@
         #cookie-banner .btn-reject:hover { background: #333; color: #fff; }
         #cookie-banner .btn-accept { background: #4ade80; color: #000; border: none; }
         #cookie-banner .btn-accept:hover { background: #5aff90; transform: translateY(-2px); }
-
         @media(max-width:768px){
-            #hero-slideshow { height: 65vh; min-height: 420px; }
             #cookie-banner { flex-direction: column; text-align: center; gap: 15px; padding: 20px 15px; }
+            #cookie-banner .buttons { width: 100%; justify-content: center; }
+            .dot { width: 0.05px; height: 0.05px; }
+            .dot.active { width: 0.25px; height: 0.25px; transform: none; box-shadow: none; }
+            .dot-container { gap: 2px; }
             .combat-gallery, .extra-gallery, .coming-soon-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
@@ -274,42 +228,233 @@
 <body class="bg-zinc-950 text-zinc-200">
     <main class="max-w-7xl mx-auto px-6 pt-16 pb-24">
 
-        <!-- 5-KUVAN VAIHTUVA HERO KARUSELLI -->
-        <section id="hero-slideshow" class="mb-24">
-            <div id="hero-slides" class="relative w-full h-full"></div>
-            <div class="hero-overlay"></div>
-        </section>
-
-        <!-- VALOKUVAUS PROJEKTIT – hoverilla aukeaa, nuolella sulkeutuu -->
+        <!-- UUSI ENSIMMÄINEN ELEMENTTI: Ilman tekstiä -->
         <section class="project-section mb-24">
-            <div onmouseenter="openGallery(1)" class="toggle-header flex justify-between items-end mb-8 border-b border-zinc-800 pb-6">
+            <div id="gallery-grid-new1" class="dynamic-grid grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+            <div class="gallery-pagination"><div class="dot-container" id="gallery-dots-new1"></div></div>
+        </section>
+        <script>
+            const galleryIdNew1 = "gallery-grid-new1"; 
+            const dotsIdNew1 = "gallery-dots-new1";
+            const autoCycleEnabledNew1 = true; 
+            const cycleIntervalMsNew1 = 4200;
+            const showPageIndicatorsNew1 = true; 
+            const imagesPerPageNew1 = 3;
+            const allMediaItemsNew1 = [
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus41.webp", alt: "" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus42.webp", alt: "" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus43.webp", alt: "" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus44.webp", alt: "" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus45.webp", alt: "" }
+            ];
+            let currentPageNew1 = 1; 
+            let totalPagesNew1 = Math.ceil(allMediaItemsNew1.length / imagesPerPageNew1); 
+            let autoIntervalNew1 = null;
+            function renderGalleryNew1(){
+                const grid=document.getElementById(galleryIdNew1);
+                if(!grid) return;
+                grid.style.opacity='0';
+                setTimeout(()=>{
+                    grid.innerHTML='';
+                    const start=(currentPageNew1-1)*imagesPerPageNew1;
+                    const currentItems=allMediaItemsNew1.slice(start,start+imagesPerPageNew1);
+                    currentItems.forEach(item=>{
+                        const div=document.createElement('div');
+                        div.className='group relative overflow-hidden rounded-2xl aspect-[4/3] bg-zinc-900';
+                        const lower=item.src.toLowerCase();
+                        if(lower.endsWith('.webm')||lower.endsWith('.mp4')){
+                            div.innerHTML=`<video src="${item.src}" autoplay muted loop playsinline class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"></video>`;
+                        }else{
+                            div.innerHTML=`<img src="${item.src}" alt="${item.alt}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">`;
+                        }
+                        grid.appendChild(div);
+                    });
+                    grid.style.opacity='1';
+                    updateDotsNew1();
+                },350);
+            }
+            function createDotsNew1(){
+                if(!showPageIndicatorsNew1) return;
+                const container=document.getElementById(dotsIdNew1);
+                if(!container) return;
+                container.innerHTML='';
+                for(let i=1;i<=totalPagesNew1;i++){
+                    const dot=document.createElement('button');
+                    dot.className=`dot ${i===currentPageNew1?'active':''}`;
+                    dot.onclick=()=>{if(autoIntervalNew1)clearInterval(autoIntervalNew1);currentPageNew1=i;renderGalleryNew1();if(autoCycleEnabledNew1)startAutoCycleNew1();};
+                    container.appendChild(dot);
+                }
+            }
+            function updateDotsNew1(){
+                if(!showPageIndicatorsNew1) return;
+                const dots=document.querySelectorAll(`#${dotsIdNew1} .dot`);
+                dots.forEach((dot,i)=>dot.classList.toggle('active',i+1===currentPageNew1));
+            }
+            function startAutoCycleNew1(){
+                if(!autoCycleEnabledNew1||totalPagesNew1<=1) return;
+                if(autoIntervalNew1)clearInterval(autoIntervalNew1);
+                autoIntervalNew1=setInterval(()=>{currentPageNew1=(currentPageNew1===totalPagesNew1)?1:currentPageNew1+1;renderGalleryNew1();},cycleIntervalMsNew1);
+            }
+            window.addEventListener('load',()=>{if(allMediaItemsNew1.length>0){renderGalleryNew1();createDotsNew1();startAutoCycleNew1();}});
+        </script>
+
+        <!-- UUSI TOINEN ELEMENTTI: Hääkuvaus -->
+        <section class="project-section mb-24">
+            <div class="flex justify-between items-end mb-8">
+                <div>
+                    <span class="uppercase text-emerald-400 text-xs tracking-widest font-medium">VALOKUVAUS</span>
+                    <h3 class="text-4xl font-semibold tracking-tight">Hääkuvaus</h3>
+                </div>
+            </div>
+            <div id="gallery-grid-new2" class="dynamic-grid grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+            <div class="gallery-pagination"><div class="dot-container" id="gallery-dots-new2"></div></div>
+        </section>
+        <script>
+            const galleryIdNew2 = "gallery-grid-new2"; 
+            const dotsIdNew2 = "gallery-dots-new2";
+            const autoCycleEnabledNew2 = true; 
+            const cycleIntervalMsNew2 = 4200;
+            const showPageIndicatorsNew2 = true; 
+            const imagesPerPageNew2 = 3;
+            const allMediaItemsNew2 = [
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus46.webp", alt: "Hääkuvaus 1" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus47.webp", alt: "Hääkuvaus 2" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus48.webp", alt: "Hääkuvaus 3" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus49.webp", alt: "Hääkuvaus 4" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus50.webp", alt: "Hääkuvaus 5" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus51.webp", alt: "Hääkuvaus 6" }
+            ];
+            let currentPageNew2 = 1; 
+            let totalPagesNew2 = Math.ceil(allMediaItemsNew2.length / imagesPerPageNew2); 
+            let autoIntervalNew2 = null;
+            function renderGalleryNew2(){
+                const grid=document.getElementById(galleryIdNew2);
+                if(!grid) return;
+                grid.style.opacity='0';
+                setTimeout(()=>{
+                    grid.innerHTML='';
+                    const start=(currentPageNew2-1)*imagesPerPageNew2;
+                    const currentItems=allMediaItemsNew2.slice(start,start+imagesPerPageNew2);
+                    currentItems.forEach(item=>{
+                        const div=document.createElement('div');
+                        div.className='group relative overflow-hidden rounded-2xl aspect-[4/3] bg-zinc-900';
+                        const lower=item.src.toLowerCase();
+                        if(lower.endsWith('.webm')||lower.endsWith('.mp4')){
+                            div.innerHTML=`<video src="${item.src}" autoplay muted loop playsinline class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"></video>`;
+                        }else{
+                            div.innerHTML=`<img src="${item.src}" alt="${item.alt}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">`;
+                        }
+                        grid.appendChild(div);
+                    });
+                    grid.style.opacity='1';
+                    updateDotsNew2();
+                },350);
+            }
+            function createDotsNew2(){
+                if(!showPageIndicatorsNew2) return;
+                const container=document.getElementById(dotsIdNew2);
+                if(!container) return;
+                container.innerHTML='';
+                for(let i=1;i<=totalPagesNew2;i++){
+                    const dot=document.createElement('button');
+                    dot.className=`dot ${i===currentPageNew2?'active':''}`;
+                    dot.onclick=()=>{if(autoIntervalNew2)clearInterval(autoIntervalNew2);currentPageNew2=i;renderGalleryNew2();if(autoCycleEnabledNew2)startAutoCycleNew2();};
+                    container.appendChild(dot);
+                }
+            }
+            function updateDotsNew2(){
+                if(!showPageIndicatorsNew2) return;
+                const dots=document.querySelectorAll(`#${dotsIdNew2} .dot`);
+                dots.forEach((dot,i)=>dot.classList.toggle('active',i+1===currentPageNew2));
+            }
+            function startAutoCycleNew2(){
+                if(!autoCycleEnabledNew2||totalPagesNew2<=1) return;
+                if(autoIntervalNew2)clearInterval(autoIntervalNew2);
+                autoIntervalNew2=setInterval(()=>{currentPageNew2=(currentPageNew2===totalPagesNew2)?1:currentPageNew2+1;renderGalleryNew2();},cycleIntervalMsNew2);
+            }
+            window.addEventListener('load',()=>{if(allMediaItemsNew2.length>0){renderGalleryNew2();createDotsNew2();startAutoCycleNew2();}});
+        </script>
+
+        <!-- Alkuperäiset osiot jatkavat tästä -->
+        <section class="project-section mb-24">
+            <div class="flex justify-between items-end mb-8">
                 <div>
                     <span class="uppercase text-emerald-400 text-xs tracking-widest font-medium">VALOKUVAUS</span>
                     <h3 class="text-4xl font-semibold tracking-tight">TuplaKupla - Teatterikuvaus</h3>
                 </div>
-                <span onclick="event.stopImmediatePropagation(); toggleClose(1)" class="chevron text-emerald-400 cursor-pointer">↓</span>
             </div>
-            <div id="gallery-content-1" class="gallery-content">
-                <div id="gallery-grid-1" class="dynamic-grid grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-                <div class="gallery-pagination"><div class="dot-container" id="gallery-dots-1"></div></div>
-            </div>
+            <div id="gallery-grid-1" class="dynamic-grid grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+            <div class="gallery-pagination"><div class="dot-container" id="gallery-dots-1"></div></div>
         </section>
+        <script>
+            const galleryId1 = "gallery-grid-1"; const dotsId1 = "gallery-dots-1";
+            const autoCycleEnabled1 = true; const cycleIntervalMs1 = 4200;
+            const showPageIndicators1 = true; const imagesPerPage1 = 3;
+            const allMediaItems1 = [
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "TuplaKupla 5" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus41.webp", alt: "TuplaKupla 6" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus42.webp", alt: "TuplaKupla 7" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus43.webp", alt: "TuplaKupla 8" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus44.webp", alt: "TuplaKupla 9" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus45.webp", alt: "TuplaKupla 10" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus46.webp", alt: "TuplaKupla 11" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus47.webp", alt: "TuplaKupla 12" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus48.webp", alt: "TuplaKupla 13" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus49.webp", alt: "TuplaKupla 14" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus50.webp", alt: "TuplaKupla 15" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus51.webp", alt: "TuplaKupla 16" }
+            ];
+            let currentPage1 = 1; let totalPages1 = Math.ceil(allMediaItems1.length / imagesPerPage1); let autoInterval1 = null;
+            function renderGallery1(){const grid=document.getElementById(galleryId1);if(!grid)return;grid.style.opacity='0';setTimeout(()=>{grid.innerHTML='';const start=(currentPage1-1)*imagesPerPage1;const currentItems=allMediaItems1.slice(start,start+imagesPerPage1);currentItems.forEach(item=>{const div=document.createElement('div');div.className='group relative overflow-hidden rounded-2xl aspect-[4/3] bg-zinc-900';const lower=item.src.toLowerCase();if(lower.endsWith('.webm')||lower.endsWith('.mp4')){div.innerHTML=`<video src="${item.src}" autoplay muted loop playsinline class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"></video>`;}else{div.innerHTML=`<img src="${item.src}" alt="${item.alt}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">`;}grid.appendChild(div);});grid.style.opacity='1';updateDots1();},350);}
+            function createDots1(){if(!showPageIndicators1)return;const container=document.getElementById(dotsId1);if(!container)return;container.innerHTML='';for(let i=1;i<=totalPages1;i++){const dot=document.createElement('button');dot.className=`dot ${i===currentPage1?'active':''}`;dot.onclick=()=>{if(autoInterval1)clearInterval(autoInterval1);currentPage1=i;renderGallery1();if(autoCycleEnabled1)startAutoCycle1();};container.appendChild(dot);}}
+            function updateDots1(){if(!showPageIndicators1)return;const dots=document.querySelectorAll(`#${dotsId1} .dot`);dots.forEach((dot,i)=>dot.classList.toggle('active',i+1===currentPage1));}
+            function startAutoCycle1(){if(!autoCycleEnabled1||totalPages1<=1)return;if(autoInterval1)clearInterval(autoInterval1);autoInterval1=setInterval(()=>{currentPage1=(currentPage1===totalPages1)?1:currentPage1+1;renderGallery1();},cycleIntervalMs1);}
+            window.addEventListener('load',()=>{if(allMediaItems1.length>0){renderGallery1();createDots1();startAutoCycle1();}});
+        </script>
 
         <section class="project-section mb-24">
-            <div onmouseenter="openGallery(2)" class="toggle-header flex justify-between items-end mb-8 border-b border-zinc-800 pb-6">
+            <div class="flex justify-between items-end mb-8">
                 <div>
                     <span class="uppercase text-emerald-400 text-xs tracking-widest font-medium">VALOKUVAUS</span>
                     <h3 class="text-4xl font-semibold tracking-tight">Laura Voutilainen - Kerran Keväällä</h3>
                 </div>
-                <span onclick="event.stopImmediatePropagation(); toggleClose(2)" class="chevron text-emerald-400 cursor-pointer">↓</span>
             </div>
-            <div id="gallery-content-2" class="gallery-content">
-                <div id="gallery-grid-2" class="dynamic-grid grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-                <div class="gallery-pagination"><div class="dot-container" id="gallery-dots-2"></div></div>
-            </div>
+            <div id="gallery-grid-2" class="dynamic-grid grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+            <div class="gallery-pagination"><div class="dot-container" id="gallery-dots-2"></div></div>
         </section>
+        <script>
+            const galleryId2 = "gallery-grid-2"; const dotsId2 = "gallery-dots-2";
+            const autoCycleEnabled2 = true; const cycleIntervalMs2 = 4200;
+            const showPageIndicators2 = true; const imagesPerPage2 = 3;
+            const allMediaItems2 = [
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus62.webp", alt: "Laura Voutilainen 1" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus68.webp", alt: "Laura Voutilainen 2" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus73.webp", alt: "Laura Voutilainen 3" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus54.webp", alt: "Laura Voutilainen 4" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus76.webp", alt: "Laura Voutilainen 5" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus65.webp", alt: "Laura Voutilainen 6" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus70.webp", alt: "Laura Voutilainen 3" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus71.webp", alt: "Laura Voutilainen 4" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus64.webp", alt: "Laura Voutilainen 5" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus75.webp", alt: "Laura Voutilainen 3" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus74.webp", alt: "Laura Voutilainen 4" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus65.webp", alt: "Laura Voutilainen 5" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus72.webp", alt: "Laura Voutilainen 3" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus56.webp", alt: "Laura Voutilainen 4" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus59.webp", alt: "Laura Voutilainen 5" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus53.webp", alt: "Laura Voutilainen 3" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus60.webp", alt: "Laura Voutilainen 4" },
+                { src: "MEDIA/VALOKUVAUS/Valokuvaus57.webp", alt: "Laura Voutilainen 5" }
+            ];
+            let currentPage2 = 1; let totalPages2 = Math.ceil(allMediaItems2.length / imagesPerPage2); let autoInterval2 = null;
+            function renderGallery2(){const grid=document.getElementById(galleryId2);if(!grid)return;grid.style.opacity='0';setTimeout(()=>{grid.innerHTML='';const start=(currentPage2-1)*imagesPerPage2;const currentItems=allMediaItems2.slice(start,start+imagesPerPage2);currentItems.forEach(item=>{const div=document.createElement('div');div.className='group relative overflow-hidden rounded-2xl aspect-[4/3] bg-zinc-900';const lower=item.src.toLowerCase();if(lower.endsWith('.webm')||lower.endsWith('.mp4')){div.innerHTML=`<video src="${item.src}" autoplay muted loop playsinline class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"></video>`;}else{div.innerHTML=`<img src="${item.src}" alt="${item.alt}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">`;}grid.appendChild(div);});grid.style.opacity='1';updateDots2();},350);}
+            function createDots2(){if(!showPageIndicators2)return;const container=document.getElementById(dotsId2);if(!container)return;container.innerHTML='';for(let i=1;i<=totalPages2;i++){const dot=document.createElement('button');dot.className=`dot ${i===currentPage2?'active':''}`;dot.onclick=()=>{if(autoInterval2)clearInterval(autoInterval2);currentPage2=i;renderGallery2();if(autoCycleEnabled2)startAutoCycle2();};container.appendChild(dot);}}
+            function updateDots2(){if(!showPageIndicators2)return;const dots=document.querySelectorAll(`#${dotsId2} .dot`);dots.forEach((dot,i)=>dot.classList.toggle('active',i+1===currentPage2));}
+            function startAutoCycle2(){if(!autoCycleEnabled2||totalPages2<=1)return;if(autoInterval2)clearInterval(autoInterval2);autoInterval2=setInterval(()=>{currentPage2=(currentPage2===totalPages2)?1:currentPage2+1;renderGallery2();},cycleIntervalMs2);}
+            window.addEventListener('load',()=>{if(allMediaItems2.length>0){renderGallery2();createDots2();startAutoCycle2();}});
+        </script>
 
-        <!-- PUOLUSTUSVOIMAT -->
         <section class="project-section mb-24">
             <div class="flex justify-between items-end mb-8">
                 <div>
@@ -339,6 +484,48 @@
                 </script>
             </div>
         </section>
+        <script>
+            const combatThumbs = document.querySelectorAll('.combat-item');
+            const combatObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, i) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => entry.target.classList.add('visible'), i * 120);
+                        combatObserver.unobserve(entry.target);
+                    }
+                });
+            }, {threshold: 0.2});
+            combatThumbs.forEach(t => combatObserver.observe(t));
+            document.querySelectorAll('.extra-item').forEach(box => {
+                const imgs = box.querySelectorAll('img');
+                let idx = 0;
+                setInterval(() => {
+                    imgs[idx].classList.remove('active');
+                    idx = (idx + 1) % imgs.length;
+                    imgs[idx].classList.add('active');
+                }, 5000);
+            });
+            const modal = document.createElement('div');
+            modal.innerHTML = `<div class="modal" id="videoModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:2000;align-items:center;justify-content:center;padding:20px"><span class="close" style="position:absolute;top:30px;right:40px;font-size:3rem;color:#fff;cursor:pointer;opacity:0.8">×</span><div class="modal-content" style="width:100%;max-width:1000px;aspect-ratio:16/9;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.8)"><iframe id="youtubePlayer" src="" allow="autoplay; encrypted-media" allowfullscreen style="width:100%;height:100%;border:none"></iframe></div></div>`;
+            document.body.appendChild(modal.firstElementChild);
+            const combatModal = document.getElementById('videoModal');
+            const combatIframe = document.getElementById('youtubePlayer');
+            const combatClose = document.querySelector('.close');
+            document.querySelectorAll('.combat-item').forEach(item => {
+                item.onclick = () => {
+                    combatIframe.src = `https://www.youtube.com/embed/${item.dataset.videoId}?autoplay=1&rel=0`;
+                    combatModal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                };
+            });
+            combatClose.onclick = combatModal.onclick = (e) => {
+                if (e.target === combatModal || e.target === combatClose) {
+                    combatModal.style.display = 'none';
+                    combatIframe.src = '';
+                    document.body.style.overflow = '';
+                }
+            };
+            document.addEventListener('keydown', e => { if (e.key === 'Escape') combatClose.click(); });
+        </script>
 
         <section class="project-section mb-24">
             <div class="flex justify-between items-end mb-8">
@@ -353,12 +540,11 @@
                 <div class="plank-box"><div class="plank-text"><div class="text-5xl mb-3 text-zinc-700"></div><p></p></div></div>
             </div>
         </section>
-    </main>
 
+    </main>
     <footer>
         <p>© Iivari Kortesoja 2026 | Y-Tunnus 3591660-9</p>
     </footer>
-
     <div id="cookie-banner">
         <p>Käyttämällä tätä verkkosivustoa hyväksyt evästeiden käytön. Käytämme evästeitä tarjotaksemme sinulle erinomaisen kokemuksen ja auttaaksemme verkkosivustoamme toimimaan tehokkaasti.</p>
         <div class="buttons">
@@ -366,286 +552,34 @@
             <button class="btn-accept" onclick="acceptCookies()">HYVÄKSY</button>
         </div>
     </div>
-
     <script>
-        // HERO 5-KUVAN KARUSELLI
-        const heroImages = [
-            "MEDIA/VALOKUVAUS/Valokuvaus40.webp",
-            "MEDIA/VALOKUVAUS/Valokuvaus41.webp",
-            "MEDIA/VALOKUVAUS/Valokuvaus62.webp",
-            "MEDIA/VALOKUVAUS/Valokuvaus68.webp",
-            "MEDIA/VALOKUVAUS/Valokuvaus44.webp"
-        ];
-
-        function initHeroSlideshow() {
-            const container = document.getElementById('hero-slides');
-            container.innerHTML = '';
-            
-            heroImages.forEach((src, index) => {
-                const slide = document.createElement('div');
-                slide.className = `hero-slide ${index === 0 ? 'active' : ''}`;
-                slide.style.backgroundImage = `url('${src}')`;
-                container.appendChild(slide);
-            });
-
-            let current = 0;
-            setInterval(() => {
-                const slides = document.querySelectorAll('.hero-slide');
-                slides[current].classList.remove('active');
-                current = (current + 1) % heroImages.length;
-                slides[current].classList.add('active');
-            }, 4800);
-        }
-
-        // Hover-avaus + nuoli-sulku
-        function openGallery(n) {
-            const content = document.getElementById(`gallery-content-${n}`);
-            const chevron = content.previousElementSibling.querySelector('.chevron');
-            content.classList.add('open');
-            chevron.style.transform = 'rotate(180deg)';
-        }
-
-        function toggleClose(n) {
-            event.stopImmediatePropagation();
-            const content = document.getElementById(`gallery-content-${n}`);
-            const chevron = content.previousElementSibling.querySelector('.chevron');
-            content.classList.remove('open');
-            chevron.style.transform = 'rotate(0deg)';
-        }
-
-        // TuplaKupla gallery
-        const galleryId1 = "gallery-grid-1"; 
-        const dotsId1 = "gallery-dots-1";
-        const autoCycleEnabled1 = true; 
-        const cycleIntervalMs1 = 4200;
-        const showPageIndicators1 = true; 
-        const imagesPerPage1 = 3;
-        const allMediaItems1 = [
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "TuplaKupla 5" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus41.webp", alt: "TuplaKupla 6" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus42.webp", alt: "TuplaKupla 7" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus43.webp", alt: "TuplaKupla 8" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus44.webp", alt: "TuplaKupla 9" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus45.webp", alt: "TuplaKupla 10" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus46.webp", alt: "TuplaKupla 11" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus47.webp", alt: "TuplaKupla 12" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus48.webp", alt: "TuplaKupla 13" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus49.webp", alt: "TuplaKupla 14" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus50.webp", alt: "TuplaKupla 15" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus51.webp", alt: "TuplaKupla 16" }
-        ];
-        let currentPage1 = 1; 
-        let totalPages1 = Math.ceil(allMediaItems1.length / imagesPerPage1); 
-        let autoInterval1 = null;
-
-        function renderGallery1(){
-            const grid=document.getElementById(galleryId1);
-            if(!grid) return;
-            grid.style.opacity='0';
-            setTimeout(()=>{
-                grid.innerHTML='';
-                const start=(currentPage1-1)*imagesPerPage1;
-                const currentItems=allMediaItems1.slice(start,start+imagesPerPage1);
-                currentItems.forEach(item=>{
-                    const div=document.createElement('div');
-                    div.className='group relative overflow-hidden rounded-2xl aspect-[4/3] bg-zinc-900';
-                    const lower=item.src.toLowerCase();
-                    if(lower.endsWith('.webm')||lower.endsWith('.mp4')){
-                        div.innerHTML=`<video src="${item.src}" autoplay muted loop playsinline class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"></video>`;
-                    } else {
-                        div.innerHTML=`<img src="${item.src}" alt="${item.alt}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">`;
-                    }
-                    grid.appendChild(div);
-                });
-                grid.style.opacity='1';
-                updateDots1();
-            },350);
-        }
-
-        function createDots1(){
-            if(!showPageIndicators1) return;
-            const container=document.getElementById(dotsId1);
-            if(!container) return;
-            container.innerHTML='';
-            for(let i=1;i<=totalPages1;i++){
-                const dot=document.createElement('button');
-                dot.className=`dot ${i===currentPage1?'active':''}`;
-                dot.onclick=()=>{
-                    if(autoInterval1) clearInterval(autoInterval1);
-                    currentPage1=i;
-                    renderGallery1();
-                    if(autoCycleEnabled1) startAutoCycle1();
-                };
-                container.appendChild(dot);
+        let isVideo = false;
+        function toggleMedia() {
+            const wrapper = document.getElementById('media-wrapper');
+            if (!isVideo) {
+                wrapper.innerHTML = `
+                    <video controls autoplay loop class="w-full h-auto block rounded-2xl">
+                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny_720p.mp4" type="video/mp4">
+                    </video>
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 flex items-end p-8 pointer-events-none">
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 bg-white rounded-full flex items-center justify-center"><span class="text-zinc-950 text-xs font-bold">■</span></div>
+                            <p class="text-white text-sm font-medium">Klikkaa vaihtaaksesi takaisin kuvaan</p>
+                        </div>
+                    </div>`;
+                isVideo = true;
+            } else {
+                wrapper.innerHTML = `
+                    <img src="https://picsum.photos/id/1018/1200/800" alt="Kevätvirta thumbnail" class="w-full h-auto block">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 flex items-end p-8">
+                        <div class="flex items-center gap-3">
+                            <div class="w-6 h-6 bg-white rounded-full flex items-center justify-center"><span class="text-zinc-950 text-xs font-bold">▶</span></div>
+                            <p class="text-white text-sm font-medium">Klikkaa vaihtaaksesi videoksi</p>
+                        </div>
+                    </div>`;
+                isVideo = false;
             }
         }
-
-        function updateDots1(){
-            if(!showPageIndicators1) return;
-            const dots=document.querySelectorAll(`#${dotsId1} .dot`);
-            dots.forEach((dot,i)=>dot.classList.toggle('active',i+1===currentPage1));
-        }
-
-        function startAutoCycle1(){
-            if(!autoCycleEnabled1||totalPages1<=1) return;
-            if(autoInterval1) clearInterval(autoInterval1);
-            autoInterval1=setInterval(()=>{
-                currentPage1=(currentPage1===totalPages1)?1:currentPage1+1;
-                renderGallery1();
-            },cycleIntervalMs1);
-        }
-
-        // Laura Voutilainen gallery
-        const galleryId2 = "gallery-grid-2"; 
-        const dotsId2 = "gallery-dots-2";
-        const autoCycleEnabled2 = true; 
-        const cycleIntervalMs2 = 4200;
-        const showPageIndicators2 = true; 
-        const imagesPerPage2 = 3;
-        const allMediaItems2 = [
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus62.webp", alt: "Laura Voutilainen 1" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus68.webp", alt: "Laura Voutilainen 2" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus73.webp", alt: "Laura Voutilainen 3" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus54.webp", alt: "Laura Voutilainen 4" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus76.webp", alt: "Laura Voutilainen 5" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus65.webp", alt: "Laura Voutilainen 6" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus70.webp", alt: "Laura Voutilainen 3" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus71.webp", alt: "Laura Voutilainen 4" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus64.webp", alt: "Laura Voutilainen 5" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus75.webp", alt: "Laura Voutilainen 3" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus74.webp", alt: "Laura Voutilainen 4" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus65.webp", alt: "Laura Voutilainen 5" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus72.webp", alt: "Laura Voutilainen 3" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus56.webp", alt: "Laura Voutilainen 4" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus59.webp", alt: "Laura Voutilainen 5" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus53.webp", alt: "Laura Voutilainen 3" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus60.webp", alt: "Laura Voutilainen 4" },
-            { src: "MEDIA/VALOKUVAUS/Valokuvaus57.webp", alt: "Laura Voutilainen 5" }
-        ];
-        let currentPage2 = 1; 
-        let totalPages2 = Math.ceil(allMediaItems2.length / imagesPerPage2); 
-        let autoInterval2 = null;
-
-        function renderGallery2(){
-            const grid=document.getElementById(galleryId2);
-            if(!grid) return;
-            grid.style.opacity='0';
-            setTimeout(()=>{
-                grid.innerHTML='';
-                const start=(currentPage2-1)*imagesPerPage2;
-                const currentItems=allMediaItems2.slice(start,start+imagesPerPage2);
-                currentItems.forEach(item=>{
-                    const div=document.createElement('div');
-                    div.className='group relative overflow-hidden rounded-2xl aspect-[4/3] bg-zinc-900';
-                    const lower=item.src.toLowerCase();
-                    if(lower.endsWith('.webm')||lower.endsWith('.mp4')){
-                        div.innerHTML=`<video src="${item.src}" autoplay muted loop playsinline class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"></video>`;
-                    } else {
-                        div.innerHTML=`<img src="${item.src}" alt="${item.alt}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">`;
-                    }
-                    grid.appendChild(div);
-                });
-                grid.style.opacity='1';
-                updateDots2();
-            },350);
-        }
-
-        function createDots2(){
-            if(!showPageIndicators2) return;
-            const container=document.getElementById(dotsId2);
-            if(!container) return;
-            container.innerHTML='';
-            for(let i=1;i<=totalPages2;i++){
-                const dot=document.createElement('button');
-                dot.className=`dot ${i===currentPage2?'active':''}`;
-                dot.onclick=()=>{
-                    if(autoInterval2) clearInterval(autoInterval2);
-                    currentPage2=i;
-                    renderGallery2();
-                    if(autoCycleEnabled2) startAutoCycle2();
-                };
-                container.appendChild(dot);
-            }
-        }
-
-        function updateDots2(){
-            if(!showPageIndicators2) return;
-            const dots=document.querySelectorAll(`#${dotsId2} .dot`);
-            dots.forEach((dot,i)=>dot.classList.toggle('active',i+1===currentPage2));
-        }
-
-        function startAutoCycle2(){
-            if(!autoCycleEnabled2||totalPages2<=1) return;
-            if(autoInterval2) clearInterval(autoInterval2);
-            autoInterval2=setInterval(()=>{
-                currentPage2=(currentPage2===totalPages2)?1:currentPage2+1;
-                renderGallery2();
-            },cycleIntervalMs2);
-        }
-
-        // Käynnistys
-        window.addEventListener('load', () => {
-            initHeroSlideshow();
-            
-            renderGallery1();
-            createDots1();
-            startAutoCycle1();
-            
-            renderGallery2();
-            createDots2();
-            startAutoCycle2();
-
-            // Combat Camera toiminnallisuus
-            const combatThumbs = document.querySelectorAll('.combat-item');
-            const combatObserver = new IntersectionObserver((entries) => {
-                entries.forEach((entry, i) => {
-                    if (entry.isIntersecting) {
-                        setTimeout(() => entry.target.classList.add('visible'), i * 120);
-                        combatObserver.unobserve(entry.target);
-                    }
-                });
-            }, {threshold: 0.2});
-            combatThumbs.forEach(t => combatObserver.observe(t));
-
-            document.querySelectorAll('.extra-item').forEach(box => {
-                const imgs = box.querySelectorAll('img');
-                let idx = 0;
-                setInterval(() => {
-                    imgs[idx].classList.remove('active');
-                    idx = (idx + 1) % imgs.length;
-                    imgs[idx].classList.add('active');
-                }, 5000);
-            });
-
-            const modalHTML = `<div class="modal" id="videoModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:2000;align-items:center;justify-content:center;padding:20px"><span class="close" style="position:absolute;top:30px;right:40px;font-size:3rem;color:#fff;cursor:pointer;opacity:0.8">×</span><div class="modal-content" style="width:100%;max-width:1000px;aspect-ratio:16/9;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.8)"><iframe id="youtubePlayer" src="" allow="autoplay; encrypted-media" allowfullscreen style="width:100%;height:100%;border:none"></iframe></div></div>`;
-            const modalContainer = document.createElement('div');
-            modalContainer.innerHTML = modalHTML;
-            document.body.appendChild(modalContainer.firstElementChild);
-
-            const combatModal = document.getElementById('videoModal');
-            const combatIframe = document.getElementById('youtubePlayer');
-            const combatClose = document.querySelector('.close');
-
-            document.querySelectorAll('.combat-item').forEach(item => {
-                item.onclick = () => {
-                    combatIframe.src = `https://www.youtube.com/embed/${item.dataset.videoId}?autoplay=1&rel=0`;
-                    combatModal.style.display = 'flex';
-                    document.body.style.overflow = 'hidden';
-                };
-            });
-
-            combatClose.onclick = combatModal.onclick = (e) => {
-                if (e.target === combatModal || e.target === combatClose) {
-                    combatModal.style.display = 'none';
-                    combatIframe.src = '';
-                    document.body.style.overflow = '';
-                }
-            };
-
-            document.addEventListener('keydown', e => { 
-                if (e.key === 'Escape') combatClose.click(); 
-            });
-        });
     </script>
 </body>
 </html>
