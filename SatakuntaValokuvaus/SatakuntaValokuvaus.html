@@ -24,31 +24,29 @@
     </script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
         
         :root {
             --primary: #1a1a1a;
             --accent: #d4af37;
             --bg: #ffffff;
-            --text: #333;
+            --text: #333333;
             --card-bg: #ffffff;
-            --border: #eee;
+            --border: #eeeeee;
+            --nav-bg: rgba(255,255,255,0.96);
         }
         
         .dark-mode {
-            --primary: #f5f5f5;
+            --primary: #f0f0f0;
             --accent: #d4af37;
-            --bg: #111111;
-            --text: #ddd;
+            --bg: #0f0f0f;
+            --text: #dddddd;
             --card-bg: #1a1a1a;
-            --border: #333;
+            --border: #333333;
+            --nav-bg: rgba(15,15,15,0.96);
         }
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: 'Inter', system-ui, sans-serif;
@@ -64,19 +62,21 @@
             color: var(--primary);
         }
         
+        /* === TOP HEADER === */
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
+            background: var(--nav-bg);
+            backdrop-filter: blur(14px);
             z-index: 1000;
             border-bottom: 1px solid var(--border);
-            transition: all 0.4s ease;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+                        opacity 0.4s ease;
         }
         
         .dark-mode .navbar {
-            background: rgba(17,17,17,0.95);
+            background: var(--nav-bg);
         }
         
         .nav-content {
@@ -90,16 +90,19 @@
         
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: 1.95rem;
             font-weight: 700;
             color: var(--primary);
             text-decoration: none;
+            letter-spacing: -1.5px;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             align-items: center;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .nav-links a {
@@ -113,25 +116,25 @@
             color: var(--accent);
         }
         
-        .location-selector {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: #f8f8f8;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.95rem;
+        /* Mustavalkoinen darkmode ikoni */
+        #darkmode-toggle {
+            font-size: 1.7rem;
+            background: none;
+            border: none;
             cursor: pointer;
-            transition: all 0.3s;
+            padding: 0.35rem 0.55rem;
+            color: var(--text);
+            transition: transform 0.3s ease;
         }
         
-        .dark-mode .location-selector {
-            background: #222;
-            color: #ddd;
+        #darkmode-toggle:hover {
+            transform: scale(1.25);
         }
         
+        /* === HERO === */
         .hero {
-            height: 100vh;
+            height: 62vh;
+            min-height: 480px;
             position: relative;
             display: flex;
             align-items: center;
@@ -141,15 +144,46 @@
             overflow: hidden;
         }
         
-        .hero-video {
+        .carousel-background {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            z-index: 1;
+            overflow: hidden;
+            opacity: 0.82;
+        }
+        
+        .carousel-row {
+            position: absolute;
+            width: 200%;
+            display: flex;
+            gap: 8px;
+            will-change: transform;
+        }
+        
+        .carousel-row img {
+            width: 260px;
+            height: 155px;
             object-fit: cover;
-            z-index: -2;
-            filter: brightness(0.65);
+            border-radius: 6px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+            flex-shrink: 0;
+        }
+        
+        .row-1 { top: 14%; animation: scroll-right 48s linear infinite; }
+        .row-2 { top: 42%; animation: scroll-left 39s linear infinite; }
+        .row-3 { top: 70%; animation: scroll-right 55s linear infinite; }
+        
+        @keyframes scroll-right {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        
+        @keyframes scroll-left {
+            from { transform: translateX(-50%); }
+            to { transform: translateX(0); }
         }
         
         .hero-overlay {
@@ -158,169 +192,112 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5));
-            z-index: -1;
+            background: linear-gradient(rgba(0,0,0,0.42), rgba(0,0,0,0.68));
+            z-index: 2;
         }
         
         .hero-content {
             position: relative;
-            z-index: 2;
-            max-width: 900px;
+            z-index: 3;
+            max-width: 920px;
             padding: 2rem;
         }
         
         .hero h1 {
-            font-size: 4.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            font-size: 4.7rem;
+            margin-bottom: 1.3rem;
+            text-shadow: 0 5px 28px rgba(0,0,0,0.75);
+            line-height: 1.05;
         }
         
-        .hero p {
-            font-size: 1.4rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
-        }
-        
-        .service-buttons {
+        .service-offerings {
             display: flex;
             flex-wrap: wrap;
-            gap: 1.2rem;
+            gap: 0.85rem;
             justify-content: center;
-        }
-        
-        .service-btn {
-            background: rgba(255,255,255,0.95);
-            color: #111;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 60px;
-            font-size: 1.1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            min-width: 220px;
-        }
-        
-        .service-btn:hover {
-            transform: translateY(-8px) scale(1.05);
-            background: #fff;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
-        
-        section {
-            padding: 100px 5%;
-            max-width: 1200px;
+            max-width: 820px;
             margin: 0 auto;
         }
         
-        .section-title {
-            font-size: 3rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
+        .service-pill {
+            background: rgba(255,255,255,0.9);
+            color: #222;
+            border: 2px solid #d4af37;
+            padding: 0.75rem 1.65rem;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            white-space: nowrap;
         }
         
-        .section-title:after {
-            content: '';
-            width: 80px;
-            height: 3px;
-            background: var(--accent);
-            display: block;
-            margin: 20px auto;
-        }
-        
-        .dokumentaarinen {
-            background: #f9f9f9;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        
-        .dark-mode .dokumentaarinen {
-            background: #1a1a1a;
-        }
-        
-        .packages {
-            background: var(--bg);
-        }
-        
-        .package-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 2rem;
-        }
-        
-        .package-card {
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2.5rem;
-            transition: all 0.4s;
-            background: var(--card-bg);
-        }
-        
-        .package-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
-            border-color: var(--accent);
-        }
-        
-        .package-card.highlight {
-            border: 3px solid var(--accent);
-            position: relative;
-        }
-        
-        .package-card.highlight::before {
-            content: "SUOSITELTU";
-            position: absolute;
-            top: -12px;
-            right: 30px;
-            background: var(--accent);
+        .service-pill:hover {
+            background: #d4af37;
             color: white;
-            font-size: 0.8rem;
-            padding: 4px 18px;
-            border-radius: 20px;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
         }
         
-        .price {
-            font-size: 2.2rem;
-            font-weight: 700;
+        /* === BOTTOM BAR (ALA-HEADER) === */
+        .bottom-bar {
+            position: fixed;
+            bottom: -90px;
+            left: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(14px);
+            border-top: 1px solid var(--border);
+            padding: 1.1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.8rem;
+            z-index: 999;
+            box-shadow: 0 -6px 25px rgba(0,0,0,0.12);
+            transition: bottom 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .bottom-bar.visible {
+            bottom: 0;
+        }
+        
+        .location-info {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 1.15rem;
+            font-weight: 600;
             color: var(--primary);
-            margin: 1rem 0;
         }
         
-        .location-price-note {
-            font-size: 0.95rem;
-            color: #666;
-            font-style: italic;
+        .location-btn {
+            background: white;
+            color: #222;
+            border: 2px solid #d4af37;
+            padding: 0.7rem 1.9rem;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         
-        .dark-mode .location-price-note {
-            color: #aaa;
+        .location-btn:hover {
+            background: #d4af37;
+            color: white;
+            transform: translateY(-2px);
         }
         
-        .faq {
-            background: #f9f9f9;
-        }
-        
-        .dark-mode .faq {
-            background: #1a1a1a;
-        }
-        
-        .faq-item {
-            margin-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 1.5rem;
-        }
-        
-        footer {
-            background: #111;
+        .dark-mode .location-btn {
+            background: #222;
             color: #ddd;
-            text-align: center;
-            padding: 4rem 2rem;
+            border-color: #d4af37;
         }
         
+        /* === LOCATION MODAL (keskitetty dropdown) === */
         .location-modal {
             display: none;
             position: fixed;
@@ -328,145 +305,155 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.6);
             z-index: 2000;
             align-items: center;
             justify-content: center;
+            animation: fadeIn 0.3s ease forwards;
         }
         
-        .modal-content {
+        .location-modal-content {
             background: var(--card-bg);
-            color: var(--text);
-            padding: 3rem;
-            border-radius: 20px;
-            max-width: 500px;
+            padding: 2.8rem 3.2rem;
+            border-radius: 24px;
+            max-width: 480px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+            animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .location-modal h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+        }
+        
+        .location-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.6rem;
+        }
+        
+        .location-item {
+            padding: 0.85rem 1.2rem;
+            background: #f8f8f8;
+            border: 2px solid transparent;
+            border-radius: 14px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
             text-align: center;
         }
         
-        .city-btn {
-            display: block;
-            width: 100%;
-            padding: 1rem;
-            margin: 0.8rem 0;
-            background: #f8f8f8;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .dark-mode .city-btn {
+        .dark-mode .location-item {
             background: #222;
-            color: #ddd;
         }
         
-        .city-btn:hover, .city-btn.active {
-            background: var(--accent);
+        .location-item:hover {
+            border-color: #d4af37;
+            background: #fff;
+            transform: translateY(-2px);
+        }
+        
+        .dark-mode .location-item:hover {
+            background: #2a2a2a;
+        }
+        
+        .location-item.active {
+            background: #d4af37;
             color: white;
+            border-color: #d4af37;
         }
         
-        #darkmode-toggle {
-            font-size: 1.5rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.3rem 0.5rem;
-            border-radius: 50%;
-            transition: transform 0.3s ease;
+        /* === MUUT === */
+        section {
+            padding: 105px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
-        #darkmode-toggle:hover {
-            transform: scale(1.2);
+        .section-title {
+            font-size: 3.15rem;
+            text-align: center;
+            margin-bottom: 3.2rem;
+            position: relative;
         }
         
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
+        .section-title:after {
+            content: '';
+            width: 85px;
+            height: 3.5px;
+            background: var(--accent);
+            display: block;
+            margin: 24px auto;
         }
         
-        .animate-on-scroll {
-            opacity: 0;
-            transition: all 0.8s;
+        .package-card .price {
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
+        footer {
+            background: #0a0a0a;
+            color: #ccc;
+            text-align: center;
+            padding: 4.8rem 2rem;
         }
     </style>
 </head>
 <body>
-    <!-- NAV -->
-    <nav class="navbar">
+    <!-- TOP NAV -->
+    <nav class="navbar" id="top-navbar">
         <div class="nav-content">
-            <a href="#" class="logo">Satakunta Valokuvaus</a>
+            <a href="#" class="logo" id="logo">Satakunta Valokuvaus</a>
             
-            <div class="nav-links">
-                <a href="#palvelut">Palvelut</a>
-                <a href="#paketit">Paketit</a>
-                <a href="#faq">UKK</a>
+            <div class="nav-links" id="nav-links">
                 <a href="#yhteystiedot">Yhteystiedot</a>
+                <a href="#paketit">Yrityksille</a>
                 
-                <div onclick="showLocationModal()" class="location-selector" id="current-location">
-                    <span>📍</span>
-                    <span id="selected-city">Valitse paikkakunta</span>
-                </div>
-                
-                <!-- Dynaaminen aurinko/kuu -ikoni -->
-                <button id="darkmode-toggle" aria-label="Vaihda tumma/vaalea tila" title="Vaihda tila">🌙</button>
+                <!-- Mustavalkoinen darkmode ikoni -->
+                <button id="darkmode-toggle" aria-label="Vaihda tumma/vaalea tila">☾</button>
             </div>
         </div>
     </nav>
 
     <!-- HERO -->
     <header class="hero">
-        <video autoplay muted loop playsinline class="hero-video">
-            <source src="https://assets.mixkit.co/videos/preview/75489/75489-large.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <div class="carousel-background" id="carousel-bg"></div>
         <div class="hero-overlay"></div>
         
         <div class="hero-content">
-            <h1>Dokumentaarista valokuvausta<br>Satakunnassa</h1>
-            <p>Autenttisia hetkiä – hääkuvaus, hautajaiset, valmistujaiset ja yritystilaisuudet</p>
+            <h1 style="color: white;">Valokuvista ihminen muistetaan</h1>
             
-            <div class="service-buttons" id="service-buttons">
-                <!-- Populated by JS -->
+            <div class="service-offerings">
+                <button class="service-pill" onclick="selectService('Hääkuvaus')">Hääkuvaus</button>
+                <button class="service-pill" onclick="selectService('Hautajaiset')">Hautajaiset</button>
+                <button class="service-pill" onclick="selectService('Valmistujaisjuhlat')">Valmistujaisjuhlat</button>
+                <button class="service-pill" onclick="selectService('Tapahtuma')">Tapahtuma &amp; taltiointi</button>
+                <button class="service-pill" onclick="selectService('Yritys')">Yrityksille</button>
             </div>
         </div>
     </header>
 
-    <!-- DOKUMENTAARINEN -->
-    <section id="dokumentaarinen" class="dokumentaarinen">
-        <div>
-            <h2 class="section-title" style="text-align:left;">Dokumentaarinen kuvaus</h2>
-            <p style="font-size:1.25rem; max-width:480px;">
-                Dokumentaarisessa kuvaamisessa ikuistan tilanteita mahdollisimman autenttisesti. 
-                Kuvausreissuilta tulee yleensä kameraan 100–1000 kuvaa. Valitsen parhaimmat ja jälkikäsittelen ne huolella.
-            </p>
-        </div>
-        <div>
-            <img src="https://picsum.photos/id/1015/800/600" alt="Dokumentaarinen hääkuvaus" style="width:100%; border-radius:16px; box-shadow:0 20px 40px rgba(0,0,0,0.1);">
-        </div>
-    </section>
-
     <!-- PAKETIT -->
     <section id="paketit" class="packages">
-        <h2 class="section-title">Kuvauspaketit</h2>
+        <h2 class="section-title">Kuvauspaketit <span style="font-size:1rem; opacity:0.6;">(Kankaanpää hinnat)</span></h2>
         
         <div class="package-grid">
-            <!-- Hääpaketit -->
             <div class="package-card highlight">
                 <h3>Dokumentaarinen Hääkuvaus</h3>
                 <p>Enintään 6 tuntia</p>
                 <div class="price" id="price-h1">800 €</div>
                 <p>Enintään 200 kuvaa</p>
-                <ul style="margin:1.5rem 0; line-height:1.8;">
-                    <li>✓ Autenttinen tyyli</li>
-                    <li>✓ Paras valikoima</li>
-                </ul>
-                <small class="location-price-note">Hinta nousee valitun paikkakunnan mukaan</small>
             </div>
             
             <div class="package-card">
@@ -474,23 +461,15 @@
                 <p>Aamusta yöhön</p>
                 <div class="price" id="price-h2">1300 €</div>
                 <p>Enintään 600 kuvaa</p>
-                <ul style="margin:1.5rem 0; line-height:1.8;">
-                    <li>✓ Ennen vihkintää, vihkiminen, potretit, juhlat</li>
-                    <li>✓ Kuvat 24h sisällä (sneak peek)</li>
-                    <li>✓ Instagram-versiot saatavilla</li>
-                </ul>
-                <small class="location-price-note">Hinta nousee valitun paikkakunnan mukaan</small>
             </div>
             
             <div class="package-card">
                 <h3>Kevyt paketti: Potretit + Vihkiminen</h3>
-                <p>Kirkko & juhlatila</p>
+                <p>Kirkko &amp; juhlatila</p>
                 <div class="price" id="price-h3">300 €</div>
                 <p>~40+ kuvaa</p>
-                <small class="location-price-note">Hinta nousee valitun paikkakunnan mukaan</small>
             </div>
             
-            <!-- Hautajaiset -->
             <div class="package-card">
                 <h3>Hautaus / Muistotilaisuus (2h)</h3>
                 <div class="price" id="price-f1">300 €</div>
@@ -502,178 +481,265 @@
                 <div class="price" id="price-f2">600 €</div>
                 <p>Koko tilaisuus</p>
             </div>
-            
-            <div class="package-card">
-                <h3>Ajallinen paketti 3h</h3>
-                <div class="price">350 €</div>
-                <p>Sopii hautajaisiin tai valmistujaisiin</p>
-            </div>
         </div>
         
-        <div style="text-align:center; margin-top:4rem; font-size:1.1rem;">
-            <strong>Lisätunnit alkaen 116 € / h</strong>
-        </div>
-    </section>
-
-    <!-- LISÄPALVELUT -->
-    <section style="background:#f9f9f9;">
-        <h2 class="section-title">Lisäpalvelut</h2>
-        <div class="package-grid">
-            <div class="package-card">
-                <h3>Instagram-valmiit kuvat</h3>
-                <div class="price">70 €</div>
-                <p>4:3-rajaus somea varten + täysikokoiset tiedostot</p>
-            </div>
-            <div class="package-card">
-                <h3>Sneak Peek (24h)</h3>
-                <div class="price">50 €</div>
-                <p>Noin 20 kuvaa jo seuraavana päivänä</p>
-            </div>
-            <div class="package-card">
-                <h3>Muistitikku-toimitus</h3>
-                <div class="price">70 €</div>
-                <p>Täyslaadukkaat kuvat Postin pakettiautomaattiin</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- UKK -->
-    <section id="faq" class="faq">
-        <h2 class="section-title">Usein kysytyt kysymykset</h2>
-        
-        <div style="max-width:700px; margin:0 auto;">
-            <div class="faq-item">
-                <h4>Kuvien toimitus?</h4>
-                <p>Toimitan kuvat digitaalisesti pilvipalvelun kautta, josta voit ladata ne laitteellesi.</p>
-            </div>
-            <div class="faq-item">
-                <h4>Varausmaksu?</h4>
-                <p>Sovittuamme ajankohdan perin varausmaksun, joka vähennetään lopullisesta laskusta.</p>
-            </div>
-            <div class="faq-item">
-                <h4>Kilometrikorvaukset?</h4>
-                <p>Lisätään erikseen, jos kuvauspaikkoja vaihdetaan. 0,65 € / km.</p>
-            </div>
-            <div class="faq-item">
-                <h4>Maksutavat?</h4>
-                <p>Lasku sähköpostitse tai MobilePay.</p>
-            </div>
+        <div style="text-align:center; margin-top:3rem; font-size:1.1rem; opacity:0.85;">
+            Lisätunnit alkaen <strong>116 € / h</strong> • Kilometrikorvaus 0,65 €/km (edestakaisin)
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer id="yhteystiedot">
-        <p style="font-size:2rem; color:white; margin-bottom:1rem;">Satakunta Valokuvaus</p>
-        <p>Y-Tunnus 3591660-9</p>
-        <p>Iivari Kortesoja • Helsinki / Satakunta</p>
+        <p style="font-size:2.1rem; color:white; margin-bottom:1rem;">Satakunta Valokuvaus</p>
+        <p>Y-Tunnus 3591660-9 • Kankaanpää</p>
+        <p>Iivari Kortesoja</p>
         <p style="margin-top:2rem;">📧 <a href="mailto:info@satakuntavalokuvaus.fi" style="color:#d4af37;">info@satakuntavalokuvaus.fi</a></p>
-        <p style="margin-top:3rem; opacity:0.6; font-size:0.9rem;">© 2026 Satakunta Valokuvaus. Kaikki oikeudet pidätetään.</p>
     </footer>
 
-    <!-- LOCATION MODAL -->
-    <div id="location-modal" class="location-modal">
-        <div class="modal-content">
-            <h3>Valitse paikkakunta</h3>
-            <p style="margin:1rem 0 2rem;">Hinnat päivittyvät dynaamisesti</p>
+    <!-- ALA-HEADER -->
+    <div class="bottom-bar" id="bottom-bar">
+        <div class="location-info">
+            <span>Kuvauspaikka:</span> 
+            <strong id="location-text">Kankaanpää</strong>
+        </div>
+        
+        <button class="location-btn" onclick="showLocationModal()">
+            Valitse kuvauspaikkakunta
+        </button>
+    </div>
+
+    <!-- KESKITETTY LOCATION MODAL -->
+    <div id="location-modal" class="location-modal" onclick="if (event.target.id === 'location-modal') closeLocationModal()">
+        <div class="location-modal-content">
+            <h3>Valitse kuvauspaikkakunta</h3>
             
-            <button onclick="selectCity(this)" class="city-btn" data-city="Pori">Pori</button>
-            <button onclick="selectCity(this)" class="city-btn" data-city="Rauma">Rauma</button>
-            <button onclick="selectCity(this)" class="city-btn" data-city="Huittinen">Huittinen</button>
-            <button onclick="selectCity(this)" class="city-btn" data-city="Kankaanpää">Kankaanpää</button>
-            <button onclick="selectCity(this)" class="city-btn" data-city="Ulkopaikkakunta">Muu Satakunta / Ulkopuolinen</button>
+            <div class="location-list" id="location-list">
+                <!-- JS täyttää listan -->
+            </div>
             
-            <button onclick="closeModal()" style="margin-top:2rem; background:none; border:1px solid #ccc; padding:0.8rem 2rem; border-radius:50px;">Sulje</button>
+            <button onclick="closeLocationModal()" 
+                    style="margin-top: 1.8rem; background:none; border:1px solid #888; padding:0.6rem 2rem; border-radius:50px; color:#888; cursor:pointer;">
+                Sulje
+            </button>
         </div>
     </div>
 
     <script>
-        // Service buttons
-        const services = [
-            "Hääkuvaus", 
-            "Hautajaiset", 
-            "Valmistujaisjuhlat", 
-            "Tapahtuma & taltiointi", 
-            "Yrityksille"
-        ];
-        
-        const btnContainer = document.getElementById('service-buttons');
-        services.forEach(service => {
-            const btn = document.createElement('button');
-            btn.className = 'service-btn';
-            btn.textContent = service;
-            btn.onclick = () => {
-                alert(`Siirrytään ${service.toLowerCase()} -osioon (toteutetaan lisäosioina myöhemmin)`);
-            };
-            btnContainer.appendChild(btn);
-        });
-        
-        // Location handling
-        let currentCity = "Valitse paikkakunta";
-        let multiplier = 1;
-        
-        function showLocationModal() {
-            document.getElementById('location-modal').style.display = 'flex';
-        }
-        
-        function closeModal() {
-            document.getElementById('location-modal').style.display = 'none';
-        }
-        
-        function selectCity(el) {
-            currentCity = el.dataset.city;
-            document.getElementById('selected-city').textContent = currentCity;
+        // === KARUSELLI ===
+        function initCarousel() {
+            const container = document.getElementById('carousel-bg');
+            const imagePaths = [
+                "https://picsum.photos/id/1015/600/400",
+                "https://picsum.photos/id/1005/600/400",
+                "https://picsum.photos/id/1016/600/400",
+                "https://picsum.photos/id/160/600/400",
+                "https://picsum.photos/id/201/600/400",
+                "https://picsum.photos/id/251/600/400",
+                "https://picsum.photos/id/29/600/400",
+                "https://picsum.photos/id/30/600/400"
+            ];
             
-            if (currentCity === "Ulkopaikkakunta") multiplier = 1.25;
-            else if (currentCity !== "Valitse paikkakunta") multiplier = 1.1;
-            else multiplier = 1;
+            const rows = [
+                { class: 'row-1' },
+                { class: 'row-2' },
+                { class: 'row-3' }
+            ];
             
-            updatePrices();
-            closeModal();
+            rows.forEach((rowInfo) => {
+                const row = document.createElement('div');
+                row.className = `carousel-row ${rowInfo.class}`;
+                const imagesToShow = [...imagePaths, ...imagePaths];
+                
+                imagesToShow.forEach((src) => {
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = "Valokuvaus";
+                    row.appendChild(img);
+                });
+                container.appendChild(row);
+            });
         }
         
-        function updatePrices() {
-            const basePrices = {
-                h1: 800,
-                h2: 1300,
-                h3: 300,
-                f1: 300,
-                f2: 600
-            };
+        // === DARK MODE ===
+        function initDarkMode() {
+            const toggle = document.getElementById('darkmode-toggle');
+            const isDark = localStorage.getItem('satakunta-dark') === 'true';
             
-            document.getElementById('price-h1').textContent = Math.round(basePrices.h1 * multiplier) + " €";
-            document.getElementById('price-h2').textContent = Math.round(basePrices.h2 * multiplier) + " €";
-            document.getElementById('price-h3').textContent = Math.round(basePrices.h3 * multiplier) + " €";
-            document.getElementById('price-f1').textContent = Math.round(basePrices.f1 * multiplier) + " €";
-            document.getElementById('price-f2').textContent = Math.round(basePrices.f2 * multiplier) + " €";
-        }
-        
-        // Scroll animations
-        function handleScroll() {
-            const elements = document.querySelectorAll('.animate-on-scroll');
-            elements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.8) {
-                    el.classList.add('visible');
+            if (isDark) {
+                document.documentElement.classList.add('dark-mode');
+                toggle.textContent = '☼';
+            } else {
+                toggle.textContent = '☾';
+            }
+            
+            toggle.addEventListener('click', () => {
+                const isCurrentlyDark = document.documentElement.classList.contains('dark-mode');
+                if (isCurrentlyDark) {
+                    document.documentElement.classList.remove('dark-mode');
+                    toggle.textContent = '☾';
+                    localStorage.setItem('satakunta-dark', 'false');
+                } else {
+                    document.documentElement.classList.add('dark-mode');
+                    toggle.textContent = '☼';
+                    localStorage.setItem('satakunta-dark', 'true');
                 }
             });
         }
         
+        // === SCROLL BEHAVIOR ===
+        function handleScroll() {
+            const navbar = document.getElementById('top-navbar');
+            const logo = document.getElementById('logo');
+            const navLinks = document.getElementById('nav-links');
+            const bottomBar = document.getElementById('bottom-bar');
+            
+            const scrollY = window.scrollY;
+            
+            if (scrollY > 100) {
+                // Fade + slide up nav links
+                navLinks.style.transition = 'all 0.45s cubic-bezier(0.4, 0, 0.2, 1)';
+                navLinks.style.opacity = '0';
+                navLinks.style.transform = 'translateY(-25px)';
+                navLinks.style.pointerEvents = 'none';
+                
+                // Center logo smoothly
+                logo.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                logo.style.marginLeft = 'auto';
+                logo.style.marginRight = 'auto';
+            } else {
+                navLinks.style.opacity = '1';
+                navLinks.style.transform = 'translateY(0)';
+                navLinks.style.pointerEvents = 'auto';
+                logo.style.marginLeft = '';
+                logo.style.marginRight = '';
+            }
+            
+            if (scrollY > 260) {
+                // Hide top navbar
+                navbar.style.transition = 'transform 0.55s cubic-bezier(0.4, 0, 0.2, 1)';
+                navbar.style.transform = 'translateY(-110%)';
+                
+                // Show bottom bar
+                bottomBar.classList.add('visible');
+            } else {
+                navbar.style.transform = 'translateY(0)';
+                bottomBar.classList.remove('visible');
+            }
+        }
+        
         window.addEventListener('scroll', handleScroll);
         
-        // Initial setup
-        window.onload = () => {
-            document.querySelectorAll('.package-card').forEach((card, i) => {
-                card.classList.add('animate-on-scroll');
-                card.style.animationDelay = (i * 150) + 'ms';
+        // === LOCATION DATA ===
+        const satakuntaLocations = [
+            "Kankaanpää", "Pori", "Rauma", "Huittinen", "Kokemäki", 
+            "Harjavalta", "Ulvila", "Nakkila", "Eurajoki", "Merikarvia",
+            "Siikainen", "Pomarkku", "Luvia"
+        ];
+        
+        const distancesFromKankaanpaa = {
+            "Kankaanpää": 0,
+            "Pori": 58,
+            "Rauma": 104,
+            "Huittinen": 48,
+            "Kokemäki": 42,
+            "Harjavalta": 38,
+            "Ulvila": 52,
+            "Nakkila": 45,
+            "Eurajoki": 65,
+            "Merikarvia": 78,
+            "Siikainen": 35,
+            "Pomarkku": 28,
+            "Luvia": 70
+        };
+        
+        const basePrices = { h1: 800, h2: 1300, h3: 300, f1: 300, f2: 600 };
+        let currentLocation = "Kankaanpää";
+        
+        function updatePrices(location) {
+            const distance = distancesFromKankaanpaa[location] || 0;
+            const extra = Math.round(distance * 0.65 * 2); // edestakaisin
+            
+            const newPrices = {
+                h1: basePrices.h1 + extra,
+                h2: basePrices.h2 + extra,
+                h3: basePrices.h3 + Math.round(extra * 0.55),
+                f1: basePrices.f1 + Math.round(extra * 0.45),
+                f2: basePrices.f2 + Math.round(extra * 0.65)
+            };
+            
+            animatePriceChange('price-h1', newPrices.h1);
+            animatePriceChange('price-h2', newPrices.h2);
+            animatePriceChange('price-h3', newPrices.h3);
+            animatePriceChange('price-f1', newPrices.f1);
+            animatePriceChange('price-f2', newPrices.f2);
+        }
+        
+        function animatePriceChange(id, target) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            
+            const start = parseInt(el.textContent) || 0;
+            const duration = 700;
+            const startTime = performance.now();
+            
+            function step(now) {
+                const progress = Math.min((now - startTime) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const current = Math.round(start + (target - start) * eased);
+                el.textContent = current + ' €';
+                
+                if (progress < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        }
+        
+        // === LOCATION MODAL ===
+        function showLocationModal() {
+            const modal = document.getElementById('location-modal');
+            const list = document.getElementById('location-list');
+            list.innerHTML = '';
+            
+            satakuntaLocations.forEach(city => {
+                const item = document.createElement('div');
+                item.className = 'location-item';
+                if (city === currentLocation) item.classList.add('active');
+                item.textContent = city;
+                
+                item.onclick = () => {
+                    currentLocation = city;
+                    document.getElementById('location-text').textContent = city;
+                    updatePrices(city);
+                    closeLocationModal();
+                };
+                
+                list.appendChild(item);
             });
             
-            document.addEventListener('keydown', e => {
-                if (e.key === "Escape") closeModal();
-            });
+            modal.style.display = 'flex';
+        }
+        
+        function closeLocationModal() {
+            document.getElementById('location-modal').style.display = 'none';
+        }
+        
+        function selectService(service) {
+            alert(`Kiitos! Olet kiinnostunut palvelusta: ${service}\n\nOtan sinuun yhteyttä pian.`);
+        }
+        
+        // === INIT ===
+        window.onload = () => {
+            initCarousel();
+            initDarkMode();
+            
+            // Alustushinnat
+            document.getElementById('price-h1').textContent = basePrices.h1 + ' €';
+            document.getElementById('price-h2').textContent = basePrices.h2 + ' €';
+            document.getElementById('price-h3').textContent = basePrices.h3 + ' €';
+            document.getElementById('price-f1').textContent = basePrices.f1 + ' €';
+            document.getElementById('price-f2').textContent = basePrices.f2 + ' €';
+            
+            document.getElementById('location-text').textContent = currentLocation;
         };
     </script>
-
-    <!-- ERILLINEN DARK MODE SKRIPTI -->
-    <script src="SatakuntaValokuvaus/SKRIPTIT/darkmode.js"></script>
 </body>
 </html>
