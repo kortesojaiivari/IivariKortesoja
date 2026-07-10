@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satakunta Valokuvaus – Dokumentaarinen Valokuvaus</title>
+    
+    <!-- GOOGLE ANALYTICS 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
+    </script>
+
+    <!-- MICROSOFT CLARITY -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "ud6y4jpngh");
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap');
+        
+        :root {
+            --primary: #1a1a1a;
+            --accent: #d4af37;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            color: #333;
+            background: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .location-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #f8f8f8;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            cursor: pointer;
+        }
+        
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            filter: brightness(0.65);
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+            z-index: -1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+        }
+        
+        .service-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            justify-content: center;
+        }
+        
+        .service-btn {
+            background: rgba(255,255,255,0.95);
+            color: #111;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            min-width: 220px;
+        }
+        
+        .service-btn:hover {
+            transform: translateY(-8px) scale(1.05);
+            background: #fff;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        section {
+            padding: 100px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+            display: block;
+            margin: 20px auto;
+        }
+        
+        .dokumentaarinen {
+            background: #f9f9f9;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .packages {
+            background: white;
+        }
+        
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+        
+        .package-card {
+            border: 1px solid #eee;
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.4s;
+            background: white;
+        }
+        
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+            border-color: var(--accent);
+        }
+        
+        .package-card.highlight {
+            border: 3px solid var(--accent);
+            position: relative;
+        }
+        
+        .package-card.highlight::before {
+            content: "SUOSITELTU";
+            position: absolute;
+            top: -12px;
+            right: 30px;
+            background: var(--accent);
+            color: white;
+            font-size: 0.8rem;
+            padding: 4px 18px;
+            border-radius: 20px;
+        }
+        
+        .price {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+        
+        .location-price-note {
+            font-size: 0.95rem;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .faq {
+            background: #f9f9f9;
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 1.5rem;
+        }
+        
+        footer {
+            background: #111;
+            color: #ddd;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        
+        .location-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 500px;
+            text-align: center;
+        }
+        
+        .city-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            margin: 0.8rem 0;
+            background: #f8f8f8;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .city-btn:hover, .city-btn.active {
+            background: var(--accent);
+            color: white;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transition: all 0.8s;
+        }
+        
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- NAV -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#" class="logo">Satakunta Valokuvaus</a>
+            
+            <div class="nav-links">
+                <a href="#palvelut">Palvelut</a>
+                <a href="#paketit">Paketit</a>
+                <a href="#faq">UKK</a>
+                <a href="#yhteystiedot">Yhteystiedot</a>
+                
+                <div onclick="showLocationModal()" class="location-selector" id="current-location">
+                    <span>📍</span>
+                    <span id="selected-city">Valitse paikkakunta</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="https://assets.mixkit.co/videos/preview/75489/75489-large.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <h1>Dokumentaarista valokuvausta<br>Satakunnassa</h1>
+            <p>Autenttisia hetkiä – hääkuvaus, hautajaiset, valmistujaiset ja yritystilaisuudet</p>
+            
+            <div class="service-buttons" id="service-buttons">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </header>
+
+    <!-- DOKUMENTAARINEN -->
+    <section id="dokumentaarinen" class="dokumentaarinen">
+        <div>
+            <h2 class="section-title" style="text-align:left;">Dokumentaarinen kuvaus</h2>
+            <p style="font-size:1.25rem; max-width:480px;">
+                Dokumentaarisessa kuvaamisessa ikuistan tilanteita mahdollisimman autenttisesti. 
+                Kuvausreissuilta tulee yleensä kameraan 100–1000 kuvaa. Valitsen parhaimmat ja jälkikäsittelen ne huolella.
+            </p>
+        </div>
+        <div>
+            <img src="https://picsum.photos/id/1015/800/600" alt="Dokumentaarinen hääkuvaus" style="width:100%; border-radius:16px; box-shadow:0 20px 40px rgba(0,0,0,0.1);">
+        </div>
+    </section>
+
+    <!-- PAKETIT -->
+    <section id="paketit" class="packages">
+        <h2 class="section-title">Kuvauspaketit</h2>
+        
+        <div class="package-grid">
+            <!-- Hääpaketit -->
+            <div class="package-card highlight">
+                <h3>Dokumentaarinen Hääkuvaus</h3>
+                <p>Enintään 6 tuntia</p>
+                <div class="price" id="price-h1">800 €</div>
+                <p>Enintään 200 kuvaa</p>
+                <ul style="margin:1.5rem 0; line-height:1.8;">
+                    <li>✓ Autenttinen tyyli</li>
+                    <li>✓ Paras valikoima</li>
+                </ul>
+                <small class="location-price-note">Hinta nousee valitun paikkakunnan mukaan</small>
+            </div>
+            
+            <div class="package-card">
+                <h3>Kokopäivän Hääkuvaus</h3>
+                <p>Aamusta yöhön</p>
+                <div class="price" id="price-h2">1300 €</div>
+                <p>Enintään 600 kuvaa</p>
+                <ul style="margin:1.5rem 0; line-height:1.8;">
+                    <li>✓ Ennen vihkintää, vihkiminen, potretit, juhlat</li>
+                    <li>✓ Kuvat 24h sisällä (sneak peek)</li>
+                    <li>✓ Instagram-versiot saatavilla</li>
+                </ul>
+                <small class="location-price-note">Hinta nousee valitun paikkakunnan mukaan</small>
+            </div>
+            
+            <div class="package-card">
+                <h3>Kevyt paketti: Potretit + Vihkiminen</h3>
+                <p>Kirkko & juhlatila</p>
+                <div class="price" id="price-h3">300 €</div>
+                <p>~40+ kuvaa</p>
+                <small class="location-price-note">Hinta nousee valitun paikkakunnan mukaan</small>
+            </div>
+            
+            <!-- Hautajaiset -->
+            <div class="package-card">
+                <h3>Hautaus / Muistotilaisuus (2h)</h3>
+                <div class="price" id="price-f1">300 €</div>
+                <p>Hautaan siirtäminen + siunaus</p>
+            </div>
+            
+            <div class="package-card">
+                <h3>Laajempi hautajaispaketti (4h)</h3>
+                <div class="price" id="price-f2">600 €</div>
+                <p>Koko tilaisuus</p>
+            </div>
+            
+            <div class="package-card">
+                <h3>Ajallinen paketti 3h</h3>
+                <div class="price">350 €</div>
+                <p>Sopii hautajaisiin tai valmistujaisiin</p>
+            </div>
+        </div>
+        
+        <div style="text-align:center; margin-top:4rem; font-size:1.1rem;">
+            <strong>Lisätunnit alkaen 116 € / h</strong>
+        </div>
+    </section>
+
+    <!-- LISÄPALVELUT -->
+    <section style="background:#f9f9f9;">
+        <h2 class="section-title">Lisäpalvelut</h2>
+        <div class="package-grid">
+            <div class="package-card">
+                <h3>Instagram-valmiit kuvat</h3>
+                <div class="price">70 €</div>
+                <p>4:3-rajaus somea varten + täysikokoiset tiedostot</p>
+            </div>
+            <div class="package-card">
+                <h3>Sneak Peek (24h)</h3>
+                <div class="price">50 €</div>
+                <p>Noin 20 kuvaa jo seuraavana päivänä</p>
+            </div>
+            <div class="package-card">
+                <h3>Muistitikku-toimitus</h3>
+                <div class="price">70 €</div>
+                <p>Täyslaadukkaat kuvat Postin pakettiautomaattiin</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- UKK -->
+    <section id="faq" class="faq">
+        <h2 class="section-title">Usein kysytyt kysymykset</h2>
+        
+        <div style="max-width:700px; margin:0 auto;">
+            <div class="faq-item">
+                <h4>Kuvien toimitus?</h4>
+                <p>Toimitan kuvat digitaalisesti pilvipalvelun kautta, josta voit ladata ne laitteellesi.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Varausmaksu?</h4>
+                <p>Sovittuamme ajankohdan perin varausmaksun, joka vähennetään lopullisesta laskusta.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Kilometrikorvaukset?</h4>
+                <p>Lisätään erikseen, jos kuvauspaikkoja vaihdetaan. 0,65 € / km.</p>
+            </div>
+            <div class="faq-item">
+                <h4>Maksutavat?</h4>
+                <p>Lasku sähköpostitse tai MobilePay.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="yhteystiedot">
+        <p style="font-size:2rem; color:white; margin-bottom:1rem;">Satakunta Valokuvaus</p>
+        <p>Y-Tunnus 3591660-9</p>
+        <p>Iivari Kortesoja • Helsinki / Satakunta</p>
+        <p style="margin-top:2rem;">📧 <a href="mailto:info@satakuntavalokuvaus.fi" style="color:#d4af37;">info@satakuntavalokuvaus.fi</a></p>
+        <p style="margin-top:3rem; opacity:0.6; font-size:0.9rem;">© 2026 Satakunta Valokuvaus. Kaikki oikeudet pidätetään.</p>
+    </footer>
+
+    <!-- LOCATION MODAL -->
+    <div id="location-modal" class="location-modal">
+        <div class="modal-content">
+            <h3>Valitse paikkakunta</h3>
+            <p style="margin:1rem 0 2rem;">Hinnat päivittyvät dynaamisesti</p>
+            
+            <button onclick="selectCity(this)" class="city-btn" data-city="Pori">Pori</button>
+            <button onclick="selectCity(this)" class="city-btn" data-city="Rauma">Rauma</button>
+            <button onclick="selectCity(this)" class="city-btn" data-city="Huittinen">Huittinen</button>
+            <button onclick="selectCity(this)" class="city-btn" data-city="Kankaanpää">Kankaanpää</button>
+            <button onclick="selectCity(this)" class="city-btn" data-city="Ulkopaikkakunta">Muu Satakunta / Ulkopuolinen</button>
+            
+            <button onclick="closeModal()" style="margin-top:2rem; background:none; border:1px solid #ccc; padding:0.8rem 2rem; border-radius:50px;">Sulje</button>
+        </div>
+    </div>
+
+    <script>
+        // Service buttons
+        const services = [
+            "Hääkuvaus", 
+            "Hautajaiset", 
+            "Valmistujaisjuhlat", 
+            "Tapahtuma & taltiointi", 
+            "Yrityksille"
+        ];
+        
+        const btnContainer = document.getElementById('service-buttons');
+        services.forEach(service => {
+            const btn = document.createElement('button');
+            btn.className = 'service-btn';
+            btn.textContent = service;
+            btn.onclick = () => {
+                alert(`Siirrytään ${service.toLowerCase()} -osioon (toteutetaan lisäosioina myöhemmin)`);
+            };
+            btnContainer.appendChild(btn);
+        });
+        
+        // Location handling
+        let currentCity = "Valitse paikkakunta";
+        let multiplier = 1;
+        
+        function showLocationModal() {
+            document.getElementById('location-modal').style.display = 'flex';
+        }
+        
+        function closeModal() {
+            document.getElementById('location-modal').style.display = 'none';
+        }
+        
+        function selectCity(el) {
+            currentCity = el.dataset.city;
+            document.getElementById('selected-city').textContent = currentCity;
+            
+            // Simple dynamic pricing
+            if (currentCity === "Ulkopaikkakunta") multiplier = 1.25;
+            else if (currentCity !== "Valitse paikkakunta") multiplier = 1.1;
+            else multiplier = 1;
+            
+            updatePrices();
+            closeModal();
+        }
+        
+        function updatePrices() {
+            const basePrices = {
+                h1: 800,
+                h2: 1300,
+                h3: 300,
+                f1: 300,
+                f2: 600
+            };
+            
+            document.getElementById('price-h1').textContent = Math.round(basePrices.h1 * multiplier) + " €";
+            document.getElementById('price-h2').textContent = Math.round(basePrices.h2 * multiplier) + " €";
+            document.getElementById('price-h3').textContent = Math.round(basePrices.h3 * multiplier) + " €";
+            document.getElementById('price-f1').textContent = Math.round(basePrices.f1 * multiplier) + " €";
+            document.getElementById('price-f2').textContent = Math.round(basePrices.f2 * multiplier) + " €";
+        }
+        
+        // Scroll animations
+        function handleScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.8) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', handleScroll);
+        
+        // Initial setup
+        window.onload = () => {
+            // Make some cards animate
+            document.querySelectorAll('.package-card').forEach((card, i) => {
+                card.classList.add('animate-on-scroll');
+                card.style.animationDelay = (i * 150) + 'ms';
+            });
+            
+            // Keyboard escape for modal
+            document.addEventListener('keydown', e => {
+                if (e.key === "Escape") closeModal();
+            });
+        };
+    </script>
+</body>
+</html>
