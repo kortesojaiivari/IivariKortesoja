@@ -1,29 +1,10 @@
 // SKRIPTIT/buttons.js
 // Hallinnoi etusivun nappuloita dynaamisesti
 const actionButtons = [
-    {
-        text: "Valokuvaus",
-        type: "link",
-        url: "Valokuvaus.html"
-    },
-    {
-        text: "Portfolio",
-        type: "link",                       // siirtyy toiselle sivulle
-        url: "Portfolio.html"
-    }
-
-    // Voit lisätä tähän lisää nappuloita helposti, esim:
-    // {
-    //     text: "Ota yhteyttä",
-    //     type: "scroll",
-    //     target: "#contact",
-    //     smooth: true
-    // },
-    // {
-    //     text: "Some",
-    //     type: "link",
-    //     url: "https://www.instagram.com/..."
-    // }
+    { text: "Valokuvaus", type: "link", url: "#" },
+    { text: "Videotuotannot", type: "link", url: "#" },
+    { text: "Ilmakuvaus", type: "link", url: "#" },
+    { text: "3D animointi ja mallentaminen", type: "link", url: "#" }
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
