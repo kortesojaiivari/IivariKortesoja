@@ -124,7 +124,7 @@
         .marquee-track{display:flex;gap:14px;padding-right:14px;width:max-content;animation:photo-marquee-left 160s linear infinite}
         .marquee-track img{height:clamp(130px,20vw,200px);width:auto;border-radius:12px;display:block;box-shadow:0 8px 24px rgba(0,0,0,.6)}
         /* ===== Combat Camera / Puolustusvoimat ===== */
-        #pv-kompakt{position:relative;max-width:none;margin:5.5rem 0 2.25rem;padding:0 20px;background:transparent;border:none;overflow-x:clip;overflow-y:visible}
+        #pv-kompakt{position:relative;max-width:none;margin:200px 0 2.25rem;padding:0 20px;background:transparent;border:none;overflow-x:clip;overflow-y:visible}
         #pv-kompakt::before{content:"";position:absolute;left:0;right:0;top:-5.5rem;bottom:-2.25rem;background:#000;z-index:0;
             -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 9%,#000 91%,transparent 100%);
                     mask-image:linear-gradient(to bottom,transparent 0,#000 9%,#000 91%,transparent 100%)}
@@ -132,7 +132,7 @@
         .pv-label{display:block;text-align:center;font-size:calc(.8rem*var(--pv-u,1.6));letter-spacing:.2em;text-transform:uppercase;color:#4ade80;margin-bottom:.6rem}
         .pv-head{--pv-u:1.6;max-width:calc(760px*var(--pv-u));margin:0 auto calc(2rem*var(--pv-u));text-align:center}
         .pv-head h2{font-size:calc(1.6rem*var(--pv-u));line-height:1.15;margin-bottom:calc(.6rem*var(--pv-u))}
-        .pv-head p.pv-lead{font-size:calc(.85rem*var(--pv-u));color:#ddd;line-height:1.65;margin-bottom:.6rem}
+        .pv-head p.pv-lead{text-align:left;width:fit-content;max-width:100%;margin-left:auto;margin-right:auto;font-size:calc(.85rem*var(--pv-u));color:#ddd;line-height:1.65;margin-bottom:.6rem}
         .pv-main{--pv-h:calc((100vw - 32px)*0.9/5.2908 - 6px);margin:0 auto;display:grid;grid-template-columns:auto auto auto;justify-content:center;gap:18px;align-items:center}
         .pv-portrait{position:relative;height:var(--pv-h);width:calc(var(--pv-h)*545/644);border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.8)}
         .pv-portrait img{width:100%;height:100%;object-fit:cover;display:block}
@@ -170,6 +170,16 @@
         #valokuvaus{margin:100px 0;text-align:center}
         #valokuvaus h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:20px}
         #valokuvaus .marquee-track img{height:clamp(143px,22vw,220px);border-radius:13.2px}
+        /* ===== Videotuotannot ===== */
+        #videotuotannot{max-width:1200px;margin:100px auto;padding:0 20px;text-align:center}
+        #videotuotannot h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:30px}
+        .vt-grid{display:grid;grid-template-columns:3fr 1fr;gap:12px;margin:0 auto 40px;align-items:stretch}
+        .vt-grid video{pointer-events:none;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px;display:block;background:#111}
+        .vt-btnrow{margin-top:-10px;text-align:center}
+        .vt-side{display:flex;flex-direction:column;gap:12px;justify-content:space-between}
+        .vt-big{position:relative;min-height:0}
+        .vt-big video{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto}
+        @media(max-width:700px){.vt-grid{grid-template-columns:1fr}.vt-big video{position:static;aspect-ratio:16/9;height:auto}.vt-side{flex-direction:row}.vt-side video{width:calc((100% - 24px)/3)}}
         /* ===== Kääntäminen ===== */
         #kaantaminen{margin:100px 0;text-align:center}
         #kaantaminen h2{font-size:clamp(2rem,6vw,3.2rem);margin:0 20px 40px}
@@ -197,7 +207,7 @@
         }
         @media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
         /* ===== Valokuvaus (etusivu, satakuntavalokuvaus.com rivit 2 & 3) ===== */
-        #valokuvaus-top{margin:100px 0;text-align:center;overflow:hidden}
+        #valokuvaus-top{margin:100px 0 200px;text-align:center;overflow:hidden}
         #valokuvaus-top h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:20px}
         .sv-row{overflow:hidden;margin:8px 0}
         .sv-track{display:flex;gap:8px;width:max-content;will-change:transform}
@@ -236,18 +246,17 @@
     <section id="pv-kompakt">
         <div class="pv-head">
             <h2>Combat Camera &amp; Puolustusvoimat</h2>
-            <p class="pv-lead">Suoritin varusmiespalvelustani valtakunnallisessa erikoistehtävässä Taistelukamerassa, jossa toteutimme lukuisia tuotantoja osana työryhmää.</p>
-            <p class="pv-lead">Työskentelin Puolustusvoimilla ennen varusmiespalvelustani tehden videotuotantoja Puolustusvoimien käyttöön.</p>
+            <p class="pv-lead">Suoritin varusmiespalvelustani valtakunnallisessa erikoistehtävässä Taistelukamerassa,<br>jossa toteutimme lukuisia tuotantoja osana työryhmää. Työskentelin Puolustusvoimilla ennen<br>varusmiespalvelustani tehden videotuotantoja Puolustusvoimien käyttöön.</p>
         </div>
         <div class="pv-main">
             <div class="pv-portrait"><img src="MEDIA/Puolustusvoimat/iivari-combatcamera.webp" alt="Iivari Kortesoja Combat Camerassa"><img class="pv-xf2" src="MEDIA/Puolustusvoimat/pviivari2.webp" alt="" aria-hidden="true"></div>
             <div class="pv-thumbs">
-                <a class="pv-thumb" href="https://www.youtube.com/watch?v=91wex5Lgolc" target="_blank" rel="noopener"><img src="MEDIA/Puolustusvoimat/thumbnail1.webp" alt="Puolustusvoimat video 1" loading="lazy"></a>
-                <a class="pv-thumb" href="https://www.youtube.com/watch?v=GLP9QxcEbXk" target="_blank" rel="noopener"><img src="MEDIA/Puolustusvoimat/thumbnail2.webp" alt="Puolustusvoimat video 2" loading="lazy"></a>
-                <a class="pv-thumb" href="https://www.youtube.com/watch?v=3AwEUP7o0qc" target="_blank" rel="noopener"><img src="MEDIA/Puolustusvoimat/thumbnail3.webp" alt="Puolustusvoimat video 3" loading="lazy"></a>
-                <a class="pv-thumb" href="https://www.youtube.com/watch?v=F-2a-c5J2ms" target="_blank" rel="noopener"><img src="MEDIA/Puolustusvoimat/thumbnail4.webp" alt="Puolustusvoimat video 4" loading="lazy"></a>
-                <a class="pv-thumb" href="https://www.youtube.com/watch?v=82S6evKfyPY" target="_blank" rel="noopener"><img src="MEDIA/Puolustusvoimat/thumbnail5.webp" alt="Puolustusvoimat video 5" loading="lazy"></a>
-                <a class="pv-thumb" href="https://www.youtube.com/watch?v=oIx5kq1QLgE" target="_blank" rel="noopener"><img src="MEDIA/Puolustusvoimat/thumbnail6.webp" alt="Puolustusvoimat video 6" loading="lazy"></a>
+                <a class="pv-thumb" href="https://www.youtube.com/watch?v=91wex5Lgolc" target="_blank" rel="noopener"><img src="MEDIA/Puolustusvoimat/thumbnail1.webp" decoding="async" alt="Puolustusvoimat video 1"></a>
+                <a class="pv-thumb" href="https://www.youtube.com/watch?v=GLP9QxcEbXk" target="_blank" rel="noopener"><img src="MEDIA/Puolustusvoimat/thumbnail2.webp" decoding="async" alt="Puolustusvoimat video 2"></a>
+                <a class="pv-thumb" href="https://www.youtube.com/watch?v=3AwEUP7o0qc" target="_blank" rel="noopener"><img src="MEDIA/Puolustusvoimat/thumbnail3.webp" decoding="async" alt="Puolustusvoimat video 3"></a>
+                <a class="pv-thumb" href="https://www.youtube.com/watch?v=F-2a-c5J2ms" target="_blank" rel="noopener"><img src="MEDIA/Puolustusvoimat/thumbnail4.webp" decoding="async" alt="Puolustusvoimat video 4"></a>
+                <a class="pv-thumb" href="https://www.youtube.com/watch?v=82S6evKfyPY" target="_blank" rel="noopener"><img src="MEDIA/Puolustusvoimat/thumbnail5.webp" decoding="async" alt="Puolustusvoimat video 5"></a>
+                <a class="pv-thumb" href="https://www.youtube.com/watch?v=oIx5kq1QLgE" target="_blank" rel="noopener"><img src="MEDIA/Puolustusvoimat/thumbnail6.webp" decoding="async" alt="Puolustusvoimat video 6"></a>
             </div>
             <div class="pv-li" id="pv-linkedin"><video src="MEDIA/linkedin/livelysabre25-linkedin-native.mp4" poster="MEDIA/linkedin/livelysabre25-poster.jpg" autoplay muted loop playsinline preload="auto"></video></div>
         </div>
@@ -259,16 +268,20 @@
         <h2>Videoiden kääntäminen tekoälyavusteisesti</h2>
         <div class="project">
             <img class="project-shot" src="MEDIA/AIKAANNOS/kuvat/youtube-pikkukuvat.webp" alt="Lokalisoidut YouTube-pikkukuvat eri kielillä" loading="lazy">
-            <h3>AI-Assisted Video Translation for International Markets</h3>
-            <p>Lokalisoin videosisältöä kansainvälisille markkinoille tekoälyavusteisella työnkululla: tekstitykset, käännökset ja kielikohtaiset YouTube-pikkukuvat jopa 63 kielelle.</p>
-            <p>Työnkulussa yhdistyvät automaattinen käännös, ihmisen tekemä laadunvarmistus ja kielikohtainen julkaisu.</p>
+            <p>Vie tuotantosi maailmanlaajuiseen jakeluun. Maakohtaisesti lokalisoidun käännöksen ansiosta sisältö tavoittaa katsojat ympäri maailmaa, vaikka he eivät ymmärtäisi lähdekieltä.<br>Ohjelmatekstitysten kääntämisellä maailmanlaajuiseen levitykseen sekä otsikoiden ja pikkukuvien maakohtaiset versiot.</p>
+            <p>Käänsin Daniel Aholan videokatalogin 63 eri kielelle:<br>Matka Maailman Ympäri 60 Päivässä (jaksot 1-6)<br>Selviydyin 7 päivää maailman kurinalaisimpien ihmisten kanssa! (Shaolin-soturimunkit)</p>
             <div class="chips"><span>Tekoäly</span><span>Lokalisointi</span><span>Tekstitys</span><span>YouTube</span><span>63 kieltä</span></div>
-            <a href="https://www.linkedin.com/in/iivarikortesoja/" target="_blank" rel="noopener">Katso LinkedIn-projekti →</a>
         </div>
         <div class="munkki-marquee">
             <p class="munkki-caption">Sama video, 63 kieltä — lokalisoidut pikkukuvat</p>
             <div class="marquee"><div class="marquee-track" id="munkki-track"></div></div>
         </div>
+    </section>
+
+    <section id="videotuotannot">
+        <h2>Videotuotannot</h2>
+        <div class="vt-grid"><div class="vt-big"><video data-vt src="MEDIA/Ruutumedia/Ruutu1.mp4" autoplay muted loop playsinline preload="auto"></video></div><div class="vt-side"><video data-vt src="MEDIA/Ruutumedia/Ruutu3.mp4" autoplay muted loop playsinline preload="auto"></video><video data-vt src="MEDIA/Videotuotannot/sataedu-unkari.mp4" autoplay muted loop playsinline preload="auto"></video><video data-vt src="MEDIA/Ruutumedia/2000luvunkamera.webm" autoplay muted loop playsinline preload="auto"></video></div></div>
+        <div class="vt-btnrow"><a class="btn" href="#" data-target="varaa-tuotanto">Lisätietoa Videotuotannoista</a></div>
     </section>
 
     <div id="pv-sticky" aria-hidden="true">
@@ -343,5 +356,16 @@
     <footer>
         <p>© Iivari Kortesoja 2026 | Y-tunnus 3591660-9</p>
     </footer>
+<script>
+(function(){var vs=[].slice.call(document.querySelectorAll('#videotuotannot video')),inView=new Set();
+var play=function(v){var r=v.play();if(r&&r.catch)r.catch(function(){});};
+vs.forEach(function(v){v.muted=true;v.loop=true;v.playsInline=true;v.removeAttribute('autoplay');v.pause();});
+var io=new IntersectionObserver(function(es){es.forEach(function(en){var v=en.target;
+if(en.isIntersecting){inView.add(v);play(v);}else{inView.delete(v);v.pause();}});},{threshold:0.25});
+vs.forEach(function(v){io.observe(v);});
+document.addEventListener('visibilitychange',function(){inView.forEach(function(v){document.hidden?v.pause():play(v);});});
+['touchstart','click'].forEach(function(t){window.addEventListener(t,function(){inView.forEach(play);},{once:true,passive:true});});
+})();
+</script>
 </body>
 </html>
