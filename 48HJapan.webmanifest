@@ -1,0 +1,17 @@
+{
+  "name": "48H",
+  "short_name": "48H",
+  "start_url": "/48HJapan.html",
+  "scope": "/48HJapan.html",
+  "display": "fullscreen",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/48HJapan-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
