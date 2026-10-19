@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title></title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #000;
+      color-scheme: dark;
+    }
+
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    #cd {
+      margin: 0;
+      color: #ff2a2a;
+      font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+      font-variant-numeric: tabular-nums lining-nums;
+      font-feature-settings: "tnum" 1, "lnum" 1;
+      font-weight: 500;
+      font-size: clamp(3.25rem, 13vw, 11rem);
+      line-height: 1;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      user-select: none;
+      text-shadow:
+        0 0 6px rgba(255, 40, 40, 0.75),
+        0 0 18px rgba(255, 0, 0, 0.4),
+        0 0 40px rgba(255, 0, 0, 0.18);
+    }
+  </style>
+</head>
+<body>
+  <p id="cd">48:00:00</p>
+  <script>
+    (function () {
+      var START = Date.parse("2027-01-03T22:55:00Z");
+      var END = Date.parse("2027-01-05T22:55:00Z");
+      var el = document.getElementById("cd");
+      var timer = 0;
+
+      function pad(n) {
+        return (n < 10 ? "0" : "") + n;
+      }
+
+      function textFor(now) {
+        if (now < START) return "48:00:00";
+        if (now >= END) return "00:00:00";
+        var total = Math.floor((END - now) / 1000);
+        var h = Math.floor(total / 3600);
+        var m = Math.floor((total % 3600) / 60);
+        var s = total % 60;
+        return pad(h) + ":" + pad(m) + ":" + pad(s);
+      }
+
+      function tick() {
+        var now = Date.now();
+        el.textContent = textFor(now);
+        if (now >= END) clearInterval(timer);
+      }
+
+      tick();
+      if (Date.now() < END) timer = setInterval(tick, 200);
+    })();
+  </script>
+</body>
+</html>
