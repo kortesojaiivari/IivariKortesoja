@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Japan">
+  <title></title>
+  <link rel="manifest" href="/Japanicountdown.webmanifest">
+  <link rel="apple-touch-icon" sizes="180x180" href="/Japanicountdown-icon.png">
+  <style>
+    html, body {
+      margin: 0;
+      background: #000;
+      color-scheme: dark;
+      overflow: hidden;
+      overscroll-behavior: none;
+    }
+
+    html {
+      height: 100%;
+      background: #000;
+    }
+
+    body {
+      position: fixed;
+      inset: 0;
+      box-sizing: border-box;
+      display: grid;
+      place-items: center;
+      touch-action: none;
+      background: #000;
+      padding:
+        env(safe-area-inset-top)
+        env(safe-area-inset-right)
+        env(safe-area-inset-bottom)
+        env(safe-area-inset-left);
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    #cd {
+      margin: 0;
+      color: #ff2a2a;
+      font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", "Roboto Mono", "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+      font-variant-numeric: tabular-nums lining-nums;
+      font-feature-settings: "tnum" 1, "lnum" 1;
+      font-weight: 500;
+      font-size: min(14vw, 70vh, 70dvh);
+      line-height: 1;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+      touch-action: none;
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+      text-shadow:
+        0 0 6px rgba(255, 40, 40, 0.75),
+        0 0 18px rgba(255, 0, 0, 0.4),
+        0 0 40px rgba(255, 0, 0, 0.18);
+    }
+  </style>
+</head>
+<body>
+  <p id="cd">00:00:00:00</p>
+  <script>
+    (function () {
+      document.addEventListener("touchmove", function (e) {
+        e.preventDefault();
+      }, { passive: false });
+      document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+      });
+      document.addEventListener("selectstart", function (e) {
+        e.preventDefault();
+      });
+
+      var END = Date.parse("2027-01-05T22:55:00Z");
+      var H200 = 200 * 3600;
+      var el = document.getElementById("cd");
+      var timer = 0;
+      var shown = null;
+      var audioCtx = null;
+      var primed = false;
+
+      function pad(n, width) {
+        var s = String(n);
+        while (s.length < width) s = "0" + s;
+        return s;
+      }
+
+      function textFor(now) {
+        if (now >= END) return "00:00:00";
+        var total = Math.floor((END - now) / 1000);
+        var h, m, s;
+        if (total >= H200) {
+          var days = Math.floor(total / 86400);
+          var rem = total % 86400;
+          h = Math.floor(rem / 3600);
+          m = Math.floor((rem % 3600) / 60);
+          s = rem % 60;
+          return pad(days, 2) + ":" + pad(h, 2) + ":" + pad(m, 2) + ":" + pad(s, 2);
+        }
+        h = Math.floor(total / 3600);
+        m = Math.floor((total % 3600) / 60);
+        s = total % 60;
+        return pad(h, 2) + ":" + pad(m, 2) + ":" + pad(s, 2);
+      }
+
+      function fit() {
+        var vw = window.innerWidth;
+        var vh = window.innerHeight;
+        if (!vw || !vh) return;
+        var box = getComputedStyle(document.body);
+        var availW = vw - (parseFloat(box.paddingLeft) || 0) - (parseFloat(box.paddingRight) || 0);
+        var availH = vh - (parseFloat(box.paddingTop) || 0) - (parseFloat(box.paddingBottom) || 0);
+        if (availW < 1 || availH < 1) return;
+        var portrait = vh >= vw;
+        var targetW = portrait ? Math.min(vw * 0.935, availW - 1) : availW - 1;
+        var targetH = availH - 1;
+        if (targetW < 1 || targetH < 1) return;
+        el.style.fontSize = "100px";
+        var rect = el.getBoundingClientRect();
+        if (rect.width < 1 || rect.height < 1) return;
+        var size = Math.min(100 * targetW / rect.width, 100 * targetH / rect.height);
+        el.style.fontSize = size + "px";
+        rect = el.getBoundingClientRect();
+        var limitW = Math.min(targetW, availW);
+        var limitH = availH;
+        if (rect.width > limitW + 0.5 || rect.height > limitH + 0.5) {
+          size *= Math.min(limitW / rect.width, limitH / rect.height);
+          el.style.fontSize = size + "px";
+        }
+      }
+
+      function unlockAudio() {
+        var Ctor = window.AudioContext || window.webkitAudioContext;
+        if (!Ctor) return;
+        if (!audioCtx) {
+          try { audioCtx = new Ctor(); } catch (e) { return; }
+        }
+        if (audioCtx.state === "suspended") audioCtx.resume();
+        if (primed) return;
+        try {
+          var buf = audioCtx.createBuffer(1, 1, 22050);
+          var src = audioCtx.createBufferSource();
+          src.buffer = buf;
+          src.connect(audioCtx.destination);
+          src.start(0);
+          primed = true;
+        } catch (e) {}
+      }
+
+      function beep() {
+        try {
+          if (!audioCtx || audioCtx.state !== "running") return;
+          var t = audioCtx.currentTime;
+          var osc = audioCtx.createOscillator();
+          var gain = audioCtx.createGain();
+          osc.type = "square";
+          osc.frequency.setValueAtTime(2093, t);
+          gain.gain.setValueAtTime(0.0001, t);
+          gain.gain.exponentialRampToValueAtTime(0.05, t + 0.004);
+          gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.04);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(t);
+          osc.stop(t + 0.045);
+        } catch (e) {}
+      }
+
+      function stop() {
+        clearInterval(timer);
+        timer = 0;
+      }
+
+      function tick() {
+        var now = Date.now();
+        var text = textFor(now);
+        if (text !== shown) {
+          var lenChanged = shown !== null && text.length !== shown.length;
+          if (shown !== null) beep();
+          shown = text;
+          el.textContent = text;
+          if (lenChanged) fit();
+        }
+        if (now >= END) stop();
+      }
+
+      document.addEventListener("pointerdown", unlockAudio, true);
+      document.addEventListener("pointerup", unlockAudio, true);
+      document.addEventListener("touchstart", unlockAudio, { capture: true, passive: true });
+      document.addEventListener("touchend", unlockAudio, { capture: true, passive: true });
+      el.addEventListener("contextmenu", function (e) { e.preventDefault(); });
+
+      window.addEventListener("resize", fit);
+      window.addEventListener("orientationchange", fit);
+      if (window.visualViewport) window.visualViewport.addEventListener("resize", fit);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+
+      tick();
+      fit();
+      if (Date.now() < END) timer = setInterval(tick, 200);
+    })();
+  </script>
+</body>
+</html>
