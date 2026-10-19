@@ -52,7 +52,7 @@
       font-variant-numeric: tabular-nums lining-nums;
       font-feature-settings: "tnum" 1, "lnum" 1;
       font-weight: 500;
-      font-size: clamp(3.25rem, 13vw, 11rem);
+      font-size: min(17.8vw, 70vh, 70dvh);
       line-height: 1;
       letter-spacing: 0.06em;
       white-space: nowrap;
@@ -99,6 +99,7 @@
       var holdId = null;
       var testPending = false;
       var testOrigin = 0;
+      var armTimer = 0;
       var audioCtx = null;
       var primed = false;
 
@@ -117,8 +118,37 @@
       }
 
       function clockNow() {
-        if (testOrigin) return START + (Date.now() - testOrigin);
-        return Date.now();
+        if (!testOrigin) return Date.now();
+        var steps = Math.floor((Date.now() - testOrigin) / 1000);
+        if (steps <= 0) return START;
+        if (steps >= 48 * 3600) return END;
+        return START + steps * 1000;
+      }
+
+      function fit() {
+        var vw = window.innerWidth;
+        var vh = window.innerHeight;
+        if (!vw || !vh) return;
+        var box = getComputedStyle(document.body);
+        var availW = vw - (parseFloat(box.paddingLeft) || 0) - (parseFloat(box.paddingRight) || 0);
+        var availH = vh - (parseFloat(box.paddingTop) || 0) - (parseFloat(box.paddingBottom) || 0);
+        if (availW < 1 || availH < 1) return;
+        var portrait = vh >= vw;
+        var targetW = portrait ? Math.min(vw * 0.935, availW - 1) : availW - 1;
+        var targetH = availH - 1;
+        if (targetW < 1 || targetH < 1) return;
+        el.style.fontSize = "100px";
+        var rect = el.getBoundingClientRect();
+        if (rect.width < 1 || rect.height < 1) return;
+        var size = Math.min(100 * targetW / rect.width, 100 * targetH / rect.height);
+        el.style.fontSize = size + "px";
+        rect = el.getBoundingClientRect();
+        var limitW = Math.min(targetW, availW);
+        var limitH = availH;
+        if (rect.width > limitW + 0.5 || rect.height > limitH + 0.5) {
+          size *= Math.min(limitW / rect.width, limitH / rect.height);
+          el.style.fontSize = size + "px";
+        }
       }
 
       function unlockAudio() {
@@ -189,10 +219,14 @@
       }
 
       function activate() {
-        if (testPending || testOrigin) return;
+        clearTimeout(armTimer);
+        testOrigin = 0;
         testPending = true;
         flash();
-        setTimeout(function () {
+        ensure();
+        tick();
+        armTimer = setTimeout(function () {
+          armTimer = 0;
           testOrigin = Date.now();
           testPending = false;
           ensure();
@@ -204,7 +238,7 @@
         if (e.button !== undefined && e.button !== 0) return;
         if (e.cancelable) e.preventDefault();
         unlockAudio();
-        if (testPending || testOrigin || holdId !== null) return;
+        if (holdId !== null) return;
         try { el.setPointerCapture(e.pointerId); } catch (err) {}
         holdId = e.pointerId;
         clearTimeout(holdTimer);
@@ -231,6 +265,11 @@
       el.addEventListener("pointercancel", endHold);
       el.addEventListener("contextmenu", function (e) { e.preventDefault(); });
 
+      window.addEventListener("resize", fit);
+      window.addEventListener("orientationchange", fit);
+      if (window.visualViewport) window.visualViewport.addEventListener("resize", fit);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+      fit();
       tick();
       if (Date.now() < END) ensure();
     })();
