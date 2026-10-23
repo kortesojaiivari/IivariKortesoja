@@ -180,6 +180,16 @@
         .vt-big{position:relative;min-height:0}
         .vt-big video{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto}
         @media(max-width:700px){.vt-grid{grid-template-columns:1fr}.vt-big video{position:static;aspect-ratio:16/9;height:auto}.vt-side{flex-direction:row}.vt-side video{width:calc((100% - 24px)/3)}}
+        /* ===== 3D ===== */
+        #animointi{max-width:1200px;margin:100px auto;padding:0 20px;text-align:center}
+        #animointi h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:30px}
+        .a3-row{display:grid;grid-template-columns:1fr;gap:36px;max-width:960px;margin:0 auto;text-align:left}
+        .a3-box{width:100%;aspect-ratio:16/9;border-radius:14px;background:#111;display:block;object-fit:cover}
+        .a3-gs h3{font-size:1.5rem;margin-bottom:10px}
+        .a3-gs p{color:#ddd;line-height:1.65;margin-bottom:16px}
+        .a3-reel{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+        .a3-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+        @media(max-width:800px){.a3-row{grid-template-columns:1fr}.a3-reel{gap:8px}}
         /* ===== Kääntäminen ===== */
         #kaantaminen{margin:100px 0;text-align:center}
         #kaantaminen h2{font-size:clamp(2rem,6vw,3.2rem);margin:0 20px 40px}
@@ -280,8 +290,20 @@
 
     <section id="videotuotannot">
         <h2>Videotuotannot</h2>
-        <div class="vt-grid"><div class="vt-big"><video data-vt src="MEDIA/Ruutumedia/Ruutu1.mp4" autoplay muted loop playsinline preload="auto"></video></div><div class="vt-side"><video data-vt src="MEDIA/Ruutumedia/Ruutu3.mp4" autoplay muted loop playsinline preload="auto"></video><video data-vt src="MEDIA/Videotuotannot/sataedu-unkari.mp4" autoplay muted loop playsinline preload="auto"></video><video data-vt src="MEDIA/Ruutumedia/2000luvunkamera.webm" autoplay muted loop playsinline preload="auto"></video></div></div>
-        <div class="vt-btnrow"><a class="btn" href="#" data-target="varaa-tuotanto">Lisätietoa Videotuotannoista</a></div>
+        <div class="vt-grid"><div class="vt-big"><video data-vt src="MEDIA/Videotuotannot/tampere-energia-2026.mp4" autoplay muted loop playsinline preload="auto"></video></div><div class="vt-side"><video data-vt src="MEDIA/Ruutumedia/Ruutu3.mp4" autoplay muted loop playsinline preload="auto"></video><video data-vt src="MEDIA/Videotuotannot/sataedu-unkari.mp4" autoplay muted loop playsinline preload="auto"></video><video data-vt src="MEDIA/Ruutumedia/2000luvunkamera.webm" autoplay muted loop playsinline preload="auto"></video></div></div>
+        <div class="vt-btnrow"><a class="btn" href="varaa-tuotanto.html#videotuotannot">Lisätietoa Videotuotannoista</a></div>
+    </section>
+
+    <section id="animointi">
+        <h2>3D animointi ja mallintaminen</h2>
+        <div class="a3-row">
+            <div class="a3-reel"><div class="a3-box" data-slot="animointi-1"></div><div class="a3-box" data-slot="animointi-2"></div><div class="a3-box" data-slot="animointi-3"></div></div>
+            <div class="a3-gs">
+                <h3>Gaussian Splatting</h3>
+                <p>Kuvatun kohteen muuntaminen digitaaliseksi pistemalliksi. Kohde kuvataan joka suunnasta, ja kuvista lasketaan miljoonista pienistä, värillisistä ja läpikuultavista "läiskistä" koostuva 3D-malli. Lopputulos näyttää valokuvan tarkalta, ja sitä voi katsella vapaasti mistä kulmasta tahansa.</p>
+                <div class="a3-pair"><div class="a3-box" data-slot="drone-360"></div><div class="a3-box" data-slot="3dgs-rakentuu"></div></div>
+            </div>
+        </div>
     </section>
 
     <div id="pv-sticky" aria-hidden="true">
