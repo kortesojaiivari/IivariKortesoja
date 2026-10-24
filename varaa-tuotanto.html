@@ -46,15 +46,16 @@ section.osa h2{font-size:clamp(2rem,6vw,3.2rem);text-align:center;margin-bottom:
 .vaihe-nro{display:inline-flex;width:38px;height:38px;border-radius:50%;background:#4ade80;color:#1a1a1a;font-weight:bold;align-items:center;justify-content:center;margin-bottom:12px}
 .vaihe h4{font-size:1.25rem;margin-bottom:10px}.vaihe p{color:#ddd;margin-bottom:10px}
 body{overflow-x:clip}
-.tk-scroll{position:relative;box-sizing:border-box;width:100vw;margin-left:calc(50% - 50vw)}
-.vaihe-grid.seitseman{display:flex;flex-wrap:nowrap;gap:28px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x pan-y;padding:6px 3vw 18px;scroll-padding:0 3vw;box-sizing:border-box;scrollbar-width:thin;scrollbar-color:#4ade80 #2a2a2a}
-.vaihe-grid.seitseman.mahtuu{justify-content:center}
+.osa-row.yksi>.osa-text{min-width:0}
+.tk-scroll{position:relative;box-sizing:border-box;width:100vw;max-width:100vw;left:50%;transform:translateX(-50%);margin:0}
+.vaihe-grid.seitseman{display:block;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;padding:6px 0 18px;scroll-padding-inline:3vw;box-sizing:border-box;scrollbar-width:thin;scrollbar-color:#4ade80 #2a2a2a}
+.tk-track{display:flex;flex-wrap:nowrap;gap:28px;width:max-content;max-width:none;margin-inline:auto;padding-inline:3vw;box-sizing:border-box}
 .vaihe-grid.seitseman::-webkit-scrollbar{height:8px}.vaihe-grid.seitseman::-webkit-scrollbar-track{background:#2a2a2a;border-radius:4px}.vaihe-grid.seitseman::-webkit-scrollbar-thumb{background:#4ade80;border-radius:4px}
 .vaihe-grid.seitseman .vaihe{flex:0 0 280px;box-sizing:border-box;scroll-snap-align:start}
 .vaihe-grid.seitseman .vaihe:after{content:"→";right:-21px;top:50%;bottom:auto;transform:translateY(-50%)}.vaihe-grid.seitseman .vaihe:last-child:after{content:none}
 @media(max-width:800px){.vaihe-grid.seitseman .vaihe{flex-basis:78vw}}
-.tk-nav{position:absolute;top:50%;transform:translateY(-60%);z-index:2;background:#333;color:#fff;border:0;width:44px;height:44px;border-radius:50%;font-size:1.8rem;line-height:1;cursor:pointer;transition:.3s;box-shadow:0 2px 10px rgba(0,0,0,.5)}
-.tk-nav:hover{background:#4ade80;color:#1a1a1a}.tk-nav.prev{left:1vw}.tk-nav.next{right:1vw}.tk-nav[hidden]{display:none}
+.tk-nav{position:absolute;top:calc(50% - 6px);transform:translateY(-50%);z-index:2;background:#333;color:#fff;border:0;width:44px;height:44px;border-radius:50%;font-size:1.8rem;line-height:1;cursor:pointer;transition:.3s;box-shadow:0 2px 10px rgba(0,0,0,.5)}
+.tk-nav:hover{background:#4ade80;color:#1a1a1a}.tk-nav.prev{left:max(8px,1vw)}.tk-nav.next{right:max(8px,1vw)}.tk-nav[hidden]{display:none}
 @media(max-width:800px){.vaihe-grid{grid-template-columns:1fr}.vaihe:not(:last-child):after{content:"↓";right:50%;top:auto;bottom:-24px;transform:translateX(50%)}}
 .esim-note{position:relative;color:#eee;font-size:.95rem;text-align:center;padding:0 12px;text-shadow:0 1px 4px #000}
 .broll{max-width:1100px;margin:70px auto 0;text-align:center}
@@ -92,6 +93,35 @@ body{overflow-x:clip}
 #yhteys p{color:#ccc;margin-bottom:8px}
 #yhteys .btn{margin-top:22px}
 @media(max-width:800px){.osa-row,.osa-row.rev{grid-template-columns:1fr}.osa-row.rev .osa-media{order:0}}
+.sana-loop{display:inline-block;position:relative;vertical-align:baseline;white-space:nowrap;transition:width .6s ease}
+.sana-loop .sl-sizer{visibility:hidden}
+.sana-loop .sl-clip{position:absolute;left:0;right:0;top:0;bottom:-.15em;overflow:hidden}
+.sana-loop .sl-w{position:absolute;left:0;top:0;white-space:nowrap;transform:translateY(110%);opacity:0;transition:transform .6s ease,opacity .6s ease}
+.sana-loop .sl-w.on{transform:none;opacity:1}.sana-loop .sl-w.out{transform:translateY(-110%);opacity:0}
+.sana-loop .sl-w.reset{transition:none}
+@media(prefers-reduced-motion:reduce){.sana-loop,.sana-loop span{transition:none!important}}
+.yt-otsikko{text-align:center;font-size:1.3rem;margin:44px 0 16px}
+.yt-scroll{margin-bottom:26px}
+.yt-kortti{flex:0 0 340px;margin:0;scroll-snap-align:start}
+@media(max-width:800px){.yt-kortti{flex-basis:78vw}}
+.yt-lite{position:relative;display:block;width:100%;aspect-ratio:16/9;padding:0;border:0;border-radius:12px;overflow:hidden;background:#000;cursor:pointer;box-shadow:0 8px 25px rgba(0,0,0,.6)}
+.yt-lite img{width:100%;height:100%;object-fit:cover;display:block;transition:.3s}.yt-lite:hover img{transform:scale(1.04);opacity:.85}
+.yt-play{position:absolute;left:50%;top:50%;width:64px;height:44px;transform:translate(-50%,-50%);background:rgba(20,20,20,.8);border-radius:12px;transition:.3s}
+.yt-play:after{content:"";position:absolute;left:26px;top:12px;border-style:solid;border-width:10px 0 10px 16px;border-color:transparent transparent transparent #fff}
+.yt-lite:hover .yt-play{background:#e00}
+.yt-kortti iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:12px;display:block}
+.yt-kortti figcaption{font-size:.85rem;color:#aaa;margin-top:8px;line-height:1.35}
+.kaan-intro{position:relative;left:50%;transform:translateX(-50%);width:min(1100px,calc(100vw - 40px));display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;margin-bottom:10px}
+.kaan-video video{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:16px;display:block;background:#111;box-shadow:0 15px 50px rgba(0,0,0,.8)}
+@media(max-width:800px){.kaan-intro{grid-template-columns:1fr;gap:22px}}
+.vt-munkki{position:relative;left:50%;transform:translateX(-50%);width:100vw;margin:10px 0 30px;text-align:center}
+.vt-munkki-caption{color:#bbb;font-size:1rem;margin-bottom:6px}
+.vt-munkki-box{overflow:hidden;width:100%;padding:18px 0}
+#vt-munkki-track{display:flex;gap:14px;width:max-content}
+#vt-munkki-track figure{position:relative;height:clamp(130px,16vw,200px);aspect-ratio:16/9;margin:0;border-radius:12px;overflow:hidden;flex:none;box-shadow:0 8px 24px rgba(0,0,0,.6)}
+#vt-munkki-track figure img{width:100%;height:100%;object-fit:cover;display:block}
+#vt-munkki-track figcaption{position:absolute;left:8px;bottom:8px;background:rgba(0,0,0,.7);padding:2px 10px;border-radius:50px;font-size:.8rem;color:#fff}
+@media(max-width:768px){#vt-munkki-track figure{height:110px}}
 </style>
 <link rel="stylesheet" href="KOMPONENTIT/tiktok-karuselli/tiktok-karuselli.css">
 </head>
@@ -104,7 +134,7 @@ body{overflow-x:clip}
     <a class="btn" href="#videotuotannot">Videotuotannot</a>
     <a class="btn" href="#valokuvaus">Valokuvaus</a>
     <a class="btn" href="#ilmakuvaus">Ilmakuvaus</a>
-    <a class="btn" href="#kaantaminen">AI-avusteinen kääntäminen</a>
+    <a class="btn" href="#kaantaminen" aria-label="AI-avusteinen kääntäminen"><span class="sana-loop" aria-hidden="true"><span class="sl-sizer">AI</span><span class="sl-clip"><span class="sl-w on">AI</span><span class="sl-w">SI</span></span></span><span aria-hidden="true">-avusteinen kääntäminen</span></a>
     <a class="btn" href="#animointi">3D animointi ja mallintaminen</a>
   </nav>
 </header>
@@ -214,20 +244,26 @@ body{overflow-x:clip}
 </section>
 
 <section class="osa" id="kaantaminen">
-  <h2>AI-avusteinen kääntäminen</h2>
+  <h2 aria-label="AI-avusteinen kääntäminen"><span class="sana-loop" aria-hidden="true"><span class="sl-sizer">AI</span><span class="sl-clip"><span class="sl-w on">AI</span><span class="sl-w">SI</span></span></span><span aria-hidden="true">-avusteinen kääntäminen</span></h2>
   <div class="osa-row yksi">
     <div class="osa-text">
+      <div class="kaan-intro">
+      <div class="kaan-teksti">
       <p>Vie tuotantosi maailmanlaajuiseen jakeluun. Maakohtaisesti lokalisoidun käännöksen ansiosta sisältö tavoittaa katsojat ympäri maailmaa, vaikka he eivät ymmärtäisi lähdekieltä.</p>
       <ul>
         <li>Ohjelmatekstitysten kääntäminen maailmanlaajuiseen levitykseen</li>
         <li>Otsikoiden ja pikkukuvien maakohtaiset versiot</li>
       </ul>
+      </div>
+      <div class="kaan-video"><video src="MEDIA/AIKAANNOS/video/AIKAANNOS-web.mp4" poster="MEDIA/AIKAANNOS/video/AIKAANNOS-poster.jpg" autoplay muted loop playsinline preload="metadata"></video></div>
+      </div>
       <div class="vaiheet">
       <h3 class="vaiheet-otsikko">Työnkulku</h3>
       <div class="tk-scroll">
       <button class="tk-nav prev" type="button" aria-label="Edellinen" hidden>‹</button>
       <button class="tk-nav next" type="button" aria-label="Seuraava">›</button>
       <div class="vaihe-grid seitseman">
+      <div class="tk-track">
         <div class="vaihe"><span class="vaihe-nro">1</span><h4>Ohjelmatekstitykset</h4><p>Luodaan ohjelmalle ohjelmatekstitykset tai käytetään olemassa olevia.</p></div>
         <div class="vaihe"><span class="vaihe-nro">2</span><h4>Kontekstointi</h4><p>Ohjelmatekstitykset muokataan Super älylle kontekstillisiksi, eli tekstityksiin lisätään piilotettua kontekstia, jotta käännöksestä saadaan luonteva.</p></div>
         <div class="vaihe"><span class="vaihe-nro">3</span><h4>Manuaaliset tarkastuskierrokset</h4><p>Jotta käännöksestä saadaan luonteva myös muilla kielillä, tarkistutan massakäännöksen masterkäännöksen useaan kertaan ja korjaan sitä käsin. Näin massakäännöksestä tulee mahdollisimman luonteva.</p></div>
@@ -237,10 +273,31 @@ body{overflow-x:clip}
         <div class="vaihe"><span class="vaihe-nro">7</span><h4>Toimitus</h4><p>Palvelusta riippuen, esimerkiksi YouTubeen, lisään käännökset sekä pikkukuva- ja otsikkoversiot kielikohtaisesti käsin.</p></div>
       </div>
       </div>
+      </div>
       <p class="tyonkulku-huom" style="max-width:720px;margin:24px auto 0;text-align:center;font-size:.9rem;font-style:italic;color:#9a9a9a">Tämä on tämänhetkinen työnkulkuni. Super äly kehittyy vauhdilla, joten prosessi muuttuu ajan myötä yhä helpommaksi ja nopeammaksi.</p>
       </div>
       <p style="margin-top:40px">Käänsin Daniel Aholan videokatalogin 63 eri kielelle: Matka Maailman Ympäri 60 Päivässä (jaksot 1–6) sekä Selviydyin 7 päivää maailman kurinalaisimpien ihmisten kanssa! (Shaolin-soturimunkit).</p>
-      <a class="btn" href="#yhteys">Kysy kääntämisestä</a>
+      <h3 class="yt-otsikko">Kääntämiäni videoita</h3>
+      <div class="tk-scroll yt-scroll">
+      <button class="tk-nav prev" type="button" aria-label="Edellinen" hidden>‹</button>
+      <button class="tk-nav next" type="button" aria-label="Seuraava">›</button>
+      <div class="vaihe-grid seitseman">
+      <div class="tk-track">
+        <figure class="yt-kortti"><button class="yt-lite" type="button" data-id="tEnGpwlMdRk" data-start="135" aria-label="Toista: Matka Maailman Ympäri 60 Päivässä 0€ Budjetilla 1/6"><img src="https://i.ytimg.com/vi/tEnGpwlMdRk/hqdefault.jpg" alt="" loading="lazy"><span class="yt-play" aria-hidden="true"></span></button><figcaption>Matka Maailman Ympäri 60 Päivässä 0€ Budjetilla 1/6</figcaption></figure>
+        <figure class="yt-kortti"><button class="yt-lite" type="button" data-id="ynBG6exHY9M" data-start="2051" aria-label="Toista: Matka Maailman Ympäri 60 Päivässä 0€ Budjetilla 2/6"><img src="https://i.ytimg.com/vi/ynBG6exHY9M/hqdefault.jpg" alt="" loading="lazy"><span class="yt-play" aria-hidden="true"></span></button><figcaption>Matka Maailman Ympäri 60 Päivässä 0€ Budjetilla 2/6</figcaption></figure>
+        <figure class="yt-kortti"><button class="yt-lite" type="button" data-id="hEdfXJhM7kY" data-start="2629" aria-label="Toista: Matka Maailman Ympäri 60 Päivässä 0€ Budjetilla 3/6"><img src="https://i.ytimg.com/vi/hEdfXJhM7kY/hqdefault.jpg" alt="" loading="lazy"><span class="yt-play" aria-hidden="true"></span></button><figcaption>Matka Maailman Ympäri 60 Päivässä 0€ Budjetilla 3/6</figcaption></figure>
+        <figure class="yt-kortti"><button class="yt-lite" type="button" data-id="nSjixjjzWBU" data-start="1602" aria-label="Toista: Matka Maailman Ympäri 60 Päivässä 0€ Budjetilla 4/6"><img src="https://i.ytimg.com/vi/nSjixjjzWBU/hqdefault.jpg" alt="" loading="lazy"><span class="yt-play" aria-hidden="true"></span></button><figcaption>Matka Maailman Ympäri 60 Päivässä 0€ Budjetilla 4/6</figcaption></figure>
+        <figure class="yt-kortti"><button class="yt-lite" type="button" data-id="a9CQgD4lksA" data-start="1176" aria-label="Toista: Matka Maailman Ympäri 60 Päivässä 0€ Budjetilla 5/6"><img src="https://i.ytimg.com/vi/a9CQgD4lksA/hqdefault.jpg" alt="" loading="lazy"><span class="yt-play" aria-hidden="true"></span></button><figcaption>Matka Maailman Ympäri 60 Päivässä 0€ Budjetilla 5/6</figcaption></figure>
+        <figure class="yt-kortti"><button class="yt-lite" type="button" data-id="GRoVDh3Vp0E" data-start="0" aria-label="Toista: Matka Maailman Ympäri 60 Päivässä 0€ Budjetilla 6/6"><img src="https://i.ytimg.com/vi/GRoVDh3Vp0E/hqdefault.jpg" alt="" loading="lazy"><span class="yt-play" aria-hidden="true"></span></button><figcaption>Matka Maailman Ympäri 60 Päivässä 0€ Budjetilla 6/6</figcaption></figure>
+        <figure class="yt-kortti"><button class="yt-lite" type="button" data-id="ikPC8AdmWGA" data-start="2002" aria-label="Toista: Selviydyin 7 päivää maailman kurinalaisimpien ihmisten kanssa! (Shaolin-soturimunkit)"><img src="https://i.ytimg.com/vi/ikPC8AdmWGA/hqdefault.jpg" alt="" loading="lazy"><span class="yt-play" aria-hidden="true"></span></button><figcaption>Selviydyin 7 päivää maailman kurinalaisimpien ihmisten kanssa! (Shaolin-soturimunkit)</figcaption></figure>
+      </div>
+      </div>
+      </div>
+      <div class="vt-munkki">
+        <p class="vt-munkki-caption">Sama video, 63 kieltä — lokalisoidut pikkukuvat</p>
+        <div class="vt-munkki-box"><div id="vt-munkki-track"></div></div>
+      </div>
+      <div class="tarjous-rivi"><a class="btn btn-vihrea" href="mailto:kortesoja.iivari@gmail.com,muistiin@mail.grokbot.com?subject=Tarjouspyynt%C3%B6%3A%20k%C3%A4%C3%A4nt%C3%A4minen&body=Hei%20Iivari%2C%0A%0AOlen%20kiinnostunut%20videoiden%20k%C3%A4%C3%A4nt%C3%A4misest%C3%A4.%20T%C3%A4ss%C3%A4%20tietoja%20projektista%3A%0A%0AYritys%20%2F%20organisaatio%3A%0AYhteyshenkil%C3%B6%20ja%20puhelinnumero%3A%0AKanava%20tai%20palvelu%20%28esim.%20YouTube%29%3A%0ALinkki%20kanavaan%20%2F%20videoihin%3A%0AVideoiden%20m%C3%A4%C3%A4r%C3%A4%20ja%20kesto%3A%0AAlkuper%C3%A4inen%20kieli%3A%0AKohdekielet%20%28tai%20kaikki%29%3A%0AOnko%20valmiit%20tekstitykset%20%28kyll%C3%A4%2Fei%29%3A%0ATarvitaanko%20maakohtaiset%20otsikot%20ja%20pikkukuvat%3A%0AAikataulu%3A%0ABudjetti%3A%0ALis%C3%A4tiedot%3A%0A%0ATerveisin%2C%0A">Tilaa kääntäminen</a></div>
     </div>
   </div>
 </section>
@@ -284,14 +341,46 @@ if(document.readyState==="complete")run();else window.addEventListener("load",ru
 <script>
 document.querySelectorAll('.tk-scroll').forEach(function(w){
   var r=w.querySelector('.vaihe-grid'),p=w.querySelector('.prev'),n=w.querySelector('.next');
-  function step(){var c=r.querySelector('.vaihe');return c?c.offsetWidth+28:300}
-  function upd(){r.classList.remove('mahtuu');var max=r.scrollWidth-r.clientWidth;
-    if(max<=2){r.classList.add('mahtuu');p.hidden=n.hidden=true;return}
+  function step(){var c=r.querySelector('.tk-track > *');return c?c.offsetWidth+28:300}
+  function upd(){var max=r.scrollWidth-r.clientWidth;
+    if(max<=2){p.hidden=n.hidden=true;return}
     p.hidden=r.scrollLeft<=2;n.hidden=r.scrollLeft>=max-2}
   p.onclick=function(){r.scrollBy({left:-step(),behavior:'smooth'})};
   n.onclick=function(){r.scrollBy({left:step(),behavior:'smooth'})};
   r.addEventListener('scroll',upd,{passive:true});window.addEventListener('resize',upd);upd();
 });
+</script>
+<script>
+(function(){if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+document.querySelectorAll('.sana-loop').forEach(function(el){
+ var z=el.querySelector('.sl-sizer'),ws=el.querySelectorAll('.sl-w'),i=0,t=null,vis=false;
+ function step(){var cur=ws[i],n=(i+1)%ws.length,nx=ws[n];
+  var a=el.getBoundingClientRect().width;z.textContent=nx.textContent;var b=el.getBoundingClientRect().width;
+  el.style.width=a+'px';el.offsetWidth;el.style.width=b+'px';
+  nx.classList.add('reset');nx.classList.remove('out','on');nx.offsetWidth;nx.classList.remove('reset');
+  cur.classList.remove('on');cur.classList.add('out');nx.classList.add('on');i=n;
+  setTimeout(function(){el.style.width=''},700);
+  t=vis?setTimeout(step,3100):null}
+ new IntersectionObserver(function(e){vis=e[0].isIntersecting;if(vis&&!t)t=setTimeout(step,2500);if(!vis&&t){clearTimeout(t);t=null}}).observe(el);
+});})();
+</script>
+<script>
+document.querySelectorAll('.yt-lite').forEach(function(b){b.addEventListener('click',function(){
+ var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+b.dataset.id+'?start='+b.dataset.start+'&autoplay=1&rel=0';
+ f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';f.allowFullscreen=true;f.title=b.getAttribute('aria-label');b.replaceWith(f)})});
+</script>
+<script>
+(function(){var L=[["FI","Suomi"],["AR","Arabia"],["BE","Valkovenäjä"],["BG","Bulgaria"],["BN","Bengali"],["BS","Bosnia"],["CA","Katalaani"],["CS","Tsekki"],["DA","Tanska"],["DE","Saksa"],["EL","Kreikka"],["ES-419","Espanja (Latinalainen Amerikka)"],["ES","Espanja"],["ET","Viro"],["EU","Baski"],["FA","Persia"],["FIL","Filipino"],["FR-CA","Kanada"],["FR","Ranska"],["GL","Galicia"],["GU","Gudzarati"],["HA","Hausa"],["HE","Heprea"],["HI","Hindi"],["HR","Kroatia"],["HU","Unkari"],["HY","Armenia"],["ID","Indonesia"],["IS","Islanti"],["IT","Italia"],["JA","Japani"],["KO","Korea"],["LB","Luxemburg"],["LT","Liettua"],["LV","Latvia"],["MK","Makedonia"],["ML","Malajalam"],["MR","Marathi"],["MS","Malaji"],["MT","Malta"],["MY","Burma"],["NB","Norja"],["NL","Hollanti"],["PA","Pandzabi"],["PL","Puola"],["PT-BR","Portugali (BR)"],["PT","Portugali"],["RO","Romania"],["RU","Venäjä"],["SK","Slovakki"],["SL","Sloveeni"],["SQ","Albania"],["SR","Serbia"],["SV","Ruotsi"],["SW","Swahili"],["TA","Tamili"],["TE","Telugu"],["TH","Thai"],["TR","Turkki"],["UK","Ukraina"],["UR","Urdu"],["VI","Vietnam"],["ZH","Kiina"]];
+var tr=document.getElementById('vt-munkki-track');if(!tr)return;var h='';
+L.forEach(function(l){h+='<figure><img src="MEDIA/AIKAANNOS/munkki/'+l[0]+'.webp" alt="Pikkukuva: '+l[1]+'" decoding="async"><figcaption>'+l[1]+'</figcaption></figure>';});
+tr.innerHTML=h+h.replace(/<figure>/g,'<figure aria-hidden="true">');
+var box=tr.parentNode,pos=0,last=null,half=0;
+function dur(){return window.innerWidth<=768?560:720;}
+function measure(){half=tr.scrollWidth/2;}
+window.addEventListener('load',measure);window.addEventListener('resize',measure);measure();
+if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+function step(t){if(last!==null&&half>0){pos+=half*(t-last)/1000/dur();if(pos>=half)pos-=half;box.scrollLeft=Math.round(pos);}last=t;requestAnimationFrame(step);}
+requestAnimationFrame(step);})();
 </script>
 </body>
 </html>

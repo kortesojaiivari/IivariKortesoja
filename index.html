@@ -228,6 +228,14 @@
         @keyframes sv-scroll-left{from{transform:translateX(-50%)}to{transform:translateX(0)}}
         @media(max-width:768px){.sv-track img{width:239.6px;height:142.5px}}
         @media(prefers-reduced-motion:reduce){.sv-track{animation:none}}
+        .sana-vaihto{display:inline-block;position:relative;vertical-align:baseline;white-space:nowrap;transition:width .6s ease;max-width:100%}
+        .sana-vaihto .sv-sizer{visibility:hidden}
+        .sana-vaihto .sv-clip{position:absolute;left:0;right:0;top:0;bottom:-.15em;overflow:hidden}
+        .sana-vaihto .sv-a,.sana-vaihto .sv-b{position:absolute;left:0;top:0;white-space:nowrap;transition:transform .6s ease,opacity .6s ease}
+        .sana-vaihto .sv-b{transform:translateY(110%);opacity:0}
+        .sana-vaihto.vaihdettu .sv-a{transform:translateY(-110%);opacity:0}
+        .sana-vaihto.vaihdettu .sv-b{transform:none;opacity:1}
+        @media(prefers-reduced-motion:reduce){.sana-vaihto,.sana-vaihto span{transition:none!important}}
     </style>
 
     <script src="SKRIPTIT/dynamic-title.js" defer></script>
@@ -275,12 +283,12 @@
 
 
     <section id="kaantaminen">
-        <h2>Videoiden kääntäminen tekoälyavusteisesti</h2>
+        <h2>Videoiden kääntäminen <span class="sana-vaihto" aria-label="superälyavusteisesti"><span class="sv-sizer" aria-hidden="true">tekoälyavusteisesti</span><span class="sv-clip" aria-hidden="true"><span class="sv-a">tekoälyavusteisesti</span><span class="sv-b">superälyavusteisesti</span></span></span></h2>
         <div class="project">
             <img class="project-shot" src="MEDIA/AIKAANNOS/kuvat/youtube-pikkukuvat.webp" alt="Lokalisoidut YouTube-pikkukuvat eri kielillä" loading="lazy">
             <p>Vie tuotantosi maailmanlaajuiseen jakeluun. Maakohtaisesti lokalisoidun käännöksen ansiosta sisältö tavoittaa katsojat ympäri maailmaa, vaikka he eivät ymmärtäisi lähdekieltä.<br>Ohjelmatekstitysten kääntämisellä maailmanlaajuiseen levitykseen sekä otsikoiden ja pikkukuvien maakohtaiset versiot.</p>
             <p>Käänsin Daniel Aholan videokatalogin 63 eri kielelle:<br>Matka Maailman Ympäri 60 Päivässä (jaksot 1-6)<br>Selviydyin 7 päivää maailman kurinalaisimpien ihmisten kanssa! (Shaolin-soturimunkit)</p>
-            <div class="chips"><span>Tekoäly</span><span>Lokalisointi</span><span>Tekstitys</span><span>YouTube</span><span>63 kieltä</span></div>
+            <div class="chips"><span>Tekoäly</span><span>Superäly</span><span>Lokalisointi</span><span>Tekstitys</span><span>YouTube</span><span>63 kieltä</span></div>
         </div>
         <div class="munkki-marquee">
             <p class="munkki-caption">Sama video, 63 kieltä — lokalisoidut pikkukuvat</p>
@@ -388,6 +396,17 @@ vs.forEach(function(v){io.observe(v);});
 document.addEventListener('visibilitychange',function(){inView.forEach(function(v){document.hidden?v.pause():play(v);});});
 ['touchstart','click'].forEach(function(t){window.addEventListener(t,function(){inView.forEach(play);},{once:true,passive:true});});
 })();
+</script>
+<script>
+(function(){var w=document.querySelector('.sana-vaihto');if(!w)return;var z=w.querySelector('.sv-sizer');
+function swap(anim){var a=w.getBoundingClientRect().width;z.textContent='superälyavusteisesti';
+ if(!anim){w.classList.add('vaihdettu');return}
+ var b=w.getBoundingClientRect().width;w.style.width=a+'px';w.offsetWidth;w.style.width=b+'px';w.classList.add('vaihdettu');
+ setTimeout(function(){w.style.width=''},700)}
+if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){swap(false);return}
+var go=function(){setTimeout(function(){swap(true)},1500)};
+if(!('IntersectionObserver' in window)){go();return}
+var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){io.disconnect();go()}},{threshold:.6});io.observe(w)})();
 </script>
 </body>
 </html>
