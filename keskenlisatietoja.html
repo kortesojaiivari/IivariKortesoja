@@ -4,7 +4,7 @@
 <meta name="robots" content="noindex, nofollow">
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Varaa tuotanto | Iivari Kortesoja</title>
-<meta name="description" content="Videotuotannot, valokuvaus, ilmakuvaus sekä 3D-animointi ja mallintaminen. Kerro projektistasi ja sovitaan kuvaukset.">
+<meta name="description" content="Videotuotannot, valokuvaus, ilmakuvaus sekä AI-avusteinen kääntäminen. Kerro projektistasi ja sovitaan kuvaukset.">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
@@ -123,11 +123,24 @@ body{overflow-x:clip}
 #vt-munkki-track figure img{width:100%;height:100%;object-fit:cover;display:block}
 #vt-munkki-track figcaption{position:absolute;left:8px;bottom:8px;background:rgba(0,0,0,.7);padding:2px 10px;border-radius:50px;font-size:.8rem;color:#fff}
 @media(max-width:768px){#vt-munkki-track figure{height:110px}}
+.ilma-media{display:flex;flex-direction:column;gap:10px}.ilma-media video{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px;display:block;background:#111;pointer-events:none}
+#yhteys{width:100%;max-width:none;margin:40px 0 0;text-align:center;padding:140px 20px 100px;background:linear-gradient(to bottom,#1a1a1a 0,#262626 160px,#262626 100%)}
+#yhteys>*{max-width:800px;margin-left:auto;margin-right:auto}
+footer{background:#000;padding:40px 20px;text-align:center;font-size:1rem;border-top:1px solid #333;margin:0}
+#yhteys h2{font-size:2.8rem;margin-bottom:30px}
+#yhteys p{font-size:1.3rem;margin:15px auto;text-align:center;max-width:800px}
+#yhteys a{color:#4ade80;text-decoration:none;transition:.3s}
+#yhteys a:hover{text-decoration:underline}
+.social-links{display:flex;gap:24px;justify-content:center;margin-top:20px}
+.social-icon{width:32px;height:32px;object-fit:contain;transition:transform .3s ease}
+.social-icon:hover{transform:scale(1.2)}
+@media(max-width:700px){.social-icon{width:24px;height:24px}}
 </style>
 <link rel="stylesheet" href="KOMPONENTIT/tiktok-karuselli/tiktok-karuselli.css">
+<script src="SKRIPTIT/header.js" defer></script>
 </head>
 <body>
-<div class="top"><a href="keskenkotisivu.html">← Etusivu</a><a href="#yhteys">Ota yhteyttä</a></div>
+<div class="top-tila" aria-hidden="true" style="height:70px"></div>
 <header class="hero">
   <h1>Varaa tuotanto</h1>
   <p>Valitse palvelu ja lue tarkemmin, mitä tarjoan. Jokainen projekti suunnitellaan tarpeidesi mukaan.</p>
@@ -136,7 +149,6 @@ body{overflow-x:clip}
     <a class="btn" href="#valokuvaus">Valokuvaus</a>
     <a class="btn" href="#ilmakuvaus">Ilmakuvaus</a>
     <a class="btn" href="#kaantaminen" aria-label="AI-avusteinen kääntäminen"><span class="sana-loop" aria-hidden="true"><span class="sl-sizer">AI</span><span class="sl-clip"><span class="sl-w on">AI</span><span class="sl-w">SI</span></span></span><span aria-hidden="true">-avusteinen kääntäminen</span></a>
-    <a class="btn" href="#animointi">3D animointi ja mallintaminen</a>
   </nav>
 </header>
 
@@ -178,7 +190,7 @@ body{overflow-x:clip}
 </section>
 <div class="esim-wrap">
 <div class="esim">
-    <video class="esim-vid" src="MEDIA/Videotuotannot/netzerotube-haastattelu.mp4" controls autoplay muted loop playsinline preload="auto"></video>
+    <video class="esim-vid" src="MEDIA/Videotuotannot/tampere-energia-2026-bm.mp4" controls autoplay muted loop playsinline preload="auto"></video>
     <div class="esim-txt">
       <h3>Gruppo AB / NetZeroTube</h3>
       <p>Kansainvälinen asiakas kerää haastatteluja biokaasusta, biometaanista ja energian yhteistuotannosta.</p>
@@ -227,7 +239,7 @@ body{overflow-x:clip}
     </div>
   </div>
   <div class="vk-edut">
-    <div class="vk-etu"><h4>Käyttöoikeudet sinulle</h4><p>Kun tilaat kuvat minulta, siirrän kuvien taloudelliset tekijän- ja käyttöoikeudet sinulle. Voit käyttää kuvia vapaasti omissa kanavissasi ilman erillisiä lisenssimaksuja.</p></div>
+    <div class="vk-etu"><h4>Käyttöoikeudet sinulle</h4><p>Kun tilaat kuvat minulta, siirrän kuvien tekijän- ja käyttöoikeudet sinulle. Voit käyttää kuvia vapaasti omissa kanavissasi nyt ja tulevaisuudessa.</p></div>
     <div class="vk-etu"><h4>Valmiiksi oikeassa muodossa</h4><p>Muokkaan ja rajaan kuvat käyttötarkoituksen mukaan. Saat esimerkiksi Instagramiin valmiiksi rajatut versiot ja nettisivuille oikeassa koossa ja formaatissa olevat kuvat.</p></div>
     <div class="vk-etu"><h4>Alkuperäiset RAW-kuvat</h4><p>Saat arkistoon myös alkuperäiset RAW-kuvat, jotta kuvia voi muokata ja käyttää myöhemmin uudelleen.</p></div>
   </div>
@@ -236,10 +248,10 @@ body{overflow-x:clip}
 <section class="osa" id="ilmakuvaus">
   <h2>Ilmakuvaus</h2>
   <div class="osa-row">
-    <div class="osa-media"><div class="tal-slot">Ilmakuvausvideo tulossa</div></div>
+    <div class="osa-media ilma-media"><video src="MEDIA/Ilmakuvaus/ilmakuvaus-1.mp4" poster="MEDIA/Ilmakuvaus/ilmakuvaus-1.jpg" autoplay muted loop playsinline preload="auto"></video><video src="MEDIA/Ilmakuvaus/ilmakuvaus-2.mp4" poster="MEDIA/Ilmakuvaus/ilmakuvaus-2.jpg" autoplay muted loop playsinline preload="auto"></video></div>
     <div class="osa-text">
-      <p>Drone-kuvausta videoihin ja valokuviin. Ilmakuvat näyttävät kohteen ja ympäristön kokonaan uudesta kulmasta.</p>
-      <a class="btn" href="#yhteys">Kysy ilmakuvauksesta</a>
+      <p>Drone-kuvausta videoihin ja valokuviin. Dronella voidaan myös toteuttaa alueen digitaalinen skannaus 3D-mallinnukseksi.</p>
+      <a class="btn btn-vihrea" href="mailto:kortesoja.iivari@gmail.com,muistiin@mail.grokbot.com?subject=Tarjouspyynt%C3%B6%3A%20ilmakuvaus&body=Hei%20Iivari%2C%0A%0AOlen%20kiinnostunut%20ilmakuvauksesta.%0A%0AYritys%20tai%20j%C3%A4rjest%C3%B6%3A%0AYhteyshenkil%C3%B6%20ja%20puhelinnumero%3A%0AKuvauskohde%20ja%20sijainti%3A%0ATarve%20%28video%2C%20valokuvat%2C%203D-skannaus%29%3A%0AK%C3%A4ytt%C3%B6tarkoitus%3A%0AAjankohta%3A%0ABudjetti%3A%0ALis%C3%A4tietoja%3A%0A%0ATerveisin%2C%0A">Kysy ilmakuvauksesta</a>
     </div>
   </div>
 </section>
@@ -303,25 +315,28 @@ body{overflow-x:clip}
   </div>
 </section>
 
-<section class="osa" id="animointi">
-  <h2>3D animointi ja mallintaminen</h2>
-  <div class="osa-row rev">
-    <div class="osa-media"><div class="tal-slot">3D-animaatio tulossa</div></div>
-    <div class="osa-text">
-      <p>3D-animaatiot, introt ja mallinnukset. Gaussian splatting -tekniikalla kuvattu kohde muutetaan valokuvan tarkaksi 3D-malliksi, jota voi katsella mistä kulmasta tahansa.</p>
-      <ul><li>3D-introt ja animaatiot</li><li>Gaussian splatting -skannaukset</li><li>Drone-skannaukset</li></ul>
-      <a class="btn" href="#yhteys">Kerro projektistasi</a>
-    </div>
-  </div>
-</section>
 
 <section id="yhteys">
-  <h2>Ota yhteyttä</h2>
-  <p>Kerro projektistasi, niin sovitaan kuvaukset.</p>
-  <p>Sähköposti: <a href="mailto:kortesoja.iivari@gmail.com">kortesoja.iivari@gmail.com</a></p>
-  <p>Puhelin: <a href="tel:+358405247918">040 524 7918</a></p>
-  <a class="btn" href="mailto:kortesoja.iivari@gmail.com?subject=Tuotantotiedustelu">Lähetä viesti</a>
-</section>
+        <h2>Yhteystiedot</h2>
+        <p>Ota yhteyttä ja keskustellaan tulevista projekteista!</p>
+        <p>Sähköposti: <a href="mailto:kortesoja.iivari@gmail.com">kortesoja.iivari@gmail.com</a></p>
+        <p>Puhelin: <a href="tel:+358405247918">040 524 7918</a></p>
+      
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/iivarikortesoja" target="_blank">
+                <img src="MEDIA/Ikonit/linkedin.webp" alt="LinkedIn" class="social-icon">
+            </a>
+            <a href="https://api.whatsapp.com/message/2JQ4G2D3EXLID1?autoload=1&app_absent=0" target="_blank">
+                <img src="MEDIA/Ikonit/whatsapp.webp" alt="WhatsApp" class="social-icon">
+            </a>
+            <a href="https://x.com/IivariKortesoja" target="_blank">
+                <img src="MEDIA/Ikonit/X.webp" alt="X (Twitter)" class="social-icon">
+            </a>
+        </div>
+    </section>
+<footer>
+        <p>© Iivari Kortesoja 2026 | Y-tunnus 3591660-9</p>
+    </footer>
 <script src="KOMPONENTIT/tiktok-karuselli/tiktok-karuselli.js"></script>
 <script>
 /* Videot pyörivät vain näkyessään; ohi scrollatessa pysähtyvät. Käyttäjän itse pysäyttämä video ei käynnisty uudelleen. */
