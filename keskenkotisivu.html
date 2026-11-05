@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iivari Kortesoja | Videotuotannot ja Valokuvaus</title>
+    <meta name="description" content="20-vuotias Freelancer Elokuva ja Tv alalta. Tarjoan Edullisia Videotuotantoja ja kuluttajaystävällisempää Valokuvausta. Ota yhteyttä ja sovitaan kuvaukset!">
+    <link rel="canonical" href="https://www.iivarikortesoja.media/index.html">
+
+    <!-- GOOGLE ANALYTICS 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JTMFLZTH9R"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JTMFLZTH9R', { 'anonymize_ip': true });
+    </script>
+
+    <!-- MICROSOFT CLARITY -->
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "ud6y4jpngh");
+    </script>
+
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Iivari Kortesoja | Videotuotannot ja Valokuvaus",
+      "description": "20-vuotias Freelancer Elokuva ja Tv alalta. Tarjoan Edullisia Videotuotantoja ja kuluttajaystävällisempää Valokuvausta. Ota yhteyttä ja sovitaan kuvaukset!",
+      "telephone": "+358405247918",
+      "email": "kortesoja.iivari@gmail.com",
+      "url": "https://iivarikortesoja.media",
+      "image": "https://iivarikortesoja.media/MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja1.webp",
+      "priceRange": "350 - 900 €",
+      "sameAs": [
+        "https://wa.me/message/2JQ4G2D3EXLID1",
+        "https://www.linkedin.com/in/iivarikortesoja/",
+        "https://x.com/IivariKortesoja",
+        "https://iivarikortesoja.media/Valokuvaus.html"
+      ]
+    }
+    </script>
+
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Arial',sans-serif;background:#1a1a1a;color:#fff;line-height:1.6;overflow-x:hidden}
+        #home{position:relative;overflow:hidden;text-align:center;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+        #home video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1}
+        #home h1{font-size:clamp(2.5rem,8vw,4.5rem);margin-bottom:20px;text-shadow:0 0 30px rgba(0,0,0,.9)}
+        #button-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .btn {
+            background:#333;
+            color:#fff;
+            padding:14px 32px;
+            border-radius:50px;
+            text-decoration:none;
+            font-size:1.1rem;
+            transition:.3s;
+            box-shadow:0 4px 15px rgba(0,0,0,.5);
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .btn:hover{
+            background:#4ade80;
+            transform:translateY(-3px)
+        }
+        .about-section{max-width:1200px;margin:100px auto;display:flex;align-items:center;gap:60px;flex-wrap:wrap;padding:0 20px}
+        .about-text{flex:1;min-width:300px;font-size:1.35rem;color:#e0e0e0;line-height:1.8}
+        .about-image-container{position:relative;flex:1;min-width:300px;max-width:600px;padding-bottom:56.25%;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.9)}
+        .about-slide{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;transition:opacity 1.2s ease}
+        .about-slide.active{opacity:1}
+        .about-slide img{width:100%;height:100%;object-fit:cover}
+        .portfolio-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;max-width:1200px;margin:80px auto 140px;padding:0 20px}
+        .portfolio-item{position:relative;height:300px;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.8)}
+        .portfolio-item video,.portfolio-item img{width:100%;height:100%;object-fit:cover}
+        #services,#equipment{max-width:1200px;margin:0 auto 100px;text-align:center;padding:0 20px}
+        #services h2,#equipment h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:30px}
+        #dynamic-title{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;padding-top:4px;padding-bottom:6px;line-height:1.05}
+        #dynamic-title span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:auto;text-align:center;pointer-events:none;white-space:nowrap;will-change:transform, opacity;font-weight:600}
+        .service-text,#equipment p{font-size:1.3rem;color:#ddd;line-height:1.7;margin-bottom:60px;max-width:900px;margin-left:auto;margin-right:auto}
+        .equipment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;max-width:1200px;margin:60px auto}
+        .media-item{position:relative;padding-bottom:56.25%;background:#000;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.7)}
+        .media-item video,.media-item img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
+        #retro-camera{max-width:1200px;margin:120px auto;display:flex;align-items:center;gap:60px;flex-wrap:wrap;padding:0 20px}
+        .retro-text{flex:1;min-width:300px;font-size:1.35rem;color:#e0e0e0;line-height:1.8}
+        .retro-video{flex:1;min-width:300px;max-width:600px;position:relative;padding-bottom:56.25%;border-radius:20px;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,.9)}
+        #retro-camera video{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
+        #contact{max-width:800px;margin:0 auto 100px;text-align:center;padding:80px 20px}
+        #contact h2{font-size:2.8rem;margin-bottom:30px}
+        #contact p{font-size:1.3rem;margin:15px 0}
+        #contact a{color:#4ade80;text-decoration:none;transition:.3s}
+        #contact a:hover{text-decoration:underline}
+        .social-links{display:flex;gap:24px;justify-content:center;margin-top:20px}
+        .social-icon{width:32px;height:32px;object-fit:contain;transition:transform .3s ease}
+        .social-icon:hover{transform:scale(1.2)}
+        footer{background:#000;padding:40px 20px;text-align:center;font-size:1rem;border-top:1px solid #333}
+        @media(max-width:768px){
+            .about-text{font-size:1.1rem;text-align:left;padding:0 20px}
+            .service-text, #equipment p, .retro-text{font-size:1.1rem;text-align:left;padding:0 20px}
+            .portfolio-gallery{grid-template-columns:1fr}
+            .social-icon{width:24px;height:24px}
+            #dynamic-title {padding-bottom:8px; padding-top:6px}
+            #button-container{flex-direction:column;gap:16px}
+        }
+        @media(max-width:992px){
+            .about-section,#retro-camera{flex-direction:column;text-align:center}
+            .about-image-container,.retro-video{max-width:100%}
+        }
+
+        /* ===== Marquee (yhteinen) ===== */
+        @keyframes photo-marquee-left{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+        .marquee{overflow:hidden;width:100%;padding:18px 0}
+        .marquee-track{display:flex;gap:14px;padding-right:14px;width:max-content;animation:photo-marquee-left 160s linear infinite}
+        .marquee-track img{height:clamp(130px,20vw,200px);width:auto;border-radius:12px;display:block;box-shadow:0 8px 24px rgba(0,0,0,.6)}
+        /* ===== Combat Camera / Puolustusvoimat ===== */
+        #pv-kompakt{position:relative;max-width:none;margin:200px 0 2.25rem;padding:0 20px;background:transparent;border:none;overflow-x:clip;overflow-y:visible}
+        #pv-kompakt::before{content:"";position:absolute;left:0;right:0;top:-5.5rem;bottom:-2.25rem;background:#000;z-index:0;
+            -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 9%,#000 91%,transparent 100%);
+                    mask-image:linear-gradient(to bottom,transparent 0,#000 9%,#000 91%,transparent 100%)}
+        #pv-kompakt>*{position:relative;z-index:1}
+        .pv-label{display:block;text-align:center;font-size:calc(.8rem*var(--pv-u,1.6));letter-spacing:.2em;text-transform:uppercase;color:#4ade80;margin-bottom:.6rem}
+        .pv-head{--pv-u:1.6;max-width:calc(760px*var(--pv-u));margin:0 auto calc(2rem*var(--pv-u));text-align:center}
+        .pv-head h2{font-size:calc(1.6rem*var(--pv-u));line-height:1.15;margin-bottom:calc(.6rem*var(--pv-u))}
+        .pv-head p.pv-lead{text-align:left;width:fit-content;max-width:100%;margin-left:auto;margin-right:auto;font-size:calc(.85rem*var(--pv-u));color:#ddd;line-height:1.65;margin-bottom:.6rem}
+        .pv-main{--pv-h:calc((100vw - 32px)*0.9/5.2908 - 6px);margin:0 auto;display:grid;grid-template-columns:auto auto auto;justify-content:center;gap:18px;align-items:center}
+        .pv-portrait{position:relative;height:var(--pv-h);width:calc(var(--pv-h)*545/644);border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.8)}
+        .pv-portrait img{width:100%;height:100%;object-fit:cover;display:block}
+        .pv-portrait img{position:absolute;inset:0}
+        .pv-portrait img.pv-xf2{object-position:42% 50%;opacity:0;animation:pv-xf 12s ease-in-out infinite}
+        @keyframes pv-xf{0%,40%{opacity:0}50%,90%{opacity:1}100%{opacity:0}}
+        @media(prefers-reduced-motion:reduce){.pv-portrait img.pv-xf2{animation:none}}
+        .pv-thumbs{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,1fr);gap:10px;height:var(--pv-h);width:calc((var(--pv-h) - 10px)/2*16/9*3 + 20px)}
+        .pv-thumb{position:relative;border-radius:12px;overflow:hidden;background:#111;box-shadow:0 6px 18px rgba(0,0,0,.7);min-height:0}
+        .pv-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+        .pv-thumb img{transition:transform .35s ease,filter .35s ease}
+        .pv-thumb::after{content:"";position:absolute;left:50%;top:50%;width:clamp(42px,4.5vw,72px);height:clamp(42px,4.5vw,72px);transform:translate(-50%,-50%) scale(.85);background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 6 3.5z' fill='white'/%3E%3C/svg%3E") center/contain no-repeat;filter:drop-shadow(0 4px 14px rgba(0,0,0,.7));opacity:0;transition:opacity .25s ease,transform .25s ease;pointer-events:none}
+        .pv-thumb:hover::after,.pv-thumb:focus-visible::after{opacity:1;transform:translate(-50%,-50%) scale(1)}
+        .pv-thumb:hover img{transform:scale(1.04);filter:brightness(.8)}
+        .pv-li{height:var(--pv-h);border-radius:16px;overflow:hidden;background:#000;box-shadow:0 12px 40px rgba(0,0,0,.8)}
+        .pv-li video{height:100%;width:auto;max-width:none;aspect-ratio:16/9;object-fit:cover;display:block}
+        @media(max-width:899px){.pv-main{grid-template-columns:1fr;margin:0;gap:12px}
+            .pv-portrait{height:auto;aspect-ratio:545/644;width:min(100%,420px);margin:0 auto}
+            .pv-thumbs{height:auto;width:auto;grid-template-rows:none}.pv-thumb{aspect-ratio:16/9}
+            .pv-li{height:auto}.pv-li video{width:100%;height:auto;max-width:none}}
+        #pv-photo-marquee-a .marquee-track{animation-duration:192s}
+        #pv-photo-marquee-a .marquee-track img{height:clamp(147.6px,22.5vw,226.8px)}
+        /* Sticky popupit */
+        #pv-sticky,#ai-sticky{position:fixed;right:20px;bottom:20px;width:min(571.4px,75vw);border-radius:16px;overflow:hidden;background:#000;box-shadow:0 20px 60px rgba(0,0,0,.9);opacity:0;transform:translateY(20px);pointer-events:none;transition:opacity .4s,transform .4s}
+        #pv-sticky{z-index:80}#ai-sticky{z-index:81}
+        #pv-sticky.show,#ai-sticky.show{opacity:1;transform:none;pointer-events:auto}
+        .sticky-media{position:relative;aspect-ratio:16/9}
+        .sticky-media iframe,.sticky-media video{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:cover}
+        .sticky-bar{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;font-size:.9rem;color:#ddd}
+        .sticky-close{background:none;border:0;color:#fff;font-size:1.3rem;cursor:pointer;line-height:1}
+        /* ===== Ruutumedia ===== */
+        #ruudut{max-width:1200px;margin:100px auto;padding:0 20px;text-align:center}
+        #ruudut h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:30px}
+        /* ===== Valokuvaus ===== */
+        #valokuvaus{margin:100px 0;text-align:center}
+        #valokuvaus h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:20px}
+        #valokuvaus .marquee-track img{height:clamp(143px,22vw,220px);border-radius:13.2px}
+        /* ===== Videotuotannot ===== */
+        #videotuotannot{max-width:1200px;margin:100px auto;padding:0 20px;text-align:center}
+        #videotuotannot h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:30px}
+        .vt-grid{display:grid;grid-template-columns:3fr 1fr;gap:12px;margin:0 auto 40px;align-items:stretch}
+        .vt-grid video{pointer-events:none;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px;display:block;background:#111}
+        .vt-btnrow{margin-top:-10px;text-align:center}
+        .vt-side{display:flex;flex-direction:column;gap:12px;justify-content:space-between}
+        .vt-big{position:relative;min-height:0}
+        .vt-big video{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto}
+        @media(max-width:700px){.vt-grid{grid-template-columns:1fr}.vt-big video{position:static;aspect-ratio:16/9;height:auto}.vt-side{flex-direction:row}.vt-side video{width:calc((100% - 24px)/3)}}
+        /* ===== Ilmakuvaus ===== */
+        #ilmakuvaus{max-width:1200px;margin:100px auto;padding:0 20px;text-align:center}
+        #ilmakuvaus h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:30px}
+        .ilma-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 auto 40px}
+        .ilma-grid video{pointer-events:none;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px;display:block;background:#111}
+        @media(max-width:700px){.ilma-grid{grid-template-columns:1fr}}
+        /* ===== Kääntäminen ===== */
+        #kaantaminen{margin:100px 0;text-align:center}
+        #kaantaminen h2{font-size:clamp(2rem,6vw,3.2rem);margin:0 20px 40px}
+        #kaantaminen .project{max-width:900px;margin:0 auto;padding:28px;background:#222;border-radius:20px;text-align:left;box-shadow:0 15px 50px rgba(0,0,0,.8)}
+        .project-shot{width:100%;border-radius:14px;display:block;margin-bottom:20px}
+        .project h3{font-size:1.6rem;margin-bottom:12px}
+        .project p{color:#ddd;font-size:1.1rem;margin-bottom:12px}
+        .chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+        .chips span{background:#333;padding:5px 12px;border-radius:50px;font-size:.9rem}
+        .project a{color:#4ade80;text-decoration:none;font-weight:600}
+        .munkki-marquee{margin-top:40px}
+        .munkki-caption{color:#bbb;font-size:1rem;margin-bottom:6px}
+        #munkki-track{animation:none!important;will-change:auto;padding-right:0}
+        .munkki-marquee .marquee{overflow:hidden}
+        #munkki-track figure{position:relative;height:clamp(130px,16vw,200px);aspect-ratio:16/9;margin:0;border-radius:12px;overflow:hidden;flex:none;box-shadow:0 8px 24px rgba(0,0,0,.6)}
+        #munkki-track figure img{width:100%;height:100%;object-fit:cover;border-radius:0;box-shadow:none}
+        #munkki-track figcaption{position:absolute;left:8px;bottom:8px;background:rgba(0,0,0,.7);padding:2px 10px;border-radius:50px;font-size:.8rem}
+        @media(max-width:768px){
+            .pv-grid{grid-template-columns:repeat(2,1fr)}.pv-thumb--li{grid-column:1/-1}
+            #pv-photo-marquee-a .marquee-track{animation-duration:153.6s}
+            #pv-photo-marquee-a .marquee-track img{height:125px}
+            #valokuvaus .marquee-track img{height:121px;border-radius:8.8px}
+            
+            #munkki-track figure{height:110px}
+        }
+        @media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+        /* ===== Valokuvaus (etusivu, satakuntavalokuvaus.com rivit 2 & 3) ===== */
+        #valokuvaus-top{margin:100px 0 200px;text-align:center;overflow:hidden}
+        #valokuvaus-top h2{font-size:clamp(2.2rem,7vw,3.5rem);margin-bottom:20px}
+        .sv-row{overflow:hidden;margin:8px 0}
+        .sv-track{display:flex;gap:8px;width:max-content;will-change:transform}
+        .sv-track img{width:346px;height:206.4px;object-fit:cover;border-radius:6px;box-shadow:0 8px 25px rgba(0,0,0,.35);flex-shrink:0}
+        .sv-left{animation:sv-scroll-left 147.1s linear infinite}
+        .sv-right{animation:sv-scroll-right 292.8s linear infinite}
+        @keyframes sv-scroll-right{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+        @keyframes sv-scroll-left{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+        @media(max-width:768px){.sv-track img{width:239.6px;height:142.5px}}
+        @media(prefers-reduced-motion:reduce){.sv-track{animation:none}}
+        .sana-vaihto{display:inline-block;position:relative;vertical-align:baseline;white-space:nowrap;transition:width .6s ease;max-width:100%}
+        .sana-vaihto .sv-sizer{visibility:hidden}
+        .sana-vaihto .sv-clip{position:absolute;left:0;right:0;top:0;bottom:-.15em;overflow:hidden}
+        .sana-vaihto .sv-a,.sana-vaihto .sv-b{position:absolute;left:0;top:0;white-space:nowrap;transition:transform .6s ease,opacity .6s ease}
+        .sana-vaihto .sv-b{transform:translateY(110%);opacity:0}
+        .sana-vaihto.vaihdettu .sv-a{transform:translateY(-110%);opacity:0}
+        .sana-vaihto.vaihdettu .sv-b{transform:none;opacity:1}
+        @media(prefers-reduced-motion:reduce){.sana-vaihto,.sana-vaihto span{transition:none!important}}
+    .sana-loop{display:inline-block;position:relative;vertical-align:baseline;white-space:nowrap;transition:width .6s ease}
+.sana-loop .sl-sizer{visibility:hidden}
+.sana-loop .sl-clip{position:absolute;left:0;right:0;top:0;bottom:-.15em;overflow:hidden}
+.sana-loop .sl-w{position:absolute;left:0;top:0;white-space:nowrap;transform:translateY(110%);opacity:0;transition:transform .6s ease,opacity .6s ease}
+.sana-loop .sl-w.on{transform:none;opacity:1}.sana-loop .sl-w.out{transform:translateY(-110%);opacity:0}
+.sana-loop .sl-w.reset{transition:none}
+@media(prefers-reduced-motion:reduce){.sana-loop,.sana-loop span{transition:none!important}}
+html{scroll-behavior:smooth}section[id]{scroll-margin-top:80px}</style>
+
+    <script src="SKRIPTIT/dynamic-title.js" defer></script>
+    <script src="SKRIPTIT/header.js" defer></script>
+    <script src="SKRIPTIT/mobile-scaling.js" defer></script>
+</head>
+<body>
+
+    <section id="home">
+        <video autoplay muted loop playsinline>
+            <source src="MEDIA/Puolustusvoimat/tst_footage.webm" type="video/webm">
+            Selain ei tue taustavideota.
+        </video>
+        <h1>Iivari Kortesoja</h1>
+        <div id="button-container"><a class="btn" href="#valokuvaus-top">Valokuvaus</a><a class="btn" href="#videotuotannot">Videotuotannot</a><a class="btn" href="#ilmakuvaus">Ilmakuvaus</a><a class="btn" href="#kaantaminen" aria-label="AI-kääntäminen"><span class="sana-loop" aria-hidden="true"><span class="sl-sizer">AI</span><span class="sl-clip"><span class="sl-w on">AI</span><span class="sl-w">SI</span></span></span><span aria-hidden="true">-kääntäminen</span></a></div>
+    </section>
+
+
+    <section id="valokuvaus-top">
+        <div class="sv-row"><div class="sv-track sv-left"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus40.webp" alt="Valokuva 40" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus41.webp" alt="Valokuva 41" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus42.webp" alt="Valokuva 42" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus43.webp" alt="Valokuva 43" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus44.webp" alt="Valokuva 44" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus45.webp" alt="Valokuva 45" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus62.webp" alt="Valokuva 62" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus68.webp" alt="Valokuva 68" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus73.webp" alt="Valokuva 73" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus54.webp" alt="Valokuva 54" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus76.webp" alt="Valokuva 76" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus65.webp" alt="Valokuva 65" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus70.webp" alt="Valokuva 70" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus74.webp" alt="Valokuva 74" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus72.webp" alt="Valokuva 72" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus56.webp" alt="Valokuva 56" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus59.webp" alt="Valokuva 59" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus40.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus41.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus42.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus43.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus44.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus45.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus62.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus68.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus73.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus54.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus76.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus65.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus70.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus74.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus72.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus56.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus59.webp" alt="" aria-hidden="true" loading="lazy"></div></div>
+        <div class="sv-row"><div class="sv-track sv-right"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus100.webp" alt="Valokuva 100" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus101.webp" alt="Valokuva 101" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus120.webp" alt="Valokuva 120" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus123.webp" alt="Valokuva 123" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus113.webp" alt="Valokuva 113" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus118.webp" alt="Valokuva 118" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus103.webp" alt="Valokuva 103" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus111.webp" alt="Valokuva 111" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus121.webp" alt="Valokuva 121" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus127.webp" alt="Valokuva 127" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus128.webp" alt="Valokuva 128" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus125.webp" alt="Valokuva 125" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus83.webp" alt="Valokuva 83" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus81.webp" alt="Valokuva 81" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus82.webp" alt="Valokuva 82" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus86.webp" alt="Valokuva 86" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus89.webp" alt="Valokuva 89" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus94.webp" alt="Valokuva 94" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus114.webp" alt="Valokuva 114" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus105.webp" alt="Valokuva 105" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus107.webp" alt="Valokuva 107" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus106.webp" alt="Valokuva 106" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus91.webp" alt="Valokuva 91" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus90.webp" alt="Valokuva 90" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus93.webp" alt="Valokuva 93" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus118.webp" alt="Valokuva 118" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus116.webp" alt="Valokuva 116" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus117.webp" alt="Valokuva 117" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus119.webp" alt="Valokuva 119" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus112.webp" alt="Valokuva 112" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus110.webp" alt="Valokuva 110" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus100.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus101.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus120.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus123.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus113.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus118.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus103.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus111.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus121.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus127.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus128.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus125.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus83.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus81.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus82.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus86.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus89.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus94.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus114.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus105.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus107.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus106.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus91.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus90.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus93.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus118.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus116.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus117.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus119.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus112.webp" alt="" aria-hidden="true" loading="lazy"><img src="https://satakuntavalokuvaus.com/MEDIA/VALOKUVAUSARKISTO/Valokuvaus110.webp" alt="" aria-hidden="true" loading="lazy"></div></div>
+        <div class="button-container" style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:1.5rem"><a class="btn" href="https://satakuntavalokuvaus.com" target="_blank" rel="noopener">Yksityisten ihmisten kuvaus</a><a class="btn" href="keskenlisatietoja.html#valokuvaus">Yrityskuvaus</a></div>
+    </section>
+
+    <section id="pv-kompakt">
+        <div class="pv-head">
+            <h2>Combat Camera &amp; Puolustusvoimat</h2>
+            <p class="pv-lead">Suoritin varusmiespalvelustani valtakunnallisessa erikoistehtävässä Taistelukamerassa,<br>jossa toteutimme lukuisia tuotantoja osana työryhmää. Työskentelin Puolustusvoimilla ennen<br>varusmiespalvelustani tehden videotuotantoja Puolustusvoimien käyttöön.</p>
+        </div>
+        <div class="pv-main">
+            <div class="pv-portrait"><img src="MEDIA/Puolustusvoimat/iivari-combatcamera.webp" alt="Iivari Kortesoja Combat Camerassa"><img class="pv-xf2" src="MEDIA/Puolustusvoimat/pviivari2.webp" alt="" aria-hidden="true"></div>
+            <div class="pv-thumbs">
+                <a class="pv-thumb" href="https://www.youtube.com/watch?v=91wex5Lgolc" target="_blank" rel="noopener"><img src="MEDIA/Puolustusvoimat/thumbnail1.webp" decoding="async" alt="Puolustusvoimat video 1"></a>
+                <a class="pv-thumb" href="https://www.youtube.com/watch?v=GLP9QxcEbXk" target="_blank" rel="noopener"><img src="MEDIA/Puolustusvoimat/thumbnail2.webp" decoding="async" alt="Puolustusvoimat video 2"></a>
+                <a class="pv-thumb" href="https://www.youtube.com/watch?v=3AwEUP7o0qc" target="_blank" rel="noopener"><img src="MEDIA/Puolustusvoimat/thumbnail3.webp" decoding="async" alt="Puolustusvoimat video 3"></a>
+                <a class="pv-thumb" href="https://www.youtube.com/watch?v=F-2a-c5J2ms" target="_blank" rel="noopener"><img src="MEDIA/Puolustusvoimat/thumbnail4.webp" decoding="async" alt="Puolustusvoimat video 4"></a>
+                <a class="pv-thumb" href="https://www.youtube.com/watch?v=82S6evKfyPY" target="_blank" rel="noopener"><img src="MEDIA/Puolustusvoimat/thumbnail5.webp" decoding="async" alt="Puolustusvoimat video 5"></a>
+                <a class="pv-thumb" href="https://www.youtube.com/watch?v=oIx5kq1QLgE" target="_blank" rel="noopener"><img src="MEDIA/Puolustusvoimat/thumbnail6.webp" decoding="async" alt="Puolustusvoimat video 6"></a>
+            </div>
+            <div class="pv-li" id="pv-linkedin"><video src="MEDIA/linkedin/livelysabre25-linkedin-native.mp4" poster="MEDIA/linkedin/livelysabre25-poster.jpg" autoplay muted loop playsinline preload="auto"></video></div>
+        </div>
+    </section>
+    <div class="marquee" id="pv-photo-marquee-a"><div class="marquee-track"><img src="MEDIA/VALOKUVAUS/Valokuvaus1.webp" alt="" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus2.webp" alt="" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus3.webp" alt="" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus4.webp" alt="" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus5.webp" alt="" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus8.webp" alt="" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus9.webp" alt="" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus12.webp" alt="" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus13.webp" alt="" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus14.webp" alt="" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus15.webp" alt="" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus19.webp" alt="" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus23.webp" alt="" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus24.webp" alt="" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus25.webp" alt="" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus28.webp" alt="" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus29.webp" alt="" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus32.webp" alt="" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus33.webp" alt="" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus35.webp" alt="" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus1.webp" alt="" aria-hidden="true" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus2.webp" alt="" aria-hidden="true" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus3.webp" alt="" aria-hidden="true" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus4.webp" alt="" aria-hidden="true" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus5.webp" alt="" aria-hidden="true" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus8.webp" alt="" aria-hidden="true" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus9.webp" alt="" aria-hidden="true" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus12.webp" alt="" aria-hidden="true" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus13.webp" alt="" aria-hidden="true" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus14.webp" alt="" aria-hidden="true" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus15.webp" alt="" aria-hidden="true" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus19.webp" alt="" aria-hidden="true" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus23.webp" alt="" aria-hidden="true" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus24.webp" alt="" aria-hidden="true" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus25.webp" alt="" aria-hidden="true" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus28.webp" alt="" aria-hidden="true" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus29.webp" alt="" aria-hidden="true" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus32.webp" alt="" aria-hidden="true" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus33.webp" alt="" aria-hidden="true" decoding="async"><img src="MEDIA/VALOKUVAUS/Valokuvaus35.webp" alt="" aria-hidden="true" decoding="async"></div></div>
+
+
+    <section id="kaantaminen">
+        <h2>Videoiden kääntäminen <span class="sana-vaihto" aria-label="superälyavusteisesti"><span class="sv-sizer" aria-hidden="true">tekoälyavusteisesti</span><span class="sv-clip" aria-hidden="true"><span class="sv-a">tekoälyavusteisesti</span><span class="sv-b">superälyavusteisesti</span></span></span></h2>
+        <div class="project">
+            <img class="project-shot" src="MEDIA/AIKAANNOS/kuvat/youtube-pikkukuvat.webp" alt="Lokalisoidut YouTube-pikkukuvat eri kielillä" loading="lazy">
+            <p>Vie tuotantosi maailmanlaajuiseen jakeluun. Maakohtaisesti lokalisoidun käännöksen ansiosta sisältö tavoittaa katsojat ympäri maailmaa, vaikka he eivät ymmärtäisi lähdekieltä.<br>Ohjelmatekstitysten kääntämisellä maailmanlaajuiseen levitykseen sekä otsikoiden ja pikkukuvien maakohtaiset versiot.</p>
+            <p>Käänsin Daniel Aholan videokatalogin 63 eri kielelle:<br>Matka Maailman Ympäri 60 Päivässä (jaksot 1-6)<br>Selviydyin 7 päivää maailman kurinalaisimpien ihmisten kanssa! (Shaolin-soturimunkit)</p>
+            <div class="chips"><span>Tekoäly</span><span>Superäly</span><span>Lokalisointi</span><span>Tekstitys</span><span>YouTube</span><span>63 kieltä</span></div>
+        </div>
+        <div class="munkki-marquee">
+            <p class="munkki-caption">Sama video, 63 kieltä — lokalisoidut pikkukuvat</p>
+            <div class="marquee"><div class="marquee-track" id="munkki-track"></div></div>
+        </div>
+    </section>
+
+    <section id="videotuotannot">
+        <h2>Videotuotannot</h2>
+        <div class="vt-grid"><div class="vt-big"><video data-vt src="MEDIA/Videotuotannot/tampere-energia-2026-bm.mp4" autoplay muted loop playsinline preload="auto"></video></div><div class="vt-side"><video data-vt src="MEDIA/Ruutumedia/Ruutu3.mp4" autoplay muted loop playsinline preload="auto"></video><video data-vt src="MEDIA/Videotuotannot/sataedu-unkari.mp4" autoplay muted loop playsinline preload="auto"></video><video data-vt src="MEDIA/Videotuotannot/tampere-energia-2026-bc.mp4" autoplay muted loop playsinline preload="auto"></video></div></div>
+        <div class="vt-btnrow"><a class="btn" href="keskenlisatietoja.html#videotuotannot">Lisätietoa Videotuotannoista</a></div>
+    </section>
+
+    <section id="ilmakuvaus">
+        <h2>Ilmakuvaus</h2>
+        <div class="ilma-grid"><video src="MEDIA/Ilmakuvaus/ilmakuvaus-1.mp4" poster="MEDIA/Ilmakuvaus/ilmakuvaus-1.jpg" autoplay muted loop playsinline preload="auto"></video><video src="MEDIA/Ilmakuvaus/ilmakuvaus-2.mp4" poster="MEDIA/Ilmakuvaus/ilmakuvaus-2.jpg" autoplay muted loop playsinline preload="auto"></video></div>
+        <div class="vt-btnrow"><a class="btn" href="keskenlisatietoja.html#ilmakuvaus">Lisätietoa Ilmakuvauksesta</a></div>
+    </section>
+
+    <div id="pv-sticky" aria-hidden="true">
+        <div class="sticky-media" id="pv-sticky-media"></div>
+        <div class="sticky-bar"><span>Combat Camera Showreel 2025</span><button class="sticky-close" aria-label="Sulje">×</button></div>
+    </div>
+    <div id="ai-sticky" aria-hidden="true">
+        <div class="sticky-media"><video src="MEDIA/AIKAANNOS/video/AIKAANNOS-web.mp4" poster="MEDIA/AIKAANNOS/video/AIKAANNOS-poster.jpg" muted loop playsinline preload="none"></video></div>
+        <div class="sticky-bar"><span>AI-avusteinen videokäännös</span><button class="sticky-close" aria-label="Sulje">×</button></div>
+    </div>
+
+    <section id="contact">
+        <h2>Yhteystiedot</h2>
+        <p>Ota yhteyttä ja keskustellaan tulevista projekteista!</p>
+        <p>Sähköposti: <a href="mailto:kortesoja.iivari@gmail.com">kortesoja.iivari@gmail.com</a></p>
+        <p>Puhelin: <a href="tel:+358405247918">040 524 7918</a></p>
+      
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/iivarikortesoja" target="_blank">
+                <img src="MEDIA/Ikonit/linkedin.webp" alt="LinkedIn" class="social-icon">
+            </a>
+            <a href="https://api.whatsapp.com/message/2JQ4G2D3EXLID1?autoload=1&app_absent=0" target="_blank">
+                <img src="MEDIA/Ikonit/whatsapp.webp" alt="WhatsApp" class="social-icon">
+            </a>
+            <a href="https://x.com/IivariKortesoja" target="_blank">
+                <img src="MEDIA/Ikonit/X.webp" alt="X (Twitter)" class="social-icon">
+            </a>
+        </div>
+    </section>
+
+    <script>
+        const bgVideo = document.querySelector('#home video');
+        new IntersectionObserver(e => e.forEach(en => en.isIntersecting ? bgVideo.play() : bgVideo.pause()), {threshold: 0.5})
+            .observe(document.getElementById('home'));
+        const slides = document.querySelectorAll('.about-slide');
+        let current = 0;
+        setInterval(() => {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }, 4000);
+    </script>
+
+    <script>
+    (function(){
+        // Munkki-karuselli
+        var L=[["FI","Suomi"],["AR","Arabia"],["BE","Valkovenäjä"],["BG","Bulgaria"],["BN","Bengali"],["BS","Bosnia"],["CA","Katalaani"],["CS","Tsekki"],["DA","Tanska"],["DE","Saksa"],["EL","Kreikka"],["ES-419","Espanja (Latinalainen Amerikka)"],["ES","Espanja"],["ET","Viro"],["EU","Baski"],["FA","Persia"],["FIL","Filipino"],["FR-CA","Kanada"],["FR","Ranska"],["GL","Galicia"],["GU","Gudzarati"],["HA","Hausa"],["HE","Heprea"],["HI","Hindi"],["HR","Kroatia"],["HU","Unkari"],["HY","Armenia"],["ID","Indonesia"],["IS","Islanti"],["IT","Italia"],["JA","Japani"],["KO","Korea"],["LB","Luxemburg"],["LT","Liettua"],["LV","Latvia"],["MK","Makedonia"],["ML","Malajalam"],["MR","Marathi"],["MS","Malaji"],["MT","Malta"],["MY","Burma"],["NB","Norja"],["NL","Hollanti"],["PA","Pandzabi"],["PL","Puola"],["PT-BR","Portugali (BR)"],["PT","Portugali"],["RO","Romania"],["RU","Venäjä"],["SK","Slovakki"],["SL","Sloveeni"],["SQ","Albania"],["SR","Serbia"],["SV","Ruotsi"],["SW","Swahili"],["TA","Tamili"],["TE","Telugu"],["TH","Thai"],["TR","Turkki"],["UK","Ukraina"],["UR","Urdu"],["VI","Vietnam"],["ZH","Kiina"]];
+        var tr=document.getElementById('munkki-track'),html='';
+        L.forEach(function(l){html+='<figure><img src="MEDIA/AIKAANNOS/munkki/'+l[0]+'.webp" alt="Pikkukuva: '+l[1]+'" decoding="async"><figcaption>'+l[1]+'</figcaption></figure>';});
+        tr.innerHTML=html+html.replace(/<figure>/g,'<figure aria-hidden="true">');
+        // JS-vieritys (ei jattimaista GPU-kerrosta, ei leikkautumista)
+        (function(){var box=tr.parentNode,pos=0,last=null,half=0;
+            function dur(){return window.innerWidth<=768?560:720;}
+            function measure(){half=tr.scrollWidth/2;}
+            window.addEventListener('load',measure);window.addEventListener('resize',measure);measure();
+            if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+            function step(t){if(last!==null&&half>0){pos+=half*(t-last)/1000/dur();if(pos>=half)pos-=half;box.scrollLeft=Math.round(pos);}last=t;requestAnimationFrame(step);}
+            requestAnimationFrame(step);})();
+        // Sticky-popupit
+        function sticky(el,target,ratio,onShow,onHide){var closed=false;
+            el.querySelector('.sticky-close').addEventListener('click',function(){closed=true;el.classList.remove('show');onHide();});
+            new IntersectionObserver(function(es){es.forEach(function(e){if(closed)return;if(e.isIntersecting&&e.intersectionRatio>=ratio){el.classList.add('show');el.setAttribute('aria-hidden','false');onShow();}else{el.classList.remove('show');el.setAttribute('aria-hidden','true');onHide();}});},{threshold:[0,ratio,0.5,1]}).observe(target);}
+        var pvm=document.getElementById('pv-sticky-media');
+        sticky(document.getElementById('pv-sticky'),document.getElementById('pv-linkedin'),0.25,function(){if(!pvm.firstChild)pvm.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/oIx5kq1QLgE?start=3&autoplay=1&mute=1&rel=0&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="Combat Camera Showreel 2025"></iframe>';},function(){pvm.innerHTML='';});
+        var liv=document.querySelector('#pv-linkedin video');
+        new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?liv.play().catch(function(){}):liv.pause();});},{threshold:.4}).observe(liv);
+        var av=document.querySelector('#ai-sticky video');
+        sticky(document.getElementById('ai-sticky'),document.querySelector('#kaantaminen .project'),0.25,function(){av.play().catch(function(){});},function(){av.pause();});
+    })();
+    </script>
+
+    <footer>
+        <p>© Iivari Kortesoja 2026 | Y-tunnus 3591660-9</p>
+    </footer>
+<script>
+(function(){var vs=[].slice.call(document.querySelectorAll('#videotuotannot video')),inView=new Set();
+var play=function(v){var r=v.play();if(r&&r.catch)r.catch(function(){});};
+vs.forEach(function(v){v.muted=true;v.loop=true;v.playsInline=true;v.removeAttribute('autoplay');v.pause();});
+var io=new IntersectionObserver(function(es){es.forEach(function(en){var v=en.target;
+if(en.isIntersecting){inView.add(v);play(v);}else{inView.delete(v);v.pause();}});},{threshold:0.25});
+vs.forEach(function(v){io.observe(v);});
+document.addEventListener('visibilitychange',function(){inView.forEach(function(v){document.hidden?v.pause():play(v);});});
+['touchstart','click'].forEach(function(t){window.addEventListener(t,function(){inView.forEach(play);},{once:true,passive:true});});
+})();
+</script>
+<script>
+(function(){var w=document.querySelector('.sana-vaihto');if(!w)return;var z=w.querySelector('.sv-sizer');
+function swap(anim){var a=w.getBoundingClientRect().width;z.textContent='superälyavusteisesti';
+ if(!anim){w.classList.add('vaihdettu');return}
+ var b=w.getBoundingClientRect().width;w.style.width=a+'px';w.offsetWidth;w.style.width=b+'px';w.classList.add('vaihdettu');
+ setTimeout(function(){w.style.width=''},700)}
+if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){swap(false);return}
+var go=function(){setTimeout(function(){swap(true)},1500)};
+if(!('IntersectionObserver' in window)){go();return}
+var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){io.disconnect();go()}},{threshold:.6});io.observe(w)})();
+</script>
+<script>
+(function(){if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+document.querySelectorAll('.sana-loop').forEach(function(el){
+ var z=el.querySelector('.sl-sizer'),ws=el.querySelectorAll('.sl-w'),i=0,t=null,vis=false;
+ function step(){var cur=ws[i],n=(i+1)%ws.length,nx=ws[n];
+  var a=el.getBoundingClientRect().width;z.textContent=nx.textContent;var b=el.getBoundingClientRect().width;
+  el.style.width=a+'px';el.offsetWidth;el.style.width=b+'px';
+  nx.classList.add('reset');nx.classList.remove('out','on');nx.offsetWidth;nx.classList.remove('reset');
+  cur.classList.remove('on');cur.classList.add('out');nx.classList.add('on');i=n;
+  setTimeout(function(){el.style.width=''},700);
+  t=vis?setTimeout(step,3100):null}
+ new IntersectionObserver(function(e){vis=e[0].isIntersecting;if(vis&&!t)t=setTimeout(step,2500);if(!vis&&t){clearTimeout(t);t=null}}).observe(el);
+});})();
+</script>
+</body>
+</html>
