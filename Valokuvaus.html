@@ -78,8 +78,7 @@
             Olipa kyseessä niin valmistujaiset, hautajaiset, häät, ristiäiset tai mitä vaan. Dokumentoin tärkeät hetkesi, jolloin voit keskittyä hetkeesi ja muistella sitä valokuvien kautta jälkikäteen.<br><br>
             Vahvuuteni ovat parhaimillaan dokumentaarisessa kuvaamisessa, jossa ikuistan tilanteita mahdollisimman autenttisesti. Tällöin kuvausreissuilta tulee kuvattua kameraan noin sadan ja tuhannen kuvan väliltä, mistä valitsen ja muokkaan parhaimmat teidän käyttöönne. <br><br>
             Tarkoitukseni on tarjota kuluttaja- ja budjettiystävällisempää valokuvausta, pitäen laadun ja luovuuden täysillä.<br>
-            Valokuvauksen ohella tarjoan myös videollista kuvaamista, joka voi olla niin häävideo tai muisteluvideo tilanteesta.<br><br>
-            Teen valokuvausta Satakunnassa pääosin, mutta toimin myös mm. Vaasassa, Seinäjoella ja Tampereella.
+            Valokuvauksen ohella tarjoan myös videollista kuvaamista, joka voi olla niin häävideo tai muisteluvideo tilanteesta.
         </div>
         <div class="about-image">
             <img src="MEDIA/IivariKortesoja valokuvaaja/IivariKortesoja1.webp" alt="Valokuvaus 1" class="active">
@@ -112,9 +111,10 @@
         #vk-location-text{margin-top:10px;color:#aaa}
         #lisapalvelut,#faq{max-width:1200px;margin:80px auto;padding:0 20px}
         #lisapalvelut h2,#faq h2{font-size:clamp(2rem,6vw,3rem);text-align:center;margin-bottom:30px}
-        #lisapalvelut .vk-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:24px}
-        #lisapalvelut .vk-grid .pricing-box{flex:1 1 200px;max-width:280px}
-        @media(max-width:600px){#lisapalvelut .vk-grid .pricing-box{max-width:none}}
+        #lisapalvelut .vk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:860px;margin:0 auto}
+        #lisapalvelut .vk-grid .pricing-box{max-width:none;margin:0}
+        #lisapalvelut .vk-grid .pricing-box:last-child:nth-child(odd){grid-column:1/-1;justify-self:center;width:calc(50% - 12px)}
+        @media(max-width:600px){#lisapalvelut .vk-grid{grid-template-columns:1fr}#lisapalvelut .vk-grid .pricing-box:last-child:nth-child(odd){width:100%}}
         #lisapalvelut .pricing-box h3{font-size:1.3rem;margin-bottom:8px}
         #lisapalvelut .pricing-box .price{font-size:1.9rem;color:#4ade80;font-weight:bold;margin:6px 0}
         #lisapalvelut .pricing-box p{color:#ddd}
@@ -218,8 +218,8 @@
     <section id="final-contact">
         <div class="contact-info">
             <h2>Ota yhteyttä</h2>
-            <p>Sähköposti: <a href="mailto:kortesoja.iivari@gmail.com">kortesoja.iivari@gmail.com</a></p>
-            <p>Puhelin: <a href="tel:+358405247918">040 524 7918</a></p>
+            <p>Sähköposti: <a href="mailto:kortesoja.iivari@gmail.com?subject=Valokuvaustiedustelu&amp;body=Hei%20Iivari%2C%0A%0AHaluaisin%20tiedustella%20valokuvausta.%0A%0ATilaisuus%20%28esim.%20h%C3%A4%C3%A4t%2C%20valmistujaiset%2C%20risti%C3%A4iset%29%3A%0AP%C3%A4iv%C3%A4m%C3%A4%C3%A4r%C3%A4%20ja%20kellonaika%3A%0APaikkakunta%3A%0AKiinnostava%20paketti%3A%0ALis%C3%A4palvelut%20%28esim.%20toinen%20kuvaaja%2C%20Sneak%20Peek%29%3A%0AMuuta%20huomioitavaa%3A%0A%0AYst%C3%A4v%C3%A4llisin%20terveisin%2C%0ANimi%3A%0APuhelin%20%28vapaaehtoinen%29%3A%0A">kortesoja.iivari@gmail.com</a></p>
+            <p style="margin-top:20px"><a href="mailto:kortesoja.iivari@gmail.com?subject=Valokuvaustiedustelu&amp;body=Hei%20Iivari%2C%0A%0AHaluaisin%20tiedustella%20valokuvausta.%0A%0ATilaisuus%20%28esim.%20h%C3%A4%C3%A4t%2C%20valmistujaiset%2C%20risti%C3%A4iset%29%3A%0AP%C3%A4iv%C3%A4m%C3%A4%C3%A4r%C3%A4%20ja%20kellonaika%3A%0APaikkakunta%3A%0AKiinnostava%20paketti%3A%0ALis%C3%A4palvelut%20%28esim.%20toinen%20kuvaaja%2C%20Sneak%20Peek%29%3A%0AMuuta%20huomioitavaa%3A%0A%0AYst%C3%A4v%C3%A4llisin%20terveisin%2C%0ANimi%3A%0APuhelin%20%28vapaaehtoinen%29%3A%0A" class="contact-btn" style="color:#000;font-weight:bold;text-decoration:none">Kirjoita sähköposti</a></p>
         </div>
         <div class="qr-box">
             <a href="https://wa.me/message/2JQ4G2D3EXLID1" target="_blank" rel="noopener">
