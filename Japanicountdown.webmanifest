@@ -1,0 +1,17 @@
+{
+  "name": "Japan",
+  "short_name": "Japan",
+  "start_url": "/Japanicountdown.html",
+  "scope": "/Japanicountdown.html",
+  "display": "fullscreen",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "/Japanicountdown-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
