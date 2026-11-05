@@ -34,7 +34,7 @@
       animate ? animatePrice(el, v) : (el.textContent = v + " €");
     });
     const txt = document.getElementById('vk-location-text');
-    if (txt) txt.innerHTML = 'Kuvauspaikka: <strong>' + city + '</strong>';
+    if (txt) txt.innerHTML = (document.documentElement.lang === 'en' ? 'Location: ' : 'Kuvauspaikka: ') + '<strong>' + city + '</strong>';
   }
 
   document.addEventListener('DOMContentLoaded', () => {

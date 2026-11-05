@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ──────── 1. PÄÄPORTFOLIO (vaihtuva otsikko + grid) ────────
     const categories = [
         {
-            title: "TuplaKupla - Teatterikuvaus",
+            title: (document.documentElement.lang==='en') ? "TuplaKupla – Theatre photography" : "TuplaKupla - Teatterikuvaus",
             media: [
                 { src: "/MEDIA/VALOKUVAUS/Valokuvaus40.webp", alt: "Teatterikuvaus 40" },
                 { src: "/MEDIA/VALOKUVAUS/Valokuvaus41.webp", alt: "Teatterikuvaus 41" },
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ]
         },
         {
-            title: "Laura Voutilainen - Kerran Keväällä",
+            title: (document.documentElement.lang==='en') ? "Laura Voutilainen – Kerran Keväällä" : "Laura Voutilainen - Kerran Keväällä",
             media: [
                 { src: "/MEDIA/VALOKUVAUS/Valokuvaus62.webp", alt: "Laura Voutilainen 62" },
                 { src: "/MEDIA/VALOKUVAUS/Valokuvaus68.webp", alt: "Laura Voutilainen 68" },

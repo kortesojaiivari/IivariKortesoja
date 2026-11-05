@@ -1,13 +1,13 @@
 // SKRIPTIT/photo-buttons.js
 const photoButtons = [
     {
-        text: "Varaa kuvaus",
+        text: (document.documentElement.lang==='en') ? "Book a shoot" : "Varaa kuvaus",
         type: "link",
         url: "#final-contact",
         smoothScroll: true
     },
     {
-        text: "Hinnoittelu",
+        text: (document.documentElement.lang==='en') ? "Pricing" : "Hinnoittelu",
         type: "link",
         url: "#pricing",
         smoothScroll: true

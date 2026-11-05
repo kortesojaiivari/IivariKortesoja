@@ -1,12 +1,35 @@
 (function(){
+  // Kieli: /en/-polulla englanti, muuten suomi. FI/EN-vaihtaja vie vastinsivulle.
+  const path = window.location.pathname;
+  const isEN = /^\/en(\/|$)/.test(path);
+  const PAGES = ['index.html','varaa-tuotanto.html','Valokuvaus.html','Yhteystiedot.html'];
+  function counterpart(){
+    let file = path.replace(/^\/en(\/|$)/,'/').replace(/^\//,'');
+    if (file === '' ) file = 'index.html';
+    if (file === 'keskenkotisivu.html') file = 'index.html';
+    if (file === 'keskenlisatietoja.html') file = 'varaa-tuotanto.html';
+    const known = PAGES.indexOf(decodeURIComponent(file)) !== -1;
+    if (isEN) return '/' + (known ? file : '');
+    return '/en/' + (known ? file : '');
+  }
+  const P = isEN ? '/en' : '';
+  const L = isEN
+    ? {aria:'Site navigation', home:'Home', book:'Book a production', photo:'Photography', contact:'Contact', sw:'Language'}
+    : {aria:'Sivun navigaatio', home:'Koti', book:'Varaa tuotanto', photo:'Valokuvaus', contact:'Yhteystiedot', sw:'Kieli'};
+  const other = counterpart();
   const headerHTML = `
-    <header id="site-header" role="banner" aria-label="Sivun navigaatio">
-      <nav>
-        <a href="/index.html">Koti</a>
-        <a href="/varaa-tuotanto.html">Varaa tuotanto</a>
-        <a href="/Valokuvaus.html">Valokuvaus</a>
-        <a href="/Yhteystiedot.html">Yhteystiedot</a>
+    <header id="site-header" role="banner" aria-label="${L.aria}">
+      <nav aria-label="${L.aria}">
+        <a href="${P}/index.html">${L.home}</a>
+        <a href="${P}/varaa-tuotanto.html">${L.book}</a>
+        <a href="${P}/Valokuvaus.html">${L.photo}</a>
+        <a href="${P}/Yhteystiedot.html">${L.contact}</a>
       </nav>
+      <div class="lang-switch" role="group" aria-label="${L.sw}">
+        ${isEN ? `<a href="${other}" hreflang="fi" lang="fi">FI</a>` : `<span class="on" aria-current="true">FI</span>`}
+        <span class="sep" aria-hidden="true">|</span>
+        ${isEN ? `<span class="on" aria-current="true">EN</span>` : `<a href="${other}" hreflang="en" lang="en">EN</a>`}
+      </div>
     </header>
   `;
 
@@ -149,6 +172,17 @@
       #site-header nav a{
         font-size:1rem;
       }
+    }
+
+
+    /* FI | EN -kielivalitsin */
+    #site-header .lang-switch{position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:.95rem;letter-spacing:.5px;color:#777;display:flex;align-items:center;gap:6px}
+    #site-header .lang-switch a{color:#bbb;text-decoration:none;padding:2px 4px;border-radius:4px;transition:color .25s ease}
+    #site-header .lang-switch a:hover{color:#4ade80}
+    #site-header .lang-switch .on{color:#4ade80;font-weight:700;padding:2px 4px}
+    #site-header .lang-switch .sep{color:#555}
+    @media(max-width:1100px){
+      #site-header .lang-switch{position:static;transform:none;justify-content:center;margin-top:8px;font-size:.9rem}
     }
 
     /* Fallback classes */
