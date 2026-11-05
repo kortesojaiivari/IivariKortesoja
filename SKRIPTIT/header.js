@@ -3,7 +3,7 @@
     <header id="site-header" role="banner" aria-label="Sivun navigaatio">
       <nav>
         <a href="/index.html">Koti</a>
-        <a href="/Portfolio.html">Portfolio</a>
+        <a href="/varaa-tuotanto.html">Varaa tuotanto</a>
         <a href="/Valokuvaus.html">Valokuvaus</a>
         <a href="/Yhteystiedot.html">Yhteystiedot</a>
       </nav>
