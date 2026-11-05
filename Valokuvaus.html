@@ -53,8 +53,7 @@
     <script src="../SKRIPTIT/uusmobile-scaling.js" defer></script>
     <script src="../SKRIPTIT/kampanja-popup.js" defer></script>
     <script src="../SKRIPTIT/photo-buttons.js" defer></script>
-    <script src="../SKRIPTIT/paikkakunta-dropdown.js" defer></script>
-    <script src="SKRIPTIT/paikkakunta-redirect.js" defer></script>
+    <script src="../SKRIPTIT/valokuvaus-hinnat.js" defer></script>
     <script src="../SKRIPTIT/portfolio-changer.js" defer></script>
 </head>
 <body>
@@ -96,22 +95,126 @@
         <div id="changing-grid"></div>
         <div id="category-dots"></div>
     </section>
+    <style>
+        #pricing .vk-group-title{text-align:center;font-size:clamp(1.5rem,4vw,1.9rem);margin:50px 0 24px;color:#4ade80}
+        #pricing .vk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;max-width:1200px;margin:0 auto}
+        #pricing .vk-grid.vk-two{max-width:900px}
+        #pricing .pricing-box h3{font-size:1.5rem;margin-bottom:10px}
+        #pricing .pricing-box .price{font-size:2.4rem;color:#4ade80;font-weight:bold;margin:10px 0}
+        #pricing .pricing-box p{color:#ddd}
+        #pricing .pricing-box ul{font-size:1.05rem}
+        #pricing .pricing-box.vk-highlight{border:2px solid #4ade80}
+        #pricing .contact-box p{font-size:1.15rem}
+        #vk-location{text-align:center;margin:0 auto 10px}
+        #vk-location label{display:block;font-size:1.15rem;color:#bbb;margin-bottom:10px}
+        #vk-location select{width:100%;max-width:360px;padding:12px 18px;font-size:1.15rem;background:#222;color:#eee;border:2px solid #444;border-radius:12px;cursor:pointer}
+        #vk-location select:hover,#vk-location select:focus{border-color:#4ade80;box-shadow:0 0 0 3px rgba(74,222,128,.2);outline:none}
+        #vk-location-text{margin-top:10px;color:#aaa}
+        #lisapalvelut,#faq{max-width:1200px;margin:80px auto;padding:0 20px}
+        #lisapalvelut h2,#faq h2{font-size:clamp(2rem,6vw,3rem);text-align:center;margin-bottom:30px}
+        #lisapalvelut .vk-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:24px}
+        #lisapalvelut .vk-grid .pricing-box{flex:1 1 200px;max-width:280px}
+        @media(max-width:600px){#lisapalvelut .vk-grid .pricing-box{max-width:none}}
+        #lisapalvelut .pricing-box h3{font-size:1.3rem;margin-bottom:8px}
+        #lisapalvelut .pricing-box .price{font-size:1.9rem;color:#4ade80;font-weight:bold;margin:6px 0}
+        #lisapalvelut .pricing-box p{color:#ddd}
+        #faq .vk-faq{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+        #faq .faq-item{background:#222;border-radius:16px;padding:22px 26px;box-shadow:0 10px 35px rgba(0,0,0,.5);border-left:4px solid #4ade80}
+        #faq .faq-item h4{font-size:1.25rem;margin-bottom:6px;color:#4ade80}
+        #faq .faq-item p{color:#ddd}
+    </style>
     <section id="pricing">
-        <h2>Hinnoittelu</h2>
-        <p class="disclaimer">*Nämä ovat suuntaa-antavia hintoja. Hinnat sisältävät ALV 25,5 %. Matkakustannukset (kilometrikorvaus) lisätään erikseen tarpeen mukaan.</p>
-        <div class="upper-row"></div>
-        <div class="lower-row">
+        <h2>Kuvauspaketit</h2>
+        <p class="disclaimer">Hinnat sisältävät matkakustannukset kuvauspaikalle ja arvonlisäveron 25%. Muuttamalla kuvauspaikkakuntaa näet kuvauksen hinnan.</p>
+        <div id="vk-location">
+            <label for="vk-paikkakunta">Valitse kuvauspaikkakunta</label>
+            <select id="vk-paikkakunta" aria-label="Valitse kuvauspaikkakunta"></select>
+            <p id="vk-location-text"></p>
+        </div>
+
+        <h3 class="vk-group-title">Hääkuvaus</h3>
+        <div class="vk-grid">
+            <div class="pricing-box vk-highlight">
+                <h3>Dokumentaarinen Hääkuvaus</h3>
+                <p>Enintään 6 tuntia</p>
+                <p class="price" id="price-h1">800 €</p>
+                <p>Enintään 200 muokattua kuvaa</p>
+                <ul><li>Vihkimen</li><li>Hääjuhlien kuvaus</li><li>Potretit</li></ul>
+            </div>
+            <div class="pricing-box">
+                <h3>Kokopäivän Hääkuvaus</h3>
+                <p>Aamusta yöhön</p>
+                <p class="price" id="price-h2">1300 €</p>
+                <p>Enintään 600 muokattua kuvaa</p>
+                <ul>
+                    <li>Dokumentaarinen kuvaaminen koko hääpäistä ennen vihkintää, vihkiminen, potretit, juhlat</li>
+                    <li>Ennen vihkimistä, vihkiminen, potretit ja Hääjuhlien kuvaus</li>
+                    <li>Ensimmäiset kuvat toimitetaan 24h sisällä Häistä (sneak peek)</li>
+                    <li>Kuvien toimitus kokokuvana digitaallisesti ja valmiiksi rajattut Instagram-versiot saatavilla</li>
+                </ul>
+            </div>
+            <div class="pricing-box">
+                <h3>Potretit + Vihkiminen</h3>
+                <p>Enintään 2 tuntia</p>
+                <p class="price" id="price-h3">300 €</p>
+                <p>40 muokattua kuvaa</p>
+                <ul><li>Vihkimisen kuvaaminen</li><li>Potrettien kuvaaminen samana päivänä hääjuhlan paikalla</li></ul>
+            </div>
+        </div>
+
+        <h3 class="vk-group-title">Hautajaiset ja muistotilaisuus</h3>
+        <div class="vk-grid vk-two">
+            <div class="pricing-box">
+                <h3>Hautajaiset / Muistotilaisuus</h3>
+                <p>Enintään 2 tuntia</p>
+                <p class="price" id="price-f1">300 €</p>
+                <p>Siunaaminen + Hautaan siirtäminen</p>
+            </div>
+            <div class="pricing-box">
+                <h3>Hautajaiset / Muistotilaisuus</h3>
+                <p>Enintään 4 tuntia</p>
+                <p class="price" id="price-f2">600 €</p>
+                <p>Siunaaminen + Hautaan siirtäminen</p>
+                <p>Muistotilaisuudessa kuvaaminen</p>
+            </div>
+        </div>
+
+        <h3 class="vk-group-title">Lyhyempään kuvaamiseen</h3>
+        <div class="vk-grid vk-two">
+            <div class="pricing-box">
+                <h3>3 tunnin paketti</h3>
+                <p>Enintään 3 tuntia kuvaamista</p>
+                <p class="price" id="price-t3">400 €</p>
+                <p>Esimerkiksi Valmistujais tai Rippi Juhliin</p>
+            </div>
             <div class="contact-box">
-                <p>Eikö mieleistä pakettia löytynyt?<br>Ota yhteyttä, niin räätälöidään juuri sinulle sopiva ratkaisu!</p>
+                <p>Eikö mieleistä pakettia löytynyt?<br>Ota yhteyttä, niin räätälöidään sinulle juuri sopiva ratkaisu.</p>
                 <a href="#final-contact" class="contact-btn">Ota yhteyttä</a>
             </div>
         </div>
     </section>
-    <div id="location-selector">
-        <h2>Valitse kuvauspaikkakunta</h2>
-        <select id="paikkakunta-dropdown" onchange="handlePaikkakuntaChange(this.value)" aria-label="Valitse kuvauspaikkakunta"></select>
-        <p class="info">Valitsemalla paikkakunnan siirryt aluekohtaiselle sivulle, jossa on tarkemmat hinnoittelut.</p>
-    </div>
+
+    <section id="lisapalvelut">
+        <h2>Lisäpalvelut</h2>
+        <div class="vk-grid">
+            <div class="pricing-box"><h3>Instagram-valmiit kuvat</h3><p class="price">70 €</p><p>4:3-rajaus somea varten + täysikokoiset tiedostot</p></div>
+            <div class="pricing-box"><h3>Sneak Peek (24h)</h3><p class="price">50 €</p><p>Noin 20 kuvaa jo seuraavana päivänä</p></div>
+            <div class="pricing-box"><h3>Muistitikku-toimitus</h3><p class="price">70 €</p><p>Täyslaadukkaat kuvat Postin pakettiautomaattiin</p></div>
+            <div class="pricing-box"><h3>Lisätunti</h3><p class="price">116 €</p><p>Lisäaika kuvaukseen (hinta per tunti)</p></div>
+            <div class="pricing-box"><h3>Toinen kuvaaja</h3><p>Toinen kuvaaja mahdollistaa kuvien ottamisen varmasti joka tilanteesta. Jos haluat toisen kuvaajan, ilmoita siitä yhteydenotossa erikseen.</p></div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <h2>Usein kysytyt kysymykset</h2>
+        <div class="vk-faq">
+            <div class="faq-item"><h4>Kuvien toimitus?</h4><p>Toimitan kuvat digitaalisesti pilvipalvelun kautta, josta voit ladata ne laitteellesi. Erillisenä lisäpalveluna voi ostaa toimitetun muistikortin, jossa kuvat ovat tallessa.</p></div>
+            <div class="faq-item"><h4>Hyvä tietää</h4><p>Otamme usein myös ryhmäkuvia: koko kuvan, jossa ovat kaikki vieraat, sekä erillisiä muutaman hengen ryhmäkuvia.</p></div>
+            <div class="faq-item"><h4>Varausmaksu?</h4><p>Sovittuamme ajankohdan perin varausmaksun, joka vähennetään lopullisesta laskusta.</p></div>
+            <div class="faq-item"><h4>Kilometrikorvaukset?</h4><p>Lisätään erikseen paikkakunnan mukaan (0,65 € / km × 2). Hinnat päivittyvät automaattisesti valitun paikkakunnan mukaan.</p></div>
+            <div class="faq-item"><h4>Maksutavat?</h4><p>Lasku sähköpostitse tai MobilePay.</p></div>
+        </div>
+    </section>
     <section id="final-contact">
         <div class="contact-info">
             <h2>Ota yhteyttä</h2>
@@ -142,53 +245,6 @@
     </div>
 
     <script>
-        // Hinnoittelu
-        document.addEventListener('DOMContentLoaded', () => {
-            const PAIKKAKUNTA = "muu";
-            const prices = getPricesForLocation(PAIKKAKUNTA);
-            function createPricingBox(title, price, desc = '', features = [], quote = '') {
-                let html = `<h3>${title}</h3><p class="price">${price} €</p>`;
-                if (desc) html += `<p>${desc}</p>`;
-                if (features.length > 0) {
-                    html += '<ul>';
-                    features.forEach(f => html += `<li>${f}</li>`);
-                    html += '</ul>';
-                }
-                if (quote) html += `<p class="quote">${quote}</p>`;
-                const box = document.createElement('div');
-                box.className = 'pricing-box';
-                box.innerHTML = html;
-                return box;
-            }
-            const upperRow = document.querySelector('#pricing .upper-row');
-            if (upperRow) {
-                upperRow.innerHTML = '';
-                upperRow.appendChild(createPricingBox('3 tuntia', prices["3 tuntia"], 'Esimerkiksi hautajaiset tai valmistujaisjuhlat'));
-                upperRow.appendChild(createPricingBox('4-6 tuntia', prices["4-6 tuntia"], 'Pidempään kestävät tilaisuudet tai kevyempi hääkuvaus'));
-            }
-            const lowerRow = document.querySelector('#pricing .lower-row');
-            const contactBox = lowerRow ? lowerRow.querySelector('.contact-box') : null;
-            if (lowerRow && contactBox) {
-                lowerRow.insertBefore(createPricingBox(
-                    'Hääpaketti',
-                    prices["Hääpaketti"],
-                    '',
-                    [
-                        'Dokumentaarinen hääkuvaus <strong>koko hääpäivän ajan</strong>',
-                        'Ensimmäiset kuvat toimitetaan 24 tunnin sisällä Häistä',
-                        "Instagram-valmiit kuvat mukana toimituksessa",
-                        'Eniten valokuvia'
-                    ],
-                ), contactBox);
-            }
-        });
-        function handlePaikkakuntaChange(value) {
-            if (!value) return;
-            let url = value === "muu"
-                ? "https://www.iivarikortesoja.media/Valokuvaus.html"
-                : `https://www.iivarikortesoja.media/Valokuvaus/${value}.html`;
-            window.location.href = url;
-        }
         // Taustavideo + about-kuvan vaihto
         (function(){
             const bg = document.querySelector('#home video');
